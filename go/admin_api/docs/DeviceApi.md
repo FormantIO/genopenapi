@@ -1,0 +1,535 @@
+# \DeviceApi
+
+All URIs are relative to *https://api.formant.io/v1/admin*
+
+Method | HTTP request | Description
+------------- | ------------- | -------------
+[**DeviceControllerCount**](DeviceApi.md#DeviceControllerCount) | **Post** /devices/count | Count
+[**DeviceControllerFilter**](DeviceApi.md#DeviceControllerFilter) | **Post** /devices/filter | Filter
+[**DeviceControllerGenerateDeviceProvisioningToken**](DeviceApi.md#DeviceControllerGenerateDeviceProvisioningToken) | **Post** /devices/{id}/provisioning-token | Generate device provisioning token
+[**DeviceControllerGetConfiguration**](DeviceApi.md#DeviceControllerGetConfiguration) | **Get** /devices/{id}/configurations/{version} | Get configuration
+[**DeviceControllerGetOne**](DeviceApi.md#DeviceControllerGetOne) | **Get** /devices/{id} | Get one
+[**DeviceControllerGetTags**](DeviceApi.md#DeviceControllerGetTags) | **Get** /devices/all/tags | Get tags
+[**DeviceControllerGetUpdatedConfiguration**](DeviceApi.md#DeviceControllerGetUpdatedConfiguration) | **Get** /devices/{id}/updated-configuration | Get updated configuration
+[**DeviceControllerPatch**](DeviceApi.md#DeviceControllerPatch) | **Patch** /devices/{id} | Patch
+[**DeviceControllerPost**](DeviceApi.md#DeviceControllerPost) | **Post** /devices | Post
+[**DeviceControllerPostConfiguration**](DeviceApi.md#DeviceControllerPostConfiguration) | **Post** /devices/{id}/configurations | Post configuration
+[**DeviceControllerProvisionDevice**](DeviceApi.md#DeviceControllerProvisionDevice) | **Post** /devices/provision | Provision device
+[**DeviceControllerQuery**](DeviceApi.md#DeviceControllerQuery) | **Post** /devices/query | Query
+[**DeviceControllerUnprovisionDevice**](DeviceApi.md#DeviceControllerUnprovisionDevice) | **Post** /devices/{id}/unprovision | Unprovision device
+[**DeviceControllerValidateStreamConfiguration**](DeviceApi.md#DeviceControllerValidateStreamConfiguration) | **Post** /devices/validate-stream-configuration | Validate stream configuration
+
+
+
+## DeviceControllerCount
+
+> DeviceControllerCount(ctx, optional)
+
+Count
+
+Count devices
+
+### Required Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+ **optional** | ***DeviceControllerCountOpts** | optional parameters | nil if no parameters
+
+### Optional Parameters
+
+Optional parameters are passed through a pointer to a DeviceControllerCountOpts struct
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **deviceQuery** | [**optional.Interface of DeviceQuery**](DeviceQuery.md)| DeviceQuery | 
+
+### Return type
+
+ (empty response body)
+
+### Authorization
+
+Use admin JWT for authorization
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## DeviceControllerFilter
+
+> DeviceListResponse DeviceControllerFilter(ctx, optional)
+
+Filter
+
+Query devices by name and/or tags
+
+### Required Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+ **optional** | ***DeviceControllerFilterOpts** | optional parameters | nil if no parameters
+
+### Optional Parameters
+
+Optional parameters are passed through a pointer to a DeviceControllerFilterOpts struct
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **deviceQuery** | [**optional.Interface of DeviceQuery**](DeviceQuery.md)| DeviceQuery | 
+
+### Return type
+
+[**DeviceListResponse**](DeviceListResponse.md)
+
+### Authorization
+
+Use admin JWT for authorization
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## DeviceControllerGenerateDeviceProvisioningToken
+
+> DeviceProvisioning DeviceControllerGenerateDeviceProvisioningToken(ctx, id)
+
+Generate device provisioning token
+
+Generate a device provisioning token
+
+### Required Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**id** | **string**|  | 
+
+### Return type
+
+[**DeviceProvisioning**](DeviceProvisioning.md)
+
+### Authorization
+
+Use admin JWT for authorization
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## DeviceControllerGetConfiguration
+
+> DeviceConfiguration DeviceControllerGetConfiguration(ctx, id, version)
+
+Get configuration
+
+Get a device configuration
+
+### Required Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**id** | **string**|  | 
+**version** | **string**|  | 
+
+### Return type
+
+[**DeviceConfiguration**](DeviceConfiguration.md)
+
+### Authorization
+
+Use admin JWT for authorization
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## DeviceControllerGetOne
+
+> Device DeviceControllerGetOne(ctx, id)
+
+Get one
+
+Get a device
+
+### Required Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**id** | **string**|  | 
+
+### Return type
+
+[**Device**](Device.md)
+
+### Authorization
+
+Use admin JWT for authorization
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## DeviceControllerGetTags
+
+> DeviceTagsResponse DeviceControllerGetTags(ctx, )
+
+Get tags
+
+Get tags across all devices
+
+### Required Parameters
+
+This endpoint does not need any parameter.
+
+### Return type
+
+[**DeviceTagsResponse**](DeviceTagsResponse.md)
+
+### Authorization
+
+Use admin JWT for authorization
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## DeviceControllerGetUpdatedConfiguration
+
+> UpdatedConfigurationResponse DeviceControllerGetUpdatedConfiguration(ctx, id, optional)
+
+Get updated configuration
+
+Check for device configuration updates
+
+### Required Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**id** | **string**|  | 
+ **optional** | ***DeviceControllerGetUpdatedConfigurationOpts** | optional parameters | nil if no parameters
+
+### Optional Parameters
+
+Optional parameters are passed through a pointer to a DeviceControllerGetUpdatedConfigurationOpts struct
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+ **reportedConfigurationVersion** | **optional.Int64**|  | 
+
+### Return type
+
+[**UpdatedConfigurationResponse**](UpdatedConfigurationResponse.md)
+
+### Authorization
+
+Use admin JWT for authorization
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## DeviceControllerPatch
+
+> Device DeviceControllerPatch(ctx, id, partialDevice)
+
+Patch
+
+Update a device
+
+### Required Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**id** | **string**|  | 
+**partialDevice** | [**PartialDevice**](PartialDevice.md)| PartialDevice | 
+
+### Return type
+
+[**Device**](Device.md)
+
+### Authorization
+
+Use admin JWT for authorization
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## DeviceControllerPost
+
+> Device DeviceControllerPost(ctx, device)
+
+Post
+
+Create a device
+
+### Required Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**device** | [**Device**](Device.md)| Device | 
+
+### Return type
+
+[**Device**](Device.md)
+
+### Authorization
+
+Use admin JWT for authorization
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## DeviceControllerPostConfiguration
+
+> DeviceConfiguration DeviceControllerPostConfiguration(ctx, id, deviceConfiguration)
+
+Post configuration
+
+Create a device configuration
+
+### Required Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**id** | **string**|  | 
+**deviceConfiguration** | [**DeviceConfiguration**](DeviceConfiguration.md)| DeviceConfiguration | 
+
+### Return type
+
+[**DeviceConfiguration**](DeviceConfiguration.md)
+
+### Authorization
+
+Use admin JWT for authorization
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## DeviceControllerProvisionDevice
+
+> Device DeviceControllerProvisionDevice(ctx, deviceProvisioningRequest)
+
+Provision device
+
+Provision a device
+
+### Required Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**deviceProvisioningRequest** | [**DeviceProvisioningRequest**](DeviceProvisioningRequest.md)| DeviceProvisioningRequest | 
+
+### Return type
+
+[**Device**](Device.md)
+
+### Authorization
+
+Use admin JWT for authorization
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## DeviceControllerQuery
+
+> DeviceListResponse DeviceControllerQuery(ctx, optional)
+
+Query
+
+Query devices by name and/or tags
+
+### Required Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+ **optional** | ***DeviceControllerQueryOpts** | optional parameters | nil if no parameters
+
+### Optional Parameters
+
+Optional parameters are passed through a pointer to a DeviceControllerQueryOpts struct
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **deviceQuery** | [**optional.Interface of DeviceQuery**](DeviceQuery.md)| DeviceQuery | 
+
+### Return type
+
+[**DeviceListResponse**](DeviceListResponse.md)
+
+### Authorization
+
+Use admin JWT for authorization
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## DeviceControllerUnprovisionDevice
+
+> DeviceControllerUnprovisionDevice(ctx, id)
+
+Unprovision device
+
+Unprovision a device
+
+### Required Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**id** | **string**|  | 
+
+### Return type
+
+ (empty response body)
+
+### Authorization
+
+Use admin JWT for authorization
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## DeviceControllerValidateStreamConfiguration
+
+> DeviceControllerValidateStreamConfiguration(ctx, deviceStreamConfiguration)
+
+Validate stream configuration
+
+Validate a device stream configuration
+
+### Required Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**deviceStreamConfiguration** | [**DeviceStreamConfiguration**](DeviceStreamConfiguration.md)| DeviceStreamConfiguration | 
+
+### Return type
+
+ (empty response body)
+
+### Authorization
+
+Use admin JWT for authorization
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+

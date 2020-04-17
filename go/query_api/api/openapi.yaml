@@ -1,0 +1,630 @@
+openapi: 3.0.0
+info:
+  title: Formant Cloud API
+  version: 0.67.31
+servers:
+- url: /
+paths:
+  /metadata:
+    post:
+      operationId: MetadataController.listMetadata
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ScopeFilter'
+        description: ScopeFilter
+        required: false
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/MetadataListResponse'
+      summary: List metadata
+      tags:
+      - Metadata
+  /metadata/stream-names:
+    post:
+      operationId: MetadataController.listStreamNames
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ScopeFilter'
+        description: ScopeFilter
+        required: false
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/StringListResponse'
+      summary: List stream names
+      tags:
+      - Metadata
+  /metadata/device-ids:
+    post:
+      operationId: MetadataController.listDeviceIds
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ScopeFilter'
+        description: ScopeFilter
+        required: false
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UuidListResponse'
+      summary: List device ids
+      tags:
+      - Metadata
+  /online-devices:
+    get:
+      operationId: OnlineDevicesController.online
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UuidListResponse'
+      summary: Online
+      tags:
+      - Online Devices
+  /presence:
+    post:
+      operationId: PresenceController.count
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/IntervalQuery'
+        description: IntervalQuery
+        required: true
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/IsoDateListResponse'
+      summary: Count
+      tags:
+      - Presence
+  /queries:
+    post:
+      operationId: QueryController.query
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Query'
+        description: Query
+        required: true
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/StreamDataListResponse'
+      summary: Query
+      tags:
+      - Query
+  /seek:
+    post:
+      operationId: SeekController.seek
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/SeekQuery'
+        description: SeekQuery
+        required: true
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SeekResult'
+      summary: Seek
+      tags:
+      - Seek
+components:
+  schemas:
+    Filter:
+      properties:
+        agentIds:
+          items:
+            format: uuid
+            type: string
+          type: array
+        deviceIds:
+          items:
+            format: uuid
+            type: string
+          type: array
+        names:
+          items:
+            type: string
+          type: array
+        types:
+          items:
+            enum:
+            - image
+            - numeric
+            - point cloud
+            - text
+            - location
+            - file
+            - localization
+            - health
+            - bitset
+            - metrics
+            - transform tree
+            - battery
+            type: string
+          type: array
+        tags: {}
+        notNames:
+          items:
+            type: string
+          type: array
+      type: object
+    ScopeFilter:
+      example:
+        agentIds:
+        - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        deviceIds:
+        - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        types:
+        - image
+        - image
+        names:
+        - names
+        - names
+        notNames:
+        - notNames
+        - notNames
+        start: 2000-01-23T04:56:07.000+00:00
+        end: 2000-01-23T04:56:07.000+00:00
+        tags: ""
+      properties:
+        start:
+          format: date-time
+          type: string
+        end:
+          format: date-time
+          type: string
+        agentIds:
+          items:
+            format: uuid
+            type: string
+          type: array
+        deviceIds:
+          items:
+            format: uuid
+            type: string
+          type: array
+        names:
+          items:
+            type: string
+          type: array
+        types:
+          items:
+            enum:
+            - image
+            - numeric
+            - point cloud
+            - text
+            - location
+            - file
+            - localization
+            - health
+            - bitset
+            - metrics
+            - transform tree
+            - battery
+            type: string
+          type: array
+        tags: {}
+        notNames:
+          items:
+            type: string
+          type: array
+      type: object
+    StringListResponse:
+      example:
+        items:
+        - items
+        - items
+      properties:
+        items:
+          items:
+            type: string
+          type: array
+      required:
+      - items
+      type: object
+    UuidListResponse:
+      example:
+        items:
+        - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+      properties:
+        items:
+          items:
+            format: uuid
+            type: string
+          type: array
+      required:
+      - items
+      type: object
+    Metadata:
+      example:
+        name: name
+        type: image
+        deviceId: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        tags:
+          key: tags
+      properties:
+        deviceId:
+          format: uuid
+          type: string
+        name:
+          type: string
+        type:
+          enum:
+          - image
+          - numeric
+          - point cloud
+          - text
+          - location
+          - file
+          - localization
+          - health
+          - bitset
+          - metrics
+          - transform tree
+          - battery
+          type: string
+        tags:
+          additionalProperties:
+            type: string
+          type: object
+      required:
+      - deviceId
+      - name
+      - tags
+      - type
+      type: object
+    MetadataListResponse:
+      example:
+        items:
+        - name: name
+          type: image
+          deviceId: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          tags:
+            key: tags
+        - name: name
+          type: image
+          deviceId: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          tags:
+            key: tags
+      properties:
+        items:
+          items:
+            $ref: '#/components/schemas/Metadata'
+          type: array
+      required:
+      - items
+      type: object
+    Query:
+      example:
+        agentIds:
+        - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        deviceIds:
+        - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        types:
+        - image
+        - image
+        names:
+        - names
+        - names
+        notNames:
+        - notNames
+        - notNames
+        start: 2000-01-23T04:56:07.000+00:00
+        end: 2000-01-23T04:56:07.000+00:00
+        tags: ""
+      properties:
+        start:
+          format: date-time
+          type: string
+        end:
+          format: date-time
+          type: string
+        agentIds:
+          items:
+            format: uuid
+            type: string
+          type: array
+        deviceIds:
+          items:
+            format: uuid
+            type: string
+          type: array
+        names:
+          items:
+            type: string
+          type: array
+        types:
+          items:
+            enum:
+            - image
+            - numeric
+            - point cloud
+            - text
+            - location
+            - file
+            - localization
+            - health
+            - bitset
+            - metrics
+            - transform tree
+            - battery
+            type: string
+          type: array
+        tags: {}
+        notNames:
+          items:
+            type: string
+          type: array
+      required:
+      - end
+      - start
+      type: object
+    IntervalQuery:
+      example:
+        agentIds:
+        - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        deviceIds:
+        - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        types:
+        - image
+        - image
+        names:
+        - names
+        - names
+        notNames:
+        - notNames
+        - notNames
+        start: 2000-01-23T04:56:07.000+00:00
+        interval: minute
+        end: 2000-01-23T04:56:07.000+00:00
+        tags: ""
+      properties:
+        interval:
+          enum:
+          - minute
+          - hour
+          - day
+          type: string
+        agentIds:
+          items:
+            format: uuid
+            type: string
+          type: array
+        deviceIds:
+          items:
+            format: uuid
+            type: string
+          type: array
+        names:
+          items:
+            type: string
+          type: array
+        types:
+          items:
+            enum:
+            - image
+            - numeric
+            - point cloud
+            - text
+            - location
+            - file
+            - localization
+            - health
+            - bitset
+            - metrics
+            - transform tree
+            - battery
+            type: string
+          type: array
+        tags: {}
+        notNames:
+          items:
+            type: string
+          type: array
+        start:
+          format: date-time
+          type: string
+        end:
+          format: date-time
+          type: string
+      required:
+      - end
+      - interval
+      - start
+      type: object
+    IsoDateListResponse:
+      example:
+        items:
+        - 2000-01-23T04:56:07.000+00:00
+        - 2000-01-23T04:56:07.000+00:00
+      properties:
+        items:
+          items:
+            format: date-time
+            type: string
+          type: array
+      required:
+      - items
+      type: object
+    StreamData:
+      example:
+        name: name
+        type: image
+        deviceId: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        tags:
+          key: tags
+        points:
+        - '{}'
+        - '{}'
+      properties:
+        name:
+          type: string
+        deviceId:
+          format: uuid
+          type: string
+        tags:
+          additionalProperties:
+            type: string
+          type: object
+        type:
+          enum:
+          - image
+          - numeric
+          - point cloud
+          - text
+          - location
+          - file
+          - localization
+          - health
+          - bitset
+          - metrics
+          - transform tree
+          - battery
+          type: string
+        points:
+          items:
+            $ref: '#/components/schemas/Array'
+          type: array
+      required:
+      - deviceId
+      - name
+      - points
+      - tags
+      - type
+      type: object
+    StreamDataListResponse:
+      example:
+        items:
+        - name: name
+          type: image
+          deviceId: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          tags:
+            key: tags
+          points:
+          - '{}'
+          - '{}'
+        - name: name
+          type: image
+          deviceId: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          tags:
+            key: tags
+          points:
+          - '{}'
+          - '{}'
+      properties:
+        items:
+          items:
+            $ref: '#/components/schemas/StreamData'
+          type: array
+      required:
+      - items
+      type: object
+    SeekQuery:
+      example:
+        agentIds:
+        - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        deviceIds:
+        - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        types:
+        - image
+        - image
+        names:
+        - names
+        - names
+        notNames:
+        - notNames
+        - notNames
+        from: 2000-01-23T04:56:07.000+00:00
+        direction: next
+        tags: ""
+      properties:
+        direction:
+          enum:
+          - next
+          - previous
+          type: string
+        from:
+          format: date-time
+          type: string
+        agentIds:
+          items:
+            format: uuid
+            type: string
+          type: array
+        deviceIds:
+          items:
+            format: uuid
+            type: string
+          type: array
+        names:
+          items:
+            type: string
+          type: array
+        types:
+          items:
+            enum:
+            - image
+            - numeric
+            - point cloud
+            - text
+            - location
+            - file
+            - localization
+            - health
+            - bitset
+            - metrics
+            - transform tree
+            - battery
+            type: string
+          type: array
+        tags: {}
+        notNames:
+          items:
+            type: string
+          type: array
+      required:
+      - direction
+      - from
+      type: object
+    SeekResult:
+      example:
+        time: 2000-01-23T04:56:07.000+00:00
+      properties:
+        time:
+          format: date-time
+          type: string
+      type: object

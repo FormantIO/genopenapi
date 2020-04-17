@@ -1,0 +1,7041 @@
+openapi: 3.0.0
+info:
+  title: Formant Cloud API
+  version: 0.67.31
+servers:
+- url: /
+paths:
+  /alerts/{id}:
+    get:
+      description: Get an alert
+      operationId: AlertController.getOne
+      parameters:
+      - explode: false
+        in: path
+        name: id
+        required: true
+        schema:
+          type: string
+        style: simple
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Alert'
+      summary: Get one
+      tags:
+      - Alert
+  /alerts:
+    post:
+      description: Create an alert
+      operationId: AlertController.post
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Alert'
+        description: Alert
+        required: true
+      responses:
+        "201":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Alert'
+      summary: Post
+      tags:
+      - Alert
+  /alert-definitions:
+    get:
+      description: List all alert definitions
+      operationId: AlertDefinitionController.getAll
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AlertDefinitionListResponse'
+      summary: Get all
+      tags:
+      - Alert Definition
+    post:
+      description: Create alert definition
+      operationId: AlertDefinitionController.post
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/AlertDefinition'
+        description: AlertDefinition
+        required: true
+      responses:
+        "201":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AlertDefinition'
+      summary: Post
+      tags:
+      - Alert Definition
+  /alert-definitions/{id}:
+    get:
+      description: Get an alert definition
+      operationId: AlertDefinitionController.getOne
+      parameters:
+      - explode: false
+        in: path
+        name: id
+        required: true
+        schema:
+          type: string
+        style: simple
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AlertDefinition'
+      summary: Get one
+      tags:
+      - Alert Definition
+    patch:
+      description: Update alert definition
+      operationId: AlertDefinitionController.patch
+      parameters:
+      - explode: false
+        in: path
+        name: id
+        required: true
+        schema:
+          type: string
+        style: simple
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PartialAlertDefinition'
+        description: PartialAlertDefinition
+        required: true
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AlertDefinition'
+      summary: Patch
+      tags:
+      - Alert Definition
+  /auth/login:
+    post:
+      description: Login
+      operationId: AuthController.login
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/LoginRequest'
+        description: LoginRequest
+        required: true
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/LoginResult'
+      summary: Login
+      tags:
+      - Auth
+  /auth/refresh:
+    post:
+      description: Refresh
+      operationId: AuthController.refresh
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/RefreshRequest'
+        description: RefreshRequest
+        required: true
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/LoginResult'
+      summary: Refresh
+      tags:
+      - Auth
+  /auth/admin-signup:
+    post:
+      description: Administrator signup
+      operationId: AuthController.adminSignup
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/AdminSignupRequest'
+        description: AdminSignupRequest
+        required: true
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/User'
+      summary: Admin signup
+      tags:
+      - Auth
+  /auth/forgot-password:
+    post:
+      description: Forgot Password
+      operationId: AuthController.forgotPassword
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ForgotPasswordRequest'
+        description: ForgotPasswordRequest
+        required: true
+      responses:
+        "200":
+          content:
+            application/json: {}
+          description: Successful response
+      summary: Forgot password
+      tags:
+      - Auth
+  /auth/resend-invitation:
+    post:
+      description: Resend Invitation
+      operationId: AuthController.resendInvitation
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ResendInvitationRequest'
+        description: ResendInvitationRequest
+        required: true
+      responses:
+        "200":
+          content:
+            application/json: {}
+          description: Successful response
+      summary: Resend invitation
+      tags:
+      - Auth
+  /auth/confirm-forgot-password:
+    post:
+      description: Confirm Forgot Password
+      operationId: AuthController.confirmForgotPassword
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ConfirmForgotPasswordRequest'
+        description: ConfirmForgotPasswordRequest
+        required: true
+      responses:
+        "200":
+          content:
+            application/json: {}
+          description: Successful response
+      summary: Confirm forgot password
+      tags:
+      - Auth
+  /auth/resend-confirmation-code:
+    post:
+      description: Resend Confirmation Code
+      operationId: AuthController.resendConfirmationCode
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ResendConfirmationCodeRequest'
+        description: ResendConfirmationCodeRequest
+        required: true
+      responses:
+        "200":
+          content:
+            application/json: {}
+          description: Successful response
+      summary: Resend confirmation code
+      tags:
+      - Auth
+  /auth/change-password:
+    post:
+      description: Change Password
+      operationId: AuthController.changePassword
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ChangePasswordRequest'
+        description: ChangePasswordRequest
+        required: true
+      responses:
+        "200":
+          content:
+            application/json: {}
+          description: Successful response
+      summary: Change password
+      tags:
+      - Auth
+  /auth/respond-to-new-password-required-challenge:
+    post:
+      description: Respond to New Password Required Challenge
+      operationId: AuthController.respondToNewPasswordRequiredChallenge
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/RespondToNewPasswordRequiredChallengeRequest'
+        description: RespondToNewPasswordRequiredChallengeRequest
+        required: true
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/LoginResult'
+      summary: Respond to new password required challenge
+      tags:
+      - Auth
+  /auth/device-credentials:
+    post:
+      description: Device Credentials
+      operationId: AuthController.deviceCredentials
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DeviceCredentials'
+      summary: Device credentials
+      tags:
+      - Auth
+  /boards:
+    get:
+      description: List all boards
+      operationId: BoardController.getAll
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BoardListResponse'
+      summary: Get all
+      tags:
+      - Board
+    post:
+      description: Create board
+      operationId: BoardController.post
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Board'
+        description: Board
+        required: true
+      responses:
+        "201":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Board'
+      summary: Post
+      tags:
+      - Board
+  /boards/{id}:
+    delete:
+      description: Delete a board
+      operationId: BoardController.delete
+      parameters:
+      - explode: false
+        in: path
+        name: id
+        required: true
+        schema:
+          type: string
+        style: simple
+      responses:
+        "200":
+          content:
+            application/json: {}
+          description: Successful response
+      summary: Delete
+      tags:
+      - Board
+    get:
+      description: Get a board
+      operationId: BoardController.getOne
+      parameters:
+      - explode: false
+        in: path
+        name: id
+        required: true
+        schema:
+          type: string
+        style: simple
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Board'
+      summary: Get one
+      tags:
+      - Board
+    patch:
+      description: Update a board
+      operationId: BoardController.patch
+      parameters:
+      - explode: false
+        in: path
+        name: id
+        required: true
+        schema:
+          type: string
+        style: simple
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PartialBoard'
+        description: PartialBoard
+        required: true
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Board'
+      summary: Patch
+      tags:
+      - Board
+  /capture-sessions:
+    post:
+      description: Create a capture session
+      operationId: CaptureSessionController.post
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CaptureSession'
+        description: CaptureSession
+        required: true
+      responses:
+        "201":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CaptureSession'
+      summary: Post
+      tags:
+      - Capture Session
+  /capture-sessions/{code}:
+    get:
+      description: Get a capture session
+      operationId: CaptureSessionController.getOne
+      parameters:
+      - explode: false
+        in: path
+        name: code
+        required: true
+        schema:
+          type: string
+        style: simple
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CaptureSession'
+      summary: Get one
+      tags:
+      - Capture Session
+  /capture-sessions/{code}/authenticate:
+    post:
+      operationId: CaptureSessionController.authenticate
+      parameters:
+      - explode: false
+        in: path
+        name: code
+        required: true
+        schema:
+          type: string
+        style: simple
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TokenResult'
+      summary: Authenticate
+      tags:
+      - Capture Session
+  /channels:
+    get:
+      description: List all channels
+      operationId: ChannelController.getAll
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ChannelListResponse'
+      summary: Get all
+      tags:
+      - Channel
+    post:
+      description: Create a channel
+      operationId: ChannelController.post
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Channel'
+        description: Channel
+        required: true
+      responses:
+        "201":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Channel'
+      summary: Post
+      tags:
+      - Channel
+  /channels/{id}:
+    delete:
+      description: Delete a channel
+      operationId: ChannelController.delete
+      parameters:
+      - explode: false
+        in: path
+        name: id
+        required: true
+        schema:
+          type: string
+        style: simple
+      responses:
+        "200":
+          content:
+            application/json: {}
+          description: Successful response
+      summary: Delete
+      tags:
+      - Channel
+    get:
+      description: Get a channel
+      operationId: ChannelController.getOne
+      parameters:
+      - explode: false
+        in: path
+        name: id
+        required: true
+        schema:
+          type: string
+        style: simple
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Channel'
+      summary: Get one
+      tags:
+      - Channel
+    patch:
+      description: Update a channel
+      operationId: ChannelController.patch
+      parameters:
+      - explode: false
+        in: path
+        name: id
+        required: true
+        schema:
+          type: string
+        style: simple
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PartialChannel'
+        description: PartialChannel
+        required: true
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Channel'
+      summary: Patch
+      tags:
+      - Channel
+  /command-requests:
+    post:
+      description: Create a command request
+      operationId: CommandRequestController.post
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CommandRequest'
+        description: CommandRequest
+        required: true
+      responses:
+        "201":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CommandRequest'
+      summary: Post
+      tags:
+      - Command Request
+  /command-requests/pending:
+    post:
+      description: Poll for command requests
+      operationId: CommandRequestController.poll
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PollCommandRequest'
+        description: PollCommandRequest
+        required: true
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CommandRequestListResponse'
+      summary: Poll
+      tags:
+      - Command Request
+  /command-responses:
+    post:
+      description: Create a command response
+      operationId: CommandResponseController.post
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CommandResponse'
+        description: CommandResponse
+        required: true
+      responses:
+        "201":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CommandResponse'
+      summary: Post
+      tags:
+      - Command Response
+  /command-templates:
+    post:
+      description: Create a command template
+      operationId: CommandTemplateController.post
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CommandTemplate'
+        description: CommandTemplate
+        required: true
+      responses:
+        "201":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CommandTemplate'
+      summary: Post
+      tags:
+      - Command Template
+  /command-templates/{id}:
+    delete:
+      description: Delete a command template
+      operationId: CommandTemplateController.delete
+      parameters:
+      - explode: false
+        in: path
+        name: id
+        required: true
+        schema:
+          type: string
+        style: simple
+      responses:
+        "200":
+          content:
+            application/json: {}
+          description: Successful response
+      summary: Delete
+      tags:
+      - Command Template
+    get:
+      description: Get a command template
+      operationId: CommandTemplateController.getOne
+      parameters:
+      - explode: false
+        in: path
+        name: id
+        required: true
+        schema:
+          type: string
+        style: simple
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CommandTemplate'
+      summary: Get one
+      tags:
+      - Command Template
+    patch:
+      description: Update a command template
+      operationId: CommandTemplateController.patch
+      parameters:
+      - explode: false
+        in: path
+        name: id
+        required: true
+        schema:
+          type: string
+        style: simple
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PartialCommandTemplate'
+        description: PartialCommandTemplate
+        required: true
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CommandTemplate'
+      summary: Patch
+      tags:
+      - Command Template
+  /command-templates/:
+    get:
+      description: List command templates
+      operationId: CommandTemplateController.list
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CommandTemplateListResponse'
+      summary: List
+      tags:
+      - Command Template
+  /comments:
+    post:
+      description: Create a comment
+      operationId: CommentController.post
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Comment'
+        description: Comment
+        required: true
+      responses:
+        "201":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Comment'
+      summary: Post
+      tags:
+      - Comment
+  /comments/{id}:
+    delete:
+      description: Delete a comment
+      operationId: CommentController.delete
+      parameters:
+      - explode: false
+        in: path
+        name: id
+        required: true
+        schema:
+          type: string
+        style: simple
+      responses:
+        "200":
+          content:
+            application/json: {}
+          description: Successful response
+      summary: Delete
+      tags:
+      - Comment
+    get:
+      description: Get a comment
+      operationId: CommentController.getOne
+      parameters:
+      - explode: false
+        in: path
+        name: id
+        required: true
+        schema:
+          type: string
+        style: simple
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Comment'
+      summary: Get one
+      tags:
+      - Comment
+    patch:
+      description: Update a comment
+      operationId: CommentController.patch
+      parameters:
+      - explode: false
+        in: path
+        name: id
+        required: true
+        schema:
+          type: string
+        style: simple
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PartialComment'
+        description: PartialComment
+        required: true
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Comment'
+      summary: Patch
+      tags:
+      - Comment
+  /custom-events:
+    post:
+      description: Create a custom event
+      operationId: CustomEventController.post
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CustomEvent'
+        description: CustomEvent
+        required: true
+      responses:
+        "201":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CustomEvent'
+      summary: Post
+      tags:
+      - Custom Event
+  /device-configuration-templates:
+    post:
+      description: Create a device configuration template
+      operationId: DeviceConfigurationTemplateController.post
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/DeviceConfigurationTemplate'
+        description: DeviceConfigurationTemplate
+        required: true
+      responses:
+        "201":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DeviceConfigurationTemplate'
+      summary: Post
+      tags:
+      - Device Configuration Template
+  /device-configuration-templates/{id}:
+    delete:
+      description: Delete a device configuration template
+      operationId: DeviceConfigurationTemplateController.delete
+      parameters:
+      - explode: false
+        in: path
+        name: id
+        required: true
+        schema:
+          type: string
+        style: simple
+      responses:
+        "200":
+          content:
+            application/json: {}
+          description: Successful response
+      summary: Delete
+      tags:
+      - Device Configuration Template
+    get:
+      description: Get a device configuration template
+      operationId: DeviceConfigurationTemplateController.getOne
+      parameters:
+      - explode: false
+        in: path
+        name: id
+        required: true
+        schema:
+          type: string
+        style: simple
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DeviceConfigurationTemplate'
+      summary: Get one
+      tags:
+      - Device Configuration Template
+    patch:
+      description: Update a device configuration template
+      operationId: DeviceConfigurationTemplateController.patch
+      parameters:
+      - explode: false
+        in: path
+        name: id
+        required: true
+        schema:
+          type: string
+        style: simple
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PartialDeviceConfigurationTemplate'
+        description: PartialDeviceConfigurationTemplate
+        required: true
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DeviceConfigurationTemplate'
+      summary: Patch
+      tags:
+      - Device Configuration Template
+  /device-configuration-templates/:
+    get:
+      description: List device configuration templates
+      operationId: DeviceConfigurationTemplateController.list
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DeviceConfigurationTemplateListResponse'
+      summary: List
+      tags:
+      - Device Configuration Template
+  /devices:
+    post:
+      description: Create a device
+      operationId: DeviceController.post
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Device'
+        description: Device
+        required: true
+      responses:
+        "201":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Device'
+      summary: Post
+      tags:
+      - Device
+  /devices/provision:
+    post:
+      description: Provision a device
+      operationId: DeviceController.provisionDevice
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/DeviceProvisioningRequest'
+        description: DeviceProvisioningRequest
+        required: true
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Device'
+      summary: Provision device
+      tags:
+      - Device
+  /devices/filter:
+    post:
+      description: Query devices by name and/or tags
+      operationId: DeviceController.filter
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/DeviceQuery'
+        description: DeviceQuery
+        required: false
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DeviceListResponse'
+      summary: Filter
+      tags:
+      - Device
+  /devices/query:
+    post:
+      description: Query devices by name and/or tags
+      operationId: DeviceController.query
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/DeviceQuery'
+        description: DeviceQuery
+        required: false
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DeviceListResponse'
+      summary: Query
+      tags:
+      - Device
+  /devices/count:
+    post:
+      description: Count devices
+      operationId: DeviceController.count
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/DeviceQuery'
+        description: DeviceQuery
+        required: false
+      responses:
+        "200":
+          content:
+            application/json: {}
+          description: Successful response
+      summary: Count
+      tags:
+      - Device
+  /devices/all/tags:
+    get:
+      description: Get tags across all devices
+      operationId: DeviceController.getTags
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DeviceTagsResponse'
+      summary: Get tags
+      tags:
+      - Device
+  /devices/{id}:
+    get:
+      description: Get a device
+      operationId: DeviceController.getOne
+      parameters:
+      - explode: false
+        in: path
+        name: id
+        required: true
+        schema:
+          type: string
+        style: simple
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Device'
+      summary: Get one
+      tags:
+      - Device
+    patch:
+      description: Update a device
+      operationId: DeviceController.patch
+      parameters:
+      - explode: false
+        in: path
+        name: id
+        required: true
+        schema:
+          type: string
+        style: simple
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PartialDevice'
+        description: PartialDevice
+        required: true
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Device'
+      summary: Patch
+      tags:
+      - Device
+  /devices/{id}/provisioning-token:
+    post:
+      description: Generate a device provisioning token
+      operationId: DeviceController.generateDeviceProvisioningToken
+      parameters:
+      - explode: false
+        in: path
+        name: id
+        required: true
+        schema:
+          type: string
+        style: simple
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DeviceProvisioning'
+      summary: Generate device provisioning token
+      tags:
+      - Device
+  /devices/{id}/unprovision:
+    post:
+      description: Unprovision a device
+      operationId: DeviceController.unprovisionDevice
+      parameters:
+      - explode: false
+        in: path
+        name: id
+        required: true
+        schema:
+          type: string
+        style: simple
+      responses:
+        "200":
+          content:
+            application/json: {}
+          description: Successful response
+      summary: Unprovision device
+      tags:
+      - Device
+  /devices/{id}/configurations:
+    post:
+      description: Create a device configuration
+      operationId: DeviceController.postConfiguration
+      parameters:
+      - explode: false
+        in: path
+        name: id
+        required: true
+        schema:
+          type: string
+        style: simple
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/DeviceConfiguration'
+        description: DeviceConfiguration
+        required: true
+      responses:
+        "201":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DeviceConfiguration'
+      summary: Post configuration
+      tags:
+      - Device
+  /devices/validate-stream-configuration:
+    post:
+      description: Validate a device stream configuration
+      operationId: DeviceController.validateStreamConfiguration
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/DeviceStreamConfiguration'
+        description: DeviceStreamConfiguration
+        required: true
+      responses:
+        "200":
+          content:
+            application/json: {}
+          description: Successful response
+      summary: Validate stream configuration
+      tags:
+      - Device
+  /devices/{id}/configurations/{version}:
+    get:
+      description: Get a device configuration
+      operationId: DeviceController.getConfiguration
+      parameters:
+      - explode: false
+        in: path
+        name: id
+        required: true
+        schema:
+          type: string
+        style: simple
+      - explode: false
+        in: path
+        name: version
+        required: true
+        schema:
+          type: string
+        style: simple
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DeviceConfiguration'
+      summary: Get configuration
+      tags:
+      - Device
+  /devices/{id}/updated-configuration:
+    get:
+      description: Check for device configuration updates
+      operationId: DeviceController.getUpdatedConfiguration
+      parameters:
+      - explode: false
+        in: path
+        name: id
+        required: true
+        schema:
+          type: string
+        style: simple
+      - explode: true
+        in: query
+        name: reportedConfigurationVersion
+        required: false
+        schema:
+          format: int64
+          maximum: 9007199254740991
+          minimum: 1
+          type: integer
+        style: form
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UpdatedConfigurationResponse'
+      summary: Get updated configuration
+      tags:
+      - Device
+  /device-details/query:
+    post:
+      operationId: DeviceDetailsController.getAll
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/DeviceQuery'
+        description: DeviceQuery
+        required: false
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DeviceDetailsListResponse'
+      summary: Get all
+      tags:
+      - Device Details
+  /device-details/{id}:
+    get:
+      operationId: DeviceDetailsController.getOne
+      parameters:
+      - explode: false
+        in: path
+        name: id
+        required: true
+        schema:
+          type: string
+        style: simple
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DeviceDetails'
+      summary: Get one
+      tags:
+      - Device Details
+  /device-layouts:
+    get:
+      description: List all device layouts
+      operationId: DeviceLayoutController.getAll
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DeviceListResponse'
+      summary: Get all
+      tags:
+      - Device Layout
+    post:
+      description: Create a device layout
+      operationId: DeviceLayoutController.post
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/DeviceLayout'
+        description: DeviceLayout
+        required: true
+      responses:
+        "201":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DeviceLayout'
+      summary: Post
+      tags:
+      - Device Layout
+  /device-layouts/{id}:
+    delete:
+      description: Delete a device layout
+      operationId: DeviceLayoutController.delete
+      parameters:
+      - explode: false
+        in: path
+        name: id
+        required: true
+        schema:
+          type: string
+        style: simple
+      responses:
+        "200":
+          content:
+            application/json: {}
+          description: Successful response
+      summary: Delete
+      tags:
+      - Device Layout
+    get:
+      description: Get a device layout
+      operationId: DeviceLayoutController.getOne
+      parameters:
+      - explode: false
+        in: path
+        name: id
+        required: true
+        schema:
+          type: string
+        style: simple
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DeviceLayout'
+      summary: Get one
+      tags:
+      - Device Layout
+    patch:
+      description: Update a device layout
+      operationId: DeviceLayoutController.patch
+      parameters:
+      - explode: false
+        in: path
+        name: id
+        required: true
+        schema:
+          type: string
+        style: simple
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PartialDeviceLayout'
+        description: PartialDeviceLayout
+        required: true
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DeviceLayout'
+      summary: Patch
+      tags:
+      - Device Layout
+  /events/{id}:
+    get:
+      description: Get an event
+      operationId: EventController.getOne
+      parameters:
+      - explode: false
+        in: path
+        name: id
+        required: true
+        schema:
+          type: string
+        style: simple
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BaseEvent'
+      summary: Get one
+      tags:
+      - Event
+  /events/query:
+    post:
+      description: Query events
+      operationId: EventController.query
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/EventQuery'
+        description: EventQuery
+        required: false
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EventListResponse'
+      summary: Query
+      tags:
+      - Event
+  /events/count:
+    post:
+      description: Count events
+      operationId: EventController.count
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/EventFilter'
+        description: EventFilter
+        required: false
+      responses:
+        "200":
+          content:
+            application/json: {}
+          description: Successful response
+      summary: Count
+      tags:
+      - Event
+  /events/counts:
+    post:
+      description: Count events
+      operationId: EventController.counts
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/EventFilter'
+        description: EventFilter
+        required: false
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EventCounts'
+      summary: Counts
+      tags:
+      - Event
+  /events/histogram:
+    post:
+      description: Event histogram
+      operationId: EventController.histogram
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/IntervalEventFilter'
+        description: IntervalEventFilter
+        required: true
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EventHistogram'
+      summary: Histogram
+      tags:
+      - Event
+  /events/view:
+    post:
+      description: Mark events as read
+      operationId: EventController.view
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/EventFilter'
+        description: EventFilter
+        required: true
+      responses:
+        "200":
+          content:
+            application/json: {}
+          description: Successful response
+      summary: View
+      tags:
+      - Event
+  /events/seek:
+    post:
+      description: Seek event
+      operationId: EventController.seek
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/EventSeekQuery'
+        description: EventSeekQuery
+        required: true
+      responses:
+        "200":
+          content:
+            application/json: {}
+          description: Successful response
+      summary: Seek
+      tags:
+      - Event
+  /free-teleop-settings-form/{id}:
+    get:
+      description: Get a free teleop settings form
+      operationId: FreeTeleopSettingsFormController.getConfiguration
+      parameters:
+      - explode: false
+        in: path
+        name: id
+        required: true
+        schema:
+          type: string
+        style: simple
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/FreeTeleopSettingsForm'
+      summary: Get configuration
+      tags:
+      - Free Teleop Settings Form
+    post:
+      description: Create a free teleop settings form
+      operationId: FreeTeleopSettingsFormController.postConfiguration
+      parameters:
+      - explode: false
+        in: path
+        name: id
+        required: true
+        schema:
+          type: string
+        style: simple
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/FreeTeleopSettingsForm'
+        description: FreeTeleopSettingsForm
+        required: false
+      responses:
+        "201":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/FreeTeleopSettingsForm'
+      summary: Post configuration
+      tags:
+      - Free Teleop Settings Form
+  /integrations/slack/auth:
+    post:
+      description: Create a slack integration
+      operationId: IntegrationController.post
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/SlackAuthRequest'
+        description: SlackAuthRequest
+        required: true
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SlackInfo'
+      summary: Post
+      tags:
+      - Integration
+  /intervention-requests/{id}:
+    get:
+      description: Get an intervention request
+      operationId: InterventionRequestController.getOne
+      parameters:
+      - explode: false
+        in: path
+        name: id
+        required: true
+        schema:
+          type: string
+        style: simple
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/InterventionRequest'
+      summary: Get one
+      tags:
+      - Intervention Request
+  /intervention-requests:
+    post:
+      description: Create an intervention request
+      operationId: InterventionRequestController.post
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/InterventionRequest'
+        description: InterventionRequest
+        required: true
+      responses:
+        "201":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/InterventionRequest'
+      summary: Post
+      tags:
+      - Intervention Request
+  /intervention-responses:
+    post:
+      description: Create an intervention response
+      operationId: InterventionResponseController.post
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/InterventionResponse'
+        description: InterventionResponse
+        required: true
+      responses:
+        "201":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/InterventionResponse'
+      summary: Post
+      tags:
+      - Intervention Response
+  /looker/sign:
+    post:
+      operationId: LookerController.signLookerEmbedUrl
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/SignLookerEmbedUrlRequest'
+        description: SignLookerEmbedUrlRequest
+        required: true
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SignLookerEmbedUrlResponse'
+      summary: Sign looker embed url
+      tags:
+      - Looker
+  /looker/looks:
+    get:
+      operationId: LookerController.getLooks
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GetLooksResponse'
+      summary: Get looks
+      tags:
+      - Looker
+  /looker/dashboards:
+    get:
+      operationId: LookerController.getDashboards
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GetLooksResponse'
+      summary: Get dashboards
+      tags:
+      - Looker
+  /organizations/{id}:
+    get:
+      description: Get an organization
+      operationId: OrganizationController.getOne
+      parameters:
+      - explode: false
+        in: path
+        name: id
+        required: true
+        schema:
+          type: string
+        style: simple
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Organization'
+      summary: Get one
+      tags:
+      - Organization
+    patch:
+      description: Update an organization
+      operationId: OrganizationController.patch
+      parameters:
+      - explode: false
+        in: path
+        name: id
+        required: true
+        schema:
+          type: string
+        style: simple
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PartialOrganization'
+        description: PartialOrganization
+        required: true
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Organization'
+      summary: Patch
+      tags:
+      - Organization
+  /organizations/slack-info:
+    post:
+      description: Private API provides Slack integration configuration
+      operationId: OrganizationController.getSlackInfo
+      responses:
+        "200":
+          content:
+            application/json: {}
+          description: Successful response
+      summary: Get slack info
+      tags:
+      - Organization
+  /shares:
+    post:
+      description: Create a share token
+      operationId: ShareController.post
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Share'
+        description: Share
+        required: true
+      responses:
+        "201":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Share'
+      summary: Post
+      tags:
+      - Share
+  /shares/{code}:
+    get:
+      description: Get a share
+      operationId: ShareController.getOne
+      parameters:
+      - explode: false
+        in: path
+        name: code
+        required: true
+        schema:
+          type: string
+        style: simple
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Share'
+      summary: Get one
+      tags:
+      - Share
+  /shares/{code}/authenticate:
+    post:
+      operationId: ShareController.authenticate
+      parameters:
+      - explode: false
+        in: path
+        name: code
+        required: true
+        schema:
+          type: string
+        style: simple
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TokenResult'
+      summary: Authenticate
+      tags:
+      - Share
+  /teleop-session-records:
+    post:
+      description: Create a teleoperation session record.
+      operationId: TeleopSessionRecordController.post
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/TeleopSessionRecord'
+        description: TeleopSessionRecord
+        required: true
+      responses:
+        "201":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TeleopSessionRecord'
+      summary: Post
+      tags:
+      - Teleop Session Record
+  /users:
+    get:
+      description: List all users
+      operationId: UserController.getAll
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UserListResponse'
+      summary: Get all
+      tags:
+      - User
+    post:
+      description: Create a user
+      operationId: UserController.post
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/User'
+        description: User
+        required: true
+      responses:
+        "201":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/User'
+      summary: Post
+      tags:
+      - User
+  /users/{id}:
+    get:
+      description: Get a user
+      operationId: UserController.getOne
+      parameters:
+      - explode: false
+        in: path
+        name: id
+        required: true
+        schema:
+          type: string
+        style: simple
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/User'
+      summary: Get one
+      tags:
+      - User
+    patch:
+      description: Update a user
+      operationId: UserController.patch
+      parameters:
+      - explode: false
+        in: path
+        name: id
+        required: true
+        schema:
+          type: string
+        style: simple
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PartialUser'
+        description: PartialUser
+        required: true
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/User'
+      summary: Patch
+      tags:
+      - User
+components:
+  schemas:
+    Filter:
+      example:
+        agentIds:
+        - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        deviceIds:
+        - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        types:
+        - image
+        - image
+        names:
+        - names
+        - names
+        notNames:
+        - notNames
+        - notNames
+        tags: ""
+      properties:
+        agentIds:
+          items:
+            format: uuid
+            type: string
+          type: array
+        deviceIds:
+          items:
+            format: uuid
+            type: string
+          type: array
+        names:
+          items:
+            type: string
+          type: array
+        types:
+          items:
+            enum:
+            - image
+            - numeric
+            - point cloud
+            - text
+            - location
+            - file
+            - localization
+            - health
+            - bitset
+            - metrics
+            - transform tree
+            - battery
+            type: string
+          type: array
+        tags: {}
+        notNames:
+          items:
+            type: string
+          type: array
+      type: object
+    ScopeFilter:
+      example:
+        agentIds:
+        - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        deviceIds:
+        - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        types:
+        - image
+        - image
+        names:
+        - names
+        - names
+        notNames:
+        - notNames
+        - notNames
+        start: 2000-01-23T04:56:07.000+00:00
+        end: 2000-01-23T04:56:07.000+00:00
+        tags: ""
+      properties:
+        start:
+          format: date-time
+          type: string
+        end:
+          format: date-time
+          type: string
+        agentIds:
+          items:
+            format: uuid
+            type: string
+          type: array
+        deviceIds:
+          items:
+            format: uuid
+            type: string
+          type: array
+        names:
+          items:
+            type: string
+          type: array
+        types:
+          items:
+            enum:
+            - image
+            - numeric
+            - point cloud
+            - text
+            - location
+            - file
+            - localization
+            - health
+            - bitset
+            - metrics
+            - transform tree
+            - battery
+            type: string
+          type: array
+        tags: {}
+        notNames:
+          items:
+            type: string
+          type: array
+      type: object
+    DeviceReportedConfigurationState:
+      example:
+        version: 5429049884013572
+      nullable: true
+      properties:
+        version:
+          format: int64
+          maximum: 9007199254740991
+          minimum: 1
+          nullable: true
+          type: integer
+      required:
+      - version
+      type: object
+    RosTopic:
+      example:
+        name: name
+        type: type
+      properties:
+        name:
+          pattern: ^([a-zA-Z~/])([0-9a-zA-Z_/]){0,254}$
+          type: string
+        type:
+          maxLength: 100
+          type: string
+      required:
+      - name
+      - type
+      type: object
+    DeviceRosState:
+      example:
+        topics:
+        - name: name
+          type: type
+        - name: name
+          type: type
+        - name: name
+          type: type
+        - name: name
+          type: type
+        - name: name
+          type: type
+      nullable: true
+      properties:
+        topics:
+          items:
+            $ref: '#/components/schemas/RosTopic'
+          maxItems: 200
+          type: array
+      required:
+      - topics
+      type: object
+    DeviceState:
+      example:
+        reportedConfiguration:
+          version: 5429049884013572
+        ros:
+          topics:
+          - name: name
+            type: type
+          - name: name
+            type: type
+          - name: name
+            type: type
+          - name: name
+            type: type
+          - name: name
+            type: type
+        version: version
+      properties:
+        version:
+          nullable: true
+          pattern: ^\d{1,3}\.\d{1,3}\.\d{1,3}$
+          type: string
+        reportedConfiguration:
+          $ref: '#/components/schemas/DeviceReportedConfigurationState'
+        ros:
+          $ref: '#/components/schemas/DeviceRosState'
+      type: object
+    DeviceApplicationConfiguration:
+      example:
+        configurationMap:
+          key: configurationMap
+      properties:
+        configurationMap:
+          additionalProperties:
+            type: string
+          type: object
+      type: object
+    DevicePortForwardingConfiguration:
+      example:
+        enabled: true
+      properties:
+        enabled:
+          nullable: true
+          type: boolean
+      type: object
+    DeviceDiskConfiguration:
+      example:
+        bufferSize: 4395873917
+      properties:
+        bufferSize:
+          format: int64
+          maximum: 53687091200
+          minimum: 104857600
+          type: integer
+      type: object
+    DeviceResourcesConfiguration:
+      example:
+        disk:
+          bufferSize: 4395873917
+        streamThrottleHz: 3.0137280915352016
+      properties:
+        disk:
+          $ref: '#/components/schemas/DeviceDiskConfiguration'
+        streamThrottleHz:
+          maximum: 5
+          minimum: 0
+          nullable: true
+          type: number
+      type: object
+    DeviceRosConfiguration:
+      example:
+        worldReferenceFrameId: worldReferenceFrameId
+      properties:
+        worldReferenceFrameId:
+          type: string
+      type: object
+    DeviceStreamCustomConfiguration:
+      properties:
+        type:
+          enum:
+          - custom
+          type: string
+      required:
+      - type
+      type: object
+    DeviceStreamDirectoryWatchConfiguration:
+      properties:
+        type:
+          enum:
+          - directory-watch
+          type: string
+        directory:
+          maxLength: 255
+          pattern: ^\/.*
+          type: string
+        extension:
+          maxLength: 255
+          pattern: ^\..+
+          type: string
+        fileType:
+          enum:
+          - file
+          - image
+          - video
+          - point-cloud
+          type: string
+      required:
+      - directory
+      - type
+      type: object
+    DeviceStreamFileTailConfiguration:
+      properties:
+        type:
+          enum:
+          - file-tail
+          type: string
+        filename:
+          maxLength: 255
+          pattern: ^\/.+
+          type: string
+        fileFormat:
+          enum:
+          - plain-text
+          - json
+          type: string
+        timeKey:
+          type: string
+        timeFormat:
+          type: string
+        regex:
+          type: string
+      required:
+      - filename
+      - type
+      type: object
+    DeviceStreamRosLocalizationConfiguration:
+      properties:
+        type:
+          enum:
+          - ros-localization
+          type: string
+        odomTopic:
+          pattern: ^([a-zA-Z~/])([0-9a-zA-Z_/]){0,254}$
+          type: string
+        mapTopic:
+          pattern: ^([a-zA-Z~/])([0-9a-zA-Z_/]){0,254}$
+          type: string
+        pointCloudTopics:
+          items:
+            pattern: ^([a-zA-Z~/])([0-9a-zA-Z_/]){0,254}$
+            type: string
+          maxItems: 5
+          minItems: 1
+          type: array
+        pathTopic:
+          pattern: ^([a-zA-Z~/])([0-9a-zA-Z_/]){0,254}$
+          type: string
+        goalTopic:
+          pattern: ^([a-zA-Z~/])([0-9a-zA-Z_/]){0,254}$
+          type: string
+      required:
+      - odomTopic
+      - type
+      type: object
+    DeviceStreamRosTopicConfiguration:
+      properties:
+        type:
+          enum:
+          - ros-topic
+          type: string
+        topic:
+          pattern: ^([a-zA-Z~/])([0-9a-zA-Z_/]){0,254}$
+          type: string
+        path:
+          maxLength: 255
+          pattern: ^([a-zA-Z])([0-9a-zA-Z])*(\.([a-zA-Z])([0-9a-zA-Z])*)*
+          type: string
+      required:
+      - topic
+      - type
+      type: object
+    DeviceStreamRosTransformTreeConfiguration:
+      properties:
+        type:
+          enum:
+          - ros-transform-tree
+          type: string
+        baseReferenceFrame:
+          type: string
+      required:
+      - baseReferenceFrame
+      - type
+      type: object
+    DeviceStreamConfiguration:
+      example:
+        configuration: ""
+        name: name
+        throttleHz: 0.7329064902514726
+        tags:
+          key: tags
+      properties:
+        name:
+          type: string
+        tags:
+          additionalProperties:
+            type: string
+          type: object
+        configuration:
+          oneOf:
+          - $ref: '#/components/schemas/DeviceStreamCustomConfiguration'
+          - $ref: '#/components/schemas/DeviceStreamRosTopicConfiguration'
+          - $ref: '#/components/schemas/DeviceStreamRosLocalizationConfiguration'
+          - $ref: '#/components/schemas/DeviceStreamRosTransformTreeConfiguration'
+          - $ref: '#/components/schemas/DeviceStreamDirectoryWatchConfiguration'
+          - $ref: '#/components/schemas/DeviceStreamFileTailConfiguration'
+        throttleHz:
+          maximum: 5
+          minimum: 0
+          nullable: true
+          type: number
+      required:
+      - configuration
+      - name
+      type: object
+    DeviceTelemetryConfiguration:
+      example:
+        streams:
+        - configuration: ""
+          name: name
+          throttleHz: 0.7329064902514726
+          tags:
+            key: tags
+        - configuration: ""
+          name: name
+          throttleHz: 0.7329064902514726
+          tags:
+            key: tags
+        ros:
+          worldReferenceFrameId: worldReferenceFrameId
+      properties:
+        streams:
+          items:
+            $ref: '#/components/schemas/DeviceStreamConfiguration'
+          type: array
+        ros:
+          $ref: '#/components/schemas/DeviceRosConfiguration'
+      type: object
+    DeviceTeleopRosStreamConfiguration:
+      example:
+        mode: command
+        topicName: topicName
+        topicType: std_msgs/Bool
+      properties:
+        topicName:
+          pattern: ^([a-zA-Z~/])([0-9a-zA-Z_/]){0,254}$
+          type: string
+        topicType:
+          enum:
+          - std_msgs/Bool
+          - geometry_msgs/Twist
+          - sensor_msgs/CompressedImage
+          - geometry_msgs/PoseStamped
+          - actionlib_msgs/GoalID
+          type: string
+        mode:
+          enum:
+          - command
+          - observe
+          type: string
+      required:
+      - mode
+      - topicName
+      - topicType
+      type: object
+    DeviceTeleopConfiguration:
+      example:
+        rosStreams:
+        - mode: command
+          topicName: topicName
+          topicType: std_msgs/Bool
+        - mode: command
+          topicName: topicName
+          topicType: std_msgs/Bool
+        - mode: command
+          topicName: topicName
+          topicType: std_msgs/Bool
+        - mode: command
+          topicName: topicName
+          topicType: std_msgs/Bool
+        - mode: command
+          topicName: topicName
+          topicType: std_msgs/Bool
+      properties:
+        rosStreams:
+          items:
+            $ref: '#/components/schemas/DeviceTeleopRosStreamConfiguration'
+          maxItems: 20
+          type: array
+      type: object
+    DeviceConfigurationDocument:
+      example:
+        portForwarding:
+          enabled: true
+        application:
+          configurationMap:
+            key: configurationMap
+        resources:
+          disk:
+            bufferSize: 4395873917
+          streamThrottleHz: 3.0137280915352016
+        telemetry:
+          streams:
+          - configuration: ""
+            name: name
+            throttleHz: 0.7329064902514726
+            tags:
+              key: tags
+          - configuration: ""
+            name: name
+            throttleHz: 0.7329064902514726
+            tags:
+              key: tags
+          ros:
+            worldReferenceFrameId: worldReferenceFrameId
+        tags:
+          key: tags
+        teleop:
+          rosStreams:
+          - mode: command
+            topicName: topicName
+            topicType: std_msgs/Bool
+          - mode: command
+            topicName: topicName
+            topicType: std_msgs/Bool
+          - mode: command
+            topicName: topicName
+            topicType: std_msgs/Bool
+          - mode: command
+            topicName: topicName
+            topicType: std_msgs/Bool
+          - mode: command
+            topicName: topicName
+            topicType: std_msgs/Bool
+      properties:
+        tags:
+          additionalProperties:
+            type: string
+          type: object
+        resources:
+          $ref: '#/components/schemas/DeviceResourcesConfiguration'
+        telemetry:
+          $ref: '#/components/schemas/DeviceTelemetryConfiguration'
+        application:
+          $ref: '#/components/schemas/DeviceApplicationConfiguration'
+        teleop:
+          $ref: '#/components/schemas/DeviceTeleopConfiguration'
+        portForwarding:
+          $ref: '#/components/schemas/DevicePortForwardingConfiguration'
+      type: object
+    DeviceConfiguration:
+      example:
+        createdAt: 2000-01-23T04:56:07.000+00:00
+        document:
+          portForwarding:
+            enabled: true
+          application:
+            configurationMap:
+              key: configurationMap
+          resources:
+            disk:
+              bufferSize: 4395873917
+            streamThrottleHz: 3.0137280915352016
+          telemetry:
+            streams:
+            - configuration: ""
+              name: name
+              throttleHz: 0.7329064902514726
+              tags:
+                key: tags
+            - configuration: ""
+              name: name
+              throttleHz: 0.7329064902514726
+              tags:
+                key: tags
+            ros:
+              worldReferenceFrameId: worldReferenceFrameId
+          tags:
+            key: tags
+          teleop:
+            rosStreams:
+            - mode: command
+              topicName: topicName
+              topicType: std_msgs/Bool
+            - mode: command
+              topicName: topicName
+              topicType: std_msgs/Bool
+            - mode: command
+              topicName: topicName
+              topicType: std_msgs/Bool
+            - mode: command
+              topicName: topicName
+              topicType: std_msgs/Bool
+            - mode: command
+              topicName: topicName
+              topicType: std_msgs/Bool
+        deviceId: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        version: 721321908029600
+      nullable: true
+      properties:
+        deviceId:
+          format: uuid
+          type: string
+        version:
+          format: int64
+          maximum: 9007199254740991
+          minimum: 1
+          type: integer
+        document:
+          $ref: '#/components/schemas/DeviceConfigurationDocument'
+        createdAt:
+          format: date-time
+          type: string
+      required:
+      - document
+      type: object
+    S3Export:
+      example:
+        bucket: bucket
+        path: path
+      properties:
+        bucket:
+          maxLength: 63
+          minLength: 3
+          type: string
+        path:
+          maxLength: 63
+          type: string
+      required:
+      - bucket
+      type: object
+    AwsInfo:
+      example:
+        accountId: accountId
+        s3Export:
+          bucket: bucket
+          path: path
+        roleName: ""
+      properties:
+        accountId:
+          pattern: ^\d{12}$
+          type: string
+        roleName: {}
+        s3Export:
+          $ref: '#/components/schemas/S3Export'
+      required:
+      - accountId
+      - roleName
+      type: object
+    LookerInfo:
+      example:
+        lookerPermissions:
+        - lookerPermissions
+        - lookerPermissions
+        lookerGroupId: 721321908029599
+        lookerModels:
+        - lookerModels
+        - lookerModels
+        lookerSpaceId: 6.027456183070403
+      properties:
+        lookerGroupId:
+          format: int64
+          maximum: 9007199254740991
+          minimum: 0
+          type: integer
+        lookerModels:
+          items:
+            type: string
+          type: array
+        lookerPermissions:
+          items:
+            type: string
+          type: array
+        lookerSpaceId:
+          type: number
+      required:
+      - lookerGroupId
+      - lookerModels
+      - lookerPermissions
+      type: object
+    PagerdutyInfo:
+      example:
+        serviceKey: serviceKey
+        serviceName: serviceName
+        account: account
+      properties:
+        account:
+          type: string
+        serviceName:
+          type: string
+        serviceKey:
+          type: string
+      required:
+      - account
+      - serviceKey
+      - serviceName
+      type: object
+    SlackInfo:
+      example:
+        configurationUrl: configurationUrl
+        webhookChannel: webhookChannel
+        teamId: teamId
+        webhookUrl: webhookUrl
+        token: token
+      properties:
+        webhookUrl:
+          type: string
+        webhookChannel:
+          type: string
+        configurationUrl:
+          type: string
+        teamId:
+          type: string
+        token:
+          type: string
+      required:
+      - configurationUrl
+      - webhookChannel
+      - webhookUrl
+      type: object
+    JoystickConfiguration:
+      properties:
+        linear:
+          enum:
+          - x
+          - "y"
+          - z
+          type: string
+        angular:
+          enum:
+          - x
+          - "y"
+          - z
+          type: string
+        scale:
+          type: number
+        sensitivity:
+          minimum: 0
+          type: number
+      required:
+      - angular
+      - linear
+      - scale
+      - sensitivity
+      type: object
+    UserTeleopTwistRosTopicConfiguration:
+      properties:
+        type:
+          enum:
+          - geometry_msgs/Twist
+          type: string
+        joystick:
+          $ref: '#/components/schemas/JoystickConfiguration'
+      required:
+      - joystick
+      - type
+      type: object
+    UserTeleopRosStreamConfiguration:
+      example:
+        configuration: ""
+        displayName: displayName
+        topicName: topicName
+      properties:
+        topicName:
+          pattern: ^([a-zA-Z~/])([0-9a-zA-Z_/]){0,254}$
+          type: string
+        displayName:
+          maxLength: 255
+          minLength: 1
+          type: string
+        configuration:
+          oneOf:
+          - $ref: '#/components/schemas/UserTeleopTwistRosTopicConfiguration'
+      required:
+      - topicName
+      type: object
+    UserTeleopConfiguration:
+      example:
+        rosStreams:
+        - configuration: ""
+          displayName: displayName
+          topicName: topicName
+        - configuration: ""
+          displayName: displayName
+          topicName: topicName
+        - configuration: ""
+          displayName: displayName
+          topicName: topicName
+        - configuration: ""
+          displayName: displayName
+          topicName: topicName
+        - configuration: ""
+          displayName: displayName
+          topicName: topicName
+      properties:
+        rosStreams:
+          items:
+            $ref: '#/components/schemas/UserTeleopRosStreamConfiguration'
+          maxItems: 20
+          type: array
+      type: object
+    Webhook:
+      example:
+        name: ""
+        url: http://example.com/aeiou
+      properties:
+        name: {}
+        url:
+          format: url
+          type: string
+      required:
+      - name
+      - url
+      type: object
+    WebhooksInfo:
+      example:
+        webhooks:
+        - name: ""
+          url: http://example.com/aeiou
+        - name: ""
+          url: http://example.com/aeiou
+        - name: ""
+          url: http://example.com/aeiou
+        - name: ""
+          url: http://example.com/aeiou
+        - name: ""
+          url: http://example.com/aeiou
+      properties:
+        webhooks:
+          items:
+            $ref: '#/components/schemas/Webhook'
+          maxItems: 5
+          type: array
+      required:
+      - webhooks
+      type: object
+    BitCondition:
+      properties:
+        key:
+          maxLength: 255
+          type: string
+        "true":
+          type: boolean
+        "false":
+          type: boolean
+      required:
+      - "false"
+      - key
+      - "true"
+      type: object
+    BitsetAlertCondition:
+      properties:
+        type:
+          enum:
+          - bitset
+          type: string
+        bitConditions:
+          items:
+            $ref: '#/components/schemas/BitCondition'
+          maxItems: 10
+          type: array
+        operator:
+          enum:
+          - any
+          - all
+          type: string
+      required:
+      - bitConditions
+      - operator
+      - type
+      type: object
+    PresenceAlertCondition:
+      properties:
+        type:
+          enum:
+          - presence
+          type: string
+      required:
+      - type
+      type: object
+    RegexAlertCondition:
+      properties:
+        type:
+          enum:
+          - regex
+          type: string
+        value: {}
+      required:
+      - type
+      - value
+      type: object
+    ThresholdAlertCondition:
+      properties:
+        type:
+          enum:
+          - threshold
+          type: string
+        operator:
+          enum:
+          - <
+          - <=
+          - '>'
+          - '>='
+          - ==
+          - '!='
+          type: string
+        value:
+          type: number
+      required:
+      - operator
+      - type
+      - value
+      type: object
+    AlertCommand:
+      example:
+        commandTemplateId: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        parameterValue: parameterValue
+      properties:
+        commandTemplateId:
+          format: uuid
+          type: string
+        parameterValue:
+          maxLength: 1024
+          type: string
+      required:
+      - commandTemplateId
+      type: object
+    AlertDefinition:
+      example:
+        severity: info
+        message: message
+        enabled: true
+        notificationEnabled: true
+        tags:
+          key: tags
+        organizationId: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        createdAt: 2000-01-23T04:56:07.000+00:00
+        condition: ""
+        stream: stream
+        interval: 721321908038799
+        id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        commands:
+        - commandTemplateId: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          parameterValue: parameterValue
+        - commandTemplateId: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          parameterValue: parameterValue
+        - commandTemplateId: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          parameterValue: parameterValue
+        - commandTemplateId: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          parameterValue: parameterValue
+        - commandTemplateId: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          parameterValue: parameterValue
+        updatedAt: 2000-01-23T04:56:07.000+00:00
+      properties:
+        organizationId:
+          format: uuid
+          type: string
+        message:
+          maxLength: 1024
+          type: string
+        stream:
+          maxLength: 255
+          type: string
+        condition:
+          oneOf:
+          - $ref: '#/components/schemas/ThresholdAlertCondition'
+          - $ref: '#/components/schemas/RegexAlertCondition'
+          - $ref: '#/components/schemas/PresenceAlertCondition'
+          - $ref: '#/components/schemas/BitsetAlertCondition'
+        interval:
+          format: int64
+          maximum: 9007199254740991
+          minimum: 10000
+          type: integer
+        severity:
+          enum:
+          - info
+          - warning
+          - error
+          - critical
+          type: string
+        enabled:
+          type: boolean
+        tags:
+          additionalProperties:
+            type: string
+          type: object
+        notificationEnabled:
+          type: boolean
+        commands:
+          items:
+            $ref: '#/components/schemas/AlertCommand'
+          maxItems: 10
+          type: array
+        id:
+          format: uuid
+          type: string
+        createdAt:
+          format: date-time
+          type: string
+        updatedAt:
+          format: date-time
+          type: string
+      required:
+      - commands
+      - condition
+      - interval
+      - message
+      - notificationEnabled
+      - severity
+      - stream
+      - tags
+      type: object
+    Rectangle:
+      properties:
+        x:
+          format: int64
+          maximum: 9007199254740991
+          minimum: 0
+          type: integer
+        y:
+          format: int64
+          maximum: 9007199254740991
+          minimum: 0
+          type: integer
+        width:
+          format: int64
+          maximum: 9007199254740991
+          minimum: 1
+          type: integer
+        height:
+          format: int64
+          maximum: 9007199254740991
+          minimum: 1
+          type: integer
+      required:
+      - height
+      - width
+      - x
+      - "y"
+      type: object
+    BitsetViewConfiguration:
+      properties:
+        splitByKey:
+          type: string
+      type: object
+    ImageViewConfiguration:
+      properties:
+        mode:
+          enum:
+          - device
+          - time
+          type: string
+      type: object
+    NumericViewConfiguration:
+      properties:
+        span:
+          format: int64
+          maximum: 9007199254740991
+          minimum: 1
+          type: integer
+        splitByKey:
+          type: string
+      type: object
+    ViewConfiguration:
+      example:
+        configuration: ""
+        type: image
+        streamName: streamName
+      properties:
+        streamName:
+          type: string
+        type:
+          enum:
+          - image
+          - numeric
+          - point cloud
+          - text
+          - location
+          - file
+          - localization
+          - health
+          - bitset
+          - metrics
+          - transform tree
+          - battery
+          type: string
+        configuration:
+          oneOf:
+          - $ref: '#/components/schemas/BitsetViewConfiguration'
+          - $ref: '#/components/schemas/ImageViewConfiguration'
+          - $ref: '#/components/schemas/NumericViewConfiguration'
+      required:
+      - configuration
+      - streamName
+      - type
+      type: object
+    Channel:
+      example:
+        organizationId: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        filter:
+          agentIds:
+          - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          deviceIds:
+          - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          types:
+          - image
+          - image
+          names:
+          - names
+          - names
+          notNames:
+          - notNames
+          - notNames
+          tags: ""
+        layout: ""
+        createdAt: 2000-01-23T04:56:07.000+00:00
+        configuration:
+        - configuration: ""
+          type: image
+          streamName: streamName
+        - configuration: ""
+          type: image
+          streamName: streamName
+        name: name
+        description: description
+        id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        updatedAt: 2000-01-23T04:56:07.000+00:00
+      properties:
+        organizationId:
+          format: uuid
+          type: string
+        name:
+          maxLength: 255
+          type: string
+        description:
+          maxLength: 255
+          type: string
+        filter:
+          $ref: '#/components/schemas/Filter'
+        layout: {}
+        configuration:
+          items:
+            $ref: '#/components/schemas/ViewConfiguration'
+          type: array
+        id:
+          format: uuid
+          type: string
+        createdAt:
+          format: date-time
+          type: string
+        updatedAt:
+          format: date-time
+          type: string
+      required:
+      - filter
+      - name
+      type: object
+    User:
+      example:
+        organizationId: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        firstName: firstName
+        lastName: lastName
+        createdAt: 2000-01-23T04:56:07.000+00:00
+        role: operator
+        termsAccepted: termsAccepted
+        isOrganizationOwner: true
+        lastLoggedIn: 2000-01-23T04:56:07.000+00:00
+        id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        email: email
+        enabled: true
+        updatedAt: 2000-01-23T04:56:07.000+00:00
+      properties:
+        organizationId:
+          format: uuid
+          type: string
+        email:
+          format: email
+          type: string
+        firstName:
+          maxLength: 255
+          type: string
+        lastName:
+          maxLength: 255
+          type: string
+        role:
+          enum:
+          - operator
+          - member
+          - administrator
+          type: string
+        enabled:
+          type: boolean
+        isOrganizationOwner:
+          type: boolean
+        termsAccepted:
+          type: string
+        lastLoggedIn:
+          format: date-time
+          type: string
+        id:
+          format: uuid
+          type: string
+        createdAt:
+          format: date-time
+          type: string
+        updatedAt:
+          format: date-time
+          type: string
+      required:
+      - email
+      - firstName
+      - organizationId
+      - role
+      type: object
+    Organization:
+      example:
+        country: country
+        pagerdutyInfo:
+          serviceKey: serviceKey
+          serviceName: serviceName
+          account: account
+        website: website
+        city: city
+        postalCode: postalCode
+        externalId: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        industry: industry
+        awsInfo:
+          accountId: accountId
+          s3Export:
+            bucket: bucket
+            path: path
+          roleName: ""
+        slackInfo:
+          configurationUrl: configurationUrl
+          webhookChannel: webhookChannel
+          teamId: teamId
+          webhookUrl: webhookUrl
+          token: token
+        createdAt: 2000-01-23T04:56:07.000+00:00
+        teleopEnabled: true
+        webhooksInfo:
+          webhooks:
+          - name: ""
+            url: http://example.com/aeiou
+          - name: ""
+            url: http://example.com/aeiou
+          - name: ""
+            url: http://example.com/aeiou
+          - name: ""
+            url: http://example.com/aeiou
+          - name: ""
+            url: http://example.com/aeiou
+        name: name
+        addressLine1: addressLine1
+        addressLine2: addressLine2
+        state: state
+        id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        plan: freemium
+        lookerInfo:
+          lookerPermissions:
+          - lookerPermissions
+          - lookerPermissions
+          lookerGroupId: 721321908029599
+          lookerModels:
+          - lookerModels
+          - lookerModels
+          lookerSpaceId: 6.027456183070403
+        teleopConfiguration:
+          rosStreams:
+          - configuration: ""
+            displayName: displayName
+            topicName: topicName
+          - configuration: ""
+            displayName: displayName
+            topicName: topicName
+          - configuration: ""
+            displayName: displayName
+            topicName: topicName
+          - configuration: ""
+            displayName: displayName
+            topicName: topicName
+          - configuration: ""
+            displayName: displayName
+            topicName: topicName
+        updatedAt: 2000-01-23T04:56:07.000+00:00
+      properties:
+        plan:
+          enum:
+          - freemium
+          - beta
+          - commercial
+          - enterprise
+          - free teleop
+          type: string
+        name:
+          type: string
+        industry:
+          type: string
+        website:
+          type: string
+        addressLine1:
+          type: string
+        addressLine2:
+          type: string
+        city:
+          type: string
+        state:
+          maxLength: 2
+          minLength: 2
+          type: string
+        postalCode:
+          maxLength: 16
+          type: string
+        country:
+          type: string
+        pagerdutyInfo:
+          $ref: '#/components/schemas/PagerdutyInfo'
+        slackInfo:
+          $ref: '#/components/schemas/SlackInfo'
+        webhooksInfo:
+          $ref: '#/components/schemas/WebhooksInfo'
+        awsInfo:
+          $ref: '#/components/schemas/AwsInfo'
+        lookerInfo:
+          $ref: '#/components/schemas/LookerInfo'
+        teleopConfiguration:
+          $ref: '#/components/schemas/UserTeleopConfiguration'
+        teleopEnabled:
+          type: boolean
+        externalId:
+          format: uuid
+          type: string
+        id:
+          format: uuid
+          type: string
+        createdAt:
+          format: date-time
+          type: string
+        updatedAt:
+          format: date-time
+          type: string
+      required:
+      - addressLine1
+      - addressLine2
+      - city
+      - country
+      - industry
+      - name
+      - plan
+      - postalCode
+      - state
+      - website
+      type: object
+    Device:
+      example:
+        organizationId: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        desiredConfigurationVersion: 721321908029600
+        createdAt: 2000-01-23T04:56:07.000+00:00
+        scope:
+          agentIds:
+          - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          deviceIds:
+          - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          types:
+          - image
+          - image
+          names:
+          - names
+          - names
+          notNames:
+          - notNames
+          - notNames
+          start: 2000-01-23T04:56:07.000+00:00
+          end: 2000-01-23T04:56:07.000+00:00
+          tags: ""
+        name: name
+        publicKey: publicKey
+        state:
+          reportedConfiguration:
+            version: 5429049884013572
+          ros:
+            topics:
+            - name: name
+              type: type
+            - name: name
+              type: type
+            - name: name
+              type: type
+            - name: name
+              type: type
+            - name: name
+              type: type
+          version: version
+        id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        type: default
+        enabled: true
+        tags:
+          key: tags
+        updatedAt: 2000-01-23T04:56:07.000+00:00
+      properties:
+        organizationId:
+          format: uuid
+          type: string
+        name:
+          pattern: ^[a-zA-Z0-9-_.,:?'"()@\/\\#$+ ]{1,255}$
+          type: string
+        type:
+          enum:
+          - default
+          - capture
+          type: string
+        tags:
+          additionalProperties:
+            type: string
+          type: object
+        publicKey:
+          type: string
+        scope:
+          $ref: '#/components/schemas/ScopeFilter'
+        desiredConfigurationVersion:
+          format: int64
+          maximum: 9007199254740991
+          minimum: 1
+          nullable: true
+          type: integer
+        state:
+          $ref: '#/components/schemas/DeviceState'
+        enabled:
+          type: boolean
+        id:
+          format: uuid
+          type: string
+        createdAt:
+          format: date-time
+          type: string
+        updatedAt:
+          format: date-time
+          type: string
+      required:
+      - name
+      - publicKey
+      type: object
+    BaseEvent:
+      example:
+        type: alert
+        message: message
+        deviceId: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        streamName: streamName
+        userId: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        notificationEnabled: true
+        tags:
+          key: tags
+        organizationId: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        createdAt: 2000-01-23T04:56:07.000+00:00
+        streamType: image
+        viewed: true
+        time: 2000-01-23T04:56:07.000+00:00
+        id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        updatedAt: 2000-01-23T04:56:07.000+00:00
+      properties:
+        type:
+          enum:
+          - alert
+          - intervention-request
+          - teleop-session-record
+          - command-request
+          - command-response
+          - command-delivery
+          - custom
+          - comment
+          type: string
+        organizationId:
+          format: uuid
+          type: string
+        time:
+          format: date-time
+          type: string
+        message:
+          maxLength: 1024
+          type: string
+        viewed:
+          type: boolean
+        deviceId:
+          format: uuid
+          type: string
+        streamName:
+          type: string
+        streamType:
+          enum:
+          - image
+          - numeric
+          - point cloud
+          - text
+          - location
+          - file
+          - localization
+          - health
+          - bitset
+          - metrics
+          - transform tree
+          - battery
+          type: string
+        tags:
+          additionalProperties:
+            type: string
+          type: object
+        notificationEnabled:
+          type: boolean
+        userId:
+          format: uuid
+          type: string
+        id:
+          format: uuid
+          type: string
+        createdAt:
+          format: date-time
+          type: string
+        updatedAt:
+          format: date-time
+          type: string
+      required:
+      - time
+      type: object
+    Label:
+      properties:
+        value:
+          type: string
+        displayName:
+          minLength: 1
+          type: string
+      required:
+      - value
+      type: object
+    LabeledPolygon:
+      properties:
+        vertices:
+          items:
+            items: {}
+            maxItems: 2
+            minItems: 2
+            type: array
+          minItems: 3
+          type: array
+        labels:
+          items:
+            type: string
+          type: array
+          uniqueItems: true
+      required:
+      - labels
+      - vertices
+      type: object
+    LabelingRequestData:
+      properties:
+        instruction:
+          type: string
+        imageUrl:
+          format: url
+          type: string
+        labels:
+          items:
+            $ref: '#/components/schemas/Label'
+          type: array
+        hint:
+          items:
+            $ref: '#/components/schemas/LabeledPolygon'
+          type: array
+        title:
+          type: string
+      required:
+      - imageUrl
+      - instruction
+      - labels
+      type: object
+    SelectionRequestData:
+      properties:
+        instruction:
+          type: string
+        imageUrl:
+          format: url
+          type: string
+        options:
+          items:
+            type: string
+          type: array
+        hint:
+          format: int64
+          maximum: 9007199254740991
+          minimum: 0
+          type: integer
+        title:
+          type: string
+      required:
+      - imageUrl
+      - instruction
+      - options
+      type: object
+    InterventionRequest:
+      example:
+        severity: info
+        agentId: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        data: ""
+        type: alert
+        message: message
+        deviceId: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        streamName: streamName
+        userId: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        notificationEnabled: true
+        tags:
+          key: tags
+        organizationId: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        createdAt: 2000-01-23T04:56:07.000+00:00
+        streamType: image
+        viewed: true
+        responses:
+        - ""
+        - ""
+        interventionType: selection
+        id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        time: 2000-01-23T04:56:07.000+00:00
+        updatedAt: 2000-01-23T04:56:07.000+00:00
+      properties:
+        type:
+          enum:
+          - alert
+          - intervention-request
+          - teleop-session-record
+          - command-request
+          - command-response
+          - command-delivery
+          - custom
+          - comment
+          type: string
+        interventionType:
+          enum:
+          - selection
+          - labeling
+          type: string
+        data:
+          oneOf:
+          - $ref: '#/components/schemas/SelectionRequestData'
+          - $ref: '#/components/schemas/LabelingRequestData'
+        responses:
+          items: {}
+          type: array
+        agentId:
+          format: uuid
+          type: string
+        severity:
+          enum:
+          - info
+          - warning
+          - error
+          - critical
+          type: string
+        id:
+          format: uuid
+          type: string
+        createdAt:
+          format: date-time
+          type: string
+        updatedAt:
+          format: date-time
+          type: string
+        organizationId:
+          format: uuid
+          type: string
+        time:
+          format: date-time
+          type: string
+        message:
+          maxLength: 1024
+          type: string
+        viewed:
+          type: boolean
+        deviceId:
+          format: uuid
+          type: string
+        streamName:
+          type: string
+        streamType:
+          enum:
+          - image
+          - numeric
+          - point cloud
+          - text
+          - location
+          - file
+          - localization
+          - health
+          - bitset
+          - metrics
+          - transform tree
+          - battery
+          type: string
+        tags:
+          additionalProperties:
+            type: string
+          type: object
+        notificationEnabled:
+          type: boolean
+        userId:
+          format: uuid
+          type: string
+      required:
+      - data
+      - time
+      type: object
+    InterventionResponse:
+      example:
+        createdAt: 2000-01-23T04:56:07.000+00:00
+        data: ""
+        interventionType: selection
+        id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        interventionId: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        userId: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        updatedAt: 2000-01-23T04:56:07.000+00:00
+      properties:
+        interventionType:
+          enum:
+          - selection
+          - labeling
+          type: string
+        data: {}
+        interventionId:
+          format: uuid
+          type: string
+        userId:
+          format: uuid
+          type: string
+        id:
+          format: uuid
+          type: string
+        createdAt:
+          format: date-time
+          type: string
+        updatedAt:
+          format: date-time
+          type: string
+      required:
+      - data
+      - interventionId
+      - interventionType
+      type: object
+    Alert:
+      example:
+        severity: info
+        type: alert
+        message: message
+        deviceId: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        streamName: streamName
+        userId: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        notificationEnabled: true
+        tags:
+          key: tags
+        organizationId: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        createdAt: 2000-01-23T04:56:07.000+00:00
+        streamType: image
+        viewed: true
+        interval: 721321908029600
+        id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        time: 2000-01-23T04:56:07.000+00:00
+        alertDefinitionId: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        intervalStart: 2000-01-23T04:56:07.000+00:00
+        updatedAt: 2000-01-23T04:56:07.000+00:00
+      properties:
+        type:
+          enum:
+          - alert
+          - intervention-request
+          - teleop-session-record
+          - command-request
+          - command-response
+          - command-delivery
+          - custom
+          - comment
+          type: string
+        severity:
+          enum:
+          - info
+          - warning
+          - error
+          - critical
+          type: string
+        alertDefinitionId:
+          format: uuid
+          type: string
+        interval:
+          format: int64
+          maximum: 9007199254740991
+          minimum: 1
+          type: integer
+        intervalStart:
+          format: date-time
+          type: string
+        id:
+          format: uuid
+          type: string
+        createdAt:
+          format: date-time
+          type: string
+        updatedAt:
+          format: date-time
+          type: string
+        organizationId:
+          format: uuid
+          type: string
+        time:
+          format: date-time
+          type: string
+        message:
+          maxLength: 1024
+          type: string
+        viewed:
+          type: boolean
+        deviceId:
+          format: uuid
+          type: string
+        streamName:
+          type: string
+        streamType:
+          enum:
+          - image
+          - numeric
+          - point cloud
+          - text
+          - location
+          - file
+          - localization
+          - health
+          - bitset
+          - metrics
+          - transform tree
+          - battery
+          type: string
+        tags:
+          additionalProperties:
+            type: string
+          type: object
+        notificationEnabled:
+          type: boolean
+        userId:
+          format: uuid
+          type: string
+      required:
+      - alertDefinitionId
+      - interval
+      - severity
+      - time
+      type: object
+    Board:
+      example:
+        organizationId: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        layout: ""
+        lookIds:
+        - 0.8008281904610115
+        - 0.8008281904610115
+        createdAt: 2000-01-23T04:56:07.000+00:00
+        name: name
+        id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        updatedAt: 2000-01-23T04:56:07.000+00:00
+      properties:
+        organizationId:
+          format: uuid
+          type: string
+        name:
+          maxLength: 255
+          type: string
+        lookIds:
+          items:
+            type: number
+          type: array
+        layout: {}
+        id:
+          format: uuid
+          type: string
+        createdAt:
+          format: date-time
+          type: string
+        updatedAt:
+          format: date-time
+          type: string
+      required:
+      - layout
+      - lookIds
+      - name
+      type: object
+    CaptureSession:
+      example:
+        organizationId: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        createdAt: 2000-01-23T04:56:07.000+00:00
+        code: code
+        expiration: 2000-01-23T04:56:07.000+00:00
+        id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        userId: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        deviceId: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        streamName: streamName
+        tags:
+          key: tags
+        updatedAt: 2000-01-23T04:56:07.000+00:00
+      properties:
+        organizationId:
+          format: uuid
+          type: string
+        userId:
+          format: uuid
+          type: string
+        deviceId:
+          format: uuid
+          type: string
+        code:
+          minLength: 64
+          type: string
+        expiration:
+          format: date-time
+          type: string
+        streamName:
+          type: string
+        tags:
+          additionalProperties:
+            type: string
+          type: object
+        id:
+          format: uuid
+          type: string
+        createdAt:
+          format: date-time
+          type: string
+        updatedAt:
+          format: date-time
+          type: string
+      required:
+      - deviceId
+      - streamName
+      - tags
+      type: object
+    CommandRequestParameter:
+      example:
+        meta:
+          key: meta
+        scrubberTime: 2000-01-23T04:56:07.000+00:00
+        value: value
+      properties:
+        value:
+          maxLength: 1024
+          type: string
+        meta:
+          additionalProperties:
+            type: string
+          type: object
+        scrubberTime:
+          format: date-time
+          type: string
+      required:
+      - scrubberTime
+      type: object
+    CommandTemplate:
+      example:
+        organizationId: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        parameterMeta:
+          key: parameterMeta
+        createdAt: 2000-01-23T04:56:07.000+00:00
+        name: name
+        parameterEnabled: true
+        description: description
+        id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        parameterValue: parameterValue
+        command: command
+        enabled: true
+        tags:
+          key: tags
+        updatedAt: 2000-01-23T04:56:07.000+00:00
+      properties:
+        organizationId:
+          format: uuid
+          type: string
+        name:
+          maxLength: 32
+          type: string
+        command:
+          type: string
+        tags:
+          additionalProperties:
+            type: string
+          type: object
+        description:
+          maxLength: 1024
+          type: string
+        parameterEnabled:
+          type: boolean
+        parameterValue:
+          maxLength: 1024
+          type: string
+        parameterMeta:
+          additionalProperties:
+            type: string
+          type: object
+        enabled:
+          type: boolean
+        id:
+          format: uuid
+          type: string
+        createdAt:
+          format: date-time
+          type: string
+        updatedAt:
+          format: date-time
+          type: string
+      required:
+      - command
+      - name
+      - parameterEnabled
+      - tags
+      type: object
+    CommandRequest:
+      example:
+        commandTemplateId: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        type: alert
+        message: message
+        deviceId: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        streamName: streamName
+        userId: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        command: command
+        notificationEnabled: true
+        tags:
+          key: tags
+        organizationId: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        createdAt: 2000-01-23T04:56:07.000+00:00
+        streamType: image
+        parameter:
+          meta:
+            key: meta
+          scrubberTime: 2000-01-23T04:56:07.000+00:00
+          value: value
+        viewed: true
+        id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        time: 2000-01-23T04:56:07.000+00:00
+        updatedAt: 2000-01-23T04:56:07.000+00:00
+      properties:
+        type:
+          enum:
+          - alert
+          - intervention-request
+          - teleop-session-record
+          - command-request
+          - command-response
+          - command-delivery
+          - custom
+          - comment
+          type: string
+        command:
+          type: string
+        parameter:
+          $ref: '#/components/schemas/CommandRequestParameter'
+        commandTemplateId:
+          format: uuid
+          type: string
+        id:
+          format: uuid
+          type: string
+        createdAt:
+          format: date-time
+          type: string
+        updatedAt:
+          format: date-time
+          type: string
+        organizationId:
+          format: uuid
+          type: string
+        time:
+          format: date-time
+          type: string
+        message:
+          maxLength: 1024
+          type: string
+        viewed:
+          type: boolean
+        deviceId:
+          format: uuid
+          type: string
+        streamName:
+          type: string
+        streamType:
+          enum:
+          - image
+          - numeric
+          - point cloud
+          - text
+          - location
+          - file
+          - localization
+          - health
+          - bitset
+          - metrics
+          - transform tree
+          - battery
+          type: string
+        tags:
+          additionalProperties:
+            type: string
+          type: object
+        notificationEnabled:
+          type: boolean
+        userId:
+          format: uuid
+          type: string
+      required:
+      - command
+      - commandTemplateId
+      - parameter
+      - time
+      type: object
+    CommandDelivery:
+      properties:
+        type:
+          enum:
+          - alert
+          - intervention-request
+          - teleop-session-record
+          - command-request
+          - command-response
+          - command-delivery
+          - custom
+          - comment
+          type: string
+        commandRequestId:
+          format: uuid
+          type: string
+        id:
+          format: uuid
+          type: string
+        createdAt:
+          format: date-time
+          type: string
+        updatedAt:
+          format: date-time
+          type: string
+        organizationId:
+          format: uuid
+          type: string
+        time:
+          format: date-time
+          type: string
+        message:
+          maxLength: 1024
+          type: string
+        viewed:
+          type: boolean
+        deviceId:
+          format: uuid
+          type: string
+        streamName:
+          type: string
+        streamType:
+          enum:
+          - image
+          - numeric
+          - point cloud
+          - text
+          - location
+          - file
+          - localization
+          - health
+          - bitset
+          - metrics
+          - transform tree
+          - battery
+          type: string
+        tags:
+          additionalProperties:
+            type: string
+          type: object
+        notificationEnabled:
+          type: boolean
+        userId:
+          format: uuid
+          type: string
+      required:
+      - commandRequestId
+      - time
+      type: object
+    CommandResponse:
+      example:
+        type: alert
+        message: message
+        deviceId: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        streamName: streamName
+        userId: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        notificationEnabled: true
+        tags:
+          key: tags
+        replyToCommandRequestId: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        organizationId: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        createdAt: 2000-01-23T04:56:07.000+00:00
+        streamType: image
+        success: true
+        viewed: true
+        id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        time: 2000-01-23T04:56:07.000+00:00
+        updatedAt: 2000-01-23T04:56:07.000+00:00
+      properties:
+        type:
+          enum:
+          - alert
+          - intervention-request
+          - teleop-session-record
+          - command-request
+          - command-response
+          - command-delivery
+          - custom
+          - comment
+          type: string
+        replyToCommandRequestId:
+          format: uuid
+          type: string
+        success:
+          type: boolean
+        id:
+          format: uuid
+          type: string
+        createdAt:
+          format: date-time
+          type: string
+        updatedAt:
+          format: date-time
+          type: string
+        organizationId:
+          format: uuid
+          type: string
+        time:
+          format: date-time
+          type: string
+        message:
+          maxLength: 1024
+          type: string
+        viewed:
+          type: boolean
+        deviceId:
+          format: uuid
+          type: string
+        streamName:
+          type: string
+        streamType:
+          enum:
+          - image
+          - numeric
+          - point cloud
+          - text
+          - location
+          - file
+          - localization
+          - health
+          - bitset
+          - metrics
+          - transform tree
+          - battery
+          type: string
+        tags:
+          additionalProperties:
+            type: string
+          type: object
+        notificationEnabled:
+          type: boolean
+        userId:
+          format: uuid
+          type: string
+      required:
+      - replyToCommandRequestId
+      - success
+      - time
+      type: object
+    Comment:
+      example:
+        type: alert
+        message: message
+        deviceId: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        streamName: streamName
+        userId: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        notificationEnabled: true
+        tags:
+          key: tags
+        organizationId: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        createdAt: 2000-01-23T04:56:07.000+00:00
+        streamType: image
+        viewed: true
+        editedAt: 2000-01-23T04:56:07.000+00:00
+        id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        time: 2000-01-23T04:56:07.000+00:00
+        updatedAt: 2000-01-23T04:56:07.000+00:00
+      properties:
+        type:
+          enum:
+          - alert
+          - intervention-request
+          - teleop-session-record
+          - command-request
+          - command-response
+          - command-delivery
+          - custom
+          - comment
+          type: string
+        editedAt:
+          format: date-time
+          type: string
+        id:
+          format: uuid
+          type: string
+        createdAt:
+          format: date-time
+          type: string
+        updatedAt:
+          format: date-time
+          type: string
+        organizationId:
+          format: uuid
+          type: string
+        time:
+          format: date-time
+          type: string
+        message:
+          maxLength: 1024
+          type: string
+        viewed:
+          type: boolean
+        deviceId:
+          format: uuid
+          type: string
+        streamName:
+          type: string
+        streamType:
+          enum:
+          - image
+          - numeric
+          - point cloud
+          - text
+          - location
+          - file
+          - localization
+          - health
+          - bitset
+          - metrics
+          - transform tree
+          - battery
+          type: string
+        tags:
+          additionalProperties:
+            type: string
+          type: object
+        notificationEnabled:
+          type: boolean
+        userId:
+          format: uuid
+          type: string
+      required:
+      - time
+      type: object
+    CustomEvent:
+      example:
+        type: alert
+        message: message
+        deviceId: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        streamName: streamName
+        userId: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        notificationEnabled: true
+        tags:
+          key: tags
+        organizationId: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        createdAt: 2000-01-23T04:56:07.000+00:00
+        streamType: image
+        viewed: true
+        id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        time: 2000-01-23T04:56:07.000+00:00
+        updatedAt: 2000-01-23T04:56:07.000+00:00
+      properties:
+        type:
+          enum:
+          - alert
+          - intervention-request
+          - teleop-session-record
+          - command-request
+          - command-response
+          - command-delivery
+          - custom
+          - comment
+          type: string
+        id:
+          format: uuid
+          type: string
+        createdAt:
+          format: date-time
+          type: string
+        updatedAt:
+          format: date-time
+          type: string
+        organizationId:
+          format: uuid
+          type: string
+        time:
+          format: date-time
+          type: string
+        message:
+          maxLength: 1024
+          type: string
+        viewed:
+          type: boolean
+        deviceId:
+          format: uuid
+          type: string
+        streamName:
+          type: string
+        streamType:
+          enum:
+          - image
+          - numeric
+          - point cloud
+          - text
+          - location
+          - file
+          - localization
+          - health
+          - bitset
+          - metrics
+          - transform tree
+          - battery
+          type: string
+        tags:
+          additionalProperties:
+            type: string
+          type: object
+        notificationEnabled:
+          type: boolean
+        userId:
+          format: uuid
+          type: string
+      required:
+      - time
+      type: object
+    DeviceConfigurationTemplate:
+      example:
+        organizationId: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        createdAt: 2000-01-23T04:56:07.000+00:00
+        document:
+          portForwarding:
+            enabled: true
+          application:
+            configurationMap:
+              key: configurationMap
+          resources:
+            disk:
+              bufferSize: 4395873917
+            streamThrottleHz: 3.0137280915352016
+          telemetry:
+            streams:
+            - configuration: ""
+              name: name
+              throttleHz: 0.7329064902514726
+              tags:
+                key: tags
+            - configuration: ""
+              name: name
+              throttleHz: 0.7329064902514726
+              tags:
+                key: tags
+            ros:
+              worldReferenceFrameId: worldReferenceFrameId
+          tags:
+            key: tags
+          teleop:
+            rosStreams:
+            - mode: command
+              topicName: topicName
+              topicType: std_msgs/Bool
+            - mode: command
+              topicName: topicName
+              topicType: std_msgs/Bool
+            - mode: command
+              topicName: topicName
+              topicType: std_msgs/Bool
+            - mode: command
+              topicName: topicName
+              topicType: std_msgs/Bool
+            - mode: command
+              topicName: topicName
+              topicType: std_msgs/Bool
+        name: name
+        id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        updatedAt: 2000-01-23T04:56:07.000+00:00
+      properties:
+        organizationId:
+          format: uuid
+          type: string
+        name:
+          type: string
+        document:
+          $ref: '#/components/schemas/DeviceConfigurationDocument'
+        id:
+          format: uuid
+          type: string
+        createdAt:
+          format: date-time
+          type: string
+        updatedAt:
+          format: date-time
+          type: string
+      required:
+      - document
+      - name
+      type: object
+    DeviceLayout:
+      example:
+        organizationId: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        filter:
+          agentIds:
+          - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          deviceIds:
+          - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          types:
+          - image
+          - image
+          names:
+          - names
+          - names
+          notNames:
+          - notNames
+          - notNames
+          tags: ""
+        layout: ""
+        createdAt: 2000-01-23T04:56:07.000+00:00
+        configuration:
+        - configuration: ""
+          type: image
+          streamName: streamName
+        - configuration: ""
+          type: image
+          streamName: streamName
+        name: name
+        index: 721321908029599
+        id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        tags:
+          key: tags
+        updatedAt: 2000-01-23T04:56:07.000+00:00
+      properties:
+        organizationId:
+          format: uuid
+          type: string
+        name:
+          maxLength: 255
+          type: string
+        tags:
+          additionalProperties:
+            type: string
+          type: object
+        filter:
+          $ref: '#/components/schemas/Filter'
+        layout: {}
+        configuration:
+          items:
+            $ref: '#/components/schemas/ViewConfiguration'
+          type: array
+        index:
+          format: int64
+          maximum: 9007199254740991
+          minimum: 0
+          type: integer
+        id:
+          format: uuid
+          type: string
+        createdAt:
+          format: date-time
+          type: string
+        updatedAt:
+          format: date-time
+          type: string
+      required:
+      - configuration
+      - filter
+      - index
+      - layout
+      - name
+      - tags
+      type: object
+    DeviceProvisioning:
+      example:
+        createdAt: 2000-01-23T04:56:07.000+00:00
+        expiration: 2000-01-23T04:56:07.000+00:00
+        id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        deviceId: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        token: token
+        updatedAt: 2000-01-23T04:56:07.000+00:00
+      properties:
+        deviceId:
+          format: uuid
+          type: string
+        token:
+          type: string
+        expiration:
+          format: date-time
+          type: string
+        id:
+          format: uuid
+          type: string
+        createdAt:
+          format: date-time
+          type: string
+        updatedAt:
+          format: date-time
+          type: string
+      required:
+      - expiration
+      - token
+      type: object
+    Share:
+      example:
+        organizationId: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        createdAt: 2000-01-23T04:56:07.000+00:00
+        code: code
+        scope:
+          agentIds:
+          - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          deviceIds:
+          - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          types:
+          - image
+          - image
+          names:
+          - names
+          - names
+          notNames:
+          - notNames
+          - notNames
+          start: 2000-01-23T04:56:07.000+00:00
+          end: 2000-01-23T04:56:07.000+00:00
+          tags: ""
+        expiration: 2000-01-23T04:56:07.000+00:00
+        time: 2000-01-23T04:56:07.000+00:00
+        id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        message: message
+        userName: userName
+        userId: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        channelId: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        updatedAt: 2000-01-23T04:56:07.000+00:00
+      properties:
+        organizationId:
+          format: uuid
+          type: string
+        userId:
+          format: uuid
+          type: string
+        code:
+          minLength: 64
+          type: string
+        scope:
+          $ref: '#/components/schemas/ScopeFilter'
+        time:
+          format: date-time
+          type: string
+        expiration:
+          format: date-time
+          type: string
+        message:
+          maxLength: 1024
+          type: string
+        userName:
+          type: string
+        channelId:
+          format: uuid
+          type: string
+        id:
+          format: uuid
+          type: string
+        createdAt:
+          format: date-time
+          type: string
+        updatedAt:
+          format: date-time
+          type: string
+      required:
+      - scope
+      - time
+      type: object
+    TeleopSessionRecord:
+      example:
+        sessionCreated: 2000-01-23T04:56:07.000+00:00
+        sessionId: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        type: alert
+        message: message
+        userId: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        deviceId: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        streamName: streamName
+        notificationEnabled: true
+        tags:
+          key: tags
+        organizationId: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        createdAt: 2000-01-23T04:56:07.000+00:00
+        streamType: image
+        viewed: true
+        id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        time: 2000-01-23T04:56:07.000+00:00
+        updatedAt: 2000-01-23T04:56:07.000+00:00
+      properties:
+        type:
+          enum:
+          - alert
+          - intervention-request
+          - teleop-session-record
+          - command-request
+          - command-response
+          - command-delivery
+          - custom
+          - comment
+          type: string
+        sessionId:
+          format: uuid
+          type: string
+        userId:
+          format: uuid
+          type: string
+        deviceId:
+          format: uuid
+          type: string
+        sessionCreated:
+          format: date-time
+          type: string
+        id:
+          format: uuid
+          type: string
+        createdAt:
+          format: date-time
+          type: string
+        updatedAt:
+          format: date-time
+          type: string
+        organizationId:
+          format: uuid
+          type: string
+        time:
+          format: date-time
+          type: string
+        message:
+          maxLength: 1024
+          type: string
+        viewed:
+          type: boolean
+        streamName:
+          type: string
+        streamType:
+          enum:
+          - image
+          - numeric
+          - point cloud
+          - text
+          - location
+          - file
+          - localization
+          - health
+          - bitset
+          - metrics
+          - transform tree
+          - battery
+          type: string
+        tags:
+          additionalProperties:
+            type: string
+          type: object
+        notificationEnabled:
+          type: boolean
+      required:
+      - sessionCreated
+      - sessionId
+      - time
+      type: object
+    IdRequestParams:
+      properties:
+        id:
+          format: uuid
+          type: string
+      required:
+      - id
+      type: object
+    AlertDefinitionListResponse:
+      example:
+        items:
+        - severity: info
+          message: message
+          enabled: true
+          notificationEnabled: true
+          tags:
+            key: tags
+          organizationId: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          createdAt: 2000-01-23T04:56:07.000+00:00
+          condition: ""
+          stream: stream
+          interval: 721321908038799
+          id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          commands:
+          - commandTemplateId: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+            parameterValue: parameterValue
+          - commandTemplateId: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+            parameterValue: parameterValue
+          - commandTemplateId: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+            parameterValue: parameterValue
+          - commandTemplateId: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+            parameterValue: parameterValue
+          - commandTemplateId: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+            parameterValue: parameterValue
+          updatedAt: 2000-01-23T04:56:07.000+00:00
+        - severity: info
+          message: message
+          enabled: true
+          notificationEnabled: true
+          tags:
+            key: tags
+          organizationId: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          createdAt: 2000-01-23T04:56:07.000+00:00
+          condition: ""
+          stream: stream
+          interval: 721321908038799
+          id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          commands:
+          - commandTemplateId: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+            parameterValue: parameterValue
+          - commandTemplateId: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+            parameterValue: parameterValue
+          - commandTemplateId: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+            parameterValue: parameterValue
+          - commandTemplateId: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+            parameterValue: parameterValue
+          - commandTemplateId: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+            parameterValue: parameterValue
+          updatedAt: 2000-01-23T04:56:07.000+00:00
+      properties:
+        items:
+          items:
+            $ref: '#/components/schemas/AlertDefinition'
+          type: array
+      required:
+      - items
+      type: object
+    Authentication:
+      example:
+        organizationId: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        accessToken: accessToken
+        userId: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        refreshToken: refreshToken
+      properties:
+        accessToken:
+          type: string
+        organizationId:
+          format: uuid
+          type: string
+        userId:
+          format: uuid
+          type: string
+        refreshToken:
+          type: string
+      required:
+      - accessToken
+      - organizationId
+      - userId
+      type: object
+    Challenge:
+      example:
+        session: session
+        type: new-password-required
+        userId: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        email: email
+      properties:
+        type:
+          enum:
+          - new-password-required
+          type: string
+        session:
+          type: string
+        userId:
+          format: uuid
+          type: string
+        email:
+          type: string
+      required:
+      - email
+      - session
+      - type
+      - userId
+      type: object
+    LoginResult:
+      example:
+        challenge:
+          session: session
+          type: new-password-required
+          userId: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          email: email
+        authentication:
+          organizationId: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          accessToken: accessToken
+          userId: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          refreshToken: refreshToken
+      properties:
+        authentication:
+          $ref: '#/components/schemas/Authentication'
+        challenge:
+          $ref: '#/components/schemas/Challenge'
+      required:
+      - authentication
+      - challenge
+      type: object
+    RefreshRequest:
+      example:
+        refreshToken: refreshToken
+      properties:
+        refreshToken:
+          type: string
+      required:
+      - refreshToken
+      type: object
+    RespondToNewPasswordRequiredChallengeRequest:
+      example:
+        session: session
+        newPassword: newPassword
+        userId: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+      properties:
+        userId:
+          format: uuid
+          type: string
+        session:
+          type: string
+        newPassword:
+          type: string
+      required:
+      - newPassword
+      - session
+      - userId
+      type: object
+    AdminSignupRequest:
+      example:
+        firstName: firstName
+        lastName: lastName
+        organizationName: organizationName
+        organizationPlan: freemium
+        email: email
+      properties:
+        email:
+          format: email
+          type: string
+        firstName:
+          maxLength: 255
+          type: string
+        lastName:
+          maxLength: 255
+          type: string
+        organizationName:
+          maxLength: 255
+          type: string
+        organizationPlan:
+          enum:
+          - freemium
+          - beta
+          - commercial
+          - enterprise
+          - free teleop
+          type: string
+      required:
+      - email
+      - firstName
+      - lastName
+      type: object
+    ChangePasswordRequest:
+      example:
+        newPassword: newPassword
+        currentPassword: currentPassword
+        refreshToken: refreshToken
+      properties:
+        currentPassword:
+          type: string
+        newPassword:
+          type: string
+        refreshToken:
+          type: string
+      required:
+      - currentPassword
+      - newPassword
+      - refreshToken
+      type: object
+    ConfirmForgotPasswordRequest:
+      example:
+        confirmationCode: confirmationCode
+        newPassword: newPassword
+        email: email
+      properties:
+        email:
+          type: string
+        confirmationCode:
+          type: string
+        newPassword:
+          type: string
+      required:
+      - confirmationCode
+      - email
+      - newPassword
+      type: object
+    DeviceCredentials:
+      example:
+        accessKeyId: accessKeyId
+        secretAccessKey: secretAccessKey
+        s3UploadBucket: s3UploadBucket
+        s3Region: s3Region
+        sessionToken: sessionToken
+        expiration: 2000-01-23T04:56:07.000+00:00
+      properties:
+        accessKeyId:
+          type: string
+        secretAccessKey:
+          type: string
+        sessionToken:
+          type: string
+        expiration:
+          format: date-time
+          type: string
+        s3Region:
+          type: string
+        s3UploadBucket:
+          type: string
+      required:
+      - accessKeyId
+      - expiration
+      - s3Region
+      - s3UploadBucket
+      - secretAccessKey
+      - sessionToken
+      type: object
+    ForgotPasswordRequest:
+      example:
+        email: email
+      properties:
+        email:
+          type: string
+      required:
+      - email
+      type: object
+    LoginRequest:
+      example:
+        password: password
+        email: email
+      properties:
+        email:
+          format: email
+          type: string
+        password:
+          type: string
+      required:
+      - email
+      - password
+      type: object
+    ResendConfirmationCodeRequest:
+      example:
+        email: email
+      properties:
+        email:
+          type: string
+      required:
+      - email
+      type: object
+    ResendInvitationRequest:
+      example:
+        email: email
+      properties:
+        email:
+          format: email
+          type: string
+      required:
+      - email
+      type: object
+    BoardListResponse:
+      example:
+        items:
+        - organizationId: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          layout: ""
+          lookIds:
+          - 0.8008281904610115
+          - 0.8008281904610115
+          createdAt: 2000-01-23T04:56:07.000+00:00
+          name: name
+          id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          updatedAt: 2000-01-23T04:56:07.000+00:00
+        - organizationId: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          layout: ""
+          lookIds:
+          - 0.8008281904610115
+          - 0.8008281904610115
+          createdAt: 2000-01-23T04:56:07.000+00:00
+          name: name
+          id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          updatedAt: 2000-01-23T04:56:07.000+00:00
+      properties:
+        items:
+          items:
+            $ref: '#/components/schemas/Board'
+          type: array
+      required:
+      - items
+      type: object
+    CodeRequestParams:
+      properties:
+        code:
+          minLength: 64
+          type: string
+      required:
+      - code
+      type: object
+    TokenResult:
+      example:
+        token: token
+      properties:
+        token:
+          type: string
+      required:
+      - token
+      type: object
+    ChannelListResponse:
+      example:
+        items:
+        - organizationId: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          filter:
+            agentIds:
+            - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+            - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+            deviceIds:
+            - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+            - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+            types:
+            - image
+            - image
+            names:
+            - names
+            - names
+            notNames:
+            - notNames
+            - notNames
+            tags: ""
+          layout: ""
+          createdAt: 2000-01-23T04:56:07.000+00:00
+          configuration:
+          - configuration: ""
+            type: image
+            streamName: streamName
+          - configuration: ""
+            type: image
+            streamName: streamName
+          name: name
+          description: description
+          id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          updatedAt: 2000-01-23T04:56:07.000+00:00
+        - organizationId: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          filter:
+            agentIds:
+            - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+            - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+            deviceIds:
+            - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+            - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+            types:
+            - image
+            - image
+            names:
+            - names
+            - names
+            notNames:
+            - notNames
+            - notNames
+            tags: ""
+          layout: ""
+          createdAt: 2000-01-23T04:56:07.000+00:00
+          configuration:
+          - configuration: ""
+            type: image
+            streamName: streamName
+          - configuration: ""
+            type: image
+            streamName: streamName
+          name: name
+          description: description
+          id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          updatedAt: 2000-01-23T04:56:07.000+00:00
+      properties:
+        items:
+          items:
+            $ref: '#/components/schemas/Channel'
+          type: array
+      required:
+      - items
+      type: object
+    CommandRequestListResponse:
+      example:
+        items:
+        - commandTemplateId: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          type: alert
+          message: message
+          deviceId: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          streamName: streamName
+          userId: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          command: command
+          notificationEnabled: true
+          tags:
+            key: tags
+          organizationId: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          createdAt: 2000-01-23T04:56:07.000+00:00
+          streamType: image
+          parameter:
+            meta:
+              key: meta
+            scrubberTime: 2000-01-23T04:56:07.000+00:00
+            value: value
+          viewed: true
+          id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          time: 2000-01-23T04:56:07.000+00:00
+          updatedAt: 2000-01-23T04:56:07.000+00:00
+        - commandTemplateId: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          type: alert
+          message: message
+          deviceId: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          streamName: streamName
+          userId: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          command: command
+          notificationEnabled: true
+          tags:
+            key: tags
+          organizationId: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          createdAt: 2000-01-23T04:56:07.000+00:00
+          streamType: image
+          parameter:
+            meta:
+              key: meta
+            scrubberTime: 2000-01-23T04:56:07.000+00:00
+            value: value
+          viewed: true
+          id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          time: 2000-01-23T04:56:07.000+00:00
+          updatedAt: 2000-01-23T04:56:07.000+00:00
+      properties:
+        items:
+          items:
+            $ref: '#/components/schemas/CommandRequest'
+          type: array
+      required:
+      - items
+      type: object
+    PollCommandRequest:
+      example:
+        createdAtAfter: 2000-01-23T04:56:07.000+00:00
+      properties:
+        createdAtAfter:
+          format: date-time
+          type: string
+      required:
+      - createdAtAfter
+      type: object
+    CommandTemplateListResponse:
+      example:
+        items:
+        - organizationId: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          parameterMeta:
+            key: parameterMeta
+          createdAt: 2000-01-23T04:56:07.000+00:00
+          name: name
+          parameterEnabled: true
+          description: description
+          id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          parameterValue: parameterValue
+          command: command
+          enabled: true
+          tags:
+            key: tags
+          updatedAt: 2000-01-23T04:56:07.000+00:00
+        - organizationId: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          parameterMeta:
+            key: parameterMeta
+          createdAt: 2000-01-23T04:56:07.000+00:00
+          name: name
+          parameterEnabled: true
+          description: description
+          id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          parameterValue: parameterValue
+          command: command
+          enabled: true
+          tags:
+            key: tags
+          updatedAt: 2000-01-23T04:56:07.000+00:00
+      properties:
+        items:
+          items:
+            $ref: '#/components/schemas/CommandTemplate'
+          type: array
+      required:
+      - items
+      type: object
+    DeviceConfigurationTemplateListResponse:
+      example:
+        items:
+        - organizationId: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          createdAt: 2000-01-23T04:56:07.000+00:00
+          document:
+            portForwarding:
+              enabled: true
+            application:
+              configurationMap:
+                key: configurationMap
+            resources:
+              disk:
+                bufferSize: 4395873917
+              streamThrottleHz: 3.0137280915352016
+            telemetry:
+              streams:
+              - configuration: ""
+                name: name
+                throttleHz: 0.7329064902514726
+                tags:
+                  key: tags
+              - configuration: ""
+                name: name
+                throttleHz: 0.7329064902514726
+                tags:
+                  key: tags
+              ros:
+                worldReferenceFrameId: worldReferenceFrameId
+            tags:
+              key: tags
+            teleop:
+              rosStreams:
+              - mode: command
+                topicName: topicName
+                topicType: std_msgs/Bool
+              - mode: command
+                topicName: topicName
+                topicType: std_msgs/Bool
+              - mode: command
+                topicName: topicName
+                topicType: std_msgs/Bool
+              - mode: command
+                topicName: topicName
+                topicType: std_msgs/Bool
+              - mode: command
+                topicName: topicName
+                topicType: std_msgs/Bool
+          name: name
+          id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          updatedAt: 2000-01-23T04:56:07.000+00:00
+        - organizationId: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          createdAt: 2000-01-23T04:56:07.000+00:00
+          document:
+            portForwarding:
+              enabled: true
+            application:
+              configurationMap:
+                key: configurationMap
+            resources:
+              disk:
+                bufferSize: 4395873917
+              streamThrottleHz: 3.0137280915352016
+            telemetry:
+              streams:
+              - configuration: ""
+                name: name
+                throttleHz: 0.7329064902514726
+                tags:
+                  key: tags
+              - configuration: ""
+                name: name
+                throttleHz: 0.7329064902514726
+                tags:
+                  key: tags
+              ros:
+                worldReferenceFrameId: worldReferenceFrameId
+            tags:
+              key: tags
+            teleop:
+              rosStreams:
+              - mode: command
+                topicName: topicName
+                topicType: std_msgs/Bool
+              - mode: command
+                topicName: topicName
+                topicType: std_msgs/Bool
+              - mode: command
+                topicName: topicName
+                topicType: std_msgs/Bool
+              - mode: command
+                topicName: topicName
+                topicType: std_msgs/Bool
+              - mode: command
+                topicName: topicName
+                topicType: std_msgs/Bool
+          name: name
+          id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          updatedAt: 2000-01-23T04:56:07.000+00:00
+      properties:
+        items:
+          items:
+            $ref: '#/components/schemas/DeviceConfigurationTemplate'
+          type: array
+      required:
+      - items
+      type: object
+    DeviceListResponse:
+      example:
+        items:
+        - organizationId: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          desiredConfigurationVersion: 721321908029600
+          createdAt: 2000-01-23T04:56:07.000+00:00
+          scope:
+            agentIds:
+            - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+            - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+            deviceIds:
+            - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+            - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+            types:
+            - image
+            - image
+            names:
+            - names
+            - names
+            notNames:
+            - notNames
+            - notNames
+            start: 2000-01-23T04:56:07.000+00:00
+            end: 2000-01-23T04:56:07.000+00:00
+            tags: ""
+          name: name
+          publicKey: publicKey
+          state:
+            reportedConfiguration:
+              version: 5429049884013572
+            ros:
+              topics:
+              - name: name
+                type: type
+              - name: name
+                type: type
+              - name: name
+                type: type
+              - name: name
+                type: type
+              - name: name
+                type: type
+            version: version
+          id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          type: default
+          enabled: true
+          tags:
+            key: tags
+          updatedAt: 2000-01-23T04:56:07.000+00:00
+        - organizationId: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          desiredConfigurationVersion: 721321908029600
+          createdAt: 2000-01-23T04:56:07.000+00:00
+          scope:
+            agentIds:
+            - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+            - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+            deviceIds:
+            - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+            - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+            types:
+            - image
+            - image
+            names:
+            - names
+            - names
+            notNames:
+            - notNames
+            - notNames
+            start: 2000-01-23T04:56:07.000+00:00
+            end: 2000-01-23T04:56:07.000+00:00
+            tags: ""
+          name: name
+          publicKey: publicKey
+          state:
+            reportedConfiguration:
+              version: 5429049884013572
+            ros:
+              topics:
+              - name: name
+                type: type
+              - name: name
+                type: type
+              - name: name
+                type: type
+              - name: name
+                type: type
+              - name: name
+                type: type
+            version: version
+          id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          type: default
+          enabled: true
+          tags:
+            key: tags
+          updatedAt: 2000-01-23T04:56:07.000+00:00
+      properties:
+        items:
+          items:
+            $ref: '#/components/schemas/Device'
+          type: array
+      required:
+      - items
+      type: object
+    DeviceConfigurationParams:
+      properties:
+        version:
+          format: int64
+          maximum: 9007199254740991
+          minimum: 1
+          type: integer
+        id:
+          format: uuid
+          type: string
+      required:
+      - id
+      - version
+      type: object
+    DeviceProvisioningRequest:
+      example:
+        provisioningToken: provisioningToken
+        publicKey: publicKey
+      properties:
+        provisioningToken:
+          type: string
+        publicKey:
+          type: string
+      required:
+      - provisioningToken
+      - publicKey
+      type: object
+    DeviceQuery:
+      example:
+        hasDeviceLayout: true
+        offset: 5.429049884013571E15
+        query: query
+        name: name
+        count: 8.008281904610115
+        type: default
+        enabled: true
+        tags: ""
+      properties:
+        name:
+          type: string
+        query:
+          type: string
+        tags: {}
+        enabled:
+          type: boolean
+        type:
+          enum:
+          - default
+          - capture
+          type: string
+        count:
+          format: int64
+          maximum: 100
+          minimum: 0
+          type: number
+        offset:
+          format: int64
+          maximum: 9007199254740991
+          minimum: 0
+          type: number
+        hasDeviceLayout:
+          type: boolean
+      type: object
+    DeviceTagsResponse:
+      example:
+        tags: ""
+      properties:
+        tags: {}
+      required:
+      - tags
+      type: object
+    UpdatedConfigurationQuery:
+      properties:
+        reportedConfigurationVersion:
+          format: int64
+          maximum: 9007199254740991
+          minimum: 1
+          type: integer
+      type: object
+    UpdatedConfigurationResponse:
+      example:
+        desiredConfiguration:
+          createdAt: 2000-01-23T04:56:07.000+00:00
+          document:
+            portForwarding:
+              enabled: true
+            application:
+              configurationMap:
+                key: configurationMap
+            resources:
+              disk:
+                bufferSize: 4395873917
+              streamThrottleHz: 3.0137280915352016
+            telemetry:
+              streams:
+              - configuration: ""
+                name: name
+                throttleHz: 0.7329064902514726
+                tags:
+                  key: tags
+              - configuration: ""
+                name: name
+                throttleHz: 0.7329064902514726
+                tags:
+                  key: tags
+              ros:
+                worldReferenceFrameId: worldReferenceFrameId
+            tags:
+              key: tags
+            teleop:
+              rosStreams:
+              - mode: command
+                topicName: topicName
+                topicType: std_msgs/Bool
+              - mode: command
+                topicName: topicName
+                topicType: std_msgs/Bool
+              - mode: command
+                topicName: topicName
+                topicType: std_msgs/Bool
+              - mode: command
+                topicName: topicName
+                topicType: std_msgs/Bool
+              - mode: command
+                topicName: topicName
+                topicType: std_msgs/Bool
+          deviceId: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          version: 721321908029600
+      properties:
+        desiredConfiguration:
+          $ref: '#/components/schemas/DeviceConfiguration'
+      type: object
+    DeviceDetails:
+      example:
+        name: name
+        id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        type: default
+        enabled: true
+        tags:
+          key: tags
+      properties:
+        id:
+          format: uuid
+          type: string
+        name:
+          type: string
+        type:
+          enum:
+          - default
+          - capture
+          type: string
+        tags:
+          additionalProperties:
+            type: string
+          type: object
+        enabled:
+          type: boolean
+      required:
+      - enabled
+      - id
+      - name
+      - tags
+      - type
+      type: object
+    DeviceDetailsListResponse:
+      example:
+        items:
+        - name: name
+          id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          type: default
+          enabled: true
+          tags:
+            key: tags
+        - name: name
+          id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          type: default
+          enabled: true
+          tags:
+            key: tags
+      properties:
+        items:
+          items:
+            $ref: '#/components/schemas/DeviceDetails'
+          type: array
+      required:
+      - items
+      type: object
+    EventCounts:
+      example:
+        warn: 1320286958557579
+        total: 721321908029599
+        intervention-request: 6360344799989391
+        critical: 5077697482032197
+        alert: 2073579664511130
+        error: 5370212817101474
+        info: 5429049884013571
+      properties:
+        total:
+          format: int64
+          maximum: 9007199254740991
+          minimum: 0
+          type: integer
+        info:
+          format: int64
+          maximum: 9007199254740991
+          minimum: 0
+          type: integer
+        warn:
+          format: int64
+          maximum: 9007199254740991
+          minimum: 0
+          type: integer
+        error:
+          format: int64
+          maximum: 9007199254740991
+          minimum: 0
+          type: integer
+        critical:
+          format: int64
+          maximum: 9007199254740991
+          minimum: 0
+          type: integer
+        alert:
+          format: int64
+          maximum: 9007199254740991
+          minimum: 0
+          type: integer
+        intervention-request:
+          format: int64
+          maximum: 9007199254740991
+          minimum: 0
+          type: integer
+      required:
+      - total
+      type: object
+    EventFilter:
+      example:
+        agentIds:
+        - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        deviceIds:
+        - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        types:
+        - image
+        - image
+        start: 2000-01-23T04:56:07.000+00:00
+        message: message
+        eventTypes:
+        - alert
+        - alert
+        notificationEnabled: true
+        tags: ""
+        names:
+        - names
+        - names
+        notNames:
+        - notNames
+        - notNames
+        viewed: true
+        end: 2000-01-23T04:56:07.000+00:00
+        id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        keyword: keyword
+      properties:
+        id:
+          format: uuid
+          type: string
+        viewed:
+          type: boolean
+        keyword:
+          type: string
+        message:
+          type: string
+        start:
+          format: date-time
+          type: string
+        end:
+          format: date-time
+          type: string
+        eventTypes:
+          items:
+            enum:
+            - alert
+            - intervention-request
+            - teleop-session-record
+            - command-request
+            - command-response
+            - command-delivery
+            - custom
+            - comment
+            type: string
+          type: array
+        notificationEnabled:
+          type: boolean
+        agentIds:
+          items:
+            format: uuid
+            type: string
+          type: array
+        deviceIds:
+          items:
+            format: uuid
+            type: string
+          type: array
+        names:
+          items:
+            type: string
+          type: array
+        types:
+          items:
+            enum:
+            - image
+            - numeric
+            - point cloud
+            - text
+            - location
+            - file
+            - localization
+            - health
+            - bitset
+            - metrics
+            - transform tree
+            - battery
+            type: string
+          type: array
+        tags: {}
+        notNames:
+          items:
+            type: string
+          type: array
+      type: object
+    EventHistogramEntry:
+      example:
+        counts:
+          warn: 1320286958557579
+          total: 721321908029599
+          intervention-request: 6360344799989391
+          critical: 5077697482032197
+          alert: 2073579664511130
+          error: 5370212817101474
+          info: 5429049884013571
+        time: 2000-01-23T04:56:07.000+00:00
+      properties:
+        time:
+          format: date-time
+          type: string
+        counts:
+          $ref: '#/components/schemas/EventCounts'
+      required:
+      - counts
+      - time
+      type: object
+    EventHistogram:
+      example:
+        counts:
+        - counts:
+            warn: 1320286958557579
+            total: 721321908029599
+            intervention-request: 6360344799989391
+            critical: 5077697482032197
+            alert: 2073579664511130
+            error: 5370212817101474
+            info: 5429049884013571
+          time: 2000-01-23T04:56:07.000+00:00
+        - counts:
+            warn: 1320286958557579
+            total: 721321908029599
+            intervention-request: 6360344799989391
+            critical: 5077697482032197
+            alert: 2073579664511130
+            error: 5370212817101474
+            info: 5429049884013571
+          time: 2000-01-23T04:56:07.000+00:00
+      properties:
+        counts:
+          items:
+            $ref: '#/components/schemas/EventHistogramEntry'
+          type: array
+      required:
+      - counts
+      type: object
+    EventListResponse:
+      example:
+        items:
+        - '{}'
+        - '{}'
+      properties:
+        items:
+          items:
+            oneOf:
+            - $ref: '#/components/schemas/Alert'
+            - $ref: '#/components/schemas/InterventionRequest'
+            type: object
+          type: array
+      required:
+      - items
+      type: object
+    EventSort:
+      example:
+        column: type
+        order: asc
+      properties:
+        column:
+          enum:
+          - type
+          - message
+          - device.name
+          - time
+          type: string
+        order:
+          enum:
+          - asc
+          - desc
+          type: string
+      required:
+      - column
+      - order
+      type: object
+    EventQuery:
+      example:
+        agentIds:
+        - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        deviceIds:
+        - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        types:
+        - image
+        - image
+        offset: 721321908029599
+        count: 301
+        start: 2000-01-23T04:56:07.000+00:00
+        sort:
+          column: type
+          order: asc
+        message: message
+        eventTypes:
+        - alert
+        - alert
+        notificationEnabled: true
+        tags: ""
+        names:
+        - names
+        - names
+        notNames:
+        - notNames
+        - notNames
+        viewed: true
+        end: 2000-01-23T04:56:07.000+00:00
+        id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        keyword: keyword
+      properties:
+        offset:
+          format: int64
+          maximum: 9007199254740991
+          minimum: 0
+          type: integer
+        count:
+          format: int64
+          maximum: 500
+          minimum: 0
+          type: integer
+        sort:
+          $ref: '#/components/schemas/EventSort'
+        agentIds:
+          items:
+            format: uuid
+            type: string
+          type: array
+        deviceIds:
+          items:
+            format: uuid
+            type: string
+          type: array
+        names:
+          items:
+            type: string
+          type: array
+        types:
+          items:
+            enum:
+            - image
+            - numeric
+            - point cloud
+            - text
+            - location
+            - file
+            - localization
+            - health
+            - bitset
+            - metrics
+            - transform tree
+            - battery
+            type: string
+          type: array
+        tags: {}
+        notNames:
+          items:
+            type: string
+          type: array
+        id:
+          format: uuid
+          type: string
+        viewed:
+          type: boolean
+        keyword:
+          type: string
+        message:
+          type: string
+        start:
+          format: date-time
+          type: string
+        end:
+          format: date-time
+          type: string
+        eventTypes:
+          items:
+            enum:
+            - alert
+            - intervention-request
+            - teleop-session-record
+            - command-request
+            - command-response
+            - command-delivery
+            - custom
+            - comment
+            type: string
+          type: array
+        notificationEnabled:
+          type: boolean
+      type: object
+    EventSeekQuery:
+      example:
+        agentIds:
+        - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        deviceIds:
+        - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        types:
+        - image
+        - image
+        start: 2000-01-23T04:56:07.000+00:00
+        message: message
+        eventTypes:
+        - alert
+        - alert
+        notificationEnabled: true
+        tags: ""
+        names:
+        - names
+        - names
+        notNames:
+        - notNames
+        - notNames
+        viewed: true
+        from: 2000-01-23T04:56:07.000+00:00
+        end: 2000-01-23T04:56:07.000+00:00
+        id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        keyword: keyword
+        direction: next
+      properties:
+        direction:
+          enum:
+          - next
+          - previous
+          type: string
+        from:
+          format: date-time
+          type: string
+        agentIds:
+          items:
+            format: uuid
+            type: string
+          type: array
+        deviceIds:
+          items:
+            format: uuid
+            type: string
+          type: array
+        names:
+          items:
+            type: string
+          type: array
+        types:
+          items:
+            enum:
+            - image
+            - numeric
+            - point cloud
+            - text
+            - location
+            - file
+            - localization
+            - health
+            - bitset
+            - metrics
+            - transform tree
+            - battery
+            type: string
+          type: array
+        tags: {}
+        notNames:
+          items:
+            type: string
+          type: array
+        id:
+          format: uuid
+          type: string
+        viewed:
+          type: boolean
+        keyword:
+          type: string
+        message:
+          type: string
+        start:
+          format: date-time
+          type: string
+        end:
+          format: date-time
+          type: string
+        eventTypes:
+          items:
+            enum:
+            - alert
+            - intervention-request
+            - teleop-session-record
+            - command-request
+            - command-response
+            - command-delivery
+            - custom
+            - comment
+            type: string
+          type: array
+        notificationEnabled:
+          type: boolean
+      required:
+      - direction
+      - from
+      type: object
+    IntervalEventFilter:
+      example:
+        agentIds:
+        - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        deviceIds:
+        - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        types:
+        - image
+        - image
+        start: 2000-01-23T04:56:07.000+00:00
+        message: message
+        eventTypes:
+        - alert
+        - alert
+        notificationEnabled: true
+        tags: ""
+        names:
+        - names
+        - names
+        notNames:
+        - notNames
+        - notNames
+        viewed: true
+        interval: minute
+        end: 2000-01-23T04:56:07.000+00:00
+        id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        keyword: keyword
+      properties:
+        interval:
+          enum:
+          - minute
+          - hour
+          - day
+          type: string
+        agentIds:
+          items:
+            format: uuid
+            type: string
+          type: array
+        deviceIds:
+          items:
+            format: uuid
+            type: string
+          type: array
+        names:
+          items:
+            type: string
+          type: array
+        types:
+          items:
+            enum:
+            - image
+            - numeric
+            - point cloud
+            - text
+            - location
+            - file
+            - localization
+            - health
+            - bitset
+            - metrics
+            - transform tree
+            - battery
+            type: string
+          type: array
+        tags: {}
+        notNames:
+          items:
+            type: string
+          type: array
+        id:
+          format: uuid
+          type: string
+        viewed:
+          type: boolean
+        keyword:
+          type: string
+        message:
+          type: string
+        start:
+          format: date-time
+          type: string
+        end:
+          format: date-time
+          type: string
+        eventTypes:
+          items:
+            enum:
+            - alert
+            - intervention-request
+            - teleop-session-record
+            - command-request
+            - command-response
+            - command-delivery
+            - custom
+            - comment
+            type: string
+          type: array
+        notificationEnabled:
+          type: boolean
+      required:
+      - interval
+      type: object
+    BooleanTopic:
+      example:
+        mode: command
+        topic: topic
+      properties:
+        topic:
+          pattern: ^([a-zA-Z~/])([0-9a-zA-Z_/]){0,254}$
+          type: string
+        mode:
+          enum:
+          - command
+          - observe
+          type: string
+      required:
+      - mode
+      - topic
+      type: object
+    FreeTeleopSettingsForm:
+      example:
+        worldReferenceFrameId: worldReferenceFrameId
+        pointCloudTopic: pointCloudTopic
+        joystickTopic0: joystickTopic0
+        odomTopic: odomTopic
+        joystickTopic1: joystickTopic1
+        booleanTopics:
+        - mode: command
+          topic: topic
+        - mode: command
+          topic: topic
+        - mode: command
+          topic: topic
+        - mode: command
+          topic: topic
+        - mode: command
+          topic: topic
+        imageTopic0: imageTopic0
+        imageTopic1: imageTopic1
+        mapTopic: mapTopic
+      properties:
+        imageTopic0:
+          pattern: ^([a-zA-Z~/])([0-9a-zA-Z_/]){0,254}$
+          type: string
+        imageTopic1:
+          pattern: ^([a-zA-Z~/])([0-9a-zA-Z_/]){0,254}$
+          type: string
+        joystickTopic0:
+          pattern: ^([a-zA-Z~/])([0-9a-zA-Z_/]){0,254}$
+          type: string
+        joystickTopic1:
+          pattern: ^([a-zA-Z~/])([0-9a-zA-Z_/]){0,254}$
+          type: string
+        mapTopic:
+          pattern: ^([a-zA-Z~/])([0-9a-zA-Z_/]){0,254}$
+          type: string
+        odomTopic:
+          pattern: ^([a-zA-Z~/])([0-9a-zA-Z_/]){0,254}$
+          type: string
+        pointCloudTopic:
+          pattern: ^([a-zA-Z~/])([0-9a-zA-Z_/]){0,254}$
+          type: string
+        worldReferenceFrameId:
+          type: string
+        booleanTopics:
+          items:
+            $ref: '#/components/schemas/BooleanTopic'
+          maxItems: 10
+          type: array
+      type: object
+    SlackAuthRequest:
+      example:
+        redirectUri: redirectUri
+        code: code
+      properties:
+        code:
+          type: string
+        redirectUri:
+          type: string
+      required:
+      - code
+      - redirectUri
+      type: object
+    SignLookerEmbedUrlRequest:
+      example:
+        lookerEmbedUrl: lookerEmbedUrl
+      properties:
+        lookerEmbedUrl:
+          type: string
+      required:
+      - lookerEmbedUrl
+      type: object
+    SignLookerEmbedUrlResponse:
+      example:
+        sessionLengthMilliseconds: 721321908029600
+        url: url
+      properties:
+        url:
+          type: string
+        sessionLengthMilliseconds:
+          format: int64
+          maximum: 9007199254740991
+          minimum: 1
+          type: integer
+      required:
+      - sessionLengthMilliseconds
+      - url
+      type: object
+    LookerLook:
+      example:
+        id: 721321908029599
+        title: title
+      properties:
+        title:
+          type: string
+        id:
+          format: int64
+          maximum: 9007199254740991
+          minimum: 0
+          type: integer
+      required:
+      - id
+      - title
+      type: object
+    GetLooksResponse:
+      example:
+        items:
+        - id: 721321908029599
+          title: title
+        - id: 721321908029599
+          title: title
+      properties:
+        items:
+          items:
+            $ref: '#/components/schemas/LookerLook'
+          type: array
+      required:
+      - items
+      type: object
+    UserListResponse:
+      example:
+        items:
+        - organizationId: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          firstName: firstName
+          lastName: lastName
+          createdAt: 2000-01-23T04:56:07.000+00:00
+          role: operator
+          termsAccepted: termsAccepted
+          isOrganizationOwner: true
+          lastLoggedIn: 2000-01-23T04:56:07.000+00:00
+          id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          email: email
+          enabled: true
+          updatedAt: 2000-01-23T04:56:07.000+00:00
+        - organizationId: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          firstName: firstName
+          lastName: lastName
+          createdAt: 2000-01-23T04:56:07.000+00:00
+          role: operator
+          termsAccepted: termsAccepted
+          isOrganizationOwner: true
+          lastLoggedIn: 2000-01-23T04:56:07.000+00:00
+          id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          email: email
+          enabled: true
+          updatedAt: 2000-01-23T04:56:07.000+00:00
+      properties:
+        items:
+          items:
+            $ref: '#/components/schemas/User'
+          type: array
+      required:
+      - items
+      type: object
+    PartialAlertDefinition:
+      example:
+        severity: info
+        message: message
+        enabled: true
+        notificationEnabled: true
+        tags:
+          key: tags
+        organizationId: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        createdAt: 2000-01-23T04:56:07.000+00:00
+        condition: ""
+        stream: stream
+        interval: 721321908038799
+        id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        commands:
+        - commandTemplateId: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          parameterValue: parameterValue
+        - commandTemplateId: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          parameterValue: parameterValue
+        - commandTemplateId: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          parameterValue: parameterValue
+        - commandTemplateId: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          parameterValue: parameterValue
+        - commandTemplateId: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          parameterValue: parameterValue
+        updatedAt: 2000-01-23T04:56:07.000+00:00
+      properties:
+        organizationId:
+          format: uuid
+          type: string
+        message:
+          maxLength: 1024
+          type: string
+        stream:
+          maxLength: 255
+          type: string
+        condition:
+          oneOf:
+          - $ref: '#/components/schemas/ThresholdAlertCondition'
+          - $ref: '#/components/schemas/RegexAlertCondition'
+          - $ref: '#/components/schemas/PresenceAlertCondition'
+          - $ref: '#/components/schemas/BitsetAlertCondition'
+        interval:
+          format: int64
+          maximum: 9007199254740991
+          minimum: 10000
+          type: integer
+        severity:
+          enum:
+          - info
+          - warning
+          - error
+          - critical
+          type: string
+        enabled:
+          type: boolean
+        tags:
+          additionalProperties:
+            type: string
+          type: object
+        notificationEnabled:
+          type: boolean
+        commands:
+          items:
+            $ref: '#/components/schemas/AlertCommand'
+          maxItems: 10
+          type: array
+        id:
+          format: uuid
+          type: string
+        createdAt:
+          format: date-time
+          type: string
+        updatedAt:
+          format: date-time
+          type: string
+      type: object
+    PartialBoard:
+      example:
+        organizationId: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        layout: ""
+        lookIds:
+        - 0.8008281904610115
+        - 0.8008281904610115
+        createdAt: 2000-01-23T04:56:07.000+00:00
+        name: name
+        id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        updatedAt: 2000-01-23T04:56:07.000+00:00
+      properties:
+        organizationId:
+          format: uuid
+          type: string
+        name:
+          maxLength: 255
+          type: string
+        lookIds:
+          items:
+            type: number
+          type: array
+        layout: {}
+        id:
+          format: uuid
+          type: string
+        createdAt:
+          format: date-time
+          type: string
+        updatedAt:
+          format: date-time
+          type: string
+      type: object
+    PartialChannel:
+      example:
+        organizationId: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        filter:
+          agentIds:
+          - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          deviceIds:
+          - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          types:
+          - image
+          - image
+          names:
+          - names
+          - names
+          notNames:
+          - notNames
+          - notNames
+          tags: ""
+        layout: ""
+        createdAt: 2000-01-23T04:56:07.000+00:00
+        configuration:
+        - configuration: ""
+          type: image
+          streamName: streamName
+        - configuration: ""
+          type: image
+          streamName: streamName
+        name: name
+        description: description
+        id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        updatedAt: 2000-01-23T04:56:07.000+00:00
+      properties:
+        organizationId:
+          format: uuid
+          type: string
+        name:
+          maxLength: 255
+          type: string
+        description:
+          maxLength: 255
+          type: string
+        filter:
+          $ref: '#/components/schemas/Filter'
+        layout: {}
+        configuration:
+          items:
+            $ref: '#/components/schemas/ViewConfiguration'
+          type: array
+        id:
+          format: uuid
+          type: string
+        createdAt:
+          format: date-time
+          type: string
+        updatedAt:
+          format: date-time
+          type: string
+      type: object
+    PartialCommandTemplate:
+      example:
+        organizationId: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        parameterMeta:
+          key: parameterMeta
+        createdAt: 2000-01-23T04:56:07.000+00:00
+        name: name
+        parameterEnabled: true
+        description: description
+        id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        parameterValue: parameterValue
+        command: command
+        enabled: true
+        tags:
+          key: tags
+        updatedAt: 2000-01-23T04:56:07.000+00:00
+      properties:
+        organizationId:
+          format: uuid
+          type: string
+        name:
+          maxLength: 32
+          type: string
+        command:
+          type: string
+        tags:
+          additionalProperties:
+            type: string
+          type: object
+        description:
+          maxLength: 1024
+          type: string
+        parameterEnabled:
+          type: boolean
+        parameterValue:
+          maxLength: 1024
+          type: string
+        parameterMeta:
+          additionalProperties:
+            type: string
+          type: object
+        enabled:
+          type: boolean
+        id:
+          format: uuid
+          type: string
+        createdAt:
+          format: date-time
+          type: string
+        updatedAt:
+          format: date-time
+          type: string
+      type: object
+    PartialComment:
+      example:
+        type: alert
+        message: message
+        deviceId: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        streamName: streamName
+        userId: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        notificationEnabled: true
+        tags:
+          key: tags
+        organizationId: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        createdAt: 2000-01-23T04:56:07.000+00:00
+        streamType: image
+        viewed: true
+        editedAt: 2000-01-23T04:56:07.000+00:00
+        id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        time: 2000-01-23T04:56:07.000+00:00
+        updatedAt: 2000-01-23T04:56:07.000+00:00
+      properties:
+        type:
+          enum:
+          - alert
+          - intervention-request
+          - teleop-session-record
+          - command-request
+          - command-response
+          - command-delivery
+          - custom
+          - comment
+          type: string
+        editedAt:
+          format: date-time
+          type: string
+        id:
+          format: uuid
+          type: string
+        createdAt:
+          format: date-time
+          type: string
+        updatedAt:
+          format: date-time
+          type: string
+        organizationId:
+          format: uuid
+          type: string
+        time:
+          format: date-time
+          type: string
+        message:
+          maxLength: 1024
+          type: string
+        viewed:
+          type: boolean
+        deviceId:
+          format: uuid
+          type: string
+        streamName:
+          type: string
+        streamType:
+          enum:
+          - image
+          - numeric
+          - point cloud
+          - text
+          - location
+          - file
+          - localization
+          - health
+          - bitset
+          - metrics
+          - transform tree
+          - battery
+          type: string
+        tags:
+          additionalProperties:
+            type: string
+          type: object
+        notificationEnabled:
+          type: boolean
+        userId:
+          format: uuid
+          type: string
+      type: object
+    PartialDeviceConfigurationTemplate:
+      example:
+        organizationId: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        createdAt: 2000-01-23T04:56:07.000+00:00
+        document:
+          portForwarding:
+            enabled: true
+          application:
+            configurationMap:
+              key: configurationMap
+          resources:
+            disk:
+              bufferSize: 4395873917
+            streamThrottleHz: 3.0137280915352016
+          telemetry:
+            streams:
+            - configuration: ""
+              name: name
+              throttleHz: 0.7329064902514726
+              tags:
+                key: tags
+            - configuration: ""
+              name: name
+              throttleHz: 0.7329064902514726
+              tags:
+                key: tags
+            ros:
+              worldReferenceFrameId: worldReferenceFrameId
+          tags:
+            key: tags
+          teleop:
+            rosStreams:
+            - mode: command
+              topicName: topicName
+              topicType: std_msgs/Bool
+            - mode: command
+              topicName: topicName
+              topicType: std_msgs/Bool
+            - mode: command
+              topicName: topicName
+              topicType: std_msgs/Bool
+            - mode: command
+              topicName: topicName
+              topicType: std_msgs/Bool
+            - mode: command
+              topicName: topicName
+              topicType: std_msgs/Bool
+        name: name
+        id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        updatedAt: 2000-01-23T04:56:07.000+00:00
+      properties:
+        organizationId:
+          format: uuid
+          type: string
+        name:
+          type: string
+        document:
+          $ref: '#/components/schemas/DeviceConfigurationDocument'
+        id:
+          format: uuid
+          type: string
+        createdAt:
+          format: date-time
+          type: string
+        updatedAt:
+          format: date-time
+          type: string
+      type: object
+    PartialDevice:
+      example:
+        organizationId: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        desiredConfigurationVersion: 721321908029600
+        createdAt: 2000-01-23T04:56:07.000+00:00
+        scope:
+          agentIds:
+          - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          deviceIds:
+          - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          types:
+          - image
+          - image
+          names:
+          - names
+          - names
+          notNames:
+          - notNames
+          - notNames
+          start: 2000-01-23T04:56:07.000+00:00
+          end: 2000-01-23T04:56:07.000+00:00
+          tags: ""
+        name: name
+        publicKey: publicKey
+        state:
+          reportedConfiguration:
+            version: 5429049884013572
+          ros:
+            topics:
+            - name: name
+              type: type
+            - name: name
+              type: type
+            - name: name
+              type: type
+            - name: name
+              type: type
+            - name: name
+              type: type
+          version: version
+        id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        type: default
+        enabled: true
+        tags:
+          key: tags
+        updatedAt: 2000-01-23T04:56:07.000+00:00
+      properties:
+        organizationId:
+          format: uuid
+          type: string
+        name:
+          pattern: ^[a-zA-Z0-9-_.,:?'"()@\/\\#$+ ]{1,255}$
+          type: string
+        type:
+          enum:
+          - default
+          - capture
+          type: string
+        tags:
+          additionalProperties:
+            type: string
+          type: object
+        publicKey:
+          type: string
+        scope:
+          $ref: '#/components/schemas/ScopeFilter'
+        desiredConfigurationVersion:
+          format: int64
+          maximum: 9007199254740991
+          minimum: 1
+          nullable: true
+          type: integer
+        state:
+          $ref: '#/components/schemas/DeviceState'
+        enabled:
+          type: boolean
+        id:
+          format: uuid
+          type: string
+        createdAt:
+          format: date-time
+          type: string
+        updatedAt:
+          format: date-time
+          type: string
+      type: object
+    PartialDeviceLayout:
+      example:
+        organizationId: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        filter:
+          agentIds:
+          - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          deviceIds:
+          - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          types:
+          - image
+          - image
+          names:
+          - names
+          - names
+          notNames:
+          - notNames
+          - notNames
+          tags: ""
+        layout: ""
+        createdAt: 2000-01-23T04:56:07.000+00:00
+        configuration:
+        - configuration: ""
+          type: image
+          streamName: streamName
+        - configuration: ""
+          type: image
+          streamName: streamName
+        name: name
+        index: 721321908029599
+        id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        tags:
+          key: tags
+        updatedAt: 2000-01-23T04:56:07.000+00:00
+      properties:
+        organizationId:
+          format: uuid
+          type: string
+        name:
+          maxLength: 255
+          type: string
+        tags:
+          additionalProperties:
+            type: string
+          type: object
+        filter:
+          $ref: '#/components/schemas/Filter'
+        layout: {}
+        configuration:
+          items:
+            $ref: '#/components/schemas/ViewConfiguration'
+          type: array
+        index:
+          format: int64
+          maximum: 9007199254740991
+          minimum: 0
+          type: integer
+        id:
+          format: uuid
+          type: string
+        createdAt:
+          format: date-time
+          type: string
+        updatedAt:
+          format: date-time
+          type: string
+      type: object
+    PartialOrganization:
+      example:
+        country: country
+        pagerdutyInfo:
+          serviceKey: serviceKey
+          serviceName: serviceName
+          account: account
+        website: website
+        city: city
+        postalCode: postalCode
+        externalId: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        industry: industry
+        awsInfo:
+          accountId: accountId
+          s3Export:
+            bucket: bucket
+            path: path
+          roleName: ""
+        slackInfo:
+          configurationUrl: configurationUrl
+          webhookChannel: webhookChannel
+          teamId: teamId
+          webhookUrl: webhookUrl
+          token: token
+        createdAt: 2000-01-23T04:56:07.000+00:00
+        teleopEnabled: true
+        webhooksInfo:
+          webhooks:
+          - name: ""
+            url: http://example.com/aeiou
+          - name: ""
+            url: http://example.com/aeiou
+          - name: ""
+            url: http://example.com/aeiou
+          - name: ""
+            url: http://example.com/aeiou
+          - name: ""
+            url: http://example.com/aeiou
+        name: name
+        addressLine1: addressLine1
+        addressLine2: addressLine2
+        state: state
+        id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        plan: freemium
+        lookerInfo:
+          lookerPermissions:
+          - lookerPermissions
+          - lookerPermissions
+          lookerGroupId: 721321908029599
+          lookerModels:
+          - lookerModels
+          - lookerModels
+          lookerSpaceId: 6.027456183070403
+        teleopConfiguration:
+          rosStreams:
+          - configuration: ""
+            displayName: displayName
+            topicName: topicName
+          - configuration: ""
+            displayName: displayName
+            topicName: topicName
+          - configuration: ""
+            displayName: displayName
+            topicName: topicName
+          - configuration: ""
+            displayName: displayName
+            topicName: topicName
+          - configuration: ""
+            displayName: displayName
+            topicName: topicName
+        updatedAt: 2000-01-23T04:56:07.000+00:00
+      properties:
+        plan:
+          enum:
+          - freemium
+          - beta
+          - commercial
+          - enterprise
+          - free teleop
+          type: string
+        name:
+          type: string
+        industry:
+          type: string
+        website:
+          type: string
+        addressLine1:
+          type: string
+        addressLine2:
+          type: string
+        city:
+          type: string
+        state:
+          maxLength: 2
+          minLength: 2
+          type: string
+        postalCode:
+          maxLength: 16
+          type: string
+        country:
+          type: string
+        pagerdutyInfo:
+          $ref: '#/components/schemas/PagerdutyInfo'
+        slackInfo:
+          $ref: '#/components/schemas/SlackInfo'
+        webhooksInfo:
+          $ref: '#/components/schemas/WebhooksInfo'
+        awsInfo:
+          $ref: '#/components/schemas/AwsInfo'
+        lookerInfo:
+          $ref: '#/components/schemas/LookerInfo'
+        teleopConfiguration:
+          $ref: '#/components/schemas/UserTeleopConfiguration'
+        teleopEnabled:
+          type: boolean
+        externalId:
+          format: uuid
+          type: string
+        id:
+          format: uuid
+          type: string
+        createdAt:
+          format: date-time
+          type: string
+        updatedAt:
+          format: date-time
+          type: string
+      type: object
+    PartialUser:
+      example:
+        organizationId: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        firstName: firstName
+        lastName: lastName
+        createdAt: 2000-01-23T04:56:07.000+00:00
+        role: operator
+        termsAccepted: termsAccepted
+        isOrganizationOwner: true
+        lastLoggedIn: 2000-01-23T04:56:07.000+00:00
+        id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        email: email
+        enabled: true
+        updatedAt: 2000-01-23T04:56:07.000+00:00
+      properties:
+        organizationId:
+          format: uuid
+          type: string
+        email:
+          format: email
+          type: string
+        firstName:
+          maxLength: 255
+          type: string
+        lastName:
+          maxLength: 255
+          type: string
+        role:
+          enum:
+          - operator
+          - member
+          - administrator
+          type: string
+        enabled:
+          type: boolean
+        isOrganizationOwner:
+          type: boolean
+        termsAccepted:
+          type: string
+        lastLoggedIn:
+          format: date-time
+          type: string
+        id:
+          format: uuid
+          type: string
+        createdAt:
+          format: date-time
+          type: string
+        updatedAt:
+          format: date-time
+          type: string
+      type: object
