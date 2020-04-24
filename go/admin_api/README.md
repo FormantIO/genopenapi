@@ -79,7 +79,7 @@ Class | Method | HTTP request | Description
 *DeviceApi* | [**DeviceControllerGenerateDeviceProvisioningToken**](docs/DeviceApi.md#devicecontrollergeneratedeviceprovisioningtoken) | **Post** /devices/{id}/provisioning-token | Generate device provisioning token
 *DeviceApi* | [**DeviceControllerGetConfiguration**](docs/DeviceApi.md#devicecontrollergetconfiguration) | **Get** /devices/{id}/configurations/{version} | Get configuration
 *DeviceApi* | [**DeviceControllerGetOne**](docs/DeviceApi.md#devicecontrollergetone) | **Get** /devices/{id} | Get one
-*DeviceApi* | [**DeviceControllerGetTags**](docs/DeviceApi.md#devicecontrollergettags) | **Get** /devices/all/tags | Get tags
+*DeviceApi* | [**DeviceControllerGetTags**](docs/DeviceApi.md#devicecontrollergettags) | **Post** /devices/tags | Get tags
 *DeviceApi* | [**DeviceControllerGetUpdatedConfiguration**](docs/DeviceApi.md#devicecontrollergetupdatedconfiguration) | **Get** /devices/{id}/updated-configuration | Get updated configuration
 *DeviceApi* | [**DeviceControllerPatch**](docs/DeviceApi.md#devicecontrollerpatch) | **Patch** /devices/{id} | Patch
 *DeviceApi* | [**DeviceControllerPost**](docs/DeviceApi.md#devicecontrollerpost) | **Post** /devices | Post
@@ -102,6 +102,12 @@ Class | Method | HTTP request | Description
 *DeviceLayoutApi* | [**DeviceLayoutControllerPost**](docs/DeviceLayoutApi.md#devicelayoutcontrollerpost) | **Post** /device-layouts | Post
 *EventApi* | [**EventControllerCount**](docs/EventApi.md#eventcontrollercount) | **Post** /events/count | Count
 *EventApi* | [**EventControllerCounts**](docs/EventApi.md#eventcontrollercounts) | **Post** /events/counts | Counts
+*EventApi* | [**EventControllerDistinctDevices**](docs/EventApi.md#eventcontrollerdistinctdevices) | **Post** /events/devices | Distinct devices
+*EventApi* | [**EventControllerDistinctEventTypes**](docs/EventApi.md#eventcontrollerdistincteventtypes) | **Post** /events/event-types | Distinct event types
+*EventApi* | [**EventControllerDistinctStreamNames**](docs/EventApi.md#eventcontrollerdistinctstreamnames) | **Post** /events/stream-names | Distinct stream names
+*EventApi* | [**EventControllerDistinctStreamTypes**](docs/EventApi.md#eventcontrollerdistinctstreamtypes) | **Post** /events/stream-types | Distinct stream types
+*EventApi* | [**EventControllerDistinctTags**](docs/EventApi.md#eventcontrollerdistincttags) | **Post** /events/tags | Distinct tags
+*EventApi* | [**EventControllerDistinctUsers**](docs/EventApi.md#eventcontrollerdistinctusers) | **Post** /events/users | Distinct users
 *EventApi* | [**EventControllerGetOne**](docs/EventApi.md#eventcontrollergetone) | **Get** /events/{id} | Get one
 *EventApi* | [**EventControllerHistogram**](docs/EventApi.md#eventcontrollerhistogram) | **Post** /events/histogram | Histogram
 *EventApi* | [**EventControllerQuery**](docs/EventApi.md#eventcontrollerquery) | **Post** /events/query | Query
@@ -195,6 +201,9 @@ Class | Method | HTTP request | Description
  - [DeviceTeleopConfiguration](docs/DeviceTeleopConfiguration.md)
  - [DeviceTeleopRosStreamConfiguration](docs/DeviceTeleopRosStreamConfiguration.md)
  - [EventCounts](docs/EventCounts.md)
+ - [EventDistinctEventTypes](docs/EventDistinctEventTypes.md)
+ - [EventDistinctStreamTypes](docs/EventDistinctStreamTypes.md)
+ - [EventDistinctTags](docs/EventDistinctTags.md)
  - [EventFilter](docs/EventFilter.md)
  - [EventHistogram](docs/EventHistogram.md)
  - [EventHistogramEntry](docs/EventHistogramEntry.md)
@@ -249,6 +258,7 @@ Class | Method | HTTP request | Description
  - [SignLookerEmbedUrlResponse](docs/SignLookerEmbedUrlResponse.md)
  - [SlackAuthRequest](docs/SlackAuthRequest.md)
  - [SlackInfo](docs/SlackInfo.md)
+ - [StringListResponse](docs/StringListResponse.md)
  - [TeleopSessionRecord](docs/TeleopSessionRecord.md)
  - [ThresholdAlertCondition](docs/ThresholdAlertCondition.md)
  - [TokenResult](docs/TokenResult.md)
@@ -259,6 +269,7 @@ Class | Method | HTTP request | Description
  - [UserTeleopConfiguration](docs/UserTeleopConfiguration.md)
  - [UserTeleopRosStreamConfiguration](docs/UserTeleopRosStreamConfiguration.md)
  - [UserTeleopTwistRosTopicConfiguration](docs/UserTeleopTwistRosTopicConfiguration.md)
+ - [UuidListResponse](docs/UuidListResponse.md)
  - [ViewConfiguration](docs/ViewConfiguration.md)
  - [Webhook](docs/Webhook.md)
  - [WebhooksInfo](docs/WebhooksInfo.md)

@@ -17,5 +17,4 @@ type DeviceQuery struct {
 	Type string `json:"type,omitempty"`
 	Count float32 `json:"count,omitempty"`
 	Offset float32 `json:"offset,omitempty"`
-	HasDeviceLayout bool `json:"hasDeviceLayout,omitempty"`
 }

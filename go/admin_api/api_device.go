@@ -470,15 +470,22 @@ func (a *DeviceApiService) DeviceControllerGetOne(ctx _context.Context, id strin
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
+// DeviceControllerGetTagsOpts Optional parameters for the method 'DeviceControllerGetTags'
+type DeviceControllerGetTagsOpts struct {
+    DeviceQuery optional.Interface
+}
+
 /*
 DeviceControllerGetTags Get tags
 Get tags across all devices
  * @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ * @param optional nil or *DeviceControllerGetTagsOpts - Optional Parameters:
+ * @param "DeviceQuery" (optional.Interface of DeviceQuery) -  DeviceQuery
 @return DeviceTagsResponse
 */
-func (a *DeviceApiService) DeviceControllerGetTags(ctx _context.Context) (DeviceTagsResponse, *_nethttp.Response, error) {
+func (a *DeviceApiService) DeviceControllerGetTags(ctx _context.Context, localVarOptionals *DeviceControllerGetTagsOpts) (DeviceTagsResponse, *_nethttp.Response, error) {
 	var (
-		localVarHTTPMethod   = _nethttp.MethodGet
+		localVarHTTPMethod   = _nethttp.MethodPost
 		localVarPostBody     interface{}
 		localVarFormFileName string
 		localVarFileName     string
@@ -487,13 +494,13 @@ func (a *DeviceApiService) DeviceControllerGetTags(ctx _context.Context) (Device
 	)
 
 	// create path and map variables
-	localVarPath := a.client.cfg.BasePath + "/devices/all/tags"
+	localVarPath := a.client.cfg.BasePath + "/devices/tags"
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := _neturl.Values{}
 	localVarFormParams := _neturl.Values{}
 
 	// to determine the Content-Type header
-	localVarHTTPContentTypes := []string{}
+	localVarHTTPContentTypes := []string{"application/json"}
 
 	// set Content-Type header
 	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
@@ -509,6 +516,15 @@ func (a *DeviceApiService) DeviceControllerGetTags(ctx _context.Context) (Device
 	if localVarHTTPHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
+	// body params
+	if localVarOptionals != nil && localVarOptionals.DeviceQuery.IsSet() {
+		localVarOptionalDeviceQuery, localVarOptionalDeviceQueryok := localVarOptionals.DeviceQuery.Value().(DeviceQuery)
+		if !localVarOptionalDeviceQueryok {
+			return localVarReturnValue, nil, reportError("deviceQuery should be DeviceQuery")
+		}
+		localVarPostBody = &localVarOptionalDeviceQuery
+	}
+
 	r, err := a.client.prepareRequest(ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFormFileName, localVarFileName, localVarFileBytes)
 	if err != nil {
 		return localVarReturnValue, nil, err

@@ -21,6 +21,7 @@ type EventFilter struct {
 	End time.Time `json:"end,omitempty"`
 	EventTypes []string `json:"eventTypes,omitempty"`
 	NotificationEnabled bool `json:"notificationEnabled,omitempty"`
+	UserIds []string `json:"userIds,omitempty"`
 	AgentIds []string `json:"agentIds,omitempty"`
 	DeviceIds []string `json:"deviceIds,omitempty"`
 	Names []string `json:"names,omitempty"`

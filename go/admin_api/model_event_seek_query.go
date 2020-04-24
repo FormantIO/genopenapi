@@ -29,4 +29,5 @@ type EventSeekQuery struct {
 	End time.Time `json:"end,omitempty"`
 	EventTypes []string `json:"eventTypes,omitempty"`
 	NotificationEnabled bool `json:"notificationEnabled,omitempty"`
+	UserIds []string `json:"userIds,omitempty"`
 }

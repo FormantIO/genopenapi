@@ -1,7 +1,7 @@
 openapi: 3.0.0
 info:
   title: Formant Cloud API
-  version: 0.67.31
+  version: 0.68.60
 servers:
 - url: /
 paths:
@@ -1039,10 +1039,17 @@ paths:
       summary: Count
       tags:
       - Device
-  /devices/all/tags:
-    get:
+  /devices/tags:
+    post:
       description: Get tags across all devices
       operationId: DeviceController.getTags
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/DeviceQuery'
+        description: DeviceQuery
+        required: false
       responses:
         "200":
           content:
@@ -1463,6 +1470,126 @@ paths:
               schema:
                 $ref: '#/components/schemas/EventCounts'
       summary: Counts
+      tags:
+      - Event
+  /events/event-types:
+    post:
+      description: Distinct values of event types
+      operationId: EventController.distinctEventTypes
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/EventFilter'
+        description: EventFilter
+        required: false
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EventDistinctEventTypes'
+      summary: Distinct event types
+      tags:
+      - Event
+  /events/users:
+    post:
+      description: Distinct values of event users
+      operationId: EventController.distinctUsers
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/EventFilter'
+        description: EventFilter
+        required: false
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UuidListResponse'
+      summary: Distinct users
+      tags:
+      - Event
+  /events/devices:
+    post:
+      description: Distinct values of event devices
+      operationId: EventController.distinctDevices
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/EventFilter'
+        description: EventFilter
+        required: false
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UuidListResponse'
+      summary: Distinct devices
+      tags:
+      - Event
+  /events/stream-types:
+    post:
+      description: Distinct values of event stream types
+      operationId: EventController.distinctStreamTypes
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/EventFilter'
+        description: EventFilter
+        required: false
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EventDistinctStreamTypes'
+      summary: Distinct stream types
+      tags:
+      - Event
+  /events/stream-names:
+    post:
+      description: Distinct values of event stream names
+      operationId: EventController.distinctStreamNames
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/EventFilter'
+        description: EventFilter
+        required: false
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/StringListResponse'
+      summary: Distinct stream names
+      tags:
+      - Event
+  /events/tags:
+    post:
+      description: Distinct values of event tags
+      operationId: EventController.distinctTags
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/EventFilter'
+        description: EventFilter
+        required: false
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EventDistinctTags'
+      summary: Distinct tags
       tags:
       - Event
   /events/histogram:
@@ -2106,6 +2233,8 @@ components:
             type: type
           - name: name
             type: type
+        env:
+          key: env
         version: version
       properties:
         version:
@@ -2116,6 +2245,11 @@ components:
           $ref: '#/components/schemas/DeviceReportedConfigurationState'
         ros:
           $ref: '#/components/schemas/DeviceRosState'
+        env:
+          additionalProperties:
+            type: string
+          nullable: true
+          type: object
       type: object
     DeviceApplicationConfiguration:
       example:
@@ -3065,7 +3199,7 @@ components:
         firstName: firstName
         lastName: lastName
         createdAt: 2000-01-23T04:56:07.000+00:00
-        role: operator
+        role: viewer
         termsAccepted: termsAccepted
         isOrganizationOwner: true
         lastLoggedIn: 2000-01-23T04:56:07.000+00:00
@@ -3088,8 +3222,8 @@ components:
           type: string
         role:
           enum:
+          - viewer
           - operator
-          - member
           - administrator
           type: string
         enabled:
@@ -3296,6 +3430,8 @@ components:
               type: type
             - name: name
               type: type
+          env:
+            key: env
           version: version
         id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         type: default
@@ -5351,6 +5487,8 @@ components:
                 type: type
               - name: name
                 type: type
+            env:
+              key: env
             version: version
           id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           type: default
@@ -5397,6 +5535,8 @@ components:
                 type: type
               - name: name
                 type: type
+            env:
+              key: env
             version: version
           id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           type: default
@@ -5441,7 +5581,6 @@ components:
       type: object
     DeviceQuery:
       example:
-        hasDeviceLayout: true
         offset: 5.429049884013571E15
         query: query
         name: name
@@ -5472,8 +5611,6 @@ components:
           maximum: 9007199254740991
           minimum: 0
           type: number
-        hasDeviceLayout:
-          type: boolean
       type: object
     DeviceTagsResponse:
       example:
@@ -5599,6 +5736,33 @@ components:
       required:
       - items
       type: object
+    StringListResponse:
+      example:
+        items:
+        - items
+        - items
+      properties:
+        items:
+          items:
+            type: string
+          type: array
+      required:
+      - items
+      type: object
+    UuidListResponse:
+      example:
+        items:
+        - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+      properties:
+        items:
+          items:
+            format: uuid
+            type: string
+          type: array
+      required:
+      - items
+      type: object
     EventCounts:
       example:
         warn: 1320286958557579
@@ -5647,6 +5811,62 @@ components:
       required:
       - total
       type: object
+    EventDistinctEventTypes:
+      example:
+        items:
+        - alert
+        - alert
+      properties:
+        items:
+          items:
+            enum:
+            - alert
+            - intervention-request
+            - teleop-session-record
+            - command-request
+            - command-response
+            - command-delivery
+            - custom
+            - comment
+            type: string
+          type: array
+      required:
+      - items
+      type: object
+    EventDistinctStreamTypes:
+      example:
+        items:
+        - image
+        - image
+      properties:
+        items:
+          items:
+            enum:
+            - image
+            - numeric
+            - point cloud
+            - text
+            - location
+            - file
+            - localization
+            - health
+            - bitset
+            - metrics
+            - transform tree
+            - battery
+            type: string
+          type: array
+      required:
+      - items
+      type: object
+    EventDistinctTags:
+      example:
+        tags: ""
+      properties:
+        tags: {}
+      required:
+      - tags
+      type: object
     EventFilter:
       example:
         agentIds:
@@ -5672,6 +5892,9 @@ components:
         - notNames
         - notNames
         viewed: true
+        userIds:
+        - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         end: 2000-01-23T04:56:07.000+00:00
         id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         keyword: keyword
@@ -5706,6 +5929,11 @@ components:
           type: array
         notificationEnabled:
           type: boolean
+        userIds:
+          items:
+            format: uuid
+            type: string
+          type: array
         agentIds:
           items:
             format: uuid
@@ -5860,6 +6088,9 @@ components:
         - notNames
         - notNames
         viewed: true
+        userIds:
+        - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         end: 2000-01-23T04:56:07.000+00:00
         id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         keyword: keyword
@@ -5942,6 +6173,11 @@ components:
           type: array
         notificationEnabled:
           type: boolean
+        userIds:
+          items:
+            format: uuid
+            type: string
+          type: array
       type: object
     EventSeekQuery:
       example:
@@ -5968,6 +6204,9 @@ components:
         - notNames
         - notNames
         viewed: true
+        userIds:
+        - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         from: 2000-01-23T04:56:07.000+00:00
         end: 2000-01-23T04:56:07.000+00:00
         id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
@@ -6048,6 +6287,11 @@ components:
           type: array
         notificationEnabled:
           type: boolean
+        userIds:
+          items:
+            format: uuid
+            type: string
+          type: array
       required:
       - direction
       - from
@@ -6077,6 +6321,9 @@ components:
         - notNames
         - notNames
         viewed: true
+        userIds:
+        - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         interval: minute
         end: 2000-01-23T04:56:07.000+00:00
         id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
@@ -6154,6 +6401,11 @@ components:
           type: array
         notificationEnabled:
           type: boolean
+        userIds:
+          items:
+            format: uuid
+            type: string
+          type: array
       required:
       - interval
       type: object
@@ -6301,7 +6553,7 @@ components:
           firstName: firstName
           lastName: lastName
           createdAt: 2000-01-23T04:56:07.000+00:00
-          role: operator
+          role: viewer
           termsAccepted: termsAccepted
           isOrganizationOwner: true
           lastLoggedIn: 2000-01-23T04:56:07.000+00:00
@@ -6313,7 +6565,7 @@ components:
           firstName: firstName
           lastName: lastName
           createdAt: 2000-01-23T04:56:07.000+00:00
-          role: operator
+          role: viewer
           termsAccepted: termsAccepted
           isOrganizationOwner: true
           lastLoggedIn: 2000-01-23T04:56:07.000+00:00
@@ -6744,6 +6996,8 @@ components:
               type: type
             - name: name
               type: type
+          env:
+            key: env
           version: version
         id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         type: default
@@ -6993,7 +7247,7 @@ components:
         firstName: firstName
         lastName: lastName
         createdAt: 2000-01-23T04:56:07.000+00:00
-        role: operator
+        role: viewer
         termsAccepted: termsAccepted
         isOrganizationOwner: true
         lastLoggedIn: 2000-01-23T04:56:07.000+00:00
@@ -7016,8 +7270,8 @@ components:
           type: string
         role:
           enum:
+          - viewer
           - operator
-          - member
           - administrator
           type: string
         enabled:

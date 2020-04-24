@@ -19,6 +19,7 @@ Name | Type | Description | Notes
 **End** | [**time.Time**](time.Time.md) |  | [optional] 
 **EventTypes** | **[]string** |  | [optional] 
 **NotificationEnabled** | **bool** |  | [optional] 
+**UserIds** | **[]string** |  | [optional] 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

@@ -12,6 +12,7 @@ Name | Type | Description | Notes
 **End** | [**time.Time**](time.Time.md) |  | [optional] 
 **EventTypes** | **[]string** |  | [optional] 
 **NotificationEnabled** | **bool** |  | [optional] 
+**UserIds** | **[]string** |  | [optional] 
 **AgentIds** | **[]string** |  | [optional] 
 **DeviceIds** | **[]string** |  | [optional] 
 **Names** | **[]string** |  | [optional] 

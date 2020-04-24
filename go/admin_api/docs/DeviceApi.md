@@ -9,7 +9,7 @@ Method | HTTP request | Description
 [**DeviceControllerGenerateDeviceProvisioningToken**](DeviceApi.md#DeviceControllerGenerateDeviceProvisioningToken) | **Post** /devices/{id}/provisioning-token | Generate device provisioning token
 [**DeviceControllerGetConfiguration**](DeviceApi.md#DeviceControllerGetConfiguration) | **Get** /devices/{id}/configurations/{version} | Get configuration
 [**DeviceControllerGetOne**](DeviceApi.md#DeviceControllerGetOne) | **Get** /devices/{id} | Get one
-[**DeviceControllerGetTags**](DeviceApi.md#DeviceControllerGetTags) | **Get** /devices/all/tags | Get tags
+[**DeviceControllerGetTags**](DeviceApi.md#DeviceControllerGetTags) | **Post** /devices/tags | Get tags
 [**DeviceControllerGetUpdatedConfiguration**](DeviceApi.md#DeviceControllerGetUpdatedConfiguration) | **Get** /devices/{id}/updated-configuration | Get updated configuration
 [**DeviceControllerPatch**](DeviceApi.md#DeviceControllerPatch) | **Patch** /devices/{id} | Patch
 [**DeviceControllerPost**](DeviceApi.md#DeviceControllerPost) | **Post** /devices | Post
@@ -212,7 +212,7 @@ Use admin JWT for authorization
 
 ## DeviceControllerGetTags
 
-> DeviceTagsResponse DeviceControllerGetTags(ctx, )
+> DeviceTagsResponse DeviceControllerGetTags(ctx, optional)
 
 Get tags
 
@@ -220,7 +220,20 @@ Get tags across all devices
 
 ### Required Parameters
 
-This endpoint does not need any parameter.
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+ **optional** | ***DeviceControllerGetTagsOpts** | optional parameters | nil if no parameters
+
+### Optional Parameters
+
+Optional parameters are passed through a pointer to a DeviceControllerGetTagsOpts struct
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **deviceQuery** | [**optional.Interface of DeviceQuery**](DeviceQuery.md)| DeviceQuery | 
 
 ### Return type
 
@@ -232,7 +245,7 @@ Use admin JWT for authorization
 
 ### HTTP request headers
 
-- **Content-Type**: Not defined
+- **Content-Type**: application/json
 - **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)

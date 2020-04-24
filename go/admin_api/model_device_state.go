@@ -13,4 +13,5 @@ type DeviceState struct {
 	Version *string `json:"version,omitempty"`
 	ReportedConfiguration *DeviceReportedConfigurationState `json:"reportedConfiguration,omitempty"`
 	Ros *DeviceRosState `json:"ros,omitempty"`
+	Env *map[string]string `json:"env,omitempty"`
 }
