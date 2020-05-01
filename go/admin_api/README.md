@@ -80,6 +80,7 @@ Class | Method | HTTP request | Description
 *DeviceApi* | [**DeviceControllerGetConfiguration**](docs/DeviceApi.md#devicecontrollergetconfiguration) | **Get** /devices/{id}/configurations/{version} | Get configuration
 *DeviceApi* | [**DeviceControllerGetOne**](docs/DeviceApi.md#devicecontrollergetone) | **Get** /devices/{id} | Get one
 *DeviceApi* | [**DeviceControllerGetTags**](docs/DeviceApi.md#devicecontrollergettags) | **Post** /devices/tags | Get tags
+*DeviceApi* | [**DeviceControllerGetUpdatedAgentVersion**](docs/DeviceApi.md#devicecontrollergetupdatedagentversion) | **Get** /devices/{id}/updated-agent-version | Get updated agent version
 *DeviceApi* | [**DeviceControllerGetUpdatedConfiguration**](docs/DeviceApi.md#devicecontrollergetupdatedconfiguration) | **Get** /devices/{id}/updated-configuration | Get updated configuration
 *DeviceApi* | [**DeviceControllerPatch**](docs/DeviceApi.md#devicecontrollerpatch) | **Patch** /devices/{id} | Patch
 *DeviceApi* | [**DeviceControllerPost**](docs/DeviceApi.md#devicecontrollerpost) | **Post** /devices | Post
@@ -95,11 +96,6 @@ Class | Method | HTTP request | Description
 *DeviceConfigurationTemplateApi* | [**DeviceConfigurationTemplateControllerPost**](docs/DeviceConfigurationTemplateApi.md#deviceconfigurationtemplatecontrollerpost) | **Post** /device-configuration-templates | Post
 *DeviceDetailsApi* | [**DeviceDetailsControllerGetAll**](docs/DeviceDetailsApi.md#devicedetailscontrollergetall) | **Post** /device-details/query | Get all
 *DeviceDetailsApi* | [**DeviceDetailsControllerGetOne**](docs/DeviceDetailsApi.md#devicedetailscontrollergetone) | **Get** /device-details/{id} | Get one
-*DeviceLayoutApi* | [**DeviceLayoutControllerDelete**](docs/DeviceLayoutApi.md#devicelayoutcontrollerdelete) | **Delete** /device-layouts/{id} | Delete
-*DeviceLayoutApi* | [**DeviceLayoutControllerGetAll**](docs/DeviceLayoutApi.md#devicelayoutcontrollergetall) | **Get** /device-layouts | Get all
-*DeviceLayoutApi* | [**DeviceLayoutControllerGetOne**](docs/DeviceLayoutApi.md#devicelayoutcontrollergetone) | **Get** /device-layouts/{id} | Get one
-*DeviceLayoutApi* | [**DeviceLayoutControllerPatch**](docs/DeviceLayoutApi.md#devicelayoutcontrollerpatch) | **Patch** /device-layouts/{id} | Patch
-*DeviceLayoutApi* | [**DeviceLayoutControllerPost**](docs/DeviceLayoutApi.md#devicelayoutcontrollerpost) | **Post** /device-layouts | Post
 *EventApi* | [**EventControllerCount**](docs/EventApi.md#eventcontrollercount) | **Post** /events/count | Count
 *EventApi* | [**EventControllerCounts**](docs/EventApi.md#eventcontrollercounts) | **Post** /events/counts | Counts
 *EventApi* | [**EventControllerDistinctDevices**](docs/EventApi.md#eventcontrollerdistinctdevices) | **Post** /events/devices | Distinct devices
@@ -133,6 +129,11 @@ Class | Method | HTTP request | Description
 *UserApi* | [**UserControllerGetOne**](docs/UserApi.md#usercontrollergetone) | **Get** /users/{id} | Get one
 *UserApi* | [**UserControllerPatch**](docs/UserApi.md#usercontrollerpatch) | **Patch** /users/{id} | Patch
 *UserApi* | [**UserControllerPost**](docs/UserApi.md#usercontrollerpost) | **Post** /users | Post
+*ViewApi* | [**ViewControllerDelete**](docs/ViewApi.md#viewcontrollerdelete) | **Delete** /views/{id} | Delete
+*ViewApi* | [**ViewControllerGetAll**](docs/ViewApi.md#viewcontrollergetall) | **Get** /views | Get all
+*ViewApi* | [**ViewControllerGetOne**](docs/ViewApi.md#viewcontrollergetone) | **Get** /views/{id} | Get one
+*ViewApi* | [**ViewControllerPatch**](docs/ViewApi.md#viewcontrollerpatch) | **Patch** /views/{id} | Patch
+*ViewApi* | [**ViewControllerPost**](docs/ViewApi.md#viewcontrollerpost) | **Post** /views | Post
 
 
 ## Documentation For Models
@@ -178,7 +179,6 @@ Class | Method | HTTP request | Description
  - [DeviceDetails](docs/DeviceDetails.md)
  - [DeviceDetailsListResponse](docs/DeviceDetailsListResponse.md)
  - [DeviceDiskConfiguration](docs/DeviceDiskConfiguration.md)
- - [DeviceLayout](docs/DeviceLayout.md)
  - [DeviceListResponse](docs/DeviceListResponse.md)
  - [DevicePortForwardingConfiguration](docs/DevicePortForwardingConfiguration.md)
  - [DeviceProvisioning](docs/DeviceProvisioning.md)
@@ -224,6 +224,7 @@ Class | Method | HTTP request | Description
  - [Label](docs/Label.md)
  - [LabeledPolygon](docs/LabeledPolygon.md)
  - [LabelingRequestData](docs/LabelingRequestData.md)
+ - [LocationViewConfiguration](docs/LocationViewConfiguration.md)
  - [LoginRequest](docs/LoginRequest.md)
  - [LoginResult](docs/LoginResult.md)
  - [LookerInfo](docs/LookerInfo.md)
@@ -238,9 +239,9 @@ Class | Method | HTTP request | Description
  - [PartialComment](docs/PartialComment.md)
  - [PartialDevice](docs/PartialDevice.md)
  - [PartialDeviceConfigurationTemplate](docs/PartialDeviceConfigurationTemplate.md)
- - [PartialDeviceLayout](docs/PartialDeviceLayout.md)
  - [PartialOrganization](docs/PartialOrganization.md)
  - [PartialUser](docs/PartialUser.md)
+ - [PartialView](docs/PartialView.md)
  - [PollCommandRequest](docs/PollCommandRequest.md)
  - [PresenceAlertCondition](docs/PresenceAlertCondition.md)
  - [Rectangle](docs/Rectangle.md)
@@ -262,6 +263,8 @@ Class | Method | HTTP request | Description
  - [TeleopSessionRecord](docs/TeleopSessionRecord.md)
  - [ThresholdAlertCondition](docs/ThresholdAlertCondition.md)
  - [TokenResult](docs/TokenResult.md)
+ - [UpdatedAgentVersionQuery](docs/UpdatedAgentVersionQuery.md)
+ - [UpdatedAgentVersionResponse](docs/UpdatedAgentVersionResponse.md)
  - [UpdatedConfigurationQuery](docs/UpdatedConfigurationQuery.md)
  - [UpdatedConfigurationResponse](docs/UpdatedConfigurationResponse.md)
  - [User](docs/User.md)
@@ -270,6 +273,7 @@ Class | Method | HTTP request | Description
  - [UserTeleopRosStreamConfiguration](docs/UserTeleopRosStreamConfiguration.md)
  - [UserTeleopTwistRosTopicConfiguration](docs/UserTeleopTwistRosTopicConfiguration.md)
  - [UuidListResponse](docs/UuidListResponse.md)
+ - [View](docs/View.md)
  - [ViewConfiguration](docs/ViewConfiguration.md)
  - [Webhook](docs/Webhook.md)
  - [WebhooksInfo](docs/WebhooksInfo.md)

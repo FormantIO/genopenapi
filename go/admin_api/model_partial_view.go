@@ -11,8 +11,8 @@ package admin_api
 import (
 	"time"
 )
-// PartialDeviceLayout struct for PartialDeviceLayout
-type PartialDeviceLayout struct {
+// PartialView struct for PartialView
+type PartialView struct {
 	OrganizationId string `json:"organizationId,omitempty"`
 	Name string `json:"name,omitempty"`
 	Tags map[string]string `json:"tags,omitempty"`

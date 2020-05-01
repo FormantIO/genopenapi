@@ -10,6 +10,7 @@ Method | HTTP request | Description
 [**DeviceControllerGetConfiguration**](DeviceApi.md#DeviceControllerGetConfiguration) | **Get** /devices/{id}/configurations/{version} | Get configuration
 [**DeviceControllerGetOne**](DeviceApi.md#DeviceControllerGetOne) | **Get** /devices/{id} | Get one
 [**DeviceControllerGetTags**](DeviceApi.md#DeviceControllerGetTags) | **Post** /devices/tags | Get tags
+[**DeviceControllerGetUpdatedAgentVersion**](DeviceApi.md#DeviceControllerGetUpdatedAgentVersion) | **Get** /devices/{id}/updated-agent-version | Get updated agent version
 [**DeviceControllerGetUpdatedConfiguration**](DeviceApi.md#DeviceControllerGetUpdatedConfiguration) | **Get** /devices/{id}/updated-configuration | Get updated configuration
 [**DeviceControllerPatch**](DeviceApi.md#DeviceControllerPatch) | **Patch** /devices/{id} | Patch
 [**DeviceControllerPost**](DeviceApi.md#DeviceControllerPost) | **Post** /devices | Post
@@ -246,6 +247,51 @@ Use admin JWT for authorization
 ### HTTP request headers
 
 - **Content-Type**: application/json
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## DeviceControllerGetUpdatedAgentVersion
+
+> UpdatedAgentVersionResponse DeviceControllerGetUpdatedAgentVersion(ctx, id, optional)
+
+Get updated agent version
+
+Check for agent version updates
+
+### Required Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**id** | **string**|  | 
+ **optional** | ***DeviceControllerGetUpdatedAgentVersionOpts** | optional parameters | nil if no parameters
+
+### Optional Parameters
+
+Optional parameters are passed through a pointer to a DeviceControllerGetUpdatedAgentVersionOpts struct
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+ **reportedAgentVersion** | **optional.String**|  | 
+
+### Return type
+
+[**UpdatedAgentVersionResponse**](UpdatedAgentVersionResponse.md)
+
+### Authorization
+
+Use admin JWT for authorization
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
 - **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)

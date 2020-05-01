@@ -1,20 +1,20 @@
-# \DeviceLayoutApi
+# \ViewApi
 
 All URIs are relative to *https://api.formant.io/v1/admin*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**DeviceLayoutControllerDelete**](DeviceLayoutApi.md#DeviceLayoutControllerDelete) | **Delete** /device-layouts/{id} | Delete
-[**DeviceLayoutControllerGetAll**](DeviceLayoutApi.md#DeviceLayoutControllerGetAll) | **Get** /device-layouts | Get all
-[**DeviceLayoutControllerGetOne**](DeviceLayoutApi.md#DeviceLayoutControllerGetOne) | **Get** /device-layouts/{id} | Get one
-[**DeviceLayoutControllerPatch**](DeviceLayoutApi.md#DeviceLayoutControllerPatch) | **Patch** /device-layouts/{id} | Patch
-[**DeviceLayoutControllerPost**](DeviceLayoutApi.md#DeviceLayoutControllerPost) | **Post** /device-layouts | Post
+[**ViewControllerDelete**](ViewApi.md#ViewControllerDelete) | **Delete** /views/{id} | Delete
+[**ViewControllerGetAll**](ViewApi.md#ViewControllerGetAll) | **Get** /views | Get all
+[**ViewControllerGetOne**](ViewApi.md#ViewControllerGetOne) | **Get** /views/{id} | Get one
+[**ViewControllerPatch**](ViewApi.md#ViewControllerPatch) | **Patch** /views/{id} | Patch
+[**ViewControllerPost**](ViewApi.md#ViewControllerPost) | **Post** /views | Post
 
 
 
-## DeviceLayoutControllerDelete
+## ViewControllerDelete
 
-> DeviceLayoutControllerDelete(ctx, id)
+> ViewControllerDelete(ctx, id)
 
 Delete
 
@@ -46,9 +46,9 @@ Use admin JWT for authorization
 [[Back to README]](../README.md)
 
 
-## DeviceLayoutControllerGetAll
+## ViewControllerGetAll
 
-> DeviceListResponse DeviceLayoutControllerGetAll(ctx, )
+> DeviceListResponse ViewControllerGetAll(ctx, )
 
 Get all
 
@@ -76,9 +76,9 @@ Use admin JWT for authorization
 [[Back to README]](../README.md)
 
 
-## DeviceLayoutControllerGetOne
+## ViewControllerGetOne
 
-> DeviceLayout DeviceLayoutControllerGetOne(ctx, id)
+> View ViewControllerGetOne(ctx, id)
 
 Get one
 
@@ -94,7 +94,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**DeviceLayout**](DeviceLayout.md)
+[**View**](View.md)
 
 ### Authorization
 
@@ -110,9 +110,9 @@ Use admin JWT for authorization
 [[Back to README]](../README.md)
 
 
-## DeviceLayoutControllerPatch
+## ViewControllerPatch
 
-> DeviceLayout DeviceLayoutControllerPatch(ctx, id, partialDeviceLayout)
+> View ViewControllerPatch(ctx, id, partialView)
 
 Patch
 
@@ -125,11 +125,11 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
 **id** | **string**|  | 
-**partialDeviceLayout** | [**PartialDeviceLayout**](PartialDeviceLayout.md)| PartialDeviceLayout | 
+**partialView** | [**PartialView**](PartialView.md)| PartialView | 
 
 ### Return type
 
-[**DeviceLayout**](DeviceLayout.md)
+[**View**](View.md)
 
 ### Authorization
 
@@ -145,9 +145,9 @@ Use admin JWT for authorization
 [[Back to README]](../README.md)
 
 
-## DeviceLayoutControllerPost
+## ViewControllerPost
 
-> DeviceLayout DeviceLayoutControllerPost(ctx, deviceLayout)
+> View ViewControllerPost(ctx, view)
 
 Post
 
@@ -159,11 +159,11 @@ Create a device layout
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**deviceLayout** | [**DeviceLayout**](DeviceLayout.md)| DeviceLayout | 
+**view** | [**View**](View.md)| View | 
 
 ### Return type
 
-[**DeviceLayout**](DeviceLayout.md)
+[**View**](View.md)
 
 ### Authorization
 

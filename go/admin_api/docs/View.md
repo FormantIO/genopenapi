@@ -1,16 +1,16 @@
-# PartialDeviceLayout
+# View
 
 ## Properties
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **OrganizationId** | **string** |  | [optional] 
-**Name** | **string** |  | [optional] 
-**Tags** | **map[string]string** |  | [optional] 
-**Filter** | [**Filter**](Filter.md) |  | [optional] 
-**Layout** | **interface{}** |  | [optional] 
-**Configuration** | [**[]ViewConfiguration**](ViewConfiguration.md) |  | [optional] 
-**Index** | **int64** |  | [optional] 
+**Name** | **string** |  | 
+**Tags** | **map[string]string** |  | 
+**Filter** | [**Filter**](Filter.md) |  | 
+**Layout** | **interface{}** |  | 
+**Configuration** | [**[]ViewConfiguration**](ViewConfiguration.md) |  | 
+**Index** | **int64** |  | 
 **Id** | **string** |  | [optional] 
 **CreatedAt** | [**time.Time**](time.Time.md) |  | [optional] 
 **UpdatedAt** | [**time.Time**](time.Time.md) |  | [optional] 

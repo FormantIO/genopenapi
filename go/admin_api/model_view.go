@@ -11,8 +11,8 @@ package admin_api
 import (
 	"time"
 )
-// DeviceLayout struct for DeviceLayout
-type DeviceLayout struct {
+// View struct for View
+type View struct {
 	OrganizationId string `json:"organizationId,omitempty"`
 	Name string `json:"name"`
 	Tags map[string]string `json:"tags"`

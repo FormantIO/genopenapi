@@ -75,8 +75,6 @@ type APIClient struct {
 
 	DeviceDetailsApi *DeviceDetailsApiService
 
-	DeviceLayoutApi *DeviceLayoutApiService
-
 	EventApi *EventApiService
 
 	FreeTeleopSettingsFormApi *FreeTeleopSettingsFormApiService
@@ -96,6 +94,8 @@ type APIClient struct {
 	TeleopSessionRecordApi *TeleopSessionRecordApiService
 
 	UserApi *UserApiService
+
+	ViewApi *ViewApiService
 }
 
 type service struct {
@@ -128,7 +128,6 @@ func NewAPIClient(cfg *Configuration) *APIClient {
 	c.DeviceApi = (*DeviceApiService)(&c.common)
 	c.DeviceConfigurationTemplateApi = (*DeviceConfigurationTemplateApiService)(&c.common)
 	c.DeviceDetailsApi = (*DeviceDetailsApiService)(&c.common)
-	c.DeviceLayoutApi = (*DeviceLayoutApiService)(&c.common)
 	c.EventApi = (*EventApiService)(&c.common)
 	c.FreeTeleopSettingsFormApi = (*FreeTeleopSettingsFormApiService)(&c.common)
 	c.IntegrationApi = (*IntegrationApiService)(&c.common)
@@ -139,6 +138,7 @@ func NewAPIClient(cfg *Configuration) *APIClient {
 	c.ShareApi = (*ShareApiService)(&c.common)
 	c.TeleopSessionRecordApi = (*TeleopSessionRecordApiService)(&c.common)
 	c.UserApi = (*UserApiService)(&c.common)
+	c.ViewApi = (*ViewApiService)(&c.common)
 
 	return c
 }

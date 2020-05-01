@@ -22,16 +22,16 @@ var (
 	_ _context.Context
 )
 
-// DeviceLayoutApiService DeviceLayoutApi service
-type DeviceLayoutApiService service
+// ViewApiService ViewApi service
+type ViewApiService service
 
 /*
-DeviceLayoutControllerDelete Delete
+ViewControllerDelete Delete
 Delete a device layout
  * @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  * @param id
 */
-func (a *DeviceLayoutApiService) DeviceLayoutControllerDelete(ctx _context.Context, id string) (*_nethttp.Response, error) {
+func (a *ViewApiService) ViewControllerDelete(ctx _context.Context, id string) (*_nethttp.Response, error) {
 	var (
 		localVarHTTPMethod   = _nethttp.MethodDelete
 		localVarPostBody     interface{}
@@ -41,7 +41,7 @@ func (a *DeviceLayoutApiService) DeviceLayoutControllerDelete(ctx _context.Conte
 	)
 
 	// create path and map variables
-	localVarPath := a.client.cfg.BasePath + "/device-layouts/{id}"
+	localVarPath := a.client.cfg.BasePath + "/views/{id}"
 	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", _neturl.QueryEscape(parameterToString(id, "")) , -1)
 
 	localVarHeaderParams := make(map[string]string)
@@ -93,12 +93,12 @@ func (a *DeviceLayoutApiService) DeviceLayoutControllerDelete(ctx _context.Conte
 }
 
 /*
-DeviceLayoutControllerGetAll Get all
+ViewControllerGetAll Get all
 List all device layouts
  * @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 @return DeviceListResponse
 */
-func (a *DeviceLayoutApiService) DeviceLayoutControllerGetAll(ctx _context.Context) (DeviceListResponse, *_nethttp.Response, error) {
+func (a *ViewApiService) ViewControllerGetAll(ctx _context.Context) (DeviceListResponse, *_nethttp.Response, error) {
 	var (
 		localVarHTTPMethod   = _nethttp.MethodGet
 		localVarPostBody     interface{}
@@ -109,7 +109,7 @@ func (a *DeviceLayoutApiService) DeviceLayoutControllerGetAll(ctx _context.Conte
 	)
 
 	// create path and map variables
-	localVarPath := a.client.cfg.BasePath + "/device-layouts"
+	localVarPath := a.client.cfg.BasePath + "/views"
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := _neturl.Values{}
 	localVarFormParams := _neturl.Values{}
@@ -177,24 +177,24 @@ func (a *DeviceLayoutApiService) DeviceLayoutControllerGetAll(ctx _context.Conte
 }
 
 /*
-DeviceLayoutControllerGetOne Get one
+ViewControllerGetOne Get one
 Get a device layout
  * @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  * @param id
-@return DeviceLayout
+@return View
 */
-func (a *DeviceLayoutApiService) DeviceLayoutControllerGetOne(ctx _context.Context, id string) (DeviceLayout, *_nethttp.Response, error) {
+func (a *ViewApiService) ViewControllerGetOne(ctx _context.Context, id string) (View, *_nethttp.Response, error) {
 	var (
 		localVarHTTPMethod   = _nethttp.MethodGet
 		localVarPostBody     interface{}
 		localVarFormFileName string
 		localVarFileName     string
 		localVarFileBytes    []byte
-		localVarReturnValue  DeviceLayout
+		localVarReturnValue  View
 	)
 
 	// create path and map variables
-	localVarPath := a.client.cfg.BasePath + "/device-layouts/{id}"
+	localVarPath := a.client.cfg.BasePath + "/views/{id}"
 	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", _neturl.QueryEscape(parameterToString(id, "")) , -1)
 
 	localVarHeaderParams := make(map[string]string)
@@ -240,7 +240,7 @@ func (a *DeviceLayoutApiService) DeviceLayoutControllerGetOne(ctx _context.Conte
 			error: localVarHTTPResponse.Status,
 		}
 		if localVarHTTPResponse.StatusCode == 200 {
-			var v DeviceLayout
+			var v View
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -264,25 +264,25 @@ func (a *DeviceLayoutApiService) DeviceLayoutControllerGetOne(ctx _context.Conte
 }
 
 /*
-DeviceLayoutControllerPatch Patch
+ViewControllerPatch Patch
 Update a device layout
  * @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  * @param id
- * @param partialDeviceLayout PartialDeviceLayout
-@return DeviceLayout
+ * @param partialView PartialView
+@return View
 */
-func (a *DeviceLayoutApiService) DeviceLayoutControllerPatch(ctx _context.Context, id string, partialDeviceLayout PartialDeviceLayout) (DeviceLayout, *_nethttp.Response, error) {
+func (a *ViewApiService) ViewControllerPatch(ctx _context.Context, id string, partialView PartialView) (View, *_nethttp.Response, error) {
 	var (
 		localVarHTTPMethod   = _nethttp.MethodPatch
 		localVarPostBody     interface{}
 		localVarFormFileName string
 		localVarFileName     string
 		localVarFileBytes    []byte
-		localVarReturnValue  DeviceLayout
+		localVarReturnValue  View
 	)
 
 	// create path and map variables
-	localVarPath := a.client.cfg.BasePath + "/device-layouts/{id}"
+	localVarPath := a.client.cfg.BasePath + "/views/{id}"
 	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", _neturl.QueryEscape(parameterToString(id, "")) , -1)
 
 	localVarHeaderParams := make(map[string]string)
@@ -307,7 +307,7 @@ func (a *DeviceLayoutApiService) DeviceLayoutControllerPatch(ctx _context.Contex
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
 	// body params
-	localVarPostBody = &partialDeviceLayout
+	localVarPostBody = &partialView
 	r, err := a.client.prepareRequest(ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFormFileName, localVarFileName, localVarFileBytes)
 	if err != nil {
 		return localVarReturnValue, nil, err
@@ -330,7 +330,7 @@ func (a *DeviceLayoutApiService) DeviceLayoutControllerPatch(ctx _context.Contex
 			error: localVarHTTPResponse.Status,
 		}
 		if localVarHTTPResponse.StatusCode == 200 {
-			var v DeviceLayout
+			var v View
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -354,24 +354,24 @@ func (a *DeviceLayoutApiService) DeviceLayoutControllerPatch(ctx _context.Contex
 }
 
 /*
-DeviceLayoutControllerPost Post
+ViewControllerPost Post
 Create a device layout
  * @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- * @param deviceLayout DeviceLayout
-@return DeviceLayout
+ * @param view View
+@return View
 */
-func (a *DeviceLayoutApiService) DeviceLayoutControllerPost(ctx _context.Context, deviceLayout DeviceLayout) (DeviceLayout, *_nethttp.Response, error) {
+func (a *ViewApiService) ViewControllerPost(ctx _context.Context, view View) (View, *_nethttp.Response, error) {
 	var (
 		localVarHTTPMethod   = _nethttp.MethodPost
 		localVarPostBody     interface{}
 		localVarFormFileName string
 		localVarFileName     string
 		localVarFileBytes    []byte
-		localVarReturnValue  DeviceLayout
+		localVarReturnValue  View
 	)
 
 	// create path and map variables
-	localVarPath := a.client.cfg.BasePath + "/device-layouts"
+	localVarPath := a.client.cfg.BasePath + "/views"
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := _neturl.Values{}
 	localVarFormParams := _neturl.Values{}
@@ -394,7 +394,7 @@ func (a *DeviceLayoutApiService) DeviceLayoutControllerPost(ctx _context.Context
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
 	// body params
-	localVarPostBody = &deviceLayout
+	localVarPostBody = &view
 	r, err := a.client.prepareRequest(ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFormFileName, localVarFileName, localVarFileBytes)
 	if err != nil {
 		return localVarReturnValue, nil, err
@@ -417,7 +417,7 @@ func (a *DeviceLayoutApiService) DeviceLayoutControllerPost(ctx _context.Context
 			error: localVarHTTPResponse.Status,
 		}
 		if localVarHTTPResponse.StatusCode == 201 {
-			var v DeviceLayout
+			var v View
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()

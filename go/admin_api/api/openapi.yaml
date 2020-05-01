@@ -1,7 +1,7 @@
 openapi: 3.0.0
 info:
   title: Formant Cloud API
-  version: 0.68.61
+  version: 0.69.40
 servers:
 - url: /
 paths:
@@ -1254,6 +1254,35 @@ paths:
       summary: Get updated configuration
       tags:
       - Device
+  /devices/{id}/updated-agent-version:
+    get:
+      description: Check for agent version updates
+      operationId: DeviceController.getUpdatedAgentVersion
+      parameters:
+      - explode: false
+        in: path
+        name: id
+        required: true
+        schema:
+          type: string
+        style: simple
+      - explode: true
+        in: query
+        name: reportedAgentVersion
+        required: false
+        schema:
+          pattern: ^\d{1,3}\.\d{1,3}\.\d{1,3}$
+          type: string
+        style: form
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UpdatedAgentVersionResponse'
+      summary: Get updated agent version
+      tags:
+      - Device
   /device-details/query:
     post:
       operationId: DeviceDetailsController.getAll
@@ -1293,105 +1322,6 @@ paths:
       summary: Get one
       tags:
       - Device Details
-  /device-layouts:
-    get:
-      description: List all device layouts
-      operationId: DeviceLayoutController.getAll
-      responses:
-        "200":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/DeviceListResponse'
-      summary: Get all
-      tags:
-      - Device Layout
-    post:
-      description: Create a device layout
-      operationId: DeviceLayoutController.post
-      requestBody:
-        content:
-          application/json:
-            schema:
-              $ref: '#/components/schemas/DeviceLayout'
-        description: DeviceLayout
-        required: true
-      responses:
-        "201":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/DeviceLayout'
-      summary: Post
-      tags:
-      - Device Layout
-  /device-layouts/{id}:
-    delete:
-      description: Delete a device layout
-      operationId: DeviceLayoutController.delete
-      parameters:
-      - explode: false
-        in: path
-        name: id
-        required: true
-        schema:
-          type: string
-        style: simple
-      responses:
-        "200":
-          content:
-            application/json: {}
-          description: Successful response
-      summary: Delete
-      tags:
-      - Device Layout
-    get:
-      description: Get a device layout
-      operationId: DeviceLayoutController.getOne
-      parameters:
-      - explode: false
-        in: path
-        name: id
-        required: true
-        schema:
-          type: string
-        style: simple
-      responses:
-        "200":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/DeviceLayout'
-      summary: Get one
-      tags:
-      - Device Layout
-    patch:
-      description: Update a device layout
-      operationId: DeviceLayoutController.patch
-      parameters:
-      - explode: false
-        in: path
-        name: id
-        required: true
-        schema:
-          type: string
-        style: simple
-      requestBody:
-        content:
-          application/json:
-            schema:
-              $ref: '#/components/schemas/PartialDeviceLayout'
-        description: PartialDeviceLayout
-        required: true
-      responses:
-        "200":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/DeviceLayout'
-      summary: Patch
-      tags:
-      - Device Layout
   /events/{id}:
     get:
       description: Get an event
@@ -2043,6 +1973,105 @@ paths:
       summary: Patch
       tags:
       - User
+  /views:
+    get:
+      description: List all device layouts
+      operationId: ViewController.getAll
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DeviceListResponse'
+      summary: Get all
+      tags:
+      - View
+    post:
+      description: Create a device layout
+      operationId: ViewController.post
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/View'
+        description: View
+        required: true
+      responses:
+        "201":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/View'
+      summary: Post
+      tags:
+      - View
+  /views/{id}:
+    delete:
+      description: Delete a device layout
+      operationId: ViewController.delete
+      parameters:
+      - explode: false
+        in: path
+        name: id
+        required: true
+        schema:
+          type: string
+        style: simple
+      responses:
+        "200":
+          content:
+            application/json: {}
+          description: Successful response
+      summary: Delete
+      tags:
+      - View
+    get:
+      description: Get a device layout
+      operationId: ViewController.getOne
+      parameters:
+      - explode: false
+        in: path
+        name: id
+        required: true
+        schema:
+          type: string
+        style: simple
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/View'
+      summary: Get one
+      tags:
+      - View
+    patch:
+      description: Update a device layout
+      operationId: ViewController.patch
+      parameters:
+      - explode: false
+        in: path
+        name: id
+        required: true
+        schema:
+          type: string
+        style: simple
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PartialView'
+        description: PartialView
+        required: true
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/View'
+      summary: Patch
+      tags:
+      - View
 components:
   schemas:
     Filter:
@@ -2233,11 +2262,11 @@ components:
             type: type
           - name: name
             type: type
+        agentVersion: agentVersion
         env:
           key: env
-        version: version
       properties:
-        version:
+        agentVersion:
           nullable: true
           pattern: ^\d{1,3}\.\d{1,3}\.\d{1,3}$
           type: string
@@ -3087,6 +3116,14 @@ components:
           - time
           type: string
       type: object
+    LocationViewConfiguration:
+      properties:
+        basemap:
+          enum:
+          - streets
+          - satellite
+          type: string
+      type: object
     NumericViewConfiguration:
       properties:
         span:
@@ -3124,6 +3161,7 @@ components:
           oneOf:
           - $ref: '#/components/schemas/BitsetViewConfiguration'
           - $ref: '#/components/schemas/ImageViewConfiguration'
+          - $ref: '#/components/schemas/LocationViewConfiguration'
           - $ref: '#/components/schemas/NumericViewConfiguration'
       required:
       - configuration
@@ -3391,9 +3429,15 @@ components:
       type: object
     Device:
       example:
+        publicKey: publicKey
+        type: default
+        enabled: true
+        tags:
+          key: tags
         organizationId: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         desiredConfigurationVersion: 721321908029600
         createdAt: 2000-01-23T04:56:07.000+00:00
+        desiredAgentVersion: desiredAgentVersion
         scope:
           agentIds:
           - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
@@ -3414,7 +3458,6 @@ components:
           end: 2000-01-23T04:56:07.000+00:00
           tags: ""
         name: name
-        publicKey: publicKey
         state:
           reportedConfiguration:
             version: 5429049884013572
@@ -3430,14 +3473,10 @@ components:
               type: type
             - name: name
               type: type
+          agentVersion: agentVersion
           env:
             key: env
-          version: version
         id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-        type: default
-        enabled: true
-        tags:
-          key: tags
         updatedAt: 2000-01-23T04:56:07.000+00:00
       properties:
         organizationId:
@@ -3459,6 +3498,10 @@ components:
           type: string
         scope:
           $ref: '#/components/schemas/ScopeFilter'
+        desiredAgentVersion:
+          nullable: true
+          pattern: ^\d{1,3}\.\d{1,3}\.\d{1,3}$
+          type: string
         desiredConfigurationVersion:
           format: int64
           maximum: 9007199254740991
@@ -4548,81 +4591,6 @@ components:
       - document
       - name
       type: object
-    DeviceLayout:
-      example:
-        organizationId: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-        filter:
-          agentIds:
-          - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-          - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-          deviceIds:
-          - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-          - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-          types:
-          - image
-          - image
-          names:
-          - names
-          - names
-          notNames:
-          - notNames
-          - notNames
-          tags: ""
-        layout: ""
-        createdAt: 2000-01-23T04:56:07.000+00:00
-        configuration:
-        - configuration: ""
-          type: image
-          streamName: streamName
-        - configuration: ""
-          type: image
-          streamName: streamName
-        name: name
-        index: 721321908029599
-        id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-        tags:
-          key: tags
-        updatedAt: 2000-01-23T04:56:07.000+00:00
-      properties:
-        organizationId:
-          format: uuid
-          type: string
-        name:
-          maxLength: 255
-          type: string
-        tags:
-          additionalProperties:
-            type: string
-          type: object
-        filter:
-          $ref: '#/components/schemas/Filter'
-        layout: {}
-        configuration:
-          items:
-            $ref: '#/components/schemas/ViewConfiguration'
-          type: array
-        index:
-          format: int64
-          maximum: 9007199254740991
-          minimum: 0
-          type: integer
-        id:
-          format: uuid
-          type: string
-        createdAt:
-          format: date-time
-          type: string
-        updatedAt:
-          format: date-time
-          type: string
-      required:
-      - configuration
-      - filter
-      - index
-      - layout
-      - name
-      - tags
-      type: object
     DeviceProvisioning:
       example:
         createdAt: 2000-01-23T04:56:07.000+00:00
@@ -4814,6 +4782,81 @@ components:
       - sessionCreated
       - sessionId
       - time
+      type: object
+    View:
+      example:
+        organizationId: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        filter:
+          agentIds:
+          - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          deviceIds:
+          - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          types:
+          - image
+          - image
+          names:
+          - names
+          - names
+          notNames:
+          - notNames
+          - notNames
+          tags: ""
+        layout: ""
+        createdAt: 2000-01-23T04:56:07.000+00:00
+        configuration:
+        - configuration: ""
+          type: image
+          streamName: streamName
+        - configuration: ""
+          type: image
+          streamName: streamName
+        name: name
+        index: 721321908029599
+        id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        tags:
+          key: tags
+        updatedAt: 2000-01-23T04:56:07.000+00:00
+      properties:
+        organizationId:
+          format: uuid
+          type: string
+        name:
+          maxLength: 255
+          type: string
+        tags:
+          additionalProperties:
+            type: string
+          type: object
+        filter:
+          $ref: '#/components/schemas/Filter'
+        layout: {}
+        configuration:
+          items:
+            $ref: '#/components/schemas/ViewConfiguration'
+          type: array
+        index:
+          format: int64
+          maximum: 9007199254740991
+          minimum: 0
+          type: integer
+        id:
+          format: uuid
+          type: string
+        createdAt:
+          format: date-time
+          type: string
+        updatedAt:
+          format: date-time
+          type: string
+      required:
+      - configuration
+      - filter
+      - index
+      - layout
+      - name
+      - tags
       type: object
     IdRequestParams:
       properties:
@@ -5448,9 +5491,15 @@ components:
     DeviceListResponse:
       example:
         items:
-        - organizationId: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        - publicKey: publicKey
+          type: default
+          enabled: true
+          tags:
+            key: tags
+          organizationId: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           desiredConfigurationVersion: 721321908029600
           createdAt: 2000-01-23T04:56:07.000+00:00
+          desiredAgentVersion: desiredAgentVersion
           scope:
             agentIds:
             - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
@@ -5471,7 +5520,6 @@ components:
             end: 2000-01-23T04:56:07.000+00:00
             tags: ""
           name: name
-          publicKey: publicKey
           state:
             reportedConfiguration:
               version: 5429049884013572
@@ -5487,18 +5535,20 @@ components:
                 type: type
               - name: name
                 type: type
+            agentVersion: agentVersion
             env:
               key: env
-            version: version
           id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-          type: default
-          enabled: true
-          tags:
-            key: tags
           updatedAt: 2000-01-23T04:56:07.000+00:00
-        - organizationId: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        - publicKey: publicKey
+          type: default
+          enabled: true
+          tags:
+            key: tags
+          organizationId: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           desiredConfigurationVersion: 721321908029600
           createdAt: 2000-01-23T04:56:07.000+00:00
+          desiredAgentVersion: desiredAgentVersion
           scope:
             agentIds:
             - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
@@ -5519,7 +5569,6 @@ components:
             end: 2000-01-23T04:56:07.000+00:00
             tags: ""
           name: name
-          publicKey: publicKey
           state:
             reportedConfiguration:
               version: 5429049884013572
@@ -5535,14 +5584,10 @@ components:
                 type: type
               - name: name
                 type: type
+            agentVersion: agentVersion
             env:
               key: env
-            version: version
           id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-          type: default
-          enabled: true
-          tags:
-            key: tags
           updatedAt: 2000-01-23T04:56:07.000+00:00
       properties:
         items:
@@ -5619,6 +5664,20 @@ components:
         tags: {}
       required:
       - tags
+      type: object
+    UpdatedAgentVersionQuery:
+      properties:
+        reportedAgentVersion:
+          pattern: ^\d{1,3}\.\d{1,3}\.\d{1,3}$
+          type: string
+      type: object
+    UpdatedAgentVersionResponse:
+      example:
+        desiredAgentVersion: desiredAgentVersion
+      properties:
+        desiredAgentVersion:
+          pattern: ^\d{1,3}\.\d{1,3}\.\d{1,3}$
+          type: string
       type: object
     UpdatedConfigurationQuery:
       properties:
@@ -6957,9 +7016,15 @@ components:
       type: object
     PartialDevice:
       example:
+        publicKey: publicKey
+        type: default
+        enabled: true
+        tags:
+          key: tags
         organizationId: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         desiredConfigurationVersion: 721321908029600
         createdAt: 2000-01-23T04:56:07.000+00:00
+        desiredAgentVersion: desiredAgentVersion
         scope:
           agentIds:
           - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
@@ -6980,7 +7045,6 @@ components:
           end: 2000-01-23T04:56:07.000+00:00
           tags: ""
         name: name
-        publicKey: publicKey
         state:
           reportedConfiguration:
             version: 5429049884013572
@@ -6996,14 +7060,10 @@ components:
               type: type
             - name: name
               type: type
+          agentVersion: agentVersion
           env:
             key: env
-          version: version
         id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-        type: default
-        enabled: true
-        tags:
-          key: tags
         updatedAt: 2000-01-23T04:56:07.000+00:00
       properties:
         organizationId:
@@ -7025,6 +7085,10 @@ components:
           type: string
         scope:
           $ref: '#/components/schemas/ScopeFilter'
+        desiredAgentVersion:
+          nullable: true
+          pattern: ^\d{1,3}\.\d{1,3}\.\d{1,3}$
+          type: string
         desiredConfigurationVersion:
           format: int64
           maximum: 9007199254740991
@@ -7035,74 +7099,6 @@ components:
           $ref: '#/components/schemas/DeviceState'
         enabled:
           type: boolean
-        id:
-          format: uuid
-          type: string
-        createdAt:
-          format: date-time
-          type: string
-        updatedAt:
-          format: date-time
-          type: string
-      type: object
-    PartialDeviceLayout:
-      example:
-        organizationId: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-        filter:
-          agentIds:
-          - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-          - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-          deviceIds:
-          - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-          - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-          types:
-          - image
-          - image
-          names:
-          - names
-          - names
-          notNames:
-          - notNames
-          - notNames
-          tags: ""
-        layout: ""
-        createdAt: 2000-01-23T04:56:07.000+00:00
-        configuration:
-        - configuration: ""
-          type: image
-          streamName: streamName
-        - configuration: ""
-          type: image
-          streamName: streamName
-        name: name
-        index: 721321908029599
-        id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-        tags:
-          key: tags
-        updatedAt: 2000-01-23T04:56:07.000+00:00
-      properties:
-        organizationId:
-          format: uuid
-          type: string
-        name:
-          maxLength: 255
-          type: string
-        tags:
-          additionalProperties:
-            type: string
-          type: object
-        filter:
-          $ref: '#/components/schemas/Filter'
-        layout: {}
-        configuration:
-          items:
-            $ref: '#/components/schemas/ViewConfiguration'
-          type: array
-        index:
-          format: int64
-          maximum: 9007199254740991
-          minimum: 0
-          type: integer
         id:
           format: uuid
           type: string
@@ -7283,6 +7279,74 @@ components:
         lastLoggedIn:
           format: date-time
           type: string
+        id:
+          format: uuid
+          type: string
+        createdAt:
+          format: date-time
+          type: string
+        updatedAt:
+          format: date-time
+          type: string
+      type: object
+    PartialView:
+      example:
+        organizationId: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        filter:
+          agentIds:
+          - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          deviceIds:
+          - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          types:
+          - image
+          - image
+          names:
+          - names
+          - names
+          notNames:
+          - notNames
+          - notNames
+          tags: ""
+        layout: ""
+        createdAt: 2000-01-23T04:56:07.000+00:00
+        configuration:
+        - configuration: ""
+          type: image
+          streamName: streamName
+        - configuration: ""
+          type: image
+          streamName: streamName
+        name: name
+        index: 721321908029599
+        id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        tags:
+          key: tags
+        updatedAt: 2000-01-23T04:56:07.000+00:00
+      properties:
+        organizationId:
+          format: uuid
+          type: string
+        name:
+          maxLength: 255
+          type: string
+        tags:
+          additionalProperties:
+            type: string
+          type: object
+        filter:
+          $ref: '#/components/schemas/Filter'
+        layout: {}
+        configuration:
+          items:
+            $ref: '#/components/schemas/ViewConfiguration'
+          type: array
+        index:
+          format: int64
+          maximum: 9007199254740991
+          minimum: 0
+          type: integer
         id:
           format: uuid
           type: string

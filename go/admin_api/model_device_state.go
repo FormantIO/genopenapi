@@ -10,7 +10,7 @@
 package admin_api
 // DeviceState struct for DeviceState
 type DeviceState struct {
-	Version *string `json:"version,omitempty"`
+	AgentVersion *string `json:"agentVersion,omitempty"`
 	ReportedConfiguration *DeviceReportedConfigurationState `json:"reportedConfiguration,omitempty"`
 	Ros *DeviceRosState `json:"ros,omitempty"`
 	Env *map[string]string `json:"env,omitempty"`

@@ -10,6 +10,7 @@ Name | Type | Description | Notes
 **Tags** | **map[string]string** |  | [optional] 
 **PublicKey** | **string** |  | 
 **Scope** | [**ScopeFilter**](ScopeFilter.md) |  | [optional] 
+**DesiredAgentVersion** | Pointer to **string** |  | [optional] 
 **DesiredConfigurationVersion** | Pointer to **int64** |  | [optional] 
 **State** | [**DeviceState**](DeviceState.md) |  | [optional] 
 **Enabled** | **bool** |  | [optional] 

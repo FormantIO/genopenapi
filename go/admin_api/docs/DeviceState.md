@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Version** | Pointer to **string** |  | [optional] 
+**AgentVersion** | Pointer to **string** |  | [optional] 
 **ReportedConfiguration** | Pointer to [**DeviceReportedConfigurationState**](DeviceReportedConfigurationState.md) |  | [optional] 
 **Ros** | Pointer to [**DeviceRosState**](DeviceRosState.md) |  | [optional] 
 **Env** | Pointer to **map[string]string** |  | [optional] 
