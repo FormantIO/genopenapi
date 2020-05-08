@@ -213,7 +213,7 @@ Use admin JWT for authorization
 
 ## DeviceControllerGetTags
 
-> DeviceTagsResponse DeviceControllerGetTags(ctx, optional)
+> TagsResponse DeviceControllerGetTags(ctx, optional)
 
 Get tags
 
@@ -238,7 +238,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**DeviceTagsResponse**](DeviceTagsResponse.md)
+[**TagsResponse**](TagsResponse.md)
 
 ### Authorization
 

@@ -11,6 +11,7 @@ Name | Type | Description | Notes
 **Interval** | **int64** |  | [optional] 
 **Severity** | **string** |  | [optional] 
 **Enabled** | **bool** |  | [optional] 
+**TriggeredConfiguration** | [**TriggeredConfiguration**](TriggeredConfiguration.md) |  | [optional] 
 **Tags** | **map[string]string** |  | [optional] 
 **NotificationEnabled** | **bool** |  | [optional] 
 **Commands** | [**[]AlertCommand**](AlertCommand.md) |  | [optional] 

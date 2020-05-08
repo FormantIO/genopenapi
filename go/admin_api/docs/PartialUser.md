@@ -9,6 +9,7 @@ Name | Type | Description | Notes
 **FirstName** | **string** |  | [optional] 
 **LastName** | **string** |  | [optional] 
 **Role** | **string** |  | [optional] 
+**Tags** | **map[string]string** |  | [optional] 
 **Enabled** | **bool** |  | [optional] 
 **IsOrganizationOwner** | **bool** |  | [optional] 
 **TermsAccepted** | **string** |  | [optional] 

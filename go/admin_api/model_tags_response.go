@@ -8,7 +8,7 @@
  */
 
 package admin_api
-// EventDistinctTags struct for EventDistinctTags
-type EventDistinctTags struct {
+// TagsResponse struct for TagsResponse
+type TagsResponse struct {
 	Tags interface{} `json:"tags"`
 }

@@ -11,17 +11,15 @@ package admin_api
 import (
 	"time"
 )
-// Share struct for Share
-type Share struct {
-	OrganizationId string `json:"organizationId,omitempty"`
+// EventIndex struct for EventIndex
+type EventIndex struct {
+	Type string `json:"type"`
+	OrganizationId string `json:"organizationId"`
+	DeviceId string `json:"deviceId,omitempty"`
 	UserId string `json:"userId,omitempty"`
-	Code string `json:"code,omitempty"`
-	Scope *ScopeFilter `json:"scope"`
-	Time time.Time `json:"time"`
-	Expiration time.Time `json:"expiration,omitempty"`
-	Message string `json:"message,omitempty"`
-	UserName string `json:"userName,omitempty"`
-	ChannelId string `json:"channelId,omitempty"`
+	StreamName string `json:"streamName,omitempty"`
+	StreamType string `json:"streamType,omitempty"`
+	Tags map[string]string `json:"tags,omitempty"`
 	Id string `json:"id,omitempty"`
 	CreatedAt time.Time `json:"createdAt,omitempty"`
 	UpdatedAt time.Time `json:"updatedAt,omitempty"`

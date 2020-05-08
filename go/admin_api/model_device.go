@@ -18,9 +18,11 @@ type Device struct {
 	Type string `json:"type,omitempty"`
 	Tags map[string]string `json:"tags,omitempty"`
 	PublicKey string `json:"publicKey"`
-	Scope ScopeFilter `json:"scope,omitempty"`
+	Scope *ScopeFilter `json:"scope,omitempty"`
 	DesiredAgentVersion *string `json:"desiredAgentVersion,omitempty"`
 	DesiredConfigurationVersion *int64 `json:"desiredConfigurationVersion,omitempty"`
+	TemporaryConfigurationVersion *int64 `json:"temporaryConfigurationVersion,omitempty"`
+	TemporaryConfigurationExpiration *time.Time `json:"temporaryConfigurationExpiration,omitempty"`
 	State DeviceState `json:"state,omitempty"`
 	Enabled bool `json:"enabled,omitempty"`
 	Id string `json:"id,omitempty"`

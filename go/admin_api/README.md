@@ -124,6 +124,7 @@ Class | Method | HTTP request | Description
 *ShareApi* | [**ShareControllerAuthenticate**](docs/ShareApi.md#sharecontrollerauthenticate) | **Post** /shares/{code}/authenticate | Authenticate
 *ShareApi* | [**ShareControllerGetOne**](docs/ShareApi.md#sharecontrollergetone) | **Get** /shares/{code} | Get one
 *ShareApi* | [**ShareControllerPost**](docs/ShareApi.md#sharecontrollerpost) | **Post** /shares | Post
+*SystemEventApi* | [**SystemEventControllerPost**](docs/SystemEventApi.md#systemeventcontrollerpost) | **Post** /system-events | Post
 *TeleopSessionRecordApi* | [**TeleopSessionRecordControllerPost**](docs/TeleopSessionRecordApi.md#teleopsessionrecordcontrollerpost) | **Post** /teleop-session-records | Post
 *UserApi* | [**UserControllerGetAll**](docs/UserApi.md#usercontrollergetall) | **Get** /users | Get all
 *UserApi* | [**UserControllerGetOne**](docs/UserApi.md#usercontrollergetone) | **Get** /users/{id} | Get one
@@ -196,17 +197,16 @@ Class | Method | HTTP request | Description
  - [DeviceStreamRosLocalizationConfiguration](docs/DeviceStreamRosLocalizationConfiguration.md)
  - [DeviceStreamRosTopicConfiguration](docs/DeviceStreamRosTopicConfiguration.md)
  - [DeviceStreamRosTransformTreeConfiguration](docs/DeviceStreamRosTransformTreeConfiguration.md)
- - [DeviceTagsResponse](docs/DeviceTagsResponse.md)
  - [DeviceTelemetryConfiguration](docs/DeviceTelemetryConfiguration.md)
  - [DeviceTeleopConfiguration](docs/DeviceTeleopConfiguration.md)
  - [DeviceTeleopRosStreamConfiguration](docs/DeviceTeleopRosStreamConfiguration.md)
  - [EventCounts](docs/EventCounts.md)
  - [EventDistinctEventTypes](docs/EventDistinctEventTypes.md)
  - [EventDistinctStreamTypes](docs/EventDistinctStreamTypes.md)
- - [EventDistinctTags](docs/EventDistinctTags.md)
  - [EventFilter](docs/EventFilter.md)
  - [EventHistogram](docs/EventHistogram.md)
  - [EventHistogramEntry](docs/EventHistogramEntry.md)
+ - [EventIndex](docs/EventIndex.md)
  - [EventListResponse](docs/EventListResponse.md)
  - [EventQuery](docs/EventQuery.md)
  - [EventSeekQuery](docs/EventSeekQuery.md)
@@ -260,9 +260,12 @@ Class | Method | HTTP request | Description
  - [SlackAuthRequest](docs/SlackAuthRequest.md)
  - [SlackInfo](docs/SlackInfo.md)
  - [StringListResponse](docs/StringListResponse.md)
+ - [SystemEvent](docs/SystemEvent.md)
+ - [TagsResponse](docs/TagsResponse.md)
  - [TeleopSessionRecord](docs/TeleopSessionRecord.md)
  - [ThresholdAlertCondition](docs/ThresholdAlertCondition.md)
  - [TokenResult](docs/TokenResult.md)
+ - [TriggeredConfiguration](docs/TriggeredConfiguration.md)
  - [UpdatedAgentVersionQuery](docs/UpdatedAgentVersionQuery.md)
  - [UpdatedAgentVersionResponse](docs/UpdatedAgentVersionResponse.md)
  - [UpdatedConfigurationQuery](docs/UpdatedConfigurationQuery.md)

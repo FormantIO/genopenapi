@@ -280,7 +280,7 @@ Use admin JWT for authorization
 
 ## EventControllerDistinctTags
 
-> EventDistinctTags EventControllerDistinctTags(ctx, optional)
+> TagsResponse EventControllerDistinctTags(ctx, optional)
 
 Distinct tags
 
@@ -305,7 +305,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**EventDistinctTags**](EventDistinctTags.md)
+[**TagsResponse**](TagsResponse.md)
 
 ### Authorization
 

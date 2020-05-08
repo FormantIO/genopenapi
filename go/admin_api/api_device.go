@@ -481,16 +481,16 @@ Get tags across all devices
  * @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  * @param optional nil or *DeviceControllerGetTagsOpts - Optional Parameters:
  * @param "DeviceQuery" (optional.Interface of DeviceQuery) -  DeviceQuery
-@return DeviceTagsResponse
+@return TagsResponse
 */
-func (a *DeviceApiService) DeviceControllerGetTags(ctx _context.Context, localVarOptionals *DeviceControllerGetTagsOpts) (DeviceTagsResponse, *_nethttp.Response, error) {
+func (a *DeviceApiService) DeviceControllerGetTags(ctx _context.Context, localVarOptionals *DeviceControllerGetTagsOpts) (TagsResponse, *_nethttp.Response, error) {
 	var (
 		localVarHTTPMethod   = _nethttp.MethodPost
 		localVarPostBody     interface{}
 		localVarFormFileName string
 		localVarFileName     string
 		localVarFileBytes    []byte
-		localVarReturnValue  DeviceTagsResponse
+		localVarReturnValue  TagsResponse
 	)
 
 	// create path and map variables
@@ -547,7 +547,7 @@ func (a *DeviceApiService) DeviceControllerGetTags(ctx _context.Context, localVa
 			error: localVarHTTPResponse.Status,
 		}
 		if localVarHTTPResponse.StatusCode == 200 {
-			var v DeviceTagsResponse
+			var v TagsResponse
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()

@@ -13,11 +13,12 @@ import (
 )
 // User struct for User
 type User struct {
-	OrganizationId string `json:"organizationId"`
+	OrganizationId string `json:"organizationId,omitempty"`
 	Email string `json:"email"`
 	FirstName string `json:"firstName"`
 	LastName string `json:"lastName,omitempty"`
 	Role string `json:"role"`
+	Tags map[string]string `json:"tags"`
 	Enabled bool `json:"enabled,omitempty"`
 	IsOrganizationOwner bool `json:"isOrganizationOwner,omitempty"`
 	TermsAccepted string `json:"termsAccepted,omitempty"`

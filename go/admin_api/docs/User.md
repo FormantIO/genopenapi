@@ -4,11 +4,12 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**OrganizationId** | **string** |  | 
+**OrganizationId** | **string** |  | [optional] 
 **Email** | **string** |  | 
 **FirstName** | **string** |  | 
 **LastName** | **string** |  | [optional] 
 **Role** | **string** |  | 
+**Tags** | **map[string]string** |  | 
 **Enabled** | **bool** |  | [optional] 
 **IsOrganizationOwner** | **bool** |  | [optional] 
 **TermsAccepted** | **string** |  | [optional] 

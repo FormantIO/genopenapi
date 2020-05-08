@@ -16,6 +16,7 @@ type PartialDeviceConfigurationTemplate struct {
 	OrganizationId string `json:"organizationId,omitempty"`
 	Name string `json:"name,omitempty"`
 	Document DeviceConfigurationDocument `json:"document,omitempty"`
+	Enabled bool `json:"enabled,omitempty"`
 	Id string `json:"id,omitempty"`
 	CreatedAt time.Time `json:"createdAt,omitempty"`
 	UpdatedAt time.Time `json:"updatedAt,omitempty"`

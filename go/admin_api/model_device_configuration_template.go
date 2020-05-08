@@ -16,6 +16,7 @@ type DeviceConfigurationTemplate struct {
 	OrganizationId string `json:"organizationId,omitempty"`
 	Name string `json:"name"`
 	Document DeviceConfigurationDocument `json:"document"`
+	Enabled bool `json:"enabled,omitempty"`
 	Id string `json:"id,omitempty"`
 	CreatedAt time.Time `json:"createdAt,omitempty"`
 	UpdatedAt time.Time `json:"updatedAt,omitempty"`

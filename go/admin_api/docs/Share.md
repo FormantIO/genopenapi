@@ -7,7 +7,7 @@ Name | Type | Description | Notes
 **OrganizationId** | **string** |  | [optional] 
 **UserId** | **string** |  | [optional] 
 **Code** | **string** |  | [optional] 
-**Scope** | [**ScopeFilter**](ScopeFilter.md) |  | 
+**Scope** | Pointer to [**ScopeFilter**](ScopeFilter.md) |  | 
 **Time** | [**time.Time**](time.Time.md) |  | 
 **Expiration** | [**time.Time**](time.Time.md) |  | [optional] 
 **Message** | **string** |  | [optional] 

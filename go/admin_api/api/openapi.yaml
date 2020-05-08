@@ -1,7 +1,7 @@
 openapi: 3.0.0
 info:
   title: Formant Cloud API
-  version: 0.69.42
+  version: 0.70.78
 servers:
 - url: /
 paths:
@@ -1055,7 +1055,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/DeviceTagsResponse'
+                $ref: '#/components/schemas/TagsResponse'
       summary: Get tags
       tags:
       - Device
@@ -1271,7 +1271,6 @@ paths:
         name: reportedAgentVersion
         required: false
         schema:
-          pattern: ^\d{1,3}\.\d{1,3}\.\d{1,3}$
           type: string
         style: form
       responses:
@@ -1518,7 +1517,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/EventDistinctTags'
+                $ref: '#/components/schemas/TagsResponse'
       summary: Distinct tags
       tags:
       - Event
@@ -1873,6 +1872,26 @@ paths:
       summary: Authenticate
       tags:
       - Share
+  /system-events:
+    post:
+      description: Create a system event
+      operationId: SystemEventController.post
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/SystemEvent'
+        description: SystemEvent
+        required: true
+      responses:
+        "201":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SystemEvent'
+      summary: Post
+      tags:
+      - System Event
   /teleop-session-records:
     post:
       description: Create a teleoperation session record.
@@ -2150,6 +2169,7 @@ components:
         start: 2000-01-23T04:56:07.000+00:00
         end: 2000-01-23T04:56:07.000+00:00
         tags: ""
+      nullable: true
       properties:
         start:
           format: date-time
@@ -2196,7 +2216,7 @@ components:
       type: object
     DeviceReportedConfigurationState:
       example:
-        version: 5429049884013572
+        version: 1320286958557580
       nullable: true
       properties:
         version:
@@ -2248,8 +2268,9 @@ components:
       type: object
     DeviceState:
       example:
+        otaEnabled: true
         reportedConfiguration:
-          version: 5429049884013572
+          version: 1320286958557580
         ros:
           topics:
           - name: name
@@ -2269,7 +2290,6 @@ components:
       properties:
         agentVersion:
           nullable: true
-          pattern: ^\d{1,3}\.\d{1,3}\.\d{1,3}$
           type: string
         reportedConfiguration:
           $ref: '#/components/schemas/DeviceReportedConfigurationState'
@@ -2280,10 +2300,12 @@ components:
             type: string
           nullable: true
           type: object
+        otaEnabled:
+          nullable: true
+          type: boolean
         version:
           deprecated: true
           nullable: true
-          pattern: ^\d{1,3}\.\d{1,3}\.\d{1,3}$
           type: string
       type: object
     DeviceApplicationConfiguration:
@@ -2522,6 +2544,7 @@ components:
           - sensor_msgs/CompressedImage
           - geometry_msgs/PoseStamped
           - actionlib_msgs/GoalID
+          - formant/H264VideoFrame
           type: string
         mode:
           enum:
@@ -2995,9 +3018,33 @@ components:
       required:
       - commandTemplateId
       type: object
+    TriggeredConfiguration:
+      example:
+        streamThrottleHz: 3
+        configurationTemplateId: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        configurationDurationMinutes: 6333
+      properties:
+        configurationTemplateId:
+          format: uuid
+          type: string
+        streamThrottleHz:
+          format: int64
+          maximum: 5
+          minimum: 0
+          type: integer
+        configurationDurationMinutes:
+          format: int64
+          maximum: 43200
+          minimum: 1
+          type: integer
+      type: object
     AlertDefinition:
       example:
         severity: info
+        triggeredConfiguration:
+          streamThrottleHz: 3
+          configurationTemplateId: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          configurationDurationMinutes: 6333
         message: message
         enabled: true
         notificationEnabled: true
@@ -3051,6 +3098,8 @@ components:
           type: string
         enabled:
           type: boolean
+        triggeredConfiguration:
+          $ref: '#/components/schemas/TriggeredConfiguration'
         tags:
           additionalProperties:
             type: string
@@ -3239,17 +3288,19 @@ components:
       type: object
     User:
       example:
+        lastName: lastName
+        role: viewer
+        enabled: true
+        tags:
+          key: tags
         organizationId: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         firstName: firstName
-        lastName: lastName
         createdAt: 2000-01-23T04:56:07.000+00:00
-        role: viewer
         termsAccepted: termsAccepted
         isOrganizationOwner: true
         lastLoggedIn: 2000-01-23T04:56:07.000+00:00
         id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         email: email
-        enabled: true
         updatedAt: 2000-01-23T04:56:07.000+00:00
       properties:
         organizationId:
@@ -3270,6 +3321,10 @@ components:
           - operator
           - administrator
           type: string
+        tags:
+          additionalProperties:
+            type: string
+          type: object
         enabled:
           type: boolean
         isOrganizationOwner:
@@ -3291,8 +3346,8 @@ components:
       required:
       - email
       - firstName
-      - organizationId
       - role
+      - tags
       type: object
     Organization:
       example:
@@ -3443,6 +3498,7 @@ components:
         organizationId: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         desiredConfigurationVersion: 721321908029600
         createdAt: 2000-01-23T04:56:07.000+00:00
+        temporaryConfigurationVersion: 5429049884013572
         desiredAgentVersion: desiredAgentVersion
         scope:
           agentIds:
@@ -3465,8 +3521,9 @@ components:
           tags: ""
         name: name
         state:
+          otaEnabled: true
           reportedConfiguration:
-            version: 5429049884013572
+            version: 1320286958557580
           ros:
             topics:
             - name: name
@@ -3484,6 +3541,7 @@ components:
             key: env
           version: version
         id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        temporaryConfigurationExpiration: 2000-01-23T04:56:07.000+00:00
         updatedAt: 2000-01-23T04:56:07.000+00:00
       properties:
         organizationId:
@@ -3507,7 +3565,6 @@ components:
           $ref: '#/components/schemas/ScopeFilter'
         desiredAgentVersion:
           nullable: true
-          pattern: ^\d{1,3}\.\d{1,3}\.\d{1,3}$
           type: string
         desiredConfigurationVersion:
           format: int64
@@ -3515,6 +3572,16 @@ components:
           minimum: 1
           nullable: true
           type: integer
+        temporaryConfigurationVersion:
+          format: int64
+          maximum: 9007199254740991
+          minimum: 1
+          nullable: true
+          type: integer
+        temporaryConfigurationExpiration:
+          format: date-time
+          nullable: true
+          type: string
         state:
           $ref: '#/components/schemas/DeviceState'
         enabled:
@@ -3560,6 +3627,7 @@ components:
           - command-delivery
           - custom
           - comment
+          - system
           type: string
         organizationId:
           format: uuid
@@ -3722,6 +3790,7 @@ components:
           - command-delivery
           - custom
           - comment
+          - system
           type: string
         interventionType:
           enum:
@@ -3866,6 +3935,7 @@ components:
           - command-delivery
           - custom
           - comment
+          - system
           type: string
         severity:
           enum:
@@ -4139,6 +4209,7 @@ components:
           - command-delivery
           - custom
           - comment
+          - system
           type: string
         command:
           type: string
@@ -4214,6 +4285,7 @@ components:
           - command-delivery
           - custom
           - comment
+          - system
           type: string
         commandRequestId:
           format: uuid
@@ -4301,6 +4373,7 @@ components:
           - command-delivery
           - custom
           - comment
+          - system
           type: string
         replyToCommandRequestId:
           format: uuid
@@ -4390,6 +4463,7 @@ components:
           - command-delivery
           - custom
           - comment
+          - system
           type: string
         editedAt:
           format: date-time
@@ -4474,6 +4548,7 @@ components:
           - command-delivery
           - custom
           - comment
+          - system
           type: string
         id:
           format: uuid
@@ -4576,6 +4651,7 @@ components:
               topicType: std_msgs/Bool
         name: name
         id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        enabled: true
         updatedAt: 2000-01-23T04:56:07.000+00:00
       properties:
         organizationId:
@@ -4585,6 +4661,8 @@ components:
           type: string
         document:
           $ref: '#/components/schemas/DeviceConfigurationDocument'
+        enabled:
+          type: boolean
         id:
           format: uuid
           type: string
@@ -4699,6 +4777,88 @@ components:
       - scope
       - time
       type: object
+    SystemEvent:
+      example:
+        type: alert
+        message: message
+        deviceId: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        streamName: streamName
+        userId: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        notificationEnabled: true
+        tags:
+          key: tags
+        organizationId: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        createdAt: 2000-01-23T04:56:07.000+00:00
+        streamType: image
+        viewed: true
+        id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        time: 2000-01-23T04:56:07.000+00:00
+        updatedAt: 2000-01-23T04:56:07.000+00:00
+      properties:
+        type:
+          enum:
+          - alert
+          - intervention-request
+          - teleop-session-record
+          - command-request
+          - command-response
+          - command-delivery
+          - custom
+          - comment
+          - system
+          type: string
+        id:
+          format: uuid
+          type: string
+        createdAt:
+          format: date-time
+          type: string
+        updatedAt:
+          format: date-time
+          type: string
+        organizationId:
+          format: uuid
+          type: string
+        time:
+          format: date-time
+          type: string
+        message:
+          maxLength: 1024
+          type: string
+        viewed:
+          type: boolean
+        deviceId:
+          format: uuid
+          type: string
+        streamName:
+          type: string
+        streamType:
+          enum:
+          - image
+          - numeric
+          - point cloud
+          - text
+          - location
+          - file
+          - localization
+          - health
+          - bitset
+          - metrics
+          - transform tree
+          - battery
+          type: string
+        tags:
+          additionalProperties:
+            type: string
+          type: object
+        notificationEnabled:
+          type: boolean
+        userId:
+          format: uuid
+          type: string
+      required:
+      - time
+      type: object
     TeleopSessionRecord:
       example:
         sessionCreated: 2000-01-23T04:56:07.000+00:00
@@ -4729,6 +4889,7 @@ components:
           - command-delivery
           - custom
           - comment
+          - system
           type: string
         sessionId:
           format: uuid
@@ -4865,6 +5026,63 @@ components:
       - name
       - tags
       type: object
+    EventIndex:
+      properties:
+        type:
+          enum:
+          - alert
+          - intervention-request
+          - teleop-session-record
+          - command-request
+          - command-response
+          - command-delivery
+          - custom
+          - comment
+          - system
+          type: string
+        organizationId:
+          format: uuid
+          type: string
+        deviceId:
+          format: uuid
+          type: string
+        userId:
+          format: uuid
+          type: string
+        streamName:
+          type: string
+        streamType:
+          enum:
+          - image
+          - numeric
+          - point cloud
+          - text
+          - location
+          - file
+          - localization
+          - health
+          - bitset
+          - metrics
+          - transform tree
+          - battery
+          type: string
+        tags:
+          additionalProperties:
+            type: string
+          type: object
+        id:
+          format: uuid
+          type: string
+        createdAt:
+          format: date-time
+          type: string
+        updatedAt:
+          format: date-time
+          type: string
+      required:
+      - organizationId
+      - type
+      type: object
     IdRequestParams:
       properties:
         id:
@@ -4877,6 +5095,10 @@ components:
       example:
         items:
         - severity: info
+          triggeredConfiguration:
+            streamThrottleHz: 3
+            configurationTemplateId: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+            configurationDurationMinutes: 6333
           message: message
           enabled: true
           notificationEnabled: true
@@ -4901,6 +5123,10 @@ components:
             parameterValue: parameterValue
           updatedAt: 2000-01-23T04:56:07.000+00:00
         - severity: info
+          triggeredConfiguration:
+            streamThrottleHz: 3
+            configurationTemplateId: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+            configurationDurationMinutes: 6333
           message: message
           enabled: true
           notificationEnabled: true
@@ -5438,6 +5664,7 @@ components:
                 topicType: std_msgs/Bool
           name: name
           id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          enabled: true
           updatedAt: 2000-01-23T04:56:07.000+00:00
         - organizationId: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           createdAt: 2000-01-23T04:56:07.000+00:00
@@ -5486,6 +5713,7 @@ components:
                 topicType: std_msgs/Bool
           name: name
           id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          enabled: true
           updatedAt: 2000-01-23T04:56:07.000+00:00
       properties:
         items:
@@ -5506,6 +5734,7 @@ components:
           organizationId: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           desiredConfigurationVersion: 721321908029600
           createdAt: 2000-01-23T04:56:07.000+00:00
+          temporaryConfigurationVersion: 5429049884013572
           desiredAgentVersion: desiredAgentVersion
           scope:
             agentIds:
@@ -5528,8 +5757,9 @@ components:
             tags: ""
           name: name
           state:
+            otaEnabled: true
             reportedConfiguration:
-              version: 5429049884013572
+              version: 1320286958557580
             ros:
               topics:
               - name: name
@@ -5547,6 +5777,7 @@ components:
               key: env
             version: version
           id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          temporaryConfigurationExpiration: 2000-01-23T04:56:07.000+00:00
           updatedAt: 2000-01-23T04:56:07.000+00:00
         - publicKey: publicKey
           type: default
@@ -5556,6 +5787,7 @@ components:
           organizationId: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           desiredConfigurationVersion: 721321908029600
           createdAt: 2000-01-23T04:56:07.000+00:00
+          temporaryConfigurationVersion: 5429049884013572
           desiredAgentVersion: desiredAgentVersion
           scope:
             agentIds:
@@ -5578,8 +5810,9 @@ components:
             tags: ""
           name: name
           state:
+            otaEnabled: true
             reportedConfiguration:
-              version: 5429049884013572
+              version: 1320286958557580
             ros:
               topics:
               - name: name
@@ -5597,6 +5830,7 @@ components:
               key: env
             version: version
           id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          temporaryConfigurationExpiration: 2000-01-23T04:56:07.000+00:00
           updatedAt: 2000-01-23T04:56:07.000+00:00
       properties:
         items:
@@ -5666,7 +5900,7 @@ components:
           minimum: 0
           type: number
       type: object
-    DeviceTagsResponse:
+    TagsResponse:
       example:
         tags: ""
       properties:
@@ -5677,7 +5911,6 @@ components:
     UpdatedAgentVersionQuery:
       properties:
         reportedAgentVersion:
-          pattern: ^\d{1,3}\.\d{1,3}\.\d{1,3}$
           type: string
       type: object
     UpdatedAgentVersionResponse:
@@ -5685,7 +5918,6 @@ components:
         desiredAgentVersion: desiredAgentVersion
       properties:
         desiredAgentVersion:
-          pattern: ^\d{1,3}\.\d{1,3}\.\d{1,3}$
           type: string
       type: object
     UpdatedConfigurationQuery:
@@ -5896,6 +6128,7 @@ components:
             - command-delivery
             - custom
             - comment
+            - system
             type: string
           type: array
       required:
@@ -5926,14 +6159,6 @@ components:
           type: array
       required:
       - items
-      type: object
-    EventDistinctTags:
-      example:
-        tags: ""
-      properties:
-        tags: {}
-      required:
-      - tags
       type: object
     EventFilter:
       example:
@@ -5993,6 +6218,7 @@ components:
             - command-delivery
             - custom
             - comment
+            - system
             type: string
           type: array
         notificationEnabled:
@@ -6237,6 +6463,7 @@ components:
             - command-delivery
             - custom
             - comment
+            - system
             type: string
           type: array
         notificationEnabled:
@@ -6351,6 +6578,7 @@ components:
             - command-delivery
             - custom
             - comment
+            - system
             type: string
           type: array
         notificationEnabled:
@@ -6465,6 +6693,7 @@ components:
             - command-delivery
             - custom
             - comment
+            - system
             type: string
           type: array
         notificationEnabled:
@@ -6617,29 +6846,33 @@ components:
     UserListResponse:
       example:
         items:
-        - organizationId: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-          firstName: firstName
-          lastName: lastName
-          createdAt: 2000-01-23T04:56:07.000+00:00
+        - lastName: lastName
           role: viewer
+          enabled: true
+          tags:
+            key: tags
+          organizationId: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          firstName: firstName
+          createdAt: 2000-01-23T04:56:07.000+00:00
           termsAccepted: termsAccepted
           isOrganizationOwner: true
           lastLoggedIn: 2000-01-23T04:56:07.000+00:00
           id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           email: email
-          enabled: true
           updatedAt: 2000-01-23T04:56:07.000+00:00
-        - organizationId: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-          firstName: firstName
-          lastName: lastName
-          createdAt: 2000-01-23T04:56:07.000+00:00
+        - lastName: lastName
           role: viewer
+          enabled: true
+          tags:
+            key: tags
+          organizationId: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          firstName: firstName
+          createdAt: 2000-01-23T04:56:07.000+00:00
           termsAccepted: termsAccepted
           isOrganizationOwner: true
           lastLoggedIn: 2000-01-23T04:56:07.000+00:00
           id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           email: email
-          enabled: true
           updatedAt: 2000-01-23T04:56:07.000+00:00
       properties:
         items:
@@ -6652,6 +6885,10 @@ components:
     PartialAlertDefinition:
       example:
         severity: info
+        triggeredConfiguration:
+          streamThrottleHz: 3
+          configurationTemplateId: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          configurationDurationMinutes: 6333
         message: message
         enabled: true
         notificationEnabled: true
@@ -6705,6 +6942,8 @@ components:
           type: string
         enabled:
           type: boolean
+        triggeredConfiguration:
+          $ref: '#/components/schemas/TriggeredConfiguration'
         tags:
           additionalProperties:
             type: string
@@ -6901,6 +7140,7 @@ components:
           - command-delivery
           - custom
           - comment
+          - system
           type: string
         editedAt:
           format: date-time
@@ -7004,6 +7244,7 @@ components:
               topicType: std_msgs/Bool
         name: name
         id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        enabled: true
         updatedAt: 2000-01-23T04:56:07.000+00:00
       properties:
         organizationId:
@@ -7013,6 +7254,8 @@ components:
           type: string
         document:
           $ref: '#/components/schemas/DeviceConfigurationDocument'
+        enabled:
+          type: boolean
         id:
           format: uuid
           type: string
@@ -7033,6 +7276,7 @@ components:
         organizationId: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         desiredConfigurationVersion: 721321908029600
         createdAt: 2000-01-23T04:56:07.000+00:00
+        temporaryConfigurationVersion: 5429049884013572
         desiredAgentVersion: desiredAgentVersion
         scope:
           agentIds:
@@ -7055,8 +7299,9 @@ components:
           tags: ""
         name: name
         state:
+          otaEnabled: true
           reportedConfiguration:
-            version: 5429049884013572
+            version: 1320286958557580
           ros:
             topics:
             - name: name
@@ -7074,6 +7319,7 @@ components:
             key: env
           version: version
         id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        temporaryConfigurationExpiration: 2000-01-23T04:56:07.000+00:00
         updatedAt: 2000-01-23T04:56:07.000+00:00
       properties:
         organizationId:
@@ -7097,7 +7343,6 @@ components:
           $ref: '#/components/schemas/ScopeFilter'
         desiredAgentVersion:
           nullable: true
-          pattern: ^\d{1,3}\.\d{1,3}\.\d{1,3}$
           type: string
         desiredConfigurationVersion:
           format: int64
@@ -7105,6 +7350,16 @@ components:
           minimum: 1
           nullable: true
           type: integer
+        temporaryConfigurationVersion:
+          format: int64
+          maximum: 9007199254740991
+          minimum: 1
+          nullable: true
+          type: integer
+        temporaryConfigurationExpiration:
+          format: date-time
+          nullable: true
+          type: string
         state:
           $ref: '#/components/schemas/DeviceState'
         enabled:
@@ -7249,17 +7504,19 @@ components:
       type: object
     PartialUser:
       example:
+        lastName: lastName
+        role: viewer
+        enabled: true
+        tags:
+          key: tags
         organizationId: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         firstName: firstName
-        lastName: lastName
         createdAt: 2000-01-23T04:56:07.000+00:00
-        role: viewer
         termsAccepted: termsAccepted
         isOrganizationOwner: true
         lastLoggedIn: 2000-01-23T04:56:07.000+00:00
         id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         email: email
-        enabled: true
         updatedAt: 2000-01-23T04:56:07.000+00:00
       properties:
         organizationId:
@@ -7280,6 +7537,10 @@ components:
           - operator
           - administrator
           type: string
+        tags:
+          additionalProperties:
+            type: string
+          type: object
         enabled:
           type: boolean
         isOrganizationOwner:

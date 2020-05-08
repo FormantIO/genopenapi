@@ -7,6 +7,7 @@ Name | Type | Description | Notes
 **OrganizationId** | **string** |  | [optional] 
 **Name** | **string** |  | [optional] 
 **Document** | [**DeviceConfigurationDocument**](DeviceConfigurationDocument.md) |  | [optional] 
+**Enabled** | **bool** |  | [optional] 
 **Id** | **string** |  | [optional] 
 **CreatedAt** | [**time.Time**](time.Time.md) |  | [optional] 
 **UpdatedAt** | [**time.Time**](time.Time.md) |  | [optional] 

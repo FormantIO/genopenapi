@@ -617,16 +617,16 @@ Distinct values of event tags
  * @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  * @param optional nil or *EventControllerDistinctTagsOpts - Optional Parameters:
  * @param "EventFilter" (optional.Interface of EventFilter) -  EventFilter
-@return EventDistinctTags
+@return TagsResponse
 */
-func (a *EventApiService) EventControllerDistinctTags(ctx _context.Context, localVarOptionals *EventControllerDistinctTagsOpts) (EventDistinctTags, *_nethttp.Response, error) {
+func (a *EventApiService) EventControllerDistinctTags(ctx _context.Context, localVarOptionals *EventControllerDistinctTagsOpts) (TagsResponse, *_nethttp.Response, error) {
 	var (
 		localVarHTTPMethod   = _nethttp.MethodPost
 		localVarPostBody     interface{}
 		localVarFormFileName string
 		localVarFileName     string
 		localVarFileBytes    []byte
-		localVarReturnValue  EventDistinctTags
+		localVarReturnValue  TagsResponse
 	)
 
 	// create path and map variables
@@ -683,7 +683,7 @@ func (a *EventApiService) EventControllerDistinctTags(ctx _context.Context, loca
 			error: localVarHTTPResponse.Status,
 		}
 		if localVarHTTPResponse.StatusCode == 200 {
-			var v EventDistinctTags
+			var v TagsResponse
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()

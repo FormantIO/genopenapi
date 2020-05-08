@@ -20,6 +20,7 @@ type AlertDefinition struct {
 	Interval int64 `json:"interval"`
 	Severity string `json:"severity"`
 	Enabled bool `json:"enabled,omitempty"`
+	TriggeredConfiguration TriggeredConfiguration `json:"triggeredConfiguration,omitempty"`
 	Tags map[string]string `json:"tags"`
 	NotificationEnabled bool `json:"notificationEnabled"`
 	Commands []AlertCommand `json:"commands"`
