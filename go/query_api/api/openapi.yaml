@@ -1,7 +1,7 @@
 openapi: 3.0.0
 info:
   title: Formant Cloud API
-  version: 0.70.81
+  version: 0.70.82
 servers:
 - url: /
 paths:
