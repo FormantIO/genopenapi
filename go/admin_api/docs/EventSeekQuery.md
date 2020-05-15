@@ -21,6 +21,7 @@ Name | Type | Description | Notes
 **EventTypes** | **[]string** |  | [optional] 
 **NotificationEnabled** | **bool** |  | [optional] 
 **UserIds** | **[]string** |  | [optional] 
+**DisableNullMatches** | **bool** |  | [optional] 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

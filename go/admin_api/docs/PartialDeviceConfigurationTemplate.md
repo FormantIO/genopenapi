@@ -8,6 +8,7 @@ Name | Type | Description | Notes
 **Name** | **string** |  | [optional] 
 **Document** | [**DeviceConfigurationDocument**](DeviceConfigurationDocument.md) |  | [optional] 
 **Enabled** | **bool** |  | [optional] 
+**Tags** | **map[string]string** |  | [optional] 
 **Id** | **string** |  | [optional] 
 **CreatedAt** | [**time.Time**](time.Time.md) |  | [optional] 
 **UpdatedAt** | [**time.Time**](time.Time.md) |  | [optional] 

@@ -13,6 +13,7 @@ Name | Type | Description | Notes
 **EventTypes** | **[]string** |  | [optional] 
 **NotificationEnabled** | **bool** |  | [optional] 
 **UserIds** | **[]string** |  | [optional] 
+**DisableNullMatches** | **bool** |  | [optional] 
 **AgentIds** | **[]string** |  | [optional] 
 **DeviceIds** | **[]string** |  | [optional] 
 **Names** | **[]string** |  | [optional] 

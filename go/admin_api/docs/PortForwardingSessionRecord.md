@@ -1,4 +1,4 @@
-# TeleopSessionRecord
+# PortForwardingSessionRecord
 
 ## Properties
 

@@ -1,7 +1,7 @@
 openapi: 3.0.0
 info:
   title: Formant Cloud API
-  version: 0.70.82
+  version: 0.71.74
 servers:
 - url: /
 paths:
@@ -3622,6 +3622,7 @@ components:
           - alert
           - intervention-request
           - teleop-session-record
+          - port-forwarding-session-record
           - command-request
           - command-response
           - command-delivery
@@ -3785,6 +3786,7 @@ components:
           - alert
           - intervention-request
           - teleop-session-record
+          - port-forwarding-session-record
           - command-request
           - command-response
           - command-delivery
@@ -3930,6 +3932,7 @@ components:
           - alert
           - intervention-request
           - teleop-session-record
+          - port-forwarding-session-record
           - command-request
           - command-response
           - command-delivery
@@ -4204,6 +4207,7 @@ components:
           - alert
           - intervention-request
           - teleop-session-record
+          - port-forwarding-session-record
           - command-request
           - command-response
           - command-delivery
@@ -4280,6 +4284,7 @@ components:
           - alert
           - intervention-request
           - teleop-session-record
+          - port-forwarding-session-record
           - command-request
           - command-response
           - command-delivery
@@ -4368,6 +4373,7 @@ components:
           - alert
           - intervention-request
           - teleop-session-record
+          - port-forwarding-session-record
           - command-request
           - command-response
           - command-delivery
@@ -4458,6 +4464,7 @@ components:
           - alert
           - intervention-request
           - teleop-session-record
+          - port-forwarding-session-record
           - command-request
           - command-response
           - command-delivery
@@ -4543,6 +4550,7 @@ components:
           - alert
           - intervention-request
           - teleop-session-record
+          - port-forwarding-session-record
           - command-request
           - command-response
           - command-delivery
@@ -4652,6 +4660,8 @@ components:
         name: name
         id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         enabled: true
+        tags:
+          key: tags
         updatedAt: 2000-01-23T04:56:07.000+00:00
       properties:
         organizationId:
@@ -4663,6 +4673,10 @@ components:
           $ref: '#/components/schemas/DeviceConfigurationDocument'
         enabled:
           type: boolean
+        tags:
+          additionalProperties:
+            type: string
+          type: object
         id:
           format: uuid
           type: string
@@ -4675,6 +4689,7 @@ components:
       required:
       - document
       - name
+      - tags
       type: object
     DeviceProvisioning:
       example:
@@ -4705,6 +4720,214 @@ components:
       required:
       - expiration
       - token
+      type: object
+    EventIndex:
+      properties:
+        type:
+          enum:
+          - alert
+          - intervention-request
+          - teleop-session-record
+          - port-forwarding-session-record
+          - command-request
+          - command-response
+          - command-delivery
+          - custom
+          - comment
+          - system
+          type: string
+        organizationId:
+          format: uuid
+          type: string
+        deviceId:
+          format: uuid
+          type: string
+        userId:
+          format: uuid
+          type: string
+        streamName:
+          type: string
+        streamType:
+          enum:
+          - image
+          - numeric
+          - point cloud
+          - text
+          - location
+          - file
+          - localization
+          - health
+          - bitset
+          - metrics
+          - transform tree
+          - battery
+          type: string
+        tags:
+          additionalProperties:
+            type: string
+          type: object
+        id:
+          format: uuid
+          type: string
+        createdAt:
+          format: date-time
+          type: string
+        updatedAt:
+          format: date-time
+          type: string
+      required:
+      - organizationId
+      - type
+      type: object
+    RtcSessionRecord:
+      properties:
+        sessionId:
+          format: uuid
+          type: string
+        userId:
+          format: uuid
+          type: string
+        deviceId:
+          format: uuid
+          type: string
+        sessionCreated:
+          format: date-time
+          type: string
+        id:
+          format: uuid
+          type: string
+        createdAt:
+          format: date-time
+          type: string
+        updatedAt:
+          format: date-time
+          type: string
+        type:
+          enum:
+          - alert
+          - intervention-request
+          - teleop-session-record
+          - port-forwarding-session-record
+          - command-request
+          - command-response
+          - command-delivery
+          - custom
+          - comment
+          - system
+          type: string
+        organizationId:
+          format: uuid
+          type: string
+        time:
+          format: date-time
+          type: string
+        message:
+          maxLength: 1024
+          type: string
+        viewed:
+          type: boolean
+        streamName:
+          type: string
+        streamType:
+          enum:
+          - image
+          - numeric
+          - point cloud
+          - text
+          - location
+          - file
+          - localization
+          - health
+          - bitset
+          - metrics
+          - transform tree
+          - battery
+          type: string
+        tags:
+          additionalProperties:
+            type: string
+          type: object
+        notificationEnabled:
+          type: boolean
+      required:
+      - sessionCreated
+      - sessionId
+      - time
+      type: object
+    PortForwardingSessionRecord:
+      properties:
+        type:
+          enum:
+          - alert
+          - intervention-request
+          - teleop-session-record
+          - port-forwarding-session-record
+          - command-request
+          - command-response
+          - command-delivery
+          - custom
+          - comment
+          - system
+          type: string
+        id:
+          format: uuid
+          type: string
+        createdAt:
+          format: date-time
+          type: string
+        updatedAt:
+          format: date-time
+          type: string
+        organizationId:
+          format: uuid
+          type: string
+        time:
+          format: date-time
+          type: string
+        message:
+          maxLength: 1024
+          type: string
+        viewed:
+          type: boolean
+        deviceId:
+          format: uuid
+          type: string
+        streamName:
+          type: string
+        streamType:
+          enum:
+          - image
+          - numeric
+          - point cloud
+          - text
+          - location
+          - file
+          - localization
+          - health
+          - bitset
+          - metrics
+          - transform tree
+          - battery
+          type: string
+        tags:
+          additionalProperties:
+            type: string
+          type: object
+        notificationEnabled:
+          type: boolean
+        userId:
+          format: uuid
+          type: string
+        sessionId:
+          format: uuid
+          type: string
+        sessionCreated:
+          format: date-time
+          type: string
+      required:
+      - sessionCreated
+      - sessionId
+      - time
       type: object
     Share:
       example:
@@ -4800,6 +5023,7 @@ components:
           - alert
           - intervention-request
           - teleop-session-record
+          - port-forwarding-session-record
           - command-request
           - command-response
           - command-delivery
@@ -4865,9 +5089,9 @@ components:
         sessionId: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         type: alert
         message: message
-        userId: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         deviceId: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         streamName: streamName
+        userId: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         notificationEnabled: true
         tags:
           key: tags
@@ -4884,24 +5108,13 @@ components:
           - alert
           - intervention-request
           - teleop-session-record
+          - port-forwarding-session-record
           - command-request
           - command-response
           - command-delivery
           - custom
           - comment
           - system
-          type: string
-        sessionId:
-          format: uuid
-          type: string
-        userId:
-          format: uuid
-          type: string
-        deviceId:
-          format: uuid
-          type: string
-        sessionCreated:
-          format: date-time
           type: string
         id:
           format: uuid
@@ -4923,6 +5136,9 @@ components:
           type: string
         viewed:
           type: boolean
+        deviceId:
+          format: uuid
+          type: string
         streamName:
           type: string
         streamType:
@@ -4946,6 +5162,15 @@ components:
           type: object
         notificationEnabled:
           type: boolean
+        userId:
+          format: uuid
+          type: string
+        sessionId:
+          format: uuid
+          type: string
+        sessionCreated:
+          format: date-time
+          type: string
       required:
       - sessionCreated
       - sessionId
@@ -5025,63 +5250,6 @@ components:
       - layout
       - name
       - tags
-      type: object
-    EventIndex:
-      properties:
-        type:
-          enum:
-          - alert
-          - intervention-request
-          - teleop-session-record
-          - command-request
-          - command-response
-          - command-delivery
-          - custom
-          - comment
-          - system
-          type: string
-        organizationId:
-          format: uuid
-          type: string
-        deviceId:
-          format: uuid
-          type: string
-        userId:
-          format: uuid
-          type: string
-        streamName:
-          type: string
-        streamType:
-          enum:
-          - image
-          - numeric
-          - point cloud
-          - text
-          - location
-          - file
-          - localization
-          - health
-          - bitset
-          - metrics
-          - transform tree
-          - battery
-          type: string
-        tags:
-          additionalProperties:
-            type: string
-          type: object
-        id:
-          format: uuid
-          type: string
-        createdAt:
-          format: date-time
-          type: string
-        updatedAt:
-          format: date-time
-          type: string
-      required:
-      - organizationId
-      - type
       type: object
     IdRequestParams:
       properties:
@@ -5665,6 +5833,8 @@ components:
           name: name
           id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           enabled: true
+          tags:
+            key: tags
           updatedAt: 2000-01-23T04:56:07.000+00:00
         - organizationId: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           createdAt: 2000-01-23T04:56:07.000+00:00
@@ -5714,6 +5884,8 @@ components:
           name: name
           id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           enabled: true
+          tags:
+            key: tags
           updatedAt: 2000-01-23T04:56:07.000+00:00
       properties:
         items:
@@ -6123,6 +6295,7 @@ components:
             - alert
             - intervention-request
             - teleop-session-record
+            - port-forwarding-session-record
             - command-request
             - command-response
             - command-delivery
@@ -6177,6 +6350,7 @@ components:
         - alert
         - alert
         notificationEnabled: true
+        disableNullMatches: true
         tags: ""
         names:
         - names
@@ -6213,6 +6387,7 @@ components:
             - alert
             - intervention-request
             - teleop-session-record
+            - port-forwarding-session-record
             - command-request
             - command-response
             - command-delivery
@@ -6228,6 +6403,8 @@ components:
             format: uuid
             type: string
           type: array
+        disableNullMatches:
+          type: boolean
         agentIds:
           items:
             format: uuid
@@ -6374,6 +6551,7 @@ components:
         - alert
         - alert
         notificationEnabled: true
+        disableNullMatches: true
         tags: ""
         names:
         - names
@@ -6458,6 +6636,7 @@ components:
             - alert
             - intervention-request
             - teleop-session-record
+            - port-forwarding-session-record
             - command-request
             - command-response
             - command-delivery
@@ -6473,6 +6652,8 @@ components:
             format: uuid
             type: string
           type: array
+        disableNullMatches:
+          type: boolean
       type: object
     EventSeekQuery:
       example:
@@ -6491,6 +6672,7 @@ components:
         - alert
         - alert
         notificationEnabled: true
+        disableNullMatches: true
         tags: ""
         names:
         - names
@@ -6573,6 +6755,7 @@ components:
             - alert
             - intervention-request
             - teleop-session-record
+            - port-forwarding-session-record
             - command-request
             - command-response
             - command-delivery
@@ -6588,6 +6771,8 @@ components:
             format: uuid
             type: string
           type: array
+        disableNullMatches:
+          type: boolean
       required:
       - direction
       - from
@@ -6609,6 +6794,7 @@ components:
         - alert
         - alert
         notificationEnabled: true
+        disableNullMatches: true
         tags: ""
         names:
         - names
@@ -6688,6 +6874,7 @@ components:
             - alert
             - intervention-request
             - teleop-session-record
+            - port-forwarding-session-record
             - command-request
             - command-response
             - command-delivery
@@ -6703,6 +6890,8 @@ components:
             format: uuid
             type: string
           type: array
+        disableNullMatches:
+          type: boolean
       required:
       - interval
       type: object
@@ -7135,6 +7324,7 @@ components:
           - alert
           - intervention-request
           - teleop-session-record
+          - port-forwarding-session-record
           - command-request
           - command-response
           - command-delivery
@@ -7245,6 +7435,8 @@ components:
         name: name
         id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         enabled: true
+        tags:
+          key: tags
         updatedAt: 2000-01-23T04:56:07.000+00:00
       properties:
         organizationId:
@@ -7256,6 +7448,10 @@ components:
           $ref: '#/components/schemas/DeviceConfigurationDocument'
         enabled:
           type: boolean
+        tags:
+          additionalProperties:
+            type: string
+          type: object
         id:
           format: uuid
           type: string

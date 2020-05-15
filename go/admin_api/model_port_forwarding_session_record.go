@@ -11,8 +11,8 @@ package admin_api
 import (
 	"time"
 )
-// TeleopSessionRecord struct for TeleopSessionRecord
-type TeleopSessionRecord struct {
+// PortForwardingSessionRecord struct for PortForwardingSessionRecord
+type PortForwardingSessionRecord struct {
 	Type string `json:"type,omitempty"`
 	Id string `json:"id,omitempty"`
 	CreatedAt time.Time `json:"createdAt,omitempty"`

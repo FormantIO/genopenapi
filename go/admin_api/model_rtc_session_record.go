@@ -11,22 +11,22 @@ package admin_api
 import (
 	"time"
 )
-// TeleopSessionRecord struct for TeleopSessionRecord
-type TeleopSessionRecord struct {
-	Type string `json:"type,omitempty"`
+// RtcSessionRecord struct for RtcSessionRecord
+type RtcSessionRecord struct {
+	SessionId string `json:"sessionId"`
+	UserId string `json:"userId,omitempty"`
+	DeviceId string `json:"deviceId,omitempty"`
+	SessionCreated time.Time `json:"sessionCreated"`
 	Id string `json:"id,omitempty"`
 	CreatedAt time.Time `json:"createdAt,omitempty"`
 	UpdatedAt time.Time `json:"updatedAt,omitempty"`
+	Type string `json:"type,omitempty"`
 	OrganizationId string `json:"organizationId,omitempty"`
 	Time time.Time `json:"time"`
 	Message string `json:"message,omitempty"`
 	Viewed bool `json:"viewed,omitempty"`
-	DeviceId string `json:"deviceId,omitempty"`
 	StreamName string `json:"streamName,omitempty"`
 	StreamType string `json:"streamType,omitempty"`
 	Tags map[string]string `json:"tags,omitempty"`
 	NotificationEnabled bool `json:"notificationEnabled,omitempty"`
-	UserId string `json:"userId,omitempty"`
-	SessionId string `json:"sessionId"`
-	SessionCreated time.Time `json:"sessionCreated"`
 }
