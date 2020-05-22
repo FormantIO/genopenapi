@@ -11,6 +11,7 @@ package admin_api
 // DeviceStreamRosLocalizationConfiguration struct for DeviceStreamRosLocalizationConfiguration
 type DeviceStreamRosLocalizationConfiguration struct {
 	Type string `json:"type"`
+	BaseReferenceFrame string `json:"baseReferenceFrame"`
 	OdomTopic string `json:"odomTopic"`
 	MapTopic string `json:"mapTopic,omitempty"`
 	PointCloudTopics []string `json:"pointCloudTopics,omitempty"`

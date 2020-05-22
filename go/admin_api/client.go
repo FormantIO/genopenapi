@@ -77,8 +77,6 @@ type APIClient struct {
 
 	EventApi *EventApiService
 
-	FreeTeleopSettingsFormApi *FreeTeleopSettingsFormApiService
-
 	IntegrationApi *IntegrationApiService
 
 	InterventionRequestApi *InterventionRequestApiService
@@ -131,7 +129,6 @@ func NewAPIClient(cfg *Configuration) *APIClient {
 	c.DeviceConfigurationTemplateApi = (*DeviceConfigurationTemplateApiService)(&c.common)
 	c.DeviceDetailsApi = (*DeviceDetailsApiService)(&c.common)
 	c.EventApi = (*EventApiService)(&c.common)
-	c.FreeTeleopSettingsFormApi = (*FreeTeleopSettingsFormApiService)(&c.common)
 	c.IntegrationApi = (*IntegrationApiService)(&c.common)
 	c.InterventionRequestApi = (*InterventionRequestApiService)(&c.common)
 	c.InterventionResponseApi = (*InterventionResponseApiService)(&c.common)

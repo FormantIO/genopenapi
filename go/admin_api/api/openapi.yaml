@@ -1,7 +1,7 @@
 openapi: 3.0.0
 info:
   title: Formant Cloud API
-  version: 0.71.76
+  version: 0.72.58
 servers:
 - url: /
 paths:
@@ -1579,54 +1579,6 @@ paths:
       summary: Seek
       tags:
       - Event
-  /free-teleop-settings-form/{id}:
-    get:
-      description: Get a free teleop settings form
-      operationId: FreeTeleopSettingsFormController.getConfiguration
-      parameters:
-      - explode: false
-        in: path
-        name: id
-        required: true
-        schema:
-          type: string
-        style: simple
-      responses:
-        "200":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/FreeTeleopSettingsForm'
-      summary: Get configuration
-      tags:
-      - Free Teleop Settings Form
-    post:
-      description: Create a free teleop settings form
-      operationId: FreeTeleopSettingsFormController.postConfiguration
-      parameters:
-      - explode: false
-        in: path
-        name: id
-        required: true
-        schema:
-          type: string
-        style: simple
-      requestBody:
-        content:
-          application/json:
-            schema:
-              $ref: '#/components/schemas/FreeTeleopSettingsForm'
-        description: FreeTeleopSettingsForm
-        required: false
-      responses:
-        "201":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/FreeTeleopSettingsForm'
-      summary: Post configuration
-      tags:
-      - Free Teleop Settings Form
   /integrations/slack/auth:
     post:
       description: Create a slack integration
@@ -2261,7 +2213,7 @@ components:
         topics:
           items:
             $ref: '#/components/schemas/RosTopic'
-          maxItems: 200
+          maxItems: 1000
           type: array
       required:
       - topics
@@ -2355,6 +2307,8 @@ components:
         worldReferenceFrameId: worldReferenceFrameId
       properties:
         worldReferenceFrameId:
+          deprecated: true
+          pattern: ^([a-zA-Z~/])([0-9a-zA-Z_/]){0,254}$
           type: string
       type: object
     DeviceStreamCustomConfiguration:
@@ -2422,6 +2376,9 @@ components:
           enum:
           - ros-localization
           type: string
+        baseReferenceFrame:
+          pattern: ^([a-zA-Z~/])([0-9a-zA-Z_/]){0,254}$
+          type: string
         odomTopic:
           pattern: ^([a-zA-Z~/])([0-9a-zA-Z_/]){0,254}$
           type: string
@@ -2442,6 +2399,7 @@ components:
           pattern: ^([a-zA-Z~/])([0-9a-zA-Z_/]){0,254}$
           type: string
       required:
+      - baseReferenceFrame
       - odomTopic
       - type
       type: object
@@ -2469,6 +2427,7 @@ components:
           - ros-transform-tree
           type: string
         baseReferenceFrame:
+          pattern: ^([a-zA-Z~/])([0-9a-zA-Z_/]){0,254}$
           type: string
       required:
       - baseReferenceFrame
@@ -2556,6 +2515,39 @@ components:
       - topicName
       - topicType
       type: object
+    TeleopJoystickAxisConfiguration:
+      properties:
+        dimension:
+          enum:
+          - linear-x
+          - linear-y
+          - linear-z
+          - angular-x
+          - angular-y
+          - angular-z
+          type: string
+        scale:
+          type: number
+        expo:
+          type: number
+        gamepadAxis:
+          format: int64
+          maximum: 9007199254740991
+          minimum: 0
+          type: integer
+      type: object
+    TeleopJoystickConfiguration:
+      properties:
+        position:
+          enum:
+          - left
+          - right
+          type: string
+        x:
+          $ref: '#/components/schemas/TeleopJoystickAxisConfiguration'
+        y:
+          $ref: '#/components/schemas/TeleopJoystickAxisConfiguration'
+      type: object
     DeviceTeleopConfiguration:
       example:
         rosStreams:
@@ -2574,12 +2566,17 @@ components:
         - mode: command
           topicName: topicName
           topicType: std_msgs/Bool
+        joysticks:
+        - ""
+        - ""
       properties:
         rosStreams:
           items:
             $ref: '#/components/schemas/DeviceTeleopRosStreamConfiguration'
           maxItems: 20
           type: array
+        joysticks:
+          $ref: '#/components/schemas/TeleopJoystickConfiguration'
       type: object
     DeviceConfigurationDocument:
       example:
@@ -2625,6 +2622,9 @@ components:
           - mode: command
             topicName: topicName
             topicType: std_msgs/Bool
+          joysticks:
+          - ""
+          - ""
       properties:
         tags:
           additionalProperties:
@@ -2687,6 +2687,9 @@ components:
             - mode: command
               topicName: topicName
               topicType: std_msgs/Bool
+            joysticks:
+            - ""
+            - ""
         deviceId: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         version: 721321908029600
       nullable: true
@@ -3020,7 +3023,7 @@ components:
       type: object
     TriggeredConfiguration:
       example:
-        streamThrottleHz: 3
+        streamThrottleHz: 3.0137280915352016
         configurationTemplateId: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         configurationDurationMinutes: 6333
       properties:
@@ -3028,10 +3031,9 @@ components:
           format: uuid
           type: string
         streamThrottleHz:
-          format: int64
           maximum: 5
           minimum: 0
-          type: integer
+          type: number
         configurationDurationMinutes:
           format: int64
           maximum: 43200
@@ -3042,7 +3044,7 @@ components:
       example:
         severity: info
         triggeredConfiguration:
-          streamThrottleHz: 3
+          streamThrottleHz: 3.0137280915352016
           configurationTemplateId: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           configurationDurationMinutes: 6333
         message: message
@@ -3424,10 +3426,9 @@ components:
         plan:
           enum:
           - freemium
-          - beta
           - commercial
+          - enterprise-default
           - enterprise
-          - free teleop
           type: string
         name:
           type: string
@@ -4657,6 +4658,9 @@ components:
             - mode: command
               topicName: topicName
               topicType: std_msgs/Bool
+            joysticks:
+            - ""
+            - ""
         name: name
         id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         enabled: true
@@ -5264,7 +5268,7 @@ components:
         items:
         - severity: info
           triggeredConfiguration:
-            streamThrottleHz: 3
+            streamThrottleHz: 3.0137280915352016
             configurationTemplateId: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
             configurationDurationMinutes: 6333
           message: message
@@ -5292,7 +5296,7 @@ components:
           updatedAt: 2000-01-23T04:56:07.000+00:00
         - severity: info
           triggeredConfiguration:
-            streamThrottleHz: 3
+            streamThrottleHz: 3.0137280915352016
             configurationTemplateId: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
             configurationDurationMinutes: 6333
           message: message
@@ -5443,10 +5447,9 @@ components:
         organizationPlan:
           enum:
           - freemium
-          - beta
           - commercial
+          - enterprise-default
           - enterprise
-          - free teleop
           type: string
       required:
       - email
@@ -5830,6 +5833,9 @@ components:
               - mode: command
                 topicName: topicName
                 topicType: std_msgs/Bool
+              joysticks:
+              - ""
+              - ""
           name: name
           id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           enabled: true
@@ -5881,6 +5887,9 @@ components:
               - mode: command
                 topicName: topicName
                 topicType: std_msgs/Bool
+              joysticks:
+              - ""
+              - ""
           name: name
           id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           enabled: true
@@ -6147,6 +6156,9 @@ components:
               - mode: command
                 topicName: topicName
                 topicType: std_msgs/Bool
+              joysticks:
+              - ""
+              - ""
           deviceId: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           version: 721321908029600
       properties:
@@ -6895,74 +6907,6 @@ components:
       required:
       - interval
       type: object
-    BooleanTopic:
-      example:
-        mode: command
-        topic: topic
-      properties:
-        topic:
-          pattern: ^([a-zA-Z~/])([0-9a-zA-Z_/]){0,254}$
-          type: string
-        mode:
-          enum:
-          - command
-          - observe
-          type: string
-      required:
-      - mode
-      - topic
-      type: object
-    FreeTeleopSettingsForm:
-      example:
-        worldReferenceFrameId: worldReferenceFrameId
-        pointCloudTopic: pointCloudTopic
-        joystickTopic0: joystickTopic0
-        odomTopic: odomTopic
-        joystickTopic1: joystickTopic1
-        booleanTopics:
-        - mode: command
-          topic: topic
-        - mode: command
-          topic: topic
-        - mode: command
-          topic: topic
-        - mode: command
-          topic: topic
-        - mode: command
-          topic: topic
-        imageTopic0: imageTopic0
-        imageTopic1: imageTopic1
-        mapTopic: mapTopic
-      properties:
-        imageTopic0:
-          pattern: ^([a-zA-Z~/])([0-9a-zA-Z_/]){0,254}$
-          type: string
-        imageTopic1:
-          pattern: ^([a-zA-Z~/])([0-9a-zA-Z_/]){0,254}$
-          type: string
-        joystickTopic0:
-          pattern: ^([a-zA-Z~/])([0-9a-zA-Z_/]){0,254}$
-          type: string
-        joystickTopic1:
-          pattern: ^([a-zA-Z~/])([0-9a-zA-Z_/]){0,254}$
-          type: string
-        mapTopic:
-          pattern: ^([a-zA-Z~/])([0-9a-zA-Z_/]){0,254}$
-          type: string
-        odomTopic:
-          pattern: ^([a-zA-Z~/])([0-9a-zA-Z_/]){0,254}$
-          type: string
-        pointCloudTopic:
-          pattern: ^([a-zA-Z~/])([0-9a-zA-Z_/]){0,254}$
-          type: string
-        worldReferenceFrameId:
-          type: string
-        booleanTopics:
-          items:
-            $ref: '#/components/schemas/BooleanTopic'
-          maxItems: 10
-          type: array
-      type: object
     SlackAuthRequest:
       example:
         redirectUri: redirectUri
@@ -7075,7 +7019,7 @@ components:
       example:
         severity: info
         triggeredConfiguration:
-          streamThrottleHz: 3
+          streamThrottleHz: 3.0137280915352016
           configurationTemplateId: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           configurationDurationMinutes: 6333
         message: message
@@ -7432,6 +7376,9 @@ components:
             - mode: command
               topicName: topicName
               topicType: std_msgs/Bool
+            joysticks:
+            - ""
+            - ""
         name: name
         id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         enabled: true
@@ -7645,10 +7592,9 @@ components:
         plan:
           enum:
           - freemium
-          - beta
           - commercial
+          - enterprise-default
           - enterprise
-          - free teleop
           type: string
         name:
           type: string

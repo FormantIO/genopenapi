@@ -11,6 +11,6 @@ package admin_api
 // TriggeredConfiguration struct for TriggeredConfiguration
 type TriggeredConfiguration struct {
 	ConfigurationTemplateId string `json:"configurationTemplateId,omitempty"`
-	StreamThrottleHz int64 `json:"streamThrottleHz,omitempty"`
+	StreamThrottleHz float32 `json:"streamThrottleHz,omitempty"`
 	ConfigurationDurationMinutes int64 `json:"configurationDurationMinutes,omitempty"`
 }

@@ -5,6 +5,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Type** | **string** |  | 
+**BaseReferenceFrame** | **string** |  | 
 **OdomTopic** | **string** |  | 
 **MapTopic** | **string** |  | [optional] 
 **PointCloudTopics** | **[]string** |  | [optional] 

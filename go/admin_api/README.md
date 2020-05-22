@@ -109,8 +109,6 @@ Class | Method | HTTP request | Description
 *EventApi* | [**EventControllerQuery**](docs/EventApi.md#eventcontrollerquery) | **Post** /events/query | Query
 *EventApi* | [**EventControllerSeek**](docs/EventApi.md#eventcontrollerseek) | **Post** /events/seek | Seek
 *EventApi* | [**EventControllerView**](docs/EventApi.md#eventcontrollerview) | **Post** /events/view | View
-*FreeTeleopSettingsFormApi* | [**FreeTeleopSettingsFormControllerGetConfiguration**](docs/FreeTeleopSettingsFormApi.md#freeteleopsettingsformcontrollergetconfiguration) | **Get** /free-teleop-settings-form/{id} | Get configuration
-*FreeTeleopSettingsFormApi* | [**FreeTeleopSettingsFormControllerPostConfiguration**](docs/FreeTeleopSettingsFormApi.md#freeteleopsettingsformcontrollerpostconfiguration) | **Post** /free-teleop-settings-form/{id} | Post configuration
 *IntegrationApi* | [**IntegrationControllerPost**](docs/IntegrationApi.md#integrationcontrollerpost) | **Post** /integrations/slack/auth | Post
 *InterventionRequestApi* | [**InterventionRequestControllerGetOne**](docs/InterventionRequestApi.md#interventionrequestcontrollergetone) | **Get** /intervention-requests/{id} | Get one
 *InterventionRequestApi* | [**InterventionRequestControllerPost**](docs/InterventionRequestApi.md#interventionrequestcontrollerpost) | **Post** /intervention-requests | Post
@@ -152,7 +150,6 @@ Class | Method | HTTP request | Description
  - [BitsetViewConfiguration](docs/BitsetViewConfiguration.md)
  - [Board](docs/Board.md)
  - [BoardListResponse](docs/BoardListResponse.md)
- - [BooleanTopic](docs/BooleanTopic.md)
  - [CaptureSession](docs/CaptureSession.md)
  - [Challenge](docs/Challenge.md)
  - [ChangePasswordRequest](docs/ChangePasswordRequest.md)
@@ -213,7 +210,6 @@ Class | Method | HTTP request | Description
  - [EventSort](docs/EventSort.md)
  - [Filter](docs/Filter.md)
  - [ForgotPasswordRequest](docs/ForgotPasswordRequest.md)
- - [FreeTeleopSettingsForm](docs/FreeTeleopSettingsForm.md)
  - [GetLooksResponse](docs/GetLooksResponse.md)
  - [IdRequestParams](docs/IdRequestParams.md)
  - [ImageViewConfiguration](docs/ImageViewConfiguration.md)
@@ -264,6 +260,8 @@ Class | Method | HTTP request | Description
  - [StringListResponse](docs/StringListResponse.md)
  - [SystemEvent](docs/SystemEvent.md)
  - [TagsResponse](docs/TagsResponse.md)
+ - [TeleopJoystickAxisConfiguration](docs/TeleopJoystickAxisConfiguration.md)
+ - [TeleopJoystickConfiguration](docs/TeleopJoystickConfiguration.md)
  - [TeleopSessionRecord](docs/TeleopSessionRecord.md)
  - [ThresholdAlertCondition](docs/ThresholdAlertCondition.md)
  - [TokenResult](docs/TokenResult.md)
