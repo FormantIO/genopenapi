@@ -6,6 +6,8 @@ Method | HTTP request | Description
 ------------- | ------------- | -------------
 [**OrganizationControllerGetOne**](OrganizationApi.md#OrganizationControllerGetOne) | **Get** /organizations/{id} | Get one
 [**OrganizationControllerGetSlackInfo**](OrganizationApi.md#OrganizationControllerGetSlackInfo) | **Post** /organizations/slack-info | Get slack info
+[**OrganizationControllerList**](OrganizationApi.md#OrganizationControllerList) | **Get** /organizations/ | List
+[**OrganizationControllerListUsers**](OrganizationApi.md#OrganizationControllerListUsers) | **Get** /organizations/{id}/users | List users
 [**OrganizationControllerPatch**](OrganizationApi.md#OrganizationControllerPatch) | **Patch** /organizations/{id} | Patch
 
 
@@ -59,6 +61,66 @@ This endpoint does not need any parameter.
 ### Return type
 
  (empty response body)
+
+### Authorization
+
+Use admin JWT for authorization
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## OrganizationControllerList
+
+> OrganizationListResponse OrganizationControllerList(ctx, )
+
+List
+
+### Required Parameters
+
+This endpoint does not need any parameter.
+
+### Return type
+
+[**OrganizationListResponse**](OrganizationListResponse.md)
+
+### Authorization
+
+Use admin JWT for authorization
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## OrganizationControllerListUsers
+
+> UserListResponse OrganizationControllerListUsers(ctx, id)
+
+List users
+
+### Required Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**id** | **string**|  | 
+
+### Return type
+
+[**UserListResponse**](UserListResponse.md)
 
 ### Authorization
 

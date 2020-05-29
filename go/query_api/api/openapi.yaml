@@ -1,10 +1,22 @@
 openapi: 3.0.0
 info:
   title: Formant Cloud API
-  version: 0.72.68
+  version: 0.73.52
 servers:
 - url: /
 paths:
+  /counts/byte-history:
+    get:
+      operationId: CountController.byteCountHistory
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CountHistory'
+      summary: Byte count history
+      tags:
+      - Count
   /metadata:
     post:
       operationId: MetadataController.listMetadata
@@ -133,6 +145,66 @@ paths:
       - Seek
 components:
   schemas:
+    CountHistoryEntryCount:
+      example:
+        "0": 2000-01-23T04:56:07.000+00:00
+        "1": -7564555438681791
+      properties:
+        "0":
+          format: date-time
+          type: string
+        "1":
+          format: int64
+          maximum: 9007199254740991
+          minimum: -9007199254740991
+          type: integer
+      required:
+      - "0"
+      - "1"
+      type: object
+    CountHistoryEntry:
+      example:
+        counts:
+        - "0": 2000-01-23T04:56:07.000+00:00
+          "1": -7564555438681791
+        - "0": 2000-01-23T04:56:07.000+00:00
+          "1": -7564555438681791
+        id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+      properties:
+        id:
+          format: uuid
+          type: string
+        counts:
+          items:
+            $ref: '#/components/schemas/CountHistoryEntryCount'
+          type: array
+      required:
+      - counts
+      - id
+      type: object
+    CountHistory:
+      example:
+        counts:
+        - counts:
+          - "0": 2000-01-23T04:56:07.000+00:00
+            "1": -7564555438681791
+          - "0": 2000-01-23T04:56:07.000+00:00
+            "1": -7564555438681791
+          id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        - counts:
+          - "0": 2000-01-23T04:56:07.000+00:00
+            "1": -7564555438681791
+          - "0": 2000-01-23T04:56:07.000+00:00
+            "1": -7564555438681791
+          id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+      properties:
+        counts:
+          items:
+            $ref: '#/components/schemas/CountHistoryEntry'
+          type: array
+      required:
+      - counts
+      type: object
     Filter:
       properties:
         agentIds:

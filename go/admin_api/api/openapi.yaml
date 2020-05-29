@@ -1,7 +1,7 @@
 openapi: 3.0.0
 info:
   title: Formant Cloud API
-  version: 0.72.68
+  version: 0.73.52
 servers:
 - url: /
 paths:
@@ -312,6 +312,26 @@ paths:
               schema:
                 $ref: '#/components/schemas/DeviceCredentials'
       summary: Device credentials
+      tags:
+      - Auth
+  /auth/impersonate:
+    post:
+      description: Impersonate user
+      operationId: AuthController.impersonate
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ImpersonateRequest'
+        description: ImpersonateRequest
+        required: true
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/LoginResult'
+      summary: Impersonate
       tags:
       - Auth
   /boards:
@@ -1749,6 +1769,38 @@ paths:
               schema:
                 $ref: '#/components/schemas/Organization'
       summary: Patch
+      tags:
+      - Organization
+  /organizations/:
+    get:
+      operationId: OrganizationController.list
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/OrganizationListResponse'
+      summary: List
+      tags:
+      - Organization
+  /organizations/{id}/users:
+    get:
+      operationId: OrganizationController.listUsers
+      parameters:
+      - explode: false
+        in: path
+        name: id
+        required: true
+        schema:
+          type: string
+        style: simple
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UserListResponse'
+      summary: List users
       tags:
       - Organization
   /organizations/slack-info:
@@ -5529,6 +5581,16 @@ components:
       required:
       - email
       type: object
+    ImpersonateRequest:
+      example:
+        userId: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+      properties:
+        userId:
+          format: uuid
+          type: string
+      required:
+      - userId
+      type: object
     LoginRequest:
       example:
         password: password
@@ -6972,6 +7034,155 @@ components:
         items:
           items:
             $ref: '#/components/schemas/LookerLook'
+          type: array
+      required:
+      - items
+      type: object
+    OrganizationListResponse:
+      example:
+        items:
+        - country: country
+          pagerdutyInfo:
+            serviceKey: serviceKey
+            serviceName: serviceName
+            account: account
+          website: website
+          city: city
+          postalCode: postalCode
+          externalId: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          industry: industry
+          awsInfo:
+            accountId: accountId
+            s3Export:
+              bucket: bucket
+              path: path
+            roleName: ""
+          slackInfo:
+            configurationUrl: configurationUrl
+            webhookChannel: webhookChannel
+            teamId: teamId
+            webhookUrl: webhookUrl
+            token: token
+          createdAt: 2000-01-23T04:56:07.000+00:00
+          teleopEnabled: true
+          webhooksInfo:
+            webhooks:
+            - name: ""
+              url: http://example.com/aeiou
+            - name: ""
+              url: http://example.com/aeiou
+            - name: ""
+              url: http://example.com/aeiou
+            - name: ""
+              url: http://example.com/aeiou
+            - name: ""
+              url: http://example.com/aeiou
+          name: name
+          addressLine1: addressLine1
+          addressLine2: addressLine2
+          state: state
+          id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          plan: freemium
+          lookerInfo:
+            lookerPermissions:
+            - lookerPermissions
+            - lookerPermissions
+            lookerGroupId: 721321908029599
+            lookerModels:
+            - lookerModels
+            - lookerModels
+            lookerSpaceId: 6.027456183070403
+          teleopConfiguration:
+            rosStreams:
+            - configuration: ""
+              displayName: displayName
+              topicName: topicName
+            - configuration: ""
+              displayName: displayName
+              topicName: topicName
+            - configuration: ""
+              displayName: displayName
+              topicName: topicName
+            - configuration: ""
+              displayName: displayName
+              topicName: topicName
+            - configuration: ""
+              displayName: displayName
+              topicName: topicName
+          updatedAt: 2000-01-23T04:56:07.000+00:00
+        - country: country
+          pagerdutyInfo:
+            serviceKey: serviceKey
+            serviceName: serviceName
+            account: account
+          website: website
+          city: city
+          postalCode: postalCode
+          externalId: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          industry: industry
+          awsInfo:
+            accountId: accountId
+            s3Export:
+              bucket: bucket
+              path: path
+            roleName: ""
+          slackInfo:
+            configurationUrl: configurationUrl
+            webhookChannel: webhookChannel
+            teamId: teamId
+            webhookUrl: webhookUrl
+            token: token
+          createdAt: 2000-01-23T04:56:07.000+00:00
+          teleopEnabled: true
+          webhooksInfo:
+            webhooks:
+            - name: ""
+              url: http://example.com/aeiou
+            - name: ""
+              url: http://example.com/aeiou
+            - name: ""
+              url: http://example.com/aeiou
+            - name: ""
+              url: http://example.com/aeiou
+            - name: ""
+              url: http://example.com/aeiou
+          name: name
+          addressLine1: addressLine1
+          addressLine2: addressLine2
+          state: state
+          id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          plan: freemium
+          lookerInfo:
+            lookerPermissions:
+            - lookerPermissions
+            - lookerPermissions
+            lookerGroupId: 721321908029599
+            lookerModels:
+            - lookerModels
+            - lookerModels
+            lookerSpaceId: 6.027456183070403
+          teleopConfiguration:
+            rosStreams:
+            - configuration: ""
+              displayName: displayName
+              topicName: topicName
+            - configuration: ""
+              displayName: displayName
+              topicName: topicName
+            - configuration: ""
+              displayName: displayName
+              topicName: topicName
+            - configuration: ""
+              displayName: displayName
+              topicName: topicName
+            - configuration: ""
+              displayName: displayName
+              topicName: topicName
+          updatedAt: 2000-01-23T04:56:07.000+00:00
+      properties:
+        items:
+          items:
+            $ref: '#/components/schemas/Organization'
           type: array
       required:
       - items

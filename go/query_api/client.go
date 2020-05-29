@@ -47,6 +47,8 @@ type APIClient struct {
 
 	// API Services
 
+	CountApi *CountApiService
+
 	MetadataApi *MetadataApiService
 
 	OnlineDevicesApi *OnlineDevicesApiService
@@ -74,6 +76,7 @@ func NewAPIClient(cfg *Configuration) *APIClient {
 	c.common.client = c
 
 	// API Services
+	c.CountApi = (*CountApiService)(&c.common)
 	c.MetadataApi = (*MetadataApiService)(&c.common)
 	c.OnlineDevicesApi = (*OnlineDevicesApiService)(&c.common)
 	c.PresenceApi = (*PresenceApiService)(&c.common)

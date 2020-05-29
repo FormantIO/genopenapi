@@ -43,6 +43,7 @@ Class | Method | HTTP request | Description
 *AuthApi* | [**AuthControllerConfirmForgotPassword**](docs/AuthApi.md#authcontrollerconfirmforgotpassword) | **Post** /auth/confirm-forgot-password | Confirm forgot password
 *AuthApi* | [**AuthControllerDeviceCredentials**](docs/AuthApi.md#authcontrollerdevicecredentials) | **Post** /auth/device-credentials | Device credentials
 *AuthApi* | [**AuthControllerForgotPassword**](docs/AuthApi.md#authcontrollerforgotpassword) | **Post** /auth/forgot-password | Forgot password
+*AuthApi* | [**AuthControllerImpersonate**](docs/AuthApi.md#authcontrollerimpersonate) | **Post** /auth/impersonate | Impersonate
 *AuthApi* | [**AuthControllerLogin**](docs/AuthApi.md#authcontrollerlogin) | **Post** /auth/login | Login
 *AuthApi* | [**AuthControllerRefresh**](docs/AuthApi.md#authcontrollerrefresh) | **Post** /auth/refresh | Refresh
 *AuthApi* | [**AuthControllerResendConfirmationCode**](docs/AuthApi.md#authcontrollerresendconfirmationcode) | **Post** /auth/resend-confirmation-code | Resend confirmation code
@@ -118,6 +119,8 @@ Class | Method | HTTP request | Description
 *LookerApi* | [**LookerControllerSignLookerEmbedUrl**](docs/LookerApi.md#lookercontrollersignlookerembedurl) | **Post** /looker/sign | Sign looker embed url
 *OrganizationApi* | [**OrganizationControllerGetOne**](docs/OrganizationApi.md#organizationcontrollergetone) | **Get** /organizations/{id} | Get one
 *OrganizationApi* | [**OrganizationControllerGetSlackInfo**](docs/OrganizationApi.md#organizationcontrollergetslackinfo) | **Post** /organizations/slack-info | Get slack info
+*OrganizationApi* | [**OrganizationControllerList**](docs/OrganizationApi.md#organizationcontrollerlist) | **Get** /organizations/ | List
+*OrganizationApi* | [**OrganizationControllerListUsers**](docs/OrganizationApi.md#organizationcontrollerlistusers) | **Get** /organizations/{id}/users | List users
 *OrganizationApi* | [**OrganizationControllerPatch**](docs/OrganizationApi.md#organizationcontrollerpatch) | **Patch** /organizations/{id} | Patch
 *ShareApi* | [**ShareControllerAuthenticate**](docs/ShareApi.md#sharecontrollerauthenticate) | **Post** /shares/{code}/authenticate | Authenticate
 *ShareApi* | [**ShareControllerGetOne**](docs/ShareApi.md#sharecontrollergetone) | **Get** /shares/{code} | Get one
@@ -213,6 +216,7 @@ Class | Method | HTTP request | Description
  - [GetLooksResponse](docs/GetLooksResponse.md)
  - [IdRequestParams](docs/IdRequestParams.md)
  - [ImageViewConfiguration](docs/ImageViewConfiguration.md)
+ - [ImpersonateRequest](docs/ImpersonateRequest.md)
  - [IntervalEventFilter](docs/IntervalEventFilter.md)
  - [InterventionRequest](docs/InterventionRequest.md)
  - [InterventionResponse](docs/InterventionResponse.md)
@@ -227,6 +231,7 @@ Class | Method | HTTP request | Description
  - [LookerLook](docs/LookerLook.md)
  - [NumericViewConfiguration](docs/NumericViewConfiguration.md)
  - [Organization](docs/Organization.md)
+ - [OrganizationListResponse](docs/OrganizationListResponse.md)
  - [PagerdutyInfo](docs/PagerdutyInfo.md)
  - [PartialAlertDefinition](docs/PartialAlertDefinition.md)
  - [PartialBoard](docs/PartialBoard.md)
