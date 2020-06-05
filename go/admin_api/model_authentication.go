@@ -14,4 +14,5 @@ type Authentication struct {
 	OrganizationId string `json:"organizationId"`
 	UserId string `json:"userId"`
 	RefreshToken string `json:"refreshToken,omitempty"`
+	IsSuperuser bool `json:"isSuperuser,omitempty"`
 }

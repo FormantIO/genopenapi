@@ -1,7 +1,7 @@
 openapi: 3.0.0
 info:
   title: Formant Cloud API
-  version: 0.73.62
+  version: 0.74.62
 servers:
 - url: /
 paths:
@@ -5385,6 +5385,7 @@ components:
     Authentication:
       example:
         organizationId: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        isSuperuser: true
         accessToken: accessToken
         userId: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         refreshToken: refreshToken
@@ -5399,6 +5400,8 @@ components:
           type: string
         refreshToken:
           type: string
+        isSuperuser:
+          type: boolean
       required:
       - accessToken
       - organizationId
@@ -5437,6 +5440,7 @@ components:
           email: email
         authentication:
           organizationId: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          isSuperuser: true
           accessToken: accessToken
           userId: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           refreshToken: refreshToken
