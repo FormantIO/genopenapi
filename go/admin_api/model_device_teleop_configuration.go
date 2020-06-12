@@ -12,4 +12,5 @@ package admin_api
 type DeviceTeleopConfiguration struct {
 	RosStreams []DeviceTeleopRosStreamConfiguration `json:"rosStreams,omitempty"`
 	Joysticks []interface{} `json:"joysticks,omitempty"`
+	Views []interface{} `json:"views,omitempty"`
 }

@@ -8,8 +8,7 @@
  */
 
 package admin_api
-// TriggeredConfiguration struct for TriggeredConfiguration
-type TriggeredConfiguration struct {
-	ConfigurationDurationMinutes int64 `json:"configurationDurationMinutes"`
-	ConfigurationTemplateId string `json:"configurationTemplateId"`
+// TeleopViewConfiguration struct for TeleopViewConfiguration
+type TeleopViewConfiguration struct {
+	StreamName interface{} `json:"streamName,omitempty"`
 }

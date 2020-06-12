@@ -268,6 +268,7 @@ Class | Method | HTTP request | Description
  - [TeleopJoystickAxisConfiguration](docs/TeleopJoystickAxisConfiguration.md)
  - [TeleopJoystickConfiguration](docs/TeleopJoystickConfiguration.md)
  - [TeleopSessionRecord](docs/TeleopSessionRecord.md)
+ - [TeleopViewConfiguration](docs/TeleopViewConfiguration.md)
  - [ThresholdAlertCondition](docs/ThresholdAlertCondition.md)
  - [TokenResult](docs/TokenResult.md)
  - [TriggeredConfiguration](docs/TriggeredConfiguration.md)

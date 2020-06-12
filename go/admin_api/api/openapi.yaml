@@ -1,7 +1,7 @@
 openapi: 3.0.0
 info:
   title: Formant Cloud API
-  version: 0.74.62
+  version: 0.75.57
 servers:
 - url: /
 paths:
@@ -2600,6 +2600,10 @@ components:
         y:
           $ref: '#/components/schemas/TeleopJoystickAxisConfiguration'
       type: object
+    TeleopViewConfiguration:
+      properties:
+        streamName: {}
+      type: object
     DeviceTeleopConfiguration:
       example:
         rosStreams:
@@ -2621,6 +2625,9 @@ components:
         joysticks:
         - ""
         - ""
+        views:
+        - ""
+        - ""
       properties:
         rosStreams:
           items:
@@ -2629,6 +2636,8 @@ components:
           type: array
         joysticks:
           $ref: '#/components/schemas/TeleopJoystickConfiguration'
+        views:
+          $ref: '#/components/schemas/TeleopViewConfiguration'
       type: object
     DeviceConfigurationDocument:
       example:
@@ -2675,6 +2684,9 @@ components:
             topicName: topicName
             topicType: std_msgs/Bool
           joysticks:
+          - ""
+          - ""
+          views:
           - ""
           - ""
       properties:
@@ -2740,6 +2752,9 @@ components:
               topicName: topicName
               topicType: std_msgs/Bool
             joysticks:
+            - ""
+            - ""
+            views:
             - ""
             - ""
         deviceId: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
@@ -3075,30 +3090,27 @@ components:
       type: object
     TriggeredConfiguration:
       example:
-        streamThrottleHz: 3.0137280915352016
         configurationTemplateId: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-        configurationDurationMinutes: 6333
+        configurationDurationMinutes: 26039
       properties:
-        configurationTemplateId:
-          format: uuid
-          type: string
-        streamThrottleHz:
-          maximum: 5
-          minimum: 0
-          type: number
         configurationDurationMinutes:
           format: int64
           maximum: 43200
           minimum: 1
           type: integer
+        configurationTemplateId:
+          format: uuid
+          type: string
+      required:
+      - configurationDurationMinutes
+      - configurationTemplateId
       type: object
     AlertDefinition:
       example:
         severity: info
         triggeredConfiguration:
-          streamThrottleHz: 3.0137280915352016
           configurationTemplateId: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-          configurationDurationMinutes: 6333
+          configurationDurationMinutes: 26039
         message: message
         enabled: true
         notificationEnabled: true
@@ -4713,6 +4725,9 @@ components:
             joysticks:
             - ""
             - ""
+            views:
+            - ""
+            - ""
         name: name
         id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         enabled: true
@@ -5320,9 +5335,8 @@ components:
         items:
         - severity: info
           triggeredConfiguration:
-            streamThrottleHz: 3.0137280915352016
             configurationTemplateId: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-            configurationDurationMinutes: 6333
+            configurationDurationMinutes: 26039
           message: message
           enabled: true
           notificationEnabled: true
@@ -5348,9 +5362,8 @@ components:
           updatedAt: 2000-01-23T04:56:07.000+00:00
         - severity: info
           triggeredConfiguration:
-            streamThrottleHz: 3.0137280915352016
             configurationTemplateId: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-            configurationDurationMinutes: 6333
+            configurationDurationMinutes: 26039
           message: message
           enabled: true
           notificationEnabled: true
@@ -5902,6 +5915,9 @@ components:
               joysticks:
               - ""
               - ""
+              views:
+              - ""
+              - ""
           name: name
           id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           enabled: true
@@ -5954,6 +5970,9 @@ components:
                 topicName: topicName
                 topicType: std_msgs/Bool
               joysticks:
+              - ""
+              - ""
+              views:
               - ""
               - ""
           name: name
@@ -6223,6 +6242,9 @@ components:
                 topicName: topicName
                 topicType: std_msgs/Bool
               joysticks:
+              - ""
+              - ""
+              views:
               - ""
               - ""
           deviceId: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
@@ -7234,9 +7256,8 @@ components:
       example:
         severity: info
         triggeredConfiguration:
-          streamThrottleHz: 3.0137280915352016
           configurationTemplateId: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-          configurationDurationMinutes: 6333
+          configurationDurationMinutes: 26039
         message: message
         enabled: true
         notificationEnabled: true
@@ -7592,6 +7613,9 @@ components:
               topicName: topicName
               topicType: std_msgs/Bool
             joysticks:
+            - ""
+            - ""
+            views:
             - ""
             - ""
         name: name
