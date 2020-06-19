@@ -11,8 +11,8 @@ package admin_api
 import (
 	"time"
 )
-// PartialAlertDefinition struct for PartialAlertDefinition
-type PartialAlertDefinition struct {
+// PartialEventTrigger struct for PartialEventTrigger
+type PartialEventTrigger struct {
 	OrganizationId string `json:"organizationId,omitempty"`
 	Message string `json:"message,omitempty"`
 	Stream string `json:"stream,omitempty"`
@@ -23,7 +23,7 @@ type PartialAlertDefinition struct {
 	TriggeredConfiguration TriggeredConfiguration `json:"triggeredConfiguration,omitempty"`
 	Tags map[string]string `json:"tags,omitempty"`
 	NotificationEnabled bool `json:"notificationEnabled,omitempty"`
-	Commands []AlertCommand `json:"commands,omitempty"`
+	Commands []EventTriggerCommand `json:"commands,omitempty"`
 	Id string `json:"id,omitempty"`
 	CreatedAt time.Time `json:"createdAt,omitempty"`
 	UpdatedAt time.Time `json:"updatedAt,omitempty"`

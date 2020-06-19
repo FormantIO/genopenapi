@@ -1,23 +1,23 @@
-# \AlertDefinitionApi
+# \EventTriggerApi
 
 All URIs are relative to *https://api.formant.io/v1/admin*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**AlertDefinitionControllerGetAll**](AlertDefinitionApi.md#AlertDefinitionControllerGetAll) | **Get** /alert-definitions | Get all
-[**AlertDefinitionControllerGetOne**](AlertDefinitionApi.md#AlertDefinitionControllerGetOne) | **Get** /alert-definitions/{id} | Get one
-[**AlertDefinitionControllerPatch**](AlertDefinitionApi.md#AlertDefinitionControllerPatch) | **Patch** /alert-definitions/{id} | Patch
-[**AlertDefinitionControllerPost**](AlertDefinitionApi.md#AlertDefinitionControllerPost) | **Post** /alert-definitions | Post
+[**EventTriggerControllerGetAll**](EventTriggerApi.md#EventTriggerControllerGetAll) | **Get** /event-triggers | Get all
+[**EventTriggerControllerGetOne**](EventTriggerApi.md#EventTriggerControllerGetOne) | **Get** /event-triggers/{id} | Get one
+[**EventTriggerControllerPatch**](EventTriggerApi.md#EventTriggerControllerPatch) | **Patch** /event-triggers/{id} | Patch
+[**EventTriggerControllerPost**](EventTriggerApi.md#EventTriggerControllerPost) | **Post** /event-triggers | Post
 
 
 
-## AlertDefinitionControllerGetAll
+## EventTriggerControllerGetAll
 
-> AlertDefinitionListResponse AlertDefinitionControllerGetAll(ctx, )
+> EventTriggerListResponse EventTriggerControllerGetAll(ctx, )
 
 Get all
 
-List all alert definitions
+List all event triggers
 
 ### Required Parameters
 
@@ -25,7 +25,7 @@ This endpoint does not need any parameter.
 
 ### Return type
 
-[**AlertDefinitionListResponse**](AlertDefinitionListResponse.md)
+[**EventTriggerListResponse**](EventTriggerListResponse.md)
 
 ### Authorization
 
@@ -41,13 +41,13 @@ Use admin JWT for authorization
 [[Back to README]](../README.md)
 
 
-## AlertDefinitionControllerGetOne
+## EventTriggerControllerGetOne
 
-> AlertDefinition AlertDefinitionControllerGetOne(ctx, id)
+> EventTrigger EventTriggerControllerGetOne(ctx, id)
 
 Get one
 
-Get an alert definition
+Get an event trigger
 
 ### Required Parameters
 
@@ -59,7 +59,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**AlertDefinition**](AlertDefinition.md)
+[**EventTrigger**](EventTrigger.md)
 
 ### Authorization
 
@@ -75,13 +75,13 @@ Use admin JWT for authorization
 [[Back to README]](../README.md)
 
 
-## AlertDefinitionControllerPatch
+## EventTriggerControllerPatch
 
-> AlertDefinition AlertDefinitionControllerPatch(ctx, id, partialAlertDefinition)
+> EventTrigger EventTriggerControllerPatch(ctx, id, partialEventTrigger)
 
 Patch
 
-Update alert definition
+Update event trigger
 
 ### Required Parameters
 
@@ -90,11 +90,11 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
 **id** | **string**|  | 
-**partialAlertDefinition** | [**PartialAlertDefinition**](PartialAlertDefinition.md)| PartialAlertDefinition | 
+**partialEventTrigger** | [**PartialEventTrigger**](PartialEventTrigger.md)| PartialEventTrigger | 
 
 ### Return type
 
-[**AlertDefinition**](AlertDefinition.md)
+[**EventTrigger**](EventTrigger.md)
 
 ### Authorization
 
@@ -110,13 +110,13 @@ Use admin JWT for authorization
 [[Back to README]](../README.md)
 
 
-## AlertDefinitionControllerPost
+## EventTriggerControllerPost
 
-> AlertDefinition AlertDefinitionControllerPost(ctx, alertDefinition)
+> EventTrigger EventTriggerControllerPost(ctx, eventTrigger)
 
 Post
 
-Create alert definition
+Create event trigger
 
 ### Required Parameters
 
@@ -124,11 +124,11 @@ Create alert definition
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**alertDefinition** | [**AlertDefinition**](AlertDefinition.md)| AlertDefinition | 
+**eventTrigger** | [**EventTrigger**](EventTrigger.md)| EventTrigger | 
 
 ### Return type
 
-[**AlertDefinition**](AlertDefinition.md)
+[**EventTrigger**](EventTrigger.md)
 
 ### Authorization
 

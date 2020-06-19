@@ -1,131 +1,10 @@
 openapi: 3.0.0
 info:
   title: Formant Cloud API
-  version: 0.75.65
+  version: 0.76.48
 servers:
 - url: /
 paths:
-  /alerts/{id}:
-    get:
-      description: Get an alert
-      operationId: AlertController.getOne
-      parameters:
-      - explode: false
-        in: path
-        name: id
-        required: true
-        schema:
-          type: string
-        style: simple
-      responses:
-        "200":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Alert'
-      summary: Get one
-      tags:
-      - Alert
-  /alerts:
-    post:
-      description: Create an alert
-      operationId: AlertController.post
-      requestBody:
-        content:
-          application/json:
-            schema:
-              $ref: '#/components/schemas/Alert'
-        description: Alert
-        required: true
-      responses:
-        "201":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Alert'
-      summary: Post
-      tags:
-      - Alert
-  /alert-definitions:
-    get:
-      description: List all alert definitions
-      operationId: AlertDefinitionController.getAll
-      responses:
-        "200":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/AlertDefinitionListResponse'
-      summary: Get all
-      tags:
-      - Alert Definition
-    post:
-      description: Create alert definition
-      operationId: AlertDefinitionController.post
-      requestBody:
-        content:
-          application/json:
-            schema:
-              $ref: '#/components/schemas/AlertDefinition'
-        description: AlertDefinition
-        required: true
-      responses:
-        "201":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/AlertDefinition'
-      summary: Post
-      tags:
-      - Alert Definition
-  /alert-definitions/{id}:
-    get:
-      description: Get an alert definition
-      operationId: AlertDefinitionController.getOne
-      parameters:
-      - explode: false
-        in: path
-        name: id
-        required: true
-        schema:
-          type: string
-        style: simple
-      responses:
-        "200":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/AlertDefinition'
-      summary: Get one
-      tags:
-      - Alert Definition
-    patch:
-      description: Update alert definition
-      operationId: AlertDefinitionController.patch
-      parameters:
-      - explode: false
-        in: path
-        name: id
-        required: true
-        schema:
-          type: string
-        style: simple
-      requestBody:
-        content:
-          application/json:
-            schema:
-              $ref: '#/components/schemas/PartialAlertDefinition'
-        description: PartialAlertDefinition
-        required: true
-      responses:
-        "200":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/AlertDefinition'
-      summary: Patch
-      tags:
-      - Alert Definition
   /auth/login:
     post:
       description: Login
@@ -1245,9 +1124,16 @@ paths:
       - Device
   /devices/{id}/updated-configuration:
     get:
-      description: Check for device configuration updates
+      description: Check for updated device configuration
       operationId: DeviceController.getUpdatedConfiguration
       parameters:
+      - explode: false
+        in: header
+        name: app-version
+        required: false
+        schema:
+          type: string
+        style: simple
       - explode: false
         in: path
         name: id
@@ -1599,6 +1485,86 @@ paths:
       summary: Seek
       tags:
       - Event
+  /event-triggers:
+    get:
+      description: List all event triggers
+      operationId: EventTriggerController.getAll
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EventTriggerListResponse'
+      summary: Get all
+      tags:
+      - Event Trigger
+    post:
+      description: Create event trigger
+      operationId: EventTriggerController.post
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/EventTrigger'
+        description: EventTrigger
+        required: true
+      responses:
+        "201":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EventTrigger'
+      summary: Post
+      tags:
+      - Event Trigger
+  /event-triggers/{id}:
+    get:
+      description: Get an event trigger
+      operationId: EventTriggerController.getOne
+      parameters:
+      - explode: false
+        in: path
+        name: id
+        required: true
+        schema:
+          type: string
+        style: simple
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EventTrigger'
+      summary: Get one
+      tags:
+      - Event Trigger
+    patch:
+      description: Update event trigger
+      operationId: EventTriggerController.patch
+      parameters:
+      - explode: false
+        in: path
+        name: id
+        required: true
+        schema:
+          type: string
+        style: simple
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PartialEventTrigger'
+        description: PartialEventTrigger
+        required: true
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EventTrigger'
+      summary: Patch
+      tags:
+      - Event Trigger
   /integrations/slack/auth:
     post:
       description: Create a slack integration
@@ -1916,6 +1882,47 @@ paths:
       summary: Post
       tags:
       - Teleop Session Record
+  /triggered-events/{id}:
+    get:
+      description: Get an triggered event
+      operationId: TriggeredEventController.getOne
+      parameters:
+      - explode: false
+        in: path
+        name: id
+        required: true
+        schema:
+          type: string
+        style: simple
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TriggeredEvent'
+      summary: Get one
+      tags:
+      - Triggered Event
+  /triggered-events:
+    post:
+      description: Create an triggeredEvent
+      operationId: TriggeredEventController.post
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/TriggeredEvent'
+        description: TriggeredEvent
+        required: true
+      responses:
+        "201":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TriggeredEvent'
+      summary: Post
+      tags:
+      - Triggered Event
   /users:
     get:
       description: List all users
@@ -2137,6 +2144,7 @@ components:
             - numeric
             - point cloud
             - text
+            - json
             - location
             - file
             - localization
@@ -2202,6 +2210,7 @@ components:
             - numeric
             - point cloud
             - text
+            - json
             - location
             - file
             - localization
@@ -2490,6 +2499,7 @@ components:
         configuration: ""
         name: name
         throttleHz: 0.7329064902514726
+        disabled: true
         tags:
           key: tags
       properties:
@@ -2512,6 +2522,9 @@ components:
           minimum: 0
           nullable: true
           type: number
+        disabled:
+          nullable: true
+          type: boolean
       required:
       - configuration
       - name
@@ -2522,11 +2535,31 @@ components:
         - configuration: ""
           name: name
           throttleHz: 0.7329064902514726
+          disabled: true
           tags:
             key: tags
         - configuration: ""
           name: name
           throttleHz: 0.7329064902514726
+          disabled: true
+          tags:
+            key: tags
+        - configuration: ""
+          name: name
+          throttleHz: 0.7329064902514726
+          disabled: true
+          tags:
+            key: tags
+        - configuration: ""
+          name: name
+          throttleHz: 0.7329064902514726
+          disabled: true
+          tags:
+            key: tags
+        - configuration: ""
+          name: name
+          throttleHz: 0.7329064902514726
+          disabled: true
           tags:
             key: tags
         ros:
@@ -2535,6 +2568,7 @@ components:
         streams:
           items:
             $ref: '#/components/schemas/DeviceStreamConfiguration'
+          maxItems: 200
           type: array
         ros:
           $ref: '#/components/schemas/DeviceRosConfiguration'
@@ -2655,11 +2689,31 @@ components:
           - configuration: ""
             name: name
             throttleHz: 0.7329064902514726
+            disabled: true
             tags:
               key: tags
           - configuration: ""
             name: name
             throttleHz: 0.7329064902514726
+            disabled: true
+            tags:
+              key: tags
+          - configuration: ""
+            name: name
+            throttleHz: 0.7329064902514726
+            disabled: true
+            tags:
+              key: tags
+          - configuration: ""
+            name: name
+            throttleHz: 0.7329064902514726
+            disabled: true
+            tags:
+              key: tags
+          - configuration: ""
+            name: name
+            throttleHz: 0.7329064902514726
+            disabled: true
             tags:
               key: tags
           ros:
@@ -2723,11 +2777,31 @@ components:
             - configuration: ""
               name: name
               throttleHz: 0.7329064902514726
+              disabled: true
               tags:
                 key: tags
             - configuration: ""
               name: name
               throttleHz: 0.7329064902514726
+              disabled: true
+              tags:
+                key: tags
+            - configuration: ""
+              name: name
+              throttleHz: 0.7329064902514726
+              disabled: true
+              tags:
+                key: tags
+            - configuration: ""
+              name: name
+              throttleHz: 0.7329064902514726
+              disabled: true
+              tags:
+                key: tags
+            - configuration: ""
+              name: name
+              throttleHz: 0.7329064902514726
+              disabled: true
               tags:
                 key: tags
             ros:
@@ -2997,205 +3071,6 @@ components:
       required:
       - webhooks
       type: object
-    BitCondition:
-      properties:
-        key:
-          maxLength: 255
-          type: string
-        "true":
-          type: boolean
-        "false":
-          type: boolean
-      required:
-      - "false"
-      - key
-      - "true"
-      type: object
-    BitsetAlertCondition:
-      properties:
-        type:
-          enum:
-          - bitset
-          type: string
-        bitConditions:
-          items:
-            $ref: '#/components/schemas/BitCondition'
-          maxItems: 10
-          type: array
-        operator:
-          enum:
-          - any
-          - all
-          type: string
-      required:
-      - bitConditions
-      - operator
-      - type
-      type: object
-    PresenceAlertCondition:
-      properties:
-        type:
-          enum:
-          - presence
-          type: string
-      required:
-      - type
-      type: object
-    RegexAlertCondition:
-      properties:
-        type:
-          enum:
-          - regex
-          type: string
-        value: {}
-      required:
-      - type
-      - value
-      type: object
-    ThresholdAlertCondition:
-      properties:
-        type:
-          enum:
-          - threshold
-          type: string
-        operator:
-          enum:
-          - <
-          - <=
-          - '>'
-          - '>='
-          - ==
-          - '!='
-          type: string
-        value:
-          type: number
-      required:
-      - operator
-      - type
-      - value
-      type: object
-    AlertCommand:
-      example:
-        commandTemplateId: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-        parameterValue: parameterValue
-      properties:
-        commandTemplateId:
-          format: uuid
-          type: string
-        parameterValue:
-          maxLength: 1024
-          type: string
-      required:
-      - commandTemplateId
-      type: object
-    TriggeredConfiguration:
-      example:
-        configurationTemplateId: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-        configurationDurationMinutes: 26039
-      properties:
-        configurationDurationMinutes:
-          format: int64
-          maximum: 43200
-          minimum: 1
-          type: integer
-        configurationTemplateId:
-          format: uuid
-          type: string
-      required:
-      - configurationDurationMinutes
-      - configurationTemplateId
-      type: object
-    AlertDefinition:
-      example:
-        severity: info
-        triggeredConfiguration:
-          configurationTemplateId: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-          configurationDurationMinutes: 26039
-        message: message
-        enabled: true
-        notificationEnabled: true
-        tags:
-          key: tags
-        organizationId: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-        createdAt: 2000-01-23T04:56:07.000+00:00
-        condition: ""
-        stream: stream
-        interval: 721321908038799
-        id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-        commands:
-        - commandTemplateId: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-          parameterValue: parameterValue
-        - commandTemplateId: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-          parameterValue: parameterValue
-        - commandTemplateId: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-          parameterValue: parameterValue
-        - commandTemplateId: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-          parameterValue: parameterValue
-        - commandTemplateId: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-          parameterValue: parameterValue
-        updatedAt: 2000-01-23T04:56:07.000+00:00
-      properties:
-        organizationId:
-          format: uuid
-          type: string
-        message:
-          maxLength: 1024
-          type: string
-        stream:
-          maxLength: 255
-          type: string
-        condition:
-          oneOf:
-          - $ref: '#/components/schemas/ThresholdAlertCondition'
-          - $ref: '#/components/schemas/RegexAlertCondition'
-          - $ref: '#/components/schemas/PresenceAlertCondition'
-          - $ref: '#/components/schemas/BitsetAlertCondition'
-        interval:
-          format: int64
-          maximum: 9007199254740991
-          minimum: 10000
-          type: integer
-        severity:
-          enum:
-          - info
-          - warning
-          - error
-          - critical
-          type: string
-        enabled:
-          type: boolean
-        triggeredConfiguration:
-          $ref: '#/components/schemas/TriggeredConfiguration'
-        tags:
-          additionalProperties:
-            type: string
-          type: object
-        notificationEnabled:
-          type: boolean
-        commands:
-          items:
-            $ref: '#/components/schemas/AlertCommand'
-          maxItems: 10
-          type: array
-        id:
-          format: uuid
-          type: string
-        createdAt:
-          format: date-time
-          type: string
-        updatedAt:
-          format: date-time
-          type: string
-      required:
-      - commands
-      - condition
-      - interval
-      - message
-      - notificationEnabled
-      - severity
-      - stream
-      - tags
-      type: object
     Rectangle:
       properties:
         x:
@@ -3269,6 +3144,7 @@ components:
           - numeric
           - point cloud
           - text
+          - json
           - location
           - file
           - localization
@@ -3351,6 +3227,205 @@ components:
       required:
       - filter
       - name
+      type: object
+    BitCondition:
+      properties:
+        key:
+          maxLength: 255
+          type: string
+        "true":
+          type: boolean
+        "false":
+          type: boolean
+      required:
+      - "false"
+      - key
+      - "true"
+      type: object
+    BitsetEventTriggerCondition:
+      properties:
+        type:
+          enum:
+          - bitset
+          type: string
+        bitConditions:
+          items:
+            $ref: '#/components/schemas/BitCondition'
+          maxItems: 10
+          type: array
+        operator:
+          enum:
+          - any
+          - all
+          type: string
+      required:
+      - bitConditions
+      - operator
+      - type
+      type: object
+    PresenceEventTriggerCondition:
+      properties:
+        type:
+          enum:
+          - presence
+          type: string
+      required:
+      - type
+      type: object
+    RegexEventTriggerCondition:
+      properties:
+        type:
+          enum:
+          - regex
+          type: string
+        value: {}
+      required:
+      - type
+      - value
+      type: object
+    ThresholdEventTriggerCondition:
+      properties:
+        type:
+          enum:
+          - threshold
+          type: string
+        operator:
+          enum:
+          - <
+          - <=
+          - '>'
+          - '>='
+          - ==
+          - '!='
+          type: string
+        value:
+          type: number
+      required:
+      - operator
+      - type
+      - value
+      type: object
+    EventTriggerCommand:
+      example:
+        commandTemplateId: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        parameterValue: parameterValue
+      properties:
+        commandTemplateId:
+          format: uuid
+          type: string
+        parameterValue:
+          maxLength: 1024
+          type: string
+      required:
+      - commandTemplateId
+      type: object
+    TriggeredConfiguration:
+      example:
+        configurationTemplateId: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        configurationDurationMinutes: 26039
+      properties:
+        configurationDurationMinutes:
+          format: int64
+          maximum: 43200
+          minimum: 1
+          type: integer
+        configurationTemplateId:
+          format: uuid
+          type: string
+      required:
+      - configurationDurationMinutes
+      - configurationTemplateId
+      type: object
+    EventTrigger:
+      example:
+        severity: info
+        triggeredConfiguration:
+          configurationTemplateId: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          configurationDurationMinutes: 26039
+        message: message
+        enabled: true
+        notificationEnabled: true
+        tags:
+          key: tags
+        organizationId: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        createdAt: 2000-01-23T04:56:07.000+00:00
+        condition: ""
+        stream: stream
+        interval: 721321908038799
+        id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        commands:
+        - commandTemplateId: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          parameterValue: parameterValue
+        - commandTemplateId: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          parameterValue: parameterValue
+        - commandTemplateId: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          parameterValue: parameterValue
+        - commandTemplateId: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          parameterValue: parameterValue
+        - commandTemplateId: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          parameterValue: parameterValue
+        updatedAt: 2000-01-23T04:56:07.000+00:00
+      properties:
+        organizationId:
+          format: uuid
+          type: string
+        message:
+          maxLength: 1024
+          type: string
+        stream:
+          maxLength: 255
+          type: string
+        condition:
+          oneOf:
+          - $ref: '#/components/schemas/ThresholdEventTriggerCondition'
+          - $ref: '#/components/schemas/RegexEventTriggerCondition'
+          - $ref: '#/components/schemas/PresenceEventTriggerCondition'
+          - $ref: '#/components/schemas/BitsetEventTriggerCondition'
+        interval:
+          format: int64
+          maximum: 9007199254740991
+          minimum: 10000
+          type: integer
+        severity:
+          enum:
+          - info
+          - warning
+          - error
+          - critical
+          type: string
+        enabled:
+          type: boolean
+        triggeredConfiguration:
+          $ref: '#/components/schemas/TriggeredConfiguration'
+        tags:
+          additionalProperties:
+            type: string
+          type: object
+        notificationEnabled:
+          type: boolean
+        commands:
+          items:
+            $ref: '#/components/schemas/EventTriggerCommand'
+          maxItems: 10
+          type: array
+        id:
+          format: uuid
+          type: string
+        createdAt:
+          format: date-time
+          type: string
+        updatedAt:
+          format: date-time
+          type: string
+      required:
+      - commands
+      - condition
+      - interval
+      - message
+      - notificationEnabled
+      - severity
+      - stream
+      - tags
       type: object
     User:
       example:
@@ -3666,7 +3741,7 @@ components:
       type: object
     BaseEvent:
       example:
-        type: alert
+        type: triggered-event
         message: message
         deviceId: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         streamName: streamName
@@ -3684,7 +3759,7 @@ components:
       properties:
         type:
           enum:
-          - alert
+          - triggered-event
           - intervention-request
           - teleop-session-record
           - port-forwarding-session-record
@@ -3717,6 +3792,7 @@ components:
           - numeric
           - point cloud
           - text
+          - json
           - location
           - file
           - localization
@@ -3826,7 +3902,7 @@ components:
         severity: info
         agentId: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         data: ""
-        type: alert
+        type: triggered-event
         message: message
         deviceId: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         streamName: streamName
@@ -3848,7 +3924,7 @@ components:
       properties:
         type:
           enum:
-          - alert
+          - triggered-event
           - intervention-request
           - teleop-session-record
           - port-forwarding-session-record
@@ -3912,6 +3988,7 @@ components:
           - numeric
           - point cloud
           - text
+          - json
           - location
           - file
           - localization
@@ -3969,114 +4046,6 @@ components:
       - data
       - interventionId
       - interventionType
-      type: object
-    Alert:
-      example:
-        severity: info
-        type: alert
-        message: message
-        deviceId: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-        streamName: streamName
-        userId: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-        notificationEnabled: true
-        tags:
-          key: tags
-        organizationId: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-        createdAt: 2000-01-23T04:56:07.000+00:00
-        streamType: image
-        viewed: true
-        interval: 721321908029600
-        id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-        time: 2000-01-23T04:56:07.000+00:00
-        alertDefinitionId: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-        intervalStart: 2000-01-23T04:56:07.000+00:00
-        updatedAt: 2000-01-23T04:56:07.000+00:00
-      properties:
-        type:
-          enum:
-          - alert
-          - intervention-request
-          - teleop-session-record
-          - port-forwarding-session-record
-          - command-request
-          - command-response
-          - command-delivery
-          - custom
-          - comment
-          - system
-          type: string
-        severity:
-          enum:
-          - info
-          - warning
-          - error
-          - critical
-          type: string
-        alertDefinitionId:
-          format: uuid
-          type: string
-        interval:
-          format: int64
-          maximum: 9007199254740991
-          minimum: 1
-          type: integer
-        intervalStart:
-          format: date-time
-          type: string
-        id:
-          format: uuid
-          type: string
-        createdAt:
-          format: date-time
-          type: string
-        updatedAt:
-          format: date-time
-          type: string
-        organizationId:
-          format: uuid
-          type: string
-        time:
-          format: date-time
-          type: string
-        message:
-          maxLength: 1024
-          type: string
-        viewed:
-          type: boolean
-        deviceId:
-          format: uuid
-          type: string
-        streamName:
-          type: string
-        streamType:
-          enum:
-          - image
-          - numeric
-          - point cloud
-          - text
-          - location
-          - file
-          - localization
-          - health
-          - bitset
-          - metrics
-          - transform tree
-          - battery
-          type: string
-        tags:
-          additionalProperties:
-            type: string
-          type: object
-        notificationEnabled:
-          type: boolean
-        userId:
-          format: uuid
-          type: string
-      required:
-      - alertDefinitionId
-      - interval
-      - severity
-      - time
       type: object
     Board:
       example:
@@ -4245,7 +4214,7 @@ components:
     CommandRequest:
       example:
         commandTemplateId: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-        type: alert
+        type: triggered-event
         message: message
         deviceId: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         streamName: streamName
@@ -4269,7 +4238,7 @@ components:
       properties:
         type:
           enum:
-          - alert
+          - triggered-event
           - intervention-request
           - teleop-session-record
           - port-forwarding-session-record
@@ -4318,6 +4287,7 @@ components:
           - numeric
           - point cloud
           - text
+          - json
           - location
           - file
           - localization
@@ -4346,7 +4316,7 @@ components:
       properties:
         type:
           enum:
-          - alert
+          - triggered-event
           - intervention-request
           - teleop-session-record
           - port-forwarding-session-record
@@ -4391,6 +4361,7 @@ components:
           - numeric
           - point cloud
           - text
+          - json
           - location
           - file
           - localization
@@ -4415,7 +4386,7 @@ components:
       type: object
     CommandResponse:
       example:
-        type: alert
+        type: triggered-event
         message: message
         deviceId: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         streamName: streamName
@@ -4435,7 +4406,7 @@ components:
       properties:
         type:
           enum:
-          - alert
+          - triggered-event
           - intervention-request
           - teleop-session-record
           - port-forwarding-session-record
@@ -4482,6 +4453,7 @@ components:
           - numeric
           - point cloud
           - text
+          - json
           - location
           - file
           - localization
@@ -4507,7 +4479,7 @@ components:
       type: object
     Comment:
       example:
-        type: alert
+        type: triggered-event
         message: message
         deviceId: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         streamName: streamName
@@ -4526,7 +4498,7 @@ components:
       properties:
         type:
           enum:
-          - alert
+          - triggered-event
           - intervention-request
           - teleop-session-record
           - port-forwarding-session-record
@@ -4571,6 +4543,7 @@ components:
           - numeric
           - point cloud
           - text
+          - json
           - location
           - file
           - localization
@@ -4594,7 +4567,7 @@ components:
       type: object
     CustomEvent:
       example:
-        type: alert
+        type: triggered-event
         message: message
         deviceId: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         streamName: streamName
@@ -4612,7 +4585,7 @@ components:
       properties:
         type:
           enum:
-          - alert
+          - triggered-event
           - intervention-request
           - teleop-session-record
           - port-forwarding-session-record
@@ -4654,6 +4627,7 @@ components:
           - numeric
           - point cloud
           - text
+          - json
           - location
           - file
           - localization
@@ -4694,11 +4668,31 @@ components:
             - configuration: ""
               name: name
               throttleHz: 0.7329064902514726
+              disabled: true
               tags:
                 key: tags
             - configuration: ""
               name: name
               throttleHz: 0.7329064902514726
+              disabled: true
+              tags:
+                key: tags
+            - configuration: ""
+              name: name
+              throttleHz: 0.7329064902514726
+              disabled: true
+              tags:
+                key: tags
+            - configuration: ""
+              name: name
+              throttleHz: 0.7329064902514726
+              disabled: true
+              tags:
+                key: tags
+            - configuration: ""
+              name: name
+              throttleHz: 0.7329064902514726
+              disabled: true
               tags:
                 key: tags
             ros:
@@ -4796,7 +4790,7 @@ components:
       properties:
         type:
           enum:
-          - alert
+          - triggered-event
           - intervention-request
           - teleop-session-record
           - port-forwarding-session-record
@@ -4824,6 +4818,7 @@ components:
           - numeric
           - point cloud
           - text
+          - json
           - location
           - file
           - localization
@@ -4875,7 +4870,7 @@ components:
           type: string
         type:
           enum:
-          - alert
+          - triggered-event
           - intervention-request
           - teleop-session-record
           - port-forwarding-session-record
@@ -4905,6 +4900,7 @@ components:
           - numeric
           - point cloud
           - text
+          - json
           - location
           - file
           - localization
@@ -4929,7 +4925,7 @@ components:
       properties:
         type:
           enum:
-          - alert
+          - triggered-event
           - intervention-request
           - teleop-session-record
           - port-forwarding-session-record
@@ -4971,6 +4967,7 @@ components:
           - numeric
           - point cloud
           - text
+          - json
           - location
           - file
           - localization
@@ -5073,7 +5070,7 @@ components:
       type: object
     SystemEvent:
       example:
-        type: alert
+        type: triggered-event
         message: message
         deviceId: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         streamName: streamName
@@ -5091,7 +5088,7 @@ components:
       properties:
         type:
           enum:
-          - alert
+          - triggered-event
           - intervention-request
           - teleop-session-record
           - port-forwarding-session-record
@@ -5133,6 +5130,7 @@ components:
           - numeric
           - point cloud
           - text
+          - json
           - location
           - file
           - localization
@@ -5158,7 +5156,7 @@ components:
       example:
         sessionCreated: 2000-01-23T04:56:07.000+00:00
         sessionId: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-        type: alert
+        type: triggered-event
         message: message
         deviceId: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         streamName: streamName
@@ -5176,7 +5174,7 @@ components:
       properties:
         type:
           enum:
-          - alert
+          - triggered-event
           - intervention-request
           - teleop-session-record
           - port-forwarding-session-record
@@ -5218,6 +5216,7 @@ components:
           - numeric
           - point cloud
           - text
+          - json
           - location
           - file
           - localization
@@ -5245,6 +5244,115 @@ components:
       required:
       - sessionCreated
       - sessionId
+      - time
+      type: object
+    TriggeredEvent:
+      example:
+        severity: info
+        type: triggered-event
+        message: message
+        deviceId: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        streamName: streamName
+        userId: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        notificationEnabled: true
+        tags:
+          key: tags
+        organizationId: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        createdAt: 2000-01-23T04:56:07.000+00:00
+        streamType: image
+        eventTriggerId: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        viewed: true
+        interval: 721321908029600
+        id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        time: 2000-01-23T04:56:07.000+00:00
+        intervalStart: 2000-01-23T04:56:07.000+00:00
+        updatedAt: 2000-01-23T04:56:07.000+00:00
+      properties:
+        type:
+          enum:
+          - triggered-event
+          - intervention-request
+          - teleop-session-record
+          - port-forwarding-session-record
+          - command-request
+          - command-response
+          - command-delivery
+          - custom
+          - comment
+          - system
+          type: string
+        severity:
+          enum:
+          - info
+          - warning
+          - error
+          - critical
+          type: string
+        eventTriggerId:
+          format: uuid
+          type: string
+        interval:
+          format: int64
+          maximum: 9007199254740991
+          minimum: 1
+          type: integer
+        intervalStart:
+          format: date-time
+          type: string
+        id:
+          format: uuid
+          type: string
+        createdAt:
+          format: date-time
+          type: string
+        updatedAt:
+          format: date-time
+          type: string
+        organizationId:
+          format: uuid
+          type: string
+        time:
+          format: date-time
+          type: string
+        message:
+          maxLength: 1024
+          type: string
+        viewed:
+          type: boolean
+        deviceId:
+          format: uuid
+          type: string
+        streamName:
+          type: string
+        streamType:
+          enum:
+          - image
+          - numeric
+          - point cloud
+          - text
+          - json
+          - location
+          - file
+          - localization
+          - health
+          - bitset
+          - metrics
+          - transform tree
+          - battery
+          type: string
+        tags:
+          additionalProperties:
+            type: string
+          type: object
+        notificationEnabled:
+          type: boolean
+        userId:
+          format: uuid
+          type: string
+      required:
+      - eventTriggerId
+      - interval
+      - severity
       - time
       type: object
     View:
@@ -5321,79 +5429,6 @@ components:
       - layout
       - name
       - tags
-      type: object
-    IdRequestParams:
-      properties:
-        id:
-          format: uuid
-          type: string
-      required:
-      - id
-      type: object
-    AlertDefinitionListResponse:
-      example:
-        items:
-        - severity: info
-          triggeredConfiguration:
-            configurationTemplateId: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-            configurationDurationMinutes: 26039
-          message: message
-          enabled: true
-          notificationEnabled: true
-          tags:
-            key: tags
-          organizationId: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-          createdAt: 2000-01-23T04:56:07.000+00:00
-          condition: ""
-          stream: stream
-          interval: 721321908038799
-          id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-          commands:
-          - commandTemplateId: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-            parameterValue: parameterValue
-          - commandTemplateId: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-            parameterValue: parameterValue
-          - commandTemplateId: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-            parameterValue: parameterValue
-          - commandTemplateId: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-            parameterValue: parameterValue
-          - commandTemplateId: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-            parameterValue: parameterValue
-          updatedAt: 2000-01-23T04:56:07.000+00:00
-        - severity: info
-          triggeredConfiguration:
-            configurationTemplateId: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-            configurationDurationMinutes: 26039
-          message: message
-          enabled: true
-          notificationEnabled: true
-          tags:
-            key: tags
-          organizationId: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-          createdAt: 2000-01-23T04:56:07.000+00:00
-          condition: ""
-          stream: stream
-          interval: 721321908038799
-          id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-          commands:
-          - commandTemplateId: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-            parameterValue: parameterValue
-          - commandTemplateId: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-            parameterValue: parameterValue
-          - commandTemplateId: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-            parameterValue: parameterValue
-          - commandTemplateId: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-            parameterValue: parameterValue
-          - commandTemplateId: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-            parameterValue: parameterValue
-          updatedAt: 2000-01-23T04:56:07.000+00:00
-      properties:
-        items:
-          items:
-            $ref: '#/components/schemas/AlertDefinition'
-          type: array
-      required:
-      - items
       type: object
     Authentication:
       example:
@@ -5551,6 +5586,9 @@ components:
         email:
           type: string
         confirmationCode:
+          maxLength: 2048
+          minLength: 1
+          pattern: ^[\S]+$
           type: string
         newPassword:
           type: string
@@ -5640,6 +5678,14 @@ components:
           type: string
       required:
       - email
+      type: object
+    IdRequestParams:
+      properties:
+        id:
+          format: uuid
+          type: string
+      required:
+      - id
       type: object
     BoardListResponse:
       example:
@@ -5764,7 +5810,7 @@ components:
       example:
         items:
         - commandTemplateId: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-          type: alert
+          type: triggered-event
           message: message
           deviceId: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           streamName: streamName
@@ -5786,7 +5832,7 @@ components:
           time: 2000-01-23T04:56:07.000+00:00
           updatedAt: 2000-01-23T04:56:07.000+00:00
         - commandTemplateId: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-          type: alert
+          type: triggered-event
           message: message
           deviceId: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           streamName: streamName
@@ -5884,11 +5930,31 @@ components:
               - configuration: ""
                 name: name
                 throttleHz: 0.7329064902514726
+                disabled: true
                 tags:
                   key: tags
               - configuration: ""
                 name: name
                 throttleHz: 0.7329064902514726
+                disabled: true
+                tags:
+                  key: tags
+              - configuration: ""
+                name: name
+                throttleHz: 0.7329064902514726
+                disabled: true
+                tags:
+                  key: tags
+              - configuration: ""
+                name: name
+                throttleHz: 0.7329064902514726
+                disabled: true
+                tags:
+                  key: tags
+              - configuration: ""
+                name: name
+                throttleHz: 0.7329064902514726
+                disabled: true
                 tags:
                   key: tags
               ros:
@@ -5941,11 +6007,31 @@ components:
               - configuration: ""
                 name: name
                 throttleHz: 0.7329064902514726
+                disabled: true
                 tags:
                   key: tags
               - configuration: ""
                 name: name
                 throttleHz: 0.7329064902514726
+                disabled: true
+                tags:
+                  key: tags
+              - configuration: ""
+                name: name
+                throttleHz: 0.7329064902514726
+                disabled: true
+                tags:
+                  key: tags
+              - configuration: ""
+                name: name
+                throttleHz: 0.7329064902514726
+                disabled: true
+                tags:
+                  key: tags
+              - configuration: ""
+                name: name
+                throttleHz: 0.7329064902514726
+                disabled: true
                 tags:
                   key: tags
               ros:
@@ -6213,11 +6299,31 @@ components:
               - configuration: ""
                 name: name
                 throttleHz: 0.7329064902514726
+                disabled: true
                 tags:
                   key: tags
               - configuration: ""
                 name: name
                 throttleHz: 0.7329064902514726
+                disabled: true
+                tags:
+                  key: tags
+              - configuration: ""
+                name: name
+                throttleHz: 0.7329064902514726
+                disabled: true
+                tags:
+                  key: tags
+              - configuration: ""
+                name: name
+                throttleHz: 0.7329064902514726
+                disabled: true
+                tags:
+                  key: tags
+              - configuration: ""
+                name: name
+                throttleHz: 0.7329064902514726
+                disabled: true
                 tags:
                   key: tags
               ros:
@@ -6341,7 +6447,7 @@ components:
         total: 721321908029599
         intervention-request: 6360344799989391
         critical: 5077697482032197
-        alert: 2073579664511130
+        triggered-events: 2073579664511130
         error: 5370212817101474
         info: 5429049884013571
       properties:
@@ -6370,7 +6476,7 @@ components:
           maximum: 9007199254740991
           minimum: 0
           type: integer
-        alert:
+        triggered-events:
           format: int64
           maximum: 9007199254740991
           minimum: 0
@@ -6386,13 +6492,13 @@ components:
     EventDistinctEventTypes:
       example:
         items:
-        - alert
-        - alert
+        - triggered-event
+        - triggered-event
       properties:
         items:
           items:
             enum:
-            - alert
+            - triggered-event
             - intervention-request
             - teleop-session-record
             - port-forwarding-session-record
@@ -6420,6 +6526,7 @@ components:
             - numeric
             - point cloud
             - text
+            - json
             - location
             - file
             - localization
@@ -6447,8 +6554,8 @@ components:
         start: 2000-01-23T04:56:07.000+00:00
         message: message
         eventTypes:
-        - alert
-        - alert
+        - triggered-event
+        - triggered-event
         notificationEnabled: true
         disableNullMatches: true
         tags: ""
@@ -6484,7 +6591,7 @@ components:
         eventTypes:
           items:
             enum:
-            - alert
+            - triggered-event
             - intervention-request
             - teleop-session-record
             - port-forwarding-session-record
@@ -6526,6 +6633,7 @@ components:
             - numeric
             - point cloud
             - text
+            - json
             - location
             - file
             - localization
@@ -6549,7 +6657,7 @@ components:
           total: 721321908029599
           intervention-request: 6360344799989391
           critical: 5077697482032197
-          alert: 2073579664511130
+          triggered-events: 2073579664511130
           error: 5370212817101474
           info: 5429049884013571
         time: 2000-01-23T04:56:07.000+00:00
@@ -6571,7 +6679,7 @@ components:
             total: 721321908029599
             intervention-request: 6360344799989391
             critical: 5077697482032197
-            alert: 2073579664511130
+            triggered-events: 2073579664511130
             error: 5370212817101474
             info: 5429049884013571
           time: 2000-01-23T04:56:07.000+00:00
@@ -6580,7 +6688,7 @@ components:
             total: 721321908029599
             intervention-request: 6360344799989391
             critical: 5077697482032197
-            alert: 2073579664511130
+            triggered-events: 2073579664511130
             error: 5370212817101474
             info: 5429049884013571
           time: 2000-01-23T04:56:07.000+00:00
@@ -6601,7 +6709,7 @@ components:
         items:
           items:
             oneOf:
-            - $ref: '#/components/schemas/Alert'
+            - $ref: '#/components/schemas/TriggeredEvent'
             - $ref: '#/components/schemas/InterventionRequest'
             type: object
           type: array
@@ -6648,8 +6756,8 @@ components:
           order: asc
         message: message
         eventTypes:
-        - alert
-        - alert
+        - triggered-event
+        - triggered-event
         notificationEnabled: true
         disableNullMatches: true
         tags: ""
@@ -6700,6 +6808,7 @@ components:
             - numeric
             - point cloud
             - text
+            - json
             - location
             - file
             - localization
@@ -6733,7 +6842,7 @@ components:
         eventTypes:
           items:
             enum:
-            - alert
+            - triggered-event
             - intervention-request
             - teleop-session-record
             - port-forwarding-session-record
@@ -6769,8 +6878,8 @@ components:
         start: 2000-01-23T04:56:07.000+00:00
         message: message
         eventTypes:
-        - alert
-        - alert
+        - triggered-event
+        - triggered-event
         notificationEnabled: true
         disableNullMatches: true
         tags: ""
@@ -6819,6 +6928,7 @@ components:
             - numeric
             - point cloud
             - text
+            - json
             - location
             - file
             - localization
@@ -6852,7 +6962,7 @@ components:
         eventTypes:
           items:
             enum:
-            - alert
+            - triggered-event
             - intervention-request
             - teleop-session-record
             - port-forwarding-session-record
@@ -6891,8 +7001,8 @@ components:
         start: 2000-01-23T04:56:07.000+00:00
         message: message
         eventTypes:
-        - alert
-        - alert
+        - triggered-event
+        - triggered-event
         notificationEnabled: true
         disableNullMatches: true
         tags: ""
@@ -6938,6 +7048,7 @@ components:
             - numeric
             - point cloud
             - text
+            - json
             - location
             - file
             - localization
@@ -6971,7 +7082,7 @@ components:
         eventTypes:
           items:
             enum:
-            - alert
+            - triggered-event
             - intervention-request
             - teleop-session-record
             - port-forwarding-session-record
@@ -6994,6 +7105,71 @@ components:
           type: boolean
       required:
       - interval
+      type: object
+    EventTriggerListResponse:
+      example:
+        items:
+        - severity: info
+          triggeredConfiguration:
+            configurationTemplateId: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+            configurationDurationMinutes: 26039
+          message: message
+          enabled: true
+          notificationEnabled: true
+          tags:
+            key: tags
+          organizationId: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          createdAt: 2000-01-23T04:56:07.000+00:00
+          condition: ""
+          stream: stream
+          interval: 721321908038799
+          id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          commands:
+          - commandTemplateId: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+            parameterValue: parameterValue
+          - commandTemplateId: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+            parameterValue: parameterValue
+          - commandTemplateId: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+            parameterValue: parameterValue
+          - commandTemplateId: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+            parameterValue: parameterValue
+          - commandTemplateId: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+            parameterValue: parameterValue
+          updatedAt: 2000-01-23T04:56:07.000+00:00
+        - severity: info
+          triggeredConfiguration:
+            configurationTemplateId: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+            configurationDurationMinutes: 26039
+          message: message
+          enabled: true
+          notificationEnabled: true
+          tags:
+            key: tags
+          organizationId: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          createdAt: 2000-01-23T04:56:07.000+00:00
+          condition: ""
+          stream: stream
+          interval: 721321908038799
+          id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          commands:
+          - commandTemplateId: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+            parameterValue: parameterValue
+          - commandTemplateId: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+            parameterValue: parameterValue
+          - commandTemplateId: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+            parameterValue: parameterValue
+          - commandTemplateId: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+            parameterValue: parameterValue
+          - commandTemplateId: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+            parameterValue: parameterValue
+          updatedAt: 2000-01-23T04:56:07.000+00:00
+      properties:
+        items:
+          items:
+            $ref: '#/components/schemas/EventTrigger'
+          type: array
+      required:
+      - items
       type: object
     SlackAuthRequest:
       example:
@@ -7252,88 +7428,6 @@ components:
       required:
       - items
       type: object
-    PartialAlertDefinition:
-      example:
-        severity: info
-        triggeredConfiguration:
-          configurationTemplateId: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-          configurationDurationMinutes: 26039
-        message: message
-        enabled: true
-        notificationEnabled: true
-        tags:
-          key: tags
-        organizationId: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-        createdAt: 2000-01-23T04:56:07.000+00:00
-        condition: ""
-        stream: stream
-        interval: 721321908038799
-        id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-        commands:
-        - commandTemplateId: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-          parameterValue: parameterValue
-        - commandTemplateId: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-          parameterValue: parameterValue
-        - commandTemplateId: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-          parameterValue: parameterValue
-        - commandTemplateId: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-          parameterValue: parameterValue
-        - commandTemplateId: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-          parameterValue: parameterValue
-        updatedAt: 2000-01-23T04:56:07.000+00:00
-      properties:
-        organizationId:
-          format: uuid
-          type: string
-        message:
-          maxLength: 1024
-          type: string
-        stream:
-          maxLength: 255
-          type: string
-        condition:
-          oneOf:
-          - $ref: '#/components/schemas/ThresholdAlertCondition'
-          - $ref: '#/components/schemas/RegexAlertCondition'
-          - $ref: '#/components/schemas/PresenceAlertCondition'
-          - $ref: '#/components/schemas/BitsetAlertCondition'
-        interval:
-          format: int64
-          maximum: 9007199254740991
-          minimum: 10000
-          type: integer
-        severity:
-          enum:
-          - info
-          - warning
-          - error
-          - critical
-          type: string
-        enabled:
-          type: boolean
-        triggeredConfiguration:
-          $ref: '#/components/schemas/TriggeredConfiguration'
-        tags:
-          additionalProperties:
-            type: string
-          type: object
-        notificationEnabled:
-          type: boolean
-        commands:
-          items:
-            $ref: '#/components/schemas/AlertCommand'
-          maxItems: 10
-          type: array
-        id:
-          format: uuid
-          type: string
-        createdAt:
-          format: date-time
-          type: string
-        updatedAt:
-          format: date-time
-          type: string
-      type: object
     PartialBoard:
       example:
         organizationId: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
@@ -7482,7 +7576,7 @@ components:
       type: object
     PartialComment:
       example:
-        type: alert
+        type: triggered-event
         message: message
         deviceId: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         streamName: streamName
@@ -7501,7 +7595,7 @@ components:
       properties:
         type:
           enum:
-          - alert
+          - triggered-event
           - intervention-request
           - teleop-session-record
           - port-forwarding-session-record
@@ -7546,6 +7640,7 @@ components:
           - numeric
           - point cloud
           - text
+          - json
           - location
           - file
           - localization
@@ -7584,11 +7679,31 @@ components:
             - configuration: ""
               name: name
               throttleHz: 0.7329064902514726
+              disabled: true
               tags:
                 key: tags
             - configuration: ""
               name: name
               throttleHz: 0.7329064902514726
+              disabled: true
+              tags:
+                key: tags
+            - configuration: ""
+              name: name
+              throttleHz: 0.7329064902514726
+              disabled: true
+              tags:
+                key: tags
+            - configuration: ""
+              name: name
+              throttleHz: 0.7329064902514726
+              disabled: true
+              tags:
+                key: tags
+            - configuration: ""
+              name: name
+              throttleHz: 0.7329064902514726
+              disabled: true
               tags:
                 key: tags
             ros:
@@ -7746,6 +7861,88 @@ components:
           $ref: '#/components/schemas/DeviceState'
         enabled:
           type: boolean
+        id:
+          format: uuid
+          type: string
+        createdAt:
+          format: date-time
+          type: string
+        updatedAt:
+          format: date-time
+          type: string
+      type: object
+    PartialEventTrigger:
+      example:
+        severity: info
+        triggeredConfiguration:
+          configurationTemplateId: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          configurationDurationMinutes: 26039
+        message: message
+        enabled: true
+        notificationEnabled: true
+        tags:
+          key: tags
+        organizationId: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        createdAt: 2000-01-23T04:56:07.000+00:00
+        condition: ""
+        stream: stream
+        interval: 721321908038799
+        id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        commands:
+        - commandTemplateId: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          parameterValue: parameterValue
+        - commandTemplateId: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          parameterValue: parameterValue
+        - commandTemplateId: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          parameterValue: parameterValue
+        - commandTemplateId: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          parameterValue: parameterValue
+        - commandTemplateId: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          parameterValue: parameterValue
+        updatedAt: 2000-01-23T04:56:07.000+00:00
+      properties:
+        organizationId:
+          format: uuid
+          type: string
+        message:
+          maxLength: 1024
+          type: string
+        stream:
+          maxLength: 255
+          type: string
+        condition:
+          oneOf:
+          - $ref: '#/components/schemas/ThresholdEventTriggerCondition'
+          - $ref: '#/components/schemas/RegexEventTriggerCondition'
+          - $ref: '#/components/schemas/PresenceEventTriggerCondition'
+          - $ref: '#/components/schemas/BitsetEventTriggerCondition'
+        interval:
+          format: int64
+          maximum: 9007199254740991
+          minimum: 10000
+          type: integer
+        severity:
+          enum:
+          - info
+          - warning
+          - error
+          - critical
+          type: string
+        enabled:
+          type: boolean
+        triggeredConfiguration:
+          $ref: '#/components/schemas/TriggeredConfiguration'
+        tags:
+          additionalProperties:
+            type: string
+          type: object
+        notificationEnabled:
+          type: boolean
+        commands:
+          items:
+            $ref: '#/components/schemas/EventTriggerCommand'
+          maxItems: 10
+          type: array
         id:
           format: uuid
           type: string

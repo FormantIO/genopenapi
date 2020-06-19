@@ -47,10 +47,6 @@ type APIClient struct {
 
 	// API Services
 
-	AlertApi *AlertApiService
-
-	AlertDefinitionApi *AlertDefinitionApiService
-
 	AuthApi *AuthApiService
 
 	BoardApi *BoardApiService
@@ -77,6 +73,8 @@ type APIClient struct {
 
 	EventApi *EventApiService
 
+	EventTriggerApi *EventTriggerApiService
+
 	IntegrationApi *IntegrationApiService
 
 	InterventionRequestApi *InterventionRequestApiService
@@ -92,6 +90,8 @@ type APIClient struct {
 	SystemEventApi *SystemEventApiService
 
 	TeleopSessionRecordApi *TeleopSessionRecordApiService
+
+	TriggeredEventApi *TriggeredEventApiService
 
 	UserApi *UserApiService
 
@@ -114,8 +114,6 @@ func NewAPIClient(cfg *Configuration) *APIClient {
 	c.common.client = c
 
 	// API Services
-	c.AlertApi = (*AlertApiService)(&c.common)
-	c.AlertDefinitionApi = (*AlertDefinitionApiService)(&c.common)
 	c.AuthApi = (*AuthApiService)(&c.common)
 	c.BoardApi = (*BoardApiService)(&c.common)
 	c.CaptureSessionApi = (*CaptureSessionApiService)(&c.common)
@@ -129,6 +127,7 @@ func NewAPIClient(cfg *Configuration) *APIClient {
 	c.DeviceConfigurationTemplateApi = (*DeviceConfigurationTemplateApiService)(&c.common)
 	c.DeviceDetailsApi = (*DeviceDetailsApiService)(&c.common)
 	c.EventApi = (*EventApiService)(&c.common)
+	c.EventTriggerApi = (*EventTriggerApiService)(&c.common)
 	c.IntegrationApi = (*IntegrationApiService)(&c.common)
 	c.InterventionRequestApi = (*InterventionRequestApiService)(&c.common)
 	c.InterventionResponseApi = (*InterventionResponseApiService)(&c.common)
@@ -137,6 +136,7 @@ func NewAPIClient(cfg *Configuration) *APIClient {
 	c.ShareApi = (*ShareApiService)(&c.common)
 	c.SystemEventApi = (*SystemEventApiService)(&c.common)
 	c.TeleopSessionRecordApi = (*TeleopSessionRecordApiService)(&c.common)
+	c.TriggeredEventApi = (*TriggeredEventApiService)(&c.common)
 	c.UserApi = (*UserApiService)(&c.common)
 	c.ViewApi = (*ViewApiService)(&c.common)
 

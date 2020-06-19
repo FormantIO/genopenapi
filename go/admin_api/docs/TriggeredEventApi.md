@@ -1,21 +1,21 @@
-# \AlertApi
+# \TriggeredEventApi
 
 All URIs are relative to *https://api.formant.io/v1/admin*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**AlertControllerGetOne**](AlertApi.md#AlertControllerGetOne) | **Get** /alerts/{id} | Get one
-[**AlertControllerPost**](AlertApi.md#AlertControllerPost) | **Post** /alerts | Post
+[**TriggeredEventControllerGetOne**](TriggeredEventApi.md#TriggeredEventControllerGetOne) | **Get** /triggered-events/{id} | Get one
+[**TriggeredEventControllerPost**](TriggeredEventApi.md#TriggeredEventControllerPost) | **Post** /triggered-events | Post
 
 
 
-## AlertControllerGetOne
+## TriggeredEventControllerGetOne
 
-> Alert AlertControllerGetOne(ctx, id)
+> TriggeredEvent TriggeredEventControllerGetOne(ctx, id)
 
 Get one
 
-Get an alert
+Get an triggered event
 
 ### Required Parameters
 
@@ -27,7 +27,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**Alert**](Alert.md)
+[**TriggeredEvent**](TriggeredEvent.md)
 
 ### Authorization
 
@@ -43,13 +43,13 @@ Use admin JWT for authorization
 [[Back to README]](../README.md)
 
 
-## AlertControllerPost
+## TriggeredEventControllerPost
 
-> Alert AlertControllerPost(ctx, alert)
+> TriggeredEvent TriggeredEventControllerPost(ctx, triggeredEvent)
 
 Post
 
-Create an alert
+Create an triggeredEvent
 
 ### Required Parameters
 
@@ -57,11 +57,11 @@ Create an alert
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**alert** | [**Alert**](Alert.md)| Alert | 
+**triggeredEvent** | [**TriggeredEvent**](TriggeredEvent.md)| TriggeredEvent | 
 
 ### Return type
 
-[**Alert**](Alert.md)
+[**TriggeredEvent**](TriggeredEvent.md)
 
 ### Authorization
 

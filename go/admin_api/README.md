@@ -32,12 +32,6 @@ All URIs are relative to *https://api.formant.io/v1/admin*
 
 Class | Method | HTTP request | Description
 ------------ | ------------- | ------------- | -------------
-*AlertApi* | [**AlertControllerGetOne**](docs/AlertApi.md#alertcontrollergetone) | **Get** /alerts/{id} | Get one
-*AlertApi* | [**AlertControllerPost**](docs/AlertApi.md#alertcontrollerpost) | **Post** /alerts | Post
-*AlertDefinitionApi* | [**AlertDefinitionControllerGetAll**](docs/AlertDefinitionApi.md#alertdefinitioncontrollergetall) | **Get** /alert-definitions | Get all
-*AlertDefinitionApi* | [**AlertDefinitionControllerGetOne**](docs/AlertDefinitionApi.md#alertdefinitioncontrollergetone) | **Get** /alert-definitions/{id} | Get one
-*AlertDefinitionApi* | [**AlertDefinitionControllerPatch**](docs/AlertDefinitionApi.md#alertdefinitioncontrollerpatch) | **Patch** /alert-definitions/{id} | Patch
-*AlertDefinitionApi* | [**AlertDefinitionControllerPost**](docs/AlertDefinitionApi.md#alertdefinitioncontrollerpost) | **Post** /alert-definitions | Post
 *AuthApi* | [**AuthControllerAdminSignup**](docs/AuthApi.md#authcontrolleradminsignup) | **Post** /auth/admin-signup | Admin signup
 *AuthApi* | [**AuthControllerChangePassword**](docs/AuthApi.md#authcontrollerchangepassword) | **Post** /auth/change-password | Change password
 *AuthApi* | [**AuthControllerConfirmForgotPassword**](docs/AuthApi.md#authcontrollerconfirmforgotpassword) | **Post** /auth/confirm-forgot-password | Confirm forgot password
@@ -110,6 +104,10 @@ Class | Method | HTTP request | Description
 *EventApi* | [**EventControllerQuery**](docs/EventApi.md#eventcontrollerquery) | **Post** /events/query | Query
 *EventApi* | [**EventControllerSeek**](docs/EventApi.md#eventcontrollerseek) | **Post** /events/seek | Seek
 *EventApi* | [**EventControllerView**](docs/EventApi.md#eventcontrollerview) | **Post** /events/view | View
+*EventTriggerApi* | [**EventTriggerControllerGetAll**](docs/EventTriggerApi.md#eventtriggercontrollergetall) | **Get** /event-triggers | Get all
+*EventTriggerApi* | [**EventTriggerControllerGetOne**](docs/EventTriggerApi.md#eventtriggercontrollergetone) | **Get** /event-triggers/{id} | Get one
+*EventTriggerApi* | [**EventTriggerControllerPatch**](docs/EventTriggerApi.md#eventtriggercontrollerpatch) | **Patch** /event-triggers/{id} | Patch
+*EventTriggerApi* | [**EventTriggerControllerPost**](docs/EventTriggerApi.md#eventtriggercontrollerpost) | **Post** /event-triggers | Post
 *IntegrationApi* | [**IntegrationControllerPost**](docs/IntegrationApi.md#integrationcontrollerpost) | **Post** /integrations/slack/auth | Post
 *InterventionRequestApi* | [**InterventionRequestControllerGetOne**](docs/InterventionRequestApi.md#interventionrequestcontrollergetone) | **Get** /intervention-requests/{id} | Get one
 *InterventionRequestApi* | [**InterventionRequestControllerPost**](docs/InterventionRequestApi.md#interventionrequestcontrollerpost) | **Post** /intervention-requests | Post
@@ -127,6 +125,8 @@ Class | Method | HTTP request | Description
 *ShareApi* | [**ShareControllerPost**](docs/ShareApi.md#sharecontrollerpost) | **Post** /shares | Post
 *SystemEventApi* | [**SystemEventControllerPost**](docs/SystemEventApi.md#systemeventcontrollerpost) | **Post** /system-events | Post
 *TeleopSessionRecordApi* | [**TeleopSessionRecordControllerPost**](docs/TeleopSessionRecordApi.md#teleopsessionrecordcontrollerpost) | **Post** /teleop-session-records | Post
+*TriggeredEventApi* | [**TriggeredEventControllerGetOne**](docs/TriggeredEventApi.md#triggeredeventcontrollergetone) | **Get** /triggered-events/{id} | Get one
+*TriggeredEventApi* | [**TriggeredEventControllerPost**](docs/TriggeredEventApi.md#triggeredeventcontrollerpost) | **Post** /triggered-events | Post
 *UserApi* | [**UserControllerGetAll**](docs/UserApi.md#usercontrollergetall) | **Get** /users | Get all
 *UserApi* | [**UserControllerGetOne**](docs/UserApi.md#usercontrollergetone) | **Get** /users/{id} | Get one
 *UserApi* | [**UserControllerPatch**](docs/UserApi.md#usercontrollerpatch) | **Patch** /users/{id} | Patch
@@ -141,15 +141,11 @@ Class | Method | HTTP request | Description
 ## Documentation For Models
 
  - [AdminSignupRequest](docs/AdminSignupRequest.md)
- - [Alert](docs/Alert.md)
- - [AlertCommand](docs/AlertCommand.md)
- - [AlertDefinition](docs/AlertDefinition.md)
- - [AlertDefinitionListResponse](docs/AlertDefinitionListResponse.md)
  - [Authentication](docs/Authentication.md)
  - [AwsInfo](docs/AwsInfo.md)
  - [BaseEvent](docs/BaseEvent.md)
  - [BitCondition](docs/BitCondition.md)
- - [BitsetAlertCondition](docs/BitsetAlertCondition.md)
+ - [BitsetEventTriggerCondition](docs/BitsetEventTriggerCondition.md)
  - [BitsetViewConfiguration](docs/BitsetViewConfiguration.md)
  - [Board](docs/Board.md)
  - [BoardListResponse](docs/BoardListResponse.md)
@@ -211,6 +207,9 @@ Class | Method | HTTP request | Description
  - [EventQuery](docs/EventQuery.md)
  - [EventSeekQuery](docs/EventSeekQuery.md)
  - [EventSort](docs/EventSort.md)
+ - [EventTrigger](docs/EventTrigger.md)
+ - [EventTriggerCommand](docs/EventTriggerCommand.md)
+ - [EventTriggerListResponse](docs/EventTriggerListResponse.md)
  - [Filter](docs/Filter.md)
  - [ForgotPasswordRequest](docs/ForgotPasswordRequest.md)
  - [GetLooksResponse](docs/GetLooksResponse.md)
@@ -233,22 +232,22 @@ Class | Method | HTTP request | Description
  - [Organization](docs/Organization.md)
  - [OrganizationListResponse](docs/OrganizationListResponse.md)
  - [PagerdutyInfo](docs/PagerdutyInfo.md)
- - [PartialAlertDefinition](docs/PartialAlertDefinition.md)
  - [PartialBoard](docs/PartialBoard.md)
  - [PartialChannel](docs/PartialChannel.md)
  - [PartialCommandTemplate](docs/PartialCommandTemplate.md)
  - [PartialComment](docs/PartialComment.md)
  - [PartialDevice](docs/PartialDevice.md)
  - [PartialDeviceConfigurationTemplate](docs/PartialDeviceConfigurationTemplate.md)
+ - [PartialEventTrigger](docs/PartialEventTrigger.md)
  - [PartialOrganization](docs/PartialOrganization.md)
  - [PartialUser](docs/PartialUser.md)
  - [PartialView](docs/PartialView.md)
  - [PollCommandRequest](docs/PollCommandRequest.md)
  - [PortForwardingSessionRecord](docs/PortForwardingSessionRecord.md)
- - [PresenceAlertCondition](docs/PresenceAlertCondition.md)
+ - [PresenceEventTriggerCondition](docs/PresenceEventTriggerCondition.md)
  - [Rectangle](docs/Rectangle.md)
  - [RefreshRequest](docs/RefreshRequest.md)
- - [RegexAlertCondition](docs/RegexAlertCondition.md)
+ - [RegexEventTriggerCondition](docs/RegexEventTriggerCondition.md)
  - [ResendConfirmationCodeRequest](docs/ResendConfirmationCodeRequest.md)
  - [ResendInvitationRequest](docs/ResendInvitationRequest.md)
  - [RespondToNewPasswordRequiredChallengeRequest](docs/RespondToNewPasswordRequiredChallengeRequest.md)
@@ -269,9 +268,10 @@ Class | Method | HTTP request | Description
  - [TeleopJoystickConfiguration](docs/TeleopJoystickConfiguration.md)
  - [TeleopSessionRecord](docs/TeleopSessionRecord.md)
  - [TeleopViewConfiguration](docs/TeleopViewConfiguration.md)
- - [ThresholdAlertCondition](docs/ThresholdAlertCondition.md)
+ - [ThresholdEventTriggerCondition](docs/ThresholdEventTriggerCondition.md)
  - [TokenResult](docs/TokenResult.md)
  - [TriggeredConfiguration](docs/TriggeredConfiguration.md)
+ - [TriggeredEvent](docs/TriggeredEvent.md)
  - [UpdatedAgentVersionQuery](docs/UpdatedAgentVersionQuery.md)
  - [UpdatedAgentVersionResponse](docs/UpdatedAgentVersionResponse.md)
  - [UpdatedConfigurationQuery](docs/UpdatedConfigurationQuery.md)

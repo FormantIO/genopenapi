@@ -1,20 +1,20 @@
-# PartialAlertDefinition
+# EventTrigger
 
 ## Properties
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **OrganizationId** | **string** |  | [optional] 
-**Message** | **string** |  | [optional] 
-**Stream** | **string** |  | [optional] 
-**Condition** | [**interface{} |  | [optional] 
-**Interval** | **int64** |  | [optional] 
-**Severity** | **string** |  | [optional] 
+**Message** | **string** |  | 
+**Stream** | **string** |  | 
+**Condition** | [**interface{} |  | 
+**Interval** | **int64** |  | 
+**Severity** | **string** |  | 
 **Enabled** | **bool** |  | [optional] 
 **TriggeredConfiguration** | [**TriggeredConfiguration**](TriggeredConfiguration.md) |  | [optional] 
-**Tags** | **map[string]string** |  | [optional] 
-**NotificationEnabled** | **bool** |  | [optional] 
-**Commands** | [**[]AlertCommand**](AlertCommand.md) |  | [optional] 
+**Tags** | **map[string]string** |  | 
+**NotificationEnabled** | **bool** |  | 
+**Commands** | [**[]EventTriggerCommand**](EventTriggerCommand.md) |  | 
 **Id** | **string** |  | [optional] 
 **CreatedAt** | [**time.Time**](time.Time.md) |  | [optional] 
 **UpdatedAt** | [**time.Time**](time.Time.md) |  | [optional] 

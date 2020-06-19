@@ -1,4 +1,4 @@
-# Alert
+# TriggeredEvent
 
 ## Properties
 
@@ -6,7 +6,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Type** | **string** |  | [optional] 
 **Severity** | **string** |  | 
-**AlertDefinitionId** | **string** |  | 
+**EventTriggerId** | **string** |  | 
 **Interval** | **int64** |  | 
 **IntervalStart** | [**time.Time**](time.Time.md) |  | [optional] 
 **Id** | **string** |  | [optional] 

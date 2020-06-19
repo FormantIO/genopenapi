@@ -669,15 +669,17 @@ func (a *DeviceApiService) DeviceControllerGetUpdatedAgentVersion(ctx _context.C
 
 // DeviceControllerGetUpdatedConfigurationOpts Optional parameters for the method 'DeviceControllerGetUpdatedConfiguration'
 type DeviceControllerGetUpdatedConfigurationOpts struct {
+    AppVersion optional.String
     ReportedConfigurationVersion optional.Int64
 }
 
 /*
 DeviceControllerGetUpdatedConfiguration Get updated configuration
-Check for device configuration updates
+Check for updated device configuration
  * @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  * @param id
  * @param optional nil or *DeviceControllerGetUpdatedConfigurationOpts - Optional Parameters:
+ * @param "AppVersion" (optional.String) - 
  * @param "ReportedConfigurationVersion" (optional.Int64) - 
 @return UpdatedConfigurationResponse
 */
@@ -718,6 +720,9 @@ func (a *DeviceApiService) DeviceControllerGetUpdatedConfiguration(ctx _context.
 	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
 	if localVarHTTPHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	if localVarOptionals != nil && localVarOptionals.AppVersion.IsSet() {
+		localVarHeaderParams["app-version"] = parameterToString(localVarOptionals.AppVersion.Value(), "")
 	}
 	r, err := a.client.prepareRequest(ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFormFileName, localVarFileName, localVarFileBytes)
 	if err != nil {

@@ -8,8 +8,8 @@
  */
 
 package admin_api
-// RegexAlertCondition struct for RegexAlertCondition
-type RegexAlertCondition struct {
-	Type string `json:"type"`
-	Value interface{} `json:"value"`
+// EventTriggerCommand struct for EventTriggerCommand
+type EventTriggerCommand struct {
+	CommandTemplateId string `json:"commandTemplateId"`
+	ParameterValue string `json:"parameterValue,omitempty"`
 }

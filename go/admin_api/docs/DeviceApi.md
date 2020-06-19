@@ -305,7 +305,7 @@ Use admin JWT for authorization
 
 Get updated configuration
 
-Check for device configuration updates
+Check for updated device configuration
 
 ### Required Parameters
 
@@ -324,6 +324,7 @@ Optional parameters are passed through a pointer to a DeviceControllerGetUpdated
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
+ **appVersion** | **optional.String**|  | 
  **reportedConfigurationVersion** | **optional.Int64**|  | 
 
 ### Return type

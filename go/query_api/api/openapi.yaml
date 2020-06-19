@@ -1,7 +1,7 @@
 openapi: 3.0.0
 info:
   title: Formant Cloud API
-  version: 0.75.65
+  version: 0.76.48
 servers:
 - url: /
 paths:
@@ -228,6 +228,7 @@ components:
             - numeric
             - point cloud
             - text
+            - json
             - location
             - file
             - localization
@@ -292,6 +293,7 @@ components:
             - numeric
             - point cloud
             - text
+            - json
             - location
             - file
             - localization
@@ -354,6 +356,7 @@ components:
           - numeric
           - point cloud
           - text
+          - json
           - location
           - file
           - localization
@@ -442,6 +445,7 @@ components:
             - numeric
             - point cloud
             - text
+            - json
             - location
             - file
             - localization
@@ -510,6 +514,7 @@ components:
             - numeric
             - point cloud
             - text
+            - json
             - location
             - file
             - localization
@@ -576,6 +581,7 @@ components:
           - numeric
           - point cloud
           - text
+          - json
           - location
           - file
           - localization
@@ -673,6 +679,7 @@ components:
             - numeric
             - point cloud
             - text
+            - json
             - location
             - file
             - localization

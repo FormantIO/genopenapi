@@ -11,8 +11,8 @@ package admin_api
 import (
 	"time"
 )
-// AlertDefinition struct for AlertDefinition
-type AlertDefinition struct {
+// EventTrigger struct for EventTrigger
+type EventTrigger struct {
 	OrganizationId string `json:"organizationId,omitempty"`
 	Message string `json:"message"`
 	Stream string `json:"stream"`
@@ -23,7 +23,7 @@ type AlertDefinition struct {
 	TriggeredConfiguration TriggeredConfiguration `json:"triggeredConfiguration,omitempty"`
 	Tags map[string]string `json:"tags"`
 	NotificationEnabled bool `json:"notificationEnabled"`
-	Commands []AlertCommand `json:"commands"`
+	Commands []EventTriggerCommand `json:"commands"`
 	Id string `json:"id,omitempty"`
 	CreatedAt time.Time `json:"createdAt,omitempty"`
 	UpdatedAt time.Time `json:"updatedAt,omitempty"`

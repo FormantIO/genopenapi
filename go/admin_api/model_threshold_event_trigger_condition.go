@@ -8,7 +8,9 @@
  */
 
 package admin_api
-// AlertDefinitionListResponse struct for AlertDefinitionListResponse
-type AlertDefinitionListResponse struct {
-	Items []AlertDefinition `json:"items"`
+// ThresholdEventTriggerCondition struct for ThresholdEventTriggerCondition
+type ThresholdEventTriggerCondition struct {
+	Type string `json:"type"`
+	Operator string `json:"operator"`
+	Value float32 `json:"value"`
 }

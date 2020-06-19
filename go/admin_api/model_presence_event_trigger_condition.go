@@ -8,9 +8,7 @@
  */
 
 package admin_api
-// ThresholdAlertCondition struct for ThresholdAlertCondition
-type ThresholdAlertCondition struct {
+// PresenceEventTriggerCondition struct for PresenceEventTriggerCondition
+type PresenceEventTriggerCondition struct {
 	Type string `json:"type"`
-	Operator string `json:"operator"`
-	Value float32 `json:"value"`
 }

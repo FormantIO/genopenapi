@@ -8,8 +8,7 @@
  */
 
 package admin_api
-// AlertCommand struct for AlertCommand
-type AlertCommand struct {
-	CommandTemplateId string `json:"commandTemplateId"`
-	ParameterValue string `json:"parameterValue,omitempty"`
+// EventTriggerListResponse struct for EventTriggerListResponse
+type EventTriggerListResponse struct {
+	Items []EventTrigger `json:"items"`
 }

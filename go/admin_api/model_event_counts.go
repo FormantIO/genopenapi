@@ -15,6 +15,6 @@ type EventCounts struct {
 	Warn int64 `json:"warn,omitempty"`
 	Error int64 `json:"error,omitempty"`
 	Critical int64 `json:"critical,omitempty"`
-	Alert int64 `json:"alert,omitempty"`
+	TriggeredEvents int64 `json:"triggered-events,omitempty"`
 	InterventionRequest int64 `json:"intervention-request,omitempty"`
 }

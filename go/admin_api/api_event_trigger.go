@@ -22,27 +22,27 @@ var (
 	_ _context.Context
 )
 
-// AlertDefinitionApiService AlertDefinitionApi service
-type AlertDefinitionApiService service
+// EventTriggerApiService EventTriggerApi service
+type EventTriggerApiService service
 
 /*
-AlertDefinitionControllerGetAll Get all
-List all alert definitions
+EventTriggerControllerGetAll Get all
+List all event triggers
  * @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-@return AlertDefinitionListResponse
+@return EventTriggerListResponse
 */
-func (a *AlertDefinitionApiService) AlertDefinitionControllerGetAll(ctx _context.Context) (AlertDefinitionListResponse, *_nethttp.Response, error) {
+func (a *EventTriggerApiService) EventTriggerControllerGetAll(ctx _context.Context) (EventTriggerListResponse, *_nethttp.Response, error) {
 	var (
 		localVarHTTPMethod   = _nethttp.MethodGet
 		localVarPostBody     interface{}
 		localVarFormFileName string
 		localVarFileName     string
 		localVarFileBytes    []byte
-		localVarReturnValue  AlertDefinitionListResponse
+		localVarReturnValue  EventTriggerListResponse
 	)
 
 	// create path and map variables
-	localVarPath := a.client.cfg.BasePath + "/alert-definitions"
+	localVarPath := a.client.cfg.BasePath + "/event-triggers"
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := _neturl.Values{}
 	localVarFormParams := _neturl.Values{}
@@ -86,7 +86,7 @@ func (a *AlertDefinitionApiService) AlertDefinitionControllerGetAll(ctx _context
 			error: localVarHTTPResponse.Status,
 		}
 		if localVarHTTPResponse.StatusCode == 200 {
-			var v AlertDefinitionListResponse
+			var v EventTriggerListResponse
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -110,24 +110,24 @@ func (a *AlertDefinitionApiService) AlertDefinitionControllerGetAll(ctx _context
 }
 
 /*
-AlertDefinitionControllerGetOne Get one
-Get an alert definition
+EventTriggerControllerGetOne Get one
+Get an event trigger
  * @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  * @param id
-@return AlertDefinition
+@return EventTrigger
 */
-func (a *AlertDefinitionApiService) AlertDefinitionControllerGetOne(ctx _context.Context, id string) (AlertDefinition, *_nethttp.Response, error) {
+func (a *EventTriggerApiService) EventTriggerControllerGetOne(ctx _context.Context, id string) (EventTrigger, *_nethttp.Response, error) {
 	var (
 		localVarHTTPMethod   = _nethttp.MethodGet
 		localVarPostBody     interface{}
 		localVarFormFileName string
 		localVarFileName     string
 		localVarFileBytes    []byte
-		localVarReturnValue  AlertDefinition
+		localVarReturnValue  EventTrigger
 	)
 
 	// create path and map variables
-	localVarPath := a.client.cfg.BasePath + "/alert-definitions/{id}"
+	localVarPath := a.client.cfg.BasePath + "/event-triggers/{id}"
 	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", _neturl.QueryEscape(parameterToString(id, "")) , -1)
 
 	localVarHeaderParams := make(map[string]string)
@@ -173,7 +173,7 @@ func (a *AlertDefinitionApiService) AlertDefinitionControllerGetOne(ctx _context
 			error: localVarHTTPResponse.Status,
 		}
 		if localVarHTTPResponse.StatusCode == 200 {
-			var v AlertDefinition
+			var v EventTrigger
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -197,25 +197,25 @@ func (a *AlertDefinitionApiService) AlertDefinitionControllerGetOne(ctx _context
 }
 
 /*
-AlertDefinitionControllerPatch Patch
-Update alert definition
+EventTriggerControllerPatch Patch
+Update event trigger
  * @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  * @param id
- * @param partialAlertDefinition PartialAlertDefinition
-@return AlertDefinition
+ * @param partialEventTrigger PartialEventTrigger
+@return EventTrigger
 */
-func (a *AlertDefinitionApiService) AlertDefinitionControllerPatch(ctx _context.Context, id string, partialAlertDefinition PartialAlertDefinition) (AlertDefinition, *_nethttp.Response, error) {
+func (a *EventTriggerApiService) EventTriggerControllerPatch(ctx _context.Context, id string, partialEventTrigger PartialEventTrigger) (EventTrigger, *_nethttp.Response, error) {
 	var (
 		localVarHTTPMethod   = _nethttp.MethodPatch
 		localVarPostBody     interface{}
 		localVarFormFileName string
 		localVarFileName     string
 		localVarFileBytes    []byte
-		localVarReturnValue  AlertDefinition
+		localVarReturnValue  EventTrigger
 	)
 
 	// create path and map variables
-	localVarPath := a.client.cfg.BasePath + "/alert-definitions/{id}"
+	localVarPath := a.client.cfg.BasePath + "/event-triggers/{id}"
 	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", _neturl.QueryEscape(parameterToString(id, "")) , -1)
 
 	localVarHeaderParams := make(map[string]string)
@@ -240,7 +240,7 @@ func (a *AlertDefinitionApiService) AlertDefinitionControllerPatch(ctx _context.
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
 	// body params
-	localVarPostBody = &partialAlertDefinition
+	localVarPostBody = &partialEventTrigger
 	r, err := a.client.prepareRequest(ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFormFileName, localVarFileName, localVarFileBytes)
 	if err != nil {
 		return localVarReturnValue, nil, err
@@ -263,7 +263,7 @@ func (a *AlertDefinitionApiService) AlertDefinitionControllerPatch(ctx _context.
 			error: localVarHTTPResponse.Status,
 		}
 		if localVarHTTPResponse.StatusCode == 200 {
-			var v AlertDefinition
+			var v EventTrigger
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -287,24 +287,24 @@ func (a *AlertDefinitionApiService) AlertDefinitionControllerPatch(ctx _context.
 }
 
 /*
-AlertDefinitionControllerPost Post
-Create alert definition
+EventTriggerControllerPost Post
+Create event trigger
  * @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- * @param alertDefinition AlertDefinition
-@return AlertDefinition
+ * @param eventTrigger EventTrigger
+@return EventTrigger
 */
-func (a *AlertDefinitionApiService) AlertDefinitionControllerPost(ctx _context.Context, alertDefinition AlertDefinition) (AlertDefinition, *_nethttp.Response, error) {
+func (a *EventTriggerApiService) EventTriggerControllerPost(ctx _context.Context, eventTrigger EventTrigger) (EventTrigger, *_nethttp.Response, error) {
 	var (
 		localVarHTTPMethod   = _nethttp.MethodPost
 		localVarPostBody     interface{}
 		localVarFormFileName string
 		localVarFileName     string
 		localVarFileBytes    []byte
-		localVarReturnValue  AlertDefinition
+		localVarReturnValue  EventTrigger
 	)
 
 	// create path and map variables
-	localVarPath := a.client.cfg.BasePath + "/alert-definitions"
+	localVarPath := a.client.cfg.BasePath + "/event-triggers"
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := _neturl.Values{}
 	localVarFormParams := _neturl.Values{}
@@ -327,7 +327,7 @@ func (a *AlertDefinitionApiService) AlertDefinitionControllerPost(ctx _context.C
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
 	// body params
-	localVarPostBody = &alertDefinition
+	localVarPostBody = &eventTrigger
 	r, err := a.client.prepareRequest(ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFormFileName, localVarFileName, localVarFileBytes)
 	if err != nil {
 		return localVarReturnValue, nil, err
@@ -350,7 +350,7 @@ func (a *AlertDefinitionApiService) AlertDefinitionControllerPost(ctx _context.C
 			error: localVarHTTPResponse.Status,
 		}
 		if localVarHTTPResponse.StatusCode == 201 {
-			var v AlertDefinition
+			var v EventTrigger
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()

@@ -11,11 +11,11 @@ package admin_api
 import (
 	"time"
 )
-// Alert struct for Alert
-type Alert struct {
+// TriggeredEvent struct for TriggeredEvent
+type TriggeredEvent struct {
 	Type string `json:"type,omitempty"`
 	Severity string `json:"severity"`
-	AlertDefinitionId string `json:"alertDefinitionId"`
+	EventTriggerId string `json:"eventTriggerId"`
 	Interval int64 `json:"interval"`
 	IntervalStart time.Time `json:"intervalStart,omitempty"`
 	Id string `json:"id,omitempty"`

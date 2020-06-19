@@ -8,7 +8,9 @@
  */
 
 package admin_api
-// PresenceAlertCondition struct for PresenceAlertCondition
-type PresenceAlertCondition struct {
+// BitsetEventTriggerCondition struct for BitsetEventTriggerCondition
+type BitsetEventTriggerCondition struct {
 	Type string `json:"type"`
+	BitConditions []BitCondition `json:"bitConditions"`
+	Operator string `json:"operator"`
 }

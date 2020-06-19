@@ -14,4 +14,5 @@ type DeviceStreamConfiguration struct {
 	Tags map[string]string `json:"tags,omitempty"`
 	Configuration interface{} `json:"configuration"`
 	ThrottleHz *float32 `json:"throttleHz,omitempty"`
+	Disabled *bool `json:"disabled,omitempty"`
 }

@@ -8,9 +8,8 @@
  */
 
 package admin_api
-// BitsetAlertCondition struct for BitsetAlertCondition
-type BitsetAlertCondition struct {
+// RegexEventTriggerCondition struct for RegexEventTriggerCondition
+type RegexEventTriggerCondition struct {
 	Type string `json:"type"`
-	BitConditions []BitCondition `json:"bitConditions"`
-	Operator string `json:"operator"`
+	Value interface{} `json:"value"`
 }

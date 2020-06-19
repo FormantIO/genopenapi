@@ -1,12 +1,11 @@
-# BitsetAlertCondition
+# EventTriggerCommand
 
 ## Properties
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Type** | **string** |  | 
-**BitConditions** | [**[]BitCondition**](BitCondition.md) |  | 
-**Operator** | **string** |  | 
+**CommandTemplateId** | **string** |  | 
+**ParameterValue** | **string** |  | [optional] 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

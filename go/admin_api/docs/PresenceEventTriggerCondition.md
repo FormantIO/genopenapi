@@ -1,4 +1,4 @@
-# PresenceAlertCondition
+# PresenceEventTriggerCondition
 
 ## Properties
 
