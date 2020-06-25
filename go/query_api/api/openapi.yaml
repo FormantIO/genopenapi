@@ -1,20 +1,27 @@
 openapi: 3.0.0
 info:
   title: Formant Cloud API
-  version: 0.76.49
+  version: 0.77.43
 servers:
 - url: /
 paths:
-  /counts/byte-history:
-    get:
-      operationId: CountController.byteCountHistory
+  /counts/history:
+    post:
+      operationId: CountController.history
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CountHistoryQuery'
+        description: CountHistoryQuery
+        required: true
       responses:
         "200":
           content:
             application/json:
               schema:
                 $ref: '#/components/schemas/CountHistory'
-      summary: Byte count history
+      summary: History
       tags:
       - Count
   /metadata:
@@ -204,6 +211,21 @@ components:
           type: array
       required:
       - counts
+      type: object
+    CountHistoryQuery:
+      example:
+        type: data-point
+      properties:
+        type:
+          enum:
+          - data-point
+          - byte
+          - asset-byte
+          - asset
+          - cost
+          type: string
+      required:
+      - type
       type: object
     Filter:
       properties:

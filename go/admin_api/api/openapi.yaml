@@ -1,7 +1,7 @@
 openapi: 3.0.0
 info:
   title: Formant Cloud API
-  version: 0.76.49
+  version: 0.77.43
 servers:
 - url: /
 paths:
@@ -3745,7 +3745,6 @@ components:
         message: message
         deviceId: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         streamName: streamName
-        userId: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         notificationEnabled: true
         tags:
           key: tags
@@ -3808,9 +3807,6 @@ components:
           type: object
         notificationEnabled:
           type: boolean
-        userId:
-          format: uuid
-          type: string
         id:
           format: uuid
           type: string
@@ -3906,7 +3902,6 @@ components:
         message: message
         deviceId: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         streamName: streamName
-        userId: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         notificationEnabled: true
         tags:
           key: tags
@@ -4004,9 +3999,6 @@ components:
           type: object
         notificationEnabled:
           type: boolean
-        userId:
-          format: uuid
-          type: string
       required:
       - data
       - time
@@ -4216,9 +4208,9 @@ components:
         commandTemplateId: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         type: triggered-event
         message: message
+        userId: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         deviceId: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         streamName: streamName
-        userId: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         command: command
         notificationEnabled: true
         tags:
@@ -4254,6 +4246,9 @@ components:
         parameter:
           $ref: '#/components/schemas/CommandRequestParameter'
         commandTemplateId:
+          format: uuid
+          type: string
+        userId:
           format: uuid
           type: string
         id:
@@ -4303,9 +4298,6 @@ components:
           type: object
         notificationEnabled:
           type: boolean
-        userId:
-          format: uuid
-          type: string
       required:
       - command
       - commandTemplateId
@@ -4377,9 +4369,6 @@ components:
           type: object
         notificationEnabled:
           type: boolean
-        userId:
-          format: uuid
-          type: string
       required:
       - commandRequestId
       - time
@@ -4390,7 +4379,6 @@ components:
         message: message
         deviceId: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         streamName: streamName
-        userId: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         notificationEnabled: true
         tags:
           key: tags
@@ -4469,9 +4457,6 @@ components:
           type: object
         notificationEnabled:
           type: boolean
-        userId:
-          format: uuid
-          type: string
       required:
       - replyToCommandRequestId
       - success
@@ -4481,9 +4466,9 @@ components:
       example:
         type: triggered-event
         message: message
+        userId: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         deviceId: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         streamName: streamName
-        userId: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         notificationEnabled: true
         tags:
           key: tags
@@ -4512,6 +4497,9 @@ components:
         editedAt:
           format: date-time
           type: string
+        userId:
+          format: uuid
+          type: string
         id:
           format: uuid
           type: string
@@ -4559,11 +4547,9 @@ components:
           type: object
         notificationEnabled:
           type: boolean
-        userId:
-          format: uuid
-          type: string
       required:
       - time
+      - userId
       type: object
     CustomEvent:
       example:
@@ -4571,7 +4557,6 @@ components:
         message: message
         deviceId: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         streamName: streamName
-        userId: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         notificationEnabled: true
         tags:
           key: tags
@@ -4643,9 +4628,6 @@ components:
           type: object
         notificationEnabled:
           type: boolean
-        userId:
-          format: uuid
-          type: string
       required:
       - time
       type: object
@@ -4920,6 +4902,7 @@ components:
       - sessionCreated
       - sessionId
       - time
+      - userId
       type: object
     PortForwardingSessionRecord:
       properties:
@@ -4983,10 +4966,10 @@ components:
           type: object
         notificationEnabled:
           type: boolean
-        userId:
+        sessionId:
           format: uuid
           type: string
-        sessionId:
+        userId:
           format: uuid
           type: string
         sessionCreated:
@@ -4996,6 +4979,7 @@ components:
       - sessionCreated
       - sessionId
       - time
+      - userId
       type: object
     Share:
       example:
@@ -5074,7 +5058,6 @@ components:
         message: message
         deviceId: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         streamName: streamName
-        userId: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         notificationEnabled: true
         tags:
           key: tags
@@ -5146,9 +5129,6 @@ components:
           type: object
         notificationEnabled:
           type: boolean
-        userId:
-          format: uuid
-          type: string
       required:
       - time
       type: object
@@ -5232,10 +5212,10 @@ components:
           type: object
         notificationEnabled:
           type: boolean
-        userId:
+        sessionId:
           format: uuid
           type: string
-        sessionId:
+        userId:
           format: uuid
           type: string
         sessionCreated:
@@ -5245,6 +5225,7 @@ components:
       - sessionCreated
       - sessionId
       - time
+      - userId
       type: object
     TriggeredEvent:
       example:
@@ -5253,7 +5234,6 @@ components:
         message: message
         deviceId: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         streamName: streamName
-        userId: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         notificationEnabled: true
         tags:
           key: tags
@@ -5346,9 +5326,6 @@ components:
           type: object
         notificationEnabled:
           type: boolean
-        userId:
-          format: uuid
-          type: string
       required:
       - eventTriggerId
       - interval
@@ -5812,9 +5789,9 @@ components:
         - commandTemplateId: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           type: triggered-event
           message: message
+          userId: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           deviceId: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           streamName: streamName
-          userId: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           command: command
           notificationEnabled: true
           tags:
@@ -5834,9 +5811,9 @@ components:
         - commandTemplateId: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           type: triggered-event
           message: message
+          userId: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           deviceId: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           streamName: streamName
-          userId: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           command: command
           notificationEnabled: true
           tags:
@@ -7578,9 +7555,9 @@ components:
       example:
         type: triggered-event
         message: message
+        userId: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         deviceId: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         streamName: streamName
-        userId: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         notificationEnabled: true
         tags:
           key: tags
@@ -7608,6 +7585,9 @@ components:
           type: string
         editedAt:
           format: date-time
+          type: string
+        userId:
+          format: uuid
           type: string
         id:
           format: uuid
@@ -7656,9 +7636,6 @@ components:
           type: object
         notificationEnabled:
           type: boolean
-        userId:
-          format: uuid
-          type: string
       type: object
     PartialDeviceConfigurationTemplate:
       example:

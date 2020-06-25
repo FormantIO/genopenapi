@@ -19,7 +19,6 @@ Name | Type | Description | Notes
 **StreamType** | **string** |  | [optional] 
 **Tags** | **map[string]string** |  | [optional] 
 **NotificationEnabled** | **bool** |  | [optional] 
-**UserId** | **string** |  | [optional] 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

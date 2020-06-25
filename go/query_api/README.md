@@ -32,7 +32,7 @@ All URIs are relative to *https://api.formant.io/v1/queries*
 
 Class | Method | HTTP request | Description
 ------------ | ------------- | ------------- | -------------
-*CountApi* | [**CountControllerByteCountHistory**](docs/CountApi.md#countcontrollerbytecounthistory) | **Get** /counts/byte-history | Byte count history
+*CountApi* | [**CountControllerHistory**](docs/CountApi.md#countcontrollerhistory) | **Post** /counts/history | History
 *MetadataApi* | [**MetadataControllerListDeviceIds**](docs/MetadataApi.md#metadatacontrollerlistdeviceids) | **Post** /metadata/device-ids | List device ids
 *MetadataApi* | [**MetadataControllerListMetadata**](docs/MetadataApi.md#metadatacontrollerlistmetadata) | **Post** /metadata | List metadata
 *MetadataApi* | [**MetadataControllerListStreamNames**](docs/MetadataApi.md#metadatacontrollerliststreamnames) | **Post** /metadata/stream-names | List stream names
@@ -47,6 +47,7 @@ Class | Method | HTTP request | Description
  - [CountHistory](docs/CountHistory.md)
  - [CountHistoryEntry](docs/CountHistoryEntry.md)
  - [CountHistoryEntryCount](docs/CountHistoryEntryCount.md)
+ - [CountHistoryQuery](docs/CountHistoryQuery.md)
  - [Filter](docs/Filter.md)
  - [IntervalQuery](docs/IntervalQuery.md)
  - [IsoDateListResponse](docs/IsoDateListResponse.md)

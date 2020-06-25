@@ -28,5 +28,4 @@ type CommandResponse struct {
 	StreamType string `json:"streamType,omitempty"`
 	Tags map[string]string `json:"tags,omitempty"`
 	NotificationEnabled bool `json:"notificationEnabled,omitempty"`
-	UserId string `json:"userId,omitempty"`
 }

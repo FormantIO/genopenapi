@@ -4,19 +4,23 @@ All URIs are relative to *https://api.formant.io/v1/queries*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**CountControllerByteCountHistory**](CountApi.md#CountControllerByteCountHistory) | **Get** /counts/byte-history | Byte count history
+[**CountControllerHistory**](CountApi.md#CountControllerHistory) | **Post** /counts/history | History
 
 
 
-## CountControllerByteCountHistory
+## CountControllerHistory
 
-> CountHistory CountControllerByteCountHistory(ctx, )
+> CountHistory CountControllerHistory(ctx, countHistoryQuery)
 
-Byte count history
+History
 
 ### Required Parameters
 
-This endpoint does not need any parameter.
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**countHistoryQuery** | [**CountHistoryQuery**](CountHistoryQuery.md)| CountHistoryQuery | 
 
 ### Return type
 
@@ -28,7 +32,7 @@ Use admin JWT for authorization
 
 ### HTTP request headers
 
-- **Content-Type**: Not defined
+- **Content-Type**: application/json
 - **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)

@@ -14,7 +14,6 @@ Name | Type | Description | Notes
 **StreamType** | **string** |  | [optional] 
 **Tags** | **map[string]string** |  | [optional] 
 **NotificationEnabled** | **bool** |  | [optional] 
-**UserId** | **string** |  | [optional] 
 **Id** | **string** |  | [optional] 
 **CreatedAt** | [**time.Time**](time.Time.md) |  | [optional] 
 **UpdatedAt** | [**time.Time**](time.Time.md) |  | [optional] 

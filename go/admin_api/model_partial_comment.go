@@ -15,6 +15,7 @@ import (
 type PartialComment struct {
 	Type string `json:"type,omitempty"`
 	EditedAt time.Time `json:"editedAt,omitempty"`
+	UserId string `json:"userId,omitempty"`
 	Id string `json:"id,omitempty"`
 	CreatedAt time.Time `json:"createdAt,omitempty"`
 	UpdatedAt time.Time `json:"updatedAt,omitempty"`
@@ -27,5 +28,4 @@ type PartialComment struct {
 	StreamType string `json:"streamType,omitempty"`
 	Tags map[string]string `json:"tags,omitempty"`
 	NotificationEnabled bool `json:"notificationEnabled,omitempty"`
-	UserId string `json:"userId,omitempty"`
 }

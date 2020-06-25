@@ -25,13 +25,14 @@ var (
 type CountApiService service
 
 /*
-CountControllerByteCountHistory Byte count history
+CountControllerHistory History
  * @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ * @param countHistoryQuery CountHistoryQuery
 @return CountHistory
 */
-func (a *CountApiService) CountControllerByteCountHistory(ctx _context.Context) (CountHistory, *_nethttp.Response, error) {
+func (a *CountApiService) CountControllerHistory(ctx _context.Context, countHistoryQuery CountHistoryQuery) (CountHistory, *_nethttp.Response, error) {
 	var (
-		localVarHTTPMethod   = _nethttp.MethodGet
+		localVarHTTPMethod   = _nethttp.MethodPost
 		localVarPostBody     interface{}
 		localVarFormFileName string
 		localVarFileName     string
@@ -40,13 +41,13 @@ func (a *CountApiService) CountControllerByteCountHistory(ctx _context.Context) 
 	)
 
 	// create path and map variables
-	localVarPath := a.client.cfg.BasePath + "/counts/byte-history"
+	localVarPath := a.client.cfg.BasePath + "/counts/history"
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := _neturl.Values{}
 	localVarFormParams := _neturl.Values{}
 
 	// to determine the Content-Type header
-	localVarHTTPContentTypes := []string{}
+	localVarHTTPContentTypes := []string{"application/json"}
 
 	// set Content-Type header
 	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
@@ -62,6 +63,8 @@ func (a *CountApiService) CountControllerByteCountHistory(ctx _context.Context) 
 	if localVarHTTPHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
+	// body params
+	localVarPostBody = &countHistoryQuery
 	r, err := a.client.prepareRequest(ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFormFileName, localVarFileName, localVarFileBytes)
 	if err != nil {
 		return localVarReturnValue, nil, err

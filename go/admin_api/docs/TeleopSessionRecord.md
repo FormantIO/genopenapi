@@ -17,8 +17,8 @@ Name | Type | Description | Notes
 **StreamType** | **string** |  | [optional] 
 **Tags** | **map[string]string** |  | [optional] 
 **NotificationEnabled** | **bool** |  | [optional] 
-**UserId** | **string** |  | [optional] 
 **SessionId** | **string** |  | 
+**UserId** | **string** |  | 
 **SessionCreated** | [**time.Time**](time.Time.md) |  | 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

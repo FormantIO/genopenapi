@@ -14,7 +14,7 @@ import (
 // RtcSessionRecord struct for RtcSessionRecord
 type RtcSessionRecord struct {
 	SessionId string `json:"sessionId"`
-	UserId string `json:"userId,omitempty"`
+	UserId string `json:"userId"`
 	DeviceId string `json:"deviceId,omitempty"`
 	SessionCreated time.Time `json:"sessionCreated"`
 	Id string `json:"id,omitempty"`

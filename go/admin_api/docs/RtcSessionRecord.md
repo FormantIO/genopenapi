@@ -5,7 +5,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **SessionId** | **string** |  | 
-**UserId** | **string** |  | [optional] 
+**UserId** | **string** |  | 
 **DeviceId** | **string** |  | [optional] 
 **SessionCreated** | [**time.Time**](time.Time.md) |  | 
 **Id** | **string** |  | [optional] 

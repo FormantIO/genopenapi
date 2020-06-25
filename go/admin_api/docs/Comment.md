@@ -6,6 +6,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Type** | **string** |  | [optional] 
 **EditedAt** | [**time.Time**](time.Time.md) |  | [optional] 
+**UserId** | **string** |  | 
 **Id** | **string** |  | [optional] 
 **CreatedAt** | [**time.Time**](time.Time.md) |  | [optional] 
 **UpdatedAt** | [**time.Time**](time.Time.md) |  | [optional] 
@@ -18,7 +19,6 @@ Name | Type | Description | Notes
 **StreamType** | **string** |  | [optional] 
 **Tags** | **map[string]string** |  | [optional] 
 **NotificationEnabled** | **bool** |  | [optional] 
-**UserId** | **string** |  | [optional] 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 
