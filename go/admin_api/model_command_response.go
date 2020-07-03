@@ -13,19 +13,13 @@ import (
 )
 // CommandResponse struct for CommandResponse
 type CommandResponse struct {
-	Type string `json:"type,omitempty"`
-	ReplyToCommandRequestId string `json:"replyToCommandRequestId"`
-	Success bool `json:"success"`
-	Id string `json:"id,omitempty"`
-	CreatedAt time.Time `json:"createdAt,omitempty"`
-	UpdatedAt time.Time `json:"updatedAt,omitempty"`
-	OrganizationId string `json:"organizationId,omitempty"`
 	Time time.Time `json:"time"`
-	Message string `json:"message,omitempty"`
-	Viewed bool `json:"viewed,omitempty"`
-	DeviceId string `json:"deviceId,omitempty"`
+	Message string `json:"message"`
+	Success bool `json:"success"`
+	ReplyToCommandRequestId string `json:"replyToCommandRequestId"`
 	StreamName string `json:"streamName,omitempty"`
 	StreamType string `json:"streamType,omitempty"`
 	Tags map[string]string `json:"tags,omitempty"`
-	NotificationEnabled bool `json:"notificationEnabled,omitempty"`
+	CreatedAt time.Time `json:"createdAt,omitempty"`
+	UpdatedAt time.Time `json:"updatedAt,omitempty"`
 }

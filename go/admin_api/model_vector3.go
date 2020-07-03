@@ -8,8 +8,9 @@
  */
 
 package admin_api
-// LocationViewConfiguration struct for LocationViewConfiguration
-type LocationViewConfiguration struct {
-	Basemap string `json:"basemap,omitempty"`
-	Viewport LocationViewport `json:"viewport,omitempty"`
+// Vector3 struct for Vector3
+type Vector3 struct {
+	X float32 `json:"x"`
+	Y float32 `json:"y"`
+	Z float32 `json:"z"`
 }

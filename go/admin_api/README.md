@@ -56,8 +56,11 @@ Class | Method | HTTP request | Description
 *ChannelApi* | [**ChannelControllerGetOne**](docs/ChannelApi.md#channelcontrollergetone) | **Get** /channels/{id} | Get one
 *ChannelApi* | [**ChannelControllerPatch**](docs/ChannelApi.md#channelcontrollerpatch) | **Patch** /channels/{id} | Patch
 *ChannelApi* | [**ChannelControllerPost**](docs/ChannelApi.md#channelcontrollerpost) | **Post** /channels | Post
+*CommandApi* | [**CommandControllerGetOne**](docs/CommandApi.md#commandcontrollergetone) | **Get** /commands/{id} | Get one
+*CommandApi* | [**CommandControllerPatch**](docs/CommandApi.md#commandcontrollerpatch) | **Patch** /commands/{id} | Patch
+*CommandApi* | [**CommandControllerPost**](docs/CommandApi.md#commandcontrollerpost) | **Post** /commands | Post
+*CommandApi* | [**CommandControllerQuery**](docs/CommandApi.md#commandcontrollerquery) | **Post** /commands/query | Query
 *CommandRequestApi* | [**CommandRequestControllerPoll**](docs/CommandRequestApi.md#commandrequestcontrollerpoll) | **Post** /command-requests/pending | Poll
-*CommandRequestApi* | [**CommandRequestControllerPost**](docs/CommandRequestApi.md#commandrequestcontrollerpost) | **Post** /command-requests | Post
 *CommandResponseApi* | [**CommandResponseControllerPost**](docs/CommandResponseApi.md#commandresponsecontrollerpost) | **Post** /command-responses | Post
 *CommandTemplateApi* | [**CommandTemplateControllerDelete**](docs/CommandTemplateApi.md#commandtemplatecontrollerdelete) | **Delete** /command-templates/{id} | Delete
 *CommandTemplateApi* | [**CommandTemplateControllerGetOne**](docs/CommandTemplateApi.md#commandtemplatecontrollergetone) | **Get** /command-templates/{id} | Get one
@@ -149,17 +152,24 @@ Class | Method | HTTP request | Description
  - [BitsetViewConfiguration](docs/BitsetViewConfiguration.md)
  - [Board](docs/Board.md)
  - [BoardListResponse](docs/BoardListResponse.md)
+ - [Camera](docs/Camera.md)
  - [CaptureSession](docs/CaptureSession.md)
  - [Challenge](docs/Challenge.md)
  - [ChangePasswordRequest](docs/ChangePasswordRequest.md)
  - [Channel](docs/Channel.md)
  - [ChannelListResponse](docs/ChannelListResponse.md)
  - [CodeRequestParams](docs/CodeRequestParams.md)
- - [CommandDelivery](docs/CommandDelivery.md)
+ - [Command](docs/Command.md)
+ - [CommandDeliveryEvent](docs/CommandDeliveryEvent.md)
+ - [CommandEventBase](docs/CommandEventBase.md)
+ - [CommandListResponse](docs/CommandListResponse.md)
+ - [CommandParameter](docs/CommandParameter.md)
+ - [CommandQuery](docs/CommandQuery.md)
  - [CommandRequest](docs/CommandRequest.md)
+ - [CommandRequestEvent](docs/CommandRequestEvent.md)
  - [CommandRequestListResponse](docs/CommandRequestListResponse.md)
- - [CommandRequestParameter](docs/CommandRequestParameter.md)
  - [CommandResponse](docs/CommandResponse.md)
+ - [CommandResponseEvent](docs/CommandResponseEvent.md)
  - [CommandTemplate](docs/CommandTemplate.md)
  - [CommandTemplateListResponse](docs/CommandTemplateListResponse.md)
  - [Comment](docs/Comment.md)
@@ -223,7 +233,10 @@ Class | Method | HTTP request | Description
  - [Label](docs/Label.md)
  - [LabeledPolygon](docs/LabeledPolygon.md)
  - [LabelingRequestData](docs/LabelingRequestData.md)
+ - [LocalizationViewConfiguration](docs/LocalizationViewConfiguration.md)
+ - [Location](docs/Location.md)
  - [LocationViewConfiguration](docs/LocationViewConfiguration.md)
+ - [LocationViewport](docs/LocationViewport.md)
  - [LoginRequest](docs/LoginRequest.md)
  - [LoginResult](docs/LoginResult.md)
  - [LookerInfo](docs/LookerInfo.md)
@@ -234,6 +247,7 @@ Class | Method | HTTP request | Description
  - [PagerdutyInfo](docs/PagerdutyInfo.md)
  - [PartialBoard](docs/PartialBoard.md)
  - [PartialChannel](docs/PartialChannel.md)
+ - [PartialCommand](docs/PartialCommand.md)
  - [PartialCommandTemplate](docs/PartialCommandTemplate.md)
  - [PartialComment](docs/PartialComment.md)
  - [PartialDevice](docs/PartialDevice.md)
@@ -242,6 +256,7 @@ Class | Method | HTTP request | Description
  - [PartialOrganization](docs/PartialOrganization.md)
  - [PartialUser](docs/PartialUser.md)
  - [PartialView](docs/PartialView.md)
+ - [PointCloudViewConfiguration](docs/PointCloudViewConfiguration.md)
  - [PollCommandRequest](docs/PollCommandRequest.md)
  - [PortForwardingSessionRecord](docs/PortForwardingSessionRecord.md)
  - [PresenceEventTriggerCondition](docs/PresenceEventTriggerCondition.md)
@@ -270,6 +285,7 @@ Class | Method | HTTP request | Description
  - [TeleopViewConfiguration](docs/TeleopViewConfiguration.md)
  - [ThresholdEventTriggerCondition](docs/ThresholdEventTriggerCondition.md)
  - [TokenResult](docs/TokenResult.md)
+ - [TransformTreeViewConfiguration](docs/TransformTreeViewConfiguration.md)
  - [TriggeredConfiguration](docs/TriggeredConfiguration.md)
  - [TriggeredEvent](docs/TriggeredEvent.md)
  - [UpdatedAgentVersionQuery](docs/UpdatedAgentVersionQuery.md)
@@ -282,6 +298,7 @@ Class | Method | HTTP request | Description
  - [UserTeleopRosStreamConfiguration](docs/UserTeleopRosStreamConfiguration.md)
  - [UserTeleopTwistRosTopicConfiguration](docs/UserTeleopTwistRosTopicConfiguration.md)
  - [UuidListResponse](docs/UuidListResponse.md)
+ - [Vector3](docs/Vector3.md)
  - [View](docs/View.md)
  - [ViewConfiguration](docs/ViewConfiguration.md)
  - [Webhook](docs/Webhook.md)

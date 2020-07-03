@@ -14,7 +14,7 @@ Method | HTTP request | Description
 
 Post
 
-Create a command response
+Respond to a command
 
 ### Required Parameters
 

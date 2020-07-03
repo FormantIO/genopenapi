@@ -11,10 +11,10 @@ package admin_api
 import (
 	"time"
 )
-// CommandDelivery struct for CommandDelivery
-type CommandDelivery struct {
+// CommandRequestEvent struct for CommandRequestEvent
+type CommandRequestEvent struct {
 	Type string `json:"type,omitempty"`
-	CommandRequestId string `json:"commandRequestId"`
+	UserId string `json:"userId"`
 	Id string `json:"id,omitempty"`
 	CreatedAt time.Time `json:"createdAt,omitempty"`
 	UpdatedAt time.Time `json:"updatedAt,omitempty"`
@@ -27,4 +27,5 @@ type CommandDelivery struct {
 	StreamType string `json:"streamType,omitempty"`
 	Tags map[string]string `json:"tags,omitempty"`
 	NotificationEnabled bool `json:"notificationEnabled,omitempty"`
+	CommandId string `json:"commandId"`
 }

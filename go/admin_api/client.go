@@ -55,6 +55,8 @@ type APIClient struct {
 
 	ChannelApi *ChannelApiService
 
+	CommandApi *CommandApiService
+
 	CommandRequestApi *CommandRequestApiService
 
 	CommandResponseApi *CommandResponseApiService
@@ -118,6 +120,7 @@ func NewAPIClient(cfg *Configuration) *APIClient {
 	c.BoardApi = (*BoardApiService)(&c.common)
 	c.CaptureSessionApi = (*CaptureSessionApiService)(&c.common)
 	c.ChannelApi = (*ChannelApiService)(&c.common)
+	c.CommandApi = (*CommandApiService)(&c.common)
 	c.CommandRequestApi = (*CommandRequestApiService)(&c.common)
 	c.CommandResponseApi = (*CommandResponseApiService)(&c.common)
 	c.CommandTemplateApi = (*CommandTemplateApiService)(&c.common)

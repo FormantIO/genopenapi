@@ -11,8 +11,8 @@ package admin_api
 import (
 	"time"
 )
-// CommandRequestParameter struct for CommandRequestParameter
-type CommandRequestParameter struct {
+// CommandParameter struct for CommandParameter
+type CommandParameter struct {
 	Value string `json:"value,omitempty"`
 	Meta map[string]string `json:"meta,omitempty"`
 	ScrubberTime time.Time `json:"scrubberTime"`

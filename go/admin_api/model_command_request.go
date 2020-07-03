@@ -13,21 +13,8 @@ import (
 )
 // CommandRequest struct for CommandRequest
 type CommandRequest struct {
-	Type string `json:"type,omitempty"`
+	Id string `json:"id"`
 	Command string `json:"command"`
-	Parameter CommandRequestParameter `json:"parameter"`
-	CommandTemplateId string `json:"commandTemplateId"`
-	UserId string `json:"userId,omitempty"`
-	Id string `json:"id,omitempty"`
-	CreatedAt time.Time `json:"createdAt,omitempty"`
-	UpdatedAt time.Time `json:"updatedAt,omitempty"`
-	OrganizationId string `json:"organizationId,omitempty"`
-	Time time.Time `json:"time"`
-	Message string `json:"message,omitempty"`
-	Viewed bool `json:"viewed,omitempty"`
-	DeviceId string `json:"deviceId,omitempty"`
-	StreamName string `json:"streamName,omitempty"`
-	StreamType string `json:"streamType,omitempty"`
-	Tags map[string]string `json:"tags,omitempty"`
-	NotificationEnabled bool `json:"notificationEnabled,omitempty"`
+	Parameter CommandParameter `json:"parameter"`
+	CreatedAt time.Time `json:"createdAt"`
 }

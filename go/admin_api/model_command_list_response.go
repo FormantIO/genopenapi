@@ -8,8 +8,7 @@
  */
 
 package admin_api
-// LocationViewConfiguration struct for LocationViewConfiguration
-type LocationViewConfiguration struct {
-	Basemap string `json:"basemap,omitempty"`
-	Viewport LocationViewport `json:"viewport,omitempty"`
+// CommandListResponse struct for CommandListResponse
+type CommandListResponse struct {
+	Items []Command `json:"items"`
 }

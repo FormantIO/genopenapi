@@ -14,6 +14,7 @@ Name | Type | Description | Notes
 **DesiredConfigurationVersion** | Pointer to **int64** |  | [optional] 
 **TemporaryConfigurationVersion** | Pointer to **int64** |  | [optional] 
 **TemporaryConfigurationExpiration** | Pointer to [**time.Time**](time.Time.md) |  | [optional] 
+**TemporaryConfigurationTemplateId** | Pointer to **string** |  | [optional] 
 **State** | [**DeviceState**](DeviceState.md) |  | [optional] 
 **Enabled** | **bool** |  | [optional] 
 **Id** | **string** |  | [optional] 

@@ -1,7 +1,7 @@
 openapi: 3.0.0
 info:
   title: Formant Cloud API
-  version: 0.77.45
+  version: 0.79.13
 servers:
 - url: /
 paths:
@@ -472,26 +472,94 @@ paths:
       summary: Patch
       tags:
       - Channel
-  /command-requests:
+  /commands:
     post:
-      description: Create a command request
-      operationId: CommandRequestController.post
+      description: Create a command
+      operationId: CommandController.post
       requestBody:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/CommandRequest'
-        description: CommandRequest
+              $ref: '#/components/schemas/Command'
+        description: Command
         required: true
       responses:
         "201":
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/CommandRequest'
+                $ref: '#/components/schemas/Command'
       summary: Post
       tags:
-      - Command Request
+      - Command
+  /commands/{id}:
+    get:
+      description: Get a command
+      operationId: CommandController.getOne
+      parameters:
+      - explode: false
+        in: path
+        name: id
+        required: true
+        schema:
+          type: string
+        style: simple
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Command'
+      summary: Get one
+      tags:
+      - Command
+    patch:
+      description: Update command
+      operationId: CommandController.patch
+      parameters:
+      - explode: false
+        in: path
+        name: id
+        required: true
+        schema:
+          type: string
+        style: simple
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PartialCommand'
+        description: PartialCommand
+        required: true
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Command'
+      summary: Patch
+      tags:
+      - Command
+  /commands/query:
+    post:
+      description: Query undelivered commands by device ID
+      operationId: CommandController.query
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CommandQuery'
+        description: CommandQuery
+        required: true
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CommandListResponse'
+      summary: Query
+      tags:
+      - Command
   /command-requests/pending:
     post:
       description: Poll for command requests
@@ -514,7 +582,7 @@ paths:
       - Command Request
   /command-responses:
     post:
-      description: Create a command response
+      description: Respond to a command
       operationId: CommandResponseController.post
       requestBody:
         content:
@@ -3112,6 +3180,60 @@ components:
           - time
           type: string
       type: object
+    Vector3:
+      properties:
+        x:
+          type: number
+        y:
+          type: number
+        z:
+          type: number
+      required:
+      - x
+      - "y"
+      - z
+      type: object
+    Camera:
+      properties:
+        position:
+          $ref: '#/components/schemas/Vector3'
+        target:
+          $ref: '#/components/schemas/Vector3'
+      required:
+      - position
+      - target
+      type: object
+    LocalizationViewConfiguration:
+      properties:
+        camera:
+          $ref: '#/components/schemas/Camera'
+      type: object
+    Location:
+      properties:
+        latitude:
+          maximum: 90
+          minimum: -90
+          type: number
+        longitude:
+          maximum: 180
+          minimum: -180
+          type: number
+      required:
+      - latitude
+      - longitude
+      type: object
+    LocationViewport:
+      properties:
+        center:
+          $ref: '#/components/schemas/Location'
+        zoom:
+          maximum: 20
+          minimum: 1
+          type: number
+      required:
+      - center
+      - zoom
+      type: object
     LocationViewConfiguration:
       properties:
         basemap:
@@ -3119,6 +3241,8 @@ components:
           - streets
           - satellite
           type: string
+        viewport:
+          $ref: '#/components/schemas/LocationViewport'
       type: object
     NumericViewConfiguration:
       properties:
@@ -3129,6 +3253,16 @@ components:
           type: integer
         splitByKey:
           type: string
+      type: object
+    PointCloudViewConfiguration:
+      properties:
+        camera:
+          $ref: '#/components/schemas/Camera'
+      type: object
+    TransformTreeViewConfiguration:
+      properties:
+        camera:
+          $ref: '#/components/schemas/Camera'
       type: object
     ViewConfiguration:
       example:
@@ -3160,6 +3294,9 @@ components:
           - $ref: '#/components/schemas/ImageViewConfiguration'
           - $ref: '#/components/schemas/LocationViewConfiguration'
           - $ref: '#/components/schemas/NumericViewConfiguration'
+          - $ref: '#/components/schemas/LocalizationViewConfiguration'
+          - $ref: '#/components/schemas/PointCloudViewConfiguration'
+          - $ref: '#/components/schemas/TransformTreeViewConfiguration'
       required:
       - configuration
       - streamName
@@ -3628,6 +3765,113 @@ components:
       - state
       - website
       type: object
+    DeviceConfigurationTemplate:
+      example:
+        organizationId: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        createdAt: 2000-01-23T04:56:07.000+00:00
+        document:
+          portForwarding:
+            enabled: true
+          application:
+            configurationMap:
+              key: configurationMap
+          resources:
+            disk:
+              bufferSize: 4395873917
+            streamThrottleHz: 3.0137280915352016
+          telemetry:
+            streams:
+            - configuration: ""
+              name: name
+              throttleHz: 0.7329064902514726
+              disabled: true
+              tags:
+                key: tags
+            - configuration: ""
+              name: name
+              throttleHz: 0.7329064902514726
+              disabled: true
+              tags:
+                key: tags
+            - configuration: ""
+              name: name
+              throttleHz: 0.7329064902514726
+              disabled: true
+              tags:
+                key: tags
+            - configuration: ""
+              name: name
+              throttleHz: 0.7329064902514726
+              disabled: true
+              tags:
+                key: tags
+            - configuration: ""
+              name: name
+              throttleHz: 0.7329064902514726
+              disabled: true
+              tags:
+                key: tags
+            ros:
+              worldReferenceFrameId: worldReferenceFrameId
+          tags:
+            key: tags
+          teleop:
+            rosStreams:
+            - mode: command
+              topicName: topicName
+              topicType: std_msgs/Bool
+            - mode: command
+              topicName: topicName
+              topicType: std_msgs/Bool
+            - mode: command
+              topicName: topicName
+              topicType: std_msgs/Bool
+            - mode: command
+              topicName: topicName
+              topicType: std_msgs/Bool
+            - mode: command
+              topicName: topicName
+              topicType: std_msgs/Bool
+            joysticks:
+            - ""
+            - ""
+            views:
+            - ""
+            - ""
+        name: name
+        id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        enabled: true
+        tags:
+          key: tags
+        updatedAt: 2000-01-23T04:56:07.000+00:00
+      properties:
+        organizationId:
+          format: uuid
+          type: string
+        name:
+          type: string
+        document:
+          $ref: '#/components/schemas/DeviceConfigurationDocument'
+        enabled:
+          type: boolean
+        tags:
+          additionalProperties:
+            type: string
+          type: object
+        id:
+          format: uuid
+          type: string
+        createdAt:
+          format: date-time
+          type: string
+        updatedAt:
+          format: date-time
+          type: string
+      required:
+      - document
+      - name
+      - tags
+      type: object
     Device:
       example:
         publicKey: publicKey
@@ -3640,6 +3884,7 @@ components:
         createdAt: 2000-01-23T04:56:07.000+00:00
         temporaryConfigurationVersion: 5429049884013572
         desiredAgentVersion: desiredAgentVersion
+        temporaryConfigurationTemplateId: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         scope:
           agentIds:
           - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
@@ -3720,6 +3965,10 @@ components:
           type: integer
         temporaryConfigurationExpiration:
           format: date-time
+          nullable: true
+          type: string
+        temporaryConfigurationTemplateId:
+          format: uuid
           nullable: true
           type: string
         state:
@@ -4125,7 +4374,7 @@ components:
       - streamName
       - tags
       type: object
-    CommandRequestParameter:
+    CommandParameter:
       example:
         meta:
           key: meta
@@ -4203,30 +4452,168 @@ components:
       - parameterEnabled
       - tags
       type: object
-    CommandRequest:
+    Command:
       example:
         commandTemplateId: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-        type: triggered-event
-        message: message
-        userId: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        respondedAt: 2000-01-23T04:56:07.000+00:00
         deviceId: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        userId: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         streamName: streamName
         command: command
-        notificationEnabled: true
+        deliveredAt: 2000-01-23T04:56:07.000+00:00
         tags:
           key: tags
         organizationId: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         createdAt: 2000-01-23T04:56:07.000+00:00
         streamType: image
+        canceledAt: 2000-01-23T04:56:07.000+00:00
+        success: true
+        eventTriggerId: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         parameter:
           meta:
             key: meta
           scrubberTime: 2000-01-23T04:56:07.000+00:00
           value: value
-        viewed: true
         id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-        time: 2000-01-23T04:56:07.000+00:00
         updatedAt: 2000-01-23T04:56:07.000+00:00
+      properties:
+        organizationId:
+          format: uuid
+          type: string
+        deviceId:
+          format: uuid
+          type: string
+        userId:
+          format: uuid
+          type: string
+        eventTriggerId:
+          format: uuid
+          type: string
+        commandTemplateId:
+          format: uuid
+          type: string
+        command:
+          type: string
+        parameter:
+          $ref: '#/components/schemas/CommandParameter'
+        deliveredAt:
+          format: date-time
+          type: string
+        canceledAt:
+          format: date-time
+          type: string
+        respondedAt:
+          format: date-time
+          type: string
+        success:
+          type: boolean
+        streamName:
+          type: string
+        streamType:
+          enum:
+          - image
+          - numeric
+          - point cloud
+          - text
+          - json
+          - location
+          - file
+          - localization
+          - health
+          - bitset
+          - metrics
+          - transform tree
+          - battery
+          type: string
+        tags:
+          additionalProperties:
+            type: string
+          type: object
+        id:
+          format: uuid
+          type: string
+        createdAt:
+          format: date-time
+          type: string
+        updatedAt:
+          format: date-time
+          type: string
+      required:
+      - command
+      - commandTemplateId
+      - deviceId
+      - parameter
+      type: object
+    CommandEventBase:
+      properties:
+        commandId:
+          format: uuid
+          type: string
+        id:
+          format: uuid
+          type: string
+        createdAt:
+          format: date-time
+          type: string
+        updatedAt:
+          format: date-time
+          type: string
+        type:
+          enum:
+          - triggered-event
+          - intervention-request
+          - teleop-session-record
+          - port-forwarding-session-record
+          - command-request
+          - command-response
+          - command-delivery
+          - custom
+          - comment
+          - system
+          type: string
+        organizationId:
+          format: uuid
+          type: string
+        time:
+          format: date-time
+          type: string
+        message:
+          maxLength: 1024
+          type: string
+        viewed:
+          type: boolean
+        deviceId:
+          format: uuid
+          type: string
+        streamName:
+          type: string
+        streamType:
+          enum:
+          - image
+          - numeric
+          - point cloud
+          - text
+          - json
+          - location
+          - file
+          - localization
+          - health
+          - bitset
+          - metrics
+          - transform tree
+          - battery
+          type: string
+        tags:
+          additionalProperties:
+            type: string
+          type: object
+        notificationEnabled:
+          type: boolean
+      required:
+      - commandId
+      - time
+      type: object
+    CommandDeliveryEvent:
       properties:
         type:
           enum:
@@ -4241,12 +4628,74 @@ components:
           - comment
           - system
           type: string
-        command:
-          type: string
-        parameter:
-          $ref: '#/components/schemas/CommandRequestParameter'
-        commandTemplateId:
+        id:
           format: uuid
+          type: string
+        createdAt:
+          format: date-time
+          type: string
+        updatedAt:
+          format: date-time
+          type: string
+        organizationId:
+          format: uuid
+          type: string
+        time:
+          format: date-time
+          type: string
+        message:
+          maxLength: 1024
+          type: string
+        viewed:
+          type: boolean
+        deviceId:
+          format: uuid
+          type: string
+        streamName:
+          type: string
+        streamType:
+          enum:
+          - image
+          - numeric
+          - point cloud
+          - text
+          - json
+          - location
+          - file
+          - localization
+          - health
+          - bitset
+          - metrics
+          - transform tree
+          - battery
+          type: string
+        tags:
+          additionalProperties:
+            type: string
+          type: object
+        notificationEnabled:
+          type: boolean
+        commandId:
+          format: uuid
+          type: string
+      required:
+      - commandId
+      - time
+      type: object
+    CommandRequestEvent:
+      properties:
+        type:
+          enum:
+          - triggered-event
+          - intervention-request
+          - teleop-session-record
+          - port-forwarding-session-record
+          - command-request
+          - command-response
+          - command-delivery
+          - custom
+          - comment
+          - system
           type: string
         userId:
           format: uuid
@@ -4298,13 +4747,15 @@ components:
           type: object
         notificationEnabled:
           type: boolean
+        commandId:
+          format: uuid
+          type: string
       required:
-      - command
-      - commandTemplateId
-      - parameter
+      - commandId
       - time
+      - userId
       type: object
-    CommandDelivery:
+    CommandResponseEvent:
       properties:
         type:
           enum:
@@ -4318,9 +4769,6 @@ components:
           - custom
           - comment
           - system
-          type: string
-        commandRequestId:
-          format: uuid
           type: string
         id:
           format: uuid
@@ -4369,97 +4817,11 @@ components:
           type: object
         notificationEnabled:
           type: boolean
+        commandId:
+          format: uuid
+          type: string
       required:
-      - commandRequestId
-      - time
-      type: object
-    CommandResponse:
-      example:
-        type: triggered-event
-        message: message
-        deviceId: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-        streamName: streamName
-        notificationEnabled: true
-        tags:
-          key: tags
-        replyToCommandRequestId: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-        organizationId: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-        createdAt: 2000-01-23T04:56:07.000+00:00
-        streamType: image
-        success: true
-        viewed: true
-        id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-        time: 2000-01-23T04:56:07.000+00:00
-        updatedAt: 2000-01-23T04:56:07.000+00:00
-      properties:
-        type:
-          enum:
-          - triggered-event
-          - intervention-request
-          - teleop-session-record
-          - port-forwarding-session-record
-          - command-request
-          - command-response
-          - command-delivery
-          - custom
-          - comment
-          - system
-          type: string
-        replyToCommandRequestId:
-          format: uuid
-          type: string
-        success:
-          type: boolean
-        id:
-          format: uuid
-          type: string
-        createdAt:
-          format: date-time
-          type: string
-        updatedAt:
-          format: date-time
-          type: string
-        organizationId:
-          format: uuid
-          type: string
-        time:
-          format: date-time
-          type: string
-        message:
-          maxLength: 1024
-          type: string
-        viewed:
-          type: boolean
-        deviceId:
-          format: uuid
-          type: string
-        streamName:
-          type: string
-        streamType:
-          enum:
-          - image
-          - numeric
-          - point cloud
-          - text
-          - json
-          - location
-          - file
-          - localization
-          - health
-          - bitset
-          - metrics
-          - transform tree
-          - battery
-          type: string
-        tags:
-          additionalProperties:
-            type: string
-          type: object
-        notificationEnabled:
-          type: boolean
-      required:
-      - replyToCommandRequestId
-      - success
+      - commandId
       - time
       type: object
     Comment:
@@ -4630,113 +4992,6 @@ components:
           type: boolean
       required:
       - time
-      type: object
-    DeviceConfigurationTemplate:
-      example:
-        organizationId: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-        createdAt: 2000-01-23T04:56:07.000+00:00
-        document:
-          portForwarding:
-            enabled: true
-          application:
-            configurationMap:
-              key: configurationMap
-          resources:
-            disk:
-              bufferSize: 4395873917
-            streamThrottleHz: 3.0137280915352016
-          telemetry:
-            streams:
-            - configuration: ""
-              name: name
-              throttleHz: 0.7329064902514726
-              disabled: true
-              tags:
-                key: tags
-            - configuration: ""
-              name: name
-              throttleHz: 0.7329064902514726
-              disabled: true
-              tags:
-                key: tags
-            - configuration: ""
-              name: name
-              throttleHz: 0.7329064902514726
-              disabled: true
-              tags:
-                key: tags
-            - configuration: ""
-              name: name
-              throttleHz: 0.7329064902514726
-              disabled: true
-              tags:
-                key: tags
-            - configuration: ""
-              name: name
-              throttleHz: 0.7329064902514726
-              disabled: true
-              tags:
-                key: tags
-            ros:
-              worldReferenceFrameId: worldReferenceFrameId
-          tags:
-            key: tags
-          teleop:
-            rosStreams:
-            - mode: command
-              topicName: topicName
-              topicType: std_msgs/Bool
-            - mode: command
-              topicName: topicName
-              topicType: std_msgs/Bool
-            - mode: command
-              topicName: topicName
-              topicType: std_msgs/Bool
-            - mode: command
-              topicName: topicName
-              topicType: std_msgs/Bool
-            - mode: command
-              topicName: topicName
-              topicType: std_msgs/Bool
-            joysticks:
-            - ""
-            - ""
-            views:
-            - ""
-            - ""
-        name: name
-        id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-        enabled: true
-        tags:
-          key: tags
-        updatedAt: 2000-01-23T04:56:07.000+00:00
-      properties:
-        organizationId:
-          format: uuid
-          type: string
-        name:
-          type: string
-        document:
-          $ref: '#/components/schemas/DeviceConfigurationDocument'
-        enabled:
-          type: boolean
-        tags:
-          additionalProperties:
-            type: string
-          type: object
-        id:
-          format: uuid
-          type: string
-        createdAt:
-          format: date-time
-          type: string
-        updatedAt:
-          format: date-time
-          type: string
-      required:
-      - document
-      - name
-      - tags
       type: object
     DeviceProvisioning:
       example:
@@ -5783,53 +6038,117 @@ components:
       required:
       - items
       type: object
-    CommandRequestListResponse:
+    CommandListResponse:
       example:
         items:
         - commandTemplateId: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-          type: triggered-event
-          message: message
-          userId: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          respondedAt: 2000-01-23T04:56:07.000+00:00
           deviceId: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          userId: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           streamName: streamName
           command: command
-          notificationEnabled: true
+          deliveredAt: 2000-01-23T04:56:07.000+00:00
           tags:
             key: tags
           organizationId: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           createdAt: 2000-01-23T04:56:07.000+00:00
           streamType: image
+          canceledAt: 2000-01-23T04:56:07.000+00:00
+          success: true
+          eventTriggerId: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           parameter:
             meta:
               key: meta
             scrubberTime: 2000-01-23T04:56:07.000+00:00
             value: value
-          viewed: true
           id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-          time: 2000-01-23T04:56:07.000+00:00
           updatedAt: 2000-01-23T04:56:07.000+00:00
         - commandTemplateId: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-          type: triggered-event
-          message: message
-          userId: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          respondedAt: 2000-01-23T04:56:07.000+00:00
           deviceId: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          userId: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           streamName: streamName
           command: command
-          notificationEnabled: true
+          deliveredAt: 2000-01-23T04:56:07.000+00:00
           tags:
             key: tags
           organizationId: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           createdAt: 2000-01-23T04:56:07.000+00:00
           streamType: image
+          canceledAt: 2000-01-23T04:56:07.000+00:00
+          success: true
+          eventTriggerId: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           parameter:
             meta:
               key: meta
             scrubberTime: 2000-01-23T04:56:07.000+00:00
             value: value
-          viewed: true
           id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-          time: 2000-01-23T04:56:07.000+00:00
           updatedAt: 2000-01-23T04:56:07.000+00:00
+      properties:
+        items:
+          items:
+            $ref: '#/components/schemas/Command'
+          type: array
+      required:
+      - items
+      type: object
+    CommandQuery:
+      example:
+        deviceId: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+      properties:
+        deviceId:
+          format: uuid
+          type: string
+      required:
+      - deviceId
+      type: object
+    CommandRequest:
+      example:
+        createdAt: 2000-01-23T04:56:07.000+00:00
+        parameter:
+          meta:
+            key: meta
+          scrubberTime: 2000-01-23T04:56:07.000+00:00
+          value: value
+        id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        command: command
+      properties:
+        id:
+          format: uuid
+          type: string
+        command:
+          type: string
+        parameter:
+          $ref: '#/components/schemas/CommandParameter'
+        createdAt:
+          format: date-time
+          type: string
+      required:
+      - command
+      - createdAt
+      - id
+      - parameter
+      type: object
+    CommandRequestListResponse:
+      example:
+        items:
+        - createdAt: 2000-01-23T04:56:07.000+00:00
+          parameter:
+            meta:
+              key: meta
+            scrubberTime: 2000-01-23T04:56:07.000+00:00
+            value: value
+          id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          command: command
+        - createdAt: 2000-01-23T04:56:07.000+00:00
+          parameter:
+            meta:
+              key: meta
+            scrubberTime: 2000-01-23T04:56:07.000+00:00
+            value: value
+          id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          command: command
       properties:
         items:
           items:
@@ -5847,6 +6166,64 @@ components:
           type: string
       required:
       - createdAtAfter
+      type: object
+    CommandResponse:
+      example:
+        replyToCommandRequestId: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        createdAt: 2000-01-23T04:56:07.000+00:00
+        streamType: image
+        success: true
+        time: 2000-01-23T04:56:07.000+00:00
+        message: message
+        streamName: streamName
+        tags:
+          key: tags
+        updatedAt: 2000-01-23T04:56:07.000+00:00
+      properties:
+        time:
+          format: date-time
+          type: string
+        message:
+          maxLength: 1024
+          type: string
+        success:
+          type: boolean
+        replyToCommandRequestId:
+          format: uuid
+          type: string
+        streamName:
+          type: string
+        streamType:
+          enum:
+          - image
+          - numeric
+          - point cloud
+          - text
+          - json
+          - location
+          - file
+          - localization
+          - health
+          - bitset
+          - metrics
+          - transform tree
+          - battery
+          type: string
+        tags:
+          additionalProperties:
+            type: string
+          type: object
+        createdAt:
+          format: date-time
+          type: string
+        updatedAt:
+          format: date-time
+          type: string
+      required:
+      - message
+      - replyToCommandRequestId
+      - success
+      - time
       type: object
     CommandTemplateListResponse:
       example:
@@ -6065,6 +6442,7 @@ components:
           createdAt: 2000-01-23T04:56:07.000+00:00
           temporaryConfigurationVersion: 5429049884013572
           desiredAgentVersion: desiredAgentVersion
+          temporaryConfigurationTemplateId: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           scope:
             agentIds:
             - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
@@ -6118,6 +6496,7 @@ components:
           createdAt: 2000-01-23T04:56:07.000+00:00
           temporaryConfigurationVersion: 5429049884013572
           desiredAgentVersion: desiredAgentVersion
+          temporaryConfigurationTemplateId: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           scope:
             agentIds:
             - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
@@ -7498,6 +7877,93 @@ components:
           format: date-time
           type: string
       type: object
+    PartialCommand:
+      example:
+        commandTemplateId: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        respondedAt: 2000-01-23T04:56:07.000+00:00
+        deviceId: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        userId: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        streamName: streamName
+        command: command
+        deliveredAt: 2000-01-23T04:56:07.000+00:00
+        tags:
+          key: tags
+        organizationId: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        createdAt: 2000-01-23T04:56:07.000+00:00
+        streamType: image
+        canceledAt: 2000-01-23T04:56:07.000+00:00
+        success: true
+        eventTriggerId: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        parameter:
+          meta:
+            key: meta
+          scrubberTime: 2000-01-23T04:56:07.000+00:00
+          value: value
+        id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        updatedAt: 2000-01-23T04:56:07.000+00:00
+      properties:
+        organizationId:
+          format: uuid
+          type: string
+        deviceId:
+          format: uuid
+          type: string
+        userId:
+          format: uuid
+          type: string
+        eventTriggerId:
+          format: uuid
+          type: string
+        commandTemplateId:
+          format: uuid
+          type: string
+        command:
+          type: string
+        parameter:
+          $ref: '#/components/schemas/CommandParameter'
+        deliveredAt:
+          format: date-time
+          type: string
+        canceledAt:
+          format: date-time
+          type: string
+        respondedAt:
+          format: date-time
+          type: string
+        success:
+          type: boolean
+        streamName:
+          type: string
+        streamType:
+          enum:
+          - image
+          - numeric
+          - point cloud
+          - text
+          - json
+          - location
+          - file
+          - localization
+          - health
+          - bitset
+          - metrics
+          - transform tree
+          - battery
+          type: string
+        tags:
+          additionalProperties:
+            type: string
+          type: object
+        id:
+          format: uuid
+          type: string
+        createdAt:
+          format: date-time
+          type: string
+        updatedAt:
+          format: date-time
+          type: string
+      type: object
     PartialCommandTemplate:
       example:
         organizationId: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
@@ -7752,6 +8218,7 @@ components:
         createdAt: 2000-01-23T04:56:07.000+00:00
         temporaryConfigurationVersion: 5429049884013572
         desiredAgentVersion: desiredAgentVersion
+        temporaryConfigurationTemplateId: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         scope:
           agentIds:
           - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
@@ -7832,6 +8299,10 @@ components:
           type: integer
         temporaryConfigurationExpiration:
           format: date-time
+          nullable: true
+          type: string
+        temporaryConfigurationTemplateId:
+          format: uuid
           nullable: true
           type: string
         state:

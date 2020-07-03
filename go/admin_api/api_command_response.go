@@ -26,7 +26,7 @@ type CommandResponseApiService service
 
 /*
 CommandResponseControllerPost Post
-Create a command response
+Respond to a command
  * @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  * @param commandResponse CommandResponse
 @return CommandResponse

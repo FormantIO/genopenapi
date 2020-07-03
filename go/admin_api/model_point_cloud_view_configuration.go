@@ -8,8 +8,7 @@
  */
 
 package admin_api
-// LocationViewConfiguration struct for LocationViewConfiguration
-type LocationViewConfiguration struct {
-	Basemap string `json:"basemap,omitempty"`
-	Viewport LocationViewport `json:"viewport,omitempty"`
+// PointCloudViewConfiguration struct for PointCloudViewConfiguration
+type PointCloudViewConfiguration struct {
+	Camera Camera `json:"camera,omitempty"`
 }
