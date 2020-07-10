@@ -15,6 +15,7 @@ package query_api
 type Query struct {
 	Start string `json:"start"`
 	End string `json:"end"`
+	Debug bool `json:"debug,omitempty"`
 	AgentIds []string `json:"agentIds,omitempty"`
 	DeviceIds []string `json:"deviceIds,omitempty"`
 	Names []string `json:"names,omitempty"`
