@@ -1,7 +1,7 @@
 openapi: 3.0.0
 info:
   title: Formant Cloud API
-  version: 0.80.34
+  version: 0.81.54
 servers:
 - url: /
 paths:
@@ -2409,6 +2409,7 @@ components:
       type: object
     DeviceDiskConfiguration:
       example:
+        onDemandBufferSize: 129480291062
         bufferSize: 4395873917
       properties:
         bufferSize:
@@ -2416,12 +2417,18 @@ components:
           maximum: 53687091200
           minimum: 104857600
           type: integer
+        onDemandBufferSize:
+          format: int64
+          maximum: 214748364800
+          minimum: 104857600
+          type: integer
       type: object
     DeviceResourcesConfiguration:
       example:
         disk:
+          onDemandBufferSize: 129480291062
           bufferSize: 4395873917
-        streamThrottleHz: 3.0137280915352016
+        streamThrottleHz: 0.7329064902514726
       properties:
         disk:
           $ref: '#/components/schemas/DeviceDiskConfiguration'
@@ -2564,9 +2571,10 @@ components:
       type: object
     DeviceStreamConfiguration:
       example:
+        onDemand: true
         configuration: ""
         name: name
-        throttleHz: 0.7329064902514726
+        throttleHz: 2.981066958341591
         disabled: true
         tags:
           key: tags
@@ -2593,6 +2601,9 @@ components:
         disabled:
           nullable: true
           type: boolean
+        onDemand:
+          nullable: true
+          type: boolean
       required:
       - configuration
       - name
@@ -2600,33 +2611,38 @@ components:
     DeviceTelemetryConfiguration:
       example:
         streams:
-        - configuration: ""
+        - onDemand: true
+          configuration: ""
           name: name
-          throttleHz: 0.7329064902514726
+          throttleHz: 2.981066958341591
           disabled: true
           tags:
             key: tags
-        - configuration: ""
+        - onDemand: true
+          configuration: ""
           name: name
-          throttleHz: 0.7329064902514726
+          throttleHz: 2.981066958341591
           disabled: true
           tags:
             key: tags
-        - configuration: ""
+        - onDemand: true
+          configuration: ""
           name: name
-          throttleHz: 0.7329064902514726
+          throttleHz: 2.981066958341591
           disabled: true
           tags:
             key: tags
-        - configuration: ""
+        - onDemand: true
+          configuration: ""
           name: name
-          throttleHz: 0.7329064902514726
+          throttleHz: 2.981066958341591
           disabled: true
           tags:
             key: tags
-        - configuration: ""
+        - onDemand: true
+          configuration: ""
           name: name
-          throttleHz: 0.7329064902514726
+          throttleHz: 2.981066958341591
           disabled: true
           tags:
             key: tags
@@ -2750,37 +2766,43 @@ components:
             key: configurationMap
         resources:
           disk:
+            onDemandBufferSize: 129480291062
             bufferSize: 4395873917
-          streamThrottleHz: 3.0137280915352016
+          streamThrottleHz: 0.7329064902514726
         telemetry:
           streams:
-          - configuration: ""
+          - onDemand: true
+            configuration: ""
             name: name
-            throttleHz: 0.7329064902514726
+            throttleHz: 2.981066958341591
             disabled: true
             tags:
               key: tags
-          - configuration: ""
+          - onDemand: true
+            configuration: ""
             name: name
-            throttleHz: 0.7329064902514726
+            throttleHz: 2.981066958341591
             disabled: true
             tags:
               key: tags
-          - configuration: ""
+          - onDemand: true
+            configuration: ""
             name: name
-            throttleHz: 0.7329064902514726
+            throttleHz: 2.981066958341591
             disabled: true
             tags:
               key: tags
-          - configuration: ""
+          - onDemand: true
+            configuration: ""
             name: name
-            throttleHz: 0.7329064902514726
+            throttleHz: 2.981066958341591
             disabled: true
             tags:
               key: tags
-          - configuration: ""
+          - onDemand: true
+            configuration: ""
             name: name
-            throttleHz: 0.7329064902514726
+            throttleHz: 2.981066958341591
             disabled: true
             tags:
               key: tags
@@ -2838,37 +2860,43 @@ components:
               key: configurationMap
           resources:
             disk:
+              onDemandBufferSize: 129480291062
               bufferSize: 4395873917
-            streamThrottleHz: 3.0137280915352016
+            streamThrottleHz: 0.7329064902514726
           telemetry:
             streams:
-            - configuration: ""
+            - onDemand: true
+              configuration: ""
               name: name
-              throttleHz: 0.7329064902514726
+              throttleHz: 2.981066958341591
               disabled: true
               tags:
                 key: tags
-            - configuration: ""
+            - onDemand: true
+              configuration: ""
               name: name
-              throttleHz: 0.7329064902514726
+              throttleHz: 2.981066958341591
               disabled: true
               tags:
                 key: tags
-            - configuration: ""
+            - onDemand: true
+              configuration: ""
               name: name
-              throttleHz: 0.7329064902514726
+              throttleHz: 2.981066958341591
               disabled: true
               tags:
                 key: tags
-            - configuration: ""
+            - onDemand: true
+              configuration: ""
               name: name
-              throttleHz: 0.7329064902514726
+              throttleHz: 2.981066958341591
               disabled: true
               tags:
                 key: tags
-            - configuration: ""
+            - onDemand: true
+              configuration: ""
               name: name
-              throttleHz: 0.7329064902514726
+              throttleHz: 2.981066958341591
               disabled: true
               tags:
                 key: tags
@@ -3777,37 +3805,43 @@ components:
               key: configurationMap
           resources:
             disk:
+              onDemandBufferSize: 129480291062
               bufferSize: 4395873917
-            streamThrottleHz: 3.0137280915352016
+            streamThrottleHz: 0.7329064902514726
           telemetry:
             streams:
-            - configuration: ""
+            - onDemand: true
+              configuration: ""
               name: name
-              throttleHz: 0.7329064902514726
+              throttleHz: 2.981066958341591
               disabled: true
               tags:
                 key: tags
-            - configuration: ""
+            - onDemand: true
+              configuration: ""
               name: name
-              throttleHz: 0.7329064902514726
+              throttleHz: 2.981066958341591
               disabled: true
               tags:
                 key: tags
-            - configuration: ""
+            - onDemand: true
+              configuration: ""
               name: name
-              throttleHz: 0.7329064902514726
+              throttleHz: 2.981066958341591
               disabled: true
               tags:
                 key: tags
-            - configuration: ""
+            - onDemand: true
+              configuration: ""
               name: name
-              throttleHz: 0.7329064902514726
+              throttleHz: 2.981066958341591
               disabled: true
               tags:
                 key: tags
-            - configuration: ""
+            - onDemand: true
+              configuration: ""
               name: name
-              throttleHz: 0.7329064902514726
+              throttleHz: 2.981066958341591
               disabled: true
               tags:
                 key: tags
@@ -6277,37 +6311,43 @@ components:
                 key: configurationMap
             resources:
               disk:
+                onDemandBufferSize: 129480291062
                 bufferSize: 4395873917
-              streamThrottleHz: 3.0137280915352016
+              streamThrottleHz: 0.7329064902514726
             telemetry:
               streams:
-              - configuration: ""
+              - onDemand: true
+                configuration: ""
                 name: name
-                throttleHz: 0.7329064902514726
+                throttleHz: 2.981066958341591
                 disabled: true
                 tags:
                   key: tags
-              - configuration: ""
+              - onDemand: true
+                configuration: ""
                 name: name
-                throttleHz: 0.7329064902514726
+                throttleHz: 2.981066958341591
                 disabled: true
                 tags:
                   key: tags
-              - configuration: ""
+              - onDemand: true
+                configuration: ""
                 name: name
-                throttleHz: 0.7329064902514726
+                throttleHz: 2.981066958341591
                 disabled: true
                 tags:
                   key: tags
-              - configuration: ""
+              - onDemand: true
+                configuration: ""
                 name: name
-                throttleHz: 0.7329064902514726
+                throttleHz: 2.981066958341591
                 disabled: true
                 tags:
                   key: tags
-              - configuration: ""
+              - onDemand: true
+                configuration: ""
                 name: name
-                throttleHz: 0.7329064902514726
+                throttleHz: 2.981066958341591
                 disabled: true
                 tags:
                   key: tags
@@ -6354,37 +6394,43 @@ components:
                 key: configurationMap
             resources:
               disk:
+                onDemandBufferSize: 129480291062
                 bufferSize: 4395873917
-              streamThrottleHz: 3.0137280915352016
+              streamThrottleHz: 0.7329064902514726
             telemetry:
               streams:
-              - configuration: ""
+              - onDemand: true
+                configuration: ""
                 name: name
-                throttleHz: 0.7329064902514726
+                throttleHz: 2.981066958341591
                 disabled: true
                 tags:
                   key: tags
-              - configuration: ""
+              - onDemand: true
+                configuration: ""
                 name: name
-                throttleHz: 0.7329064902514726
+                throttleHz: 2.981066958341591
                 disabled: true
                 tags:
                   key: tags
-              - configuration: ""
+              - onDemand: true
+                configuration: ""
                 name: name
-                throttleHz: 0.7329064902514726
+                throttleHz: 2.981066958341591
                 disabled: true
                 tags:
                   key: tags
-              - configuration: ""
+              - onDemand: true
+                configuration: ""
                 name: name
-                throttleHz: 0.7329064902514726
+                throttleHz: 2.981066958341591
                 disabled: true
                 tags:
                   key: tags
-              - configuration: ""
+              - onDemand: true
+                configuration: ""
                 name: name
-                throttleHz: 0.7329064902514726
+                throttleHz: 2.981066958341591
                 disabled: true
                 tags:
                   key: tags
@@ -6648,37 +6694,43 @@ components:
                 key: configurationMap
             resources:
               disk:
+                onDemandBufferSize: 129480291062
                 bufferSize: 4395873917
-              streamThrottleHz: 3.0137280915352016
+              streamThrottleHz: 0.7329064902514726
             telemetry:
               streams:
-              - configuration: ""
+              - onDemand: true
+                configuration: ""
                 name: name
-                throttleHz: 0.7329064902514726
+                throttleHz: 2.981066958341591
                 disabled: true
                 tags:
                   key: tags
-              - configuration: ""
+              - onDemand: true
+                configuration: ""
                 name: name
-                throttleHz: 0.7329064902514726
+                throttleHz: 2.981066958341591
                 disabled: true
                 tags:
                   key: tags
-              - configuration: ""
+              - onDemand: true
+                configuration: ""
                 name: name
-                throttleHz: 0.7329064902514726
+                throttleHz: 2.981066958341591
                 disabled: true
                 tags:
                   key: tags
-              - configuration: ""
+              - onDemand: true
+                configuration: ""
                 name: name
-                throttleHz: 0.7329064902514726
+                throttleHz: 2.981066958341591
                 disabled: true
                 tags:
                   key: tags
-              - configuration: ""
+              - onDemand: true
+                configuration: ""
                 name: name
-                throttleHz: 0.7329064902514726
+                throttleHz: 2.981066958341591
                 disabled: true
                 tags:
                   key: tags
@@ -8115,37 +8167,43 @@ components:
               key: configurationMap
           resources:
             disk:
+              onDemandBufferSize: 129480291062
               bufferSize: 4395873917
-            streamThrottleHz: 3.0137280915352016
+            streamThrottleHz: 0.7329064902514726
           telemetry:
             streams:
-            - configuration: ""
+            - onDemand: true
+              configuration: ""
               name: name
-              throttleHz: 0.7329064902514726
+              throttleHz: 2.981066958341591
               disabled: true
               tags:
                 key: tags
-            - configuration: ""
+            - onDemand: true
+              configuration: ""
               name: name
-              throttleHz: 0.7329064902514726
+              throttleHz: 2.981066958341591
               disabled: true
               tags:
                 key: tags
-            - configuration: ""
+            - onDemand: true
+              configuration: ""
               name: name
-              throttleHz: 0.7329064902514726
+              throttleHz: 2.981066958341591
               disabled: true
               tags:
                 key: tags
-            - configuration: ""
+            - onDemand: true
+              configuration: ""
               name: name
-              throttleHz: 0.7329064902514726
+              throttleHz: 2.981066958341591
               disabled: true
               tags:
                 key: tags
-            - configuration: ""
+            - onDemand: true
+              configuration: ""
               name: name
-              throttleHz: 0.7329064902514726
+              throttleHz: 2.981066958341591
               disabled: true
               tags:
                 key: tags

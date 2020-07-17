@@ -15,4 +15,5 @@ type DeviceStreamConfiguration struct {
 	Configuration interface{} `json:"configuration"`
 	ThrottleHz *float32 `json:"throttleHz,omitempty"`
 	Disabled *bool `json:"disabled,omitempty"`
+	OnDemand *bool `json:"onDemand,omitempty"`
 }

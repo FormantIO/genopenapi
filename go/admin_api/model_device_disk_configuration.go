@@ -11,4 +11,5 @@ package admin_api
 // DeviceDiskConfiguration struct for DeviceDiskConfiguration
 type DeviceDiskConfiguration struct {
 	BufferSize int64 `json:"bufferSize,omitempty"`
+	OnDemandBufferSize int64 `json:"onDemandBufferSize,omitempty"`
 }
