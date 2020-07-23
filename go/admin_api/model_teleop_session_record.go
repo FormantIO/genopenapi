@@ -28,5 +28,5 @@ type TeleopSessionRecord struct {
 	NotificationEnabled bool `json:"notificationEnabled,omitempty"`
 	SessionId string `json:"sessionId"`
 	UserId string `json:"userId"`
-	SessionCreated time.Time `json:"sessionCreated"`
+	EndTime time.Time `json:"endTime"`
 }

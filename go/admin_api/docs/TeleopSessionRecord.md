@@ -19,7 +19,7 @@ Name | Type | Description | Notes
 **NotificationEnabled** | **bool** |  | [optional] 
 **SessionId** | **string** |  | 
 **UserId** | **string** |  | 
-**SessionCreated** | [**time.Time**](time.Time.md) |  | 
+**EndTime** | [**time.Time**](time.Time.md) |  | 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

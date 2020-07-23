@@ -1,7 +1,7 @@
 openapi: 3.0.0
 info:
   title: Formant Cloud API
-  version: 0.81.54
+  version: 0.82.69
 servers:
 - url: /
 paths:
@@ -155,7 +155,7 @@ components:
     CountHistoryEntryCount:
       example:
         "0": 2000-01-23T04:56:07.000+00:00
-        "1": -7564555438681791
+        "1": 1850900513286151
       properties:
         "0":
           format: date-time
@@ -173,9 +173,9 @@ components:
       example:
         counts:
         - "0": 2000-01-23T04:56:07.000+00:00
-          "1": -7564555438681791
+          "1": 1850900513286151
         - "0": 2000-01-23T04:56:07.000+00:00
-          "1": -7564555438681791
+          "1": 1850900513286151
         id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
       properties:
         id:
@@ -191,29 +191,39 @@ components:
       type: object
     CountHistory:
       example:
+        total: -7564555438681791
         counts:
         - counts:
           - "0": 2000-01-23T04:56:07.000+00:00
-            "1": -7564555438681791
+            "1": 1850900513286151
           - "0": 2000-01-23T04:56:07.000+00:00
-            "1": -7564555438681791
+            "1": 1850900513286151
           id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         - counts:
           - "0": 2000-01-23T04:56:07.000+00:00
-            "1": -7564555438681791
+            "1": 1850900513286151
           - "0": 2000-01-23T04:56:07.000+00:00
-            "1": -7564555438681791
+            "1": 1850900513286151
           id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
       properties:
+        total:
+          format: int64
+          maximum: 9007199254740991
+          minimum: -9007199254740991
+          type: integer
         counts:
           items:
             $ref: '#/components/schemas/CountHistoryEntry'
           type: array
       required:
       - counts
+      - total
       type: object
     CountHistoryQuery:
       example:
+        organizationId: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        start: 2000-01-23T04:56:07.000+00:00
+        end: 2000-01-23T04:56:07.000+00:00
         type: data-point
       properties:
         type:
@@ -224,7 +234,18 @@ components:
           - asset
           - cost
           type: string
+        start:
+          format: date-time
+          type: string
+        end:
+          format: date-time
+          type: string
+        organizationId:
+          format: uuid
+          type: string
       required:
+      - end
+      - start
       - type
       type: object
     Filter:
@@ -259,6 +280,7 @@ components:
             - metrics
             - transform tree
             - battery
+            - video
             type: string
           type: array
         tags: {}
@@ -324,6 +346,7 @@ components:
             - metrics
             - transform tree
             - battery
+            - video
             type: string
           type: array
         tags: {}
@@ -387,6 +410,7 @@ components:
           - metrics
           - transform tree
           - battery
+          - video
           type: string
         tags:
           additionalProperties:
@@ -479,6 +503,7 @@ components:
             - metrics
             - transform tree
             - battery
+            - video
             type: string
           type: array
         tags: {}
@@ -549,6 +574,7 @@ components:
             - metrics
             - transform tree
             - battery
+            - video
             type: string
           type: array
         tags: {}
@@ -618,6 +644,7 @@ components:
           - metrics
           - transform tree
           - battery
+          - video
           type: string
         points:
           items:
@@ -716,6 +743,7 @@ components:
             - metrics
             - transform tree
             - battery
+            - video
             type: string
           type: array
         tags: {}

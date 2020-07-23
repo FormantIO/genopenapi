@@ -6,16 +6,17 @@ Method | HTTP request | Description
 ------------- | ------------- | -------------
 [**EventControllerCount**](EventApi.md#EventControllerCount) | **Post** /events/count | Count
 [**EventControllerCounts**](EventApi.md#EventControllerCounts) | **Post** /events/counts | Counts
-[**EventControllerDistinctDevices**](EventApi.md#EventControllerDistinctDevices) | **Post** /events/devices | Distinct devices
-[**EventControllerDistinctEventTypes**](EventApi.md#EventControllerDistinctEventTypes) | **Post** /events/event-types | Distinct event types
-[**EventControllerDistinctStreamNames**](EventApi.md#EventControllerDistinctStreamNames) | **Post** /events/stream-names | Distinct stream names
-[**EventControllerDistinctStreamTypes**](EventApi.md#EventControllerDistinctStreamTypes) | **Post** /events/stream-types | Distinct stream types
-[**EventControllerDistinctTags**](EventApi.md#EventControllerDistinctTags) | **Post** /events/tags | Distinct tags
-[**EventControllerDistinctUsers**](EventApi.md#EventControllerDistinctUsers) | **Post** /events/users | Distinct users
+[**EventControllerDevices**](EventApi.md#EventControllerDevices) | **Post** /events/devices | Devices
+[**EventControllerEventTypes**](EventApi.md#EventControllerEventTypes) | **Post** /events/event-types | Event types
 [**EventControllerGetOne**](EventApi.md#EventControllerGetOne) | **Get** /events/{id} | Get one
 [**EventControllerHistogram**](EventApi.md#EventControllerHistogram) | **Post** /events/histogram | Histogram
 [**EventControllerQuery**](EventApi.md#EventControllerQuery) | **Post** /events/query | Query
 [**EventControllerSeek**](EventApi.md#EventControllerSeek) | **Post** /events/seek | Seek
+[**EventControllerSeverities**](EventApi.md#EventControllerSeverities) | **Post** /events/severities | Severities
+[**EventControllerStreamNames**](EventApi.md#EventControllerStreamNames) | **Post** /events/stream-names | Stream names
+[**EventControllerStreamTypes**](EventApi.md#EventControllerStreamTypes) | **Post** /events/stream-types | Stream types
+[**EventControllerTags**](EventApi.md#EventControllerTags) | **Post** /events/tags | Tags
+[**EventControllerUsers**](EventApi.md#EventControllerUsers) | **Post** /events/users | Users
 [**EventControllerView**](EventApi.md#EventControllerView) | **Post** /events/view | View
 
 
@@ -106,11 +107,11 @@ Use admin JWT for authorization
 [[Back to README]](../README.md)
 
 
-## EventControllerDistinctDevices
+## EventControllerDevices
 
-> UuidListResponse EventControllerDistinctDevices(ctx, optional)
+> UuidListResponse EventControllerDevices(ctx, optional)
 
-Distinct devices
+Devices
 
 Distinct values of event devices
 
@@ -120,11 +121,11 @@ Distinct values of event devices
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
- **optional** | ***EventControllerDistinctDevicesOpts** | optional parameters | nil if no parameters
+ **optional** | ***EventControllerDevicesOpts** | optional parameters | nil if no parameters
 
 ### Optional Parameters
 
-Optional parameters are passed through a pointer to a EventControllerDistinctDevicesOpts struct
+Optional parameters are passed through a pointer to a EventControllerDevicesOpts struct
 
 
 Name | Type | Description  | Notes
@@ -149,11 +150,11 @@ Use admin JWT for authorization
 [[Back to README]](../README.md)
 
 
-## EventControllerDistinctEventTypes
+## EventControllerEventTypes
 
-> EventDistinctEventTypes EventControllerDistinctEventTypes(ctx, optional)
+> StringListResponse EventControllerEventTypes(ctx, optional)
 
-Distinct event types
+Event types
 
 Distinct values of event types
 
@@ -163,54 +164,11 @@ Distinct values of event types
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
- **optional** | ***EventControllerDistinctEventTypesOpts** | optional parameters | nil if no parameters
+ **optional** | ***EventControllerEventTypesOpts** | optional parameters | nil if no parameters
 
 ### Optional Parameters
 
-Optional parameters are passed through a pointer to a EventControllerDistinctEventTypesOpts struct
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **eventFilter** | [**optional.Interface of EventFilter**](EventFilter.md)| EventFilter | 
-
-### Return type
-
-[**EventDistinctEventTypes**](EventDistinctEventTypes.md)
-
-### Authorization
-
-Use admin JWT for authorization
-
-### HTTP request headers
-
-- **Content-Type**: application/json
-- **Accept**: application/json
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
-[[Back to Model list]](../README.md#documentation-for-models)
-[[Back to README]](../README.md)
-
-
-## EventControllerDistinctStreamNames
-
-> StringListResponse EventControllerDistinctStreamNames(ctx, optional)
-
-Distinct stream names
-
-Distinct values of event stream names
-
-### Required Parameters
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
-**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
- **optional** | ***EventControllerDistinctStreamNamesOpts** | optional parameters | nil if no parameters
-
-### Optional Parameters
-
-Optional parameters are passed through a pointer to a EventControllerDistinctStreamNamesOpts struct
+Optional parameters are passed through a pointer to a EventControllerEventTypesOpts struct
 
 
 Name | Type | Description  | Notes
@@ -220,135 +178,6 @@ Name | Type | Description  | Notes
 ### Return type
 
 [**StringListResponse**](StringListResponse.md)
-
-### Authorization
-
-Use admin JWT for authorization
-
-### HTTP request headers
-
-- **Content-Type**: application/json
-- **Accept**: application/json
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
-[[Back to Model list]](../README.md#documentation-for-models)
-[[Back to README]](../README.md)
-
-
-## EventControllerDistinctStreamTypes
-
-> EventDistinctStreamTypes EventControllerDistinctStreamTypes(ctx, optional)
-
-Distinct stream types
-
-Distinct values of event stream types
-
-### Required Parameters
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
-**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
- **optional** | ***EventControllerDistinctStreamTypesOpts** | optional parameters | nil if no parameters
-
-### Optional Parameters
-
-Optional parameters are passed through a pointer to a EventControllerDistinctStreamTypesOpts struct
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **eventFilter** | [**optional.Interface of EventFilter**](EventFilter.md)| EventFilter | 
-
-### Return type
-
-[**EventDistinctStreamTypes**](EventDistinctStreamTypes.md)
-
-### Authorization
-
-Use admin JWT for authorization
-
-### HTTP request headers
-
-- **Content-Type**: application/json
-- **Accept**: application/json
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
-[[Back to Model list]](../README.md#documentation-for-models)
-[[Back to README]](../README.md)
-
-
-## EventControllerDistinctTags
-
-> TagsResponse EventControllerDistinctTags(ctx, optional)
-
-Distinct tags
-
-Distinct values of event tags
-
-### Required Parameters
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
-**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
- **optional** | ***EventControllerDistinctTagsOpts** | optional parameters | nil if no parameters
-
-### Optional Parameters
-
-Optional parameters are passed through a pointer to a EventControllerDistinctTagsOpts struct
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **eventFilter** | [**optional.Interface of EventFilter**](EventFilter.md)| EventFilter | 
-
-### Return type
-
-[**TagsResponse**](TagsResponse.md)
-
-### Authorization
-
-Use admin JWT for authorization
-
-### HTTP request headers
-
-- **Content-Type**: application/json
-- **Accept**: application/json
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
-[[Back to Model list]](../README.md#documentation-for-models)
-[[Back to README]](../README.md)
-
-
-## EventControllerDistinctUsers
-
-> UuidListResponse EventControllerDistinctUsers(ctx, optional)
-
-Distinct users
-
-Distinct values of event users
-
-### Required Parameters
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
-**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
- **optional** | ***EventControllerDistinctUsersOpts** | optional parameters | nil if no parameters
-
-### Optional Parameters
-
-Optional parameters are passed through a pointer to a EventControllerDistinctUsersOpts struct
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **eventFilter** | [**optional.Interface of EventFilter**](EventFilter.md)| EventFilter | 
-
-### Return type
-
-[**UuidListResponse**](UuidListResponse.md)
 
 ### Authorization
 
@@ -494,6 +323,221 @@ Name | Type | Description  | Notes
 ### Return type
 
  (empty response body)
+
+### Authorization
+
+Use admin JWT for authorization
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## EventControllerSeverities
+
+> StringListResponse EventControllerSeverities(ctx, optional)
+
+Severities
+
+Distinct values of event severities
+
+### Required Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+ **optional** | ***EventControllerSeveritiesOpts** | optional parameters | nil if no parameters
+
+### Optional Parameters
+
+Optional parameters are passed through a pointer to a EventControllerSeveritiesOpts struct
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **eventFilter** | [**optional.Interface of EventFilter**](EventFilter.md)| EventFilter | 
+
+### Return type
+
+[**StringListResponse**](StringListResponse.md)
+
+### Authorization
+
+Use admin JWT for authorization
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## EventControllerStreamNames
+
+> StringListResponse EventControllerStreamNames(ctx, optional)
+
+Stream names
+
+Distinct values of event stream names
+
+### Required Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+ **optional** | ***EventControllerStreamNamesOpts** | optional parameters | nil if no parameters
+
+### Optional Parameters
+
+Optional parameters are passed through a pointer to a EventControllerStreamNamesOpts struct
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **eventFilter** | [**optional.Interface of EventFilter**](EventFilter.md)| EventFilter | 
+
+### Return type
+
+[**StringListResponse**](StringListResponse.md)
+
+### Authorization
+
+Use admin JWT for authorization
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## EventControllerStreamTypes
+
+> StringListResponse EventControllerStreamTypes(ctx, optional)
+
+Stream types
+
+Distinct values of event stream types
+
+### Required Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+ **optional** | ***EventControllerStreamTypesOpts** | optional parameters | nil if no parameters
+
+### Optional Parameters
+
+Optional parameters are passed through a pointer to a EventControllerStreamTypesOpts struct
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **eventFilter** | [**optional.Interface of EventFilter**](EventFilter.md)| EventFilter | 
+
+### Return type
+
+[**StringListResponse**](StringListResponse.md)
+
+### Authorization
+
+Use admin JWT for authorization
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## EventControllerTags
+
+> TagsResponse EventControllerTags(ctx, optional)
+
+Tags
+
+Distinct values of event tags
+
+### Required Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+ **optional** | ***EventControllerTagsOpts** | optional parameters | nil if no parameters
+
+### Optional Parameters
+
+Optional parameters are passed through a pointer to a EventControllerTagsOpts struct
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **eventFilter** | [**optional.Interface of EventFilter**](EventFilter.md)| EventFilter | 
+
+### Return type
+
+[**TagsResponse**](TagsResponse.md)
+
+### Authorization
+
+Use admin JWT for authorization
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## EventControllerUsers
+
+> UuidListResponse EventControllerUsers(ctx, optional)
+
+Users
+
+Distinct values of event users
+
+### Required Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+ **optional** | ***EventControllerUsersOpts** | optional parameters | nil if no parameters
+
+### Optional Parameters
+
+Optional parameters are passed through a pointer to a EventControllerUsersOpts struct
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **eventFilter** | [**optional.Interface of EventFilter**](EventFilter.md)| EventFilter | 
+
+### Return type
+
+[**UuidListResponse**](UuidListResponse.md)
 
 ### Authorization
 

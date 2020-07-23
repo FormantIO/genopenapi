@@ -1,7 +1,7 @@
 openapi: 3.0.0
 info:
   title: Formant Cloud API
-  version: 0.81.54
+  version: 0.82.69
 servers:
 - url: /
 paths:
@@ -1378,87 +1378,7 @@ paths:
   /events/event-types:
     post:
       description: Distinct values of event types
-      operationId: EventController.distinctEventTypes
-      requestBody:
-        content:
-          application/json:
-            schema:
-              $ref: '#/components/schemas/EventFilter'
-        description: EventFilter
-        required: false
-      responses:
-        "200":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/EventDistinctEventTypes'
-      summary: Distinct event types
-      tags:
-      - Event
-  /events/users:
-    post:
-      description: Distinct values of event users
-      operationId: EventController.distinctUsers
-      requestBody:
-        content:
-          application/json:
-            schema:
-              $ref: '#/components/schemas/EventFilter'
-        description: EventFilter
-        required: false
-      responses:
-        "200":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/UuidListResponse'
-      summary: Distinct users
-      tags:
-      - Event
-  /events/devices:
-    post:
-      description: Distinct values of event devices
-      operationId: EventController.distinctDevices
-      requestBody:
-        content:
-          application/json:
-            schema:
-              $ref: '#/components/schemas/EventFilter'
-        description: EventFilter
-        required: false
-      responses:
-        "200":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/UuidListResponse'
-      summary: Distinct devices
-      tags:
-      - Event
-  /events/stream-types:
-    post:
-      description: Distinct values of event stream types
-      operationId: EventController.distinctStreamTypes
-      requestBody:
-        content:
-          application/json:
-            schema:
-              $ref: '#/components/schemas/EventFilter'
-        description: EventFilter
-        required: false
-      responses:
-        "200":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/EventDistinctStreamTypes'
-      summary: Distinct stream types
-      tags:
-      - Event
-  /events/stream-names:
-    post:
-      description: Distinct values of event stream names
-      operationId: EventController.distinctStreamNames
+      operationId: EventController.eventTypes
       requestBody:
         content:
           application/json:
@@ -1472,13 +1392,93 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/StringListResponse'
-      summary: Distinct stream names
+      summary: Event types
+      tags:
+      - Event
+  /events/users:
+    post:
+      description: Distinct values of event users
+      operationId: EventController.users
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/EventFilter'
+        description: EventFilter
+        required: false
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UuidListResponse'
+      summary: Users
+      tags:
+      - Event
+  /events/devices:
+    post:
+      description: Distinct values of event devices
+      operationId: EventController.devices
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/EventFilter'
+        description: EventFilter
+        required: false
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UuidListResponse'
+      summary: Devices
+      tags:
+      - Event
+  /events/stream-types:
+    post:
+      description: Distinct values of event stream types
+      operationId: EventController.streamTypes
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/EventFilter'
+        description: EventFilter
+        required: false
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/StringListResponse'
+      summary: Stream types
+      tags:
+      - Event
+  /events/stream-names:
+    post:
+      description: Distinct values of event stream names
+      operationId: EventController.streamNames
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/EventFilter'
+        description: EventFilter
+        required: false
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/StringListResponse'
+      summary: Stream names
       tags:
       - Event
   /events/tags:
     post:
       description: Distinct values of event tags
-      operationId: EventController.distinctTags
+      operationId: EventController.tags
       requestBody:
         content:
           application/json:
@@ -1492,7 +1492,27 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/TagsResponse'
-      summary: Distinct tags
+      summary: Tags
+      tags:
+      - Event
+  /events/severities:
+    post:
+      description: Distinct values of event severities
+      operationId: EventController.severities
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/EventFilter'
+        description: EventFilter
+        required: false
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/StringListResponse'
+      summary: Severities
       tags:
       - Event
   /events/histogram:
@@ -1849,6 +1869,26 @@ paths:
       summary: Get slack info
       tags:
       - Organization
+  /port-forwarding-session-records:
+    post:
+      description: Create a port forwarding session record.
+      operationId: PortForwardingRecordController.post
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PortForwardingSessionRecord'
+        description: PortForwardingSessionRecord
+        required: true
+      responses:
+        "201":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PortForwardingSessionRecord'
+      summary: Post
+      tags:
+      - Port Forwarding Record
   /shares:
     post:
       description: Create a share token
@@ -2221,6 +2261,7 @@ components:
             - metrics
             - transform tree
             - battery
+            - video
             type: string
           type: array
         tags: {}
@@ -2287,6 +2328,7 @@ components:
             - metrics
             - transform tree
             - battery
+            - video
             type: string
           type: array
         tags: {}
@@ -3315,6 +3357,7 @@ components:
           - metrics
           - transform tree
           - battery
+          - video
           type: string
         configuration:
           oneOf:
@@ -4083,6 +4126,7 @@ components:
           - metrics
           - transform tree
           - battery
+          - video
           type: string
         tags:
           additionalProperties:
@@ -4275,6 +4319,7 @@ components:
           - metrics
           - transform tree
           - battery
+          - video
           type: string
         tags:
           additionalProperties:
@@ -4558,6 +4603,7 @@ components:
           - metrics
           - transform tree
           - battery
+          - video
           type: string
         tags:
           additionalProperties:
@@ -4574,7 +4620,6 @@ components:
           type: string
       required:
       - command
-      - commandTemplateId
       - deviceId
       - parameter
       type: object
@@ -4636,6 +4681,7 @@ components:
           - metrics
           - transform tree
           - battery
+          - video
           type: string
         tags:
           additionalProperties:
@@ -4702,6 +4748,7 @@ components:
           - metrics
           - transform tree
           - battery
+          - video
           type: string
         tags:
           additionalProperties:
@@ -4774,6 +4821,7 @@ components:
           - metrics
           - transform tree
           - battery
+          - video
           type: string
         tags:
           additionalProperties:
@@ -4844,6 +4892,7 @@ components:
           - metrics
           - transform tree
           - battery
+          - video
           type: string
         tags:
           additionalProperties:
@@ -4936,6 +4985,7 @@ components:
           - metrics
           - transform tree
           - battery
+          - video
           type: string
         tags:
           additionalProperties:
@@ -5017,6 +5067,7 @@ components:
           - metrics
           - transform tree
           - battery
+          - video
           type: string
         tags:
           additionalProperties:
@@ -5098,11 +5149,19 @@ components:
           - metrics
           - transform tree
           - battery
+          - video
           type: string
         tags:
           additionalProperties:
             type: string
           type: object
+        severity:
+          enum:
+          - info
+          - warning
+          - error
+          - critical
+          type: string
         id:
           format: uuid
           type: string
@@ -5127,7 +5186,7 @@ components:
         deviceId:
           format: uuid
           type: string
-        sessionCreated:
+        endTime:
           format: date-time
           type: string
         id:
@@ -5180,6 +5239,7 @@ components:
           - metrics
           - transform tree
           - battery
+          - video
           type: string
         tags:
           additionalProperties:
@@ -5188,12 +5248,30 @@ components:
         notificationEnabled:
           type: boolean
       required:
-      - sessionCreated
+      - endTime
       - sessionId
       - time
       - userId
       type: object
     PortForwardingSessionRecord:
+      example:
+        sessionId: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        type: triggered-event
+        message: message
+        deviceId: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        streamName: streamName
+        userId: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        notificationEnabled: true
+        tags:
+          key: tags
+        organizationId: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        createdAt: 2000-01-23T04:56:07.000+00:00
+        streamType: image
+        viewed: true
+        id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        time: 2000-01-23T04:56:07.000+00:00
+        endTime: 2000-01-23T04:56:07.000+00:00
+        updatedAt: 2000-01-23T04:56:07.000+00:00
       properties:
         type:
           enum:
@@ -5248,6 +5326,7 @@ components:
           - metrics
           - transform tree
           - battery
+          - video
           type: string
         tags:
           additionalProperties:
@@ -5261,11 +5340,11 @@ components:
         userId:
           format: uuid
           type: string
-        sessionCreated:
+        endTime:
           format: date-time
           type: string
       required:
-      - sessionCreated
+      - endTime
       - sessionId
       - time
       - userId
@@ -5411,6 +5490,7 @@ components:
           - metrics
           - transform tree
           - battery
+          - video
           type: string
         tags:
           additionalProperties:
@@ -5423,7 +5503,6 @@ components:
       type: object
     TeleopSessionRecord:
       example:
-        sessionCreated: 2000-01-23T04:56:07.000+00:00
         sessionId: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         type: triggered-event
         message: message
@@ -5439,6 +5518,7 @@ components:
         viewed: true
         id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         time: 2000-01-23T04:56:07.000+00:00
+        endTime: 2000-01-23T04:56:07.000+00:00
         updatedAt: 2000-01-23T04:56:07.000+00:00
       properties:
         type:
@@ -5494,6 +5574,7 @@ components:
           - metrics
           - transform tree
           - battery
+          - video
           type: string
         tags:
           additionalProperties:
@@ -5507,11 +5588,11 @@ components:
         userId:
           format: uuid
           type: string
-        sessionCreated:
+        endTime:
           format: date-time
           type: string
       required:
-      - sessionCreated
+      - endTime
       - sessionId
       - time
       - userId
@@ -5608,6 +5689,7 @@ components:
           - metrics
           - transform tree
           - battery
+          - video
           type: string
         tags:
           additionalProperties:
@@ -6242,6 +6324,7 @@ components:
           - metrics
           - transform tree
           - battery
+          - video
           type: string
         tags:
           additionalProperties:
@@ -6897,57 +6980,6 @@ components:
       required:
       - total
       type: object
-    EventDistinctEventTypes:
-      example:
-        items:
-        - triggered-event
-        - triggered-event
-      properties:
-        items:
-          items:
-            enum:
-            - triggered-event
-            - intervention-request
-            - teleop-session-record
-            - port-forwarding-session-record
-            - command-request
-            - command-response
-            - command-delivery
-            - custom
-            - comment
-            - system
-            type: string
-          type: array
-      required:
-      - items
-      type: object
-    EventDistinctStreamTypes:
-      example:
-        items:
-        - image
-        - image
-      properties:
-        items:
-          items:
-            enum:
-            - image
-            - numeric
-            - point cloud
-            - text
-            - json
-            - location
-            - file
-            - localization
-            - health
-            - bitset
-            - metrics
-            - transform tree
-            - battery
-            type: string
-          type: array
-      required:
-      - items
-      type: object
     EventFilter:
       example:
         agentIds:
@@ -6980,6 +7012,9 @@ components:
         end: 2000-01-23T04:56:07.000+00:00
         id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         keyword: keyword
+        severities:
+        - info
+        - info
       properties:
         id:
           format: uuid
@@ -7020,6 +7055,15 @@ components:
           type: array
         disableNullMatches:
           type: boolean
+        severities:
+          items:
+            enum:
+            - info
+            - warning
+            - error
+            - critical
+            type: string
+          type: array
         agentIds:
           items:
             format: uuid
@@ -7050,6 +7094,7 @@ components:
             - metrics
             - transform tree
             - battery
+            - video
             type: string
           type: array
         tags: {}
@@ -7182,6 +7227,9 @@ components:
         end: 2000-01-23T04:56:07.000+00:00
         id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         keyword: keyword
+        severities:
+        - info
+        - info
       properties:
         offset:
           format: int64
@@ -7225,6 +7273,7 @@ components:
             - metrics
             - transform tree
             - battery
+            - video
             type: string
           type: array
         tags: {}
@@ -7271,6 +7320,15 @@ components:
           type: array
         disableNullMatches:
           type: boolean
+        severities:
+          items:
+            enum:
+            - info
+            - warning
+            - error
+            - critical
+            type: string
+          type: array
       type: object
     EventSeekQuery:
       example:
@@ -7306,6 +7364,9 @@ components:
         id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         keyword: keyword
         direction: next
+        severities:
+        - info
+        - info
       properties:
         direction:
           enum:
@@ -7345,6 +7406,7 @@ components:
             - metrics
             - transform tree
             - battery
+            - video
             type: string
           type: array
         tags: {}
@@ -7391,6 +7453,15 @@ components:
           type: array
         disableNullMatches:
           type: boolean
+        severities:
+          items:
+            enum:
+            - info
+            - warning
+            - error
+            - critical
+            type: string
+          type: array
       required:
       - direction
       - from
@@ -7428,6 +7499,9 @@ components:
         end: 2000-01-23T04:56:07.000+00:00
         id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         keyword: keyword
+        severities:
+        - info
+        - info
       properties:
         interval:
           enum:
@@ -7465,6 +7539,7 @@ components:
             - metrics
             - transform tree
             - battery
+            - video
             type: string
           type: array
         tags: {}
@@ -7511,6 +7586,15 @@ components:
           type: array
         disableNullMatches:
           type: boolean
+        severities:
+          items:
+            enum:
+            - info
+            - warning
+            - error
+            - critical
+            type: string
+          type: array
       required:
       - interval
       type: object
@@ -8001,6 +8085,7 @@ components:
           - metrics
           - transform tree
           - battery
+          - video
           type: string
         tags:
           additionalProperties:
@@ -8147,6 +8232,7 @@ components:
           - metrics
           - transform tree
           - battery
+          - video
           type: string
         tags:
           additionalProperties:

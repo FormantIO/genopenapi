@@ -11,6 +11,7 @@ Name | Type | Description | Notes
 **StreamName** | **string** |  | [optional] 
 **StreamType** | **string** |  | [optional] 
 **Tags** | **map[string]string** |  | [optional] 
+**Severity** | **string** |  | [optional] 
 **Id** | **string** |  | [optional] 
 **CreatedAt** | [**time.Time**](time.Time.md) |  | [optional] 
 **UpdatedAt** | [**time.Time**](time.Time.md) |  | [optional] 

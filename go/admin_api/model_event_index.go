@@ -20,6 +20,7 @@ type EventIndex struct {
 	StreamName string `json:"streamName,omitempty"`
 	StreamType string `json:"streamType,omitempty"`
 	Tags map[string]string `json:"tags,omitempty"`
+	Severity string `json:"severity,omitempty"`
 	Id string `json:"id,omitempty"`
 	CreatedAt time.Time `json:"createdAt,omitempty"`
 	UpdatedAt time.Time `json:"updatedAt,omitempty"`

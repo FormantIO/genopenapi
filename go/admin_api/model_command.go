@@ -17,7 +17,7 @@ type Command struct {
 	DeviceId string `json:"deviceId"`
 	UserId string `json:"userId,omitempty"`
 	EventTriggerId string `json:"eventTriggerId,omitempty"`
-	CommandTemplateId string `json:"commandTemplateId"`
+	CommandTemplateId string `json:"commandTemplateId,omitempty"`
 	Command string `json:"command"`
 	Parameter CommandParameter `json:"parameter"`
 	DeliveredAt time.Time `json:"deliveredAt,omitempty"`

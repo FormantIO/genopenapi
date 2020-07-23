@@ -7,7 +7,7 @@ Name | Type | Description | Notes
 **SessionId** | **string** |  | 
 **UserId** | **string** |  | 
 **DeviceId** | **string** |  | [optional] 
-**SessionCreated** | [**time.Time**](time.Time.md) |  | 
+**EndTime** | [**time.Time**](time.Time.md) |  | 
 **Id** | **string** |  | [optional] 
 **CreatedAt** | [**time.Time**](time.Time.md) |  | [optional] 
 **UpdatedAt** | [**time.Time**](time.Time.md) |  | [optional] 

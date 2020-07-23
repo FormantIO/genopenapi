@@ -10,5 +10,6 @@
 package query_api
 // CountHistory struct for CountHistory
 type CountHistory struct {
+	Total int64 `json:"total"`
 	Counts []CountHistoryEntry `json:"counts"`
 }

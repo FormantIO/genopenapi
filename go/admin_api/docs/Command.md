@@ -8,7 +8,7 @@ Name | Type | Description | Notes
 **DeviceId** | **string** |  | 
 **UserId** | **string** |  | [optional] 
 **EventTriggerId** | **string** |  | [optional] 
-**CommandTemplateId** | **string** |  | 
+**CommandTemplateId** | **string** |  | [optional] 
 **Command** | **string** |  | 
 **Parameter** | [**CommandParameter**](CommandParameter.md) |  | 
 **DeliveredAt** | [**time.Time**](time.Time.md) |  | [optional] 

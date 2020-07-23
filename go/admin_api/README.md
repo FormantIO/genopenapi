@@ -96,16 +96,17 @@ Class | Method | HTTP request | Description
 *DeviceDetailsApi* | [**DeviceDetailsControllerGetOne**](docs/DeviceDetailsApi.md#devicedetailscontrollergetone) | **Get** /device-details/{id} | Get one
 *EventApi* | [**EventControllerCount**](docs/EventApi.md#eventcontrollercount) | **Post** /events/count | Count
 *EventApi* | [**EventControllerCounts**](docs/EventApi.md#eventcontrollercounts) | **Post** /events/counts | Counts
-*EventApi* | [**EventControllerDistinctDevices**](docs/EventApi.md#eventcontrollerdistinctdevices) | **Post** /events/devices | Distinct devices
-*EventApi* | [**EventControllerDistinctEventTypes**](docs/EventApi.md#eventcontrollerdistincteventtypes) | **Post** /events/event-types | Distinct event types
-*EventApi* | [**EventControllerDistinctStreamNames**](docs/EventApi.md#eventcontrollerdistinctstreamnames) | **Post** /events/stream-names | Distinct stream names
-*EventApi* | [**EventControllerDistinctStreamTypes**](docs/EventApi.md#eventcontrollerdistinctstreamtypes) | **Post** /events/stream-types | Distinct stream types
-*EventApi* | [**EventControllerDistinctTags**](docs/EventApi.md#eventcontrollerdistincttags) | **Post** /events/tags | Distinct tags
-*EventApi* | [**EventControllerDistinctUsers**](docs/EventApi.md#eventcontrollerdistinctusers) | **Post** /events/users | Distinct users
+*EventApi* | [**EventControllerDevices**](docs/EventApi.md#eventcontrollerdevices) | **Post** /events/devices | Devices
+*EventApi* | [**EventControllerEventTypes**](docs/EventApi.md#eventcontrollereventtypes) | **Post** /events/event-types | Event types
 *EventApi* | [**EventControllerGetOne**](docs/EventApi.md#eventcontrollergetone) | **Get** /events/{id} | Get one
 *EventApi* | [**EventControllerHistogram**](docs/EventApi.md#eventcontrollerhistogram) | **Post** /events/histogram | Histogram
 *EventApi* | [**EventControllerQuery**](docs/EventApi.md#eventcontrollerquery) | **Post** /events/query | Query
 *EventApi* | [**EventControllerSeek**](docs/EventApi.md#eventcontrollerseek) | **Post** /events/seek | Seek
+*EventApi* | [**EventControllerSeverities**](docs/EventApi.md#eventcontrollerseverities) | **Post** /events/severities | Severities
+*EventApi* | [**EventControllerStreamNames**](docs/EventApi.md#eventcontrollerstreamnames) | **Post** /events/stream-names | Stream names
+*EventApi* | [**EventControllerStreamTypes**](docs/EventApi.md#eventcontrollerstreamtypes) | **Post** /events/stream-types | Stream types
+*EventApi* | [**EventControllerTags**](docs/EventApi.md#eventcontrollertags) | **Post** /events/tags | Tags
+*EventApi* | [**EventControllerUsers**](docs/EventApi.md#eventcontrollerusers) | **Post** /events/users | Users
 *EventApi* | [**EventControllerView**](docs/EventApi.md#eventcontrollerview) | **Post** /events/view | View
 *EventTriggerApi* | [**EventTriggerControllerGetAll**](docs/EventTriggerApi.md#eventtriggercontrollergetall) | **Get** /event-triggers | Get all
 *EventTriggerApi* | [**EventTriggerControllerGetOne**](docs/EventTriggerApi.md#eventtriggercontrollergetone) | **Get** /event-triggers/{id} | Get one
@@ -123,6 +124,7 @@ Class | Method | HTTP request | Description
 *OrganizationApi* | [**OrganizationControllerList**](docs/OrganizationApi.md#organizationcontrollerlist) | **Get** /organizations/ | List
 *OrganizationApi* | [**OrganizationControllerListUsers**](docs/OrganizationApi.md#organizationcontrollerlistusers) | **Get** /organizations/{id}/users | List users
 *OrganizationApi* | [**OrganizationControllerPatch**](docs/OrganizationApi.md#organizationcontrollerpatch) | **Patch** /organizations/{id} | Patch
+*PortForwardingRecordApi* | [**PortForwardingRecordControllerPost**](docs/PortForwardingRecordApi.md#portforwardingrecordcontrollerpost) | **Post** /port-forwarding-session-records | Post
 *ShareApi* | [**ShareControllerAuthenticate**](docs/ShareApi.md#sharecontrollerauthenticate) | **Post** /shares/{code}/authenticate | Authenticate
 *ShareApi* | [**ShareControllerGetOne**](docs/ShareApi.md#sharecontrollergetone) | **Get** /shares/{code} | Get one
 *ShareApi* | [**ShareControllerPost**](docs/ShareApi.md#sharecontrollerpost) | **Post** /shares | Post
@@ -207,8 +209,6 @@ Class | Method | HTTP request | Description
  - [DeviceTeleopConfiguration](docs/DeviceTeleopConfiguration.md)
  - [DeviceTeleopRosStreamConfiguration](docs/DeviceTeleopRosStreamConfiguration.md)
  - [EventCounts](docs/EventCounts.md)
- - [EventDistinctEventTypes](docs/EventDistinctEventTypes.md)
- - [EventDistinctStreamTypes](docs/EventDistinctStreamTypes.md)
  - [EventFilter](docs/EventFilter.md)
  - [EventHistogram](docs/EventHistogram.md)
  - [EventHistogramEntry](docs/EventHistogramEntry.md)

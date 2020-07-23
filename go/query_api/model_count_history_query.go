@@ -8,7 +8,13 @@
  */
 
 package query_api
+import (
+	"time"
+)
 // CountHistoryQuery struct for CountHistoryQuery
 type CountHistoryQuery struct {
 	Type string `json:"type"`
+	Start time.Time `json:"start"`
+	End time.Time `json:"end"`
+	OrganizationId string `json:"organizationId,omitempty"`
 }

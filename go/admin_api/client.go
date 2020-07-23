@@ -87,6 +87,8 @@ type APIClient struct {
 
 	OrganizationApi *OrganizationApiService
 
+	PortForwardingRecordApi *PortForwardingRecordApiService
+
 	ShareApi *ShareApiService
 
 	SystemEventApi *SystemEventApiService
@@ -136,6 +138,7 @@ func NewAPIClient(cfg *Configuration) *APIClient {
 	c.InterventionResponseApi = (*InterventionResponseApiService)(&c.common)
 	c.LookerApi = (*LookerApiService)(&c.common)
 	c.OrganizationApi = (*OrganizationApiService)(&c.common)
+	c.PortForwardingRecordApi = (*PortForwardingRecordApiService)(&c.common)
 	c.ShareApi = (*ShareApiService)(&c.common)
 	c.SystemEventApi = (*SystemEventApiService)(&c.common)
 	c.TeleopSessionRecordApi = (*TeleopSessionRecordApiService)(&c.common)

@@ -14,6 +14,7 @@ Name | Type | Description | Notes
 **NotificationEnabled** | **bool** |  | [optional] 
 **UserIds** | **[]string** |  | [optional] 
 **DisableNullMatches** | **bool** |  | [optional] 
+**Severities** | **[]string** |  | [optional] 
 **AgentIds** | **[]string** |  | [optional] 
 **DeviceIds** | **[]string** |  | [optional] 
 **Names** | **[]string** |  | [optional] 

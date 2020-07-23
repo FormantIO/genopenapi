@@ -16,7 +16,7 @@ type RtcSessionRecord struct {
 	SessionId string `json:"sessionId"`
 	UserId string `json:"userId"`
 	DeviceId string `json:"deviceId,omitempty"`
-	SessionCreated time.Time `json:"sessionCreated"`
+	EndTime time.Time `json:"endTime"`
 	Id string `json:"id,omitempty"`
 	CreatedAt time.Time `json:"createdAt,omitempty"`
 	UpdatedAt time.Time `json:"updatedAt,omitempty"`
