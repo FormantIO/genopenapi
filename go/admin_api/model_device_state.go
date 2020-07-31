@@ -15,5 +15,6 @@ type DeviceState struct {
 	Ros *DeviceRosState `json:"ros,omitempty"`
 	Env *map[string]string `json:"env,omitempty"`
 	OtaEnabled *bool `json:"otaEnabled,omitempty"`
+	OnDemand *OnDemandState `json:"onDemand,omitempty"`
 	Version *string `json:"version,omitempty"`
 }

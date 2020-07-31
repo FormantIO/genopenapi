@@ -9,6 +9,7 @@ Name | Type | Description | Notes
 **Ros** | Pointer to [**DeviceRosState**](DeviceRosState.md) |  | [optional] 
 **Env** | Pointer to **map[string]string** |  | [optional] 
 **OtaEnabled** | Pointer to **bool** |  | [optional] 
+**OnDemand** | Pointer to [**OnDemandState**](OnDemandState.md) |  | [optional] 
 **Version** | Pointer to **string** |  | [optional] 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
