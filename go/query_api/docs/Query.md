@@ -6,7 +6,6 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Start** | [**time.Time**](time.Time.md) |  | 
 **End** | [**time.Time**](time.Time.md) |  | 
-**Debug** | **bool** |  | [optional] 
 **AgentIds** | **[]string** |  | [optional] 
 **DeviceIds** | **[]string** |  | [optional] 
 **Names** | **[]string** |  | [optional] 

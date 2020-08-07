@@ -20,7 +20,7 @@ type EventTrigger struct {
 	Interval int64 `json:"interval"`
 	Severity string `json:"severity"`
 	Enabled bool `json:"enabled,omitempty"`
-	TriggeredConfiguration TriggeredConfiguration `json:"triggeredConfiguration,omitempty"`
+	TriggeredConfiguration *TriggeredConfiguration `json:"triggeredConfiguration"`
 	Tags map[string]string `json:"tags"`
 	NotificationEnabled bool `json:"notificationEnabled"`
 	Commands []EventTriggerCommand `json:"commands"`

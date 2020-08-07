@@ -1,7 +1,7 @@
 openapi: 3.0.0
 info:
   title: Formant Cloud API
-  version: 0.83.51
+  version: 0.84.34
 servers:
 - url: /
 paths:
@@ -454,7 +454,6 @@ components:
         types:
         - image
         - image
-        debug: true
         names:
         - names
         - names
@@ -471,8 +470,6 @@ components:
         end:
           format: date-time
           type: string
-        debug:
-          type: boolean
         agentIds:
           items:
             format: uuid
@@ -529,7 +526,6 @@ components:
         names:
         - names
         - names
-        debug: true
         notNames:
         - notNames
         - notNames
@@ -588,8 +584,6 @@ components:
         end:
           format: date-time
           type: string
-        debug:
-          type: boolean
       required:
       - end
       - interval

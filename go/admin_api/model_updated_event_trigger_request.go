@@ -8,8 +8,7 @@
  */
 
 package admin_api
-// RegexEventTriggerCondition struct for RegexEventTriggerCondition
-type RegexEventTriggerCondition struct {
-	Type string `json:"type"`
-	Value string `json:"value"`
+// UpdatedEventTriggerRequest struct for UpdatedEventTriggerRequest
+type UpdatedEventTriggerRequest struct {
+	LastUpdated int64 `json:"lastUpdated"`
 }

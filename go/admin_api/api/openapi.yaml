@@ -1,7 +1,7 @@
 openapi: 3.0.0
 info:
   title: Formant Cloud API
-  version: 0.83.51
+  version: 0.84.34
 servers:
 - url: /
 paths:
@@ -1651,6 +1651,26 @@ paths:
               schema:
                 $ref: '#/components/schemas/EventTrigger'
       summary: Patch
+      tags:
+      - Event Trigger
+  /event-triggers/updated:
+    post:
+      description: Get updated event trigger configuration
+      operationId: EventTriggerController.query
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/UpdatedEventTriggerRequest'
+        description: UpdatedEventTriggerRequest
+        required: true
+      responses:
+        "201":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UpdatedEventTriggerResponse'
+      summary: Query
       tags:
       - Event Trigger
   /integrations/slack/auth:
@@ -6534,7 +6554,8 @@ components:
           enum:
           - regex
           type: string
-        value: {}
+        value:
+          type: string
       required:
       - type
       - value
@@ -6579,6 +6600,7 @@ components:
       example:
         configurationTemplateId: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         configurationDurationMinutes: 26039
+      nullable: true
       properties:
         configurationDurationMinutes:
           format: int64
@@ -6682,6 +6704,7 @@ components:
       - severity
       - stream
       - tags
+      - triggeredConfiguration
       type: object
     User:
       example:
@@ -14088,6 +14111,88 @@ components:
           type: array
       required:
       - items
+      type: object
+    UpdatedEventTriggerRequest:
+      example:
+        lastUpdated: 721321908029599
+      properties:
+        lastUpdated:
+          format: int64
+          maximum: 9007199254740991
+          minimum: 0
+          type: integer
+      required:
+      - lastUpdated
+      type: object
+    UpdatedEventTriggerResponse:
+      example:
+        lastUpdated: 721321908029599
+        eventTriggers:
+        - severity: info
+          triggeredConfiguration:
+            configurationTemplateId: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+            configurationDurationMinutes: 26039
+          message: message
+          enabled: true
+          notificationEnabled: true
+          tags:
+            key: tags
+          organizationId: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          createdAt: 2000-01-23T04:56:07.000+00:00
+          condition: ""
+          stream: stream
+          interval: 721321908038799
+          id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          commands:
+          - commandTemplateId: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+            parameterValue: parameterValue
+          - commandTemplateId: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+            parameterValue: parameterValue
+          - commandTemplateId: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+            parameterValue: parameterValue
+          - commandTemplateId: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+            parameterValue: parameterValue
+          - commandTemplateId: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+            parameterValue: parameterValue
+          updatedAt: 2000-01-23T04:56:07.000+00:00
+        - severity: info
+          triggeredConfiguration:
+            configurationTemplateId: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+            configurationDurationMinutes: 26039
+          message: message
+          enabled: true
+          notificationEnabled: true
+          tags:
+            key: tags
+          organizationId: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          createdAt: 2000-01-23T04:56:07.000+00:00
+          condition: ""
+          stream: stream
+          interval: 721321908038799
+          id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          commands:
+          - commandTemplateId: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+            parameterValue: parameterValue
+          - commandTemplateId: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+            parameterValue: parameterValue
+          - commandTemplateId: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+            parameterValue: parameterValue
+          - commandTemplateId: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+            parameterValue: parameterValue
+          - commandTemplateId: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+            parameterValue: parameterValue
+          updatedAt: 2000-01-23T04:56:07.000+00:00
+      properties:
+        eventTriggers:
+          items:
+            $ref: '#/components/schemas/EventTrigger'
+          nullable: true
+          type: array
+        lastUpdated:
+          format: int64
+          maximum: 9007199254740991
+          minimum: 0
+          type: integer
       type: object
     SlackAuthRequest:
       example:

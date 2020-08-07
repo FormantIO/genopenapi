@@ -11,7 +11,7 @@ Name | Type | Description | Notes
 **Interval** | **int64** |  | 
 **Severity** | **string** |  | 
 **Enabled** | **bool** |  | [optional] 
-**TriggeredConfiguration** | [**TriggeredConfiguration**](TriggeredConfiguration.md) |  | [optional] 
+**TriggeredConfiguration** | Pointer to [**TriggeredConfiguration**](TriggeredConfiguration.md) |  | 
 **Tags** | **map[string]string** |  | 
 **NotificationEnabled** | **bool** |  | 
 **Commands** | [**[]EventTriggerCommand**](EventTriggerCommand.md) |  | 

@@ -22,5 +22,4 @@ type IntervalQuery struct {
 	NotNames []string `json:"notNames,omitempty"`
 	Start time.Time `json:"start"`
 	End time.Time `json:"end"`
-	Debug bool `json:"debug,omitempty"`
 }

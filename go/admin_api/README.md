@@ -112,6 +112,7 @@ Class | Method | HTTP request | Description
 *EventTriggerApi* | [**EventTriggerControllerGetOne**](docs/EventTriggerApi.md#eventtriggercontrollergetone) | **Get** /event-triggers/{id} | Get one
 *EventTriggerApi* | [**EventTriggerControllerPatch**](docs/EventTriggerApi.md#eventtriggercontrollerpatch) | **Patch** /event-triggers/{id} | Patch
 *EventTriggerApi* | [**EventTriggerControllerPost**](docs/EventTriggerApi.md#eventtriggercontrollerpost) | **Post** /event-triggers | Post
+*EventTriggerApi* | [**EventTriggerControllerQuery**](docs/EventTriggerApi.md#eventtriggercontrollerquery) | **Post** /event-triggers/updated | Query
 *IntegrationApi* | [**IntegrationControllerPost**](docs/IntegrationApi.md#integrationcontrollerpost) | **Post** /integrations/slack/auth | Post
 *InterventionRequestApi* | [**InterventionRequestControllerGetOne**](docs/InterventionRequestApi.md#interventionrequestcontrollergetone) | **Get** /intervention-requests/{id} | Get one
 *InterventionRequestApi* | [**InterventionRequestControllerPost**](docs/InterventionRequestApi.md#interventionrequestcontrollerpost) | **Post** /intervention-requests | Post
@@ -297,6 +298,8 @@ Class | Method | HTTP request | Description
  - [UpdatedAgentVersionResponse](docs/UpdatedAgentVersionResponse.md)
  - [UpdatedConfigurationQuery](docs/UpdatedConfigurationQuery.md)
  - [UpdatedConfigurationResponse](docs/UpdatedConfigurationResponse.md)
+ - [UpdatedEventTriggerRequest](docs/UpdatedEventTriggerRequest.md)
+ - [UpdatedEventTriggerResponse](docs/UpdatedEventTriggerResponse.md)
  - [User](docs/User.md)
  - [UserListResponse](docs/UserListResponse.md)
  - [UserTeleopConfiguration](docs/UserTeleopConfiguration.md)

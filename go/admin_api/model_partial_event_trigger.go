@@ -20,7 +20,7 @@ type PartialEventTrigger struct {
 	Interval int64 `json:"interval,omitempty"`
 	Severity string `json:"severity,omitempty"`
 	Enabled bool `json:"enabled,omitempty"`
-	TriggeredConfiguration TriggeredConfiguration `json:"triggeredConfiguration,omitempty"`
+	TriggeredConfiguration *TriggeredConfiguration `json:"triggeredConfiguration,omitempty"`
 	Tags map[string]string `json:"tags,omitempty"`
 	NotificationEnabled bool `json:"notificationEnabled,omitempty"`
 	Commands []EventTriggerCommand `json:"commands,omitempty"`
