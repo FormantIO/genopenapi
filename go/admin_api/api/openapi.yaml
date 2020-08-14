@@ -1,7 +1,7 @@
 openapi: 3.0.0
 info:
   title: Formant Cloud API
-  version: 0.84.35
+  version: 0.85.36
 servers:
 - url: /
 paths:
@@ -1887,6 +1887,32 @@ paths:
             application/json: {}
           description: Successful response
       summary: Get slack info
+      tags:
+      - Organization
+  /organizations/{id}/stripe-token:
+    put:
+      operationId: OrganizationController.putStripeToken
+      parameters:
+      - explode: false
+        in: path
+        name: id
+        required: true
+        schema:
+          type: string
+        style: simple
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/StripeToken'
+        description: StripeToken
+        required: true
+      responses:
+        "200":
+          content:
+            application/json: {}
+          description: Successful response
+      summary: Put stripe token
       tags:
       - Organization
   /port-forwarding-session-records:
@@ -6161,6 +6187,37 @@ components:
       - webhookChannel
       - webhookUrl
       type: object
+    StripeCard:
+      example:
+        last4: last4
+        brand: brand
+      properties:
+        brand:
+          type: string
+        last4:
+          type: string
+      required:
+      - brand
+      - last4
+      type: object
+    StripeInfo:
+      example:
+        customerId: customerId
+        subscriptionId: subscriptionId
+        card:
+          last4: last4
+          brand: brand
+      properties:
+        customerId:
+          type: string
+        subscriptionId:
+          type: string
+        card:
+          $ref: '#/components/schemas/StripeCard'
+      required:
+      - customerId
+      - subscriptionId
+      type: object
     JoystickConfiguration:
       properties:
         linear:
@@ -6839,6 +6896,13 @@ components:
           - configuration: ""
             displayName: displayName
             topicName: topicName
+        stripeInfo:
+          customerId: customerId
+          subscriptionId: subscriptionId
+          card:
+            last4: last4
+            brand: brand
+        stripeBillingEnabled: true
         updatedAt: 2000-01-23T04:56:07.000+00:00
       properties:
         plan:
@@ -6879,9 +6943,13 @@ components:
           $ref: '#/components/schemas/AwsInfo'
         lookerInfo:
           $ref: '#/components/schemas/LookerInfo'
+        stripeInfo:
+          $ref: '#/components/schemas/StripeInfo'
         teleopConfiguration:
           $ref: '#/components/schemas/UserTeleopConfiguration'
         teleopEnabled:
+          type: boolean
+        stripeBillingEnabled:
           type: boolean
         externalId:
           format: uuid
@@ -14263,6 +14331,15 @@ components:
       required:
       - items
       type: object
+    StripeToken:
+      example:
+        token: token
+      properties:
+        token:
+          type: string
+      required:
+      - token
+      type: object
     OrganizationListResponse:
       example:
         items:
@@ -14334,6 +14411,13 @@ components:
             - configuration: ""
               displayName: displayName
               topicName: topicName
+          stripeInfo:
+            customerId: customerId
+            subscriptionId: subscriptionId
+            card:
+              last4: last4
+              brand: brand
+          stripeBillingEnabled: true
           updatedAt: 2000-01-23T04:56:07.000+00:00
         - country: country
           pagerdutyInfo:
@@ -14403,6 +14487,13 @@ components:
             - configuration: ""
               displayName: displayName
               topicName: topicName
+          stripeInfo:
+            customerId: customerId
+            subscriptionId: subscriptionId
+            card:
+              last4: last4
+              brand: brand
+          stripeBillingEnabled: true
           updatedAt: 2000-01-23T04:56:07.000+00:00
       properties:
         items:
@@ -16272,6 +16363,13 @@ components:
           - configuration: ""
             displayName: displayName
             topicName: topicName
+        stripeInfo:
+          customerId: customerId
+          subscriptionId: subscriptionId
+          card:
+            last4: last4
+            brand: brand
+        stripeBillingEnabled: true
         updatedAt: 2000-01-23T04:56:07.000+00:00
       properties:
         plan:
@@ -16312,9 +16410,13 @@ components:
           $ref: '#/components/schemas/AwsInfo'
         lookerInfo:
           $ref: '#/components/schemas/LookerInfo'
+        stripeInfo:
+          $ref: '#/components/schemas/StripeInfo'
         teleopConfiguration:
           $ref: '#/components/schemas/UserTeleopConfiguration'
         teleopEnabled:
+          type: boolean
+        stripeBillingEnabled:
           type: boolean
         externalId:
           format: uuid

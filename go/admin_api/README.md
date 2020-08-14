@@ -125,6 +125,7 @@ Class | Method | HTTP request | Description
 *OrganizationApi* | [**OrganizationControllerList**](docs/OrganizationApi.md#organizationcontrollerlist) | **Get** /organizations/ | List
 *OrganizationApi* | [**OrganizationControllerListUsers**](docs/OrganizationApi.md#organizationcontrollerlistusers) | **Get** /organizations/{id}/users | List users
 *OrganizationApi* | [**OrganizationControllerPatch**](docs/OrganizationApi.md#organizationcontrollerpatch) | **Patch** /organizations/{id} | Patch
+*OrganizationApi* | [**OrganizationControllerPutStripeToken**](docs/OrganizationApi.md#organizationcontrollerputstripetoken) | **Put** /organizations/{id}/stripe-token | Put stripe token
 *PortForwardingRecordApi* | [**PortForwardingRecordControllerPost**](docs/PortForwardingRecordApi.md#portforwardingrecordcontrollerpost) | **Post** /port-forwarding-session-records | Post
 *ShareApi* | [**ShareControllerAuthenticate**](docs/ShareApi.md#sharecontrollerauthenticate) | **Post** /shares/{code}/authenticate | Authenticate
 *ShareApi* | [**ShareControllerGetOne**](docs/ShareApi.md#sharecontrollergetone) | **Get** /shares/{code} | Get one
@@ -283,6 +284,9 @@ Class | Method | HTTP request | Description
  - [SlackAuthRequest](docs/SlackAuthRequest.md)
  - [SlackInfo](docs/SlackInfo.md)
  - [StringListResponse](docs/StringListResponse.md)
+ - [StripeCard](docs/StripeCard.md)
+ - [StripeInfo](docs/StripeInfo.md)
+ - [StripeToken](docs/StripeToken.md)
  - [SystemEvent](docs/SystemEvent.md)
  - [TagsResponse](docs/TagsResponse.md)
  - [TeleopJoystickAxisConfiguration](docs/TeleopJoystickAxisConfiguration.md)

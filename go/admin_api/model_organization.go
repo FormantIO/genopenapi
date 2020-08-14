@@ -28,8 +28,10 @@ type Organization struct {
 	WebhooksInfo WebhooksInfo `json:"webhooksInfo,omitempty"`
 	AwsInfo AwsInfo `json:"awsInfo,omitempty"`
 	LookerInfo LookerInfo `json:"lookerInfo,omitempty"`
+	StripeInfo StripeInfo `json:"stripeInfo,omitempty"`
 	TeleopConfiguration UserTeleopConfiguration `json:"teleopConfiguration,omitempty"`
 	TeleopEnabled bool `json:"teleopEnabled,omitempty"`
+	StripeBillingEnabled bool `json:"stripeBillingEnabled,omitempty"`
 	ExternalId string `json:"externalId,omitempty"`
 	Id string `json:"id,omitempty"`
 	CreatedAt time.Time `json:"createdAt,omitempty"`

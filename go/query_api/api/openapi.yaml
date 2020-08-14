@@ -1,7 +1,7 @@
 openapi: 3.0.0
 info:
   title: Formant Cloud API
-  version: 0.84.35
+  version: 0.85.36
 servers:
 - url: /
 paths:
@@ -22,6 +22,25 @@ paths:
               schema:
                 $ref: '#/components/schemas/CountHistory'
       summary: History
+      tags:
+      - Count
+  /counts/active-devices:
+    post:
+      operationId: CountController.activeDevices
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ActiveDevicesQuery'
+        description: ActiveDevicesQuery
+        required: true
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UuidListResponse'
+      summary: Active devices
       tags:
       - Count
   /metadata:
@@ -152,6 +171,39 @@ paths:
       - Seek
 components:
   schemas:
+    UuidListResponse:
+      example:
+        items:
+        - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+      properties:
+        items:
+          items:
+            format: uuid
+            type: string
+          type: array
+      required:
+      - items
+      type: object
+    ActiveDevicesQuery:
+      example:
+        organizationId: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        start: 2000-01-23T04:56:07.000+00:00
+        end: 2000-01-23T04:56:07.000+00:00
+      properties:
+        start:
+          format: date-time
+          type: string
+        end:
+          format: date-time
+          type: string
+        organizationId:
+          format: uuid
+          type: string
+      required:
+      - end
+      - start
+      type: object
     CountHistoryEntryCount:
       example:
         "0": 2000-01-23T04:56:07.000+00:00
@@ -363,20 +415,6 @@ components:
       properties:
         items:
           items:
-            type: string
-          type: array
-      required:
-      - items
-      type: object
-    UuidListResponse:
-      example:
-        items:
-        - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-        - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-      properties:
-        items:
-          items:
-            format: uuid
             type: string
           type: array
       required:

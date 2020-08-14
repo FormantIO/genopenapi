@@ -32,6 +32,7 @@ All URIs are relative to *https://api.formant.io/v1/queries*
 
 Class | Method | HTTP request | Description
 ------------ | ------------- | ------------- | -------------
+*CountApi* | [**CountControllerActiveDevices**](docs/CountApi.md#countcontrolleractivedevices) | **Post** /counts/active-devices | Active devices
 *CountApi* | [**CountControllerHistory**](docs/CountApi.md#countcontrollerhistory) | **Post** /counts/history | History
 *MetadataApi* | [**MetadataControllerListDeviceIds**](docs/MetadataApi.md#metadatacontrollerlistdeviceids) | **Post** /metadata/device-ids | List device ids
 *MetadataApi* | [**MetadataControllerListMetadata**](docs/MetadataApi.md#metadatacontrollerlistmetadata) | **Post** /metadata | List metadata
@@ -44,6 +45,7 @@ Class | Method | HTTP request | Description
 
 ## Documentation For Models
 
+ - [ActiveDevicesQuery](docs/ActiveDevicesQuery.md)
  - [CountHistory](docs/CountHistory.md)
  - [CountHistoryEntry](docs/CountHistoryEntry.md)
  - [CountHistoryEntryCount](docs/CountHistoryEntryCount.md)

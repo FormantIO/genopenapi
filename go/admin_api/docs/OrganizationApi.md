@@ -9,6 +9,7 @@ Method | HTTP request | Description
 [**OrganizationControllerList**](OrganizationApi.md#OrganizationControllerList) | **Get** /organizations/ | List
 [**OrganizationControllerListUsers**](OrganizationApi.md#OrganizationControllerListUsers) | **Get** /organizations/{id}/users | List users
 [**OrganizationControllerPatch**](OrganizationApi.md#OrganizationControllerPatch) | **Patch** /organizations/{id} | Patch
+[**OrganizationControllerPutStripeToken**](OrganizationApi.md#OrganizationControllerPutStripeToken) | **Put** /organizations/{id}/stripe-token | Put stripe token
 
 
 
@@ -156,6 +157,39 @@ Name | Type | Description  | Notes
 ### Return type
 
 [**Organization**](Organization.md)
+
+### Authorization
+
+Use admin JWT for authorization
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## OrganizationControllerPutStripeToken
+
+> OrganizationControllerPutStripeToken(ctx, id, stripeToken)
+
+Put stripe token
+
+### Required Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**id** | **string**|  | 
+**stripeToken** | [**StripeToken**](StripeToken.md)| StripeToken | 
+
+### Return type
+
+ (empty response body)
 
 ### Authorization
 
