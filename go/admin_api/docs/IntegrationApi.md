@@ -4,17 +4,52 @@ All URIs are relative to *https://api.formant.io/v1/admin*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**IntegrationControllerPost**](IntegrationApi.md#IntegrationControllerPost) | **Post** /integrations/slack/auth | Post
+[**IntegrationControllerGoogle**](IntegrationApi.md#IntegrationControllerGoogle) | **Post** /integrations/google/auth | Google
+[**IntegrationControllerSlack**](IntegrationApi.md#IntegrationControllerSlack) | **Post** /integrations/slack/auth | Slack
 
 
 
-## IntegrationControllerPost
+## IntegrationControllerGoogle
 
-> SlackInfo IntegrationControllerPost(ctx, slackAuthRequest)
+> GoogleInfo IntegrationControllerGoogle(ctx, googleAuthRequest)
 
-Post
+Google
 
-Create a slack integration
+Create a Google integration
+
+### Required Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**googleAuthRequest** | [**GoogleAuthRequest**](GoogleAuthRequest.md)| GoogleAuthRequest | 
+
+### Return type
+
+[**GoogleInfo**](GoogleInfo.md)
+
+### Authorization
+
+Use admin JWT for authorization
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## IntegrationControllerSlack
+
+> SlackInfo IntegrationControllerSlack(ctx, slackAuthRequest)
+
+Slack
+
+Create a Slack integration
 
 ### Required Parameters
 

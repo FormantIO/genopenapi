@@ -32,6 +32,16 @@ All URIs are relative to *https://api.formant.io/v1/admin*
 
 Class | Method | HTTP request | Description
 ------------ | ------------- | ------------- | -------------
+*AnnotationApi* | [**AnnotationControllerDelete**](docs/AnnotationApi.md#annotationcontrollerdelete) | **Delete** /annotations/{id} | Delete
+*AnnotationApi* | [**AnnotationControllerGetOne**](docs/AnnotationApi.md#annotationcontrollergetone) | **Get** /annotations/{id} | Get one
+*AnnotationApi* | [**AnnotationControllerPatch**](docs/AnnotationApi.md#annotationcontrollerpatch) | **Patch** /annotations/{id} | Patch
+*AnnotationApi* | [**AnnotationControllerPost**](docs/AnnotationApi.md#annotationcontrollerpost) | **Post** /annotations | Post
+*AnnotationTemplateApi* | [**AnnotationTemplateControllerDelete**](docs/AnnotationTemplateApi.md#annotationtemplatecontrollerdelete) | **Delete** /annotation-templates/{id} | Delete
+*AnnotationTemplateApi* | [**AnnotationTemplateControllerGetOne**](docs/AnnotationTemplateApi.md#annotationtemplatecontrollergetone) | **Get** /annotation-templates/{id} | Get one
+*AnnotationTemplateApi* | [**AnnotationTemplateControllerList**](docs/AnnotationTemplateApi.md#annotationtemplatecontrollerlist) | **Get** /annotation-templates/ | List
+*AnnotationTemplateApi* | [**AnnotationTemplateControllerPatch**](docs/AnnotationTemplateApi.md#annotationtemplatecontrollerpatch) | **Patch** /annotation-templates/{id} | Patch
+*AnnotationTemplateApi* | [**AnnotationTemplateControllerPost**](docs/AnnotationTemplateApi.md#annotationtemplatecontrollerpost) | **Post** /annotation-templates | Post
+*AnnotationTemplateApi* | [**AnnotationTemplateControllerQueryAnnotationFieldValues**](docs/AnnotationTemplateApi.md#annotationtemplatecontrollerqueryannotationfieldvalues) | **Post** /annotation-templates/query | Query annotation field values
 *AuthApi* | [**AuthControllerAdminSignup**](docs/AuthApi.md#authcontrolleradminsignup) | **Post** /auth/admin-signup | Admin signup
 *AuthApi* | [**AuthControllerChangePassword**](docs/AuthApi.md#authcontrollerchangepassword) | **Post** /auth/change-password | Change password
 *AuthApi* | [**AuthControllerConfirmForgotPassword**](docs/AuthApi.md#authcontrollerconfirmforgotpassword) | **Post** /auth/confirm-forgot-password | Confirm forgot password
@@ -94,10 +104,12 @@ Class | Method | HTTP request | Description
 *DeviceConfigurationTemplateApi* | [**DeviceConfigurationTemplateControllerPost**](docs/DeviceConfigurationTemplateApi.md#deviceconfigurationtemplatecontrollerpost) | **Post** /device-configuration-templates | Post
 *DeviceDetailsApi* | [**DeviceDetailsControllerGetAll**](docs/DeviceDetailsApi.md#devicedetailscontrollergetall) | **Post** /device-details/query | Get all
 *DeviceDetailsApi* | [**DeviceDetailsControllerGetOne**](docs/DeviceDetailsApi.md#devicedetailscontrollergetone) | **Get** /device-details/{id} | Get one
+*EventApi* | [**EventControllerAnnotationTemplates**](docs/EventApi.md#eventcontrollerannotationtemplates) | **Post** /events/annotation-templates | Annotation templates
 *EventApi* | [**EventControllerCount**](docs/EventApi.md#eventcontrollercount) | **Post** /events/count | Count
 *EventApi* | [**EventControllerCounts**](docs/EventApi.md#eventcontrollercounts) | **Post** /events/counts | Counts
 *EventApi* | [**EventControllerDevices**](docs/EventApi.md#eventcontrollerdevices) | **Post** /events/devices | Devices
 *EventApi* | [**EventControllerEventTypes**](docs/EventApi.md#eventcontrollereventtypes) | **Post** /events/event-types | Event types
+*EventApi* | [**EventControllerExportSheet**](docs/EventApi.md#eventcontrollerexportsheet) | **Post** /events/export-sheet | Export sheet
 *EventApi* | [**EventControllerGetOne**](docs/EventApi.md#eventcontrollergetone) | **Get** /events/{id} | Get one
 *EventApi* | [**EventControllerHistogram**](docs/EventApi.md#eventcontrollerhistogram) | **Post** /events/histogram | Histogram
 *EventApi* | [**EventControllerQuery**](docs/EventApi.md#eventcontrollerquery) | **Post** /events/query | Query
@@ -113,7 +125,8 @@ Class | Method | HTTP request | Description
 *EventTriggerApi* | [**EventTriggerControllerPatch**](docs/EventTriggerApi.md#eventtriggercontrollerpatch) | **Patch** /event-triggers/{id} | Patch
 *EventTriggerApi* | [**EventTriggerControllerPost**](docs/EventTriggerApi.md#eventtriggercontrollerpost) | **Post** /event-triggers | Post
 *EventTriggerApi* | [**EventTriggerControllerQuery**](docs/EventTriggerApi.md#eventtriggercontrollerquery) | **Post** /event-triggers/updated | Query
-*IntegrationApi* | [**IntegrationControllerPost**](docs/IntegrationApi.md#integrationcontrollerpost) | **Post** /integrations/slack/auth | Post
+*IntegrationApi* | [**IntegrationControllerGoogle**](docs/IntegrationApi.md#integrationcontrollergoogle) | **Post** /integrations/google/auth | Google
+*IntegrationApi* | [**IntegrationControllerSlack**](docs/IntegrationApi.md#integrationcontrollerslack) | **Post** /integrations/slack/auth | Slack
 *InterventionRequestApi* | [**InterventionRequestControllerGetOne**](docs/InterventionRequestApi.md#interventionrequestcontrollergetone) | **Get** /intervention-requests/{id} | Get one
 *InterventionRequestApi* | [**InterventionRequestControllerPost**](docs/InterventionRequestApi.md#interventionrequestcontrollerpost) | **Post** /intervention-requests | Post
 *InterventionResponseApi* | [**InterventionResponseControllerPost**](docs/InterventionResponseApi.md#interventionresponsecontrollerpost) | **Post** /intervention-responses | Post
@@ -148,6 +161,12 @@ Class | Method | HTTP request | Description
 ## Documentation For Models
 
  - [AdminSignupRequest](docs/AdminSignupRequest.md)
+ - [Annotation](docs/Annotation.md)
+ - [AnnotationField](docs/AnnotationField.md)
+ - [AnnotationFieldValuesRequest](docs/AnnotationFieldValuesRequest.md)
+ - [AnnotationFieldValuesResponse](docs/AnnotationFieldValuesResponse.md)
+ - [AnnotationTemplate](docs/AnnotationTemplate.md)
+ - [AnnotationTemplateListResponse](docs/AnnotationTemplateListResponse.md)
  - [Authentication](docs/Authentication.md)
  - [AwsInfo](docs/AwsInfo.md)
  - [BaseEvent](docs/BaseEvent.md)
@@ -222,9 +241,13 @@ Class | Method | HTTP request | Description
  - [EventTrigger](docs/EventTrigger.md)
  - [EventTriggerCommand](docs/EventTriggerCommand.md)
  - [EventTriggerListResponse](docs/EventTriggerListResponse.md)
+ - [ExportSheetRequest](docs/ExportSheetRequest.md)
+ - [ExportSheetResult](docs/ExportSheetResult.md)
  - [Filter](docs/Filter.md)
  - [ForgotPasswordRequest](docs/ForgotPasswordRequest.md)
  - [GetLooksResponse](docs/GetLooksResponse.md)
+ - [GoogleAuthRequest](docs/GoogleAuthRequest.md)
+ - [GoogleInfo](docs/GoogleInfo.md)
  - [IdRequestParams](docs/IdRequestParams.md)
  - [ImageViewConfiguration](docs/ImageViewConfiguration.md)
  - [ImpersonateRequest](docs/ImpersonateRequest.md)
@@ -252,6 +275,8 @@ Class | Method | HTTP request | Description
  - [Organization](docs/Organization.md)
  - [OrganizationListResponse](docs/OrganizationListResponse.md)
  - [PagerdutyInfo](docs/PagerdutyInfo.md)
+ - [PartialAnnotation](docs/PartialAnnotation.md)
+ - [PartialAnnotationTemplate](docs/PartialAnnotationTemplate.md)
  - [PartialBoard](docs/PartialBoard.md)
  - [PartialChannel](docs/PartialChannel.md)
  - [PartialCommand](docs/PartialCommand.md)
@@ -279,6 +304,7 @@ Class | Method | HTTP request | Description
  - [ScopeFilter](docs/ScopeFilter.md)
  - [SelectionRequestData](docs/SelectionRequestData.md)
  - [Share](docs/Share.md)
+ - [SheetParameters](docs/SheetParameters.md)
  - [SignLookerEmbedUrlRequest](docs/SignLookerEmbedUrlRequest.md)
  - [SignLookerEmbedUrlResponse](docs/SignLookerEmbedUrlResponse.md)
  - [SlackAuthRequest](docs/SlackAuthRequest.md)
@@ -288,6 +314,7 @@ Class | Method | HTTP request | Description
  - [StripeInfo](docs/StripeInfo.md)
  - [StripeToken](docs/StripeToken.md)
  - [SystemEvent](docs/SystemEvent.md)
+ - [TagParameters](docs/TagParameters.md)
  - [TagsResponse](docs/TagsResponse.md)
  - [TeleopJoystickAxisConfiguration](docs/TeleopJoystickAxisConfiguration.md)
  - [TeleopJoystickConfiguration](docs/TeleopJoystickConfiguration.md)
@@ -306,6 +333,7 @@ Class | Method | HTTP request | Description
  - [UpdatedEventTriggerResponse](docs/UpdatedEventTriggerResponse.md)
  - [User](docs/User.md)
  - [UserListResponse](docs/UserListResponse.md)
+ - [UserParameters](docs/UserParameters.md)
  - [UserTeleopConfiguration](docs/UserTeleopConfiguration.md)
  - [UserTeleopRosStreamConfiguration](docs/UserTeleopRosStreamConfiguration.md)
  - [UserTeleopTwistRosTopicConfiguration](docs/UserTeleopTwistRosTopicConfiguration.md)

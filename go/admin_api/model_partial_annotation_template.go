@@ -11,17 +11,14 @@ package admin_api
 import (
 	"time"
 )
-// EventIndex struct for EventIndex
-type EventIndex struct {
-	Type string `json:"type"`
-	OrganizationId string `json:"organizationId"`
-	DeviceId string `json:"deviceId,omitempty"`
-	UserId string `json:"userId,omitempty"`
-	AnnotationTemplateId string `json:"annotationTemplateId"`
-	StreamName string `json:"streamName,omitempty"`
-	StreamType string `json:"streamType,omitempty"`
+// PartialAnnotationTemplate struct for PartialAnnotationTemplate
+type PartialAnnotationTemplate struct {
+	OrganizationId string `json:"organizationId,omitempty"`
+	Name string `json:"name,omitempty"`
 	Tags map[string]string `json:"tags,omitempty"`
-	Severity string `json:"severity,omitempty"`
+	Description string `json:"description,omitempty"`
+	Fields []AnnotationField `json:"fields,omitempty"`
+	Enabled bool `json:"enabled,omitempty"`
 	Id string `json:"id,omitempty"`
 	CreatedAt time.Time `json:"createdAt,omitempty"`
 	UpdatedAt time.Time `json:"updatedAt,omitempty"`

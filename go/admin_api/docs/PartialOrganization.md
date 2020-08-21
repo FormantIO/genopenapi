@@ -16,6 +16,7 @@ Name | Type | Description | Notes
 **Country** | **string** |  | [optional] 
 **PagerdutyInfo** | [**PagerdutyInfo**](PagerdutyInfo.md) |  | [optional] 
 **SlackInfo** | [**SlackInfo**](SlackInfo.md) |  | [optional] 
+**GoogleInfo** | [**GoogleInfo**](GoogleInfo.md) |  | [optional] 
 **WebhooksInfo** | [**WebhooksInfo**](WebhooksInfo.md) |  | [optional] 
 **AwsInfo** | [**AwsInfo**](AwsInfo.md) |  | [optional] 
 **LookerInfo** | [**LookerInfo**](LookerInfo.md) |  | [optional] 

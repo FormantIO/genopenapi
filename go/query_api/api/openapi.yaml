@@ -1,7 +1,7 @@
 openapi: 3.0.0
 info:
   title: Formant Cloud API
-  version: 0.85.37
+  version: 0.86.24
 servers:
 - url: /
 paths:
@@ -329,10 +329,10 @@ components:
             - localization
             - health
             - bitset
-            - metrics
             - transform tree
             - battery
             - video
+            - numeric set
             type: string
           type: array
         tags: {}
@@ -395,10 +395,10 @@ components:
             - localization
             - health
             - bitset
-            - metrics
             - transform tree
             - battery
             - video
+            - numeric set
             type: string
           type: array
         tags: {}
@@ -445,10 +445,10 @@ components:
           - localization
           - health
           - bitset
-          - metrics
           - transform tree
           - battery
           - video
+          - numeric set
           type: string
         tags:
           additionalProperties:
@@ -535,10 +535,10 @@ components:
             - localization
             - health
             - bitset
-            - metrics
             - transform tree
             - battery
             - video
+            - numeric set
             type: string
           type: array
         tags: {}
@@ -605,10 +605,10 @@ components:
             - localization
             - health
             - bitset
-            - metrics
             - transform tree
             - battery
             - video
+            - numeric set
             type: string
           type: array
         tags: {}
@@ -673,10 +673,10 @@ components:
           - localization
           - health
           - bitset
-          - metrics
           - transform tree
           - battery
           - video
+          - numeric set
           type: string
         points:
           items:
@@ -772,10 +772,10 @@ components:
             - localization
             - health
             - bitset
-            - metrics
             - transform tree
             - battery
             - video
+            - numeric set
             type: string
           type: array
         tags: {}

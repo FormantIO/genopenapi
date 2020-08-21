@@ -1,10 +1,217 @@
 openapi: 3.0.0
 info:
   title: Formant Cloud API
-  version: 0.85.37
+  version: 0.86.24
 servers:
 - url: /
 paths:
+  /annotations:
+    post:
+      description: Create an annotation
+      operationId: AnnotationController.post
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Annotation'
+        description: Annotation
+        required: true
+      responses:
+        "201":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Annotation'
+      summary: Post
+      tags:
+      - Annotation
+  /annotations/{id}:
+    delete:
+      description: Delete an annotation
+      operationId: AnnotationController.delete
+      parameters:
+      - explode: false
+        in: path
+        name: id
+        required: true
+        schema:
+          type: string
+        style: simple
+      responses:
+        "200":
+          content:
+            application/json: {}
+          description: Successful response
+      summary: Delete
+      tags:
+      - Annotation
+    get:
+      description: Get an annotation
+      operationId: AnnotationController.getOne
+      parameters:
+      - explode: false
+        in: path
+        name: id
+        required: true
+        schema:
+          type: string
+        style: simple
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Annotation'
+      summary: Get one
+      tags:
+      - Annotation
+    patch:
+      description: Update an annotation
+      operationId: AnnotationController.patch
+      parameters:
+      - explode: false
+        in: path
+        name: id
+        required: true
+        schema:
+          type: string
+        style: simple
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PartialAnnotation'
+        description: PartialAnnotation
+        required: true
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Annotation'
+      summary: Patch
+      tags:
+      - Annotation
+  /annotation-templates:
+    post:
+      description: Create an annotation template
+      operationId: AnnotationTemplateController.post
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/AnnotationTemplate'
+        description: AnnotationTemplate
+        required: true
+      responses:
+        "201":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AnnotationTemplate'
+      summary: Post
+      tags:
+      - Annotation Template
+  /annotation-templates/{id}:
+    delete:
+      description: Delete an annotation template
+      operationId: AnnotationTemplateController.delete
+      parameters:
+      - explode: false
+        in: path
+        name: id
+        required: true
+        schema:
+          type: string
+        style: simple
+      responses:
+        "200":
+          content:
+            application/json: {}
+          description: Successful response
+      summary: Delete
+      tags:
+      - Annotation Template
+    get:
+      description: Get an annotation template
+      operationId: AnnotationTemplateController.getOne
+      parameters:
+      - explode: false
+        in: path
+        name: id
+        required: true
+        schema:
+          type: string
+        style: simple
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AnnotationTemplate'
+      summary: Get one
+      tags:
+      - Annotation Template
+    patch:
+      description: Update an annotation template
+      operationId: AnnotationTemplateController.patch
+      parameters:
+      - explode: false
+        in: path
+        name: id
+        required: true
+        schema:
+          type: string
+        style: simple
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PartialAnnotationTemplate'
+        description: PartialAnnotationTemplate
+        required: true
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AnnotationTemplate'
+      summary: Patch
+      tags:
+      - Annotation Template
+  /annotation-templates/:
+    get:
+      description: List annotation templates
+      operationId: AnnotationTemplateController.list
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AnnotationTemplateListResponse'
+      summary: List
+      tags:
+      - Annotation Template
+  /annotation-templates/query:
+    post:
+      description: Query annotation template field values
+      operationId: AnnotationTemplateController.queryAnnotationFieldValues
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/AnnotationFieldValuesRequest'
+        description: AnnotationFieldValuesRequest
+        required: true
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AnnotationFieldValuesResponse'
+      summary: Query annotation field values
+      tags:
+      - Annotation Template
   /auth/login:
     post:
       description: Login
@@ -1415,6 +1622,26 @@ paths:
       summary: Users
       tags:
       - Event
+  /events/annotation-templates:
+    post:
+      description: Distinct values of event annotation templates
+      operationId: EventController.annotationTemplates
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/EventFilter'
+        description: EventFilter
+        required: false
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UuidListResponse'
+      summary: Annotation templates
+      tags:
+      - Event
   /events/devices:
     post:
       description: Distinct values of event devices
@@ -1554,6 +1781,26 @@ paths:
       summary: View
       tags:
       - Event
+  /events/export-sheet:
+    post:
+      description: Export events as Google Sheet
+      operationId: EventController.exportSheet
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ExportSheetRequest'
+        description: ExportSheetRequest
+        required: true
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ExportSheetResult'
+      summary: Export sheet
+      tags:
+      - Event
   /events/seek:
     post:
       description: Seek event
@@ -1675,8 +1922,8 @@ paths:
       - Event Trigger
   /integrations/slack/auth:
     post:
-      description: Create a slack integration
-      operationId: IntegrationController.post
+      description: Create a Slack integration
+      operationId: IntegrationController.slack
       requestBody:
         content:
           application/json:
@@ -1690,7 +1937,27 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/SlackInfo'
-      summary: Post
+      summary: Slack
+      tags:
+      - Integration
+  /integrations/google/auth:
+    post:
+      description: Create a Google integration
+      operationId: IntegrationController.google
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/GoogleAuthRequest'
+        description: GoogleAuthRequest
+        required: true
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GoogleInfo'
+      summary: Google
       tags:
       - Integration
   /intervention-requests/{id}:
@@ -2304,10 +2571,10 @@ components:
             - localization
             - health
             - bitset
-            - metrics
             - transform tree
             - battery
             - video
+            - numeric set
             type: string
           type: array
         tags: {}
@@ -2371,10 +2638,10 @@ components:
             - localization
             - health
             - bitset
-            - metrics
             - transform tree
             - battery
             - video
+            - numeric set
             type: string
           type: array
         tags: {}
@@ -2497,10 +2764,10 @@ components:
           - localization
           - health
           - bitset
-          - metrics
           - transform tree
           - battery
           - video
+          - numeric set
           type: string
         timeRanges:
           items:
@@ -6116,6 +6383,28 @@ components:
       - accountId
       - roleName
       type: object
+    GoogleInfo:
+      example:
+        scope: scope
+        accessToken: accessToken
+        refreshToken: refreshToken
+        expirationDate: 2000-01-23T04:56:07.000+00:00
+      properties:
+        refreshToken:
+          type: string
+        accessToken:
+          type: string
+        expirationDate:
+          format: date-time
+          type: string
+        scope:
+          type: string
+      required:
+      - accessToken
+      - expirationDate
+      - refreshToken
+      - scope
+      type: object
     LookerInfo:
       example:
         lookerPermissions:
@@ -6479,10 +6768,10 @@ components:
           - localization
           - health
           - bitset
-          - metrics
           - transform tree
           - battery
           - video
+          - numeric set
           type: string
         configuration:
           oneOf:
@@ -6870,6 +7159,11 @@ components:
         state: state
         id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         plan: freemium
+        googleInfo:
+          scope: scope
+          accessToken: accessToken
+          refreshToken: refreshToken
+          expirationDate: 2000-01-23T04:56:07.000+00:00
         lookerInfo:
           lookerPermissions:
           - lookerPermissions
@@ -6937,6 +7231,8 @@ components:
           $ref: '#/components/schemas/PagerdutyInfo'
         slackInfo:
           $ref: '#/components/schemas/SlackInfo'
+        googleInfo:
+          $ref: '#/components/schemas/GoogleInfo'
         webhooksInfo:
           $ref: '#/components/schemas/WebhooksInfo'
         awsInfo:
@@ -8359,6 +8655,7 @@ components:
           - custom
           - comment
           - system
+          - annotation
           type: string
         organizationId:
           format: uuid
@@ -8388,10 +8685,10 @@ components:
           - localization
           - health
           - bitset
-          - metrics
           - transform tree
           - battery
           - video
+          - numeric set
           type: string
         tags:
           additionalProperties:
@@ -8521,6 +8818,7 @@ components:
           - custom
           - comment
           - system
+          - annotation
           type: string
         interventionType:
           enum:
@@ -8581,10 +8879,10 @@ components:
           - localization
           - health
           - bitset
-          - metrics
           - transform tree
           - battery
           - video
+          - numeric set
           type: string
         tags:
           additionalProperties:
@@ -8631,6 +8929,254 @@ components:
       - data
       - interventionId
       - interventionType
+      type: object
+    SheetParameters:
+      properties:
+        spreadsheetId:
+          type: string
+        range:
+          type: string
+      required:
+      - range
+      - spreadsheetId
+      type: object
+    TagParameters:
+      properties:
+        choices:
+          items: {}
+          maxItems: 20
+          minItems: 1
+          type: array
+      required:
+      - choices
+      type: object
+    UserParameters:
+      properties:
+        roles:
+          items:
+            enum:
+            - viewer
+            - operator
+            - administrator
+            type: string
+          maxItems: 3
+          minItems: 1
+          type: array
+      type: object
+    AnnotationField:
+      example:
+        name: name
+        description: description
+        type: tag
+        parameters: ""
+        key: ""
+        required: true
+      properties:
+        type:
+          enum:
+          - tag
+          - sheet
+          - user
+          type: string
+        key: {}
+        name:
+          type: string
+        description:
+          type: string
+        required:
+          type: boolean
+        parameters:
+          oneOf:
+          - $ref: '#/components/schemas/TagParameters'
+          - $ref: '#/components/schemas/UserParameters'
+          - $ref: '#/components/schemas/SheetParameters'
+      required:
+      - key
+      - name
+      - parameters
+      - required
+      - type
+      type: object
+    AnnotationTemplate:
+      example:
+        organizationId: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        createdAt: 2000-01-23T04:56:07.000+00:00
+        name: name
+        description: description
+        id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        fields:
+        - name: name
+          description: description
+          type: tag
+          parameters: ""
+          key: ""
+          required: true
+        - name: name
+          description: description
+          type: tag
+          parameters: ""
+          key: ""
+          required: true
+        - name: name
+          description: description
+          type: tag
+          parameters: ""
+          key: ""
+          required: true
+        - name: name
+          description: description
+          type: tag
+          parameters: ""
+          key: ""
+          required: true
+        - name: name
+          description: description
+          type: tag
+          parameters: ""
+          key: ""
+          required: true
+        enabled: true
+        tags:
+          key: tags
+        updatedAt: 2000-01-23T04:56:07.000+00:00
+      properties:
+        organizationId:
+          format: uuid
+          type: string
+        name:
+          maxLength: 32
+          type: string
+        tags:
+          additionalProperties:
+            type: string
+          type: object
+        description:
+          maxLength: 1024
+          type: string
+        fields:
+          items:
+            $ref: '#/components/schemas/AnnotationField'
+          maxItems: 10
+          minItems: 1
+          type: array
+        enabled:
+          type: boolean
+        id:
+          format: uuid
+          type: string
+        createdAt:
+          format: date-time
+          type: string
+        updatedAt:
+          format: date-time
+          type: string
+      required:
+      - fields
+      - name
+      - tags
+      type: object
+    Annotation:
+      example:
+        taggedUsers: ""
+        annotationTemplateId: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        type: triggered-event
+        message: message
+        userId: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        deviceId: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        streamName: streamName
+        notificationEnabled: true
+        tags:
+          key: tags
+        organizationId: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        createdAt: 2000-01-23T04:56:07.000+00:00
+        streamType: image
+        viewed: true
+        editedAt: 2000-01-23T04:56:07.000+00:00
+        endTime: 2000-01-23T04:56:07.000+00:00
+        id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        time: 2000-01-23T04:56:07.000+00:00
+        updatedAt: 2000-01-23T04:56:07.000+00:00
+      properties:
+        type:
+          enum:
+          - triggered-event
+          - intervention-request
+          - teleop-session-record
+          - port-forwarding-session-record
+          - command-request
+          - command-response
+          - command-delivery
+          - custom
+          - comment
+          - system
+          - annotation
+          type: string
+        endTime:
+          format: date-time
+          nullable: true
+          type: string
+        editedAt:
+          format: date-time
+          type: string
+        userId:
+          format: uuid
+          type: string
+        annotationTemplateId:
+          format: uuid
+          type: string
+        taggedUsers:
+          nullable: true
+        id:
+          format: uuid
+          type: string
+        createdAt:
+          format: date-time
+          type: string
+        updatedAt:
+          format: date-time
+          type: string
+        organizationId:
+          format: uuid
+          type: string
+        time:
+          format: date-time
+          type: string
+        message:
+          maxLength: 1024
+          type: string
+        viewed:
+          type: boolean
+        deviceId:
+          format: uuid
+          type: string
+        streamName:
+          type: string
+        streamType:
+          enum:
+          - image
+          - numeric
+          - point cloud
+          - text
+          - json
+          - location
+          - file
+          - localization
+          - health
+          - bitset
+          - transform tree
+          - battery
+          - video
+          - numeric set
+          type: string
+        tags:
+          additionalProperties:
+            type: string
+          type: object
+        notificationEnabled:
+          type: boolean
+      required:
+      - time
+      - userId
       type: object
     Board:
       example:
@@ -8865,10 +9411,10 @@ components:
           - localization
           - health
           - bitset
-          - metrics
           - transform tree
           - battery
           - video
+          - numeric set
           type: string
         tags:
           additionalProperties:
@@ -8914,6 +9460,7 @@ components:
           - custom
           - comment
           - system
+          - annotation
           type: string
         organizationId:
           format: uuid
@@ -8943,10 +9490,10 @@ components:
           - localization
           - health
           - bitset
-          - metrics
           - transform tree
           - battery
           - video
+          - numeric set
           type: string
         tags:
           additionalProperties:
@@ -8972,6 +9519,7 @@ components:
           - custom
           - comment
           - system
+          - annotation
           type: string
         id:
           format: uuid
@@ -9010,10 +9558,10 @@ components:
           - localization
           - health
           - bitset
-          - metrics
           - transform tree
           - battery
           - video
+          - numeric set
           type: string
         tags:
           additionalProperties:
@@ -9042,6 +9590,7 @@ components:
           - custom
           - comment
           - system
+          - annotation
           type: string
         userId:
           format: uuid
@@ -9083,10 +9632,10 @@ components:
           - localization
           - health
           - bitset
-          - metrics
           - transform tree
           - battery
           - video
+          - numeric set
           type: string
         tags:
           additionalProperties:
@@ -9116,6 +9665,7 @@ components:
           - custom
           - comment
           - system
+          - annotation
           type: string
         id:
           format: uuid
@@ -9154,10 +9704,10 @@ components:
           - localization
           - health
           - bitset
-          - metrics
           - transform tree
           - battery
           - video
+          - numeric set
           type: string
         tags:
           additionalProperties:
@@ -9203,6 +9753,7 @@ components:
           - custom
           - comment
           - system
+          - annotation
           type: string
         editedAt:
           format: date-time
@@ -9247,10 +9798,10 @@ components:
           - localization
           - health
           - bitset
-          - metrics
           - transform tree
           - battery
           - video
+          - numeric set
           type: string
         tags:
           additionalProperties:
@@ -9291,6 +9842,7 @@ components:
           - custom
           - comment
           - system
+          - annotation
           type: string
         id:
           format: uuid
@@ -9329,10 +9881,10 @@ components:
           - localization
           - health
           - bitset
-          - metrics
           - transform tree
           - battery
           - video
+          - numeric set
           type: string
         tags:
           additionalProperties:
@@ -9387,6 +9939,7 @@ components:
           - custom
           - comment
           - system
+          - annotation
           type: string
         organizationId:
           format: uuid
@@ -9395,6 +9948,9 @@ components:
           format: uuid
           type: string
         userId:
+          format: uuid
+          type: string
+        annotationTemplateId:
           format: uuid
           type: string
         streamName:
@@ -9411,10 +9967,10 @@ components:
           - localization
           - health
           - bitset
-          - metrics
           - transform tree
           - battery
           - video
+          - numeric set
           type: string
         tags:
           additionalProperties:
@@ -9437,6 +9993,7 @@ components:
           format: date-time
           type: string
       required:
+      - annotationTemplateId
       - organizationId
       - type
       type: object
@@ -9475,6 +10032,7 @@ components:
           - custom
           - comment
           - system
+          - annotation
           type: string
         organizationId:
           format: uuid
@@ -9501,10 +10059,10 @@ components:
           - localization
           - health
           - bitset
-          - metrics
           - transform tree
           - battery
           - video
+          - numeric set
           type: string
         tags:
           additionalProperties:
@@ -9550,6 +10108,7 @@ components:
           - custom
           - comment
           - system
+          - annotation
           type: string
         id:
           format: uuid
@@ -9588,10 +10147,10 @@ components:
           - localization
           - health
           - bitset
-          - metrics
           - transform tree
           - battery
           - video
+          - numeric set
           type: string
         tags:
           additionalProperties:
@@ -9714,6 +10273,7 @@ components:
           - custom
           - comment
           - system
+          - annotation
           type: string
         id:
           format: uuid
@@ -9752,10 +10312,10 @@ components:
           - localization
           - health
           - bitset
-          - metrics
           - transform tree
           - battery
           - video
+          - numeric set
           type: string
         tags:
           additionalProperties:
@@ -9798,6 +10358,7 @@ components:
           - custom
           - comment
           - system
+          - annotation
           type: string
         id:
           format: uuid
@@ -9836,10 +10397,10 @@ components:
           - localization
           - health
           - bitset
-          - metrics
           - transform tree
           - battery
           - video
+          - numeric set
           type: string
         tags:
           additionalProperties:
@@ -9895,6 +10456,7 @@ components:
           - custom
           - comment
           - system
+          - annotation
           type: string
         severity:
           enum:
@@ -9951,10 +10513,10 @@ components:
           - localization
           - health
           - bitset
-          - metrics
           - transform tree
           - battery
           - video
+          - numeric set
           type: string
         tags:
           additionalProperties:
@@ -10042,6 +10604,137 @@ components:
       - layout
       - name
       - tags
+      type: object
+    IdRequestParams:
+      properties:
+        id:
+          format: uuid
+          type: string
+      required:
+      - id
+      type: object
+    AnnotationFieldValuesRequest:
+      example:
+        annotationTemplateId: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        key: ""
+        tags:
+          key: tags
+      properties:
+        annotationTemplateId:
+          format: uuid
+          type: string
+        key: {}
+        tags:
+          additionalProperties:
+            type: string
+          type: object
+      required:
+      - annotationTemplateId
+      - key
+      - tags
+      type: object
+    AnnotationFieldValuesResponse:
+      example:
+        items:
+        - ""
+        - ""
+      properties:
+        items:
+          items: {}
+          type: array
+      required:
+      - items
+      type: object
+    AnnotationTemplateListResponse:
+      example:
+        items:
+        - organizationId: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          createdAt: 2000-01-23T04:56:07.000+00:00
+          name: name
+          description: description
+          id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          fields:
+          - name: name
+            description: description
+            type: tag
+            parameters: ""
+            key: ""
+            required: true
+          - name: name
+            description: description
+            type: tag
+            parameters: ""
+            key: ""
+            required: true
+          - name: name
+            description: description
+            type: tag
+            parameters: ""
+            key: ""
+            required: true
+          - name: name
+            description: description
+            type: tag
+            parameters: ""
+            key: ""
+            required: true
+          - name: name
+            description: description
+            type: tag
+            parameters: ""
+            key: ""
+            required: true
+          enabled: true
+          tags:
+            key: tags
+          updatedAt: 2000-01-23T04:56:07.000+00:00
+        - organizationId: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          createdAt: 2000-01-23T04:56:07.000+00:00
+          name: name
+          description: description
+          id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          fields:
+          - name: name
+            description: description
+            type: tag
+            parameters: ""
+            key: ""
+            required: true
+          - name: name
+            description: description
+            type: tag
+            parameters: ""
+            key: ""
+            required: true
+          - name: name
+            description: description
+            type: tag
+            parameters: ""
+            key: ""
+            required: true
+          - name: name
+            description: description
+            type: tag
+            parameters: ""
+            key: ""
+            required: true
+          - name: name
+            description: description
+            type: tag
+            parameters: ""
+            key: ""
+            required: true
+          enabled: true
+          tags:
+            key: tags
+          updatedAt: 2000-01-23T04:56:07.000+00:00
+      properties:
+        items:
+          items:
+            $ref: '#/components/schemas/AnnotationTemplate'
+          type: array
+      required:
+      - items
       type: object
     Authentication:
       example:
@@ -10291,14 +10984,6 @@ components:
           type: string
       required:
       - email
-      type: object
-    IdRequestParams:
-      properties:
-        id:
-          format: uuid
-          type: string
-      required:
-      - id
       type: object
     BoardListResponse:
       example:
@@ -10586,10 +11271,10 @@ components:
           - localization
           - health
           - bitset
-          - metrics
           - transform tree
           - battery
           - video
+          - numeric set
           type: string
         tags:
           additionalProperties:
@@ -13515,6 +14200,9 @@ components:
         - triggered-event
         notificationEnabled: true
         disableNullMatches: true
+        annotationTemplateIds:
+        - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         tags: ""
         names:
         - names
@@ -13561,11 +14249,17 @@ components:
             - custom
             - comment
             - system
+            - annotation
             type: string
           type: array
         notificationEnabled:
           type: boolean
         userIds:
+          items:
+            format: uuid
+            type: string
+          type: array
+        annotationTemplateIds:
           items:
             format: uuid
             type: string
@@ -13608,10 +14302,10 @@ components:
             - localization
             - health
             - bitset
-            - metrics
             - transform tree
             - battery
             - video
+            - numeric set
             type: string
           type: array
         tags: {}
@@ -13731,6 +14425,9 @@ components:
         notificationEnabled: true
         disableNullMatches: true
         tags: ""
+        annotationTemplateIds:
+        - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         names:
         - names
         - names
@@ -13787,10 +14484,10 @@ components:
             - localization
             - health
             - bitset
-            - metrics
             - transform tree
             - battery
             - video
+            - numeric set
             type: string
           type: array
         tags: {}
@@ -13826,11 +14523,17 @@ components:
             - custom
             - comment
             - system
+            - annotation
             type: string
           type: array
         notificationEnabled:
           type: boolean
         userIds:
+          items:
+            format: uuid
+            type: string
+          type: array
+        annotationTemplateIds:
           items:
             format: uuid
             type: string
@@ -13866,6 +14569,9 @@ components:
         notificationEnabled: true
         disableNullMatches: true
         tags: ""
+        annotationTemplateIds:
+        - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         names:
         - names
         - names
@@ -13920,10 +14626,10 @@ components:
             - localization
             - health
             - bitset
-            - metrics
             - transform tree
             - battery
             - video
+            - numeric set
             type: string
           type: array
         tags: {}
@@ -13959,11 +14665,17 @@ components:
             - custom
             - comment
             - system
+            - annotation
             type: string
           type: array
         notificationEnabled:
           type: boolean
         userIds:
+          items:
+            format: uuid
+            type: string
+          type: array
+        annotationTemplateIds:
           items:
             format: uuid
             type: string
@@ -13982,6 +14694,66 @@ components:
       required:
       - direction
       - from
+      type: object
+    ExportSheetRequest:
+      example:
+        filter:
+          agentIds:
+          - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          deviceIds:
+          - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          types:
+          - image
+          - image
+          start: 2000-01-23T04:56:07.000+00:00
+          message: message
+          eventTypes:
+          - triggered-event
+          - triggered-event
+          notificationEnabled: true
+          disableNullMatches: true
+          annotationTemplateIds:
+          - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          tags: ""
+          names:
+          - names
+          - names
+          notNames:
+          - notNames
+          - notNames
+          viewed: true
+          userIds:
+          - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          end: 2000-01-23T04:56:07.000+00:00
+          id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          keyword: keyword
+          severities:
+          - info
+          - info
+        appUrlOrigin: http://example.com/aeiou
+      properties:
+        filter:
+          $ref: '#/components/schemas/EventFilter'
+        appUrlOrigin:
+          format: url
+          type: string
+      required:
+      - appUrlOrigin
+      - filter
+      type: object
+    ExportSheetResult:
+      example:
+        spreadsheetUrl: http://example.com/aeiou
+      properties:
+        spreadsheetUrl:
+          format: url
+          type: string
+      required:
+      - spreadsheetUrl
       type: object
     IntervalEventFilter:
       example:
@@ -14002,6 +14774,9 @@ components:
         notificationEnabled: true
         disableNullMatches: true
         tags: ""
+        annotationTemplateIds:
+        - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         names:
         - names
         - names
@@ -14053,10 +14828,10 @@ components:
             - localization
             - health
             - bitset
-            - metrics
             - transform tree
             - battery
             - video
+            - numeric set
             type: string
           type: array
         tags: {}
@@ -14092,11 +14867,17 @@ components:
             - custom
             - comment
             - system
+            - annotation
             type: string
           type: array
         notificationEnabled:
           type: boolean
         userIds:
+          items:
+            format: uuid
+            type: string
+          type: array
+        annotationTemplateIds:
           items:
             format: uuid
             type: string
@@ -14262,6 +15043,20 @@ components:
           minimum: 0
           type: integer
       type: object
+    GoogleAuthRequest:
+      example:
+        redirectUri: http://example.com/aeiou
+        code: code
+      properties:
+        code:
+          type: string
+        redirectUri:
+          format: url
+          type: string
+      required:
+      - code
+      - redirectUri
+      type: object
     SlackAuthRequest:
       example:
         redirectUri: redirectUri
@@ -14385,6 +15180,11 @@ components:
           state: state
           id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           plan: freemium
+          googleInfo:
+            scope: scope
+            accessToken: accessToken
+            refreshToken: refreshToken
+            expirationDate: 2000-01-23T04:56:07.000+00:00
           lookerInfo:
             lookerPermissions:
             - lookerPermissions
@@ -14461,6 +15261,11 @@ components:
           state: state
           id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           plan: freemium
+          googleInfo:
+            scope: scope
+            accessToken: accessToken
+            refreshToken: refreshToken
+            expirationDate: 2000-01-23T04:56:07.000+00:00
           lookerInfo:
             lookerPermissions:
             - lookerPermissions
@@ -14541,6 +15346,180 @@ components:
           type: array
       required:
       - items
+      type: object
+    PartialAnnotation:
+      example:
+        taggedUsers: ""
+        annotationTemplateId: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        type: triggered-event
+        message: message
+        userId: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        deviceId: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        streamName: streamName
+        notificationEnabled: true
+        tags:
+          key: tags
+        organizationId: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        createdAt: 2000-01-23T04:56:07.000+00:00
+        streamType: image
+        viewed: true
+        editedAt: 2000-01-23T04:56:07.000+00:00
+        endTime: 2000-01-23T04:56:07.000+00:00
+        id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        time: 2000-01-23T04:56:07.000+00:00
+        updatedAt: 2000-01-23T04:56:07.000+00:00
+      properties:
+        type:
+          enum:
+          - triggered-event
+          - intervention-request
+          - teleop-session-record
+          - port-forwarding-session-record
+          - command-request
+          - command-response
+          - command-delivery
+          - custom
+          - comment
+          - system
+          - annotation
+          type: string
+        endTime:
+          format: date-time
+          nullable: true
+          type: string
+        editedAt:
+          format: date-time
+          type: string
+        userId:
+          format: uuid
+          type: string
+        annotationTemplateId:
+          format: uuid
+          type: string
+        taggedUsers:
+          nullable: true
+        id:
+          format: uuid
+          type: string
+        createdAt:
+          format: date-time
+          type: string
+        updatedAt:
+          format: date-time
+          type: string
+        organizationId:
+          format: uuid
+          type: string
+        time:
+          format: date-time
+          type: string
+        message:
+          maxLength: 1024
+          type: string
+        viewed:
+          type: boolean
+        deviceId:
+          format: uuid
+          type: string
+        streamName:
+          type: string
+        streamType:
+          enum:
+          - image
+          - numeric
+          - point cloud
+          - text
+          - json
+          - location
+          - file
+          - localization
+          - health
+          - bitset
+          - transform tree
+          - battery
+          - video
+          - numeric set
+          type: string
+        tags:
+          additionalProperties:
+            type: string
+          type: object
+        notificationEnabled:
+          type: boolean
+      type: object
+    PartialAnnotationTemplate:
+      example:
+        organizationId: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        createdAt: 2000-01-23T04:56:07.000+00:00
+        name: name
+        description: description
+        id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        fields:
+        - name: name
+          description: description
+          type: tag
+          parameters: ""
+          key: ""
+          required: true
+        - name: name
+          description: description
+          type: tag
+          parameters: ""
+          key: ""
+          required: true
+        - name: name
+          description: description
+          type: tag
+          parameters: ""
+          key: ""
+          required: true
+        - name: name
+          description: description
+          type: tag
+          parameters: ""
+          key: ""
+          required: true
+        - name: name
+          description: description
+          type: tag
+          parameters: ""
+          key: ""
+          required: true
+        enabled: true
+        tags:
+          key: tags
+        updatedAt: 2000-01-23T04:56:07.000+00:00
+      properties:
+        organizationId:
+          format: uuid
+          type: string
+        name:
+          maxLength: 32
+          type: string
+        tags:
+          additionalProperties:
+            type: string
+          type: object
+        description:
+          maxLength: 1024
+          type: string
+        fields:
+          items:
+            $ref: '#/components/schemas/AnnotationField'
+          maxItems: 10
+          minItems: 1
+          type: array
+        enabled:
+          type: boolean
+        id:
+          format: uuid
+          type: string
+        createdAt:
+          format: date-time
+          type: string
+        updatedAt:
+          format: date-time
+          type: string
       type: object
     PartialBoard:
       example:
@@ -14704,10 +15683,10 @@ components:
           - localization
           - health
           - bitset
-          - metrics
           - transform tree
           - battery
           - video
+          - numeric set
           type: string
         tags:
           additionalProperties:
@@ -14807,6 +15786,7 @@ components:
           - custom
           - comment
           - system
+          - annotation
           type: string
         editedAt:
           format: date-time
@@ -14851,10 +15831,10 @@ components:
           - localization
           - health
           - bitset
-          - metrics
           - transform tree
           - battery
           - video
+          - numeric set
           type: string
         tags:
           additionalProperties:
@@ -16337,6 +17317,11 @@ components:
         state: state
         id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         plan: freemium
+        googleInfo:
+          scope: scope
+          accessToken: accessToken
+          refreshToken: refreshToken
+          expirationDate: 2000-01-23T04:56:07.000+00:00
         lookerInfo:
           lookerPermissions:
           - lookerPermissions
@@ -16404,6 +17389,8 @@ components:
           $ref: '#/components/schemas/PagerdutyInfo'
         slackInfo:
           $ref: '#/components/schemas/SlackInfo'
+        googleInfo:
+          $ref: '#/components/schemas/GoogleInfo'
         webhooksInfo:
           $ref: '#/components/schemas/WebhooksInfo'
         awsInfo:

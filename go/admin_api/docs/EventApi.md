@@ -4,10 +4,12 @@ All URIs are relative to *https://api.formant.io/v1/admin*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
+[**EventControllerAnnotationTemplates**](EventApi.md#EventControllerAnnotationTemplates) | **Post** /events/annotation-templates | Annotation templates
 [**EventControllerCount**](EventApi.md#EventControllerCount) | **Post** /events/count | Count
 [**EventControllerCounts**](EventApi.md#EventControllerCounts) | **Post** /events/counts | Counts
 [**EventControllerDevices**](EventApi.md#EventControllerDevices) | **Post** /events/devices | Devices
 [**EventControllerEventTypes**](EventApi.md#EventControllerEventTypes) | **Post** /events/event-types | Event types
+[**EventControllerExportSheet**](EventApi.md#EventControllerExportSheet) | **Post** /events/export-sheet | Export sheet
 [**EventControllerGetOne**](EventApi.md#EventControllerGetOne) | **Get** /events/{id} | Get one
 [**EventControllerHistogram**](EventApi.md#EventControllerHistogram) | **Post** /events/histogram | Histogram
 [**EventControllerQuery**](EventApi.md#EventControllerQuery) | **Post** /events/query | Query
@@ -19,6 +21,49 @@ Method | HTTP request | Description
 [**EventControllerUsers**](EventApi.md#EventControllerUsers) | **Post** /events/users | Users
 [**EventControllerView**](EventApi.md#EventControllerView) | **Post** /events/view | View
 
+
+
+## EventControllerAnnotationTemplates
+
+> UuidListResponse EventControllerAnnotationTemplates(ctx, optional)
+
+Annotation templates
+
+Distinct values of event annotation templates
+
+### Required Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+ **optional** | ***EventControllerAnnotationTemplatesOpts** | optional parameters | nil if no parameters
+
+### Optional Parameters
+
+Optional parameters are passed through a pointer to a EventControllerAnnotationTemplatesOpts struct
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **eventFilter** | [**optional.Interface of EventFilter**](EventFilter.md)| EventFilter | 
+
+### Return type
+
+[**UuidListResponse**](UuidListResponse.md)
+
+### Authorization
+
+Use admin JWT for authorization
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
 
 
 ## EventControllerCount
@@ -178,6 +223,40 @@ Name | Type | Description  | Notes
 ### Return type
 
 [**StringListResponse**](StringListResponse.md)
+
+### Authorization
+
+Use admin JWT for authorization
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## EventControllerExportSheet
+
+> ExportSheetResult EventControllerExportSheet(ctx, exportSheetRequest)
+
+Export sheet
+
+Export events as Google Sheet
+
+### Required Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**exportSheetRequest** | [**ExportSheetRequest**](ExportSheetRequest.md)| ExportSheetRequest | 
+
+### Return type
+
+[**ExportSheetResult**](ExportSheetResult.md)
 
 ### Authorization
 

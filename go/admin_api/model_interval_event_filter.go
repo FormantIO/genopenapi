@@ -29,6 +29,7 @@ type IntervalEventFilter struct {
 	EventTypes []string `json:"eventTypes,omitempty"`
 	NotificationEnabled bool `json:"notificationEnabled,omitempty"`
 	UserIds []string `json:"userIds,omitempty"`
+	AnnotationTemplateIds []string `json:"annotationTemplateIds,omitempty"`
 	DisableNullMatches bool `json:"disableNullMatches,omitempty"`
 	Severities []string `json:"severities,omitempty"`
 }

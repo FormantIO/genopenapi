@@ -25,6 +25,7 @@ type Organization struct {
 	Country string `json:"country"`
 	PagerdutyInfo PagerdutyInfo `json:"pagerdutyInfo,omitempty"`
 	SlackInfo SlackInfo `json:"slackInfo,omitempty"`
+	GoogleInfo GoogleInfo `json:"googleInfo,omitempty"`
 	WebhooksInfo WebhooksInfo `json:"webhooksInfo,omitempty"`
 	AwsInfo AwsInfo `json:"awsInfo,omitempty"`
 	LookerInfo LookerInfo `json:"lookerInfo,omitempty"`

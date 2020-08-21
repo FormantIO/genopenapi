@@ -1,18 +1,15 @@
-# EventIndex
+# AnnotationTemplate
 
 ## Properties
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Type** | **string** |  | 
-**OrganizationId** | **string** |  | 
-**DeviceId** | **string** |  | [optional] 
-**UserId** | **string** |  | [optional] 
-**AnnotationTemplateId** | **string** |  | 
-**StreamName** | **string** |  | [optional] 
-**StreamType** | **string** |  | [optional] 
-**Tags** | **map[string]string** |  | [optional] 
-**Severity** | **string** |  | [optional] 
+**OrganizationId** | **string** |  | [optional] 
+**Name** | **string** |  | 
+**Tags** | **map[string]string** |  | 
+**Description** | **string** |  | [optional] 
+**Fields** | [**[]AnnotationField**](AnnotationField.md) |  | 
+**Enabled** | **bool** |  | [optional] 
 **Id** | **string** |  | [optional] 
 **CreatedAt** | [**time.Time**](time.Time.md) |  | [optional] 
 **UpdatedAt** | [**time.Time**](time.Time.md) |  | [optional] 
