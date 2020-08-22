@@ -13,4 +13,5 @@ type DeviceStreamRosTopicConfiguration struct {
 	Type string `json:"type"`
 	Topic string `json:"topic"`
 	Path string `json:"path,omitempty"`
+	EncodeVideo bool `json:"encodeVideo,omitempty"`
 }

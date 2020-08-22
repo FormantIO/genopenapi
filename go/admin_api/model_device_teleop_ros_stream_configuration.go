@@ -13,4 +13,5 @@ type DeviceTeleopRosStreamConfiguration struct {
 	TopicName string `json:"topicName"`
 	TopicType string `json:"topicType"`
 	Mode string `json:"mode"`
+	EncodeVideo bool `json:"encodeVideo,omitempty"`
 }

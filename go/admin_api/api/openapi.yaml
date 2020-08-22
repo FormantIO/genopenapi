@@ -1,7 +1,7 @@
 openapi: 3.0.0
 info:
   title: Formant Cloud API
-  version: 0.86.26
+  version: 0.86.27
 servers:
 - url: /
 paths:
@@ -5955,6 +5955,8 @@ components:
           maxLength: 255
           pattern: ^([a-zA-Z])([0-9a-zA-Z])*(\.([a-zA-Z])([0-9a-zA-Z])*)*
           type: string
+        encodeVideo:
+          type: boolean
       required:
       - topic
       - type
@@ -6064,6 +6066,7 @@ components:
       example:
         mode: command
         topicName: topicName
+        encodeVideo: true
         topicType: std_msgs/Bool
       properties:
         topicName:
@@ -6083,6 +6086,8 @@ components:
           - command
           - observe
           type: string
+        encodeVideo:
+          type: boolean
       required:
       - mode
       - topicName
@@ -6130,18 +6135,23 @@ components:
         rosStreams:
         - mode: command
           topicName: topicName
+          encodeVideo: true
           topicType: std_msgs/Bool
         - mode: command
           topicName: topicName
+          encodeVideo: true
           topicType: std_msgs/Bool
         - mode: command
           topicName: topicName
+          encodeVideo: true
           topicType: std_msgs/Bool
         - mode: command
           topicName: topicName
+          encodeVideo: true
           topicType: std_msgs/Bool
         - mode: command
           topicName: topicName
+          encodeVideo: true
           topicType: std_msgs/Bool
         joysticks:
         - ""
@@ -6217,18 +6227,23 @@ components:
           rosStreams:
           - mode: command
             topicName: topicName
+            encodeVideo: true
             topicType: std_msgs/Bool
           - mode: command
             topicName: topicName
+            encodeVideo: true
             topicType: std_msgs/Bool
           - mode: command
             topicName: topicName
+            encodeVideo: true
             topicType: std_msgs/Bool
           - mode: command
             topicName: topicName
+            encodeVideo: true
             topicType: std_msgs/Bool
           - mode: command
             topicName: topicName
+            encodeVideo: true
             topicType: std_msgs/Bool
           joysticks:
           - ""
@@ -6311,18 +6326,23 @@ components:
             rosStreams:
             - mode: command
               topicName: topicName
+              encodeVideo: true
               topicType: std_msgs/Bool
             - mode: command
               topicName: topicName
+              encodeVideo: true
               topicType: std_msgs/Bool
             - mode: command
               topicName: topicName
+              encodeVideo: true
               topicType: std_msgs/Bool
             - mode: command
               topicName: topicName
+              encodeVideo: true
               topicType: std_msgs/Bool
             - mode: command
               topicName: topicName
+              encodeVideo: true
               topicType: std_msgs/Bool
             joysticks:
             - ""
@@ -7331,18 +7351,23 @@ components:
             rosStreams:
             - mode: command
               topicName: topicName
+              encodeVideo: true
               topicType: std_msgs/Bool
             - mode: command
               topicName: topicName
+              encodeVideo: true
               topicType: std_msgs/Bool
             - mode: command
               topicName: topicName
+              encodeVideo: true
               topicType: std_msgs/Bool
             - mode: command
               topicName: topicName
+              encodeVideo: true
               topicType: std_msgs/Bool
             - mode: command
               topicName: topicName
+              encodeVideo: true
               topicType: std_msgs/Bool
             joysticks:
             - ""
@@ -11392,18 +11417,23 @@ components:
               rosStreams:
               - mode: command
                 topicName: topicName
+                encodeVideo: true
                 topicType: std_msgs/Bool
               - mode: command
                 topicName: topicName
+                encodeVideo: true
                 topicType: std_msgs/Bool
               - mode: command
                 topicName: topicName
+                encodeVideo: true
                 topicType: std_msgs/Bool
               - mode: command
                 topicName: topicName
+                encodeVideo: true
                 topicType: std_msgs/Bool
               - mode: command
                 topicName: topicName
+                encodeVideo: true
                 topicType: std_msgs/Bool
               joysticks:
               - ""
@@ -11475,18 +11505,23 @@ components:
               rosStreams:
               - mode: command
                 topicName: topicName
+                encodeVideo: true
                 topicType: std_msgs/Bool
               - mode: command
                 topicName: topicName
+                encodeVideo: true
                 topicType: std_msgs/Bool
               - mode: command
                 topicName: topicName
+                encodeVideo: true
                 topicType: std_msgs/Bool
               - mode: command
                 topicName: topicName
+                encodeVideo: true
                 topicType: std_msgs/Bool
               - mode: command
                 topicName: topicName
+                encodeVideo: true
                 topicType: std_msgs/Bool
               joysticks:
               - ""
@@ -14027,18 +14062,23 @@ components:
               rosStreams:
               - mode: command
                 topicName: topicName
+                encodeVideo: true
                 topicType: std_msgs/Bool
               - mode: command
                 topicName: topicName
+                encodeVideo: true
                 topicType: std_msgs/Bool
               - mode: command
                 topicName: topicName
+                encodeVideo: true
                 topicType: std_msgs/Bool
               - mode: command
                 topicName: topicName
+                encodeVideo: true
                 topicType: std_msgs/Bool
               - mode: command
                 topicName: topicName
+                encodeVideo: true
                 topicType: std_msgs/Bool
               joysticks:
               - ""
@@ -15903,18 +15943,23 @@ components:
             rosStreams:
             - mode: command
               topicName: topicName
+              encodeVideo: true
               topicType: std_msgs/Bool
             - mode: command
               topicName: topicName
+              encodeVideo: true
               topicType: std_msgs/Bool
             - mode: command
               topicName: topicName
+              encodeVideo: true
               topicType: std_msgs/Bool
             - mode: command
               topicName: topicName
+              encodeVideo: true
               topicType: std_msgs/Bool
             - mode: command
               topicName: topicName
+              encodeVideo: true
               topicType: std_msgs/Bool
             joysticks:
             - ""
