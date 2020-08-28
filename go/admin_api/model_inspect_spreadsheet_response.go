@@ -8,7 +8,7 @@
  */
 
 package admin_api
-// UpdatedAgentVersionQuery struct for UpdatedAgentVersionQuery
-type UpdatedAgentVersionQuery struct {
-	ReportedAgentVersion string `json:"reportedAgentVersion,omitempty"`
+// InspectSpreadsheetResponse struct for InspectSpreadsheetResponse
+type InspectSpreadsheetResponse struct {
+	Inspection GoogleSpreadsheetInspection `json:"inspection"`
 }

@@ -6,6 +6,7 @@ Method | HTTP request | Description
 ------------- | ------------- | -------------
 [**AnnotationTemplateControllerDelete**](AnnotationTemplateApi.md#AnnotationTemplateControllerDelete) | **Delete** /annotation-templates/{id} | Delete
 [**AnnotationTemplateControllerGetOne**](AnnotationTemplateApi.md#AnnotationTemplateControllerGetOne) | **Get** /annotation-templates/{id} | Get one
+[**AnnotationTemplateControllerInspectSpreadsheet**](AnnotationTemplateApi.md#AnnotationTemplateControllerInspectSpreadsheet) | **Post** /annotation-templates/inspect-spreadsheet | Inspect spreadsheet
 [**AnnotationTemplateControllerList**](AnnotationTemplateApi.md#AnnotationTemplateControllerList) | **Get** /annotation-templates/ | List
 [**AnnotationTemplateControllerPatch**](AnnotationTemplateApi.md#AnnotationTemplateControllerPatch) | **Patch** /annotation-templates/{id} | Patch
 [**AnnotationTemplateControllerPost**](AnnotationTemplateApi.md#AnnotationTemplateControllerPost) | **Post** /annotation-templates | Post
@@ -74,6 +75,40 @@ Use admin JWT for authorization
 ### HTTP request headers
 
 - **Content-Type**: Not defined
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## AnnotationTemplateControllerInspectSpreadsheet
+
+> InspectSpreadsheetResponse AnnotationTemplateControllerInspectSpreadsheet(ctx, inspectSpreadsheetRequest)
+
+Inspect spreadsheet
+
+Returns information about the Spreadsheet and its content
+
+### Required Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**inspectSpreadsheetRequest** | [**InspectSpreadsheetRequest**](InspectSpreadsheetRequest.md)| InspectSpreadsheetRequest | 
+
+### Return type
+
+[**InspectSpreadsheetResponse**](InspectSpreadsheetResponse.md)
+
+### Authorization
+
+Use admin JWT for authorization
+
+### HTTP request headers
+
+- **Content-Type**: application/json
 - **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)

@@ -1,10 +1,12 @@
-# SignLookerEmbedUrlRequest
+# AnnotationFieldValue
 
 ## Properties
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**LookerEmbedUrl** | **string** |  | 
+**Key** | **interface{}** |  | 
+**Value** | **interface{}** |  | 
+**Tags** | **map[string]string** |  | 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

@@ -38,6 +38,7 @@ Class | Method | HTTP request | Description
 *AnnotationApi* | [**AnnotationControllerPost**](docs/AnnotationApi.md#annotationcontrollerpost) | **Post** /annotations | Post
 *AnnotationTemplateApi* | [**AnnotationTemplateControllerDelete**](docs/AnnotationTemplateApi.md#annotationtemplatecontrollerdelete) | **Delete** /annotation-templates/{id} | Delete
 *AnnotationTemplateApi* | [**AnnotationTemplateControllerGetOne**](docs/AnnotationTemplateApi.md#annotationtemplatecontrollergetone) | **Get** /annotation-templates/{id} | Get one
+*AnnotationTemplateApi* | [**AnnotationTemplateControllerInspectSpreadsheet**](docs/AnnotationTemplateApi.md#annotationtemplatecontrollerinspectspreadsheet) | **Post** /annotation-templates/inspect-spreadsheet | Inspect spreadsheet
 *AnnotationTemplateApi* | [**AnnotationTemplateControllerList**](docs/AnnotationTemplateApi.md#annotationtemplatecontrollerlist) | **Get** /annotation-templates/ | List
 *AnnotationTemplateApi* | [**AnnotationTemplateControllerPatch**](docs/AnnotationTemplateApi.md#annotationtemplatecontrollerpatch) | **Patch** /annotation-templates/{id} | Patch
 *AnnotationTemplateApi* | [**AnnotationTemplateControllerPost**](docs/AnnotationTemplateApi.md#annotationtemplatecontrollerpost) | **Post** /annotation-templates | Post
@@ -47,17 +48,11 @@ Class | Method | HTTP request | Description
 *AuthApi* | [**AuthControllerConfirmForgotPassword**](docs/AuthApi.md#authcontrollerconfirmforgotpassword) | **Post** /auth/confirm-forgot-password | Confirm forgot password
 *AuthApi* | [**AuthControllerDeviceCredentials**](docs/AuthApi.md#authcontrollerdevicecredentials) | **Post** /auth/device-credentials | Device credentials
 *AuthApi* | [**AuthControllerForgotPassword**](docs/AuthApi.md#authcontrollerforgotpassword) | **Post** /auth/forgot-password | Forgot password
-*AuthApi* | [**AuthControllerImpersonate**](docs/AuthApi.md#authcontrollerimpersonate) | **Post** /auth/impersonate | Impersonate
 *AuthApi* | [**AuthControllerLogin**](docs/AuthApi.md#authcontrollerlogin) | **Post** /auth/login | Login
 *AuthApi* | [**AuthControllerRefresh**](docs/AuthApi.md#authcontrollerrefresh) | **Post** /auth/refresh | Refresh
 *AuthApi* | [**AuthControllerResendConfirmationCode**](docs/AuthApi.md#authcontrollerresendconfirmationcode) | **Post** /auth/resend-confirmation-code | Resend confirmation code
 *AuthApi* | [**AuthControllerResendInvitation**](docs/AuthApi.md#authcontrollerresendinvitation) | **Post** /auth/resend-invitation | Resend invitation
 *AuthApi* | [**AuthControllerRespondToNewPasswordRequiredChallenge**](docs/AuthApi.md#authcontrollerrespondtonewpasswordrequiredchallenge) | **Post** /auth/respond-to-new-password-required-challenge | Respond to new password required challenge
-*BoardApi* | [**BoardControllerDelete**](docs/BoardApi.md#boardcontrollerdelete) | **Delete** /boards/{id} | Delete
-*BoardApi* | [**BoardControllerGetAll**](docs/BoardApi.md#boardcontrollergetall) | **Get** /boards | Get all
-*BoardApi* | [**BoardControllerGetOne**](docs/BoardApi.md#boardcontrollergetone) | **Get** /boards/{id} | Get one
-*BoardApi* | [**BoardControllerPatch**](docs/BoardApi.md#boardcontrollerpatch) | **Patch** /boards/{id} | Patch
-*BoardApi* | [**BoardControllerPost**](docs/BoardApi.md#boardcontrollerpost) | **Post** /boards | Post
 *CaptureSessionApi* | [**CaptureSessionControllerAuthenticate**](docs/CaptureSessionApi.md#capturesessioncontrollerauthenticate) | **Post** /capture-sessions/{code}/authenticate | Authenticate
 *CaptureSessionApi* | [**CaptureSessionControllerGetOne**](docs/CaptureSessionApi.md#capturesessioncontrollergetone) | **Get** /capture-sessions/{code} | Get one
 *CaptureSessionApi* | [**CaptureSessionControllerPost**](docs/CaptureSessionApi.md#capturesessioncontrollerpost) | **Post** /capture-sessions | Post
@@ -130,15 +125,6 @@ Class | Method | HTTP request | Description
 *InterventionRequestApi* | [**InterventionRequestControllerGetOne**](docs/InterventionRequestApi.md#interventionrequestcontrollergetone) | **Get** /intervention-requests/{id} | Get one
 *InterventionRequestApi* | [**InterventionRequestControllerPost**](docs/InterventionRequestApi.md#interventionrequestcontrollerpost) | **Post** /intervention-requests | Post
 *InterventionResponseApi* | [**InterventionResponseControllerPost**](docs/InterventionResponseApi.md#interventionresponsecontrollerpost) | **Post** /intervention-responses | Post
-*LookerApi* | [**LookerControllerGetDashboards**](docs/LookerApi.md#lookercontrollergetdashboards) | **Get** /looker/dashboards | Get dashboards
-*LookerApi* | [**LookerControllerGetLooks**](docs/LookerApi.md#lookercontrollergetlooks) | **Get** /looker/looks | Get looks
-*LookerApi* | [**LookerControllerSignLookerEmbedUrl**](docs/LookerApi.md#lookercontrollersignlookerembedurl) | **Post** /looker/sign | Sign looker embed url
-*OrganizationApi* | [**OrganizationControllerGetOne**](docs/OrganizationApi.md#organizationcontrollergetone) | **Get** /organizations/{id} | Get one
-*OrganizationApi* | [**OrganizationControllerGetSlackInfo**](docs/OrganizationApi.md#organizationcontrollergetslackinfo) | **Post** /organizations/slack-info | Get slack info
-*OrganizationApi* | [**OrganizationControllerList**](docs/OrganizationApi.md#organizationcontrollerlist) | **Get** /organizations/ | List
-*OrganizationApi* | [**OrganizationControllerListUsers**](docs/OrganizationApi.md#organizationcontrollerlistusers) | **Get** /organizations/{id}/users | List users
-*OrganizationApi* | [**OrganizationControllerPatch**](docs/OrganizationApi.md#organizationcontrollerpatch) | **Patch** /organizations/{id} | Patch
-*OrganizationApi* | [**OrganizationControllerPutStripeToken**](docs/OrganizationApi.md#organizationcontrollerputstripetoken) | **Put** /organizations/{id}/stripe-token | Put stripe token
 *PortForwardingRecordApi* | [**PortForwardingRecordControllerPost**](docs/PortForwardingRecordApi.md#portforwardingrecordcontrollerpost) | **Post** /port-forwarding-session-records | Post
 *ShareApi* | [**ShareControllerAuthenticate**](docs/ShareApi.md#sharecontrollerauthenticate) | **Post** /shares/{code}/authenticate | Authenticate
 *ShareApi* | [**ShareControllerGetOne**](docs/ShareApi.md#sharecontrollergetone) | **Get** /shares/{code} | Get one
@@ -163,6 +149,7 @@ Class | Method | HTTP request | Description
  - [AdminSignupRequest](docs/AdminSignupRequest.md)
  - [Annotation](docs/Annotation.md)
  - [AnnotationField](docs/AnnotationField.md)
+ - [AnnotationFieldValue](docs/AnnotationFieldValue.md)
  - [AnnotationFieldValuesRequest](docs/AnnotationFieldValuesRequest.md)
  - [AnnotationFieldValuesResponse](docs/AnnotationFieldValuesResponse.md)
  - [AnnotationTemplate](docs/AnnotationTemplate.md)
@@ -174,25 +161,19 @@ Class | Method | HTTP request | Description
  - [BitsetEventTriggerCondition](docs/BitsetEventTriggerCondition.md)
  - [BitsetViewConfiguration](docs/BitsetViewConfiguration.md)
  - [Board](docs/Board.md)
- - [BoardListResponse](docs/BoardListResponse.md)
  - [Camera](docs/Camera.md)
  - [CaptureSession](docs/CaptureSession.md)
  - [Challenge](docs/Challenge.md)
  - [ChangePasswordRequest](docs/ChangePasswordRequest.md)
  - [Channel](docs/Channel.md)
  - [ChannelListResponse](docs/ChannelListResponse.md)
- - [CodeRequestParams](docs/CodeRequestParams.md)
  - [Command](docs/Command.md)
- - [CommandDeliveryEvent](docs/CommandDeliveryEvent.md)
- - [CommandEventBase](docs/CommandEventBase.md)
  - [CommandListResponse](docs/CommandListResponse.md)
  - [CommandParameter](docs/CommandParameter.md)
  - [CommandQuery](docs/CommandQuery.md)
  - [CommandRequest](docs/CommandRequest.md)
- - [CommandRequestEvent](docs/CommandRequestEvent.md)
  - [CommandRequestListResponse](docs/CommandRequestListResponse.md)
  - [CommandResponse](docs/CommandResponse.md)
- - [CommandResponseEvent](docs/CommandResponseEvent.md)
  - [CommandTemplate](docs/CommandTemplate.md)
  - [CommandTemplateListResponse](docs/CommandTemplateListResponse.md)
  - [Comment](docs/Comment.md)
@@ -202,7 +183,6 @@ Class | Method | HTTP request | Description
  - [DeviceApplicationConfiguration](docs/DeviceApplicationConfiguration.md)
  - [DeviceConfiguration](docs/DeviceConfiguration.md)
  - [DeviceConfigurationDocument](docs/DeviceConfigurationDocument.md)
- - [DeviceConfigurationParams](docs/DeviceConfigurationParams.md)
  - [DeviceConfigurationTemplate](docs/DeviceConfigurationTemplate.md)
  - [DeviceConfigurationTemplateListResponse](docs/DeviceConfigurationTemplateListResponse.md)
  - [DeviceCredentials](docs/DeviceCredentials.md)
@@ -233,7 +213,6 @@ Class | Method | HTTP request | Description
  - [EventFilter](docs/EventFilter.md)
  - [EventHistogram](docs/EventHistogram.md)
  - [EventHistogramEntry](docs/EventHistogramEntry.md)
- - [EventIndex](docs/EventIndex.md)
  - [EventListResponse](docs/EventListResponse.md)
  - [EventQuery](docs/EventQuery.md)
  - [EventSeekQuery](docs/EventSeekQuery.md)
@@ -245,12 +224,13 @@ Class | Method | HTTP request | Description
  - [ExportSheetResult](docs/ExportSheetResult.md)
  - [Filter](docs/Filter.md)
  - [ForgotPasswordRequest](docs/ForgotPasswordRequest.md)
- - [GetLooksResponse](docs/GetLooksResponse.md)
  - [GoogleAuthRequest](docs/GoogleAuthRequest.md)
  - [GoogleInfo](docs/GoogleInfo.md)
- - [IdRequestParams](docs/IdRequestParams.md)
+ - [GoogleSheetParseResult](docs/GoogleSheetParseResult.md)
+ - [GoogleSpreadsheetInspection](docs/GoogleSpreadsheetInspection.md)
  - [ImageViewConfiguration](docs/ImageViewConfiguration.md)
- - [ImpersonateRequest](docs/ImpersonateRequest.md)
+ - [InspectSpreadsheetRequest](docs/InspectSpreadsheetRequest.md)
+ - [InspectSpreadsheetResponse](docs/InspectSpreadsheetResponse.md)
  - [IntervalEventFilter](docs/IntervalEventFilter.md)
  - [InterventionRequest](docs/InterventionRequest.md)
  - [InterventionResponse](docs/InterventionResponse.md)
@@ -273,11 +253,9 @@ Class | Method | HTTP request | Description
  - [OnDemandState](docs/OnDemandState.md)
  - [OnDemandStreamPresence](docs/OnDemandStreamPresence.md)
  - [Organization](docs/Organization.md)
- - [OrganizationListResponse](docs/OrganizationListResponse.md)
  - [PagerdutyInfo](docs/PagerdutyInfo.md)
  - [PartialAnnotation](docs/PartialAnnotation.md)
  - [PartialAnnotationTemplate](docs/PartialAnnotationTemplate.md)
- - [PartialBoard](docs/PartialBoard.md)
  - [PartialChannel](docs/PartialChannel.md)
  - [PartialCommand](docs/PartialCommand.md)
  - [PartialCommandTemplate](docs/PartialCommandTemplate.md)
@@ -285,34 +263,28 @@ Class | Method | HTTP request | Description
  - [PartialDevice](docs/PartialDevice.md)
  - [PartialDeviceConfigurationTemplate](docs/PartialDeviceConfigurationTemplate.md)
  - [PartialEventTrigger](docs/PartialEventTrigger.md)
- - [PartialOrganization](docs/PartialOrganization.md)
  - [PartialUser](docs/PartialUser.md)
  - [PartialView](docs/PartialView.md)
  - [PointCloudViewConfiguration](docs/PointCloudViewConfiguration.md)
  - [PollCommandRequest](docs/PollCommandRequest.md)
  - [PortForwardingSessionRecord](docs/PortForwardingSessionRecord.md)
  - [PresenceEventTriggerCondition](docs/PresenceEventTriggerCondition.md)
- - [Rectangle](docs/Rectangle.md)
  - [RefreshRequest](docs/RefreshRequest.md)
  - [RegexEventTriggerCondition](docs/RegexEventTriggerCondition.md)
  - [ResendConfirmationCodeRequest](docs/ResendConfirmationCodeRequest.md)
  - [ResendInvitationRequest](docs/ResendInvitationRequest.md)
  - [RespondToNewPasswordRequiredChallengeRequest](docs/RespondToNewPasswordRequiredChallengeRequest.md)
  - [RosTopic](docs/RosTopic.md)
- - [RtcSessionRecord](docs/RtcSessionRecord.md)
  - [S3Export](docs/S3Export.md)
  - [ScopeFilter](docs/ScopeFilter.md)
  - [SelectionRequestData](docs/SelectionRequestData.md)
  - [Share](docs/Share.md)
  - [SheetParameters](docs/SheetParameters.md)
- - [SignLookerEmbedUrlRequest](docs/SignLookerEmbedUrlRequest.md)
- - [SignLookerEmbedUrlResponse](docs/SignLookerEmbedUrlResponse.md)
  - [SlackAuthRequest](docs/SlackAuthRequest.md)
  - [SlackInfo](docs/SlackInfo.md)
  - [StringListResponse](docs/StringListResponse.md)
  - [StripeCard](docs/StripeCard.md)
  - [StripeInfo](docs/StripeInfo.md)
- - [StripeToken](docs/StripeToken.md)
  - [SystemEvent](docs/SystemEvent.md)
  - [TagParameters](docs/TagParameters.md)
  - [TagsResponse](docs/TagsResponse.md)
@@ -325,9 +297,7 @@ Class | Method | HTTP request | Description
  - [TransformTreeViewConfiguration](docs/TransformTreeViewConfiguration.md)
  - [TriggeredConfiguration](docs/TriggeredConfiguration.md)
  - [TriggeredEvent](docs/TriggeredEvent.md)
- - [UpdatedAgentVersionQuery](docs/UpdatedAgentVersionQuery.md)
  - [UpdatedAgentVersionResponse](docs/UpdatedAgentVersionResponse.md)
- - [UpdatedConfigurationQuery](docs/UpdatedConfigurationQuery.md)
  - [UpdatedConfigurationResponse](docs/UpdatedConfigurationResponse.md)
  - [UpdatedEventTriggerRequest](docs/UpdatedEventTriggerRequest.md)
  - [UpdatedEventTriggerResponse](docs/UpdatedEventTriggerResponse.md)

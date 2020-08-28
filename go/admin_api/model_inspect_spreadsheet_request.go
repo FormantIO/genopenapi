@@ -8,8 +8,7 @@
  */
 
 package admin_api
-// DeviceConfigurationParams struct for DeviceConfigurationParams
-type DeviceConfigurationParams struct {
-	Version int64 `json:"version"`
-	Id string `json:"id"`
+// InspectSpreadsheetRequest struct for InspectSpreadsheetRequest
+type InspectSpreadsheetRequest struct {
+	SpreadsheetUrl string `json:"spreadsheetUrl"`
 }

@@ -20,6 +20,7 @@ type CommandResponse struct {
 	StreamName string `json:"streamName,omitempty"`
 	StreamType string `json:"streamType,omitempty"`
 	Tags map[string]string `json:"tags,omitempty"`
+	CanceledAt time.Time `json:"canceledAt,omitempty"`
 	CreatedAt time.Time `json:"createdAt,omitempty"`
 	UpdatedAt time.Time `json:"updatedAt,omitempty"`
 }

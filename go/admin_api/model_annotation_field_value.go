@@ -8,7 +8,9 @@
  */
 
 package admin_api
-// OrganizationListResponse struct for OrganizationListResponse
-type OrganizationListResponse struct {
-	Items []Organization `json:"items"`
+// AnnotationFieldValue struct for AnnotationFieldValue
+type AnnotationFieldValue struct {
+	Key interface{} `json:"key"`
+	Value interface{} `json:"value"`
+	Tags map[string]string `json:"tags"`
 }

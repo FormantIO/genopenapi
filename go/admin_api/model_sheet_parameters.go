@@ -10,6 +10,7 @@
 package admin_api
 // SheetParameters struct for SheetParameters
 type SheetParameters struct {
+	Url string `json:"url,omitempty"`
 	SpreadsheetId string `json:"spreadsheetId"`
 	Range string `json:"range"`
 }

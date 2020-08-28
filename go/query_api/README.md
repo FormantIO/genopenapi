@@ -50,7 +50,6 @@ Class | Method | HTTP request | Description
  - [CountHistoryEntry](docs/CountHistoryEntry.md)
  - [CountHistoryEntryCount](docs/CountHistoryEntryCount.md)
  - [CountHistoryQuery](docs/CountHistoryQuery.md)
- - [Filter](docs/Filter.md)
  - [IntervalQuery](docs/IntervalQuery.md)
  - [IsoDateListResponse](docs/IsoDateListResponse.md)
  - [Metadata](docs/Metadata.md)

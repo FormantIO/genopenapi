@@ -9,7 +9,6 @@ Method | HTTP request | Description
 [**AuthControllerConfirmForgotPassword**](AuthApi.md#AuthControllerConfirmForgotPassword) | **Post** /auth/confirm-forgot-password | Confirm forgot password
 [**AuthControllerDeviceCredentials**](AuthApi.md#AuthControllerDeviceCredentials) | **Post** /auth/device-credentials | Device credentials
 [**AuthControllerForgotPassword**](AuthApi.md#AuthControllerForgotPassword) | **Post** /auth/forgot-password | Forgot password
-[**AuthControllerImpersonate**](AuthApi.md#AuthControllerImpersonate) | **Post** /auth/impersonate | Impersonate
 [**AuthControllerLogin**](AuthApi.md#AuthControllerLogin) | **Post** /auth/login | Login
 [**AuthControllerRefresh**](AuthApi.md#AuthControllerRefresh) | **Post** /auth/refresh | Refresh
 [**AuthControllerResendConfirmationCode**](AuthApi.md#AuthControllerResendConfirmationCode) | **Post** /auth/resend-confirmation-code | Resend confirmation code
@@ -169,40 +168,6 @@ Name | Type | Description  | Notes
 ### Return type
 
  (empty response body)
-
-### Authorization
-
-Use admin JWT for authorization
-
-### HTTP request headers
-
-- **Content-Type**: application/json
-- **Accept**: application/json
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
-[[Back to Model list]](../README.md#documentation-for-models)
-[[Back to README]](../README.md)
-
-
-## AuthControllerImpersonate
-
-> LoginResult AuthControllerImpersonate(ctx, impersonateRequest)
-
-Impersonate
-
-Impersonate user
-
-### Required Parameters
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
-**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**impersonateRequest** | [**ImpersonateRequest**](ImpersonateRequest.md)| ImpersonateRequest | 
-
-### Return type
-
-[**LoginResult**](LoginResult.md)
 
 ### Authorization
 

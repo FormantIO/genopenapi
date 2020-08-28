@@ -53,8 +53,6 @@ type APIClient struct {
 
 	AuthApi *AuthApiService
 
-	BoardApi *BoardApiService
-
 	CaptureSessionApi *CaptureSessionApiService
 
 	ChannelApi *ChannelApiService
@@ -86,10 +84,6 @@ type APIClient struct {
 	InterventionRequestApi *InterventionRequestApiService
 
 	InterventionResponseApi *InterventionResponseApiService
-
-	LookerApi *LookerApiService
-
-	OrganizationApi *OrganizationApiService
 
 	PortForwardingRecordApi *PortForwardingRecordApiService
 
@@ -125,7 +119,6 @@ func NewAPIClient(cfg *Configuration) *APIClient {
 	c.AnnotationApi = (*AnnotationApiService)(&c.common)
 	c.AnnotationTemplateApi = (*AnnotationTemplateApiService)(&c.common)
 	c.AuthApi = (*AuthApiService)(&c.common)
-	c.BoardApi = (*BoardApiService)(&c.common)
 	c.CaptureSessionApi = (*CaptureSessionApiService)(&c.common)
 	c.ChannelApi = (*ChannelApiService)(&c.common)
 	c.CommandApi = (*CommandApiService)(&c.common)
@@ -142,8 +135,6 @@ func NewAPIClient(cfg *Configuration) *APIClient {
 	c.IntegrationApi = (*IntegrationApiService)(&c.common)
 	c.InterventionRequestApi = (*InterventionRequestApiService)(&c.common)
 	c.InterventionResponseApi = (*InterventionResponseApiService)(&c.common)
-	c.LookerApi = (*LookerApiService)(&c.common)
-	c.OrganizationApi = (*OrganizationApiService)(&c.common)
 	c.PortForwardingRecordApi = (*PortForwardingRecordApiService)(&c.common)
 	c.ShareApi = (*ShareApiService)(&c.common)
 	c.SystemEventApi = (*SystemEventApiService)(&c.common)

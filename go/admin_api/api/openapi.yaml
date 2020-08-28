@@ -1,7 +1,7 @@
 openapi: 3.0.0
 info:
   title: Formant Cloud API
-  version: 0.86.27
+  version: 1.0.16
 servers:
 - url: /
 paths:
@@ -212,6 +212,26 @@ paths:
       summary: Query annotation field values
       tags:
       - Annotation Template
+  /annotation-templates/inspect-spreadsheet:
+    post:
+      description: Returns information about the Spreadsheet and its content
+      operationId: AnnotationTemplateController.inspectSpreadsheet
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/InspectSpreadsheetRequest'
+        description: InspectSpreadsheetRequest
+        required: true
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/InspectSpreadsheetResponse'
+      summary: Inspect spreadsheet
+      tags:
+      - Annotation Template
   /auth/login:
     post:
       description: Login
@@ -400,125 +420,6 @@ paths:
       summary: Device credentials
       tags:
       - Auth
-  /auth/impersonate:
-    post:
-      description: Impersonate user
-      operationId: AuthController.impersonate
-      requestBody:
-        content:
-          application/json:
-            schema:
-              $ref: '#/components/schemas/ImpersonateRequest'
-        description: ImpersonateRequest
-        required: true
-      responses:
-        "200":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/LoginResult'
-      summary: Impersonate
-      tags:
-      - Auth
-  /boards:
-    get:
-      description: List all boards
-      operationId: BoardController.getAll
-      responses:
-        "200":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/BoardListResponse'
-      summary: Get all
-      tags:
-      - Board
-    post:
-      description: Create board
-      operationId: BoardController.post
-      requestBody:
-        content:
-          application/json:
-            schema:
-              $ref: '#/components/schemas/Board'
-        description: Board
-        required: true
-      responses:
-        "201":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Board'
-      summary: Post
-      tags:
-      - Board
-  /boards/{id}:
-    delete:
-      description: Delete a board
-      operationId: BoardController.delete
-      parameters:
-      - explode: false
-        in: path
-        name: id
-        required: true
-        schema:
-          type: string
-        style: simple
-      responses:
-        "200":
-          content:
-            application/json: {}
-          description: Successful response
-      summary: Delete
-      tags:
-      - Board
-    get:
-      description: Get a board
-      operationId: BoardController.getOne
-      parameters:
-      - explode: false
-        in: path
-        name: id
-        required: true
-        schema:
-          type: string
-        style: simple
-      responses:
-        "200":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Board'
-      summary: Get one
-      tags:
-      - Board
-    patch:
-      description: Update a board
-      operationId: BoardController.patch
-      parameters:
-      - explode: false
-        in: path
-        name: id
-        required: true
-        schema:
-          type: string
-        style: simple
-      requestBody:
-        content:
-          application/json:
-            schema:
-              $ref: '#/components/schemas/PartialBoard'
-        description: PartialBoard
-        required: true
-      responses:
-        "200":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Board'
-      summary: Patch
-      tags:
-      - Board
   /capture-sessions:
     post:
       description: Create a capture session
@@ -2021,167 +1922,6 @@ paths:
       summary: Post
       tags:
       - Intervention Response
-  /looker/sign:
-    post:
-      operationId: LookerController.signLookerEmbedUrl
-      requestBody:
-        content:
-          application/json:
-            schema:
-              $ref: '#/components/schemas/SignLookerEmbedUrlRequest'
-        description: SignLookerEmbedUrlRequest
-        required: true
-      responses:
-        "200":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/SignLookerEmbedUrlResponse'
-      summary: Sign looker embed url
-      tags:
-      - Looker
-  /looker/looks:
-    get:
-      operationId: LookerController.getLooks
-      responses:
-        "200":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/GetLooksResponse'
-      summary: Get looks
-      tags:
-      - Looker
-  /looker/dashboards:
-    get:
-      operationId: LookerController.getDashboards
-      responses:
-        "200":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/GetLooksResponse'
-      summary: Get dashboards
-      tags:
-      - Looker
-  /organizations/{id}:
-    get:
-      description: Get an organization
-      operationId: OrganizationController.getOne
-      parameters:
-      - explode: false
-        in: path
-        name: id
-        required: true
-        schema:
-          type: string
-        style: simple
-      responses:
-        "200":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Organization'
-      summary: Get one
-      tags:
-      - Organization
-    patch:
-      description: Update an organization
-      operationId: OrganizationController.patch
-      parameters:
-      - explode: false
-        in: path
-        name: id
-        required: true
-        schema:
-          type: string
-        style: simple
-      requestBody:
-        content:
-          application/json:
-            schema:
-              $ref: '#/components/schemas/PartialOrganization'
-        description: PartialOrganization
-        required: true
-      responses:
-        "200":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Organization'
-      summary: Patch
-      tags:
-      - Organization
-  /organizations/:
-    get:
-      operationId: OrganizationController.list
-      responses:
-        "200":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/OrganizationListResponse'
-      summary: List
-      tags:
-      - Organization
-  /organizations/{id}/users:
-    get:
-      operationId: OrganizationController.listUsers
-      parameters:
-      - explode: false
-        in: path
-        name: id
-        required: true
-        schema:
-          type: string
-        style: simple
-      responses:
-        "200":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/UserListResponse'
-      summary: List users
-      tags:
-      - Organization
-  /organizations/slack-info:
-    post:
-      description: Private API provides Slack integration configuration
-      operationId: OrganizationController.getSlackInfo
-      responses:
-        "200":
-          content:
-            application/json: {}
-          description: Successful response
-      summary: Get slack info
-      tags:
-      - Organization
-  /organizations/{id}/stripe-token:
-    put:
-      operationId: OrganizationController.putStripeToken
-      parameters:
-      - explode: false
-        in: path
-        name: id
-        required: true
-        schema:
-          type: string
-        style: simple
-      requestBody:
-        content:
-          application/json:
-            schema:
-              $ref: '#/components/schemas/StripeToken'
-        description: StripeToken
-        required: true
-      responses:
-        "200":
-          content:
-            application/json: {}
-          description: Successful response
-      summary: Put stripe token
-      tags:
-      - Organization
   /port-forwarding-session-records:
     post:
       description: Create a port forwarding session record.
@@ -6371,9 +6111,6 @@ components:
       - document
       type: object
     S3Export:
-      example:
-        bucket: bucket
-        path: path
       properties:
         bucket:
           maxLength: 63
@@ -6386,12 +6123,6 @@ components:
       - bucket
       type: object
     AwsInfo:
-      example:
-        accountId: accountId
-        s3Export:
-          bucket: bucket
-          path: path
-        roleName: ""
       properties:
         accountId:
           pattern: ^\d{12}$
@@ -6426,15 +6157,6 @@ components:
       - scope
       type: object
     LookerInfo:
-      example:
-        lookerPermissions:
-        - lookerPermissions
-        - lookerPermissions
-        lookerGroupId: 721321908029599
-        lookerModels:
-        - lookerModels
-        - lookerModels
-        lookerSpaceId: 6.027456183070403
       properties:
         lookerGroupId:
           format: int64
@@ -6457,10 +6179,6 @@ components:
       - lookerPermissions
       type: object
     PagerdutyInfo:
-      example:
-        serviceKey: serviceKey
-        serviceName: serviceName
-        account: account
       properties:
         account:
           type: string
@@ -6497,9 +6215,6 @@ components:
       - webhookUrl
       type: object
     StripeCard:
-      example:
-        last4: last4
-        brand: brand
       properties:
         brand:
           type: string
@@ -6510,12 +6225,6 @@ components:
       - last4
       type: object
     StripeInfo:
-      example:
-        customerId: customerId
-        subscriptionId: subscriptionId
-        card:
-          last4: last4
-          brand: brand
       properties:
         customerId:
           type: string
@@ -6565,10 +6274,6 @@ components:
       - type
       type: object
     UserTeleopRosStreamConfiguration:
-      example:
-        configuration: ""
-        displayName: displayName
-        topicName: topicName
       properties:
         topicName:
           pattern: ^([a-zA-Z~/])([0-9a-zA-Z_/]){0,254}$
@@ -6584,23 +6289,6 @@ components:
       - topicName
       type: object
     UserTeleopConfiguration:
-      example:
-        rosStreams:
-        - configuration: ""
-          displayName: displayName
-          topicName: topicName
-        - configuration: ""
-          displayName: displayName
-          topicName: topicName
-        - configuration: ""
-          displayName: displayName
-          topicName: topicName
-        - configuration: ""
-          displayName: displayName
-          topicName: topicName
-        - configuration: ""
-          displayName: displayName
-          topicName: topicName
       properties:
         rosStreams:
           items:
@@ -6609,9 +6297,6 @@ components:
           type: array
       type: object
     Webhook:
-      example:
-        name: ""
-        url: http://example.com/aeiou
       properties:
         name: {}
         url:
@@ -6622,18 +6307,6 @@ components:
       - url
       type: object
     WebhooksInfo:
-      example:
-        webhooks:
-        - name: ""
-          url: http://example.com/aeiou
-        - name: ""
-          url: http://example.com/aeiou
-        - name: ""
-          url: http://example.com/aeiou
-        - name: ""
-          url: http://example.com/aeiou
-        - name: ""
-          url: http://example.com/aeiou
       properties:
         webhooks:
           items:
@@ -6642,34 +6315,6 @@ components:
           type: array
       required:
       - webhooks
-      type: object
-    Rectangle:
-      properties:
-        x:
-          format: int64
-          maximum: 9007199254740991
-          minimum: 0
-          type: integer
-        y:
-          format: int64
-          maximum: 9007199254740991
-          minimum: 0
-          type: integer
-        width:
-          format: int64
-          maximum: 9007199254740991
-          minimum: 1
-          type: integer
-        height:
-          format: int64
-          maximum: 9007199254740991
-          minimum: 1
-          type: integer
-      required:
-      - height
-      - width
-      - x
-      - "y"
       type: object
     BitsetViewConfiguration:
       properties:
@@ -7136,88 +6781,6 @@ components:
       - tags
       type: object
     Organization:
-      example:
-        country: country
-        pagerdutyInfo:
-          serviceKey: serviceKey
-          serviceName: serviceName
-          account: account
-        website: website
-        city: city
-        postalCode: postalCode
-        externalId: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-        industry: industry
-        awsInfo:
-          accountId: accountId
-          s3Export:
-            bucket: bucket
-            path: path
-          roleName: ""
-        slackInfo:
-          configurationUrl: configurationUrl
-          webhookChannel: webhookChannel
-          teamId: teamId
-          webhookUrl: webhookUrl
-          token: token
-        createdAt: 2000-01-23T04:56:07.000+00:00
-        teleopEnabled: true
-        webhooksInfo:
-          webhooks:
-          - name: ""
-            url: http://example.com/aeiou
-          - name: ""
-            url: http://example.com/aeiou
-          - name: ""
-            url: http://example.com/aeiou
-          - name: ""
-            url: http://example.com/aeiou
-          - name: ""
-            url: http://example.com/aeiou
-        name: name
-        addressLine1: addressLine1
-        addressLine2: addressLine2
-        state: state
-        id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-        plan: freemium
-        googleInfo:
-          scope: scope
-          accessToken: accessToken
-          refreshToken: refreshToken
-          expirationDate: 2000-01-23T04:56:07.000+00:00
-        lookerInfo:
-          lookerPermissions:
-          - lookerPermissions
-          - lookerPermissions
-          lookerGroupId: 721321908029599
-          lookerModels:
-          - lookerModels
-          - lookerModels
-          lookerSpaceId: 6.027456183070403
-        teleopConfiguration:
-          rosStreams:
-          - configuration: ""
-            displayName: displayName
-            topicName: topicName
-          - configuration: ""
-            displayName: displayName
-            topicName: topicName
-          - configuration: ""
-            displayName: displayName
-            topicName: topicName
-          - configuration: ""
-            displayName: displayName
-            topicName: topicName
-          - configuration: ""
-            displayName: displayName
-            topicName: topicName
-        stripeInfo:
-          customerId: customerId
-          subscriptionId: subscriptionId
-          card:
-            last4: last4
-            brand: brand
-        stripeBillingEnabled: true
-        updatedAt: 2000-01-23T04:56:07.000+00:00
       properties:
         plan:
           enum:
@@ -8957,6 +8520,9 @@ components:
       type: object
     SheetParameters:
       properties:
+        url:
+          format: url
+          type: string
         spreadsheetId:
           type: string
         range:
@@ -9005,6 +8571,7 @@ components:
           type: string
         key: {}
         name:
+          maxLength: 32
           type: string
         description:
           type: string
@@ -9204,16 +8771,6 @@ components:
       - userId
       type: object
     Board:
-      example:
-        organizationId: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-        layout: ""
-        lookIds:
-        - 0.8008281904610115
-        - 0.8008281904610115
-        createdAt: 2000-01-23T04:56:07.000+00:00
-        name: name
-        id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-        updatedAt: 2000-01-23T04:56:07.000+00:00
       properties:
         organizationId:
           format: uuid
@@ -9459,294 +9016,6 @@ components:
       - deviceId
       - parameter
       type: object
-    CommandEventBase:
-      properties:
-        commandId:
-          format: uuid
-          type: string
-        id:
-          format: uuid
-          type: string
-        createdAt:
-          format: date-time
-          type: string
-        updatedAt:
-          format: date-time
-          type: string
-        type:
-          enum:
-          - triggered-event
-          - intervention-request
-          - teleop-session-record
-          - port-forwarding-session-record
-          - command-request
-          - command-response
-          - command-delivery
-          - custom
-          - comment
-          - system
-          - annotation
-          type: string
-        organizationId:
-          format: uuid
-          type: string
-        time:
-          format: date-time
-          type: string
-        message:
-          maxLength: 1024
-          type: string
-        viewed:
-          type: boolean
-        deviceId:
-          format: uuid
-          type: string
-        streamName:
-          type: string
-        streamType:
-          enum:
-          - image
-          - numeric
-          - point cloud
-          - text
-          - json
-          - location
-          - file
-          - localization
-          - health
-          - bitset
-          - transform tree
-          - battery
-          - video
-          - numeric set
-          type: string
-        tags:
-          additionalProperties:
-            type: string
-          type: object
-        notificationEnabled:
-          type: boolean
-      required:
-      - commandId
-      - time
-      type: object
-    CommandDeliveryEvent:
-      properties:
-        type:
-          enum:
-          - triggered-event
-          - intervention-request
-          - teleop-session-record
-          - port-forwarding-session-record
-          - command-request
-          - command-response
-          - command-delivery
-          - custom
-          - comment
-          - system
-          - annotation
-          type: string
-        id:
-          format: uuid
-          type: string
-        createdAt:
-          format: date-time
-          type: string
-        updatedAt:
-          format: date-time
-          type: string
-        organizationId:
-          format: uuid
-          type: string
-        time:
-          format: date-time
-          type: string
-        message:
-          maxLength: 1024
-          type: string
-        viewed:
-          type: boolean
-        deviceId:
-          format: uuid
-          type: string
-        streamName:
-          type: string
-        streamType:
-          enum:
-          - image
-          - numeric
-          - point cloud
-          - text
-          - json
-          - location
-          - file
-          - localization
-          - health
-          - bitset
-          - transform tree
-          - battery
-          - video
-          - numeric set
-          type: string
-        tags:
-          additionalProperties:
-            type: string
-          type: object
-        notificationEnabled:
-          type: boolean
-        commandId:
-          format: uuid
-          type: string
-      required:
-      - commandId
-      - time
-      type: object
-    CommandRequestEvent:
-      properties:
-        type:
-          enum:
-          - triggered-event
-          - intervention-request
-          - teleop-session-record
-          - port-forwarding-session-record
-          - command-request
-          - command-response
-          - command-delivery
-          - custom
-          - comment
-          - system
-          - annotation
-          type: string
-        userId:
-          format: uuid
-          type: string
-        id:
-          format: uuid
-          type: string
-        createdAt:
-          format: date-time
-          type: string
-        updatedAt:
-          format: date-time
-          type: string
-        organizationId:
-          format: uuid
-          type: string
-        time:
-          format: date-time
-          type: string
-        message:
-          maxLength: 1024
-          type: string
-        viewed:
-          type: boolean
-        deviceId:
-          format: uuid
-          type: string
-        streamName:
-          type: string
-        streamType:
-          enum:
-          - image
-          - numeric
-          - point cloud
-          - text
-          - json
-          - location
-          - file
-          - localization
-          - health
-          - bitset
-          - transform tree
-          - battery
-          - video
-          - numeric set
-          type: string
-        tags:
-          additionalProperties:
-            type: string
-          type: object
-        notificationEnabled:
-          type: boolean
-        commandId:
-          format: uuid
-          type: string
-      required:
-      - commandId
-      - time
-      - userId
-      type: object
-    CommandResponseEvent:
-      properties:
-        type:
-          enum:
-          - triggered-event
-          - intervention-request
-          - teleop-session-record
-          - port-forwarding-session-record
-          - command-request
-          - command-response
-          - command-delivery
-          - custom
-          - comment
-          - system
-          - annotation
-          type: string
-        id:
-          format: uuid
-          type: string
-        createdAt:
-          format: date-time
-          type: string
-        updatedAt:
-          format: date-time
-          type: string
-        organizationId:
-          format: uuid
-          type: string
-        time:
-          format: date-time
-          type: string
-        message:
-          maxLength: 1024
-          type: string
-        viewed:
-          type: boolean
-        deviceId:
-          format: uuid
-          type: string
-        streamName:
-          type: string
-        streamType:
-          enum:
-          - image
-          - numeric
-          - point cloud
-          - text
-          - json
-          - location
-          - file
-          - localization
-          - health
-          - bitset
-          - transform tree
-          - battery
-          - video
-          - numeric set
-          type: string
-        tags:
-          additionalProperties:
-            type: string
-          type: object
-        notificationEnabled:
-          type: boolean
-        commandId:
-          format: uuid
-          type: string
-      required:
-      - commandId
-      - time
-      type: object
     Comment:
       example:
         type: triggered-event
@@ -9949,157 +9218,6 @@ components:
       required:
       - expiration
       - token
-      type: object
-    EventIndex:
-      properties:
-        type:
-          enum:
-          - triggered-event
-          - intervention-request
-          - teleop-session-record
-          - port-forwarding-session-record
-          - command-request
-          - command-response
-          - command-delivery
-          - custom
-          - comment
-          - system
-          - annotation
-          type: string
-        organizationId:
-          format: uuid
-          type: string
-        deviceId:
-          format: uuid
-          type: string
-        userId:
-          format: uuid
-          type: string
-        annotationTemplateId:
-          format: uuid
-          type: string
-        streamName:
-          type: string
-        streamType:
-          enum:
-          - image
-          - numeric
-          - point cloud
-          - text
-          - json
-          - location
-          - file
-          - localization
-          - health
-          - bitset
-          - transform tree
-          - battery
-          - video
-          - numeric set
-          type: string
-        tags:
-          additionalProperties:
-            type: string
-          type: object
-        severity:
-          enum:
-          - info
-          - warning
-          - error
-          - critical
-          type: string
-        id:
-          format: uuid
-          type: string
-        createdAt:
-          format: date-time
-          type: string
-        updatedAt:
-          format: date-time
-          type: string
-      required:
-      - annotationTemplateId
-      - organizationId
-      - type
-      type: object
-    RtcSessionRecord:
-      properties:
-        sessionId:
-          format: uuid
-          type: string
-        userId:
-          format: uuid
-          type: string
-        deviceId:
-          format: uuid
-          type: string
-        endTime:
-          format: date-time
-          type: string
-        id:
-          format: uuid
-          type: string
-        createdAt:
-          format: date-time
-          type: string
-        updatedAt:
-          format: date-time
-          type: string
-        type:
-          enum:
-          - triggered-event
-          - intervention-request
-          - teleop-session-record
-          - port-forwarding-session-record
-          - command-request
-          - command-response
-          - command-delivery
-          - custom
-          - comment
-          - system
-          - annotation
-          type: string
-        organizationId:
-          format: uuid
-          type: string
-        time:
-          format: date-time
-          type: string
-        message:
-          maxLength: 1024
-          type: string
-        viewed:
-          type: boolean
-        streamName:
-          type: string
-        streamType:
-          enum:
-          - image
-          - numeric
-          - point cloud
-          - text
-          - json
-          - location
-          - file
-          - localization
-          - health
-          - bitset
-          - transform tree
-          - battery
-          - video
-          - numeric set
-          type: string
-        tags:
-          additionalProperties:
-            type: string
-          type: object
-        notificationEnabled:
-          type: boolean
-      required:
-      - endTime
-      - sessionId
-      - time
-      - userId
       type: object
     PortForwardingSessionRecord:
       example:
@@ -10630,14 +9748,6 @@ components:
       - name
       - tags
       type: object
-    IdRequestParams:
-      properties:
-        id:
-          format: uuid
-          type: string
-      required:
-      - id
-      type: object
     AnnotationFieldValuesRequest:
       example:
         annotationTemplateId: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
@@ -10760,6 +9870,172 @@ components:
           type: array
       required:
       - items
+      type: object
+    InspectSpreadsheetRequest:
+      example:
+        spreadsheetUrl: http://example.com/aeiou
+      properties:
+        spreadsheetUrl:
+          format: url
+          type: string
+      required:
+      - spreadsheetUrl
+      type: object
+    AnnotationFieldValue:
+      example:
+        value: ""
+        key: ""
+        tags:
+          key: tags
+      properties:
+        key: {}
+        value: {}
+        tags:
+          additionalProperties:
+            type: string
+          type: object
+      required:
+      - key
+      - tags
+      - value
+      type: object
+    GoogleSheetParseResult:
+      example:
+        contentInvalid: true
+        values:
+        - value: ""
+          key: ""
+          tags:
+            key: tags
+        - value: ""
+          key: ""
+          tags:
+            key: tags
+        - value: ""
+          key: ""
+          tags:
+            key: tags
+        - value: ""
+          key: ""
+          tags:
+            key: tags
+        - value: ""
+          key: ""
+          tags:
+            key: tags
+        headerPreview:
+        - headerPreview
+        - headerPreview
+        - headerPreview
+        - headerPreview
+        - headerPreview
+        headerInvalid: true
+      properties:
+        headerInvalid:
+          type: boolean
+        headerPreview:
+          items:
+            type: string
+          maxItems: 10
+          type: array
+        contentInvalid:
+          type: boolean
+        values:
+          items:
+            $ref: '#/components/schemas/AnnotationFieldValue'
+          maxItems: 10
+          type: array
+      type: object
+    GoogleSpreadsheetInspection:
+      example:
+        sheetFindFailed: true
+        parseUrlFailed: true
+        sheetTitle: sheetTitle
+        parseResult:
+          contentInvalid: true
+          values:
+          - value: ""
+            key: ""
+            tags:
+              key: tags
+          - value: ""
+            key: ""
+            tags:
+              key: tags
+          - value: ""
+            key: ""
+            tags:
+              key: tags
+          - value: ""
+            key: ""
+            tags:
+              key: tags
+          - value: ""
+            key: ""
+            tags:
+              key: tags
+          headerPreview:
+          - headerPreview
+          - headerPreview
+          - headerPreview
+          - headerPreview
+          - headerPreview
+          headerInvalid: true
+        spreadsheetGetFailed: true
+      properties:
+        parseUrlFailed:
+          type: boolean
+        spreadsheetGetFailed:
+          type: boolean
+        sheetFindFailed:
+          type: boolean
+        sheetTitle:
+          type: string
+        parseResult:
+          $ref: '#/components/schemas/GoogleSheetParseResult'
+      type: object
+    InspectSpreadsheetResponse:
+      example:
+        inspection:
+          sheetFindFailed: true
+          parseUrlFailed: true
+          sheetTitle: sheetTitle
+          parseResult:
+            contentInvalid: true
+            values:
+            - value: ""
+              key: ""
+              tags:
+                key: tags
+            - value: ""
+              key: ""
+              tags:
+                key: tags
+            - value: ""
+              key: ""
+              tags:
+                key: tags
+            - value: ""
+              key: ""
+              tags:
+                key: tags
+            - value: ""
+              key: ""
+              tags:
+                key: tags
+            headerPreview:
+            - headerPreview
+            - headerPreview
+            - headerPreview
+            - headerPreview
+            - headerPreview
+            headerInvalid: true
+          spreadsheetGetFailed: true
+      properties:
+        inspection:
+          $ref: '#/components/schemas/GoogleSpreadsheetInspection'
+      required:
+      - inspection
       type: object
     Authentication:
       example:
@@ -10967,16 +10243,6 @@ components:
       required:
       - email
       type: object
-    ImpersonateRequest:
-      example:
-        userId: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-      properties:
-        userId:
-          format: uuid
-          type: string
-      required:
-      - userId
-      type: object
     LoginRequest:
       example:
         password: password
@@ -11009,43 +10275,6 @@ components:
           type: string
       required:
       - email
-      type: object
-    BoardListResponse:
-      example:
-        items:
-        - organizationId: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-          layout: ""
-          lookIds:
-          - 0.8008281904610115
-          - 0.8008281904610115
-          createdAt: 2000-01-23T04:56:07.000+00:00
-          name: name
-          id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-          updatedAt: 2000-01-23T04:56:07.000+00:00
-        - organizationId: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-          layout: ""
-          lookIds:
-          - 0.8008281904610115
-          - 0.8008281904610115
-          createdAt: 2000-01-23T04:56:07.000+00:00
-          name: name
-          id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-          updatedAt: 2000-01-23T04:56:07.000+00:00
-      properties:
-        items:
-          items:
-            $ref: '#/components/schemas/Board'
-          type: array
-      required:
-      - items
-      type: object
-    CodeRequestParams:
-      properties:
-        code:
-          minLength: 64
-          type: string
-      required:
-      - code
       type: object
     TokenResult:
       example:
@@ -11263,6 +10492,7 @@ components:
         replyToCommandRequestId: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         createdAt: 2000-01-23T04:56:07.000+00:00
         streamType: image
+        canceledAt: 2000-01-23T04:56:07.000+00:00
         success: true
         time: 2000-01-23T04:56:07.000+00:00
         message: message
@@ -11305,6 +10535,9 @@ components:
           additionalProperties:
             type: string
           type: object
+        canceledAt:
+          format: date-time
+          type: string
         createdAt:
           format: date-time
           type: string
@@ -13914,20 +13147,6 @@ components:
       required:
       - items
       type: object
-    DeviceConfigurationParams:
-      properties:
-        version:
-          format: int64
-          maximum: 9007199254740991
-          minimum: 1
-          type: integer
-        id:
-          format: uuid
-          type: string
-      required:
-      - id
-      - version
-      type: object
     DeviceProvisioningRequest:
       example:
         provisioningToken: provisioningToken
@@ -13982,25 +13201,12 @@ components:
       required:
       - tags
       type: object
-    UpdatedAgentVersionQuery:
-      properties:
-        reportedAgentVersion:
-          type: string
-      type: object
     UpdatedAgentVersionResponse:
       example:
         desiredAgentVersion: desiredAgentVersion
       properties:
         desiredAgentVersion:
           type: string
-      type: object
-    UpdatedConfigurationQuery:
-      properties:
-        reportedConfigurationVersion:
-          format: int64
-          maximum: 9007199254740991
-          minimum: 1
-          type: integer
       type: object
     UpdatedConfigurationResponse:
       example:
@@ -15110,35 +14316,7 @@ components:
       - code
       - redirectUri
       type: object
-    SignLookerEmbedUrlRequest:
-      example:
-        lookerEmbedUrl: lookerEmbedUrl
-      properties:
-        lookerEmbedUrl:
-          type: string
-      required:
-      - lookerEmbedUrl
-      type: object
-    SignLookerEmbedUrlResponse:
-      example:
-        sessionLengthMilliseconds: 721321908029600
-        url: url
-      properties:
-        url:
-          type: string
-        sessionLengthMilliseconds:
-          format: int64
-          maximum: 9007199254740991
-          minimum: 1
-          type: integer
-      required:
-      - sessionLengthMilliseconds
-      - url
-      type: object
     LookerLook:
-      example:
-        id: 721321908029599
-        title: title
       properties:
         title:
           type: string
@@ -15150,203 +14328,6 @@ components:
       required:
       - id
       - title
-      type: object
-    GetLooksResponse:
-      example:
-        items:
-        - id: 721321908029599
-          title: title
-        - id: 721321908029599
-          title: title
-      properties:
-        items:
-          items:
-            $ref: '#/components/schemas/LookerLook'
-          type: array
-      required:
-      - items
-      type: object
-    StripeToken:
-      example:
-        token: token
-      properties:
-        token:
-          type: string
-      required:
-      - token
-      type: object
-    OrganizationListResponse:
-      example:
-        items:
-        - country: country
-          pagerdutyInfo:
-            serviceKey: serviceKey
-            serviceName: serviceName
-            account: account
-          website: website
-          city: city
-          postalCode: postalCode
-          externalId: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-          industry: industry
-          awsInfo:
-            accountId: accountId
-            s3Export:
-              bucket: bucket
-              path: path
-            roleName: ""
-          slackInfo:
-            configurationUrl: configurationUrl
-            webhookChannel: webhookChannel
-            teamId: teamId
-            webhookUrl: webhookUrl
-            token: token
-          createdAt: 2000-01-23T04:56:07.000+00:00
-          teleopEnabled: true
-          webhooksInfo:
-            webhooks:
-            - name: ""
-              url: http://example.com/aeiou
-            - name: ""
-              url: http://example.com/aeiou
-            - name: ""
-              url: http://example.com/aeiou
-            - name: ""
-              url: http://example.com/aeiou
-            - name: ""
-              url: http://example.com/aeiou
-          name: name
-          addressLine1: addressLine1
-          addressLine2: addressLine2
-          state: state
-          id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-          plan: freemium
-          googleInfo:
-            scope: scope
-            accessToken: accessToken
-            refreshToken: refreshToken
-            expirationDate: 2000-01-23T04:56:07.000+00:00
-          lookerInfo:
-            lookerPermissions:
-            - lookerPermissions
-            - lookerPermissions
-            lookerGroupId: 721321908029599
-            lookerModels:
-            - lookerModels
-            - lookerModels
-            lookerSpaceId: 6.027456183070403
-          teleopConfiguration:
-            rosStreams:
-            - configuration: ""
-              displayName: displayName
-              topicName: topicName
-            - configuration: ""
-              displayName: displayName
-              topicName: topicName
-            - configuration: ""
-              displayName: displayName
-              topicName: topicName
-            - configuration: ""
-              displayName: displayName
-              topicName: topicName
-            - configuration: ""
-              displayName: displayName
-              topicName: topicName
-          stripeInfo:
-            customerId: customerId
-            subscriptionId: subscriptionId
-            card:
-              last4: last4
-              brand: brand
-          stripeBillingEnabled: true
-          updatedAt: 2000-01-23T04:56:07.000+00:00
-        - country: country
-          pagerdutyInfo:
-            serviceKey: serviceKey
-            serviceName: serviceName
-            account: account
-          website: website
-          city: city
-          postalCode: postalCode
-          externalId: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-          industry: industry
-          awsInfo:
-            accountId: accountId
-            s3Export:
-              bucket: bucket
-              path: path
-            roleName: ""
-          slackInfo:
-            configurationUrl: configurationUrl
-            webhookChannel: webhookChannel
-            teamId: teamId
-            webhookUrl: webhookUrl
-            token: token
-          createdAt: 2000-01-23T04:56:07.000+00:00
-          teleopEnabled: true
-          webhooksInfo:
-            webhooks:
-            - name: ""
-              url: http://example.com/aeiou
-            - name: ""
-              url: http://example.com/aeiou
-            - name: ""
-              url: http://example.com/aeiou
-            - name: ""
-              url: http://example.com/aeiou
-            - name: ""
-              url: http://example.com/aeiou
-          name: name
-          addressLine1: addressLine1
-          addressLine2: addressLine2
-          state: state
-          id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-          plan: freemium
-          googleInfo:
-            scope: scope
-            accessToken: accessToken
-            refreshToken: refreshToken
-            expirationDate: 2000-01-23T04:56:07.000+00:00
-          lookerInfo:
-            lookerPermissions:
-            - lookerPermissions
-            - lookerPermissions
-            lookerGroupId: 721321908029599
-            lookerModels:
-            - lookerModels
-            - lookerModels
-            lookerSpaceId: 6.027456183070403
-          teleopConfiguration:
-            rosStreams:
-            - configuration: ""
-              displayName: displayName
-              topicName: topicName
-            - configuration: ""
-              displayName: displayName
-              topicName: topicName
-            - configuration: ""
-              displayName: displayName
-              topicName: topicName
-            - configuration: ""
-              displayName: displayName
-              topicName: topicName
-            - configuration: ""
-              displayName: displayName
-              topicName: topicName
-          stripeInfo:
-            customerId: customerId
-            subscriptionId: subscriptionId
-            card:
-              last4: last4
-              brand: brand
-          stripeBillingEnabled: true
-          updatedAt: 2000-01-23T04:56:07.000+00:00
-      properties:
-        items:
-          items:
-            $ref: '#/components/schemas/Organization'
-          type: array
-      required:
-      - items
       type: object
     UserListResponse:
       example:
@@ -15551,39 +14532,6 @@ components:
           type: array
         enabled:
           type: boolean
-        id:
-          format: uuid
-          type: string
-        createdAt:
-          format: date-time
-          type: string
-        updatedAt:
-          format: date-time
-          type: string
-      type: object
-    PartialBoard:
-      example:
-        organizationId: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-        layout: ""
-        lookIds:
-        - 0.8008281904610115
-        - 0.8008281904610115
-        createdAt: 2000-01-23T04:56:07.000+00:00
-        name: name
-        id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-        updatedAt: 2000-01-23T04:56:07.000+00:00
-      properties:
-        organizationId:
-          format: uuid
-          type: string
-        name:
-          maxLength: 255
-          type: string
-        lookIds:
-          items:
-            type: number
-          type: array
-        layout: {}
         id:
           format: uuid
           type: string
@@ -17308,151 +16256,6 @@ components:
             $ref: '#/components/schemas/EventTriggerCommand'
           maxItems: 10
           type: array
-        id:
-          format: uuid
-          type: string
-        createdAt:
-          format: date-time
-          type: string
-        updatedAt:
-          format: date-time
-          type: string
-      type: object
-    PartialOrganization:
-      example:
-        country: country
-        pagerdutyInfo:
-          serviceKey: serviceKey
-          serviceName: serviceName
-          account: account
-        website: website
-        city: city
-        postalCode: postalCode
-        externalId: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-        industry: industry
-        awsInfo:
-          accountId: accountId
-          s3Export:
-            bucket: bucket
-            path: path
-          roleName: ""
-        slackInfo:
-          configurationUrl: configurationUrl
-          webhookChannel: webhookChannel
-          teamId: teamId
-          webhookUrl: webhookUrl
-          token: token
-        createdAt: 2000-01-23T04:56:07.000+00:00
-        teleopEnabled: true
-        webhooksInfo:
-          webhooks:
-          - name: ""
-            url: http://example.com/aeiou
-          - name: ""
-            url: http://example.com/aeiou
-          - name: ""
-            url: http://example.com/aeiou
-          - name: ""
-            url: http://example.com/aeiou
-          - name: ""
-            url: http://example.com/aeiou
-        name: name
-        addressLine1: addressLine1
-        addressLine2: addressLine2
-        state: state
-        id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-        plan: freemium
-        googleInfo:
-          scope: scope
-          accessToken: accessToken
-          refreshToken: refreshToken
-          expirationDate: 2000-01-23T04:56:07.000+00:00
-        lookerInfo:
-          lookerPermissions:
-          - lookerPermissions
-          - lookerPermissions
-          lookerGroupId: 721321908029599
-          lookerModels:
-          - lookerModels
-          - lookerModels
-          lookerSpaceId: 6.027456183070403
-        teleopConfiguration:
-          rosStreams:
-          - configuration: ""
-            displayName: displayName
-            topicName: topicName
-          - configuration: ""
-            displayName: displayName
-            topicName: topicName
-          - configuration: ""
-            displayName: displayName
-            topicName: topicName
-          - configuration: ""
-            displayName: displayName
-            topicName: topicName
-          - configuration: ""
-            displayName: displayName
-            topicName: topicName
-        stripeInfo:
-          customerId: customerId
-          subscriptionId: subscriptionId
-          card:
-            last4: last4
-            brand: brand
-        stripeBillingEnabled: true
-        updatedAt: 2000-01-23T04:56:07.000+00:00
-      properties:
-        plan:
-          enum:
-          - freemium
-          - commercial
-          - enterprise-default
-          - enterprise
-          type: string
-        name:
-          type: string
-        industry:
-          type: string
-        website:
-          type: string
-        addressLine1:
-          type: string
-        addressLine2:
-          type: string
-        city:
-          type: string
-        state:
-          maxLength: 2
-          minLength: 2
-          type: string
-        postalCode:
-          maxLength: 16
-          type: string
-        country:
-          type: string
-        pagerdutyInfo:
-          $ref: '#/components/schemas/PagerdutyInfo'
-        slackInfo:
-          $ref: '#/components/schemas/SlackInfo'
-        googleInfo:
-          $ref: '#/components/schemas/GoogleInfo'
-        webhooksInfo:
-          $ref: '#/components/schemas/WebhooksInfo'
-        awsInfo:
-          $ref: '#/components/schemas/AwsInfo'
-        lookerInfo:
-          $ref: '#/components/schemas/LookerInfo'
-        stripeInfo:
-          $ref: '#/components/schemas/StripeInfo'
-        teleopConfiguration:
-          $ref: '#/components/schemas/UserTeleopConfiguration'
-        teleopEnabled:
-          type: boolean
-        stripeBillingEnabled:
-          type: boolean
-        externalId:
-          format: uuid
-          type: string
         id:
           format: uuid
           type: string

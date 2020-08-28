@@ -4,6 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
+**Url** | **string** |  | [optional] 
 **SpreadsheetId** | **string** |  | 
 **Range** | **string** |  | 
 
