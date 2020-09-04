@@ -1,7 +1,7 @@
 openapi: 3.0.0
 info:
   title: Formant Cloud API
-  version: 1.0.17
+  version: 1.1.28
 servers:
 - url: /
 paths:
@@ -309,8 +309,8 @@ components:
         - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         types:
-        - image
-        - image
+        - bitset
+        - bitset
         names:
         - names
         - names
@@ -344,20 +344,20 @@ components:
         types:
           items:
             enum:
-            - image
-            - numeric
+            - bitset
+            - localization
             - point cloud
-            - text
-            - json
             - location
             - file
-            - localization
             - health
-            - bitset
             - transform tree
             - battery
             - video
             - numeric set
+            - json
+            - image
+            - numeric
+            - text
             type: string
           type: array
         tags: {}
@@ -382,7 +382,7 @@ components:
     Metadata:
       example:
         name: name
-        type: image
+        type: bitset
         deviceId: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         tags:
           key: tags
@@ -394,20 +394,20 @@ components:
           type: string
         type:
           enum:
-          - image
-          - numeric
+          - bitset
+          - localization
           - point cloud
-          - text
-          - json
           - location
           - file
-          - localization
           - health
-          - bitset
           - transform tree
           - battery
           - video
           - numeric set
+          - json
+          - image
+          - numeric
+          - text
           type: string
         tags:
           additionalProperties:
@@ -423,12 +423,12 @@ components:
       example:
         items:
         - name: name
-          type: image
+          type: bitset
           deviceId: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           tags:
             key: tags
         - name: name
-          type: image
+          type: bitset
           deviceId: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           tags:
             key: tags
@@ -449,8 +449,8 @@ components:
         - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         types:
-        - image
-        - image
+        - bitset
+        - bitset
         names:
         - names
         - names
@@ -484,20 +484,20 @@ components:
         types:
           items:
             enum:
-            - image
-            - numeric
+            - bitset
+            - localization
             - point cloud
-            - text
-            - json
             - location
             - file
-            - localization
             - health
-            - bitset
             - transform tree
             - battery
             - video
             - numeric set
+            - json
+            - image
+            - numeric
+            - text
             type: string
           type: array
         tags: {}
@@ -518,8 +518,8 @@ components:
         - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         types:
-        - image
-        - image
+        - bitset
+        - bitset
         names:
         - names
         - names
@@ -554,20 +554,20 @@ components:
         types:
           items:
             enum:
-            - image
-            - numeric
+            - bitset
+            - localization
             - point cloud
-            - text
-            - json
             - location
             - file
-            - localization
             - health
-            - bitset
             - transform tree
             - battery
             - video
             - numeric set
+            - json
+            - image
+            - numeric
+            - text
             type: string
           type: array
         tags: {}
@@ -603,7 +603,7 @@ components:
     StreamData:
       example:
         name: name
-        type: image
+        type: bitset
         deviceId: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         tags:
           key: tags
@@ -622,20 +622,20 @@ components:
           type: object
         type:
           enum:
-          - image
-          - numeric
+          - bitset
+          - localization
           - point cloud
-          - text
-          - json
           - location
           - file
-          - localization
           - health
-          - bitset
           - transform tree
           - battery
           - video
           - numeric set
+          - json
+          - image
+          - numeric
+          - text
           type: string
         points:
           items:
@@ -652,7 +652,7 @@ components:
       example:
         items:
         - name: name
-          type: image
+          type: bitset
           deviceId: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           tags:
             key: tags
@@ -660,7 +660,7 @@ components:
           - '{}'
           - '{}'
         - name: name
-          type: image
+          type: bitset
           deviceId: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           tags:
             key: tags
@@ -684,8 +684,8 @@ components:
         - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         types:
-        - image
-        - image
+        - bitset
+        - bitset
         names:
         - names
         - names
@@ -721,20 +721,20 @@ components:
         types:
           items:
             enum:
-            - image
-            - numeric
+            - bitset
+            - localization
             - point cloud
-            - text
-            - json
             - location
             - file
-            - localization
             - health
-            - bitset
             - transform tree
             - battery
             - video
             - numeric set
+            - json
+            - image
+            - numeric
+            - text
             type: string
           type: array
         tags: {}
