@@ -1,7 +1,7 @@
 openapi: 3.0.0
 info:
   title: Formant Cloud API
-  version: 1.1.31
+  version: 1.2.29
 servers:
 - url: /
 paths:
@@ -270,26 +270,6 @@ paths:
               schema:
                 $ref: '#/components/schemas/LoginResult'
       summary: Refresh
-      tags:
-      - Auth
-  /auth/admin-signup:
-    post:
-      description: Administrator signup
-      operationId: AuthController.adminSignup
-      requestBody:
-        content:
-          application/json:
-            schema:
-              $ref: '#/components/schemas/AdminSignupRequest'
-        description: AdminSignupRequest
-        required: true
-      responses:
-        "200":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/User'
-      summary: Admin signup
       tags:
       - Auth
   /auth/forgot-password:
@@ -6232,9 +6212,14 @@ components:
           type: string
         card:
           $ref: '#/components/schemas/StripeCard'
+        billingAnchor: {}
+        billingPeriod:
+          enum:
+          - day
+          - month
+          type: string
       required:
       - customerId
-      - subscriptionId
       type: object
     JoystickConfiguration:
       properties:
@@ -6828,8 +6813,19 @@ components:
           $ref: '#/components/schemas/UserTeleopConfiguration'
         teleopEnabled:
           type: boolean
+        analyticsEnabled:
+          type: boolean
         stripeBillingEnabled:
           type: boolean
+        stripeSubscriptionEnabled:
+          type: boolean
+        s3ExportEnabled:
+          type: boolean
+        daysDataRetained:
+          format: int64
+          maximum: 36500
+          minimum: 0
+          type: integer
         externalId:
           format: uuid
           type: string
@@ -8593,6 +8589,7 @@ components:
       example:
         organizationId: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         createdAt: 2000-01-23T04:56:07.000+00:00
+        publishToGoogleSpreadsheetUrl: http://example.com/aeiou
         name: name
         description: description
         id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
@@ -8653,6 +8650,10 @@ components:
           type: array
         enabled:
           type: boolean
+        publishToGoogleSpreadsheetUrl:
+          format: url
+          nullable: true
+          type: string
         id:
           format: uuid
           type: string
@@ -8674,6 +8675,7 @@ components:
         type: triggered-event
         message: message
         userId: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        publishedTo: ""
         deviceId: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         streamName: streamName
         notificationEnabled: true
@@ -8718,6 +8720,7 @@ components:
           type: string
         taggedUsers:
           nullable: true
+        publishedTo: {}
         id:
           format: uuid
           type: string
@@ -9785,6 +9788,7 @@ components:
         items:
         - organizationId: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           createdAt: 2000-01-23T04:56:07.000+00:00
+          publishToGoogleSpreadsheetUrl: http://example.com/aeiou
           name: name
           description: description
           id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
@@ -9825,6 +9829,7 @@ components:
           updatedAt: 2000-01-23T04:56:07.000+00:00
         - organizationId: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           createdAt: 2000-01-23T04:56:07.000+00:00
+          publishToGoogleSpreadsheetUrl: http://example.com/aeiou
           name: name
           description: description
           id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
@@ -10134,38 +10139,6 @@ components:
       - newPassword
       - session
       - userId
-      type: object
-    AdminSignupRequest:
-      example:
-        firstName: firstName
-        lastName: lastName
-        organizationName: organizationName
-        organizationPlan: freemium
-        email: email
-      properties:
-        email:
-          format: email
-          type: string
-        firstName:
-          maxLength: 255
-          type: string
-        lastName:
-          maxLength: 255
-          type: string
-        organizationName:
-          maxLength: 255
-          type: string
-        organizationPlan:
-          enum:
-          - freemium
-          - commercial
-          - enterprise-default
-          - enterprise
-          type: string
-      required:
-      - email
-      - firstName
-      - lastName
       type: object
     ChangePasswordRequest:
       example:
@@ -14375,6 +14348,7 @@ components:
         type: triggered-event
         message: message
         userId: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        publishedTo: ""
         deviceId: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         streamName: streamName
         notificationEnabled: true
@@ -14419,6 +14393,7 @@ components:
           type: string
         taggedUsers:
           nullable: true
+        publishedTo: {}
         id:
           format: uuid
           type: string
@@ -14472,6 +14447,7 @@ components:
       example:
         organizationId: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         createdAt: 2000-01-23T04:56:07.000+00:00
+        publishToGoogleSpreadsheetUrl: http://example.com/aeiou
         name: name
         description: description
         id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
@@ -14532,6 +14508,10 @@ components:
           type: array
         enabled:
           type: boolean
+        publishToGoogleSpreadsheetUrl:
+          format: url
+          nullable: true
+          type: string
         id:
           format: uuid
           type: string

@@ -19,6 +19,7 @@ type PartialAnnotationTemplate struct {
 	Description string `json:"description,omitempty"`
 	Fields []AnnotationField `json:"fields,omitempty"`
 	Enabled bool `json:"enabled,omitempty"`
+	PublishToGoogleSpreadsheetUrl *string `json:"publishToGoogleSpreadsheetUrl,omitempty"`
 	Id string `json:"id,omitempty"`
 	CreatedAt time.Time `json:"createdAt,omitempty"`
 	UpdatedAt time.Time `json:"updatedAt,omitempty"`

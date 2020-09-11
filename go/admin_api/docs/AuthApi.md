@@ -4,7 +4,6 @@ All URIs are relative to *https://api.formant.io/v1/admin*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**AuthControllerAdminSignup**](AuthApi.md#AuthControllerAdminSignup) | **Post** /auth/admin-signup | Admin signup
 [**AuthControllerChangePassword**](AuthApi.md#AuthControllerChangePassword) | **Post** /auth/change-password | Change password
 [**AuthControllerConfirmForgotPassword**](AuthApi.md#AuthControllerConfirmForgotPassword) | **Post** /auth/confirm-forgot-password | Confirm forgot password
 [**AuthControllerDeviceCredentials**](AuthApi.md#AuthControllerDeviceCredentials) | **Post** /auth/device-credentials | Device credentials
@@ -15,40 +14,6 @@ Method | HTTP request | Description
 [**AuthControllerResendInvitation**](AuthApi.md#AuthControllerResendInvitation) | **Post** /auth/resend-invitation | Resend invitation
 [**AuthControllerRespondToNewPasswordRequiredChallenge**](AuthApi.md#AuthControllerRespondToNewPasswordRequiredChallenge) | **Post** /auth/respond-to-new-password-required-challenge | Respond to new password required challenge
 
-
-
-## AuthControllerAdminSignup
-
-> User AuthControllerAdminSignup(ctx, adminSignupRequest)
-
-Admin signup
-
-Administrator signup
-
-### Required Parameters
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
-**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**adminSignupRequest** | [**AdminSignupRequest**](AdminSignupRequest.md)| AdminSignupRequest | 
-
-### Return type
-
-[**User**](User.md)
-
-### Authorization
-
-Use admin JWT for authorization
-
-### HTTP request headers
-
-- **Content-Type**: application/json
-- **Accept**: application/json
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
-[[Back to Model list]](../README.md#documentation-for-models)
-[[Back to README]](../README.md)
 
 
 ## AuthControllerChangePassword

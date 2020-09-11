@@ -32,7 +32,11 @@ type Organization struct {
 	StripeInfo StripeInfo `json:"stripeInfo,omitempty"`
 	TeleopConfiguration UserTeleopConfiguration `json:"teleopConfiguration,omitempty"`
 	TeleopEnabled bool `json:"teleopEnabled,omitempty"`
+	AnalyticsEnabled bool `json:"analyticsEnabled,omitempty"`
 	StripeBillingEnabled bool `json:"stripeBillingEnabled,omitempty"`
+	StripeSubscriptionEnabled bool `json:"stripeSubscriptionEnabled,omitempty"`
+	S3ExportEnabled bool `json:"s3ExportEnabled,omitempty"`
+	DaysDataRetained int64 `json:"daysDataRetained,omitempty"`
 	ExternalId string `json:"externalId,omitempty"`
 	Id string `json:"id,omitempty"`
 	CreatedAt time.Time `json:"createdAt,omitempty"`

@@ -43,7 +43,6 @@ Class | Method | HTTP request | Description
 *AnnotationTemplateApi* | [**AnnotationTemplateControllerPatch**](docs/AnnotationTemplateApi.md#annotationtemplatecontrollerpatch) | **Patch** /annotation-templates/{id} | Patch
 *AnnotationTemplateApi* | [**AnnotationTemplateControllerPost**](docs/AnnotationTemplateApi.md#annotationtemplatecontrollerpost) | **Post** /annotation-templates | Post
 *AnnotationTemplateApi* | [**AnnotationTemplateControllerQueryAnnotationFieldValues**](docs/AnnotationTemplateApi.md#annotationtemplatecontrollerqueryannotationfieldvalues) | **Post** /annotation-templates/query | Query annotation field values
-*AuthApi* | [**AuthControllerAdminSignup**](docs/AuthApi.md#authcontrolleradminsignup) | **Post** /auth/admin-signup | Admin signup
 *AuthApi* | [**AuthControllerChangePassword**](docs/AuthApi.md#authcontrollerchangepassword) | **Post** /auth/change-password | Change password
 *AuthApi* | [**AuthControllerConfirmForgotPassword**](docs/AuthApi.md#authcontrollerconfirmforgotpassword) | **Post** /auth/confirm-forgot-password | Confirm forgot password
 *AuthApi* | [**AuthControllerDeviceCredentials**](docs/AuthApi.md#authcontrollerdevicecredentials) | **Post** /auth/device-credentials | Device credentials
@@ -146,7 +145,6 @@ Class | Method | HTTP request | Description
 
 ## Documentation For Models
 
- - [AdminSignupRequest](docs/AdminSignupRequest.md)
  - [Annotation](docs/Annotation.md)
  - [AnnotationField](docs/AnnotationField.md)
  - [AnnotationFieldValue](docs/AnnotationFieldValue.md)

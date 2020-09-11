@@ -19,6 +19,7 @@ type PartialAnnotation struct {
 	UserId string `json:"userId,omitempty"`
 	AnnotationTemplateId string `json:"annotationTemplateId,omitempty"`
 	TaggedUsers *interface{} `json:"taggedUsers,omitempty"`
+	PublishedTo interface{} `json:"publishedTo,omitempty"`
 	Id string `json:"id,omitempty"`
 	CreatedAt time.Time `json:"createdAt,omitempty"`
 	UpdatedAt time.Time `json:"updatedAt,omitempty"`

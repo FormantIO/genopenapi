@@ -11,6 +11,8 @@ package admin_api
 // StripeInfo struct for StripeInfo
 type StripeInfo struct {
 	CustomerId string `json:"customerId"`
-	SubscriptionId string `json:"subscriptionId"`
+	SubscriptionId string `json:"subscriptionId,omitempty"`
 	Card StripeCard `json:"card,omitempty"`
+	BillingAnchor interface{} `json:"billingAnchor,omitempty"`
+	BillingPeriod string `json:"billingPeriod,omitempty"`
 }

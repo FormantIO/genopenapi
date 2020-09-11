@@ -10,6 +10,7 @@ Name | Type | Description | Notes
 **Description** | **string** |  | [optional] 
 **Fields** | [**[]AnnotationField**](AnnotationField.md) |  | [optional] 
 **Enabled** | **bool** |  | [optional] 
+**PublishToGoogleSpreadsheetUrl** | Pointer to **string** |  | [optional] 
 **Id** | **string** |  | [optional] 
 **CreatedAt** | [**time.Time**](time.Time.md) |  | [optional] 
 **UpdatedAt** | [**time.Time**](time.Time.md) |  | [optional] 
