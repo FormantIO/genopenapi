@@ -12,6 +12,7 @@ package admin_api
 type DeviceState struct {
 	AgentVersion *string `json:"agentVersion,omitempty"`
 	ReportedConfiguration *DeviceReportedConfigurationState `json:"reportedConfiguration,omitempty"`
+	HwInfo *HwInfo `json:"hwInfo,omitempty"`
 	Ros *DeviceRosState `json:"ros,omitempty"`
 	Env *map[string]string `json:"env,omitempty"`
 	OtaEnabled *bool `json:"otaEnabled,omitempty"`

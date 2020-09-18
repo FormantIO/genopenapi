@@ -11,6 +11,7 @@ Name | Type | Description | Notes
 **AnnotationTemplateId** | **string** |  | [optional] 
 **TaggedUsers** | Pointer to **interface{}** |  | [optional] 
 **PublishedTo** | **interface{}** |  | [optional] 
+**Note** | Pointer to **string** |  | [optional] 
 **Id** | **string** |  | [optional] 
 **CreatedAt** | [**time.Time**](time.Time.md) |  | [optional] 
 **UpdatedAt** | [**time.Time**](time.Time.md) |  | [optional] 

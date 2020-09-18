@@ -6,6 +6,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **AgentVersion** | Pointer to **string** |  | [optional] 
 **ReportedConfiguration** | Pointer to [**DeviceReportedConfigurationState**](DeviceReportedConfigurationState.md) |  | [optional] 
+**HwInfo** | Pointer to [**HwInfo**](HwInfo.md) |  | [optional] 
 **Ros** | Pointer to [**DeviceRosState**](DeviceRosState.md) |  | [optional] 
 **Env** | Pointer to **map[string]string** |  | [optional] 
 **OtaEnabled** | Pointer to **bool** |  | [optional] 

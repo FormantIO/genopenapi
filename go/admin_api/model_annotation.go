@@ -20,6 +20,7 @@ type Annotation struct {
 	AnnotationTemplateId string `json:"annotationTemplateId,omitempty"`
 	TaggedUsers *interface{} `json:"taggedUsers,omitempty"`
 	PublishedTo interface{} `json:"publishedTo,omitempty"`
+	Note *string `json:"note,omitempty"`
 	Id string `json:"id,omitempty"`
 	CreatedAt time.Time `json:"createdAt,omitempty"`
 	UpdatedAt time.Time `json:"updatedAt,omitempty"`
