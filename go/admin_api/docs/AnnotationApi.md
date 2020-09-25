@@ -1,6 +1,6 @@
 # \AnnotationApi
 
-All URIs are relative to *https://api.formant.io/v1/admin*
+All URIs are relative to *https://api-dev.formant.io/v1/admin*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
@@ -17,7 +17,7 @@ Method | HTTP request | Description
 
 Delete
 
-Delete an annotation
+Delete an annotation Authorized clients: operator
 
 ### Required Parameters
 
@@ -33,7 +33,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-Use admin JWT for authorization
+[bearerAuth](../README.md#bearerAuth)
 
 ### HTTP request headers
 
@@ -51,7 +51,7 @@ Use admin JWT for authorization
 
 Get one
 
-Get an annotation
+Get an annotation Authorized clients: viewer
 
 ### Required Parameters
 
@@ -67,7 +67,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-Use admin JWT for authorization
+[bearerAuth](../README.md#bearerAuth)
 
 ### HTTP request headers
 
@@ -85,7 +85,7 @@ Use admin JWT for authorization
 
 Patch
 
-Update an annotation
+Update an annotation Authorized clients: operator
 
 ### Required Parameters
 
@@ -102,7 +102,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-Use admin JWT for authorization
+[bearerAuth](../README.md#bearerAuth)
 
 ### HTTP request headers
 
@@ -120,7 +120,7 @@ Use admin JWT for authorization
 
 Post
 
-Create an annotation
+Create an annotation Authorized clients: operator
 
 ### Required Parameters
 
@@ -136,7 +136,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-Use admin JWT for authorization
+[bearerAuth](../README.md#bearerAuth)
 
 ### HTTP request headers
 

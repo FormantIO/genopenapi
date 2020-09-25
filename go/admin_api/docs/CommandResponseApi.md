@@ -1,6 +1,6 @@
 # \CommandResponseApi
 
-All URIs are relative to *https://api.formant.io/v1/admin*
+All URIs are relative to *https://api-dev.formant.io/v1/admin*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
@@ -14,7 +14,7 @@ Method | HTTP request | Description
 
 Post
 
-Respond to a command
+Respond to a command Authorized clients: device
 
 ### Required Parameters
 
@@ -30,7 +30,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-Use admin JWT for authorization
+[bearerAuth](../README.md#bearerAuth)
 
 ### HTTP request headers
 

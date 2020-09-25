@@ -1,6 +1,6 @@
 # \AnnotationTemplateApi
 
-All URIs are relative to *https://api.formant.io/v1/admin*
+All URIs are relative to *https://api-dev.formant.io/v1/admin*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
@@ -20,7 +20,7 @@ Method | HTTP request | Description
 
 Delete
 
-Delete an annotation template
+Delete an annotation template Authorized clients: administrator
 
 ### Required Parameters
 
@@ -36,7 +36,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-Use admin JWT for authorization
+[bearerAuth](../README.md#bearerAuth)
 
 ### HTTP request headers
 
@@ -54,7 +54,7 @@ Use admin JWT for authorization
 
 Get one
 
-Get an annotation template
+Get an annotation template Authorized clients: viewer
 
 ### Required Parameters
 
@@ -70,7 +70,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-Use admin JWT for authorization
+[bearerAuth](../README.md#bearerAuth)
 
 ### HTTP request headers
 
@@ -88,7 +88,7 @@ Use admin JWT for authorization
 
 Inspect spreadsheet
 
-Returns information about the Spreadsheet and its content
+Returns information about the Spreadsheet and its content Authorized clients: viewer
 
 ### Required Parameters
 
@@ -104,7 +104,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-Use admin JWT for authorization
+[bearerAuth](../README.md#bearerAuth)
 
 ### HTTP request headers
 
@@ -122,7 +122,7 @@ Use admin JWT for authorization
 
 List
 
-List annotation templates
+List annotation templates Authorized clients: viewer
 
 ### Required Parameters
 
@@ -134,7 +134,7 @@ This endpoint does not need any parameter.
 
 ### Authorization
 
-Use admin JWT for authorization
+[bearerAuth](../README.md#bearerAuth)
 
 ### HTTP request headers
 
@@ -152,7 +152,7 @@ Use admin JWT for authorization
 
 Patch
 
-Update an annotation template
+Update an annotation template Authorized clients: administrator
 
 ### Required Parameters
 
@@ -169,7 +169,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-Use admin JWT for authorization
+[bearerAuth](../README.md#bearerAuth)
 
 ### HTTP request headers
 
@@ -187,7 +187,7 @@ Use admin JWT for authorization
 
 Post
 
-Create an annotation template
+Create an annotation template Authorized clients: administrator
 
 ### Required Parameters
 
@@ -203,7 +203,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-Use admin JWT for authorization
+[bearerAuth](../README.md#bearerAuth)
 
 ### HTTP request headers
 
@@ -221,7 +221,7 @@ Use admin JWT for authorization
 
 Query annotation field values
 
-Query annotation template field values
+Query annotation template field values Authorized clients: viewer
 
 ### Required Parameters
 
@@ -237,7 +237,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-Use admin JWT for authorization
+[bearerAuth](../README.md#bearerAuth)
 
 ### HTTP request headers
 

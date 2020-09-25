@@ -1,6 +1,6 @@
 # \MetadataApi
 
-All URIs are relative to *https://api.formant.io/v1/queries*
+All URIs are relative to *https://api-dev.formant.io/v1/queries*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
@@ -15,6 +15,8 @@ Method | HTTP request | Description
 > UuidListResponse MetadataControllerListDeviceIds(ctx, optional)
 
 List device ids
+
+Authorized clients: viewer
 
 ### Required Parameters
 
@@ -39,7 +41,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-Use admin JWT for authorization
+[bearerAuth](../README.md#bearerAuth)
 
 ### HTTP request headers
 
@@ -56,6 +58,8 @@ Use admin JWT for authorization
 > MetadataListResponse MetadataControllerListMetadata(ctx, optional)
 
 List metadata
+
+Authorized clients: viewer
 
 ### Required Parameters
 
@@ -80,7 +84,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-Use admin JWT for authorization
+[bearerAuth](../README.md#bearerAuth)
 
 ### HTTP request headers
 
@@ -97,6 +101,8 @@ Use admin JWT for authorization
 > StringListResponse MetadataControllerListStreamNames(ctx, optional)
 
 List stream names
+
+Authorized clients: viewer
 
 ### Required Parameters
 
@@ -121,7 +127,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-Use admin JWT for authorization
+[bearerAuth](../README.md#bearerAuth)
 
 ### HTTP request headers
 

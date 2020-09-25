@@ -1,6 +1,6 @@
 # \EventApi
 
-All URIs are relative to *https://api.formant.io/v1/admin*
+All URIs are relative to *https://api-dev.formant.io/v1/admin*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
@@ -29,7 +29,7 @@ Method | HTTP request | Description
 
 Annotation templates
 
-Distinct values of event annotation templates
+Distinct values of event annotation templates Authorized clients: viewer
 
 ### Required Parameters
 
@@ -54,7 +54,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-Use admin JWT for authorization
+[bearerAuth](../README.md#bearerAuth)
 
 ### HTTP request headers
 
@@ -72,7 +72,7 @@ Use admin JWT for authorization
 
 Count
 
-Count events
+Count events Authorized clients: viewer
 
 ### Required Parameters
 
@@ -97,7 +97,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-Use admin JWT for authorization
+[bearerAuth](../README.md#bearerAuth)
 
 ### HTTP request headers
 
@@ -115,7 +115,7 @@ Use admin JWT for authorization
 
 Counts
 
-Count events
+Count events Authorized clients: viewer
 
 ### Required Parameters
 
@@ -140,7 +140,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-Use admin JWT for authorization
+[bearerAuth](../README.md#bearerAuth)
 
 ### HTTP request headers
 
@@ -158,7 +158,7 @@ Use admin JWT for authorization
 
 Devices
 
-Distinct values of event devices
+Distinct values of event devices Authorized clients: viewer
 
 ### Required Parameters
 
@@ -183,7 +183,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-Use admin JWT for authorization
+[bearerAuth](../README.md#bearerAuth)
 
 ### HTTP request headers
 
@@ -201,7 +201,7 @@ Use admin JWT for authorization
 
 Event types
 
-Distinct values of event types
+Distinct values of event types Authorized clients: viewer
 
 ### Required Parameters
 
@@ -226,7 +226,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-Use admin JWT for authorization
+[bearerAuth](../README.md#bearerAuth)
 
 ### HTTP request headers
 
@@ -244,7 +244,7 @@ Use admin JWT for authorization
 
 Export sheet
 
-Export events as Google Sheet
+Export events as Google Sheet Authorized clients: viewer
 
 ### Required Parameters
 
@@ -260,7 +260,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-Use admin JWT for authorization
+[bearerAuth](../README.md#bearerAuth)
 
 ### HTTP request headers
 
@@ -278,7 +278,7 @@ Use admin JWT for authorization
 
 Get one
 
-Get an event
+Get an event Authorized clients: viewer
 
 ### Required Parameters
 
@@ -294,7 +294,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-Use admin JWT for authorization
+[bearerAuth](../README.md#bearerAuth)
 
 ### HTTP request headers
 
@@ -312,7 +312,7 @@ Use admin JWT for authorization
 
 Histogram
 
-Event histogram
+Event histogram Authorized clients: viewer
 
 ### Required Parameters
 
@@ -328,7 +328,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-Use admin JWT for authorization
+[bearerAuth](../README.md#bearerAuth)
 
 ### HTTP request headers
 
@@ -346,7 +346,7 @@ Use admin JWT for authorization
 
 Query
 
-Query events
+Query events Authorized clients: viewer
 
 ### Required Parameters
 
@@ -371,7 +371,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-Use admin JWT for authorization
+[bearerAuth](../README.md#bearerAuth)
 
 ### HTTP request headers
 
@@ -389,7 +389,7 @@ Use admin JWT for authorization
 
 Seek
 
-Seek event
+Seek event Authorized clients: viewer
 
 ### Required Parameters
 
@@ -405,7 +405,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-Use admin JWT for authorization
+[bearerAuth](../README.md#bearerAuth)
 
 ### HTTP request headers
 
@@ -423,7 +423,7 @@ Use admin JWT for authorization
 
 Severities
 
-Distinct values of event severities
+Distinct values of event severities Authorized clients: viewer
 
 ### Required Parameters
 
@@ -448,7 +448,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-Use admin JWT for authorization
+[bearerAuth](../README.md#bearerAuth)
 
 ### HTTP request headers
 
@@ -466,7 +466,7 @@ Use admin JWT for authorization
 
 Stream names
 
-Distinct values of event stream names
+Distinct values of event stream names Authorized clients: viewer
 
 ### Required Parameters
 
@@ -491,7 +491,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-Use admin JWT for authorization
+[bearerAuth](../README.md#bearerAuth)
 
 ### HTTP request headers
 
@@ -509,7 +509,7 @@ Use admin JWT for authorization
 
 Stream types
 
-Distinct values of event stream types
+Distinct values of event stream types Authorized clients: viewer
 
 ### Required Parameters
 
@@ -534,7 +534,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-Use admin JWT for authorization
+[bearerAuth](../README.md#bearerAuth)
 
 ### HTTP request headers
 
@@ -552,7 +552,7 @@ Use admin JWT for authorization
 
 Tags
 
-Distinct values of event tags
+Distinct values of event tags Authorized clients: viewer
 
 ### Required Parameters
 
@@ -577,7 +577,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-Use admin JWT for authorization
+[bearerAuth](../README.md#bearerAuth)
 
 ### HTTP request headers
 
@@ -595,7 +595,7 @@ Use admin JWT for authorization
 
 Users
 
-Distinct values of event users
+Distinct values of event users Authorized clients: viewer
 
 ### Required Parameters
 
@@ -620,7 +620,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-Use admin JWT for authorization
+[bearerAuth](../README.md#bearerAuth)
 
 ### HTTP request headers
 
@@ -638,7 +638,7 @@ Use admin JWT for authorization
 
 View
 
-Mark events as read
+Mark events as read Authorized clients: viewer
 
 ### Required Parameters
 
@@ -654,7 +654,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-Use admin JWT for authorization
+[bearerAuth](../README.md#bearerAuth)
 
 ### HTTP request headers
 

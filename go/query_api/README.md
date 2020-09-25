@@ -28,7 +28,7 @@ import "github.com/FormantIO/genopenapi/go/query_api"
 
 ## Documentation for API Endpoints
 
-All URIs are relative to *https://api.formant.io/v1/queries*
+All URIs are relative to *https://api-dev.formant.io/v1/queries*
 
 Class | Method | HTTP request | Description
 ------------ | ------------- | ------------- | -------------
@@ -66,7 +66,21 @@ Class | Method | HTTP request | Description
 
 ## Documentation For Authorization
 
- Login with admin credentials for authorization
+
+
+## bearerAuth
+
+- **Type**: HTTP basic authentication
+
+Example
+
+```golang
+auth := context.WithValue(context.Background(), sw.ContextBasicAuth, sw.BasicAuth{
+    UserName: "username",
+    Password: "password",
+})
+r, err := client.Service.Operation(auth, args)
+```
 
 
 

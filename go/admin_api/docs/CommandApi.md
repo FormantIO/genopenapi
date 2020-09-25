@@ -1,6 +1,6 @@
 # \CommandApi
 
-All URIs are relative to *https://api.formant.io/v1/admin*
+All URIs are relative to *https://api-dev.formant.io/v1/admin*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
@@ -17,7 +17,7 @@ Method | HTTP request | Description
 
 Get one
 
-Get a command
+Get a command Authorized clients: viewer
 
 ### Required Parameters
 
@@ -33,7 +33,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-Use admin JWT for authorization
+[bearerAuth](../README.md#bearerAuth)
 
 ### HTTP request headers
 
@@ -51,7 +51,7 @@ Use admin JWT for authorization
 
 Patch
 
-Update command
+Update command Authorized clients: operator
 
 ### Required Parameters
 
@@ -68,7 +68,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-Use admin JWT for authorization
+[bearerAuth](../README.md#bearerAuth)
 
 ### HTTP request headers
 
@@ -86,7 +86,7 @@ Use admin JWT for authorization
 
 Post
 
-Create a command
+Create a command Authorized clients: operator
 
 ### Required Parameters
 
@@ -102,7 +102,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-Use admin JWT for authorization
+[bearerAuth](../README.md#bearerAuth)
 
 ### HTTP request headers
 
@@ -120,7 +120,7 @@ Use admin JWT for authorization
 
 Query
 
-Query undelivered commands by device ID
+Query undelivered commands by device ID Authorized clients: viewer
 
 ### Required Parameters
 
@@ -136,7 +136,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-Use admin JWT for authorization
+[bearerAuth](../README.md#bearerAuth)
 
 ### HTTP request headers
 

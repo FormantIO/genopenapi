@@ -1,6 +1,6 @@
 # \DeviceApi
 
-All URIs are relative to *https://api.formant.io/v1/admin*
+All URIs are relative to *https://api-dev.formant.io/v1/admin*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
@@ -28,7 +28,7 @@ Method | HTTP request | Description
 
 Count
 
-Count devices
+Count devices Authorized clients: viewer
 
 ### Required Parameters
 
@@ -53,7 +53,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-Use admin JWT for authorization
+[bearerAuth](../README.md#bearerAuth)
 
 ### HTTP request headers
 
@@ -71,7 +71,7 @@ Use admin JWT for authorization
 
 Filter
 
-Query devices by name and/or tags
+Query devices by name and/or tags Authorized clients: viewer
 
 ### Required Parameters
 
@@ -96,7 +96,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-Use admin JWT for authorization
+[bearerAuth](../README.md#bearerAuth)
 
 ### HTTP request headers
 
@@ -114,7 +114,7 @@ Use admin JWT for authorization
 
 Generate device provisioning token
 
-Generate a device provisioning token
+Generate a device provisioning token Authorized clients: administrator
 
 ### Required Parameters
 
@@ -130,7 +130,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-Use admin JWT for authorization
+[bearerAuth](../README.md#bearerAuth)
 
 ### HTTP request headers
 
@@ -148,7 +148,7 @@ Use admin JWT for authorization
 
 Get configuration
 
-Get a device configuration
+Get a device configuration Authorized clients: viewer
 
 ### Required Parameters
 
@@ -165,7 +165,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-Use admin JWT for authorization
+[bearerAuth](../README.md#bearerAuth)
 
 ### HTTP request headers
 
@@ -183,7 +183,7 @@ Use admin JWT for authorization
 
 Get one
 
-Get a device
+Get a device Authorized clients: viewer, device
 
 ### Required Parameters
 
@@ -199,7 +199,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-Use admin JWT for authorization
+[bearerAuth](../README.md#bearerAuth)
 
 ### HTTP request headers
 
@@ -217,7 +217,7 @@ Use admin JWT for authorization
 
 Get tags
 
-Get tags across all devices
+Get tags across all devices Authorized clients: viewer
 
 ### Required Parameters
 
@@ -242,7 +242,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-Use admin JWT for authorization
+[bearerAuth](../README.md#bearerAuth)
 
 ### HTTP request headers
 
@@ -260,7 +260,7 @@ Use admin JWT for authorization
 
 Get updated agent version
 
-Check for agent version updates
+Check for agent version updates Authorized clients: device
 
 ### Required Parameters
 
@@ -287,7 +287,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-Use admin JWT for authorization
+[bearerAuth](../README.md#bearerAuth)
 
 ### HTTP request headers
 
@@ -305,7 +305,7 @@ Use admin JWT for authorization
 
 Get updated configuration
 
-Check for updated device configuration
+Check for updated device configuration Authorized clients: device
 
 ### Required Parameters
 
@@ -333,7 +333,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-Use admin JWT for authorization
+[bearerAuth](../README.md#bearerAuth)
 
 ### HTTP request headers
 
@@ -351,7 +351,7 @@ Use admin JWT for authorization
 
 Patch
 
-Update a device
+Update a device Authorized clients: administrator, device
 
 ### Required Parameters
 
@@ -368,7 +368,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-Use admin JWT for authorization
+[bearerAuth](../README.md#bearerAuth)
 
 ### HTTP request headers
 
@@ -386,7 +386,7 @@ Use admin JWT for authorization
 
 Post
 
-Create a device
+Create a device Authorized clients: administrator
 
 ### Required Parameters
 
@@ -402,7 +402,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-Use admin JWT for authorization
+[bearerAuth](../README.md#bearerAuth)
 
 ### HTTP request headers
 
@@ -420,7 +420,7 @@ Use admin JWT for authorization
 
 Post configuration
 
-Create a device configuration
+Create a device configuration Authorized clients: administrator
 
 ### Required Parameters
 
@@ -437,7 +437,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-Use admin JWT for authorization
+[bearerAuth](../README.md#bearerAuth)
 
 ### HTTP request headers
 
@@ -489,7 +489,7 @@ Use admin JWT for authorization
 
 Query
 
-Query devices by name and/or tags
+Query devices by name and/or tags Authorized clients: viewer
 
 ### Required Parameters
 
@@ -514,7 +514,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-Use admin JWT for authorization
+[bearerAuth](../README.md#bearerAuth)
 
 ### HTTP request headers
 
@@ -532,7 +532,7 @@ Use admin JWT for authorization
 
 Unprovision device
 
-Unprovision a device
+Unprovision a device Authorized clients: administrator
 
 ### Required Parameters
 
@@ -548,7 +548,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-Use admin JWT for authorization
+[bearerAuth](../README.md#bearerAuth)
 
 ### HTTP request headers
 
@@ -566,7 +566,7 @@ Use admin JWT for authorization
 
 Validate stream configuration
 
-Validate a device stream configuration
+Validate a device stream configuration Authorized clients: administrator
 
 ### Required Parameters
 
@@ -582,7 +582,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-Use admin JWT for authorization
+[bearerAuth](../README.md#bearerAuth)
 
 ### HTTP request headers
 

@@ -28,7 +28,7 @@ import "github.com/FormantIO/genopenapi/go/admin_api"
 
 ## Documentation for API Endpoints
 
-All URIs are relative to *https://api.formant.io/v1/admin*
+All URIs are relative to *https://api-dev.formant.io/v1/admin*
 
 Class | Method | HTTP request | Description
 ------------ | ------------- | ------------- | -------------
@@ -45,8 +45,10 @@ Class | Method | HTTP request | Description
 *AnnotationTemplateApi* | [**AnnotationTemplateControllerQueryAnnotationFieldValues**](docs/AnnotationTemplateApi.md#annotationtemplatecontrollerqueryannotationfieldvalues) | **Post** /annotation-templates/query | Query annotation field values
 *AuthApi* | [**AuthControllerChangePassword**](docs/AuthApi.md#authcontrollerchangepassword) | **Post** /auth/change-password | Change password
 *AuthApi* | [**AuthControllerConfirmForgotPassword**](docs/AuthApi.md#authcontrollerconfirmforgotpassword) | **Post** /auth/confirm-forgot-password | Confirm forgot password
+*AuthApi* | [**AuthControllerCreateServiceAccount**](docs/AuthApi.md#authcontrollercreateserviceaccount) | **Post** /auth/service-account | Create service account
 *AuthApi* | [**AuthControllerDeviceCredentials**](docs/AuthApi.md#authcontrollerdevicecredentials) | **Post** /auth/device-credentials | Device credentials
 *AuthApi* | [**AuthControllerForgotPassword**](docs/AuthApi.md#authcontrollerforgotpassword) | **Post** /auth/forgot-password | Forgot password
+*AuthApi* | [**AuthControllerGenerateAccessToken**](docs/AuthApi.md#authcontrollergenerateaccesstoken) | **Post** /auth/access-token | Generate access token
 *AuthApi* | [**AuthControllerLogin**](docs/AuthApi.md#authcontrollerlogin) | **Post** /auth/login | Login
 *AuthApi* | [**AuthControllerRefresh**](docs/AuthApi.md#authcontrollerrefresh) | **Post** /auth/refresh | Refresh
 *AuthApi* | [**AuthControllerResendConfirmationCode**](docs/AuthApi.md#authcontrollerresendconfirmationcode) | **Post** /auth/resend-confirmation-code | Resend confirmation code
@@ -124,14 +126,10 @@ Class | Method | HTTP request | Description
 *InterventionRequestApi* | [**InterventionRequestControllerGetOne**](docs/InterventionRequestApi.md#interventionrequestcontrollergetone) | **Get** /intervention-requests/{id} | Get one
 *InterventionRequestApi* | [**InterventionRequestControllerPost**](docs/InterventionRequestApi.md#interventionrequestcontrollerpost) | **Post** /intervention-requests | Post
 *InterventionResponseApi* | [**InterventionResponseControllerPost**](docs/InterventionResponseApi.md#interventionresponsecontrollerpost) | **Post** /intervention-responses | Post
-*PortForwardingRecordApi* | [**PortForwardingRecordControllerPost**](docs/PortForwardingRecordApi.md#portforwardingrecordcontrollerpost) | **Post** /port-forwarding-session-records | Post
 *ShareApi* | [**ShareControllerAuthenticate**](docs/ShareApi.md#sharecontrollerauthenticate) | **Post** /shares/{code}/authenticate | Authenticate
 *ShareApi* | [**ShareControllerGetOne**](docs/ShareApi.md#sharecontrollergetone) | **Get** /shares/{code} | Get one
 *ShareApi* | [**ShareControllerPost**](docs/ShareApi.md#sharecontrollerpost) | **Post** /shares | Post
-*SystemEventApi* | [**SystemEventControllerPost**](docs/SystemEventApi.md#systemeventcontrollerpost) | **Post** /system-events | Post
-*TeleopSessionRecordApi* | [**TeleopSessionRecordControllerPost**](docs/TeleopSessionRecordApi.md#teleopsessionrecordcontrollerpost) | **Post** /teleop-session-records | Post
 *TriggeredEventApi* | [**TriggeredEventControllerGetOne**](docs/TriggeredEventApi.md#triggeredeventcontrollergetone) | **Get** /triggered-events/{id} | Get one
-*TriggeredEventApi* | [**TriggeredEventControllerPost**](docs/TriggeredEventApi.md#triggeredeventcontrollerpost) | **Post** /triggered-events | Post
 *UserApi* | [**UserControllerGetAll**](docs/UserApi.md#usercontrollergetall) | **Get** /users | Get all
 *UserApi* | [**UserControllerGetOne**](docs/UserApi.md#usercontrollergetone) | **Get** /users/{id} | Get one
 *UserApi* | [**UserControllerPatch**](docs/UserApi.md#usercontrollerpatch) | **Patch** /users/{id} | Patch
@@ -168,6 +166,7 @@ Class | Method | HTTP request | Description
  - [Command](docs/Command.md)
  - [CommandListResponse](docs/CommandListResponse.md)
  - [CommandParameter](docs/CommandParameter.md)
+ - [CommandProgress](docs/CommandProgress.md)
  - [CommandQuery](docs/CommandQuery.md)
  - [CommandRequest](docs/CommandRequest.md)
  - [CommandRequestListResponse](docs/CommandRequestListResponse.md)
@@ -176,6 +175,8 @@ Class | Method | HTTP request | Description
  - [CommandTemplateListResponse](docs/CommandTemplateListResponse.md)
  - [Comment](docs/Comment.md)
  - [ConfirmForgotPasswordRequest](docs/ConfirmForgotPasswordRequest.md)
+ - [CreateServiceAccountRequest](docs/CreateServiceAccountRequest.md)
+ - [CreateServiceAccountResponse](docs/CreateServiceAccountResponse.md)
  - [CustomEvent](docs/CustomEvent.md)
  - [Device](docs/Device.md)
  - [DeviceApplicationConfiguration](docs/DeviceApplicationConfiguration.md)
@@ -222,6 +223,8 @@ Class | Method | HTTP request | Description
  - [ExportSheetResult](docs/ExportSheetResult.md)
  - [Filter](docs/Filter.md)
  - [ForgotPasswordRequest](docs/ForgotPasswordRequest.md)
+ - [GenerateAccessTokenRequest](docs/GenerateAccessTokenRequest.md)
+ - [GenerateAccessTokenResponse](docs/GenerateAccessTokenResponse.md)
  - [GoogleAuthRequest](docs/GoogleAuthRequest.md)
  - [GoogleInfo](docs/GoogleInfo.md)
  - [GoogleSheetParseResult](docs/GoogleSheetParseResult.md)
@@ -269,7 +272,6 @@ Class | Method | HTTP request | Description
  - [PartialView](docs/PartialView.md)
  - [PointCloudViewConfiguration](docs/PointCloudViewConfiguration.md)
  - [PollCommandRequest](docs/PollCommandRequest.md)
- - [PortForwardingSessionRecord](docs/PortForwardingSessionRecord.md)
  - [PresenceEventTriggerCondition](docs/PresenceEventTriggerCondition.md)
  - [RefreshRequest](docs/RefreshRequest.md)
  - [RegexEventTriggerCondition](docs/RegexEventTriggerCondition.md)
@@ -287,12 +289,10 @@ Class | Method | HTTP request | Description
  - [StringListResponse](docs/StringListResponse.md)
  - [StripeCard](docs/StripeCard.md)
  - [StripeInfo](docs/StripeInfo.md)
- - [SystemEvent](docs/SystemEvent.md)
  - [TagParameters](docs/TagParameters.md)
  - [TagsResponse](docs/TagsResponse.md)
  - [TeleopJoystickAxisConfiguration](docs/TeleopJoystickAxisConfiguration.md)
  - [TeleopJoystickConfiguration](docs/TeleopJoystickConfiguration.md)
- - [TeleopSessionRecord](docs/TeleopSessionRecord.md)
  - [TeleopViewConfiguration](docs/TeleopViewConfiguration.md)
  - [ThresholdEventTriggerCondition](docs/ThresholdEventTriggerCondition.md)
  - [TokenResult](docs/TokenResult.md)
@@ -319,7 +319,21 @@ Class | Method | HTTP request | Description
 
 ## Documentation For Authorization
 
- Login with admin credentials for authorization
+
+
+## bearerAuth
+
+- **Type**: HTTP basic authentication
+
+Example
+
+```golang
+auth := context.WithValue(context.Background(), sw.ContextBasicAuth, sw.BasicAuth{
+    UserName: "username",
+    Password: "password",
+})
+r, err := client.Service.Operation(auth, args)
+```
 
 
 

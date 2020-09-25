@@ -11,6 +11,7 @@ Name | Type | Description | Notes
 **Env** | Pointer to **map[string]string** |  | [optional] 
 **OtaEnabled** | Pointer to **bool** |  | [optional] 
 **OnDemand** | Pointer to [**OnDemandState**](OnDemandState.md) |  | [optional] 
+**CommandProgress** | Pointer to **[]interface{}** |  | [optional] 
 **Version** | Pointer to **string** |  | [optional] 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

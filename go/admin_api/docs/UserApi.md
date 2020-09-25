@@ -1,6 +1,6 @@
 # \UserApi
 
-All URIs are relative to *https://api.formant.io/v1/admin*
+All URIs are relative to *https://api-dev.formant.io/v1/admin*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
@@ -17,7 +17,7 @@ Method | HTTP request | Description
 
 Get all
 
-List all users
+List all users Authorized clients: viewer
 
 ### Required Parameters
 
@@ -29,7 +29,7 @@ This endpoint does not need any parameter.
 
 ### Authorization
 
-Use admin JWT for authorization
+[bearerAuth](../README.md#bearerAuth)
 
 ### HTTP request headers
 
@@ -47,7 +47,7 @@ Use admin JWT for authorization
 
 Get one
 
-Get a user
+Get a user Authorized clients: viewer
 
 ### Required Parameters
 
@@ -63,7 +63,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-Use admin JWT for authorization
+[bearerAuth](../README.md#bearerAuth)
 
 ### HTTP request headers
 
@@ -81,7 +81,7 @@ Use admin JWT for authorization
 
 Patch
 
-Update a user
+Update a user Authorized clients: viewer
 
 ### Required Parameters
 
@@ -98,7 +98,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-Use admin JWT for authorization
+[bearerAuth](../README.md#bearerAuth)
 
 ### HTTP request headers
 
@@ -116,7 +116,7 @@ Use admin JWT for authorization
 
 Post
 
-Create a user
+Create a user Authorized clients: administrator
 
 ### Required Parameters
 
@@ -132,7 +132,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-Use admin JWT for authorization
+[bearerAuth](../README.md#bearerAuth)
 
 ### HTTP request headers
 

@@ -1,6 +1,6 @@
 # \OnlineDevicesApi
 
-All URIs are relative to *https://api.formant.io/v1/queries*
+All URIs are relative to *https://api-dev.formant.io/v1/queries*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
@@ -14,6 +14,8 @@ Method | HTTP request | Description
 
 Online
 
+Authorized clients: viewer
+
 ### Required Parameters
 
 This endpoint does not need any parameter.
@@ -24,7 +26,7 @@ This endpoint does not need any parameter.
 
 ### Authorization
 
-Use admin JWT for authorization
+[bearerAuth](../README.md#bearerAuth)
 
 ### HTTP request headers
 

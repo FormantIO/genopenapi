@@ -1,6 +1,6 @@
 # \IntegrationApi
 
-All URIs are relative to *https://api.formant.io/v1/admin*
+All URIs are relative to *https://api-dev.formant.io/v1/admin*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
@@ -15,7 +15,7 @@ Method | HTTP request | Description
 
 Google
 
-Create a Google integration
+Create a Google integration Authorized clients: administrator
 
 ### Required Parameters
 
@@ -31,7 +31,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-Use admin JWT for authorization
+[bearerAuth](../README.md#bearerAuth)
 
 ### HTTP request headers
 
@@ -49,7 +49,7 @@ Use admin JWT for authorization
 
 Slack
 
-Create a Slack integration
+Create a Slack integration Authorized clients: administrator
 
 ### Required Parameters
 
@@ -65,7 +65,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-Use admin JWT for authorization
+[bearerAuth](../README.md#bearerAuth)
 
 ### HTTP request headers
 

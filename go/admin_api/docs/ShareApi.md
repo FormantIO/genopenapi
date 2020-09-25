@@ -1,6 +1,6 @@
 # \ShareApi
 
-All URIs are relative to *https://api.formant.io/v1/admin*
+All URIs are relative to *https://api-dev.formant.io/v1/admin*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
@@ -82,7 +82,7 @@ Use admin JWT for authorization
 
 Post
 
-Create a share token
+Create a share token Authorized clients: operator
 
 ### Required Parameters
 
@@ -98,7 +98,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-Use admin JWT for authorization
+[bearerAuth](../README.md#bearerAuth)
 
 ### HTTP request headers
 

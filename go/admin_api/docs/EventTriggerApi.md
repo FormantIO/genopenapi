@@ -1,6 +1,6 @@
 # \EventTriggerApi
 
-All URIs are relative to *https://api.formant.io/v1/admin*
+All URIs are relative to *https://api-dev.formant.io/v1/admin*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
@@ -18,7 +18,7 @@ Method | HTTP request | Description
 
 Get all
 
-List all event triggers
+List all event triggers Authorized clients: viewer, device
 
 ### Required Parameters
 
@@ -30,7 +30,7 @@ This endpoint does not need any parameter.
 
 ### Authorization
 
-Use admin JWT for authorization
+[bearerAuth](../README.md#bearerAuth)
 
 ### HTTP request headers
 
@@ -48,7 +48,7 @@ Use admin JWT for authorization
 
 Get one
 
-Get an event trigger
+Get an event trigger Authorized clients: viewer, device
 
 ### Required Parameters
 
@@ -64,7 +64,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-Use admin JWT for authorization
+[bearerAuth](../README.md#bearerAuth)
 
 ### HTTP request headers
 
@@ -82,7 +82,7 @@ Use admin JWT for authorization
 
 Patch
 
-Update event trigger
+Update event trigger Authorized clients: administrator
 
 ### Required Parameters
 
@@ -99,7 +99,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-Use admin JWT for authorization
+[bearerAuth](../README.md#bearerAuth)
 
 ### HTTP request headers
 
@@ -117,7 +117,7 @@ Use admin JWT for authorization
 
 Post
 
-Create event trigger
+Create event trigger Authorized clients: administrator
 
 ### Required Parameters
 
@@ -133,7 +133,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-Use admin JWT for authorization
+[bearerAuth](../README.md#bearerAuth)
 
 ### HTTP request headers
 
@@ -151,7 +151,7 @@ Use admin JWT for authorization
 
 Query
 
-Get updated event trigger configuration
+Get updated event trigger configuration Authorized clients: device
 
 ### Required Parameters
 
@@ -167,7 +167,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-Use admin JWT for authorization
+[bearerAuth](../README.md#bearerAuth)
 
 ### HTTP request headers
 

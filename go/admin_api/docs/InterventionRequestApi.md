@@ -1,6 +1,6 @@
 # \InterventionRequestApi
 
-All URIs are relative to *https://api.formant.io/v1/admin*
+All URIs are relative to *https://api-dev.formant.io/v1/admin*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
@@ -15,7 +15,7 @@ Method | HTTP request | Description
 
 Get one
 
-Get an intervention request
+Get an intervention request Authorized clients: viewer, device
 
 ### Required Parameters
 
@@ -31,7 +31,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-Use admin JWT for authorization
+[bearerAuth](../README.md#bearerAuth)
 
 ### HTTP request headers
 
@@ -49,7 +49,7 @@ Use admin JWT for authorization
 
 Post
 
-Create an intervention request
+Create an intervention request Authorized clients: device
 
 ### Required Parameters
 
@@ -65,7 +65,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-Use admin JWT for authorization
+[bearerAuth](../README.md#bearerAuth)
 
 ### HTTP request headers
 

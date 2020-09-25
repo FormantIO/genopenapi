@@ -1,6 +1,6 @@
 # \CountApi
 
-All URIs are relative to *https://api.formant.io/v1/queries*
+All URIs are relative to *https://api-dev.formant.io/v1/queries*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------

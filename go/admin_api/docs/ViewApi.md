@@ -1,6 +1,6 @@
 # \ViewApi
 
-All URIs are relative to *https://api.formant.io/v1/admin*
+All URIs are relative to *https://api-dev.formant.io/v1/admin*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
@@ -18,7 +18,7 @@ Method | HTTP request | Description
 
 Delete
 
-Delete a device layout
+Delete a device layout Authorized clients: administrator
 
 ### Required Parameters
 
@@ -34,7 +34,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-Use admin JWT for authorization
+[bearerAuth](../README.md#bearerAuth)
 
 ### HTTP request headers
 
@@ -52,7 +52,7 @@ Use admin JWT for authorization
 
 Get all
 
-List all device layouts
+List all device layouts Authorized clients: viewer
 
 ### Required Parameters
 
@@ -64,7 +64,7 @@ This endpoint does not need any parameter.
 
 ### Authorization
 
-Use admin JWT for authorization
+[bearerAuth](../README.md#bearerAuth)
 
 ### HTTP request headers
 
@@ -82,7 +82,7 @@ Use admin JWT for authorization
 
 Get one
 
-Get a device layout
+Get a device layout Authorized clients: viewer
 
 ### Required Parameters
 
@@ -98,7 +98,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-Use admin JWT for authorization
+[bearerAuth](../README.md#bearerAuth)
 
 ### HTTP request headers
 
@@ -116,7 +116,7 @@ Use admin JWT for authorization
 
 Patch
 
-Update a device layout
+Update a device layout Authorized clients: administrator
 
 ### Required Parameters
 
@@ -133,7 +133,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-Use admin JWT for authorization
+[bearerAuth](../README.md#bearerAuth)
 
 ### HTTP request headers
 
@@ -151,7 +151,7 @@ Use admin JWT for authorization
 
 Post
 
-Create a device layout
+Create a device layout Authorized clients: administrator
 
 ### Required Parameters
 
@@ -167,7 +167,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-Use admin JWT for authorization
+[bearerAuth](../README.md#bearerAuth)
 
 ### HTTP request headers
 

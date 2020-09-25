@@ -1,6 +1,6 @@
 # \QueryApi
 
-All URIs are relative to *https://api.formant.io/v1/queries*
+All URIs are relative to *https://api-dev.formant.io/v1/queries*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
@@ -13,6 +13,8 @@ Method | HTTP request | Description
 > StreamDataListResponse QueryControllerQuery(ctx, query)
 
 Query
+
+Authorized clients: viewer
 
 ### Required Parameters
 
@@ -28,7 +30,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-Use admin JWT for authorization
+[bearerAuth](../README.md#bearerAuth)
 
 ### HTTP request headers
 

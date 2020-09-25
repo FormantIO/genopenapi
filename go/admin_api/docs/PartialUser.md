@@ -14,6 +14,8 @@ Name | Type | Description | Notes
 **IsOrganizationOwner** | **bool** |  | [optional] 
 **TermsAccepted** | **string** |  | [optional] 
 **LastLoggedIn** | [**time.Time**](time.Time.md) |  | [optional] 
+**PasswordHash** | Pointer to **string** |  | [optional] 
+**IsServiceAccount** | **bool** |  | [optional] 
 **Id** | **string** |  | [optional] 
 **CreatedAt** | [**time.Time**](time.Time.md) |  | [optional] 
 **UpdatedAt** | [**time.Time**](time.Time.md) |  | [optional] 

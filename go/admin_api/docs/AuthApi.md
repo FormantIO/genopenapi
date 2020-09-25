@@ -1,13 +1,15 @@
 # \AuthApi
 
-All URIs are relative to *https://api.formant.io/v1/admin*
+All URIs are relative to *https://api-dev.formant.io/v1/admin*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
 [**AuthControllerChangePassword**](AuthApi.md#AuthControllerChangePassword) | **Post** /auth/change-password | Change password
 [**AuthControllerConfirmForgotPassword**](AuthApi.md#AuthControllerConfirmForgotPassword) | **Post** /auth/confirm-forgot-password | Confirm forgot password
+[**AuthControllerCreateServiceAccount**](AuthApi.md#AuthControllerCreateServiceAccount) | **Post** /auth/service-account | Create service account
 [**AuthControllerDeviceCredentials**](AuthApi.md#AuthControllerDeviceCredentials) | **Post** /auth/device-credentials | Device credentials
 [**AuthControllerForgotPassword**](AuthApi.md#AuthControllerForgotPassword) | **Post** /auth/forgot-password | Forgot password
+[**AuthControllerGenerateAccessToken**](AuthApi.md#AuthControllerGenerateAccessToken) | **Post** /auth/access-token | Generate access token
 [**AuthControllerLogin**](AuthApi.md#AuthControllerLogin) | **Post** /auth/login | Login
 [**AuthControllerRefresh**](AuthApi.md#AuthControllerRefresh) | **Post** /auth/refresh | Refresh
 [**AuthControllerResendConfirmationCode**](AuthApi.md#AuthControllerResendConfirmationCode) | **Post** /auth/resend-confirmation-code | Resend confirmation code
@@ -84,13 +86,47 @@ Use admin JWT for authorization
 [[Back to README]](../README.md)
 
 
+## AuthControllerCreateServiceAccount
+
+> CreateServiceAccountResponse AuthControllerCreateServiceAccount(ctx, createServiceAccountRequest)
+
+Create service account
+
+Create a service account Authorized clients: administrator
+
+### Required Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**createServiceAccountRequest** | [**CreateServiceAccountRequest**](CreateServiceAccountRequest.md)| CreateServiceAccountRequest | 
+
+### Return type
+
+[**CreateServiceAccountResponse**](CreateServiceAccountResponse.md)
+
+### Authorization
+
+[bearerAuth](../README.md#bearerAuth)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
 ## AuthControllerDeviceCredentials
 
 > DeviceCredentials AuthControllerDeviceCredentials(ctx, )
 
 Device credentials
 
-Device Credentials
+Device Credentials Authorized clients: device
 
 ### Required Parameters
 
@@ -102,7 +138,7 @@ This endpoint does not need any parameter.
 
 ### Authorization
 
-Use admin JWT for authorization
+[bearerAuth](../README.md#bearerAuth)
 
 ### HTTP request headers
 
@@ -133,6 +169,40 @@ Name | Type | Description  | Notes
 ### Return type
 
  (empty response body)
+
+### Authorization
+
+Use admin JWT for authorization
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## AuthControllerGenerateAccessToken
+
+> GenerateAccessTokenResponse AuthControllerGenerateAccessToken(ctx, generateAccessTokenRequest)
+
+Generate access token
+
+Generate a service account access token
+
+### Required Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**generateAccessTokenRequest** | [**GenerateAccessTokenRequest**](GenerateAccessTokenRequest.md)| GenerateAccessTokenRequest | 
+
+### Return type
+
+[**GenerateAccessTokenResponse**](GenerateAccessTokenResponse.md)
 
 ### Authorization
 
