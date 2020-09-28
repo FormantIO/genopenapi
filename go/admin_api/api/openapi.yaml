@@ -1,7 +1,7 @@
 openapi: 3.0.0
 info:
   title: Formant admin-api
-  version: 1.4.44
+  version: 1.4.52
 servers:
 - url: https://api-dev.formant.io/v1/admin
 paths:
@@ -6324,6 +6324,7 @@ components:
           topicName: topicName
           encodeVideo: true
           topicType: std_msgs/Bool
+        armSwitch: true
         joysticks:
         - ""
         - ""
@@ -6340,6 +6341,8 @@ components:
           $ref: '#/components/schemas/TeleopJoystickConfiguration'
         views:
           $ref: '#/components/schemas/TeleopViewConfiguration'
+        armSwitch:
+          type: boolean
       type: object
     DeviceConfigurationDocument:
       example:
@@ -6416,6 +6419,7 @@ components:
             topicName: topicName
             encodeVideo: true
             topicType: std_msgs/Bool
+          armSwitch: true
           joysticks:
           - ""
           - ""
@@ -6515,6 +6519,7 @@ components:
               topicName: topicName
               encodeVideo: true
               topicType: std_msgs/Bool
+            armSwitch: true
             joysticks:
             - ""
             - ""
@@ -7387,6 +7392,7 @@ components:
               topicName: topicName
               encodeVideo: true
               topicType: std_msgs/Bool
+            armSwitch: true
             joysticks:
             - ""
             - ""
@@ -10935,6 +10941,7 @@ components:
                 topicName: topicName
                 encodeVideo: true
                 topicType: std_msgs/Bool
+              armSwitch: true
               joysticks:
               - ""
               - ""
@@ -11023,6 +11030,7 @@ components:
                 topicName: topicName
                 encodeVideo: true
                 topicType: std_msgs/Bool
+              armSwitch: true
               joysticks:
               - ""
               - ""
@@ -13589,6 +13597,7 @@ components:
                 topicName: topicName
                 encodeVideo: true
                 topicType: std_msgs/Bool
+              armSwitch: true
               joysticks:
               - ""
               - ""
@@ -15228,6 +15237,7 @@ components:
               topicName: topicName
               encodeVideo: true
               topicType: std_msgs/Bool
+            armSwitch: true
             joysticks:
             - ""
             - ""
