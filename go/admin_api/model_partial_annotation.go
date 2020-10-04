@@ -14,7 +14,6 @@ import (
 // PartialAnnotation struct for PartialAnnotation
 type PartialAnnotation struct {
 	Type string `json:"type,omitempty"`
-	EndTime *time.Time `json:"endTime,omitempty"`
 	EditedAt time.Time `json:"editedAt,omitempty"`
 	UserId string `json:"userId,omitempty"`
 	AnnotationTemplateId string `json:"annotationTemplateId,omitempty"`
@@ -26,6 +25,7 @@ type PartialAnnotation struct {
 	UpdatedAt time.Time `json:"updatedAt,omitempty"`
 	OrganizationId string `json:"organizationId,omitempty"`
 	Time time.Time `json:"time,omitempty"`
+	EndTime *time.Time `json:"endTime,omitempty"`
 	Message string `json:"message,omitempty"`
 	Viewed bool `json:"viewed,omitempty"`
 	DeviceId string `json:"deviceId,omitempty"`

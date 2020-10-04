@@ -17,6 +17,6 @@ type DeviceState struct {
 	Env *map[string]string `json:"env,omitempty"`
 	OtaEnabled *bool `json:"otaEnabled,omitempty"`
 	OnDemand *OnDemandState `json:"onDemand,omitempty"`
-	CommandProgress *[]interface{} `json:"commandProgress,omitempty"`
+	CommandProgress *[]CommandProgress `json:"commandProgress,omitempty"`
 	Version *string `json:"version,omitempty"`
 }

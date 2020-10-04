@@ -1,7 +1,7 @@
 openapi: 3.0.0
 info:
   title: Formant admin-api
-  version: 1.4.54
+  version: 1.5.65
 servers:
 - url: https://api-dev.formant.io/v1/admin
 paths:
@@ -1990,15 +1990,15 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/ExportSheetRequest'
-        description: ExportSheetRequest
+              $ref: '#/components/schemas/EventExportSheetRequest'
+        description: EventExportSheetRequest
         required: true
       responses:
         "200":
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/ExportSheetResult'
+                $ref: '#/components/schemas/EventExportSheetResult'
       security:
       - bearerAuth: []
       summary: Export sheet
@@ -2701,7 +2701,10 @@ components:
           type: array
       type: object
     CommandProgress:
-      nullable: true
+      example:
+        pending: true
+        progress: 93
+        commandId: commandId
       properties:
         commandId:
           type: string
@@ -5931,8 +5934,12 @@ components:
             machineid: machineid
             timezone: timezone
         commandProgress:
-        - ""
-        - ""
+        - pending: true
+          progress: 93
+          commandId: commandId
+        - pending: true
+          progress: 93
+          commandId: commandId
         env:
           key: env
         version: version
@@ -5957,7 +5964,10 @@ components:
         onDemand:
           $ref: '#/components/schemas/OnDemandState'
         commandProgress:
-          $ref: '#/components/schemas/CommandProgress'
+          items:
+            $ref: '#/components/schemas/CommandProgress'
+          nullable: true
+          type: array
         version:
           deprecated: true
           nullable: true
@@ -5972,6 +5982,16 @@ components:
           additionalProperties:
             type: string
           type: object
+      type: object
+    DeviceBlobData:
+      example:
+        data: data
+      properties:
+        data:
+          maxLength: 10000
+          type: string
+      required:
+      - data
       type: object
     DevicePortForwardingConfiguration:
       example:
@@ -6150,7 +6170,7 @@ components:
         onDemand: true
         configuration: ""
         name: name
-        throttleHz: 2.981066958341591
+        throttleHz: 11.924267833366365
         disabled: true
         tags:
           key: tags
@@ -6170,7 +6190,7 @@ components:
           - $ref: '#/components/schemas/DeviceStreamDirectoryWatchConfiguration'
           - $ref: '#/components/schemas/DeviceStreamFileTailConfiguration'
         throttleHz:
-          maximum: 5
+          maximum: 20
           minimum: 0
           nullable: true
           type: number
@@ -6190,35 +6210,35 @@ components:
         - onDemand: true
           configuration: ""
           name: name
-          throttleHz: 2.981066958341591
+          throttleHz: 11.924267833366365
           disabled: true
           tags:
             key: tags
         - onDemand: true
           configuration: ""
           name: name
-          throttleHz: 2.981066958341591
+          throttleHz: 11.924267833366365
           disabled: true
           tags:
             key: tags
         - onDemand: true
           configuration: ""
           name: name
-          throttleHz: 2.981066958341591
+          throttleHz: 11.924267833366365
           disabled: true
           tags:
             key: tags
         - onDemand: true
           configuration: ""
           name: name
-          throttleHz: 2.981066958341591
+          throttleHz: 11.924267833366365
           disabled: true
           tags:
             key: tags
         - onDemand: true
           configuration: ""
           name: name
-          throttleHz: 2.981066958341591
+          throttleHz: 11.924267833366365
           disabled: true
           tags:
             key: tags
@@ -6351,6 +6371,8 @@ components:
         application:
           configurationMap:
             key: configurationMap
+        blobData:
+          data: data
         resources:
           disk:
             onDemandBufferSize: 129480291062
@@ -6361,35 +6383,35 @@ components:
           - onDemand: true
             configuration: ""
             name: name
-            throttleHz: 2.981066958341591
+            throttleHz: 11.924267833366365
             disabled: true
             tags:
               key: tags
           - onDemand: true
             configuration: ""
             name: name
-            throttleHz: 2.981066958341591
+            throttleHz: 11.924267833366365
             disabled: true
             tags:
               key: tags
           - onDemand: true
             configuration: ""
             name: name
-            throttleHz: 2.981066958341591
+            throttleHz: 11.924267833366365
             disabled: true
             tags:
               key: tags
           - onDemand: true
             configuration: ""
             name: name
-            throttleHz: 2.981066958341591
+            throttleHz: 11.924267833366365
             disabled: true
             tags:
               key: tags
           - onDemand: true
             configuration: ""
             name: name
-            throttleHz: 2.981066958341591
+            throttleHz: 11.924267833366365
             disabled: true
             tags:
               key: tags
@@ -6437,6 +6459,8 @@ components:
           $ref: '#/components/schemas/DeviceTelemetryConfiguration'
         application:
           $ref: '#/components/schemas/DeviceApplicationConfiguration'
+        blobData:
+          $ref: '#/components/schemas/DeviceBlobData'
         teleop:
           $ref: '#/components/schemas/DeviceTeleopConfiguration'
         portForwarding:
@@ -6451,6 +6475,8 @@ components:
           application:
             configurationMap:
               key: configurationMap
+          blobData:
+            data: data
           resources:
             disk:
               onDemandBufferSize: 129480291062
@@ -6461,35 +6487,35 @@ components:
             - onDemand: true
               configuration: ""
               name: name
-              throttleHz: 2.981066958341591
+              throttleHz: 11.924267833366365
               disabled: true
               tags:
                 key: tags
             - onDemand: true
               configuration: ""
               name: name
-              throttleHz: 2.981066958341591
+              throttleHz: 11.924267833366365
               disabled: true
               tags:
                 key: tags
             - onDemand: true
               configuration: ""
               name: name
-              throttleHz: 2.981066958341591
+              throttleHz: 11.924267833366365
               disabled: true
               tags:
                 key: tags
             - onDemand: true
               configuration: ""
               name: name
-              throttleHz: 2.981066958341591
+              throttleHz: 11.924267833366365
               disabled: true
               tags:
                 key: tags
             - onDemand: true
               configuration: ""
               name: name
-              throttleHz: 2.981066958341591
+              throttleHz: 11.924267833366365
               disabled: true
               tags:
                 key: tags
@@ -6956,6 +6982,45 @@ components:
       - filter
       - name
       type: object
+    ThresholdEventTriggerCondition:
+      properties:
+        type:
+          enum:
+          - threshold
+          type: string
+        operator:
+          enum:
+          - <
+          - <=
+          - '>'
+          - '>='
+          - ==
+          - '!='
+          type: string
+        value:
+          type: number
+      required:
+      - operator
+      - type
+      - value
+      type: object
+    BatteryEventTriggerCondition:
+      properties:
+        type:
+          enum:
+          - battery
+          type: string
+        conditions: {}
+        operator:
+          enum:
+          - any
+          - all
+          type: string
+      required:
+      - conditions
+      - operator
+      - type
+      type: object
     BitCondition:
       properties:
         key:
@@ -6991,6 +7056,38 @@ components:
       - operator
       - type
       type: object
+    NumericCondition:
+      properties:
+        label:
+          maxLength: 64
+          minLength: 1
+          type: string
+        threshold: {}
+      required:
+      - label
+      type: object
+    NumericSetEventTriggerCondition:
+      properties:
+        type:
+          enum:
+          - numeric set
+          type: string
+        conditions:
+          items:
+            $ref: '#/components/schemas/NumericCondition'
+          maxItems: 10
+          minItems: 1
+          type: array
+        operator:
+          enum:
+          - any
+          - all
+          type: string
+      required:
+      - conditions
+      - operator
+      - type
+      type: object
     PresenceEventTriggerCondition:
       properties:
         type:
@@ -7009,28 +7106,6 @@ components:
         value:
           type: string
       required:
-      - type
-      - value
-      type: object
-    ThresholdEventTriggerCondition:
-      properties:
-        type:
-          enum:
-          - threshold
-          type: string
-        operator:
-          enum:
-          - <
-          - <=
-          - '>'
-          - '>='
-          - ==
-          - '!='
-          type: string
-        value:
-          type: number
-      required:
-      - operator
       - type
       - value
       type: object
@@ -7111,6 +7186,8 @@ components:
           - $ref: '#/components/schemas/RegexEventTriggerCondition'
           - $ref: '#/components/schemas/PresenceEventTriggerCondition'
           - $ref: '#/components/schemas/BitsetEventTriggerCondition'
+          - $ref: '#/components/schemas/NumericSetEventTriggerCondition'
+          - $ref: '#/components/schemas/BatteryEventTriggerCondition'
         interval:
           format: int64
           maximum: 9007199254740991
@@ -7324,6 +7401,8 @@ components:
           application:
             configurationMap:
               key: configurationMap
+          blobData:
+            data: data
           resources:
             disk:
               onDemandBufferSize: 129480291062
@@ -7334,35 +7413,35 @@ components:
             - onDemand: true
               configuration: ""
               name: name
-              throttleHz: 2.981066958341591
+              throttleHz: 11.924267833366365
               disabled: true
               tags:
                 key: tags
             - onDemand: true
               configuration: ""
               name: name
-              throttleHz: 2.981066958341591
+              throttleHz: 11.924267833366365
               disabled: true
               tags:
                 key: tags
             - onDemand: true
               configuration: ""
               name: name
-              throttleHz: 2.981066958341591
+              throttleHz: 11.924267833366365
               disabled: true
               tags:
                 key: tags
             - onDemand: true
               configuration: ""
               name: name
-              throttleHz: 2.981066958341591
+              throttleHz: 11.924267833366365
               disabled: true
               tags:
                 key: tags
             - onDemand: true
               configuration: ""
               name: name
-              throttleHz: 2.981066958341591
+              throttleHz: 11.924267833366365
               disabled: true
               tags:
                 key: tags
@@ -8625,8 +8704,12 @@ components:
               machineid: machineid
               timezone: timezone
           commandProgress:
-          - ""
-          - ""
+          - pending: true
+            progress: 93
+            commandId: commandId
+          - pending: true
+            progress: 93
+            commandId: commandId
           env:
             key: env
           version: version
@@ -8707,6 +8790,7 @@ components:
         streamType: bitset
         viewed: true
         time: 2000-01-23T04:56:07.000+00:00
+        endTime: 2000-01-23T04:56:07.000+00:00
         id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         updatedAt: 2000-01-23T04:56:07.000+00:00
       properties:
@@ -8729,6 +8813,10 @@ components:
           type: string
         time:
           format: date-time
+          type: string
+        endTime:
+          format: date-time
+          nullable: true
           type: string
         message:
           maxLength: 1024
@@ -8871,6 +8959,7 @@ components:
         interventionType: selection
         id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         time: 2000-01-23T04:56:07.000+00:00
+        endTime: 2000-01-23T04:56:07.000+00:00
         updatedAt: 2000-01-23T04:56:07.000+00:00
       properties:
         type:
@@ -8923,6 +9012,10 @@ components:
           type: string
         time:
           format: date-time
+          type: string
+        endTime:
+          format: date-time
+          nullable: true
           type: string
         message:
           maxLength: 1024
@@ -9170,9 +9263,9 @@ components:
         streamType: bitset
         viewed: true
         editedAt: 2000-01-23T04:56:07.000+00:00
-        endTime: 2000-01-23T04:56:07.000+00:00
         id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         time: 2000-01-23T04:56:07.000+00:00
+        endTime: 2000-01-23T04:56:07.000+00:00
         updatedAt: 2000-01-23T04:56:07.000+00:00
       properties:
         type:
@@ -9188,10 +9281,6 @@ components:
           - comment
           - system
           - annotation
-          type: string
-        endTime:
-          format: date-time
-          nullable: true
           type: string
         editedAt:
           format: date-time
@@ -9223,6 +9312,10 @@ components:
           type: string
         time:
           format: date-time
+          type: string
+        endTime:
+          format: date-time
+          nullable: true
           type: string
         message:
           maxLength: 1024
@@ -9524,6 +9617,7 @@ components:
         editedAt: 2000-01-23T04:56:07.000+00:00
         id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         time: 2000-01-23T04:56:07.000+00:00
+        endTime: 2000-01-23T04:56:07.000+00:00
         updatedAt: 2000-01-23T04:56:07.000+00:00
       properties:
         type:
@@ -9560,6 +9654,10 @@ components:
           type: string
         time:
           format: date-time
+          type: string
+        endTime:
+          format: date-time
+          nullable: true
           type: string
         message:
           maxLength: 1024
@@ -9613,6 +9711,7 @@ components:
         viewed: true
         id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         time: 2000-01-23T04:56:07.000+00:00
+        endTime: 2000-01-23T04:56:07.000+00:00
         updatedAt: 2000-01-23T04:56:07.000+00:00
       properties:
         type:
@@ -9643,6 +9742,10 @@ components:
           type: string
         time:
           format: date-time
+          type: string
+        endTime:
+          format: date-time
+          nullable: true
           type: string
         message:
           maxLength: 1024
@@ -9799,6 +9902,7 @@ components:
         interval: 721321908029600
         id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         time: 2000-01-23T04:56:07.000+00:00
+        endTime: 2000-01-23T04:56:07.000+00:00
         intervalStart: 2000-01-23T04:56:07.000+00:00
         updatedAt: 2000-01-23T04:56:07.000+00:00
       properties:
@@ -9848,6 +9952,10 @@ components:
           type: string
         time:
           format: date-time
+          type: string
+        endTime:
+          format: date-time
+          nullable: true
           type: string
         message:
           maxLength: 1024
@@ -10873,6 +10981,8 @@ components:
             application:
               configurationMap:
                 key: configurationMap
+            blobData:
+              data: data
             resources:
               disk:
                 onDemandBufferSize: 129480291062
@@ -10883,35 +10993,35 @@ components:
               - onDemand: true
                 configuration: ""
                 name: name
-                throttleHz: 2.981066958341591
+                throttleHz: 11.924267833366365
                 disabled: true
                 tags:
                   key: tags
               - onDemand: true
                 configuration: ""
                 name: name
-                throttleHz: 2.981066958341591
+                throttleHz: 11.924267833366365
                 disabled: true
                 tags:
                   key: tags
               - onDemand: true
                 configuration: ""
                 name: name
-                throttleHz: 2.981066958341591
+                throttleHz: 11.924267833366365
                 disabled: true
                 tags:
                   key: tags
               - onDemand: true
                 configuration: ""
                 name: name
-                throttleHz: 2.981066958341591
+                throttleHz: 11.924267833366365
                 disabled: true
                 tags:
                   key: tags
               - onDemand: true
                 configuration: ""
                 name: name
-                throttleHz: 2.981066958341591
+                throttleHz: 11.924267833366365
                 disabled: true
                 tags:
                   key: tags
@@ -10962,6 +11072,8 @@ components:
             application:
               configurationMap:
                 key: configurationMap
+            blobData:
+              data: data
             resources:
               disk:
                 onDemandBufferSize: 129480291062
@@ -10972,35 +11084,35 @@ components:
               - onDemand: true
                 configuration: ""
                 name: name
-                throttleHz: 2.981066958341591
+                throttleHz: 11.924267833366365
                 disabled: true
                 tags:
                   key: tags
               - onDemand: true
                 configuration: ""
                 name: name
-                throttleHz: 2.981066958341591
+                throttleHz: 11.924267833366365
                 disabled: true
                 tags:
                   key: tags
               - onDemand: true
                 configuration: ""
                 name: name
-                throttleHz: 2.981066958341591
+                throttleHz: 11.924267833366365
                 disabled: true
                 tags:
                   key: tags
               - onDemand: true
                 configuration: ""
                 name: name
-                throttleHz: 2.981066958341591
+                throttleHz: 11.924267833366365
                 disabled: true
                 tags:
                   key: tags
               - onDemand: true
                 configuration: ""
                 name: name
-                throttleHz: 2.981066958341591
+                throttleHz: 11.924267833366365
                 disabled: true
                 tags:
                   key: tags
@@ -12244,8 +12356,12 @@ components:
                 machineid: machineid
                 timezone: timezone
             commandProgress:
-            - ""
-            - ""
+            - pending: true
+              progress: 93
+              commandId: commandId
+            - pending: true
+              progress: 93
+              commandId: commandId
             env:
               key: env
             version: version
@@ -13442,8 +13558,12 @@ components:
                 machineid: machineid
                 timezone: timezone
             commandProgress:
-            - ""
-            - ""
+            - pending: true
+              progress: 93
+              commandId: commandId
+            - pending: true
+              progress: 93
+              commandId: commandId
             env:
               key: env
             version: version
@@ -13529,6 +13649,8 @@ components:
             application:
               configurationMap:
                 key: configurationMap
+            blobData:
+              data: data
             resources:
               disk:
                 onDemandBufferSize: 129480291062
@@ -13539,35 +13661,35 @@ components:
               - onDemand: true
                 configuration: ""
                 name: name
-                throttleHz: 2.981066958341591
+                throttleHz: 11.924267833366365
                 disabled: true
                 tags:
                   key: tags
               - onDemand: true
                 configuration: ""
                 name: name
-                throttleHz: 2.981066958341591
+                throttleHz: 11.924267833366365
                 disabled: true
                 tags:
                   key: tags
               - onDemand: true
                 configuration: ""
                 name: name
-                throttleHz: 2.981066958341591
+                throttleHz: 11.924267833366365
                 disabled: true
                 tags:
                   key: tags
               - onDemand: true
                 configuration: ""
                 name: name
-                throttleHz: 2.981066958341591
+                throttleHz: 11.924267833366365
                 disabled: true
                 tags:
                   key: tags
               - onDemand: true
                 configuration: ""
                 name: name
-                throttleHz: 2.981066958341591
+                throttleHz: 11.924267833366365
                 disabled: true
                 tags:
                   key: tags
@@ -13871,6 +13993,66 @@ components:
           items:
             type: string
           type: array
+      type: object
+    EventExportSheetRequest:
+      example:
+        filter:
+          agentIds:
+          - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          deviceIds:
+          - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          types:
+          - bitset
+          - bitset
+          start: 2000-01-23T04:56:07.000+00:00
+          message: message
+          eventTypes:
+          - triggered-event
+          - triggered-event
+          notificationEnabled: true
+          disableNullMatches: true
+          annotationTemplateIds:
+          - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          tags: ""
+          names:
+          - names
+          - names
+          notNames:
+          - notNames
+          - notNames
+          viewed: true
+          userIds:
+          - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          end: 2000-01-23T04:56:07.000+00:00
+          id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          keyword: keyword
+          severities:
+          - info
+          - info
+        appUrlOrigin: http://example.com/aeiou
+      properties:
+        filter:
+          $ref: '#/components/schemas/EventFilter'
+        appUrlOrigin:
+          format: url
+          type: string
+      required:
+      - appUrlOrigin
+      - filter
+      type: object
+    EventExportSheetResult:
+      example:
+        spreadsheetUrl: http://example.com/aeiou
+      properties:
+        spreadsheetUrl:
+          format: url
+          type: string
+      required:
+      - spreadsheetUrl
       type: object
     EventHistogramEntry:
       example:
@@ -14252,66 +14434,6 @@ components:
       required:
       - direction
       - from
-      type: object
-    ExportSheetRequest:
-      example:
-        filter:
-          agentIds:
-          - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-          - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-          deviceIds:
-          - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-          - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-          types:
-          - bitset
-          - bitset
-          start: 2000-01-23T04:56:07.000+00:00
-          message: message
-          eventTypes:
-          - triggered-event
-          - triggered-event
-          notificationEnabled: true
-          disableNullMatches: true
-          annotationTemplateIds:
-          - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-          - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-          tags: ""
-          names:
-          - names
-          - names
-          notNames:
-          - notNames
-          - notNames
-          viewed: true
-          userIds:
-          - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-          - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-          end: 2000-01-23T04:56:07.000+00:00
-          id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-          keyword: keyword
-          severities:
-          - info
-          - info
-        appUrlOrigin: http://example.com/aeiou
-      properties:
-        filter:
-          $ref: '#/components/schemas/EventFilter'
-        appUrlOrigin:
-          format: url
-          type: string
-      required:
-      - appUrlOrigin
-      - filter
-      type: object
-    ExportSheetResult:
-      example:
-        spreadsheetUrl: http://example.com/aeiou
-      properties:
-        spreadsheetUrl:
-          format: url
-          type: string
-      required:
-      - spreadsheetUrl
       type: object
     IntervalEventFilter:
       example:
@@ -14703,9 +14825,9 @@ components:
         streamType: bitset
         viewed: true
         editedAt: 2000-01-23T04:56:07.000+00:00
-        endTime: 2000-01-23T04:56:07.000+00:00
         id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         time: 2000-01-23T04:56:07.000+00:00
+        endTime: 2000-01-23T04:56:07.000+00:00
         updatedAt: 2000-01-23T04:56:07.000+00:00
       properties:
         type:
@@ -14721,10 +14843,6 @@ components:
           - comment
           - system
           - annotation
-          type: string
-        endTime:
-          format: date-time
-          nullable: true
           type: string
         editedAt:
           format: date-time
@@ -14756,6 +14874,10 @@ components:
           type: string
         time:
           format: date-time
+          type: string
+        endTime:
+          format: date-time
+          nullable: true
           type: string
         message:
           maxLength: 1024
@@ -15088,6 +15210,7 @@ components:
         editedAt: 2000-01-23T04:56:07.000+00:00
         id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         time: 2000-01-23T04:56:07.000+00:00
+        endTime: 2000-01-23T04:56:07.000+00:00
         updatedAt: 2000-01-23T04:56:07.000+00:00
       properties:
         type:
@@ -15124,6 +15247,10 @@ components:
           type: string
         time:
           format: date-time
+          type: string
+        endTime:
+          format: date-time
+          nullable: true
           type: string
         message:
           maxLength: 1024
@@ -15169,6 +15296,8 @@ components:
           application:
             configurationMap:
               key: configurationMap
+          blobData:
+            data: data
           resources:
             disk:
               onDemandBufferSize: 129480291062
@@ -15179,35 +15308,35 @@ components:
             - onDemand: true
               configuration: ""
               name: name
-              throttleHz: 2.981066958341591
+              throttleHz: 11.924267833366365
               disabled: true
               tags:
                 key: tags
             - onDemand: true
               configuration: ""
               name: name
-              throttleHz: 2.981066958341591
+              throttleHz: 11.924267833366365
               disabled: true
               tags:
                 key: tags
             - onDemand: true
               configuration: ""
               name: name
-              throttleHz: 2.981066958341591
+              throttleHz: 11.924267833366365
               disabled: true
               tags:
                 key: tags
             - onDemand: true
               configuration: ""
               name: name
-              throttleHz: 2.981066958341591
+              throttleHz: 11.924267833366365
               disabled: true
               tags:
                 key: tags
             - onDemand: true
               configuration: ""
               name: name
-              throttleHz: 2.981066958341591
+              throttleHz: 11.924267833366365
               disabled: true
               tags:
                 key: tags
@@ -16466,8 +16595,12 @@ components:
               machineid: machineid
               timezone: timezone
           commandProgress:
-          - ""
-          - ""
+          - pending: true
+            progress: 93
+            commandId: commandId
+          - pending: true
+            progress: 93
+            commandId: commandId
           env:
             key: env
           version: version
@@ -16576,6 +16709,8 @@ components:
           - $ref: '#/components/schemas/RegexEventTriggerCondition'
           - $ref: '#/components/schemas/PresenceEventTriggerCondition'
           - $ref: '#/components/schemas/BitsetEventTriggerCondition'
+          - $ref: '#/components/schemas/NumericSetEventTriggerCondition'
+          - $ref: '#/components/schemas/BatteryEventTriggerCondition'
         interval:
           format: int64
           maximum: 9007199254740991

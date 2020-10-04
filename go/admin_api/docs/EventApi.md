@@ -240,7 +240,7 @@ Name | Type | Description  | Notes
 
 ## EventControllerExportSheet
 
-> ExportSheetResult EventControllerExportSheet(ctx, exportSheetRequest)
+> EventExportSheetResult EventControllerExportSheet(ctx, eventExportSheetRequest)
 
 Export sheet
 
@@ -252,11 +252,11 @@ Export events as Google Sheet Authorized clients: viewer
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**exportSheetRequest** | [**ExportSheetRequest**](ExportSheetRequest.md)| ExportSheetRequest | 
+**eventExportSheetRequest** | [**EventExportSheetRequest**](EventExportSheetRequest.md)| EventExportSheetRequest | 
 
 ### Return type
 
-[**ExportSheetResult**](ExportSheetResult.md)
+[**EventExportSheetResult**](EventExportSheetResult.md)
 
 ### Authorization
 

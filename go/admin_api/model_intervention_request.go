@@ -24,6 +24,7 @@ type InterventionRequest struct {
 	UpdatedAt time.Time `json:"updatedAt,omitempty"`
 	OrganizationId string `json:"organizationId,omitempty"`
 	Time time.Time `json:"time"`
+	EndTime *time.Time `json:"endTime,omitempty"`
 	Message string `json:"message,omitempty"`
 	Viewed bool `json:"viewed,omitempty"`
 	DeviceId string `json:"deviceId,omitempty"`

@@ -7,6 +7,7 @@ Name | Type | Description | Notes
 **Type** | **string** |  | [optional] 
 **OrganizationId** | **string** |  | [optional] 
 **Time** | [**time.Time**](time.Time.md) |  | 
+**EndTime** | Pointer to [**time.Time**](time.Time.md) |  | [optional] 
 **Message** | **string** |  | [optional] 
 **Viewed** | **bool** |  | [optional] 
 **DeviceId** | **string** |  | [optional] 

@@ -14,6 +14,7 @@ type DeviceConfigurationDocument struct {
 	Resources DeviceResourcesConfiguration `json:"resources,omitempty"`
 	Telemetry DeviceTelemetryConfiguration `json:"telemetry,omitempty"`
 	Application DeviceApplicationConfiguration `json:"application,omitempty"`
+	BlobData DeviceBlobData `json:"blobData,omitempty"`
 	Teleop DeviceTeleopConfiguration `json:"teleop,omitempty"`
 	PortForwarding DevicePortForwardingConfiguration `json:"portForwarding,omitempty"`
 }

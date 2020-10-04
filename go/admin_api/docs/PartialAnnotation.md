@@ -5,7 +5,6 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Type** | **string** |  | [optional] 
-**EndTime** | Pointer to [**time.Time**](time.Time.md) |  | [optional] 
 **EditedAt** | [**time.Time**](time.Time.md) |  | [optional] 
 **UserId** | **string** |  | [optional] 
 **AnnotationTemplateId** | **string** |  | [optional] 
@@ -17,6 +16,7 @@ Name | Type | Description | Notes
 **UpdatedAt** | [**time.Time**](time.Time.md) |  | [optional] 
 **OrganizationId** | **string** |  | [optional] 
 **Time** | [**time.Time**](time.Time.md) |  | [optional] 
+**EndTime** | Pointer to [**time.Time**](time.Time.md) |  | [optional] 
 **Message** | **string** |  | [optional] 
 **Viewed** | **bool** |  | [optional] 
 **DeviceId** | **string** |  | [optional] 

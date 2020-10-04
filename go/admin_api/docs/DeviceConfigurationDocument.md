@@ -8,6 +8,7 @@ Name | Type | Description | Notes
 **Resources** | [**DeviceResourcesConfiguration**](DeviceResourcesConfiguration.md) |  | [optional] 
 **Telemetry** | [**DeviceTelemetryConfiguration**](DeviceTelemetryConfiguration.md) |  | [optional] 
 **Application** | [**DeviceApplicationConfiguration**](DeviceApplicationConfiguration.md) |  | [optional] 
+**BlobData** | [**DeviceBlobData**](DeviceBlobData.md) |  | [optional] 
 **Teleop** | [**DeviceTeleopConfiguration**](DeviceTeleopConfiguration.md) |  | [optional] 
 **PortForwarding** | [**DevicePortForwardingConfiguration**](DevicePortForwardingConfiguration.md) |  | [optional] 
 

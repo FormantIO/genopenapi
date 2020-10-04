@@ -8,8 +8,8 @@
  */
 
 package admin_api
-// ExportSheetRequest struct for ExportSheetRequest
-type ExportSheetRequest struct {
+// EventExportSheetRequest struct for EventExportSheetRequest
+type EventExportSheetRequest struct {
 	Filter EventFilter `json:"filter"`
 	AppUrlOrigin string `json:"appUrlOrigin"`
 }

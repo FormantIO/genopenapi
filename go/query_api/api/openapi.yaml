@@ -1,7 +1,7 @@
 openapi: 3.0.0
 info:
   title: Formant query-api
-  version: 1.4.54
+  version: 1.5.65
 servers:
 - url: https://api-dev.formant.io/v1/queries
 paths:
@@ -166,6 +166,28 @@ paths:
       security:
       - bearerAuth: []
       summary: Query
+      tags:
+      - Query
+  /queries/export-sheet:
+    post:
+      description: 'Authorized clients: operator'
+      operationId: QueryController.exportSheet
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/TelemetryExportSheetRequest'
+        description: TelemetryExportSheetRequest
+        required: true
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TelemetryExportSheetResult'
+      security:
+      - bearerAuth: []
+      summary: Export sheet
       tags:
       - Query
   /seek:
@@ -695,6 +717,47 @@ components:
           type: array
       required:
       - items
+      type: object
+    TelemetryExportSheetRequest:
+      example:
+        query:
+          agentIds:
+          - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          deviceIds:
+          - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          types:
+          - bitset
+          - bitset
+          names:
+          - names
+          - names
+          notNames:
+          - notNames
+          - notNames
+          start: 2000-01-23T04:56:07.000+00:00
+          end: 2000-01-23T04:56:07.000+00:00
+          tags: ""
+      properties:
+        query:
+          $ref: '#/components/schemas/Query'
+      required:
+      - query
+      type: object
+    TelemetryExportSheetResult:
+      example:
+        spreadsheetUrl: http://example.com/aeiou
+        telemetryNotFound: true
+      properties:
+        spreadsheetUrl:
+          format: url
+          type: string
+        telemetryNotFound:
+          type: boolean
+      required:
+      - spreadsheetUrl
+      - telemetryNotFound
       type: object
     SeekQuery:
       example:

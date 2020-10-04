@@ -510,17 +510,17 @@ func (a *EventApiService) EventControllerEventTypes(ctx _context.Context, localV
 EventControllerExportSheet Export sheet
 Export events as Google Sheet Authorized clients: viewer
  * @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- * @param exportSheetRequest ExportSheetRequest
-@return ExportSheetResult
+ * @param eventExportSheetRequest EventExportSheetRequest
+@return EventExportSheetResult
 */
-func (a *EventApiService) EventControllerExportSheet(ctx _context.Context, exportSheetRequest ExportSheetRequest) (ExportSheetResult, *_nethttp.Response, error) {
+func (a *EventApiService) EventControllerExportSheet(ctx _context.Context, eventExportSheetRequest EventExportSheetRequest) (EventExportSheetResult, *_nethttp.Response, error) {
 	var (
 		localVarHTTPMethod   = _nethttp.MethodPost
 		localVarPostBody     interface{}
 		localVarFormFileName string
 		localVarFileName     string
 		localVarFileBytes    []byte
-		localVarReturnValue  ExportSheetResult
+		localVarReturnValue  EventExportSheetResult
 	)
 
 	// create path and map variables
@@ -547,7 +547,7 @@ func (a *EventApiService) EventControllerExportSheet(ctx _context.Context, expor
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
 	// body params
-	localVarPostBody = &exportSheetRequest
+	localVarPostBody = &eventExportSheetRequest
 	r, err := a.client.prepareRequest(ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFormFileName, localVarFileName, localVarFileBytes)
 	if err != nil {
 		return localVarReturnValue, nil, err
@@ -570,7 +570,7 @@ func (a *EventApiService) EventControllerExportSheet(ctx _context.Context, expor
 			error: localVarHTTPResponse.Status,
 		}
 		if localVarHTTPResponse.StatusCode == 200 {
-			var v ExportSheetResult
+			var v EventExportSheetResult
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()

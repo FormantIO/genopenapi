@@ -39,6 +39,7 @@ Class | Method | HTTP request | Description
 *MetadataApi* | [**MetadataControllerListStreamNames**](docs/MetadataApi.md#metadatacontrollerliststreamnames) | **Post** /metadata/stream-names | List stream names
 *OnlineDevicesApi* | [**OnlineDevicesControllerOnline**](docs/OnlineDevicesApi.md#onlinedevicescontrolleronline) | **Get** /online-devices | Online
 *PresenceApi* | [**PresenceControllerCount**](docs/PresenceApi.md#presencecontrollercount) | **Post** /presence | Count
+*QueryApi* | [**QueryControllerExportSheet**](docs/QueryApi.md#querycontrollerexportsheet) | **Post** /queries/export-sheet | Export sheet
 *QueryApi* | [**QueryControllerQuery**](docs/QueryApi.md#querycontrollerquery) | **Post** /queries | Query
 *SeekApi* | [**SeekControllerSeek**](docs/SeekApi.md#seekcontrollerseek) | **Post** /seek | Seek
 
@@ -61,6 +62,8 @@ Class | Method | HTTP request | Description
  - [StreamData](docs/StreamData.md)
  - [StreamDataListResponse](docs/StreamDataListResponse.md)
  - [StringListResponse](docs/StringListResponse.md)
+ - [TelemetryExportSheetRequest](docs/TelemetryExportSheetRequest.md)
+ - [TelemetryExportSheetResult](docs/TelemetryExportSheetResult.md)
  - [UuidListResponse](docs/UuidListResponse.md)
 
 

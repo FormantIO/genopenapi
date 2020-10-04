@@ -8,7 +8,7 @@
  */
 
 package admin_api
-// ExportSheetResult struct for ExportSheetResult
-type ExportSheetResult struct {
-	SpreadsheetUrl string `json:"spreadsheetUrl"`
+// DeviceBlobData struct for DeviceBlobData
+type DeviceBlobData struct {
+	Data string `json:"data"`
 }
