@@ -17,6 +17,7 @@ Name | Type | Description | Notes
 **TemporaryConfigurationTemplateId** | Pointer to **string** |  | [optional] 
 **State** | [**DeviceState**](DeviceState.md) |  | [optional] 
 **Enabled** | **bool** |  | [optional] 
+**DisabledAt** | [**time.Time**](time.Time.md) |  | [optional] 
 **Id** | **string** |  | [optional] 
 **CreatedAt** | [**time.Time**](time.Time.md) |  | [optional] 
 **UpdatedAt** | [**time.Time**](time.Time.md) |  | [optional] 

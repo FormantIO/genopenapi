@@ -1,7 +1,7 @@
 openapi: 3.0.0
 info:
   title: Formant admin-api
-  version: 1.6.32
+  version: 1.6.38
 servers:
 - url: https://api-dev.formant.io/v1/admin
 paths:
@@ -1388,6 +1388,30 @@ paths:
       security:
       - bearerAuth: []
       summary: Patch
+      tags:
+      - Device
+  /devices/{id}/disable:
+    post:
+      description: |-
+        Disable a device
+        Authorized clients: viewer
+      operationId: DeviceController.disable
+      parameters:
+      - explode: false
+        in: path
+        name: id
+        required: true
+        schema:
+          type: string
+        style: simple
+      responses:
+        "200":
+          content:
+            application/json: {}
+          description: Successful response
+      security:
+      - bearerAuth: []
+      summary: Disable
       tags:
       - Device
   /devices/{id}/provisioning-token:
@@ -7519,6 +7543,7 @@ components:
         publicKey: publicKey
         type: default
         enabled: true
+        disabledAt: 2000-01-23T04:56:07.000+00:00
         tags:
           key: tags
         organizationId: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
@@ -8765,6 +8790,9 @@ components:
           $ref: '#/components/schemas/DeviceState'
         enabled:
           type: boolean
+        disabledAt:
+          format: date-time
+          type: string
         id:
           format: uuid
           type: string
@@ -11171,6 +11199,7 @@ components:
         - publicKey: publicKey
           type: default
           enabled: true
+          disabledAt: 2000-01-23T04:56:07.000+00:00
           tags:
             key: tags
           organizationId: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
@@ -12373,6 +12402,7 @@ components:
         - publicKey: publicKey
           type: default
           enabled: true
+          disabledAt: 2000-01-23T04:56:07.000+00:00
           tags:
             key: tags
           organizationId: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
@@ -13600,6 +13630,7 @@ components:
         name: name
         count: 8.008281904610115
         type: default
+        disabledBefore: 2000-01-23T04:56:07.000+00:00
         enabled: true
         tags: ""
       properties:
@@ -13625,6 +13656,9 @@ components:
           maximum: 9007199254740991
           minimum: 0
           type: number
+        disabledBefore:
+          format: date-time
+          type: string
       type: object
     TagsResponse:
       example:
@@ -15410,6 +15444,7 @@ components:
         publicKey: publicKey
         type: default
         enabled: true
+        disabledAt: 2000-01-23T04:56:07.000+00:00
         tags:
           key: tags
         organizationId: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
@@ -16656,6 +16691,9 @@ components:
           $ref: '#/components/schemas/DeviceState'
         enabled:
           type: boolean
+        disabledAt:
+          format: date-time
+          type: string
         id:
           format: uuid
           type: string

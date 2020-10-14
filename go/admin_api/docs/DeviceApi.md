@@ -5,6 +5,7 @@ All URIs are relative to *https://api-dev.formant.io/v1/admin*
 Method | HTTP request | Description
 ------------- | ------------- | -------------
 [**DeviceControllerCount**](DeviceApi.md#DeviceControllerCount) | **Post** /devices/count | Count
+[**DeviceControllerDisable**](DeviceApi.md#DeviceControllerDisable) | **Post** /devices/{id}/disable | Disable
 [**DeviceControllerFilter**](DeviceApi.md#DeviceControllerFilter) | **Post** /devices/filter | Filter
 [**DeviceControllerGenerateDeviceProvisioningToken**](DeviceApi.md#DeviceControllerGenerateDeviceProvisioningToken) | **Post** /devices/{id}/provisioning-token | Generate device provisioning token
 [**DeviceControllerGetConfiguration**](DeviceApi.md#DeviceControllerGetConfiguration) | **Get** /devices/{id}/configurations/{version} | Get configuration
@@ -58,6 +59,40 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
 - **Content-Type**: application/json
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## DeviceControllerDisable
+
+> DeviceControllerDisable(ctx, id)
+
+Disable
+
+Disable a device Authorized clients: viewer
+
+### Required Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**id** | **string**|  | 
+
+### Return type
+
+ (empty response body)
+
+### Authorization
+
+[bearerAuth](../README.md#bearerAuth)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
 - **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)

@@ -26,6 +26,7 @@ type Device struct {
 	TemporaryConfigurationTemplateId *string `json:"temporaryConfigurationTemplateId,omitempty"`
 	State DeviceState `json:"state,omitempty"`
 	Enabled bool `json:"enabled,omitempty"`
+	DisabledAt time.Time `json:"disabledAt,omitempty"`
 	Id string `json:"id,omitempty"`
 	CreatedAt time.Time `json:"createdAt,omitempty"`
 	UpdatedAt time.Time `json:"updatedAt,omitempty"`

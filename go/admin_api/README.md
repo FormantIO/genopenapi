@@ -79,6 +79,7 @@ Class | Method | HTTP request | Description
 *CommentApi* | [**CommentControllerPost**](docs/CommentApi.md#commentcontrollerpost) | **Post** /comments | Post
 *CustomEventApi* | [**CustomEventControllerPost**](docs/CustomEventApi.md#customeventcontrollerpost) | **Post** /custom-events | Post
 *DeviceApi* | [**DeviceControllerCount**](docs/DeviceApi.md#devicecontrollercount) | **Post** /devices/count | Count
+*DeviceApi* | [**DeviceControllerDisable**](docs/DeviceApi.md#devicecontrollerdisable) | **Post** /devices/{id}/disable | Disable
 *DeviceApi* | [**DeviceControllerFilter**](docs/DeviceApi.md#devicecontrollerfilter) | **Post** /devices/filter | Filter
 *DeviceApi* | [**DeviceControllerGenerateDeviceProvisioningToken**](docs/DeviceApi.md#devicecontrollergeneratedeviceprovisioningtoken) | **Post** /devices/{id}/provisioning-token | Generate device provisioning token
 *DeviceApi* | [**DeviceControllerGetConfiguration**](docs/DeviceApi.md#devicecontrollergetconfiguration) | **Get** /devices/{id}/configurations/{version} | Get configuration

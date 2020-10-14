@@ -8,6 +8,9 @@
  */
 
 package admin_api
+import (
+	"time"
+)
 // DeviceQuery struct for DeviceQuery
 type DeviceQuery struct {
 	Name string `json:"name,omitempty"`
@@ -17,4 +20,5 @@ type DeviceQuery struct {
 	Type string `json:"type,omitempty"`
 	Count float32 `json:"count,omitempty"`
 	Offset float32 `json:"offset,omitempty"`
+	DisabledBefore time.Time `json:"disabledBefore,omitempty"`
 }
