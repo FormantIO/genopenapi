@@ -11,6 +11,7 @@ Name | Type | Description | Notes
 **BlobData** | [**DeviceBlobData**](DeviceBlobData.md) |  | [optional] 
 **Teleop** | [**DeviceTeleopConfiguration**](DeviceTeleopConfiguration.md) |  | [optional] 
 **PortForwarding** | [**DevicePortForwardingConfiguration**](DevicePortForwardingConfiguration.md) |  | [optional] 
+**Diagnostics** | [**DeviceDiagnosticsConfiguration**](DeviceDiagnosticsConfiguration.md) |  | [optional] 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

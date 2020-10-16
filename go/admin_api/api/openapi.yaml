@@ -1,7 +1,7 @@
 openapi: 3.0.0
 info:
   title: Formant admin-api
-  version: 1.6.39
+  version: 1.7.40
 servers:
 - url: https://api-dev.formant.io/v1/admin
 paths:
@@ -6017,6 +6017,18 @@ components:
       required:
       - data
       type: object
+    DeviceDiagnosticsConfiguration:
+      example:
+        reportMetrics: true
+        reportLogs: true
+      properties:
+        reportLogs:
+          nullable: true
+          type: boolean
+        reportMetrics:
+          nullable: true
+          type: boolean
+      type: object
     DevicePortForwardingConfiguration:
       example:
         enabled: true
@@ -6277,6 +6289,49 @@ components:
         ros:
           $ref: '#/components/schemas/DeviceRosConfiguration'
       type: object
+    DeviceTeleopCustomStreamConfiguration:
+      example:
+        mode: command
+        name: name
+        encodeVideo: true
+        rtcStreamType: ping
+        labels:
+        - labels
+        - labels
+      properties:
+        name:
+          type: string
+        rtcStreamType:
+          enum:
+          - ping
+          - pong
+          - stream-control
+          - h264-encoder-control
+          - boolean
+          - bitset
+          - twist
+          - compressed-image
+          - h264-video-frame
+          - pose
+          - goal-id
+          type: string
+        mode:
+          enum:
+          - command
+          - observe
+          type: string
+        labels:
+          items:
+            type: string
+          type: array
+          uniqueItems: true
+        encodeVideo:
+          type: boolean
+      required:
+      - mode
+      - name
+      - rtcStreamType
+      type: object
     DeviceTeleopRosStreamConfiguration:
       example:
         mode: command
@@ -6368,6 +6423,42 @@ components:
           topicName: topicName
           encodeVideo: true
           topicType: std_msgs/Bool
+        customStreams:
+        - mode: command
+          name: name
+          encodeVideo: true
+          rtcStreamType: ping
+          labels:
+          - labels
+          - labels
+        - mode: command
+          name: name
+          encodeVideo: true
+          rtcStreamType: ping
+          labels:
+          - labels
+          - labels
+        - mode: command
+          name: name
+          encodeVideo: true
+          rtcStreamType: ping
+          labels:
+          - labels
+          - labels
+        - mode: command
+          name: name
+          encodeVideo: true
+          rtcStreamType: ping
+          labels:
+          - labels
+          - labels
+        - mode: command
+          name: name
+          encodeVideo: true
+          rtcStreamType: ping
+          labels:
+          - labels
+          - labels
         armSwitch: true
         joysticks:
         - ""
@@ -6381,6 +6472,11 @@ components:
             $ref: '#/components/schemas/DeviceTeleopRosStreamConfiguration'
           maxItems: 20
           type: array
+        customStreams:
+          items:
+            $ref: '#/components/schemas/DeviceTeleopCustomStreamConfiguration'
+          maxItems: 10
+          type: array
         joysticks:
           $ref: '#/components/schemas/TeleopJoystickConfiguration'
         views:
@@ -6392,6 +6488,9 @@ components:
       example:
         portForwarding:
           enabled: true
+        diagnostics:
+          reportMetrics: true
+          reportLogs: true
         application:
           configurationMap:
             key: configurationMap
@@ -6465,6 +6564,42 @@ components:
             topicName: topicName
             encodeVideo: true
             topicType: std_msgs/Bool
+          customStreams:
+          - mode: command
+            name: name
+            encodeVideo: true
+            rtcStreamType: ping
+            labels:
+            - labels
+            - labels
+          - mode: command
+            name: name
+            encodeVideo: true
+            rtcStreamType: ping
+            labels:
+            - labels
+            - labels
+          - mode: command
+            name: name
+            encodeVideo: true
+            rtcStreamType: ping
+            labels:
+            - labels
+            - labels
+          - mode: command
+            name: name
+            encodeVideo: true
+            rtcStreamType: ping
+            labels:
+            - labels
+            - labels
+          - mode: command
+            name: name
+            encodeVideo: true
+            rtcStreamType: ping
+            labels:
+            - labels
+            - labels
           armSwitch: true
           joysticks:
           - ""
@@ -6489,6 +6624,8 @@ components:
           $ref: '#/components/schemas/DeviceTeleopConfiguration'
         portForwarding:
           $ref: '#/components/schemas/DevicePortForwardingConfiguration'
+        diagnostics:
+          $ref: '#/components/schemas/DeviceDiagnosticsConfiguration'
       type: object
     DeviceConfiguration:
       example:
@@ -6496,6 +6633,9 @@ components:
         document:
           portForwarding:
             enabled: true
+          diagnostics:
+            reportMetrics: true
+            reportLogs: true
           application:
             configurationMap:
               key: configurationMap
@@ -6569,6 +6709,42 @@ components:
               topicName: topicName
               encodeVideo: true
               topicType: std_msgs/Bool
+            customStreams:
+            - mode: command
+              name: name
+              encodeVideo: true
+              rtcStreamType: ping
+              labels:
+              - labels
+              - labels
+            - mode: command
+              name: name
+              encodeVideo: true
+              rtcStreamType: ping
+              labels:
+              - labels
+              - labels
+            - mode: command
+              name: name
+              encodeVideo: true
+              rtcStreamType: ping
+              labels:
+              - labels
+              - labels
+            - mode: command
+              name: name
+              encodeVideo: true
+              rtcStreamType: ping
+              labels:
+              - labels
+              - labels
+            - mode: command
+              name: name
+              encodeVideo: true
+              rtcStreamType: ping
+              labels:
+              - labels
+              - labels
             armSwitch: true
             joysticks:
             - ""
@@ -7424,6 +7600,9 @@ components:
         document:
           portForwarding:
             enabled: true
+          diagnostics:
+            reportMetrics: true
+            reportLogs: true
           application:
             configurationMap:
               key: configurationMap
@@ -7497,6 +7676,42 @@ components:
               topicName: topicName
               encodeVideo: true
               topicType: std_msgs/Bool
+            customStreams:
+            - mode: command
+              name: name
+              encodeVideo: true
+              rtcStreamType: ping
+              labels:
+              - labels
+              - labels
+            - mode: command
+              name: name
+              encodeVideo: true
+              rtcStreamType: ping
+              labels:
+              - labels
+              - labels
+            - mode: command
+              name: name
+              encodeVideo: true
+              rtcStreamType: ping
+              labels:
+              - labels
+              - labels
+            - mode: command
+              name: name
+              encodeVideo: true
+              rtcStreamType: ping
+              labels:
+              - labels
+              - labels
+            - mode: command
+              name: name
+              encodeVideo: true
+              rtcStreamType: ping
+              labels:
+              - labels
+              - labels
             armSwitch: true
             joysticks:
             - ""
@@ -11008,6 +11223,9 @@ components:
           document:
             portForwarding:
               enabled: true
+            diagnostics:
+              reportMetrics: true
+              reportLogs: true
             application:
               configurationMap:
                 key: configurationMap
@@ -11081,6 +11299,42 @@ components:
                 topicName: topicName
                 encodeVideo: true
                 topicType: std_msgs/Bool
+              customStreams:
+              - mode: command
+                name: name
+                encodeVideo: true
+                rtcStreamType: ping
+                labels:
+                - labels
+                - labels
+              - mode: command
+                name: name
+                encodeVideo: true
+                rtcStreamType: ping
+                labels:
+                - labels
+                - labels
+              - mode: command
+                name: name
+                encodeVideo: true
+                rtcStreamType: ping
+                labels:
+                - labels
+                - labels
+              - mode: command
+                name: name
+                encodeVideo: true
+                rtcStreamType: ping
+                labels:
+                - labels
+                - labels
+              - mode: command
+                name: name
+                encodeVideo: true
+                rtcStreamType: ping
+                labels:
+                - labels
+                - labels
               armSwitch: true
               joysticks:
               - ""
@@ -11099,6 +11353,9 @@ components:
           document:
             portForwarding:
               enabled: true
+            diagnostics:
+              reportMetrics: true
+              reportLogs: true
             application:
               configurationMap:
                 key: configurationMap
@@ -11172,6 +11429,42 @@ components:
                 topicName: topicName
                 encodeVideo: true
                 topicType: std_msgs/Bool
+              customStreams:
+              - mode: command
+                name: name
+                encodeVideo: true
+                rtcStreamType: ping
+                labels:
+                - labels
+                - labels
+              - mode: command
+                name: name
+                encodeVideo: true
+                rtcStreamType: ping
+                labels:
+                - labels
+                - labels
+              - mode: command
+                name: name
+                encodeVideo: true
+                rtcStreamType: ping
+                labels:
+                - labels
+                - labels
+              - mode: command
+                name: name
+                encodeVideo: true
+                rtcStreamType: ping
+                labels:
+                - labels
+                - labels
+              - mode: command
+                name: name
+                encodeVideo: true
+                rtcStreamType: ping
+                labels:
+                - labels
+                - labels
               armSwitch: true
               joysticks:
               - ""
@@ -13682,6 +13975,9 @@ components:
           document:
             portForwarding:
               enabled: true
+            diagnostics:
+              reportMetrics: true
+              reportLogs: true
             application:
               configurationMap:
                 key: configurationMap
@@ -13755,6 +14051,42 @@ components:
                 topicName: topicName
                 encodeVideo: true
                 topicType: std_msgs/Bool
+              customStreams:
+              - mode: command
+                name: name
+                encodeVideo: true
+                rtcStreamType: ping
+                labels:
+                - labels
+                - labels
+              - mode: command
+                name: name
+                encodeVideo: true
+                rtcStreamType: ping
+                labels:
+                - labels
+                - labels
+              - mode: command
+                name: name
+                encodeVideo: true
+                rtcStreamType: ping
+                labels:
+                - labels
+                - labels
+              - mode: command
+                name: name
+                encodeVideo: true
+                rtcStreamType: ping
+                labels:
+                - labels
+                - labels
+              - mode: command
+                name: name
+                encodeVideo: true
+                rtcStreamType: ping
+                labels:
+                - labels
+                - labels
               armSwitch: true
               joysticks:
               - ""
@@ -15329,6 +15661,9 @@ components:
         document:
           portForwarding:
             enabled: true
+          diagnostics:
+            reportMetrics: true
+            reportLogs: true
           application:
             configurationMap:
               key: configurationMap
@@ -15402,6 +15737,42 @@ components:
               topicName: topicName
               encodeVideo: true
               topicType: std_msgs/Bool
+            customStreams:
+            - mode: command
+              name: name
+              encodeVideo: true
+              rtcStreamType: ping
+              labels:
+              - labels
+              - labels
+            - mode: command
+              name: name
+              encodeVideo: true
+              rtcStreamType: ping
+              labels:
+              - labels
+              - labels
+            - mode: command
+              name: name
+              encodeVideo: true
+              rtcStreamType: ping
+              labels:
+              - labels
+              - labels
+            - mode: command
+              name: name
+              encodeVideo: true
+              rtcStreamType: ping
+              labels:
+              - labels
+              - labels
+            - mode: command
+              name: name
+              encodeVideo: true
+              rtcStreamType: ping
+              labels:
+              - labels
+              - labels
             armSwitch: true
             joysticks:
             - ""

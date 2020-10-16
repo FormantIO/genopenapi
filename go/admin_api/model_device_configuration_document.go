@@ -17,4 +17,5 @@ type DeviceConfigurationDocument struct {
 	BlobData DeviceBlobData `json:"blobData,omitempty"`
 	Teleop DeviceTeleopConfiguration `json:"teleop,omitempty"`
 	PortForwarding DevicePortForwardingConfiguration `json:"portForwarding,omitempty"`
+	Diagnostics DeviceDiagnosticsConfiguration `json:"diagnostics,omitempty"`
 }
