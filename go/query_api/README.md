@@ -59,6 +59,7 @@ Class | Method | HTTP request | Description
  - [ScopeFilter](docs/ScopeFilter.md)
  - [SeekQuery](docs/SeekQuery.md)
  - [SeekResult](docs/SeekResult.md)
+ - [StreamAggregateData](docs/StreamAggregateData.md)
  - [StreamData](docs/StreamData.md)
  - [StreamDataListResponse](docs/StreamDataListResponse.md)
  - [StringListResponse](docs/StringListResponse.md)

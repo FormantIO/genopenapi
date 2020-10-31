@@ -11,6 +11,7 @@ Name | Type | Description | Notes
 **Types** | **[]string** |  | [optional] 
 **Tags** | **interface{}** |  | [optional] 
 **NotNames** | **[]string** |  | [optional] 
+**Aggregate** | **string** |  | [optional] 
 **Start** | [**time.Time**](time.Time.md) |  | 
 **End** | [**time.Time**](time.Time.md) |  | 
 

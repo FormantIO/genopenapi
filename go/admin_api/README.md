@@ -127,6 +127,7 @@ Class | Method | HTTP request | Description
 *InterventionRequestApi* | [**InterventionRequestControllerGetOne**](docs/InterventionRequestApi.md#interventionrequestcontrollergetone) | **Get** /intervention-requests/{id} | Get one
 *InterventionRequestApi* | [**InterventionRequestControllerPost**](docs/InterventionRequestApi.md#interventionrequestcontrollerpost) | **Post** /intervention-requests | Post
 *InterventionResponseApi* | [**InterventionResponseControllerPost**](docs/InterventionResponseApi.md#interventionresponsecontrollerpost) | **Post** /intervention-responses | Post
+*OrganizationApi* | [**OrganizationControllerQueryUsageRecords**](docs/OrganizationApi.md#organizationcontrollerqueryusagerecords) | **Post** /organizations/{id}/usage-record/query | Query usage records
 *ShareApi* | [**ShareControllerAuthenticate**](docs/ShareApi.md#sharecontrollerauthenticate) | **Post** /shares/{code}/authenticate | Authenticate
 *ShareApi* | [**ShareControllerGetOne**](docs/ShareApi.md#sharecontrollergetone) | **Get** /shares/{code} | Get one
 *ShareApi* | [**ShareControllerPost**](docs/ShareApi.md#sharecontrollerpost) | **Post** /shares | Post
@@ -310,6 +311,9 @@ Class | Method | HTTP request | Description
  - [UpdatedConfigurationResponse](docs/UpdatedConfigurationResponse.md)
  - [UpdatedEventTriggerRequest](docs/UpdatedEventTriggerRequest.md)
  - [UpdatedEventTriggerResponse](docs/UpdatedEventTriggerResponse.md)
+ - [UsageRecord](docs/UsageRecord.md)
+ - [UsageRecordQuery](docs/UsageRecordQuery.md)
+ - [UsageRecordQueryResponse](docs/UsageRecordQueryResponse.md)
  - [User](docs/User.md)
  - [UserListResponse](docs/UserListResponse.md)
  - [UserParameters](docs/UserParameters.md)

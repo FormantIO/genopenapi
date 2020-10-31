@@ -11,4 +11,5 @@ package query_api
 // StreamDataListResponse struct for StreamDataListResponse
 type StreamDataListResponse struct {
 	Items []StreamData `json:"items"`
+	Aggregates []StreamAggregateData `json:"aggregates,omitempty"`
 }

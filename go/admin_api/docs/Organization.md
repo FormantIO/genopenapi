@@ -28,6 +28,7 @@ Name | Type | Description | Notes
 **StripeSubscriptionEnabled** | **bool** |  | [optional] 
 **S3ExportEnabled** | **bool** |  | [optional] 
 **BlobDataEnabled** | **bool** |  | [optional] 
+**DemoModeEnabled** | **bool** |  | [optional] 
 **DaysDataRetained** | **int64** |  | [optional] 
 **ExternalId** | **string** |  | [optional] 
 **Id** | **string** |  | [optional] 

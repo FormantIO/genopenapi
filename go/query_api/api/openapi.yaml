@@ -1,7 +1,7 @@
 openapi: 3.0.0
 info:
   title: Formant query-api
-  version: 1.8.32
+  version: 1.9.90
 servers:
 - url: https://api-dev.formant.io/v1/queries
 paths:
@@ -502,8 +502,18 @@ components:
         - notNames
         start: 2000-01-23T04:56:07.000+00:00
         end: 2000-01-23T04:56:07.000+00:00
+        aggregate: year
         tags: ""
       properties:
+        aggregate:
+          enum:
+          - year
+          - month
+          - week
+          - day
+          - hour
+          - minute
+          type: string
         start:
           format: date-time
           type: string
@@ -573,6 +583,7 @@ components:
         interval: minute
         end: 2000-01-23T04:56:07.000+00:00
         tags: ""
+        aggregate: year
       properties:
         interval:
           enum:
@@ -618,6 +629,15 @@ components:
           items:
             type: string
           type: array
+        aggregate:
+          enum:
+          - year
+          - month
+          - week
+          - day
+          - hour
+          - minute
+          type: string
         start:
           format: date-time
           type: string
@@ -642,6 +662,49 @@ components:
           type: array
       required:
       - items
+      type: object
+    StreamAggregateData:
+      example:
+        name: name
+        aggregates: ""
+        type: bitset
+        deviceId: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        tags:
+          key: tags
+      properties:
+        name:
+          type: string
+        deviceId:
+          format: uuid
+          type: string
+        tags:
+          additionalProperties:
+            type: string
+          type: object
+        type:
+          enum:
+          - bitset
+          - localization
+          - point cloud
+          - location
+          - file
+          - health
+          - transform tree
+          - battery
+          - video
+          - numeric set
+          - json
+          - image
+          - numeric
+          - text
+          type: string
+        aggregates: {}
+      required:
+      - aggregates
+      - deviceId
+      - name
+      - tags
+      - type
       type: object
     StreamData:
       example:
@@ -693,6 +756,19 @@ components:
       type: object
     StreamDataListResponse:
       example:
+        aggregates:
+        - name: name
+          aggregates: ""
+          type: bitset
+          deviceId: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          tags:
+            key: tags
+        - name: name
+          aggregates: ""
+          type: bitset
+          deviceId: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          tags:
+            key: tags
         items:
         - name: name
           type: bitset
@@ -714,6 +790,10 @@ components:
         items:
           items:
             $ref: '#/components/schemas/StreamData'
+          type: array
+        aggregates:
+          items:
+            $ref: '#/components/schemas/StreamAggregateData'
           type: array
       required:
       - items
@@ -738,6 +818,7 @@ components:
           - notNames
           start: 2000-01-23T04:56:07.000+00:00
           end: 2000-01-23T04:56:07.000+00:00
+          aggregate: year
           tags: ""
       properties:
         query:

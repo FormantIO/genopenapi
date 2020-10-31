@@ -1,7 +1,7 @@
 openapi: 3.0.0
 info:
   title: Formant admin-api
-  version: 1.8.32
+  version: 1.9.90
 servers:
 - url: https://api-dev.formant.io/v1/admin
 paths:
@@ -2292,6 +2292,38 @@ paths:
       summary: Post
       tags:
       - Intervention Response
+  /organizations/{id}/usage-record/query:
+    post:
+      description: |-
+        Query for usage records
+        Authorized clients: administrator
+      operationId: OrganizationController.queryUsageRecords
+      parameters:
+      - explode: false
+        in: path
+        name: id
+        required: true
+        schema:
+          type: string
+        style: simple
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/UsageRecordQuery'
+        description: UsageRecordQuery
+        required: true
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UsageRecordQueryResponse'
+      security:
+      - bearerAuth: []
+      summary: Query usage records
+      tags:
+      - Organization
   /shares:
     post:
       description: |-
@@ -7564,6 +7596,8 @@ components:
           type: boolean
         blobDataEnabled:
           type: boolean
+        demoModeEnabled:
+          type: boolean
         daysDataRetained:
           format: int64
           maximum: 36500
@@ -10240,6 +10274,45 @@ components:
       - interval
       - severity
       - time
+      type: object
+    UsageRecord:
+      example:
+        organizationId: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        createdAt: 2000-01-23T04:56:07.000+00:00
+        time: 2000-01-23T04:56:07.000+00:00
+        type: device-count
+        value: 721321908029599
+        updatedAt: 2000-01-23T04:56:07.000+00:00
+      properties:
+        organizationId:
+          format: uuid
+          type: string
+        type:
+          enum:
+          - device-count
+          - datapoint-count
+          - asset-count
+          - data-storage
+          type: string
+        time:
+          format: date-time
+          type: string
+        value:
+          format: int64
+          maximum: 9007199254740991
+          minimum: 0
+          type: integer
+        createdAt:
+          format: date-time
+          type: string
+        updatedAt:
+          format: date-time
+          type: string
+      required:
+      - organizationId
+      - time
+      - type
+      - value
       type: object
     View:
       example:
@@ -15130,6 +15203,49 @@ components:
       required:
       - id
       - title
+      type: object
+    UsageRecordQueryResponse:
+      example:
+        records:
+        - organizationId: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          createdAt: 2000-01-23T04:56:07.000+00:00
+          time: 2000-01-23T04:56:07.000+00:00
+          type: device-count
+          value: 721321908029599
+          updatedAt: 2000-01-23T04:56:07.000+00:00
+        - organizationId: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          createdAt: 2000-01-23T04:56:07.000+00:00
+          time: 2000-01-23T04:56:07.000+00:00
+          type: device-count
+          value: 721321908029599
+          updatedAt: 2000-01-23T04:56:07.000+00:00
+      properties:
+        records:
+          items:
+            $ref: '#/components/schemas/UsageRecord'
+          type: array
+      required:
+      - records
+      type: object
+    UsageRecordQuery:
+      example:
+        organizationId: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        start: 2000-01-23T04:56:07.000+00:00
+        end: 2000-01-23T04:56:07.000+00:00
+      properties:
+        organizationId:
+          format: uuid
+          type: string
+        start:
+          format: date-time
+          type: string
+        end:
+          format: date-time
+          type: string
+      required:
+      - end
+      - organizationId
+      - start
       type: object
     UserListResponse:
       example:

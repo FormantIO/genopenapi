@@ -13,6 +13,7 @@ package query_api
 
 // Query struct for Query
 type Query struct {
+	Aggregate string `json:"aggregate,omitempty"`
 	Start string `json:"start"`
 	End string `json:"end"`
 	AgentIds []string `json:"agentIds,omitempty"`

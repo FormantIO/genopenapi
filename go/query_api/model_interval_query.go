@@ -20,6 +20,7 @@ type IntervalQuery struct {
 	Types []string `json:"types,omitempty"`
 	Tags interface{} `json:"tags,omitempty"`
 	NotNames []string `json:"notNames,omitempty"`
+	Aggregate string `json:"aggregate,omitempty"`
 	Start time.Time `json:"start"`
 	End time.Time `json:"end"`
 }

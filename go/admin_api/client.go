@@ -85,6 +85,8 @@ type APIClient struct {
 
 	InterventionResponseApi *InterventionResponseApiService
 
+	OrganizationApi *OrganizationApiService
+
 	ShareApi *ShareApiService
 
 	TriggeredEventApi *TriggeredEventApiService
@@ -129,6 +131,7 @@ func NewAPIClient(cfg *Configuration) *APIClient {
 	c.IntegrationApi = (*IntegrationApiService)(&c.common)
 	c.InterventionRequestApi = (*InterventionRequestApiService)(&c.common)
 	c.InterventionResponseApi = (*InterventionResponseApiService)(&c.common)
+	c.OrganizationApi = (*OrganizationApiService)(&c.common)
 	c.ShareApi = (*ShareApiService)(&c.common)
 	c.TriggeredEventApi = (*TriggeredEventApiService)(&c.common)
 	c.UserApi = (*UserApiService)(&c.common)
