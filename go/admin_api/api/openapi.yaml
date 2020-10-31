@@ -1,7 +1,7 @@
 openapi: 3.0.0
 info:
   title: Formant admin-api
-  version: 1.9.90
+  version: 1.9.91
 servers:
 - url: https://api-dev.formant.io/v1/admin
 paths:
