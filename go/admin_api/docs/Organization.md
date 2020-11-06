@@ -30,6 +30,7 @@ Name | Type | Description | Notes
 **BlobDataEnabled** | **bool** |  | [optional] 
 **DemoModeEnabled** | **bool** |  | [optional] 
 **DaysDataRetained** | **int64** |  | [optional] 
+**TrialPeriodEnd** | Pointer to [**time.Time**](time.Time.md) |  | 
 **ExternalId** | **string** |  | [optional] 
 **Id** | **string** |  | [optional] 
 **CreatedAt** | [**time.Time**](time.Time.md) |  | [optional] 

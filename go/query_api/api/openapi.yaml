@@ -1,7 +1,7 @@
 openapi: 3.0.0
 info:
   title: Formant query-api
-  version: 1.9.98
+  version: 1.10.48
 servers:
 - url: https://api-dev.formant.io/v1/queries
 paths:

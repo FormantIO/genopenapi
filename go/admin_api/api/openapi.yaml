@@ -1,7 +1,7 @@
 openapi: 3.0.0
 info:
   title: Formant admin-api
-  version: 1.9.98
+  version: 1.10.48
 servers:
 - url: https://api-dev.formant.io/v1/admin
 paths:
@@ -7603,6 +7603,10 @@ components:
           maximum: 36500
           minimum: 0
           type: integer
+        trialPeriodEnd:
+          format: date-time
+          nullable: true
+          type: string
         externalId:
           format: uuid
           type: string
@@ -7625,6 +7629,7 @@ components:
       - plan
       - postalCode
       - state
+      - trialPeriodEnd
       - website
       type: object
     DeviceConfigurationTemplate:

@@ -39,6 +39,7 @@ type Organization struct {
 	BlobDataEnabled bool `json:"blobDataEnabled,omitempty"`
 	DemoModeEnabled bool `json:"demoModeEnabled,omitempty"`
 	DaysDataRetained int64 `json:"daysDataRetained,omitempty"`
+	TrialPeriodEnd *time.Time `json:"trialPeriodEnd"`
 	ExternalId string `json:"externalId,omitempty"`
 	Id string `json:"id,omitempty"`
 	CreatedAt time.Time `json:"createdAt,omitempty"`
