@@ -1,7 +1,7 @@
 openapi: 3.0.0
 info:
   title: Formant query-api
-  version: 1.10.51
+  version: 1.11.34
 servers:
 - url: https://api-dev.formant.io/v1/queries
 paths:
@@ -590,6 +590,8 @@ components:
           - minute
           - hour
           - day
+          - month
+          - year
           type: string
         agentIds:
           items:
