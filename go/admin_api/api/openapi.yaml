@@ -1,7 +1,7 @@
 openapi: 3.0.0
 info:
   title: Formant admin-api
-  version: 1.11.34
+  version: 1.12.40
 servers:
 - url: https://api-dev.formant.io/v1/admin
 paths:
@@ -7598,6 +7598,8 @@ components:
           type: boolean
         demoModeEnabled:
           type: boolean
+        billEstimateEnabled:
+          type: boolean
         daysDataRetained:
           format: int64
           maximum: 36500
@@ -10298,6 +10300,7 @@ components:
           - datapoint-count
           - asset-count
           - data-storage
+          - turn-network
           type: string
         time:
           format: date-time
@@ -10912,6 +10915,7 @@ components:
         email: email
       properties:
         email:
+          format: email
           type: string
       required:
       - email
@@ -14883,6 +14887,7 @@ components:
       type: object
     IntervalEventFilter:
       example:
+        timezoneOffsetMinutes: -604
         agentIds:
         - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
@@ -14929,6 +14934,11 @@ components:
           - month
           - year
           type: string
+        timezoneOffsetMinutes:
+          format: int64
+          maximum: 720
+          minimum: -720
+          type: integer
         agentIds:
           items:
             format: uuid
@@ -15023,6 +15033,7 @@ components:
           type: array
       required:
       - interval
+      - timezoneOffsetMinutes
       type: object
     EventTriggerListResponse:
       example:

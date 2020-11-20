@@ -29,6 +29,7 @@ Name | Type | Description | Notes
 **S3ExportEnabled** | **bool** |  | [optional] 
 **BlobDataEnabled** | **bool** |  | [optional] 
 **DemoModeEnabled** | **bool** |  | [optional] 
+**BillEstimateEnabled** | **bool** |  | [optional] 
 **DaysDataRetained** | **int64** |  | [optional] 
 **TrialPeriodEnd** | Pointer to [**time.Time**](time.Time.md) |  | 
 **ExternalId** | **string** |  | [optional] 

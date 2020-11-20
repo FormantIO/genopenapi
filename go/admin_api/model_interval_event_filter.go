@@ -14,6 +14,7 @@ import (
 // IntervalEventFilter struct for IntervalEventFilter
 type IntervalEventFilter struct {
 	Interval string `json:"interval"`
+	TimezoneOffsetMinutes int64 `json:"timezoneOffsetMinutes"`
 	AgentIds []string `json:"agentIds,omitempty"`
 	DeviceIds []string `json:"deviceIds,omitempty"`
 	Names []string `json:"names,omitempty"`

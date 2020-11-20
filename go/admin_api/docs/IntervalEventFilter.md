@@ -5,6 +5,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Interval** | **string** |  | 
+**TimezoneOffsetMinutes** | **int64** |  | 
 **AgentIds** | **[]string** |  | [optional] 
 **DeviceIds** | **[]string** |  | [optional] 
 **Names** | **[]string** |  | [optional] 
