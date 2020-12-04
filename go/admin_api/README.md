@@ -228,6 +228,7 @@ Class | Method | HTTP request | Description
  - [EventTriggerCommand](docs/EventTriggerCommand.md)
  - [EventTriggerListResponse](docs/EventTriggerListResponse.md)
  - [Filter](docs/Filter.md)
+ - [Fleet](docs/Fleet.md)
  - [ForgotPasswordRequest](docs/ForgotPasswordRequest.md)
  - [GenerateAccessTokenRequest](docs/GenerateAccessTokenRequest.md)
  - [GenerateAccessTokenResponse](docs/GenerateAccessTokenResponse.md)

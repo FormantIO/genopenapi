@@ -1,7 +1,7 @@
 openapi: 3.0.0
 info:
   title: Formant admin-api
-  version: 1.12.47
+  version: 1.13.53
 servers:
 - url: https://api-dev.formant.io/v1/admin
 paths:
@@ -10098,6 +10098,28 @@ components:
       required:
       - expiration
       - token
+      type: object
+    Fleet:
+      properties:
+        organizationId:
+          format: uuid
+          type: string
+        name:
+          maxLength: 32
+          type: string
+        enabled:
+          type: boolean
+        id:
+          format: uuid
+          type: string
+        createdAt:
+          format: date-time
+          type: string
+        updatedAt:
+          format: date-time
+          type: string
+      required:
+      - name
       type: object
     Share:
       example:
