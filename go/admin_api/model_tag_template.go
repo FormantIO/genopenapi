@@ -11,12 +11,11 @@ package admin_api
 import (
 	"time"
 )
-// Fleet struct for Fleet
-type Fleet struct {
+// TagTemplate struct for TagTemplate
+type TagTemplate struct {
 	OrganizationId string `json:"organizationId,omitempty"`
-	Name string `json:"name"`
 	TagKey interface{} `json:"tagKey"`
-	TagValue interface{} `json:"tagValue"`
+	IsFleet bool `json:"isFleet,omitempty"`
 	Enabled bool `json:"enabled,omitempty"`
 	Id string `json:"id,omitempty"`
 	CreatedAt time.Time `json:"createdAt,omitempty"`

@@ -1,7 +1,7 @@
 openapi: 3.0.0
 info:
   title: Formant admin-api
-  version: 1.13.53
+  version: 1.14.32
 servers:
 - url: https://api-dev.formant.io/v1/admin
 paths:
@@ -2325,6 +2325,22 @@ paths:
       tags:
       - Organization
   /shares:
+    get:
+      description: |-
+        List shares
+        Authorized clients: operator
+      operationId: ShareController.getAll
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ShareListResponse'
+      security:
+      - bearerAuth: []
+      summary: Get all
+      tags:
+      - Share
     post:
       description: |-
         Create a share token
@@ -2349,6 +2365,29 @@ paths:
       tags:
       - Share
   /shares/{code}:
+    delete:
+      description: |-
+        Revoke a share
+        Authorized clients: operator
+      operationId: ShareController.delete
+      parameters:
+      - explode: false
+        in: path
+        name: code
+        required: true
+        schema:
+          type: string
+        style: simple
+      responses:
+        "200":
+          content:
+            application/json: {}
+          description: Successful response
+      security:
+      - bearerAuth: []
+      summary: Delete
+      tags:
+      - Share
     get:
       description: Get a share
       operationId: ShareController.getOne
@@ -2841,6 +2880,38 @@ components:
         architecture:
           type: string
       type: object
+    Network:
+      example:
+        name: name
+        ip4: ip4
+      properties:
+        name:
+          type: string
+        ip4:
+          type: string
+      type: object
+    NetworkInfo:
+      example:
+        networks:
+        - name: name
+          ip4: ip4
+        - name: name
+          ip4: ip4
+        - name: name
+          ip4: ip4
+        - name: name
+          ip4: ip4
+        - name: name
+          ip4: ip4
+      properties:
+        networks:
+          items:
+            $ref: '#/components/schemas/Network'
+          maxItems: 5
+          type: array
+      required:
+      - networks
+      type: object
     NodeInfo:
       example:
         hostname: hostname
@@ -2877,6 +2948,18 @@ components:
           release: release
           name: name
           version: version
+        networkInfo:
+          networks:
+          - name: name
+            ip4: ip4
+          - name: name
+            ip4: ip4
+          - name: name
+            ip4: ip4
+          - name: name
+            ip4: ip4
+          - name: name
+            ip4: ip4
         hwEncodingAvailable: true
         kernelInfo:
           release: release
@@ -2894,11 +2977,14 @@ components:
           $ref: '#/components/schemas/OsInfo'
         nodeInfo:
           $ref: '#/components/schemas/NodeInfo'
+        networkInfo:
+          $ref: '#/components/schemas/NetworkInfo'
         hwEncodingAvailable:
           type: boolean
       required:
       - hwEncodingAvailable
       - kernelInfo
+      - networkInfo
       - nodeInfo
       - osInfo
       type: object
@@ -5980,6 +6066,18 @@ components:
             release: release
             name: name
             version: version
+          networkInfo:
+            networks:
+            - name: name
+              ip4: ip4
+            - name: name
+              ip4: ip4
+            - name: name
+              ip4: ip4
+            - name: name
+              ip4: ip4
+            - name: name
+              ip4: ip4
           hwEncodingAvailable: true
           kernelInfo:
             release: release
@@ -6368,6 +6466,7 @@ components:
       example:
         mode: command
         topicName: topicName
+        statusTopic: statusTopic
         encodeVideo: true
         topicType: std_msgs/Bool
       properties:
@@ -6390,6 +6489,9 @@ components:
           type: string
         encodeVideo:
           type: boolean
+        statusTopic:
+          pattern: ^([a-zA-Z~/])([0-9a-zA-Z_/]){0,254}$
+          type: string
       required:
       - mode
       - topicName
@@ -6437,22 +6539,27 @@ components:
         rosStreams:
         - mode: command
           topicName: topicName
+          statusTopic: statusTopic
           encodeVideo: true
           topicType: std_msgs/Bool
         - mode: command
           topicName: topicName
+          statusTopic: statusTopic
           encodeVideo: true
           topicType: std_msgs/Bool
         - mode: command
           topicName: topicName
+          statusTopic: statusTopic
           encodeVideo: true
           topicType: std_msgs/Bool
         - mode: command
           topicName: topicName
+          statusTopic: statusTopic
           encodeVideo: true
           topicType: std_msgs/Bool
         - mode: command
           topicName: topicName
+          statusTopic: statusTopic
           encodeVideo: true
           topicType: std_msgs/Bool
         customStreams:
@@ -6502,12 +6609,12 @@ components:
         rosStreams:
           items:
             $ref: '#/components/schemas/DeviceTeleopRosStreamConfiguration'
-          maxItems: 20
+          maxItems: 40
           type: array
         customStreams:
           items:
             $ref: '#/components/schemas/DeviceTeleopCustomStreamConfiguration'
-          maxItems: 10
+          maxItems: 40
           type: array
         joysticks:
           $ref: '#/components/schemas/TeleopJoystickConfiguration'
@@ -6578,22 +6685,27 @@ components:
           rosStreams:
           - mode: command
             topicName: topicName
+            statusTopic: statusTopic
             encodeVideo: true
             topicType: std_msgs/Bool
           - mode: command
             topicName: topicName
+            statusTopic: statusTopic
             encodeVideo: true
             topicType: std_msgs/Bool
           - mode: command
             topicName: topicName
+            statusTopic: statusTopic
             encodeVideo: true
             topicType: std_msgs/Bool
           - mode: command
             topicName: topicName
+            statusTopic: statusTopic
             encodeVideo: true
             topicType: std_msgs/Bool
           - mode: command
             topicName: topicName
+            statusTopic: statusTopic
             encodeVideo: true
             topicType: std_msgs/Bool
           customStreams:
@@ -6723,22 +6835,27 @@ components:
             rosStreams:
             - mode: command
               topicName: topicName
+              statusTopic: statusTopic
               encodeVideo: true
               topicType: std_msgs/Bool
             - mode: command
               topicName: topicName
+              statusTopic: statusTopic
               encodeVideo: true
               topicType: std_msgs/Bool
             - mode: command
               topicName: topicName
+              statusTopic: statusTopic
               encodeVideo: true
               topicType: std_msgs/Bool
             - mode: command
               topicName: topicName
+              statusTopic: statusTopic
               encodeVideo: true
               topicType: std_msgs/Bool
             - mode: command
               topicName: topicName
+              statusTopic: statusTopic
               encodeVideo: true
               topicType: std_msgs/Bool
             customStreams:
@@ -7001,6 +7118,10 @@ components:
         url:
           format: url
           type: string
+        headers:
+          additionalProperties:
+            type: string
+          type: object
       required:
       - name
       - url
@@ -7699,22 +7820,27 @@ components:
             rosStreams:
             - mode: command
               topicName: topicName
+              statusTopic: statusTopic
               encodeVideo: true
               topicType: std_msgs/Bool
             - mode: command
               topicName: topicName
+              statusTopic: statusTopic
               encodeVideo: true
               topicType: std_msgs/Bool
             - mode: command
               topicName: topicName
+              statusTopic: statusTopic
               encodeVideo: true
               topicType: std_msgs/Bool
             - mode: command
               topicName: topicName
+              statusTopic: statusTopic
               encodeVideo: true
               topicType: std_msgs/Bool
             - mode: command
               topicName: topicName
+              statusTopic: statusTopic
               encodeVideo: true
               topicType: std_msgs/Bool
             customStreams:
@@ -8977,6 +9103,18 @@ components:
               release: release
               name: name
               version: version
+            networkInfo:
+              networks:
+              - name: name
+                ip4: ip4
+              - name: name
+                ip4: ip4
+              - name: name
+                ip4: ip4
+              - name: name
+                ip4: ip4
+              - name: name
+                ip4: ip4
             hwEncodingAvailable: true
             kernelInfo:
               release: release
@@ -9984,6 +10122,7 @@ components:
       type: object
     CustomEvent:
       example:
+        severity: info
         type: triggered-event
         message: message
         deviceId: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
@@ -10013,6 +10152,13 @@ components:
           - comment
           - system
           - annotation
+          type: string
+        severity:
+          enum:
+          - info
+          - warning
+          - error
+          - critical
           type: string
         id:
           format: uuid
@@ -10107,6 +10253,8 @@ components:
         name:
           maxLength: 32
           type: string
+        tagKey: {}
+        tagValue: {}
         enabled:
           type: boolean
         id:
@@ -10120,6 +10268,8 @@ components:
           type: string
       required:
       - name
+      - tagKey
+      - tagValue
       type: object
     Share:
       example:
@@ -10191,6 +10341,28 @@ components:
       required:
       - scope
       - time
+      type: object
+    TagTemplate:
+      properties:
+        organizationId:
+          format: uuid
+          type: string
+        tagKey: {}
+        isFleet:
+          type: boolean
+        enabled:
+          type: boolean
+        id:
+          format: uuid
+          type: string
+        createdAt:
+          format: date-time
+          type: string
+        updatedAt:
+          format: date-time
+          type: string
+      required:
+      - tagKey
       type: object
     TriggeredEvent:
       example:
@@ -11385,22 +11557,27 @@ components:
               rosStreams:
               - mode: command
                 topicName: topicName
+                statusTopic: statusTopic
                 encodeVideo: true
                 topicType: std_msgs/Bool
               - mode: command
                 topicName: topicName
+                statusTopic: statusTopic
                 encodeVideo: true
                 topicType: std_msgs/Bool
               - mode: command
                 topicName: topicName
+                statusTopic: statusTopic
                 encodeVideo: true
                 topicType: std_msgs/Bool
               - mode: command
                 topicName: topicName
+                statusTopic: statusTopic
                 encodeVideo: true
                 topicType: std_msgs/Bool
               - mode: command
                 topicName: topicName
+                statusTopic: statusTopic
                 encodeVideo: true
                 topicType: std_msgs/Bool
               customStreams:
@@ -11515,22 +11692,27 @@ components:
               rosStreams:
               - mode: command
                 topicName: topicName
+                statusTopic: statusTopic
                 encodeVideo: true
                 topicType: std_msgs/Bool
               - mode: command
                 topicName: topicName
+                statusTopic: statusTopic
                 encodeVideo: true
                 topicType: std_msgs/Bool
               - mode: command
                 topicName: topicName
+                statusTopic: statusTopic
                 encodeVideo: true
                 topicType: std_msgs/Bool
               - mode: command
                 topicName: topicName
+                statusTopic: statusTopic
                 encodeVideo: true
                 topicType: std_msgs/Bool
               - mode: command
                 topicName: topicName
+                statusTopic: statusTopic
                 encodeVideo: true
                 topicType: std_msgs/Bool
               customStreams:
@@ -12774,6 +12956,18 @@ components:
                 release: release
                 name: name
                 version: version
+              networkInfo:
+                networks:
+                - name: name
+                  ip4: ip4
+                - name: name
+                  ip4: ip4
+                - name: name
+                  ip4: ip4
+                - name: name
+                  ip4: ip4
+                - name: name
+                  ip4: ip4
               hwEncodingAvailable: true
               kernelInfo:
                 release: release
@@ -13977,6 +14171,18 @@ components:
                 release: release
                 name: name
                 version: version
+              networkInfo:
+                networks:
+                - name: name
+                  ip4: ip4
+                - name: name
+                  ip4: ip4
+                - name: name
+                  ip4: ip4
+                - name: name
+                  ip4: ip4
+                - name: name
+                  ip4: ip4
               hwEncodingAvailable: true
               kernelInfo:
                 release: release
@@ -14137,22 +14343,27 @@ components:
               rosStreams:
               - mode: command
                 topicName: topicName
+                statusTopic: statusTopic
                 encodeVideo: true
                 topicType: std_msgs/Bool
               - mode: command
                 topicName: topicName
+                statusTopic: statusTopic
                 encodeVideo: true
                 topicType: std_msgs/Bool
               - mode: command
                 topicName: topicName
+                statusTopic: statusTopic
                 encodeVideo: true
                 topicType: std_msgs/Bool
               - mode: command
                 topicName: topicName
+                statusTopic: statusTopic
                 encodeVideo: true
                 topicType: std_msgs/Bool
               - mode: command
                 topicName: topicName
+                statusTopic: statusTopic
                 encodeVideo: true
                 topicType: std_msgs/Bool
               customStreams:
@@ -15330,6 +15541,77 @@ components:
       required:
       - items
       type: object
+    ShareListResponse:
+      example:
+        items:
+        - organizationId: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          createdAt: 2000-01-23T04:56:07.000+00:00
+          code: code
+          scope:
+            agentIds:
+            - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+            - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+            deviceIds:
+            - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+            - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+            types:
+            - bitset
+            - bitset
+            names:
+            - names
+            - names
+            notNames:
+            - notNames
+            - notNames
+            start: 2000-01-23T04:56:07.000+00:00
+            end: 2000-01-23T04:56:07.000+00:00
+            tags: ""
+          expiration: 2000-01-23T04:56:07.000+00:00
+          time: 2000-01-23T04:56:07.000+00:00
+          id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          message: message
+          userName: userName
+          userId: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          channelId: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          updatedAt: 2000-01-23T04:56:07.000+00:00
+        - organizationId: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          createdAt: 2000-01-23T04:56:07.000+00:00
+          code: code
+          scope:
+            agentIds:
+            - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+            - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+            deviceIds:
+            - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+            - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+            types:
+            - bitset
+            - bitset
+            names:
+            - names
+            - names
+            notNames:
+            - notNames
+            - notNames
+            start: 2000-01-23T04:56:07.000+00:00
+            end: 2000-01-23T04:56:07.000+00:00
+            tags: ""
+          expiration: 2000-01-23T04:56:07.000+00:00
+          time: 2000-01-23T04:56:07.000+00:00
+          id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          message: message
+          userName: userName
+          userId: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          channelId: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          updatedAt: 2000-01-23T04:56:07.000+00:00
+      properties:
+        items:
+          items:
+            $ref: '#/components/schemas/Share'
+          type: array
+      required:
+      - items
+      type: object
     PartialAnnotation:
       example:
         note: note
@@ -15875,22 +16157,27 @@ components:
             rosStreams:
             - mode: command
               topicName: topicName
+              statusTopic: statusTopic
               encodeVideo: true
               topicType: std_msgs/Bool
             - mode: command
               topicName: topicName
+              statusTopic: statusTopic
               encodeVideo: true
               topicType: std_msgs/Bool
             - mode: command
               topicName: topicName
+              statusTopic: statusTopic
               encodeVideo: true
               topicType: std_msgs/Bool
             - mode: command
               topicName: topicName
+              statusTopic: statusTopic
               encodeVideo: true
               topicType: std_msgs/Bool
             - mode: command
               topicName: topicName
+              statusTopic: statusTopic
               encodeVideo: true
               topicType: std_msgs/Bool
             customStreams:
@@ -17149,6 +17436,18 @@ components:
               release: release
               name: name
               version: version
+            networkInfo:
+              networks:
+              - name: name
+                ip4: ip4
+              - name: name
+                ip4: ip4
+              - name: name
+                ip4: ip4
+              - name: name
+                ip4: ip4
+              - name: name
+                ip4: ip4
             hwEncodingAvailable: true
             kernelInfo:
               release: release

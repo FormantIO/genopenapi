@@ -13,5 +13,6 @@ type HwInfo struct {
 	KernelInfo KernelInfo `json:"kernelInfo"`
 	OsInfo OsInfo `json:"osInfo"`
 	NodeInfo NodeInfo `json:"nodeInfo"`
+	NetworkInfo NetworkInfo `json:"networkInfo"`
 	HwEncodingAvailable bool `json:"hwEncodingAvailable"`
 }

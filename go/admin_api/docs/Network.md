@@ -1,12 +1,11 @@
-# Webhook
+# Network
 
 ## Properties
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Name** | **interface{}** |  | 
-**Url** | **string** |  | 
-**Headers** | **map[string]string** |  | [optional] 
+**Name** | **string** |  | [optional] 
+**Ip4** | **string** |  | [optional] 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

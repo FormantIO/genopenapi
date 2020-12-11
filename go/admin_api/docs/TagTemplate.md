@@ -1,13 +1,12 @@
-# Fleet
+# TagTemplate
 
 ## Properties
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **OrganizationId** | **string** |  | [optional] 
-**Name** | **string** |  | 
 **TagKey** | **interface{}** |  | 
-**TagValue** | **interface{}** |  | 
+**IsFleet** | **bool** |  | [optional] 
 **Enabled** | **bool** |  | [optional] 
 **Id** | **string** |  | [optional] 
 **CreatedAt** | [**time.Time**](time.Time.md) |  | [optional] 

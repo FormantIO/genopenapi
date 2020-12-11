@@ -14,6 +14,7 @@ import (
 // CustomEvent struct for CustomEvent
 type CustomEvent struct {
 	Type string `json:"type,omitempty"`
+	Severity string `json:"severity,omitempty"`
 	Id string `json:"id,omitempty"`
 	CreatedAt time.Time `json:"createdAt,omitempty"`
 	UpdatedAt time.Time `json:"updatedAt,omitempty"`

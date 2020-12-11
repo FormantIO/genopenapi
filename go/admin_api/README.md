@@ -129,6 +129,8 @@ Class | Method | HTTP request | Description
 *InterventionResponseApi* | [**InterventionResponseControllerPost**](docs/InterventionResponseApi.md#interventionresponsecontrollerpost) | **Post** /intervention-responses | Post
 *OrganizationApi* | [**OrganizationControllerQueryUsageRecords**](docs/OrganizationApi.md#organizationcontrollerqueryusagerecords) | **Post** /organizations/{id}/usage-record/query | Query usage records
 *ShareApi* | [**ShareControllerAuthenticate**](docs/ShareApi.md#sharecontrollerauthenticate) | **Post** /shares/{code}/authenticate | Authenticate
+*ShareApi* | [**ShareControllerDelete**](docs/ShareApi.md#sharecontrollerdelete) | **Delete** /shares/{code} | Delete
+*ShareApi* | [**ShareControllerGetAll**](docs/ShareApi.md#sharecontrollergetall) | **Get** /shares | Get all
 *ShareApi* | [**ShareControllerGetOne**](docs/ShareApi.md#sharecontrollergetone) | **Get** /shares/{code} | Get one
 *ShareApi* | [**ShareControllerPost**](docs/ShareApi.md#sharecontrollerpost) | **Post** /shares | Post
 *TriggeredEventApi* | [**TriggeredEventControllerGetOne**](docs/TriggeredEventApi.md#triggeredeventcontrollergetone) | **Get** /triggered-events/{id} | Get one
@@ -256,6 +258,8 @@ Class | Method | HTTP request | Description
  - [LoginResult](docs/LoginResult.md)
  - [LookerInfo](docs/LookerInfo.md)
  - [LookerLook](docs/LookerLook.md)
+ - [Network](docs/Network.md)
+ - [NetworkInfo](docs/NetworkInfo.md)
  - [NodeInfo](docs/NodeInfo.md)
  - [NumericCondition](docs/NumericCondition.md)
  - [NumericSetEventTriggerCondition](docs/NumericSetEventTriggerCondition.md)
@@ -292,6 +296,7 @@ Class | Method | HTTP request | Description
  - [ScopeFilter](docs/ScopeFilter.md)
  - [SelectionRequestData](docs/SelectionRequestData.md)
  - [Share](docs/Share.md)
+ - [ShareListResponse](docs/ShareListResponse.md)
  - [SheetParameters](docs/SheetParameters.md)
  - [SlackAuthRequest](docs/SlackAuthRequest.md)
  - [SlackInfo](docs/SlackInfo.md)
@@ -299,6 +304,7 @@ Class | Method | HTTP request | Description
  - [StripeCard](docs/StripeCard.md)
  - [StripeInfo](docs/StripeInfo.md)
  - [TagParameters](docs/TagParameters.md)
+ - [TagTemplate](docs/TagTemplate.md)
  - [TagsResponse](docs/TagsResponse.md)
  - [TeleopJoystickAxisConfiguration](docs/TeleopJoystickAxisConfiguration.md)
  - [TeleopJoystickConfiguration](docs/TeleopJoystickConfiguration.md)

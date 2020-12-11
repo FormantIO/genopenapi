@@ -5,6 +5,8 @@ All URIs are relative to *https://api-dev.formant.io/v1/admin*
 Method | HTTP request | Description
 ------------- | ------------- | -------------
 [**ShareControllerAuthenticate**](ShareApi.md#ShareControllerAuthenticate) | **Post** /shares/{code}/authenticate | Authenticate
+[**ShareControllerDelete**](ShareApi.md#ShareControllerDelete) | **Delete** /shares/{code} | Delete
+[**ShareControllerGetAll**](ShareApi.md#ShareControllerGetAll) | **Get** /shares | Get all
 [**ShareControllerGetOne**](ShareApi.md#ShareControllerGetOne) | **Get** /shares/{code} | Get one
 [**ShareControllerPost**](ShareApi.md#ShareControllerPost) | **Post** /shares | Post
 
@@ -31,6 +33,70 @@ Name | Type | Description  | Notes
 ### Authorization
 
 Use admin JWT for authorization
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## ShareControllerDelete
+
+> ShareControllerDelete(ctx, code)
+
+Delete
+
+Revoke a share Authorized clients: operator
+
+### Required Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**code** | **string**|  | 
+
+### Return type
+
+ (empty response body)
+
+### Authorization
+
+[bearerAuth](../README.md#bearerAuth)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## ShareControllerGetAll
+
+> ShareListResponse ShareControllerGetAll(ctx, )
+
+Get all
+
+List shares Authorized clients: operator
+
+### Required Parameters
+
+This endpoint does not need any parameter.
+
+### Return type
+
+[**ShareListResponse**](ShareListResponse.md)
+
+### Authorization
+
+[bearerAuth](../README.md#bearerAuth)
 
 ### HTTP request headers
 

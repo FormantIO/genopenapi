@@ -8,9 +8,7 @@
  */
 
 package admin_api
-// Webhook struct for Webhook
-type Webhook struct {
-	Name interface{} `json:"name"`
-	Url string `json:"url"`
-	Headers map[string]string `json:"headers,omitempty"`
+// NetworkInfo struct for NetworkInfo
+type NetworkInfo struct {
+	Networks []Network `json:"networks"`
 }
