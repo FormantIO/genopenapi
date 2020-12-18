@@ -300,6 +300,7 @@ Class | Method | HTTP request | Description
  - [SheetParameters](docs/SheetParameters.md)
  - [SlackAuthRequest](docs/SlackAuthRequest.md)
  - [SlackInfo](docs/SlackInfo.md)
+ - [Stream](docs/Stream.md)
  - [StringListResponse](docs/StringListResponse.md)
  - [StripeCard](docs/StripeCard.md)
  - [StripeInfo](docs/StripeInfo.md)

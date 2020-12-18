@@ -1,7 +1,7 @@
 openapi: 3.0.0
 info:
   title: Formant admin-api
-  version: 1.14.32
+  version: 1.15.26
 servers:
 - url: https://api-dev.formant.io/v1/admin
 paths:
@@ -10341,6 +10341,45 @@ components:
       required:
       - scope
       - time
+      type: object
+    Stream:
+      properties:
+        organizationId:
+          format: uuid
+          type: string
+        streamName:
+          type: string
+        streamType:
+          enum:
+          - bitset
+          - localization
+          - point cloud
+          - location
+          - file
+          - health
+          - transform tree
+          - battery
+          - video
+          - numeric set
+          - json
+          - image
+          - numeric
+          - text
+          type: string
+        enabled:
+          type: boolean
+        id:
+          format: uuid
+          type: string
+        createdAt:
+          format: date-time
+          type: string
+        updatedAt:
+          format: date-time
+          type: string
+      required:
+      - streamName
+      - streamType
       type: object
     TagTemplate:
       properties:
