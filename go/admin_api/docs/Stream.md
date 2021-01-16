@@ -7,6 +7,7 @@ Name | Type | Description | Notes
 **OrganizationId** | **string** |  | [optional] 
 **StreamName** | **string** |  | 
 **StreamType** | **string** |  | 
+**Active** | **bool** |  | [optional] 
 **Enabled** | **bool** |  | [optional] 
 **Id** | **string** |  | [optional] 
 **CreatedAt** | [**time.Time**](time.Time.md) |  | [optional] 

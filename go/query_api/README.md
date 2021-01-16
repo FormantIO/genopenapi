@@ -42,6 +42,7 @@ Class | Method | HTTP request | Description
 *QueryApi* | [**QueryControllerExportSheet**](docs/QueryApi.md#querycontrollerexportsheet) | **Post** /queries/export-sheet | Export sheet
 *QueryApi* | [**QueryControllerQuery**](docs/QueryApi.md#querycontrollerquery) | **Post** /queries | Query
 *SeekApi* | [**SeekControllerSeek**](docs/SeekApi.md#seekcontrollerseek) | **Post** /seek | Seek
+*StreamCurrentValueApi* | [**StreamCurrentValueControllerQuery**](docs/StreamCurrentValueApi.md#streamcurrentvaluecontrollerquery) | **Post** /stream-current-value | Query
 
 
 ## Documentation For Models
@@ -60,6 +61,7 @@ Class | Method | HTTP request | Description
  - [SeekQuery](docs/SeekQuery.md)
  - [SeekResult](docs/SeekResult.md)
  - [StreamAggregateData](docs/StreamAggregateData.md)
+ - [StreamCurrentValueListResponse](docs/StreamCurrentValueListResponse.md)
  - [StreamData](docs/StreamData.md)
  - [StreamDataListResponse](docs/StreamDataListResponse.md)
  - [StringListResponse](docs/StringListResponse.md)

@@ -1,7 +1,7 @@
 openapi: 3.0.0
 info:
   title: Formant admin-api
-  version: 1.15.26
+  version: 1.16.87
 servers:
 - url: https://api-dev.formant.io/v1/admin
 paths:
@@ -7717,6 +7717,11 @@ components:
           type: boolean
         blobDataEnabled:
           type: boolean
+        whiteLabelEnabled:
+          type: boolean
+        whiteLabelCSS:
+          nullable: true
+          type: string
         demoModeEnabled:
           type: boolean
         billEstimateEnabled:
@@ -10366,6 +10371,8 @@ components:
           - numeric
           - text
           type: string
+        active:
+          type: boolean
         enabled:
           type: boolean
         id:

@@ -37,6 +37,8 @@ type Organization struct {
 	StripeSubscriptionEnabled bool `json:"stripeSubscriptionEnabled,omitempty"`
 	S3ExportEnabled bool `json:"s3ExportEnabled,omitempty"`
 	BlobDataEnabled bool `json:"blobDataEnabled,omitempty"`
+	WhiteLabelEnabled bool `json:"whiteLabelEnabled,omitempty"`
+	WhiteLabelCSS *string `json:"whiteLabelCSS,omitempty"`
 	DemoModeEnabled bool `json:"demoModeEnabled,omitempty"`
 	BillEstimateEnabled bool `json:"billEstimateEnabled,omitempty"`
 	DaysDataRetained int64 `json:"daysDataRetained,omitempty"`

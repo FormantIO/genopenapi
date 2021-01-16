@@ -16,6 +16,7 @@ type Stream struct {
 	OrganizationId string `json:"organizationId,omitempty"`
 	StreamName string `json:"streamName"`
 	StreamType string `json:"streamType"`
+	Active bool `json:"active,omitempty"`
 	Enabled bool `json:"enabled,omitempty"`
 	Id string `json:"id,omitempty"`
 	CreatedAt time.Time `json:"createdAt,omitempty"`

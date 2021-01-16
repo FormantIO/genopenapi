@@ -1,7 +1,7 @@
 openapi: 3.0.0
 info:
   title: Formant query-api
-  version: 1.15.26
+  version: 1.16.87
 servers:
 - url: https://api-dev.formant.io/v1/queries
 paths:
@@ -212,6 +212,28 @@ paths:
       summary: Seek
       tags:
       - Seek
+  /stream-current-value:
+    post:
+      description: 'Authorized clients: viewer'
+      operationId: StreamCurrentValueController.query
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ScopeFilter'
+        description: ScopeFilter
+        required: false
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/StreamCurrentValueListResponse'
+      security:
+      - bearerAuth: []
+      summary: Query
+      tags:
+      - Stream Current Value
 components:
   schemas:
     UuidListResponse:
@@ -920,6 +942,27 @@ components:
         time:
           format: date-time
           type: string
+      type: object
+    StreamCurrentValueListResponse:
+      example:
+        items:
+        - name: name
+          type: bitset
+          deviceId: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          tags:
+            key: tags
+        - name: name
+          type: bitset
+          deviceId: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          tags:
+            key: tags
+      properties:
+        items:
+          items:
+            $ref: '#/components/schemas/Metadata'
+          type: array
+      required:
+      - items
       type: object
   securitySchemes:
     bearerAuth:

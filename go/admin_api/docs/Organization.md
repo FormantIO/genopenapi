@@ -28,6 +28,8 @@ Name | Type | Description | Notes
 **StripeSubscriptionEnabled** | **bool** |  | [optional] 
 **S3ExportEnabled** | **bool** |  | [optional] 
 **BlobDataEnabled** | **bool** |  | [optional] 
+**WhiteLabelEnabled** | **bool** |  | [optional] 
+**WhiteLabelCSS** | Pointer to **string** |  | [optional] 
 **DemoModeEnabled** | **bool** |  | [optional] 
 **BillEstimateEnabled** | **bool** |  | [optional] 
 **DaysDataRetained** | **int64** |  | [optional] 

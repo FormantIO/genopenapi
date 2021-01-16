@@ -58,6 +58,8 @@ type APIClient struct {
 	QueryApi *QueryApiService
 
 	SeekApi *SeekApiService
+
+	StreamCurrentValueApi *StreamCurrentValueApiService
 }
 
 type service struct {
@@ -82,6 +84,7 @@ func NewAPIClient(cfg *Configuration) *APIClient {
 	c.PresenceApi = (*PresenceApiService)(&c.common)
 	c.QueryApi = (*QueryApiService)(&c.common)
 	c.SeekApi = (*SeekApiService)(&c.common)
+	c.StreamCurrentValueApi = (*StreamCurrentValueApiService)(&c.common)
 
 	return c
 }
