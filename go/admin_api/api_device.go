@@ -33,7 +33,7 @@ type DeviceControllerCountOpts struct {
 
 /*
 DeviceControllerCount Count
-Count devices Authorized clients: viewer
+Count devices Authorized clients: viewer Authorized plans: freemium, commercial, enterprise
  * @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  * @param optional nil or *DeviceControllerCountOpts - Optional Parameters:
  * @param "DeviceQuery" (optional.Interface of DeviceQuery) -  DeviceQuery
@@ -108,7 +108,7 @@ func (a *DeviceApiService) DeviceControllerCount(ctx _context.Context, localVarO
 
 /*
 DeviceControllerDisable Disable
-Disable a device Authorized clients: viewer
+Disable a device Authorized clients: viewer Authorized plans: freemium, commercial, enterprise
  * @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  * @param id
 */
@@ -180,7 +180,7 @@ type DeviceControllerFilterOpts struct {
 
 /*
 DeviceControllerFilter Filter
-Query devices by name and/or tags Authorized clients: viewer
+Query devices by name and/or tags Authorized clients: viewer Authorized plans: freemium, commercial, enterprise
  * @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  * @param optional nil or *DeviceControllerFilterOpts - Optional Parameters:
  * @param "DeviceQuery" (optional.Interface of DeviceQuery) -  DeviceQuery
@@ -275,7 +275,7 @@ func (a *DeviceApiService) DeviceControllerFilter(ctx _context.Context, localVar
 
 /*
 DeviceControllerGenerateDeviceProvisioningToken Generate device provisioning token
-Generate a device provisioning token Authorized clients: administrator
+Generate a device provisioning token Authorized clients: administrator Authorized plans: freemium, commercial, enterprise
  * @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  * @param id
 @return DeviceProvisioning
@@ -362,7 +362,7 @@ func (a *DeviceApiService) DeviceControllerGenerateDeviceProvisioningToken(ctx _
 
 /*
 DeviceControllerGetConfiguration Get configuration
-Get a device configuration Authorized clients: viewer
+Get a device configuration Authorized clients: viewer Authorized plans: freemium, commercial, enterprise
  * @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  * @param id
  * @param version
@@ -450,9 +450,106 @@ func (a *DeviceApiService) DeviceControllerGetConfiguration(ctx _context.Context
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
+// DeviceControllerGetGeoIpOpts Optional parameters for the method 'DeviceControllerGetGeoIp'
+type DeviceControllerGetGeoIpOpts struct {
+    XForwardedFor optional.String
+}
+
+/*
+DeviceControllerGetGeoIp Get geo ip
+Get GeoIP for device Authorized clients: device Authorized plans: freemium, commercial, enterprise
+ * @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ * @param id
+ * @param optional nil or *DeviceControllerGetGeoIpOpts - Optional Parameters:
+ * @param "XForwardedFor" (optional.String) - 
+@return GeoIp
+*/
+func (a *DeviceApiService) DeviceControllerGetGeoIp(ctx _context.Context, id string, localVarOptionals *DeviceControllerGetGeoIpOpts) (GeoIp, *_nethttp.Response, error) {
+	var (
+		localVarHTTPMethod   = _nethttp.MethodGet
+		localVarPostBody     interface{}
+		localVarFormFileName string
+		localVarFileName     string
+		localVarFileBytes    []byte
+		localVarReturnValue  GeoIp
+	)
+
+	// create path and map variables
+	localVarPath := a.client.cfg.BasePath + "/devices/{id}/geoip"
+	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", _neturl.QueryEscape(parameterToString(id, "")) , -1)
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := _neturl.Values{}
+	localVarFormParams := _neturl.Values{}
+
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{"application/json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	if localVarOptionals != nil && localVarOptionals.XForwardedFor.IsSet() {
+		localVarHeaderParams["x-forwarded-for"] = parameterToString(localVarOptionals.XForwardedFor.Value(), "")
+	}
+	r, err := a.client.prepareRequest(ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFormFileName, localVarFileName, localVarFileBytes)
+	if err != nil {
+		return localVarReturnValue, nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(r)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	localVarBody, err := _ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	if err != nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := GenericOpenAPIError{
+			body:  localVarBody,
+			error: localVarHTTPResponse.Status,
+		}
+		if localVarHTTPResponse.StatusCode == 200 {
+			var v GeoIp
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+			newErr.model = v
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		newErr := GenericOpenAPIError{
+			body:  localVarBody,
+			error: err.Error(),
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	return localVarReturnValue, localVarHTTPResponse, nil
+}
+
 /*
 DeviceControllerGetOne Get one
-Get a device Authorized clients: viewer, device
+Get a device Authorized clients: viewer, device Authorized plans: freemium, commercial, enterprise
  * @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  * @param id
 @return Device
@@ -544,7 +641,7 @@ type DeviceControllerGetTagsOpts struct {
 
 /*
 DeviceControllerGetTags Get tags
-Get tags across all devices Authorized clients: viewer
+Get tags across all devices Authorized clients: viewer Authorized plans: freemium, commercial, enterprise
  * @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  * @param optional nil or *DeviceControllerGetTagsOpts - Optional Parameters:
  * @param "DeviceQuery" (optional.Interface of DeviceQuery) -  DeviceQuery
@@ -644,7 +741,7 @@ type DeviceControllerGetUpdatedAgentVersionOpts struct {
 
 /*
 DeviceControllerGetUpdatedAgentVersion Get updated agent version
-Check for agent version updates Authorized clients: device
+Check for agent version updates Authorized clients: device Authorized plans: freemium, commercial, enterprise
  * @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  * @param id
  * @param optional nil or *DeviceControllerGetUpdatedAgentVersionOpts - Optional Parameters:
@@ -742,7 +839,7 @@ type DeviceControllerGetUpdatedConfigurationOpts struct {
 
 /*
 DeviceControllerGetUpdatedConfiguration Get updated configuration
-Check for updated device configuration Authorized clients: device
+Check for updated device configuration Authorized clients: device Authorized plans: freemium, commercial, enterprise
  * @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  * @param id
  * @param optional nil or *DeviceControllerGetUpdatedConfigurationOpts - Optional Parameters:
@@ -838,7 +935,7 @@ func (a *DeviceApiService) DeviceControllerGetUpdatedConfiguration(ctx _context.
 
 /*
 DeviceControllerPatch Patch
-Update a device Authorized clients: administrator, device
+Update a device Authorized clients: administrator, device Authorized plans: freemium, commercial, enterprise
  * @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  * @param id
  * @param partialDevice PartialDevice
@@ -928,7 +1025,7 @@ func (a *DeviceApiService) DeviceControllerPatch(ctx _context.Context, id string
 
 /*
 DeviceControllerPost Post
-Create a device Authorized clients: administrator
+Create a device Authorized clients: administrator Authorized plans: freemium, commercial, enterprise
  * @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  * @param device Device
 @return Device
@@ -1015,7 +1112,7 @@ func (a *DeviceApiService) DeviceControllerPost(ctx _context.Context, device Dev
 
 /*
 DeviceControllerPostConfiguration Post configuration
-Create a device configuration Authorized clients: administrator
+Create a device configuration Authorized clients: administrator Authorized plans: freemium, commercial, enterprise
  * @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  * @param id
  * @param deviceConfiguration DeviceConfiguration
@@ -1197,7 +1294,7 @@ type DeviceControllerQueryOpts struct {
 
 /*
 DeviceControllerQuery Query
-Query devices by name and/or tags Authorized clients: viewer
+Query devices by name and/or tags Authorized clients: viewer Authorized plans: freemium, commercial, enterprise
  * @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  * @param optional nil or *DeviceControllerQueryOpts - Optional Parameters:
  * @param "DeviceQuery" (optional.Interface of DeviceQuery) -  DeviceQuery
@@ -1292,7 +1389,7 @@ func (a *DeviceApiService) DeviceControllerQuery(ctx _context.Context, localVarO
 
 /*
 DeviceControllerUnprovisionDevice Unprovision device
-Unprovision a device Authorized clients: administrator
+Unprovision a device Authorized clients: administrator Authorized plans: freemium, commercial, enterprise
  * @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  * @param id
 */
@@ -1359,7 +1456,7 @@ func (a *DeviceApiService) DeviceControllerUnprovisionDevice(ctx _context.Contex
 
 /*
 DeviceControllerValidateStreamConfiguration Validate stream configuration
-Validate a device stream configuration Authorized clients: administrator
+Validate a device stream configuration Authorized clients: administrator Authorized plans: freemium, commercial, enterprise
  * @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  * @param deviceStreamConfiguration DeviceStreamConfiguration
 */

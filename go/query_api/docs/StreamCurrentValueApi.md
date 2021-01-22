@@ -14,7 +14,7 @@ Method | HTTP request | Description
 
 Query
 
-Authorized clients: viewer
+Authorized clients: viewer Authorized plans: freemium, commercial, enterprise
 
 ### Required Parameters
 

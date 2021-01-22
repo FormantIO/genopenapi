@@ -83,6 +83,7 @@ Class | Method | HTTP request | Description
 *DeviceApi* | [**DeviceControllerFilter**](docs/DeviceApi.md#devicecontrollerfilter) | **Post** /devices/filter | Filter
 *DeviceApi* | [**DeviceControllerGenerateDeviceProvisioningToken**](docs/DeviceApi.md#devicecontrollergeneratedeviceprovisioningtoken) | **Post** /devices/{id}/provisioning-token | Generate device provisioning token
 *DeviceApi* | [**DeviceControllerGetConfiguration**](docs/DeviceApi.md#devicecontrollergetconfiguration) | **Get** /devices/{id}/configurations/{version} | Get configuration
+*DeviceApi* | [**DeviceControllerGetGeoIp**](docs/DeviceApi.md#devicecontrollergetgeoip) | **Get** /devices/{id}/geoip | Get geo ip
 *DeviceApi* | [**DeviceControllerGetOne**](docs/DeviceApi.md#devicecontrollergetone) | **Get** /devices/{id} | Get one
 *DeviceApi* | [**DeviceControllerGetTags**](docs/DeviceApi.md#devicecontrollergettags) | **Post** /devices/tags | Get tags
 *DeviceApi* | [**DeviceControllerGetUpdatedAgentVersion**](docs/DeviceApi.md#devicecontrollergetupdatedagentversion) | **Get** /devices/{id}/updated-agent-version | Get updated agent version
@@ -234,6 +235,7 @@ Class | Method | HTTP request | Description
  - [ForgotPasswordRequest](docs/ForgotPasswordRequest.md)
  - [GenerateAccessTokenRequest](docs/GenerateAccessTokenRequest.md)
  - [GenerateAccessTokenResponse](docs/GenerateAccessTokenResponse.md)
+ - [GeoIp](docs/GeoIp.md)
  - [GoogleAuthRequest](docs/GoogleAuthRequest.md)
  - [GoogleInfo](docs/GoogleInfo.md)
  - [GoogleSheetParseResult](docs/GoogleSheetParseResult.md)

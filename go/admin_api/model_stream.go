@@ -16,6 +16,8 @@ type Stream struct {
 	OrganizationId string `json:"organizationId,omitempty"`
 	StreamName string `json:"streamName"`
 	StreamType string `json:"streamType"`
+	IsTelemetryFilter bool `json:"isTelemetryFilter,omitempty"`
+	IsEventFilter bool `json:"isEventFilter,omitempty"`
 	Active bool `json:"active,omitempty"`
 	Enabled bool `json:"enabled,omitempty"`
 	Id string `json:"id,omitempty"`

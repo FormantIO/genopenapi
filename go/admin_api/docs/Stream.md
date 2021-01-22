@@ -7,6 +7,8 @@ Name | Type | Description | Notes
 **OrganizationId** | **string** |  | [optional] 
 **StreamName** | **string** |  | 
 **StreamType** | **string** |  | 
+**IsTelemetryFilter** | **bool** |  | [optional] 
+**IsEventFilter** | **bool** |  | [optional] 
 **Active** | **bool** |  | [optional] 
 **Enabled** | **bool** |  | [optional] 
 **Id** | **string** |  | [optional] 

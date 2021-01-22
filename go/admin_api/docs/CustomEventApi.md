@@ -14,7 +14,7 @@ Method | HTTP request | Description
 
 Post
 
-Create a custom event Authorized clients: device
+Create a custom event Authorized clients: device Authorized plans: commercial, enterprise
 
 ### Required Parameters
 

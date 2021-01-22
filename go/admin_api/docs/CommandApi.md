@@ -17,7 +17,7 @@ Method | HTTP request | Description
 
 Get one
 
-Get a command Authorized clients: viewer
+Get a command Authorized clients: viewer Authorized plans: commercial, enterprise
 
 ### Required Parameters
 
@@ -51,7 +51,7 @@ Name | Type | Description  | Notes
 
 Patch
 
-Update command Authorized clients: operator
+Update command Authorized clients: operator Authorized plans: commercial, enterprise
 
 ### Required Parameters
 
@@ -86,7 +86,7 @@ Name | Type | Description  | Notes
 
 Post
 
-Create a command Authorized clients: operator
+Create a command Authorized clients: operator Authorized plans: commercial, enterprise
 
 ### Required Parameters
 
@@ -120,7 +120,7 @@ Name | Type | Description  | Notes
 
 Query
 
-Query undelivered commands by device ID Authorized clients: viewer
+Query undelivered commands by device ID Authorized clients: viewer Authorized plans: commercial, enterprise
 
 ### Required Parameters
 

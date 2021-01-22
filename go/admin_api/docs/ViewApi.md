@@ -18,7 +18,7 @@ Method | HTTP request | Description
 
 Delete
 
-Delete a device layout Authorized clients: administrator
+Delete a device layout Authorized clients: administrator Authorized plans: commercial, enterprise
 
 ### Required Parameters
 
@@ -52,7 +52,7 @@ Name | Type | Description  | Notes
 
 Get all
 
-List all device layouts Authorized clients: viewer
+List all device layouts Authorized clients: viewer Authorized plans: commercial, enterprise
 
 ### Required Parameters
 
@@ -82,7 +82,7 @@ This endpoint does not need any parameter.
 
 Get one
 
-Get a device layout Authorized clients: viewer
+Get a device layout Authorized clients: viewer Authorized plans: commercial, enterprise
 
 ### Required Parameters
 
@@ -116,7 +116,7 @@ Name | Type | Description  | Notes
 
 Patch
 
-Update a device layout Authorized clients: administrator
+Update a device layout Authorized clients: administrator Authorized plans: commercial, enterprise
 
 ### Required Parameters
 
@@ -151,7 +151,7 @@ Name | Type | Description  | Notes
 
 Post
 
-Create a device layout Authorized clients: administrator
+Create a device layout Authorized clients: administrator Authorized plans: commercial, enterprise
 
 ### Required Parameters
 

@@ -92,7 +92,7 @@ Use admin JWT for authorization
 
 Create service account
 
-Create a service account Authorized clients: administrator
+Create a service account Authorized clients: administrator Authorized plans: commercial, enterprise
 
 ### Required Parameters
 
@@ -126,7 +126,7 @@ Name | Type | Description  | Notes
 
 Device credentials
 
-Device Credentials Authorized clients: device
+Device Credentials Authorized clients: device Authorized plans: freemium, commercial, enterprise
 
 ### Required Parameters
 

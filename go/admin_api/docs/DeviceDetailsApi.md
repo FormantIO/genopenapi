@@ -15,7 +15,7 @@ Method | HTTP request | Description
 
 Get all
 
-Authorized clients: viewer
+Authorized clients: viewer Authorized plans: freemium, commercial, enterprise
 
 ### Required Parameters
 
@@ -58,7 +58,7 @@ Name | Type | Description  | Notes
 
 Get one
 
-Authorized clients: viewer
+Authorized clients: viewer Authorized plans: freemium, commercial, enterprise
 
 ### Required Parameters
 

@@ -27,7 +27,7 @@ type TriggeredEventApiService service
 
 /*
 TriggeredEventControllerGetOne Get one
-Get an triggered event Authorized clients: viewer
+Get an triggered event Authorized clients: viewer Authorized plans: commercial, enterprise
  * @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  * @param id
 @return TriggeredEvent

@@ -27,7 +27,7 @@ type ViewApiService service
 
 /*
 ViewControllerDelete Delete
-Delete a device layout Authorized clients: administrator
+Delete a device layout Authorized clients: administrator Authorized plans: commercial, enterprise
  * @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  * @param id
 */
@@ -94,7 +94,7 @@ func (a *ViewApiService) ViewControllerDelete(ctx _context.Context, id string) (
 
 /*
 ViewControllerGetAll Get all
-List all device layouts Authorized clients: viewer
+List all device layouts Authorized clients: viewer Authorized plans: commercial, enterprise
  * @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 @return DeviceListResponse
 */
@@ -178,7 +178,7 @@ func (a *ViewApiService) ViewControllerGetAll(ctx _context.Context) (DeviceListR
 
 /*
 ViewControllerGetOne Get one
-Get a device layout Authorized clients: viewer
+Get a device layout Authorized clients: viewer Authorized plans: commercial, enterprise
  * @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  * @param id
 @return View
@@ -265,7 +265,7 @@ func (a *ViewApiService) ViewControllerGetOne(ctx _context.Context, id string) (
 
 /*
 ViewControllerPatch Patch
-Update a device layout Authorized clients: administrator
+Update a device layout Authorized clients: administrator Authorized plans: commercial, enterprise
  * @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  * @param id
  * @param partialView PartialView
@@ -355,7 +355,7 @@ func (a *ViewApiService) ViewControllerPatch(ctx _context.Context, id string, pa
 
 /*
 ViewControllerPost Post
-Create a device layout Authorized clients: administrator
+Create a device layout Authorized clients: administrator Authorized plans: commercial, enterprise
  * @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  * @param view View
 @return View

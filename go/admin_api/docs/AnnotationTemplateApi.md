@@ -20,7 +20,7 @@ Method | HTTP request | Description
 
 Delete
 
-Delete an annotation template Authorized clients: administrator
+Delete an annotation template Authorized clients: administrator Authorized plans: commercial, enterprise
 
 ### Required Parameters
 
@@ -54,7 +54,7 @@ Name | Type | Description  | Notes
 
 Get one
 
-Get an annotation template Authorized clients: viewer
+Get an annotation template Authorized clients: viewer Authorized plans: commercial, enterprise
 
 ### Required Parameters
 
@@ -88,7 +88,7 @@ Name | Type | Description  | Notes
 
 Inspect spreadsheet
 
-Returns information about the Spreadsheet and its content Authorized clients: viewer
+Returns information about the Spreadsheet and its content Authorized clients: viewer Authorized plans: commercial, enterprise
 
 ### Required Parameters
 
@@ -122,7 +122,7 @@ Name | Type | Description  | Notes
 
 List
 
-List annotation templates Authorized clients: viewer
+List annotation templates Authorized clients: viewer Authorized plans: commercial, enterprise
 
 ### Required Parameters
 
@@ -152,7 +152,7 @@ This endpoint does not need any parameter.
 
 Patch
 
-Update an annotation template Authorized clients: administrator
+Update an annotation template Authorized clients: administrator Authorized plans: commercial, enterprise
 
 ### Required Parameters
 
@@ -187,7 +187,7 @@ Name | Type | Description  | Notes
 
 Post
 
-Create an annotation template Authorized clients: administrator
+Create an annotation template Authorized clients: administrator Authorized plans: commercial, enterprise
 
 ### Required Parameters
 
@@ -221,7 +221,7 @@ Name | Type | Description  | Notes
 
 Query annotation field values
 
-Query annotation template field values Authorized clients: viewer
+Query annotation template field values Authorized clients: viewer Authorized plans: commercial, enterprise
 
 ### Required Parameters
 

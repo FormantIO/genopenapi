@@ -9,6 +9,7 @@ Name | Type | Description | Notes
 **Telemetry** | [**DeviceTelemetryConfiguration**](DeviceTelemetryConfiguration.md) |  | [optional] 
 **Application** | [**DeviceApplicationConfiguration**](DeviceApplicationConfiguration.md) |  | [optional] 
 **BlobData** | [**DeviceBlobData**](DeviceBlobData.md) |  | [optional] 
+**TerminalAccess** | Pointer to **bool** |  | [optional] 
 **Teleop** | [**DeviceTeleopConfiguration**](DeviceTeleopConfiguration.md) |  | [optional] 
 **PortForwarding** | [**DevicePortForwardingConfiguration**](DevicePortForwardingConfiguration.md) |  | [optional] 
 **Diagnostics** | [**DeviceDiagnosticsConfiguration**](DeviceDiagnosticsConfiguration.md) |  | [optional] 

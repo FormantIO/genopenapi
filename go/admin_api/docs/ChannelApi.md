@@ -18,7 +18,7 @@ Method | HTTP request | Description
 
 Delete
 
-Delete a channel Authorized clients: administrator
+Delete a channel Authorized clients: administrator Authorized plans: commercial, enterprise
 
 ### Required Parameters
 
@@ -52,7 +52,7 @@ Name | Type | Description  | Notes
 
 Get all
 
-List all channels Authorized clients: viewer
+List all channels Authorized clients: viewer Authorized plans: commercial, enterprise
 
 ### Required Parameters
 
@@ -82,7 +82,7 @@ This endpoint does not need any parameter.
 
 Get one
 
-Get a channel Authorized clients: viewer
+Get a channel Authorized clients: viewer Authorized plans: commercial, enterprise
 
 ### Required Parameters
 
@@ -116,7 +116,7 @@ Name | Type | Description  | Notes
 
 Patch
 
-Update a channel Authorized clients: administrator
+Update a channel Authorized clients: administrator Authorized plans: commercial, enterprise
 
 ### Required Parameters
 
@@ -151,7 +151,7 @@ Name | Type | Description  | Notes
 
 Post
 
-Create a channel Authorized clients: administrator
+Create a channel Authorized clients: administrator Authorized plans: commercial, enterprise
 
 ### Required Parameters
 

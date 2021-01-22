@@ -15,4 +15,5 @@ type DeviceTeleopRosStreamConfiguration struct {
 	Mode string `json:"mode"`
 	EncodeVideo bool `json:"encodeVideo,omitempty"`
 	StatusTopic string `json:"statusTopic,omitempty"`
+	AudioCodec string `json:"audioCodec,omitempty"`
 }

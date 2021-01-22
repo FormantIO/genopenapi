@@ -26,7 +26,7 @@ type CommandRequestApiService service
 
 /*
 CommandRequestControllerPoll Poll
-Poll for command requests Authorized clients: device
+Poll for command requests Authorized clients: device Authorized plans: commercial, enterprise
  * @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  * @param pollCommandRequest PollCommandRequest
 @return CommandRequestListResponse

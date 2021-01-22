@@ -14,7 +14,7 @@ Method | HTTP request | Description
 
 Post
 
-Respond to a command Authorized clients: device
+Respond to a command Authorized clients: device Authorized plans: commercial, enterprise
 
 ### Required Parameters
 

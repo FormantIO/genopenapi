@@ -27,7 +27,7 @@ type CommandTemplateApiService service
 
 /*
 CommandTemplateControllerDelete Delete
-Delete a command template Authorized clients: administrator
+Delete a command template Authorized clients: administrator Authorized plans: commercial, enterprise
  * @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  * @param id
 */
@@ -94,7 +94,7 @@ func (a *CommandTemplateApiService) CommandTemplateControllerDelete(ctx _context
 
 /*
 CommandTemplateControllerGetOne Get one
-Get a command template Authorized clients: viewer
+Get a command template Authorized clients: viewer Authorized plans: commercial, enterprise
  * @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  * @param id
 @return CommandTemplate
@@ -181,7 +181,7 @@ func (a *CommandTemplateApiService) CommandTemplateControllerGetOne(ctx _context
 
 /*
 CommandTemplateControllerList List
-List command templates Authorized clients: viewer
+List command templates Authorized clients: viewer Authorized plans: commercial, enterprise
  * @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 @return CommandTemplateListResponse
 */
@@ -265,7 +265,7 @@ func (a *CommandTemplateApiService) CommandTemplateControllerList(ctx _context.C
 
 /*
 CommandTemplateControllerPatch Patch
-Update a command template Authorized clients: administrator
+Update a command template Authorized clients: administrator Authorized plans: commercial, enterprise
  * @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  * @param id
  * @param partialCommandTemplate PartialCommandTemplate
@@ -355,7 +355,7 @@ func (a *CommandTemplateApiService) CommandTemplateControllerPatch(ctx _context.
 
 /*
 CommandTemplateControllerPost Post
-Create a command template Authorized clients: administrator
+Create a command template Authorized clients: administrator Authorized plans: commercial, enterprise
  * @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  * @param commandTemplate CommandTemplate
 @return CommandTemplate

@@ -9,6 +9,7 @@ Method | HTTP request | Description
 [**DeviceControllerFilter**](DeviceApi.md#DeviceControllerFilter) | **Post** /devices/filter | Filter
 [**DeviceControllerGenerateDeviceProvisioningToken**](DeviceApi.md#DeviceControllerGenerateDeviceProvisioningToken) | **Post** /devices/{id}/provisioning-token | Generate device provisioning token
 [**DeviceControllerGetConfiguration**](DeviceApi.md#DeviceControllerGetConfiguration) | **Get** /devices/{id}/configurations/{version} | Get configuration
+[**DeviceControllerGetGeoIp**](DeviceApi.md#DeviceControllerGetGeoIp) | **Get** /devices/{id}/geoip | Get geo ip
 [**DeviceControllerGetOne**](DeviceApi.md#DeviceControllerGetOne) | **Get** /devices/{id} | Get one
 [**DeviceControllerGetTags**](DeviceApi.md#DeviceControllerGetTags) | **Post** /devices/tags | Get tags
 [**DeviceControllerGetUpdatedAgentVersion**](DeviceApi.md#DeviceControllerGetUpdatedAgentVersion) | **Get** /devices/{id}/updated-agent-version | Get updated agent version
@@ -29,7 +30,7 @@ Method | HTTP request | Description
 
 Count
 
-Count devices Authorized clients: viewer
+Count devices Authorized clients: viewer Authorized plans: freemium, commercial, enterprise
 
 ### Required Parameters
 
@@ -72,7 +73,7 @@ Name | Type | Description  | Notes
 
 Disable
 
-Disable a device Authorized clients: viewer
+Disable a device Authorized clients: viewer Authorized plans: freemium, commercial, enterprise
 
 ### Required Parameters
 
@@ -106,7 +107,7 @@ Name | Type | Description  | Notes
 
 Filter
 
-Query devices by name and/or tags Authorized clients: viewer
+Query devices by name and/or tags Authorized clients: viewer Authorized plans: freemium, commercial, enterprise
 
 ### Required Parameters
 
@@ -149,7 +150,7 @@ Name | Type | Description  | Notes
 
 Generate device provisioning token
 
-Generate a device provisioning token Authorized clients: administrator
+Generate a device provisioning token Authorized clients: administrator Authorized plans: freemium, commercial, enterprise
 
 ### Required Parameters
 
@@ -183,7 +184,7 @@ Name | Type | Description  | Notes
 
 Get configuration
 
-Get a device configuration Authorized clients: viewer
+Get a device configuration Authorized clients: viewer Authorized plans: freemium, commercial, enterprise
 
 ### Required Parameters
 
@@ -212,13 +213,58 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
+## DeviceControllerGetGeoIp
+
+> GeoIp DeviceControllerGetGeoIp(ctx, id, optional)
+
+Get geo ip
+
+Get GeoIP for device Authorized clients: device Authorized plans: freemium, commercial, enterprise
+
+### Required Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**id** | **string**|  | 
+ **optional** | ***DeviceControllerGetGeoIpOpts** | optional parameters | nil if no parameters
+
+### Optional Parameters
+
+Optional parameters are passed through a pointer to a DeviceControllerGetGeoIpOpts struct
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+ **xForwardedFor** | **optional.String**|  | 
+
+### Return type
+
+[**GeoIp**](GeoIp.md)
+
+### Authorization
+
+[bearerAuth](../README.md#bearerAuth)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
 ## DeviceControllerGetOne
 
 > Device DeviceControllerGetOne(ctx, id)
 
 Get one
 
-Get a device Authorized clients: viewer, device
+Get a device Authorized clients: viewer, device Authorized plans: freemium, commercial, enterprise
 
 ### Required Parameters
 
@@ -252,7 +298,7 @@ Name | Type | Description  | Notes
 
 Get tags
 
-Get tags across all devices Authorized clients: viewer
+Get tags across all devices Authorized clients: viewer Authorized plans: freemium, commercial, enterprise
 
 ### Required Parameters
 
@@ -295,7 +341,7 @@ Name | Type | Description  | Notes
 
 Get updated agent version
 
-Check for agent version updates Authorized clients: device
+Check for agent version updates Authorized clients: device Authorized plans: freemium, commercial, enterprise
 
 ### Required Parameters
 
@@ -340,7 +386,7 @@ Name | Type | Description  | Notes
 
 Get updated configuration
 
-Check for updated device configuration Authorized clients: device
+Check for updated device configuration Authorized clients: device Authorized plans: freemium, commercial, enterprise
 
 ### Required Parameters
 
@@ -386,7 +432,7 @@ Name | Type | Description  | Notes
 
 Patch
 
-Update a device Authorized clients: administrator, device
+Update a device Authorized clients: administrator, device Authorized plans: freemium, commercial, enterprise
 
 ### Required Parameters
 
@@ -421,7 +467,7 @@ Name | Type | Description  | Notes
 
 Post
 
-Create a device Authorized clients: administrator
+Create a device Authorized clients: administrator Authorized plans: freemium, commercial, enterprise
 
 ### Required Parameters
 
@@ -455,7 +501,7 @@ Name | Type | Description  | Notes
 
 Post configuration
 
-Create a device configuration Authorized clients: administrator
+Create a device configuration Authorized clients: administrator Authorized plans: freemium, commercial, enterprise
 
 ### Required Parameters
 
@@ -524,7 +570,7 @@ Use admin JWT for authorization
 
 Query
 
-Query devices by name and/or tags Authorized clients: viewer
+Query devices by name and/or tags Authorized clients: viewer Authorized plans: freemium, commercial, enterprise
 
 ### Required Parameters
 
@@ -567,7 +613,7 @@ Name | Type | Description  | Notes
 
 Unprovision device
 
-Unprovision a device Authorized clients: administrator
+Unprovision a device Authorized clients: administrator Authorized plans: freemium, commercial, enterprise
 
 ### Required Parameters
 
@@ -601,7 +647,7 @@ Name | Type | Description  | Notes
 
 Validate stream configuration
 
-Validate a device stream configuration Authorized clients: administrator
+Validate a device stream configuration Authorized clients: administrator Authorized plans: freemium, commercial, enterprise
 
 ### Required Parameters
 

@@ -26,7 +26,7 @@ type QueryApiService service
 
 /*
 QueryControllerExportSheet Export sheet
-Authorized clients: operator
+Authorized clients: operator Authorized plans: commercial, enterprise
  * @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  * @param telemetryExportSheetRequest TelemetryExportSheetRequest
 @return TelemetryExportSheetResult
@@ -113,7 +113,7 @@ func (a *QueryApiService) QueryControllerExportSheet(ctx _context.Context, telem
 
 /*
 QueryControllerQuery Query
-Authorized clients: viewer
+Authorized clients: viewer Authorized plans: commercial, enterprise
  * @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  * @param query Query
 @return StreamDataListResponse

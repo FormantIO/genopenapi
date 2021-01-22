@@ -160,7 +160,7 @@ func (a *AuthApiService) AuthControllerConfirmForgotPassword(ctx _context.Contex
 
 /*
 AuthControllerCreateServiceAccount Create service account
-Create a service account Authorized clients: administrator
+Create a service account Authorized clients: administrator Authorized plans: commercial, enterprise
  * @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  * @param createServiceAccountRequest CreateServiceAccountRequest
 @return CreateServiceAccountResponse
@@ -247,7 +247,7 @@ func (a *AuthApiService) AuthControllerCreateServiceAccount(ctx _context.Context
 
 /*
 AuthControllerDeviceCredentials Device credentials
-Device Credentials Authorized clients: device
+Device Credentials Authorized clients: device Authorized plans: freemium, commercial, enterprise
  * @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 @return DeviceCredentials
 */

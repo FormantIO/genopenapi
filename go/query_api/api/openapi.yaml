@@ -1,7 +1,7 @@
 openapi: 3.0.0
 info:
   title: Formant query-api
-  version: 1.16.87
+  version: 1.17.43
 servers:
 - url: https://api-dev.formant.io/v1/queries
 paths:
@@ -45,7 +45,9 @@ paths:
       - Count
   /metadata:
     post:
-      description: 'Authorized clients: viewer'
+      description: |-
+        Authorized clients: viewer
+        Authorized plans: commercial, enterprise
       operationId: MetadataController.listMetadata
       requestBody:
         content:
@@ -67,7 +69,9 @@ paths:
       - Metadata
   /metadata/stream-names:
     post:
-      description: 'Authorized clients: viewer'
+      description: |-
+        Authorized clients: viewer
+        Authorized plans: freemium, commercial, enterprise
       operationId: MetadataController.listStreamNames
       requestBody:
         content:
@@ -89,7 +93,9 @@ paths:
       - Metadata
   /metadata/device-ids:
     post:
-      description: 'Authorized clients: viewer'
+      description: |-
+        Authorized clients: viewer
+        Authorized plans: commercial, enterprise
       operationId: MetadataController.listDeviceIds
       requestBody:
         content:
@@ -111,7 +117,9 @@ paths:
       - Metadata
   /online-devices:
     get:
-      description: 'Authorized clients: viewer'
+      description: |-
+        Authorized clients: viewer
+        Authorized plans: freemium, commercial, enterprise
       operationId: OnlineDevicesController.online
       responses:
         "200":
@@ -126,7 +134,9 @@ paths:
       - Online Devices
   /presence:
     post:
-      description: 'Authorized clients: viewer'
+      description: |-
+        Authorized clients: viewer
+        Authorized plans: commercial, enterprise
       operationId: PresenceController.count
       requestBody:
         content:
@@ -148,7 +158,9 @@ paths:
       - Presence
   /queries:
     post:
-      description: 'Authorized clients: viewer'
+      description: |-
+        Authorized clients: viewer
+        Authorized plans: commercial, enterprise
       operationId: QueryController.query
       requestBody:
         content:
@@ -170,7 +182,9 @@ paths:
       - Query
   /queries/export-sheet:
     post:
-      description: 'Authorized clients: operator'
+      description: |-
+        Authorized clients: operator
+        Authorized plans: commercial, enterprise
       operationId: QueryController.exportSheet
       requestBody:
         content:
@@ -192,7 +206,9 @@ paths:
       - Query
   /seek:
     post:
-      description: 'Authorized clients: viewer'
+      description: |-
+        Authorized clients: viewer
+        Authorized plans: commercial, enterprise
       operationId: SeekController.seek
       requestBody:
         content:
@@ -214,7 +230,9 @@ paths:
       - Seek
   /stream-current-value:
     post:
-      description: 'Authorized clients: viewer'
+      description: |-
+        Authorized clients: viewer
+        Authorized plans: freemium, commercial, enterprise
       operationId: StreamCurrentValueController.query
       requestBody:
         content:

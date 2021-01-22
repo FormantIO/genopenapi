@@ -200,7 +200,7 @@ func (a *CaptureSessionApiService) CaptureSessionControllerGetOne(ctx _context.C
 
 /*
 CaptureSessionControllerPost Post
-Create a capture session Authorized clients: operator
+Create a capture session Authorized clients: operator Authorized plans: commercial, enterprise
  * @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  * @param captureSession CaptureSession
 @return CaptureSession

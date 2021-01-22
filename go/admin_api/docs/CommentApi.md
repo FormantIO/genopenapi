@@ -17,7 +17,7 @@ Method | HTTP request | Description
 
 Delete
 
-Delete a comment Authorized clients: operator
+Delete a comment Authorized clients: operator Authorized plans: commercial, enterprise
 
 ### Required Parameters
 
@@ -51,7 +51,7 @@ Name | Type | Description  | Notes
 
 Get one
 
-Get a comment Authorized clients: viewer
+Get a comment Authorized clients: viewer Authorized plans: commercial, enterprise
 
 ### Required Parameters
 
@@ -85,7 +85,7 @@ Name | Type | Description  | Notes
 
 Patch
 
-Update a comment Authorized clients: operator
+Update a comment Authorized clients: operator Authorized plans: commercial, enterprise
 
 ### Required Parameters
 
@@ -120,7 +120,7 @@ Name | Type | Description  | Notes
 
 Post
 
-Create a comment Authorized clients: operator
+Create a comment Authorized clients: operator Authorized plans: commercial, enterprise
 
 ### Required Parameters
 
