@@ -11,12 +11,13 @@ package admin_api
 import (
 	"time"
 )
-// Fleet struct for Fleet
-type Fleet struct {
+// Group struct for Group
+type Group struct {
 	OrganizationId string `json:"organizationId,omitempty"`
 	Name string `json:"name"`
 	TagKey interface{} `json:"tagKey"`
 	TagValue interface{} `json:"tagValue"`
+	Active bool `json:"active,omitempty"`
 	Enabled bool `json:"enabled,omitempty"`
 	Id string `json:"id,omitempty"`
 	CreatedAt time.Time `json:"createdAt,omitempty"`

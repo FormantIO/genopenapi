@@ -1,4 +1,4 @@
-# Fleet
+# Group
 
 ## Properties
 
@@ -8,6 +8,7 @@ Name | Type | Description | Notes
 **Name** | **string** |  | 
 **TagKey** | **interface{}** |  | 
 **TagValue** | **interface{}** |  | 
+**Active** | **bool** |  | [optional] 
 **Enabled** | **bool** |  | [optional] 
 **Id** | **string** |  | [optional] 
 **CreatedAt** | [**time.Time**](time.Time.md) |  | [optional] 

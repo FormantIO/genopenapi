@@ -15,7 +15,7 @@ import (
 type TagTemplate struct {
 	OrganizationId string `json:"organizationId,omitempty"`
 	TagKey interface{} `json:"tagKey"`
-	IsFleet bool `json:"isFleet,omitempty"`
+	IsGroup bool `json:"isGroup,omitempty"`
 	IsTelemetryFilter bool `json:"isTelemetryFilter,omitempty"`
 	IsEventFilter bool `json:"isEventFilter,omitempty"`
 	Enabled bool `json:"enabled,omitempty"`

@@ -1,7 +1,7 @@
 openapi: 3.0.0
 info:
   title: Formant admin-api
-  version: 1.17.47
+  version: 1.19.23
 servers:
 - url: https://api-dev.formant.io/v1/admin
 paths:
@@ -6569,6 +6569,7 @@ components:
           - pong
           - stream-control
           - h264-encoder-control
+          - numeric
           - boolean
           - bitset
           - twist
@@ -6602,13 +6603,14 @@ components:
         statusTopic: statusTopic
         audioCodec: raw
         encodeVideo: true
-        topicType: std_msgs/Bool
+        topicType: std_msgs/Float64
       properties:
         topicName:
           pattern: ^([a-zA-Z~/])([0-9a-zA-Z_/]){0,254}$
           type: string
         topicType:
           enum:
+          - std_msgs/Float64
           - std_msgs/Bool
           - geometry_msgs/Twist
           - sensor_msgs/CompressedImage
@@ -6681,31 +6683,31 @@ components:
           statusTopic: statusTopic
           audioCodec: raw
           encodeVideo: true
-          topicType: std_msgs/Bool
+          topicType: std_msgs/Float64
         - mode: command
           topicName: topicName
           statusTopic: statusTopic
           audioCodec: raw
           encodeVideo: true
-          topicType: std_msgs/Bool
+          topicType: std_msgs/Float64
         - mode: command
           topicName: topicName
           statusTopic: statusTopic
           audioCodec: raw
           encodeVideo: true
-          topicType: std_msgs/Bool
+          topicType: std_msgs/Float64
         - mode: command
           topicName: topicName
           statusTopic: statusTopic
           audioCodec: raw
           encodeVideo: true
-          topicType: std_msgs/Bool
+          topicType: std_msgs/Float64
         - mode: command
           topicName: topicName
           statusTopic: statusTopic
           audioCodec: raw
           encodeVideo: true
-          topicType: std_msgs/Bool
+          topicType: std_msgs/Float64
         customStreams:
         - mode: command
           name: name
@@ -6833,31 +6835,31 @@ components:
             statusTopic: statusTopic
             audioCodec: raw
             encodeVideo: true
-            topicType: std_msgs/Bool
+            topicType: std_msgs/Float64
           - mode: command
             topicName: topicName
             statusTopic: statusTopic
             audioCodec: raw
             encodeVideo: true
-            topicType: std_msgs/Bool
+            topicType: std_msgs/Float64
           - mode: command
             topicName: topicName
             statusTopic: statusTopic
             audioCodec: raw
             encodeVideo: true
-            topicType: std_msgs/Bool
+            topicType: std_msgs/Float64
           - mode: command
             topicName: topicName
             statusTopic: statusTopic
             audioCodec: raw
             encodeVideo: true
-            topicType: std_msgs/Bool
+            topicType: std_msgs/Float64
           - mode: command
             topicName: topicName
             statusTopic: statusTopic
             audioCodec: raw
             encodeVideo: true
-            topicType: std_msgs/Bool
+            topicType: std_msgs/Float64
           customStreams:
           - mode: command
             name: name
@@ -6992,31 +6994,31 @@ components:
               statusTopic: statusTopic
               audioCodec: raw
               encodeVideo: true
-              topicType: std_msgs/Bool
+              topicType: std_msgs/Float64
             - mode: command
               topicName: topicName
               statusTopic: statusTopic
               audioCodec: raw
               encodeVideo: true
-              topicType: std_msgs/Bool
+              topicType: std_msgs/Float64
             - mode: command
               topicName: topicName
               statusTopic: statusTopic
               audioCodec: raw
               encodeVideo: true
-              topicType: std_msgs/Bool
+              topicType: std_msgs/Float64
             - mode: command
               topicName: topicName
               statusTopic: statusTopic
               audioCodec: raw
               encodeVideo: true
-              topicType: std_msgs/Bool
+              topicType: std_msgs/Float64
             - mode: command
               topicName: topicName
               statusTopic: statusTopic
               audioCodec: raw
               encodeVideo: true
-              topicType: std_msgs/Bool
+              topicType: std_msgs/Float64
             customStreams:
             - mode: command
               name: name
@@ -7991,31 +7993,31 @@ components:
               statusTopic: statusTopic
               audioCodec: raw
               encodeVideo: true
-              topicType: std_msgs/Bool
+              topicType: std_msgs/Float64
             - mode: command
               topicName: topicName
               statusTopic: statusTopic
               audioCodec: raw
               encodeVideo: true
-              topicType: std_msgs/Bool
+              topicType: std_msgs/Float64
             - mode: command
               topicName: topicName
               statusTopic: statusTopic
               audioCodec: raw
               encodeVideo: true
-              topicType: std_msgs/Bool
+              topicType: std_msgs/Float64
             - mode: command
               topicName: topicName
               statusTopic: statusTopic
               audioCodec: raw
               encodeVideo: true
-              topicType: std_msgs/Bool
+              topicType: std_msgs/Float64
             - mode: command
               topicName: topicName
               statusTopic: statusTopic
               audioCodec: raw
               encodeVideo: true
-              topicType: std_msgs/Bool
+              topicType: std_msgs/Float64
             customStreams:
             - mode: command
               name: name
@@ -10418,7 +10420,7 @@ components:
       - expiration
       - token
       type: object
-    Fleet:
+    Group:
       properties:
         organizationId:
           format: uuid
@@ -10428,6 +10430,8 @@ components:
           type: string
         tagKey: {}
         tagValue: {}
+        active:
+          type: boolean
         enabled:
           type: boolean
         id:
@@ -10566,7 +10570,7 @@ components:
           format: uuid
           type: string
         tagKey: {}
-        isFleet:
+        isGroup:
           type: boolean
         isTelemetryFilter:
           type: boolean
@@ -11783,31 +11787,31 @@ components:
                 statusTopic: statusTopic
                 audioCodec: raw
                 encodeVideo: true
-                topicType: std_msgs/Bool
+                topicType: std_msgs/Float64
               - mode: command
                 topicName: topicName
                 statusTopic: statusTopic
                 audioCodec: raw
                 encodeVideo: true
-                topicType: std_msgs/Bool
+                topicType: std_msgs/Float64
               - mode: command
                 topicName: topicName
                 statusTopic: statusTopic
                 audioCodec: raw
                 encodeVideo: true
-                topicType: std_msgs/Bool
+                topicType: std_msgs/Float64
               - mode: command
                 topicName: topicName
                 statusTopic: statusTopic
                 audioCodec: raw
                 encodeVideo: true
-                topicType: std_msgs/Bool
+                topicType: std_msgs/Float64
               - mode: command
                 topicName: topicName
                 statusTopic: statusTopic
                 audioCodec: raw
                 encodeVideo: true
-                topicType: std_msgs/Bool
+                topicType: std_msgs/Float64
               customStreams:
               - mode: command
                 name: name
@@ -11924,31 +11928,31 @@ components:
                 statusTopic: statusTopic
                 audioCodec: raw
                 encodeVideo: true
-                topicType: std_msgs/Bool
+                topicType: std_msgs/Float64
               - mode: command
                 topicName: topicName
                 statusTopic: statusTopic
                 audioCodec: raw
                 encodeVideo: true
-                topicType: std_msgs/Bool
+                topicType: std_msgs/Float64
               - mode: command
                 topicName: topicName
                 statusTopic: statusTopic
                 audioCodec: raw
                 encodeVideo: true
-                topicType: std_msgs/Bool
+                topicType: std_msgs/Float64
               - mode: command
                 topicName: topicName
                 statusTopic: statusTopic
                 audioCodec: raw
                 encodeVideo: true
-                topicType: std_msgs/Bool
+                topicType: std_msgs/Float64
               - mode: command
                 topicName: topicName
                 statusTopic: statusTopic
                 audioCodec: raw
                 encodeVideo: true
-                topicType: std_msgs/Bool
+                topicType: std_msgs/Float64
               customStreams:
               - mode: command
                 name: name
@@ -14592,31 +14596,31 @@ components:
                 statusTopic: statusTopic
                 audioCodec: raw
                 encodeVideo: true
-                topicType: std_msgs/Bool
+                topicType: std_msgs/Float64
               - mode: command
                 topicName: topicName
                 statusTopic: statusTopic
                 audioCodec: raw
                 encodeVideo: true
-                topicType: std_msgs/Bool
+                topicType: std_msgs/Float64
               - mode: command
                 topicName: topicName
                 statusTopic: statusTopic
                 audioCodec: raw
                 encodeVideo: true
-                topicType: std_msgs/Bool
+                topicType: std_msgs/Float64
               - mode: command
                 topicName: topicName
                 statusTopic: statusTopic
                 audioCodec: raw
                 encodeVideo: true
-                topicType: std_msgs/Bool
+                topicType: std_msgs/Float64
               - mode: command
                 topicName: topicName
                 statusTopic: statusTopic
                 audioCodec: raw
                 encodeVideo: true
-                topicType: std_msgs/Bool
+                topicType: std_msgs/Float64
               customStreams:
               - mode: command
                 name: name
@@ -16412,31 +16416,31 @@ components:
               statusTopic: statusTopic
               audioCodec: raw
               encodeVideo: true
-              topicType: std_msgs/Bool
+              topicType: std_msgs/Float64
             - mode: command
               topicName: topicName
               statusTopic: statusTopic
               audioCodec: raw
               encodeVideo: true
-              topicType: std_msgs/Bool
+              topicType: std_msgs/Float64
             - mode: command
               topicName: topicName
               statusTopic: statusTopic
               audioCodec: raw
               encodeVideo: true
-              topicType: std_msgs/Bool
+              topicType: std_msgs/Float64
             - mode: command
               topicName: topicName
               statusTopic: statusTopic
               audioCodec: raw
               encodeVideo: true
-              topicType: std_msgs/Bool
+              topicType: std_msgs/Float64
             - mode: command
               topicName: topicName
               statusTopic: statusTopic
               audioCodec: raw
               encodeVideo: true
-              topicType: std_msgs/Bool
+              topicType: std_msgs/Float64
             customStreams:
             - mode: command
               name: name

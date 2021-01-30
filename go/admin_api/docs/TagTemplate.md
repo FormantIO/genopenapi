@@ -6,7 +6,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **OrganizationId** | **string** |  | [optional] 
 **TagKey** | **interface{}** |  | 
-**IsFleet** | **bool** |  | [optional] 
+**IsGroup** | **bool** |  | [optional] 
 **IsTelemetryFilter** | **bool** |  | [optional] 
 **IsEventFilter** | **bool** |  | [optional] 
 **Enabled** | **bool** |  | [optional] 
