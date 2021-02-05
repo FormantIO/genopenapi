@@ -1,7 +1,7 @@
 openapi: 3.0.0
 info:
   title: Formant admin-api
-  version: 1.19.23
+  version: 1.20.36
 servers:
 - url: https://api-dev.formant.io/v1/admin
 paths:
@@ -2862,6 +2862,9 @@ components:
       type: object
     ScopeFilter:
       example:
+        features:
+        - telemetry
+        - telemetry
         agentIds:
         - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
@@ -2882,6 +2885,24 @@ components:
         tags: ""
       nullable: true
       properties:
+        features:
+          items:
+            enum:
+            - telemetry
+            - internalTelemetry
+            - teleop
+            - customEvents
+            - triggeredEvents
+            - ssh
+            - portForwarding
+            - commands
+            - interventions
+            - onDemand
+            - appConfig
+            - blobStorage
+            type: string
+          type: array
+          uniqueItems: true
         start:
           format: date-time
           type: string
@@ -2999,6 +3020,19 @@ components:
       required:
       - topics
       type: object
+    AudioDevice:
+      example:
+        name: name
+        id: id
+      properties:
+        id:
+          type: string
+        name:
+          type: string
+      required:
+      - id
+      - name
+      type: object
     KernelInfo:
       example:
         release: release
@@ -3073,8 +3107,32 @@ components:
         version:
           type: string
       type: object
+    VideoDevice:
+      example:
+        path: path
+        name: name
+      properties:
+        path:
+          type: string
+        name:
+          type: string
+      required:
+      - name
+      - path
+      type: object
     HwInfo:
       example:
+        videoDevices:
+        - path: path
+          name: name
+        - path: path
+          name: name
+        - path: path
+          name: name
+        - path: path
+          name: name
+        - path: path
+          name: name
         osInfo:
           vendor: vendor
           release: release
@@ -3092,6 +3150,17 @@ components:
             ip4: ip4
           - name: name
             ip4: ip4
+        audioCaptureDevices:
+        - name: name
+          id: id
+        - name: name
+          id: id
+        - name: name
+          id: id
+        - name: name
+          id: id
+        - name: name
+          id: id
         hwEncodingAvailable: true
         kernelInfo:
           release: release
@@ -3113,6 +3182,18 @@ components:
           $ref: '#/components/schemas/NetworkInfo'
         hwEncodingAvailable:
           type: boolean
+        videoDevices:
+          items:
+            $ref: '#/components/schemas/VideoDevice'
+          maxItems: 20
+          minItems: 0
+          type: array
+        audioCaptureDevices:
+          items:
+            $ref: '#/components/schemas/AudioDevice'
+          maxItems: 20
+          minItems: 0
+          type: array
       required:
       - hwEncodingAvailable
       - kernelInfo
@@ -6193,6 +6274,17 @@ components:
             type: type
         agentVersion: agentVersion
         hwInfo:
+          videoDevices:
+          - path: path
+            name: name
+          - path: path
+            name: name
+          - path: path
+            name: name
+          - path: path
+            name: name
+          - path: path
+            name: name
           osInfo:
             vendor: vendor
             release: release
@@ -6210,6 +6302,17 @@ components:
               ip4: ip4
             - name: name
               ip4: ip4
+          audioCaptureDevices:
+          - name: name
+            id: id
+          - name: name
+            id: id
+          - name: name
+            id: id
+          - name: name
+            id: id
+          - name: name
+            id: id
           hwEncodingAvailable: true
           kernelInfo:
             release: release
@@ -6444,8 +6547,6 @@ components:
           maxLength: 255
           pattern: ^([a-zA-Z])([0-9a-zA-Z])*(\.([a-zA-Z])([0-9a-zA-Z])*)*
           type: string
-        encodeVideo:
-          type: boolean
       required:
       - topic
       - type
@@ -6463,9 +6564,19 @@ components:
       - baseReferenceFrame
       - type
       type: object
+    DeviceStreamTransformConfiguration:
+      example:
+        videoEncodingEnabled: true
+      nullable: true
+      properties:
+        videoEncodingEnabled:
+          type: boolean
+      type: object
     DeviceStreamConfiguration:
       example:
         onDemand: true
+        transform:
+          videoEncodingEnabled: true
         configuration: ""
         name: name
         throttleHz: 11.924267833366365
@@ -6498,6 +6609,8 @@ components:
         onDemand:
           nullable: true
           type: boolean
+        transform:
+          $ref: '#/components/schemas/DeviceStreamTransformConfiguration'
       required:
       - configuration
       - name
@@ -6506,6 +6619,8 @@ components:
       example:
         streams:
         - onDemand: true
+          transform:
+            videoEncodingEnabled: true
           configuration: ""
           name: name
           throttleHz: 11.924267833366365
@@ -6513,6 +6628,8 @@ components:
           tags:
             key: tags
         - onDemand: true
+          transform:
+            videoEncodingEnabled: true
           configuration: ""
           name: name
           throttleHz: 11.924267833366365
@@ -6520,6 +6637,8 @@ components:
           tags:
             key: tags
         - onDemand: true
+          transform:
+            videoEncodingEnabled: true
           configuration: ""
           name: name
           throttleHz: 11.924267833366365
@@ -6527,6 +6646,8 @@ components:
           tags:
             key: tags
         - onDemand: true
+          transform:
+            videoEncodingEnabled: true
           configuration: ""
           name: name
           throttleHz: 11.924267833366365
@@ -6534,6 +6655,8 @@ components:
           tags:
             key: tags
         - onDemand: true
+          transform:
+            videoEncodingEnabled: true
           configuration: ""
           name: name
           throttleHz: 11.924267833366365
@@ -6790,6 +6913,8 @@ components:
         telemetry:
           streams:
           - onDemand: true
+            transform:
+              videoEncodingEnabled: true
             configuration: ""
             name: name
             throttleHz: 11.924267833366365
@@ -6797,6 +6922,8 @@ components:
             tags:
               key: tags
           - onDemand: true
+            transform:
+              videoEncodingEnabled: true
             configuration: ""
             name: name
             throttleHz: 11.924267833366365
@@ -6804,6 +6931,8 @@ components:
             tags:
               key: tags
           - onDemand: true
+            transform:
+              videoEncodingEnabled: true
             configuration: ""
             name: name
             throttleHz: 11.924267833366365
@@ -6811,6 +6940,8 @@ components:
             tags:
               key: tags
           - onDemand: true
+            transform:
+              videoEncodingEnabled: true
             configuration: ""
             name: name
             throttleHz: 11.924267833366365
@@ -6818,6 +6949,8 @@ components:
             tags:
               key: tags
           - onDemand: true
+            transform:
+              videoEncodingEnabled: true
             configuration: ""
             name: name
             throttleHz: 11.924267833366365
@@ -6949,6 +7082,8 @@ components:
           telemetry:
             streams:
             - onDemand: true
+              transform:
+                videoEncodingEnabled: true
               configuration: ""
               name: name
               throttleHz: 11.924267833366365
@@ -6956,6 +7091,8 @@ components:
               tags:
                 key: tags
             - onDemand: true
+              transform:
+                videoEncodingEnabled: true
               configuration: ""
               name: name
               throttleHz: 11.924267833366365
@@ -6963,6 +7100,8 @@ components:
               tags:
                 key: tags
             - onDemand: true
+              transform:
+                videoEncodingEnabled: true
               configuration: ""
               name: name
               throttleHz: 11.924267833366365
@@ -6970,6 +7109,8 @@ components:
               tags:
                 key: tags
             - onDemand: true
+              transform:
+                videoEncodingEnabled: true
               configuration: ""
               name: name
               throttleHz: 11.924267833366365
@@ -6977,6 +7118,8 @@ components:
               tags:
                 key: tags
             - onDemand: true
+              transform:
+                videoEncodingEnabled: true
               configuration: ""
               name: name
               throttleHz: 11.924267833366365
@@ -7948,6 +8091,8 @@ components:
           telemetry:
             streams:
             - onDemand: true
+              transform:
+                videoEncodingEnabled: true
               configuration: ""
               name: name
               throttleHz: 11.924267833366365
@@ -7955,6 +8100,8 @@ components:
               tags:
                 key: tags
             - onDemand: true
+              transform:
+                videoEncodingEnabled: true
               configuration: ""
               name: name
               throttleHz: 11.924267833366365
@@ -7962,6 +8109,8 @@ components:
               tags:
                 key: tags
             - onDemand: true
+              transform:
+                videoEncodingEnabled: true
               configuration: ""
               name: name
               throttleHz: 11.924267833366365
@@ -7969,6 +8118,8 @@ components:
               tags:
                 key: tags
             - onDemand: true
+              transform:
+                videoEncodingEnabled: true
               configuration: ""
               name: name
               throttleHz: 11.924267833366365
@@ -7976,6 +8127,8 @@ components:
               tags:
                 key: tags
             - onDemand: true
+              transform:
+                videoEncodingEnabled: true
               configuration: ""
               name: name
               throttleHz: 11.924267833366365
@@ -8110,6 +8263,9 @@ components:
         desiredAgentVersion: desiredAgentVersion
         temporaryConfigurationTemplateId: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         scope:
+          features:
+          - telemetry
+          - telemetry
           agentIds:
           - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
@@ -9273,6 +9429,17 @@ components:
               type: type
           agentVersion: agentVersion
           hwInfo:
+            videoDevices:
+            - path: path
+              name: name
+            - path: path
+              name: name
+            - path: path
+              name: name
+            - path: path
+              name: name
+            - path: path
+              name: name
             osInfo:
               vendor: vendor
               release: release
@@ -9290,6 +9457,17 @@ components:
                 ip4: ip4
               - name: name
                 ip4: ip4
+            audioCaptureDevices:
+            - name: name
+              id: id
+            - name: name
+              id: id
+            - name: name
+              id: id
+            - name: name
+              id: id
+            - name: name
+              id: id
             hwEncodingAvailable: true
             kernelInfo:
               release: release
@@ -10454,6 +10632,9 @@ components:
         createdAt: 2000-01-23T04:56:07.000+00:00
         code: code
         scope:
+          features:
+          - telemetry
+          - telemetry
           agentIds:
           - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
@@ -11742,6 +11923,8 @@ components:
             telemetry:
               streams:
               - onDemand: true
+                transform:
+                  videoEncodingEnabled: true
                 configuration: ""
                 name: name
                 throttleHz: 11.924267833366365
@@ -11749,6 +11932,8 @@ components:
                 tags:
                   key: tags
               - onDemand: true
+                transform:
+                  videoEncodingEnabled: true
                 configuration: ""
                 name: name
                 throttleHz: 11.924267833366365
@@ -11756,6 +11941,8 @@ components:
                 tags:
                   key: tags
               - onDemand: true
+                transform:
+                  videoEncodingEnabled: true
                 configuration: ""
                 name: name
                 throttleHz: 11.924267833366365
@@ -11763,6 +11950,8 @@ components:
                 tags:
                   key: tags
               - onDemand: true
+                transform:
+                  videoEncodingEnabled: true
                 configuration: ""
                 name: name
                 throttleHz: 11.924267833366365
@@ -11770,6 +11959,8 @@ components:
                 tags:
                   key: tags
               - onDemand: true
+                transform:
+                  videoEncodingEnabled: true
                 configuration: ""
                 name: name
                 throttleHz: 11.924267833366365
@@ -11883,6 +12074,8 @@ components:
             telemetry:
               streams:
               - onDemand: true
+                transform:
+                  videoEncodingEnabled: true
                 configuration: ""
                 name: name
                 throttleHz: 11.924267833366365
@@ -11890,6 +12083,8 @@ components:
                 tags:
                   key: tags
               - onDemand: true
+                transform:
+                  videoEncodingEnabled: true
                 configuration: ""
                 name: name
                 throttleHz: 11.924267833366365
@@ -11897,6 +12092,8 @@ components:
                 tags:
                   key: tags
               - onDemand: true
+                transform:
+                  videoEncodingEnabled: true
                 configuration: ""
                 name: name
                 throttleHz: 11.924267833366365
@@ -11904,6 +12101,8 @@ components:
                 tags:
                   key: tags
               - onDemand: true
+                transform:
+                  videoEncodingEnabled: true
                 configuration: ""
                 name: name
                 throttleHz: 11.924267833366365
@@ -11911,6 +12110,8 @@ components:
                 tags:
                   key: tags
               - onDemand: true
+                transform:
+                  videoEncodingEnabled: true
                 configuration: ""
                 name: name
                 throttleHz: 11.924267833366365
@@ -12026,6 +12227,9 @@ components:
           desiredAgentVersion: desiredAgentVersion
           temporaryConfigurationTemplateId: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           scope:
+            features:
+            - telemetry
+            - telemetry
             agentIds:
             - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
             - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
@@ -13189,6 +13393,17 @@ components:
                 type: type
             agentVersion: agentVersion
             hwInfo:
+              videoDevices:
+              - path: path
+                name: name
+              - path: path
+                name: name
+              - path: path
+                name: name
+              - path: path
+                name: name
+              - path: path
+                name: name
               osInfo:
                 vendor: vendor
                 release: release
@@ -13206,6 +13421,17 @@ components:
                   ip4: ip4
                 - name: name
                   ip4: ip4
+              audioCaptureDevices:
+              - name: name
+                id: id
+              - name: name
+                id: id
+              - name: name
+                id: id
+              - name: name
+                id: id
+              - name: name
+                id: id
               hwEncodingAvailable: true
               kernelInfo:
                 release: release
@@ -13241,6 +13467,9 @@ components:
           desiredAgentVersion: desiredAgentVersion
           temporaryConfigurationTemplateId: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           scope:
+            features:
+            - telemetry
+            - telemetry
             agentIds:
             - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
             - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
@@ -14404,6 +14633,17 @@ components:
                 type: type
             agentVersion: agentVersion
             hwInfo:
+              videoDevices:
+              - path: path
+                name: name
+              - path: path
+                name: name
+              - path: path
+                name: name
+              - path: path
+                name: name
+              - path: path
+                name: name
               osInfo:
                 vendor: vendor
                 release: release
@@ -14421,6 +14661,17 @@ components:
                   ip4: ip4
                 - name: name
                   ip4: ip4
+              audioCaptureDevices:
+              - name: name
+                id: id
+              - name: name
+                id: id
+              - name: name
+                id: id
+              - name: name
+                id: id
+              - name: name
+                id: id
               hwEncodingAvailable: true
               kernelInfo:
                 release: release
@@ -14551,6 +14802,8 @@ components:
             telemetry:
               streams:
               - onDemand: true
+                transform:
+                  videoEncodingEnabled: true
                 configuration: ""
                 name: name
                 throttleHz: 11.924267833366365
@@ -14558,6 +14811,8 @@ components:
                 tags:
                   key: tags
               - onDemand: true
+                transform:
+                  videoEncodingEnabled: true
                 configuration: ""
                 name: name
                 throttleHz: 11.924267833366365
@@ -14565,6 +14820,8 @@ components:
                 tags:
                   key: tags
               - onDemand: true
+                transform:
+                  videoEncodingEnabled: true
                 configuration: ""
                 name: name
                 throttleHz: 11.924267833366365
@@ -14572,6 +14829,8 @@ components:
                 tags:
                   key: tags
               - onDemand: true
+                transform:
+                  videoEncodingEnabled: true
                 configuration: ""
                 name: name
                 throttleHz: 11.924267833366365
@@ -14579,6 +14838,8 @@ components:
                 tags:
                   key: tags
               - onDemand: true
+                transform:
+                  videoEncodingEnabled: true
                 configuration: ""
                 name: name
                 throttleHz: 11.924267833366365
@@ -15803,6 +16064,9 @@ components:
           createdAt: 2000-01-23T04:56:07.000+00:00
           code: code
           scope:
+            features:
+            - telemetry
+            - telemetry
             agentIds:
             - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
             - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
@@ -15833,6 +16097,9 @@ components:
           createdAt: 2000-01-23T04:56:07.000+00:00
           code: code
           scope:
+            features:
+            - telemetry
+            - telemetry
             agentIds:
             - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
             - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
@@ -16371,6 +16638,8 @@ components:
           telemetry:
             streams:
             - onDemand: true
+              transform:
+                videoEncodingEnabled: true
               configuration: ""
               name: name
               throttleHz: 11.924267833366365
@@ -16378,6 +16647,8 @@ components:
               tags:
                 key: tags
             - onDemand: true
+              transform:
+                videoEncodingEnabled: true
               configuration: ""
               name: name
               throttleHz: 11.924267833366365
@@ -16385,6 +16656,8 @@ components:
               tags:
                 key: tags
             - onDemand: true
+              transform:
+                videoEncodingEnabled: true
               configuration: ""
               name: name
               throttleHz: 11.924267833366365
@@ -16392,6 +16665,8 @@ components:
               tags:
                 key: tags
             - onDemand: true
+              transform:
+                videoEncodingEnabled: true
               configuration: ""
               name: name
               throttleHz: 11.924267833366365
@@ -16399,6 +16674,8 @@ components:
               tags:
                 key: tags
             - onDemand: true
+              transform:
+                videoEncodingEnabled: true
               configuration: ""
               name: name
               throttleHz: 11.924267833366365
@@ -16529,6 +16806,9 @@ components:
         desiredAgentVersion: desiredAgentVersion
         temporaryConfigurationTemplateId: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         scope:
+          features:
+          - telemetry
+          - telemetry
           agentIds:
           - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
@@ -17692,6 +17972,17 @@ components:
               type: type
           agentVersion: agentVersion
           hwInfo:
+            videoDevices:
+            - path: path
+              name: name
+            - path: path
+              name: name
+            - path: path
+              name: name
+            - path: path
+              name: name
+            - path: path
+              name: name
             osInfo:
               vendor: vendor
               release: release
@@ -17709,6 +18000,17 @@ components:
                 ip4: ip4
               - name: name
                 ip4: ip4
+            audioCaptureDevices:
+            - name: name
+              id: id
+            - name: name
+              id: id
+            - name: name
+              id: id
+            - name: name
+              id: id
+            - name: name
+              id: id
             hwEncodingAvailable: true
             kernelInfo:
               release: release

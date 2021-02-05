@@ -4,6 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
+**Features** | **[]string** |  | [optional] 
 **Start** | [**time.Time**](time.Time.md) |  | [optional] 
 **End** | [**time.Time**](time.Time.md) |  | [optional] 
 **AgentIds** | **[]string** |  | [optional] 

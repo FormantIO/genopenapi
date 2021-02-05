@@ -8,9 +8,7 @@
  */
 
 package admin_api
-// DeviceStreamRosTopicConfiguration struct for DeviceStreamRosTopicConfiguration
-type DeviceStreamRosTopicConfiguration struct {
-	Type string `json:"type"`
-	Topic string `json:"topic"`
-	Path string `json:"path,omitempty"`
+// DeviceStreamTransformConfiguration struct for DeviceStreamTransformConfiguration
+type DeviceStreamTransformConfiguration struct {
+	VideoEncodingEnabled bool `json:"videoEncodingEnabled,omitempty"`
 }

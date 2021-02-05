@@ -15,4 +15,6 @@ type HwInfo struct {
 	NodeInfo NodeInfo `json:"nodeInfo"`
 	NetworkInfo NetworkInfo `json:"networkInfo"`
 	HwEncodingAvailable bool `json:"hwEncodingAvailable"`
+	VideoDevices []VideoDevice `json:"videoDevices,omitempty"`
+	AudioCaptureDevices []AudioDevice `json:"audioCaptureDevices,omitempty"`
 }

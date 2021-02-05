@@ -13,6 +13,7 @@ import (
 )
 // ScopeFilter struct for ScopeFilter
 type ScopeFilter struct {
+	Features []string `json:"features,omitempty"`
 	Start time.Time `json:"start,omitempty"`
 	End time.Time `json:"end,omitempty"`
 	AgentIds []string `json:"agentIds,omitempty"`

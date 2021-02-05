@@ -8,9 +8,8 @@
  */
 
 package admin_api
-// DeviceStreamRosTopicConfiguration struct for DeviceStreamRosTopicConfiguration
-type DeviceStreamRosTopicConfiguration struct {
-	Type string `json:"type"`
-	Topic string `json:"topic"`
-	Path string `json:"path,omitempty"`
+// VideoDevice struct for VideoDevice
+type VideoDevice struct {
+	Path string `json:"path"`
+	Name string `json:"name"`
 }

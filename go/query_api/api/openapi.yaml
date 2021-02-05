@@ -1,7 +1,7 @@
 openapi: 3.0.0
 info:
   title: Formant query-api
-  version: 1.19.23
+  version: 1.20.36
 servers:
 - url: https://api-dev.formant.io/v1/queries
 paths:
@@ -385,6 +385,9 @@ components:
       type: object
     ScopeFilter:
       example:
+        features:
+        - telemetry
+        - telemetry
         agentIds:
         - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
@@ -404,6 +407,24 @@ components:
         end: 2000-01-23T04:56:07.000+00:00
         tags: ""
       properties:
+        features:
+          items:
+            enum:
+            - telemetry
+            - internalTelemetry
+            - teleop
+            - customEvents
+            - triggeredEvents
+            - ssh
+            - portForwarding
+            - commands
+            - interventions
+            - onDemand
+            - appConfig
+            - blobStorage
+            type: string
+          type: array
+          uniqueItems: true
         start:
           format: date-time
           type: string
