@@ -16,4 +16,8 @@ type DeviceTeleopRosStreamConfiguration struct {
 	EncodeVideo bool `json:"encodeVideo,omitempty"`
 	StatusTopic string `json:"statusTopic,omitempty"`
 	AudioCodec string `json:"audioCodec,omitempty"`
+	Min float32 `json:"min,omitempty"`
+	Max float32 `json:"max,omitempty"`
+	DefaultValue float32 `json:"defaultValue,omitempty"`
+	Step float32 `json:"step,omitempty"`
 }

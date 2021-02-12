@@ -1,7 +1,7 @@
 openapi: 3.0.0
 info:
   title: Formant admin-api
-  version: 1.20.36
+  version: 1.21.44
 servers:
 - url: https://api-dev.formant.io/v1/admin
 paths:
@@ -6677,7 +6677,11 @@ components:
     DeviceTeleopCustomStreamConfiguration:
       example:
         mode: command
+        min: 3.616076749251911
+        max: 2.027123023002322
+        defaultValue: 4.145608029883936
         name: name
+        step: 7.386281948385884
         encodeVideo: true
         rtcStreamType: ping
         labels:
@@ -6714,7 +6718,53 @@ components:
           uniqueItems: true
         encodeVideo:
           type: boolean
+        min:
+          type: number
+        max:
+          type: number
+        defaultValue:
+          type: number
+        step:
+          type: number
       required:
+      - mode
+      - name
+      - rtcStreamType
+      type: object
+    DeviceTeleopHardwareStreamConfiguration:
+      example:
+        mode: command
+        name: name
+        hwDescriptor: hwDescriptor
+        rtcStreamType: ping
+      properties:
+        name:
+          type: string
+        rtcStreamType:
+          enum:
+          - ping
+          - pong
+          - stream-control
+          - h264-encoder-control
+          - numeric
+          - boolean
+          - bitset
+          - twist
+          - compressed-image
+          - h264-video-frame
+          - audio-chunk
+          - pose
+          - goal-id
+          type: string
+        mode:
+          enum:
+          - command
+          - observe
+          type: string
+        hwDescriptor:
+          type: string
+      required:
+      - hwDescriptor
       - mode
       - name
       - rtcStreamType
@@ -6722,8 +6772,12 @@ components:
     DeviceTeleopRosStreamConfiguration:
       example:
         mode: command
+        min: 5.637376656633329
+        max: 2.3021358869347655
+        defaultValue: 7.061401241503109
         topicName: topicName
         statusTopic: statusTopic
+        step: 9.301444243932576
         audioCodec: raw
         encodeVideo: true
         topicType: std_msgs/Float64
@@ -6756,6 +6810,14 @@ components:
           enum:
           - raw
           type: string
+        min:
+          type: number
+        max:
+          type: number
+        defaultValue:
+          type: number
+        step:
+          type: number
       required:
       - mode
       - topicName
@@ -6800,68 +6862,129 @@ components:
       type: object
     DeviceTeleopConfiguration:
       example:
+        hardwareStreams:
+        - mode: command
+          name: name
+          hwDescriptor: hwDescriptor
+          rtcStreamType: ping
+        - mode: command
+          name: name
+          hwDescriptor: hwDescriptor
+          rtcStreamType: ping
+        - mode: command
+          name: name
+          hwDescriptor: hwDescriptor
+          rtcStreamType: ping
+        - mode: command
+          name: name
+          hwDescriptor: hwDescriptor
+          rtcStreamType: ping
+        - mode: command
+          name: name
+          hwDescriptor: hwDescriptor
+          rtcStreamType: ping
         rosStreams:
         - mode: command
+          min: 5.637376656633329
+          max: 2.3021358869347655
+          defaultValue: 7.061401241503109
           topicName: topicName
           statusTopic: statusTopic
+          step: 9.301444243932576
           audioCodec: raw
           encodeVideo: true
           topicType: std_msgs/Float64
         - mode: command
+          min: 5.637376656633329
+          max: 2.3021358869347655
+          defaultValue: 7.061401241503109
           topicName: topicName
           statusTopic: statusTopic
+          step: 9.301444243932576
           audioCodec: raw
           encodeVideo: true
           topicType: std_msgs/Float64
         - mode: command
+          min: 5.637376656633329
+          max: 2.3021358869347655
+          defaultValue: 7.061401241503109
           topicName: topicName
           statusTopic: statusTopic
+          step: 9.301444243932576
           audioCodec: raw
           encodeVideo: true
           topicType: std_msgs/Float64
         - mode: command
+          min: 5.637376656633329
+          max: 2.3021358869347655
+          defaultValue: 7.061401241503109
           topicName: topicName
           statusTopic: statusTopic
+          step: 9.301444243932576
           audioCodec: raw
           encodeVideo: true
           topicType: std_msgs/Float64
         - mode: command
+          min: 5.637376656633329
+          max: 2.3021358869347655
+          defaultValue: 7.061401241503109
           topicName: topicName
           statusTopic: statusTopic
+          step: 9.301444243932576
           audioCodec: raw
           encodeVideo: true
           topicType: std_msgs/Float64
         customStreams:
         - mode: command
+          min: 3.616076749251911
+          max: 2.027123023002322
+          defaultValue: 4.145608029883936
           name: name
+          step: 7.386281948385884
           encodeVideo: true
           rtcStreamType: ping
           labels:
           - labels
           - labels
         - mode: command
+          min: 3.616076749251911
+          max: 2.027123023002322
+          defaultValue: 4.145608029883936
           name: name
+          step: 7.386281948385884
           encodeVideo: true
           rtcStreamType: ping
           labels:
           - labels
           - labels
         - mode: command
+          min: 3.616076749251911
+          max: 2.027123023002322
+          defaultValue: 4.145608029883936
           name: name
+          step: 7.386281948385884
           encodeVideo: true
           rtcStreamType: ping
           labels:
           - labels
           - labels
         - mode: command
+          min: 3.616076749251911
+          max: 2.027123023002322
+          defaultValue: 4.145608029883936
           name: name
+          step: 7.386281948385884
           encodeVideo: true
           rtcStreamType: ping
           labels:
           - labels
           - labels
         - mode: command
+          min: 3.616076749251911
+          max: 2.027123023002322
+          defaultValue: 4.145608029883936
           name: name
+          step: 7.386281948385884
           encodeVideo: true
           rtcStreamType: ping
           labels:
@@ -6883,6 +7006,11 @@ components:
         customStreams:
           items:
             $ref: '#/components/schemas/DeviceTeleopCustomStreamConfiguration'
+          maxItems: 40
+          type: array
+        hardwareStreams:
+          items:
+            $ref: '#/components/schemas/DeviceTeleopHardwareStreamConfiguration'
           maxItems: 40
           type: array
         joysticks:
@@ -6962,68 +7090,129 @@ components:
         tags:
           key: tags
         teleop:
+          hardwareStreams:
+          - mode: command
+            name: name
+            hwDescriptor: hwDescriptor
+            rtcStreamType: ping
+          - mode: command
+            name: name
+            hwDescriptor: hwDescriptor
+            rtcStreamType: ping
+          - mode: command
+            name: name
+            hwDescriptor: hwDescriptor
+            rtcStreamType: ping
+          - mode: command
+            name: name
+            hwDescriptor: hwDescriptor
+            rtcStreamType: ping
+          - mode: command
+            name: name
+            hwDescriptor: hwDescriptor
+            rtcStreamType: ping
           rosStreams:
           - mode: command
+            min: 5.637376656633329
+            max: 2.3021358869347655
+            defaultValue: 7.061401241503109
             topicName: topicName
             statusTopic: statusTopic
+            step: 9.301444243932576
             audioCodec: raw
             encodeVideo: true
             topicType: std_msgs/Float64
           - mode: command
+            min: 5.637376656633329
+            max: 2.3021358869347655
+            defaultValue: 7.061401241503109
             topicName: topicName
             statusTopic: statusTopic
+            step: 9.301444243932576
             audioCodec: raw
             encodeVideo: true
             topicType: std_msgs/Float64
           - mode: command
+            min: 5.637376656633329
+            max: 2.3021358869347655
+            defaultValue: 7.061401241503109
             topicName: topicName
             statusTopic: statusTopic
+            step: 9.301444243932576
             audioCodec: raw
             encodeVideo: true
             topicType: std_msgs/Float64
           - mode: command
+            min: 5.637376656633329
+            max: 2.3021358869347655
+            defaultValue: 7.061401241503109
             topicName: topicName
             statusTopic: statusTopic
+            step: 9.301444243932576
             audioCodec: raw
             encodeVideo: true
             topicType: std_msgs/Float64
           - mode: command
+            min: 5.637376656633329
+            max: 2.3021358869347655
+            defaultValue: 7.061401241503109
             topicName: topicName
             statusTopic: statusTopic
+            step: 9.301444243932576
             audioCodec: raw
             encodeVideo: true
             topicType: std_msgs/Float64
           customStreams:
           - mode: command
+            min: 3.616076749251911
+            max: 2.027123023002322
+            defaultValue: 4.145608029883936
             name: name
+            step: 7.386281948385884
             encodeVideo: true
             rtcStreamType: ping
             labels:
             - labels
             - labels
           - mode: command
+            min: 3.616076749251911
+            max: 2.027123023002322
+            defaultValue: 4.145608029883936
             name: name
+            step: 7.386281948385884
             encodeVideo: true
             rtcStreamType: ping
             labels:
             - labels
             - labels
           - mode: command
+            min: 3.616076749251911
+            max: 2.027123023002322
+            defaultValue: 4.145608029883936
             name: name
+            step: 7.386281948385884
             encodeVideo: true
             rtcStreamType: ping
             labels:
             - labels
             - labels
           - mode: command
+            min: 3.616076749251911
+            max: 2.027123023002322
+            defaultValue: 4.145608029883936
             name: name
+            step: 7.386281948385884
             encodeVideo: true
             rtcStreamType: ping
             labels:
             - labels
             - labels
           - mode: command
+            min: 3.616076749251911
+            max: 2.027123023002322
+            defaultValue: 4.145608029883936
             name: name
+            step: 7.386281948385884
             encodeVideo: true
             rtcStreamType: ping
             labels:
@@ -7131,68 +7320,129 @@ components:
           tags:
             key: tags
           teleop:
+            hardwareStreams:
+            - mode: command
+              name: name
+              hwDescriptor: hwDescriptor
+              rtcStreamType: ping
+            - mode: command
+              name: name
+              hwDescriptor: hwDescriptor
+              rtcStreamType: ping
+            - mode: command
+              name: name
+              hwDescriptor: hwDescriptor
+              rtcStreamType: ping
+            - mode: command
+              name: name
+              hwDescriptor: hwDescriptor
+              rtcStreamType: ping
+            - mode: command
+              name: name
+              hwDescriptor: hwDescriptor
+              rtcStreamType: ping
             rosStreams:
             - mode: command
+              min: 5.637376656633329
+              max: 2.3021358869347655
+              defaultValue: 7.061401241503109
               topicName: topicName
               statusTopic: statusTopic
+              step: 9.301444243932576
               audioCodec: raw
               encodeVideo: true
               topicType: std_msgs/Float64
             - mode: command
+              min: 5.637376656633329
+              max: 2.3021358869347655
+              defaultValue: 7.061401241503109
               topicName: topicName
               statusTopic: statusTopic
+              step: 9.301444243932576
               audioCodec: raw
               encodeVideo: true
               topicType: std_msgs/Float64
             - mode: command
+              min: 5.637376656633329
+              max: 2.3021358869347655
+              defaultValue: 7.061401241503109
               topicName: topicName
               statusTopic: statusTopic
+              step: 9.301444243932576
               audioCodec: raw
               encodeVideo: true
               topicType: std_msgs/Float64
             - mode: command
+              min: 5.637376656633329
+              max: 2.3021358869347655
+              defaultValue: 7.061401241503109
               topicName: topicName
               statusTopic: statusTopic
+              step: 9.301444243932576
               audioCodec: raw
               encodeVideo: true
               topicType: std_msgs/Float64
             - mode: command
+              min: 5.637376656633329
+              max: 2.3021358869347655
+              defaultValue: 7.061401241503109
               topicName: topicName
               statusTopic: statusTopic
+              step: 9.301444243932576
               audioCodec: raw
               encodeVideo: true
               topicType: std_msgs/Float64
             customStreams:
             - mode: command
+              min: 3.616076749251911
+              max: 2.027123023002322
+              defaultValue: 4.145608029883936
               name: name
+              step: 7.386281948385884
               encodeVideo: true
               rtcStreamType: ping
               labels:
               - labels
               - labels
             - mode: command
+              min: 3.616076749251911
+              max: 2.027123023002322
+              defaultValue: 4.145608029883936
               name: name
+              step: 7.386281948385884
               encodeVideo: true
               rtcStreamType: ping
               labels:
               - labels
               - labels
             - mode: command
+              min: 3.616076749251911
+              max: 2.027123023002322
+              defaultValue: 4.145608029883936
               name: name
+              step: 7.386281948385884
               encodeVideo: true
               rtcStreamType: ping
               labels:
               - labels
               - labels
             - mode: command
+              min: 3.616076749251911
+              max: 2.027123023002322
+              defaultValue: 4.145608029883936
               name: name
+              step: 7.386281948385884
               encodeVideo: true
               rtcStreamType: ping
               labels:
               - labels
               - labels
             - mode: command
+              min: 3.616076749251911
+              max: 2.027123023002322
+              defaultValue: 4.145608029883936
               name: name
+              step: 7.386281948385884
               encodeVideo: true
               rtcStreamType: ping
               labels:
@@ -8140,68 +8390,129 @@ components:
           tags:
             key: tags
           teleop:
+            hardwareStreams:
+            - mode: command
+              name: name
+              hwDescriptor: hwDescriptor
+              rtcStreamType: ping
+            - mode: command
+              name: name
+              hwDescriptor: hwDescriptor
+              rtcStreamType: ping
+            - mode: command
+              name: name
+              hwDescriptor: hwDescriptor
+              rtcStreamType: ping
+            - mode: command
+              name: name
+              hwDescriptor: hwDescriptor
+              rtcStreamType: ping
+            - mode: command
+              name: name
+              hwDescriptor: hwDescriptor
+              rtcStreamType: ping
             rosStreams:
             - mode: command
+              min: 5.637376656633329
+              max: 2.3021358869347655
+              defaultValue: 7.061401241503109
               topicName: topicName
               statusTopic: statusTopic
+              step: 9.301444243932576
               audioCodec: raw
               encodeVideo: true
               topicType: std_msgs/Float64
             - mode: command
+              min: 5.637376656633329
+              max: 2.3021358869347655
+              defaultValue: 7.061401241503109
               topicName: topicName
               statusTopic: statusTopic
+              step: 9.301444243932576
               audioCodec: raw
               encodeVideo: true
               topicType: std_msgs/Float64
             - mode: command
+              min: 5.637376656633329
+              max: 2.3021358869347655
+              defaultValue: 7.061401241503109
               topicName: topicName
               statusTopic: statusTopic
+              step: 9.301444243932576
               audioCodec: raw
               encodeVideo: true
               topicType: std_msgs/Float64
             - mode: command
+              min: 5.637376656633329
+              max: 2.3021358869347655
+              defaultValue: 7.061401241503109
               topicName: topicName
               statusTopic: statusTopic
+              step: 9.301444243932576
               audioCodec: raw
               encodeVideo: true
               topicType: std_msgs/Float64
             - mode: command
+              min: 5.637376656633329
+              max: 2.3021358869347655
+              defaultValue: 7.061401241503109
               topicName: topicName
               statusTopic: statusTopic
+              step: 9.301444243932576
               audioCodec: raw
               encodeVideo: true
               topicType: std_msgs/Float64
             customStreams:
             - mode: command
+              min: 3.616076749251911
+              max: 2.027123023002322
+              defaultValue: 4.145608029883936
               name: name
+              step: 7.386281948385884
               encodeVideo: true
               rtcStreamType: ping
               labels:
               - labels
               - labels
             - mode: command
+              min: 3.616076749251911
+              max: 2.027123023002322
+              defaultValue: 4.145608029883936
               name: name
+              step: 7.386281948385884
               encodeVideo: true
               rtcStreamType: ping
               labels:
               - labels
               - labels
             - mode: command
+              min: 3.616076749251911
+              max: 2.027123023002322
+              defaultValue: 4.145608029883936
               name: name
+              step: 7.386281948385884
               encodeVideo: true
               rtcStreamType: ping
               labels:
               - labels
               - labels
             - mode: command
+              min: 3.616076749251911
+              max: 2.027123023002322
+              defaultValue: 4.145608029883936
               name: name
+              step: 7.386281948385884
               encodeVideo: true
               rtcStreamType: ping
               labels:
               - labels
               - labels
             - mode: command
+              min: 3.616076749251911
+              max: 2.027123023002322
+              defaultValue: 4.145608029883936
               name: name
+              step: 7.386281948385884
               encodeVideo: true
               rtcStreamType: ping
               labels:
@@ -10612,6 +10923,10 @@ components:
           type: boolean
         enabled:
           type: boolean
+        color:
+          nullable: true
+          pattern: ^#?([0-9a-fA-F]{3}|[0-9a-fA-F]{6})$
+          type: string
         id:
           format: uuid
           type: string
@@ -11972,68 +12287,129 @@ components:
             tags:
               key: tags
             teleop:
+              hardwareStreams:
+              - mode: command
+                name: name
+                hwDescriptor: hwDescriptor
+                rtcStreamType: ping
+              - mode: command
+                name: name
+                hwDescriptor: hwDescriptor
+                rtcStreamType: ping
+              - mode: command
+                name: name
+                hwDescriptor: hwDescriptor
+                rtcStreamType: ping
+              - mode: command
+                name: name
+                hwDescriptor: hwDescriptor
+                rtcStreamType: ping
+              - mode: command
+                name: name
+                hwDescriptor: hwDescriptor
+                rtcStreamType: ping
               rosStreams:
               - mode: command
+                min: 5.637376656633329
+                max: 2.3021358869347655
+                defaultValue: 7.061401241503109
                 topicName: topicName
                 statusTopic: statusTopic
+                step: 9.301444243932576
                 audioCodec: raw
                 encodeVideo: true
                 topicType: std_msgs/Float64
               - mode: command
+                min: 5.637376656633329
+                max: 2.3021358869347655
+                defaultValue: 7.061401241503109
                 topicName: topicName
                 statusTopic: statusTopic
+                step: 9.301444243932576
                 audioCodec: raw
                 encodeVideo: true
                 topicType: std_msgs/Float64
               - mode: command
+                min: 5.637376656633329
+                max: 2.3021358869347655
+                defaultValue: 7.061401241503109
                 topicName: topicName
                 statusTopic: statusTopic
+                step: 9.301444243932576
                 audioCodec: raw
                 encodeVideo: true
                 topicType: std_msgs/Float64
               - mode: command
+                min: 5.637376656633329
+                max: 2.3021358869347655
+                defaultValue: 7.061401241503109
                 topicName: topicName
                 statusTopic: statusTopic
+                step: 9.301444243932576
                 audioCodec: raw
                 encodeVideo: true
                 topicType: std_msgs/Float64
               - mode: command
+                min: 5.637376656633329
+                max: 2.3021358869347655
+                defaultValue: 7.061401241503109
                 topicName: topicName
                 statusTopic: statusTopic
+                step: 9.301444243932576
                 audioCodec: raw
                 encodeVideo: true
                 topicType: std_msgs/Float64
               customStreams:
               - mode: command
+                min: 3.616076749251911
+                max: 2.027123023002322
+                defaultValue: 4.145608029883936
                 name: name
+                step: 7.386281948385884
                 encodeVideo: true
                 rtcStreamType: ping
                 labels:
                 - labels
                 - labels
               - mode: command
+                min: 3.616076749251911
+                max: 2.027123023002322
+                defaultValue: 4.145608029883936
                 name: name
+                step: 7.386281948385884
                 encodeVideo: true
                 rtcStreamType: ping
                 labels:
                 - labels
                 - labels
               - mode: command
+                min: 3.616076749251911
+                max: 2.027123023002322
+                defaultValue: 4.145608029883936
                 name: name
+                step: 7.386281948385884
                 encodeVideo: true
                 rtcStreamType: ping
                 labels:
                 - labels
                 - labels
               - mode: command
+                min: 3.616076749251911
+                max: 2.027123023002322
+                defaultValue: 4.145608029883936
                 name: name
+                step: 7.386281948385884
                 encodeVideo: true
                 rtcStreamType: ping
                 labels:
                 - labels
                 - labels
               - mode: command
+                min: 3.616076749251911
+                max: 2.027123023002322
+                defaultValue: 4.145608029883936
                 name: name
+                step: 7.386281948385884
                 encodeVideo: true
                 rtcStreamType: ping
                 labels:
@@ -12123,68 +12499,129 @@ components:
             tags:
               key: tags
             teleop:
+              hardwareStreams:
+              - mode: command
+                name: name
+                hwDescriptor: hwDescriptor
+                rtcStreamType: ping
+              - mode: command
+                name: name
+                hwDescriptor: hwDescriptor
+                rtcStreamType: ping
+              - mode: command
+                name: name
+                hwDescriptor: hwDescriptor
+                rtcStreamType: ping
+              - mode: command
+                name: name
+                hwDescriptor: hwDescriptor
+                rtcStreamType: ping
+              - mode: command
+                name: name
+                hwDescriptor: hwDescriptor
+                rtcStreamType: ping
               rosStreams:
               - mode: command
+                min: 5.637376656633329
+                max: 2.3021358869347655
+                defaultValue: 7.061401241503109
                 topicName: topicName
                 statusTopic: statusTopic
+                step: 9.301444243932576
                 audioCodec: raw
                 encodeVideo: true
                 topicType: std_msgs/Float64
               - mode: command
+                min: 5.637376656633329
+                max: 2.3021358869347655
+                defaultValue: 7.061401241503109
                 topicName: topicName
                 statusTopic: statusTopic
+                step: 9.301444243932576
                 audioCodec: raw
                 encodeVideo: true
                 topicType: std_msgs/Float64
               - mode: command
+                min: 5.637376656633329
+                max: 2.3021358869347655
+                defaultValue: 7.061401241503109
                 topicName: topicName
                 statusTopic: statusTopic
+                step: 9.301444243932576
                 audioCodec: raw
                 encodeVideo: true
                 topicType: std_msgs/Float64
               - mode: command
+                min: 5.637376656633329
+                max: 2.3021358869347655
+                defaultValue: 7.061401241503109
                 topicName: topicName
                 statusTopic: statusTopic
+                step: 9.301444243932576
                 audioCodec: raw
                 encodeVideo: true
                 topicType: std_msgs/Float64
               - mode: command
+                min: 5.637376656633329
+                max: 2.3021358869347655
+                defaultValue: 7.061401241503109
                 topicName: topicName
                 statusTopic: statusTopic
+                step: 9.301444243932576
                 audioCodec: raw
                 encodeVideo: true
                 topicType: std_msgs/Float64
               customStreams:
               - mode: command
+                min: 3.616076749251911
+                max: 2.027123023002322
+                defaultValue: 4.145608029883936
                 name: name
+                step: 7.386281948385884
                 encodeVideo: true
                 rtcStreamType: ping
                 labels:
                 - labels
                 - labels
               - mode: command
+                min: 3.616076749251911
+                max: 2.027123023002322
+                defaultValue: 4.145608029883936
                 name: name
+                step: 7.386281948385884
                 encodeVideo: true
                 rtcStreamType: ping
                 labels:
                 - labels
                 - labels
               - mode: command
+                min: 3.616076749251911
+                max: 2.027123023002322
+                defaultValue: 4.145608029883936
                 name: name
+                step: 7.386281948385884
                 encodeVideo: true
                 rtcStreamType: ping
                 labels:
                 - labels
                 - labels
               - mode: command
+                min: 3.616076749251911
+                max: 2.027123023002322
+                defaultValue: 4.145608029883936
                 name: name
+                step: 7.386281948385884
                 encodeVideo: true
                 rtcStreamType: ping
                 labels:
                 - labels
                 - labels
               - mode: command
+                min: 3.616076749251911
+                max: 2.027123023002322
+                defaultValue: 4.145608029883936
                 name: name
+                step: 7.386281948385884
                 encodeVideo: true
                 rtcStreamType: ping
                 labels:
@@ -14851,68 +15288,129 @@ components:
             tags:
               key: tags
             teleop:
+              hardwareStreams:
+              - mode: command
+                name: name
+                hwDescriptor: hwDescriptor
+                rtcStreamType: ping
+              - mode: command
+                name: name
+                hwDescriptor: hwDescriptor
+                rtcStreamType: ping
+              - mode: command
+                name: name
+                hwDescriptor: hwDescriptor
+                rtcStreamType: ping
+              - mode: command
+                name: name
+                hwDescriptor: hwDescriptor
+                rtcStreamType: ping
+              - mode: command
+                name: name
+                hwDescriptor: hwDescriptor
+                rtcStreamType: ping
               rosStreams:
               - mode: command
+                min: 5.637376656633329
+                max: 2.3021358869347655
+                defaultValue: 7.061401241503109
                 topicName: topicName
                 statusTopic: statusTopic
+                step: 9.301444243932576
                 audioCodec: raw
                 encodeVideo: true
                 topicType: std_msgs/Float64
               - mode: command
+                min: 5.637376656633329
+                max: 2.3021358869347655
+                defaultValue: 7.061401241503109
                 topicName: topicName
                 statusTopic: statusTopic
+                step: 9.301444243932576
                 audioCodec: raw
                 encodeVideo: true
                 topicType: std_msgs/Float64
               - mode: command
+                min: 5.637376656633329
+                max: 2.3021358869347655
+                defaultValue: 7.061401241503109
                 topicName: topicName
                 statusTopic: statusTopic
+                step: 9.301444243932576
                 audioCodec: raw
                 encodeVideo: true
                 topicType: std_msgs/Float64
               - mode: command
+                min: 5.637376656633329
+                max: 2.3021358869347655
+                defaultValue: 7.061401241503109
                 topicName: topicName
                 statusTopic: statusTopic
+                step: 9.301444243932576
                 audioCodec: raw
                 encodeVideo: true
                 topicType: std_msgs/Float64
               - mode: command
+                min: 5.637376656633329
+                max: 2.3021358869347655
+                defaultValue: 7.061401241503109
                 topicName: topicName
                 statusTopic: statusTopic
+                step: 9.301444243932576
                 audioCodec: raw
                 encodeVideo: true
                 topicType: std_msgs/Float64
               customStreams:
               - mode: command
+                min: 3.616076749251911
+                max: 2.027123023002322
+                defaultValue: 4.145608029883936
                 name: name
+                step: 7.386281948385884
                 encodeVideo: true
                 rtcStreamType: ping
                 labels:
                 - labels
                 - labels
               - mode: command
+                min: 3.616076749251911
+                max: 2.027123023002322
+                defaultValue: 4.145608029883936
                 name: name
+                step: 7.386281948385884
                 encodeVideo: true
                 rtcStreamType: ping
                 labels:
                 - labels
                 - labels
               - mode: command
+                min: 3.616076749251911
+                max: 2.027123023002322
+                defaultValue: 4.145608029883936
                 name: name
+                step: 7.386281948385884
                 encodeVideo: true
                 rtcStreamType: ping
                 labels:
                 - labels
                 - labels
               - mode: command
+                min: 3.616076749251911
+                max: 2.027123023002322
+                defaultValue: 4.145608029883936
                 name: name
+                step: 7.386281948385884
                 encodeVideo: true
                 rtcStreamType: ping
                 labels:
                 - labels
                 - labels
               - mode: command
+                min: 3.616076749251911
+                max: 2.027123023002322
+                defaultValue: 4.145608029883936
                 name: name
+                step: 7.386281948385884
                 encodeVideo: true
                 rtcStreamType: ping
                 labels:
@@ -16687,68 +17185,129 @@ components:
           tags:
             key: tags
           teleop:
+            hardwareStreams:
+            - mode: command
+              name: name
+              hwDescriptor: hwDescriptor
+              rtcStreamType: ping
+            - mode: command
+              name: name
+              hwDescriptor: hwDescriptor
+              rtcStreamType: ping
+            - mode: command
+              name: name
+              hwDescriptor: hwDescriptor
+              rtcStreamType: ping
+            - mode: command
+              name: name
+              hwDescriptor: hwDescriptor
+              rtcStreamType: ping
+            - mode: command
+              name: name
+              hwDescriptor: hwDescriptor
+              rtcStreamType: ping
             rosStreams:
             - mode: command
+              min: 5.637376656633329
+              max: 2.3021358869347655
+              defaultValue: 7.061401241503109
               topicName: topicName
               statusTopic: statusTopic
+              step: 9.301444243932576
               audioCodec: raw
               encodeVideo: true
               topicType: std_msgs/Float64
             - mode: command
+              min: 5.637376656633329
+              max: 2.3021358869347655
+              defaultValue: 7.061401241503109
               topicName: topicName
               statusTopic: statusTopic
+              step: 9.301444243932576
               audioCodec: raw
               encodeVideo: true
               topicType: std_msgs/Float64
             - mode: command
+              min: 5.637376656633329
+              max: 2.3021358869347655
+              defaultValue: 7.061401241503109
               topicName: topicName
               statusTopic: statusTopic
+              step: 9.301444243932576
               audioCodec: raw
               encodeVideo: true
               topicType: std_msgs/Float64
             - mode: command
+              min: 5.637376656633329
+              max: 2.3021358869347655
+              defaultValue: 7.061401241503109
               topicName: topicName
               statusTopic: statusTopic
+              step: 9.301444243932576
               audioCodec: raw
               encodeVideo: true
               topicType: std_msgs/Float64
             - mode: command
+              min: 5.637376656633329
+              max: 2.3021358869347655
+              defaultValue: 7.061401241503109
               topicName: topicName
               statusTopic: statusTopic
+              step: 9.301444243932576
               audioCodec: raw
               encodeVideo: true
               topicType: std_msgs/Float64
             customStreams:
             - mode: command
+              min: 3.616076749251911
+              max: 2.027123023002322
+              defaultValue: 4.145608029883936
               name: name
+              step: 7.386281948385884
               encodeVideo: true
               rtcStreamType: ping
               labels:
               - labels
               - labels
             - mode: command
+              min: 3.616076749251911
+              max: 2.027123023002322
+              defaultValue: 4.145608029883936
               name: name
+              step: 7.386281948385884
               encodeVideo: true
               rtcStreamType: ping
               labels:
               - labels
               - labels
             - mode: command
+              min: 3.616076749251911
+              max: 2.027123023002322
+              defaultValue: 4.145608029883936
               name: name
+              step: 7.386281948385884
               encodeVideo: true
               rtcStreamType: ping
               labels:
               - labels
               - labels
             - mode: command
+              min: 3.616076749251911
+              max: 2.027123023002322
+              defaultValue: 4.145608029883936
               name: name
+              step: 7.386281948385884
               encodeVideo: true
               rtcStreamType: ping
               labels:
               - labels
               - labels
             - mode: command
+              min: 3.616076749251911
+              max: 2.027123023002322
+              defaultValue: 4.145608029883936
               name: name
+              step: 7.386281948385884
               encodeVideo: true
               rtcStreamType: ping
               labels:

@@ -19,6 +19,7 @@ type Group struct {
 	TagValue interface{} `json:"tagValue"`
 	Active bool `json:"active,omitempty"`
 	Enabled bool `json:"enabled,omitempty"`
+	Color *string `json:"color,omitempty"`
 	Id string `json:"id,omitempty"`
 	CreatedAt time.Time `json:"createdAt,omitempty"`
 	UpdatedAt time.Time `json:"updatedAt,omitempty"`

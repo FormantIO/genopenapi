@@ -218,6 +218,7 @@ Class | Method | HTTP request | Description
  - [DeviceTelemetryConfiguration](docs/DeviceTelemetryConfiguration.md)
  - [DeviceTeleopConfiguration](docs/DeviceTeleopConfiguration.md)
  - [DeviceTeleopCustomStreamConfiguration](docs/DeviceTeleopCustomStreamConfiguration.md)
+ - [DeviceTeleopHardwareStreamConfiguration](docs/DeviceTeleopHardwareStreamConfiguration.md)
  - [DeviceTeleopRosStreamConfiguration](docs/DeviceTeleopRosStreamConfiguration.md)
  - [EventCounts](docs/EventCounts.md)
  - [EventExportSheetRequest](docs/EventExportSheetRequest.md)

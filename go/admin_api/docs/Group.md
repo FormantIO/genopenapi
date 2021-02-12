@@ -10,6 +10,7 @@ Name | Type | Description | Notes
 **TagValue** | **interface{}** |  | 
 **Active** | **bool** |  | [optional] 
 **Enabled** | **bool** |  | [optional] 
+**Color** | Pointer to **string** |  | [optional] 
 **Id** | **string** |  | [optional] 
 **CreatedAt** | [**time.Time**](time.Time.md) |  | [optional] 
 **UpdatedAt** | [**time.Time**](time.Time.md) |  | [optional] 

@@ -15,4 +15,8 @@ type DeviceTeleopCustomStreamConfiguration struct {
 	Mode string `json:"mode"`
 	Labels []string `json:"labels,omitempty"`
 	EncodeVideo bool `json:"encodeVideo,omitempty"`
+	Min float32 `json:"min,omitempty"`
+	Max float32 `json:"max,omitempty"`
+	DefaultValue float32 `json:"defaultValue,omitempty"`
+	Step float32 `json:"step,omitempty"`
 }

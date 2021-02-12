@@ -6,6 +6,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **RosStreams** | [**[]DeviceTeleopRosStreamConfiguration**](DeviceTeleopRosStreamConfiguration.md) |  | [optional] 
 **CustomStreams** | [**[]DeviceTeleopCustomStreamConfiguration**](DeviceTeleopCustomStreamConfiguration.md) |  | [optional] 
+**HardwareStreams** | [**[]DeviceTeleopHardwareStreamConfiguration**](DeviceTeleopHardwareStreamConfiguration.md) |  | [optional] 
 **Joysticks** | **[]interface{}** |  | [optional] 
 **Views** | **[]interface{}** |  | [optional] 
 **ArmSwitch** | **bool** |  | [optional] 
