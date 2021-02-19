@@ -49,6 +49,7 @@ Class | Method | HTTP request | Description
 *AuthApi* | [**AuthControllerDeviceCredentials**](docs/AuthApi.md#authcontrollerdevicecredentials) | **Post** /auth/device-credentials | Device credentials
 *AuthApi* | [**AuthControllerForgotPassword**](docs/AuthApi.md#authcontrollerforgotpassword) | **Post** /auth/forgot-password | Forgot password
 *AuthApi* | [**AuthControllerGenerateAccessToken**](docs/AuthApi.md#authcontrollergenerateaccesstoken) | **Post** /auth/access-token | Generate access token
+*AuthApi* | [**AuthControllerGetFeatures**](docs/AuthApi.md#authcontrollergetfeatures) | **Get** /auth/features | Get features
 *AuthApi* | [**AuthControllerLogin**](docs/AuthApi.md#authcontrollerlogin) | **Post** /auth/login | Login
 *AuthApi* | [**AuthControllerRefresh**](docs/AuthApi.md#authcontrollerrefresh) | **Post** /auth/refresh | Refresh
 *AuthApi* | [**AuthControllerResendConfirmationCode**](docs/AuthApi.md#authcontrollerresendconfirmationcode) | **Post** /auth/resend-confirmation-code | Resend confirmation code
@@ -238,6 +239,7 @@ Class | Method | HTTP request | Description
  - [GenerateAccessTokenRequest](docs/GenerateAccessTokenRequest.md)
  - [GenerateAccessTokenResponse](docs/GenerateAccessTokenResponse.md)
  - [GeoIp](docs/GeoIp.md)
+ - [GetFeaturesResponse](docs/GetFeaturesResponse.md)
  - [GoogleAuthRequest](docs/GoogleAuthRequest.md)
  - [GoogleInfo](docs/GoogleInfo.md)
  - [GoogleSheetParseResult](docs/GoogleSheetParseResult.md)

@@ -15,4 +15,5 @@ type DeviceDetails struct {
 	Type string `json:"type"`
 	Tags map[string]string `json:"tags"`
 	Enabled bool `json:"enabled"`
+	PublicKey string `json:"publicKey"`
 }

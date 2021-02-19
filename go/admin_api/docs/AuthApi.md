@@ -10,6 +10,7 @@ Method | HTTP request | Description
 [**AuthControllerDeviceCredentials**](AuthApi.md#AuthControllerDeviceCredentials) | **Post** /auth/device-credentials | Device credentials
 [**AuthControllerForgotPassword**](AuthApi.md#AuthControllerForgotPassword) | **Post** /auth/forgot-password | Forgot password
 [**AuthControllerGenerateAccessToken**](AuthApi.md#AuthControllerGenerateAccessToken) | **Post** /auth/access-token | Generate access token
+[**AuthControllerGetFeatures**](AuthApi.md#AuthControllerGetFeatures) | **Get** /auth/features | Get features
 [**AuthControllerLogin**](AuthApi.md#AuthControllerLogin) | **Post** /auth/login | Login
 [**AuthControllerRefresh**](AuthApi.md#AuthControllerRefresh) | **Post** /auth/refresh | Refresh
 [**AuthControllerResendConfirmationCode**](AuthApi.md#AuthControllerResendConfirmationCode) | **Post** /auth/resend-confirmation-code | Resend confirmation code
@@ -211,6 +212,36 @@ Use admin JWT for authorization
 ### HTTP request headers
 
 - **Content-Type**: application/json
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## AuthControllerGetFeatures
+
+> GetFeaturesResponse AuthControllerGetFeatures(ctx, )
+
+Get features
+
+Get enabled features Authorized clients: viewer, device Authorized plans: freemium, commercial, enterprise
+
+### Required Parameters
+
+This endpoint does not need any parameter.
+
+### Return type
+
+[**GetFeaturesResponse**](GetFeaturesResponse.md)
+
+### Authorization
+
+[bearerAuth](../README.md#bearerAuth)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
 - **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)

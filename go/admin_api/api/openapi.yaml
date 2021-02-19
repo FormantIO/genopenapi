@@ -1,7 +1,7 @@
 openapi: 3.0.0
 info:
   title: Formant admin-api
-  version: 1.21.46
+  version: 1.22.70
 servers:
 - url: https://api-dev.formant.io/v1/admin
 paths:
@@ -503,6 +503,24 @@ paths:
       security:
       - bearerAuth: []
       summary: Device credentials
+      tags:
+      - Auth
+  /auth/features:
+    get:
+      description: |-
+        Get enabled features
+        Authorized clients: viewer, device
+        Authorized plans: freemium, commercial, enterprise
+      operationId: AuthController.getFeatures
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GetFeaturesResponse'
+      security:
+      - bearerAuth: []
+      summary: Get features
       tags:
       - Auth
   /capture-sessions:
@@ -11039,11 +11057,18 @@ components:
           - numeric
           - text
           type: string
+        alias:
+          nullable: true
+          type: string
         isTelemetryFilter:
           type: boolean
         isEventFilter:
           type: boolean
         active:
+          type: boolean
+        isOverviewColumn:
+          type: boolean
+        isOverviewRow:
           type: boolean
         enabled:
           type: boolean
@@ -11880,6 +11905,33 @@ components:
           type: string
       required:
       - token
+      type: object
+    GetFeaturesResponse:
+      example:
+        features:
+        - telemetry
+        - telemetry
+      properties:
+        features:
+          items:
+            enum:
+            - telemetry
+            - internalTelemetry
+            - teleop
+            - customEvents
+            - triggeredEvents
+            - ssh
+            - portForwarding
+            - commands
+            - interventions
+            - onDemand
+            - appConfig
+            - blobStorage
+            type: string
+          type: array
+          uniqueItems: true
+      required:
+      - features
       type: object
     ResendConfirmationCodeRequest:
       example:
@@ -15433,6 +15485,7 @@ components:
       example:
         name: name
         id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        publicKey: publicKey
         type: default
         enabled: true
         tags:
@@ -15454,10 +15507,13 @@ components:
           type: object
         enabled:
           type: boolean
+        publicKey:
+          type: string
       required:
       - enabled
       - id
       - name
+      - publicKey
       - tags
       - type
       type: object
@@ -15466,12 +15522,14 @@ components:
         items:
         - name: name
           id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          publicKey: publicKey
           type: default
           enabled: true
           tags:
             key: tags
         - name: name
           id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          publicKey: publicKey
           type: default
           enabled: true
           tags:
