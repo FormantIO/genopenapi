@@ -1,12 +1,10 @@
-# DeviceTeleopHardwareStreamConfiguration
+# DeviceStreamHardwareConfiguration
 
 ## Properties
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Name** | **string** |  | 
-**RtcStreamType** | **string** |  | 
-**Mode** | **string** |  | 
+**Type** | **string** |  | 
 **HwDescriptor** | **string** |  | 
 **Quality** | **string** |  | 
 

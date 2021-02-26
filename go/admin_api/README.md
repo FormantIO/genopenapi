@@ -212,6 +212,7 @@ Class | Method | HTTP request | Description
  - [DeviceStreamCustomConfiguration](docs/DeviceStreamCustomConfiguration.md)
  - [DeviceStreamDirectoryWatchConfiguration](docs/DeviceStreamDirectoryWatchConfiguration.md)
  - [DeviceStreamFileTailConfiguration](docs/DeviceStreamFileTailConfiguration.md)
+ - [DeviceStreamHardwareConfiguration](docs/DeviceStreamHardwareConfiguration.md)
  - [DeviceStreamRosLocalizationConfiguration](docs/DeviceStreamRosLocalizationConfiguration.md)
  - [DeviceStreamRosTopicConfiguration](docs/DeviceStreamRosTopicConfiguration.md)
  - [DeviceStreamRosTransformTreeConfiguration](docs/DeviceStreamRosTransformTreeConfiguration.md)
