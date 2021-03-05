@@ -15,7 +15,7 @@ Method | HTTP request | Description
 
 Export sheet
 
-Authorized clients: operator Authorized plans: commercial, enterprise
+Authorized clients: operator Authorized plans: standard, premium, enterprise
 
 ### Required Parameters
 
@@ -49,7 +49,7 @@ Name | Type | Description  | Notes
 
 Query
 
-Authorized clients: viewer Authorized plans: commercial, enterprise
+Authorized clients: viewer Authorized plans: standard, premium, enterprise
 
 ### Required Parameters
 

@@ -18,7 +18,7 @@ Method | HTTP request | Description
 
 Get all
 
-List all event triggers Authorized clients: viewer, device Authorized plans: commercial, enterprise
+List all event triggers Authorized clients: viewer, device Authorized plans: standard, premium, enterprise
 
 ### Required Parameters
 
@@ -48,7 +48,7 @@ This endpoint does not need any parameter.
 
 Get one
 
-Get an event trigger Authorized clients: viewer, device Authorized plans: commercial, enterprise
+Get an event trigger Authorized clients: viewer, device Authorized plans: standard, premium, enterprise
 
 ### Required Parameters
 
@@ -82,7 +82,7 @@ Name | Type | Description  | Notes
 
 Patch
 
-Update event trigger Authorized clients: administrator Authorized plans: commercial, enterprise
+Update event trigger Authorized clients: administrator Authorized plans: standard, premium, enterprise
 
 ### Required Parameters
 
@@ -117,7 +117,7 @@ Name | Type | Description  | Notes
 
 Post
 
-Create event trigger Authorized clients: administrator Authorized plans: commercial, enterprise
+Create event trigger Authorized clients: administrator Authorized plans: standard, premium, enterprise
 
 ### Required Parameters
 
@@ -151,7 +151,7 @@ Name | Type | Description  | Notes
 
 Query
 
-Get updated event trigger configuration Authorized clients: device Authorized plans: commercial, enterprise
+Get updated event trigger configuration Authorized clients: device Authorized plans: standard, premium, enterprise
 
 ### Required Parameters
 

@@ -27,7 +27,7 @@ type InterventionRequestApiService service
 
 /*
 InterventionRequestControllerGetOne Get one
-Get an intervention request Authorized clients: viewer, device Authorized plans: commercial, enterprise
+Get an intervention request Authorized clients: viewer, device Authorized plans: standard, premium, enterprise
  * @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  * @param id
 @return InterventionRequest
@@ -114,7 +114,7 @@ func (a *InterventionRequestApiService) InterventionRequestControllerGetOne(ctx 
 
 /*
 InterventionRequestControllerPost Post
-Create an intervention request Authorized clients: device Authorized plans: commercial, enterprise
+Create an intervention request Authorized clients: device Authorized plans: standard, premium, enterprise
  * @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  * @param interventionRequest InterventionRequest
 @return InterventionRequest

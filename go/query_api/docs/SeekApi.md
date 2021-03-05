@@ -14,7 +14,7 @@ Method | HTTP request | Description
 
 Seek
 
-Authorized clients: viewer Authorized plans: commercial, enterprise
+Authorized clients: viewer Authorized plans: standard, premium, enterprise
 
 ### Required Parameters
 

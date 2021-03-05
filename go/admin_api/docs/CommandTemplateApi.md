@@ -18,7 +18,7 @@ Method | HTTP request | Description
 
 Delete
 
-Delete a command template Authorized clients: administrator Authorized plans: commercial, enterprise
+Delete a command template Authorized clients: administrator Authorized plans: standard, premium, enterprise
 
 ### Required Parameters
 
@@ -52,7 +52,7 @@ Name | Type | Description  | Notes
 
 Get one
 
-Get a command template Authorized clients: viewer Authorized plans: commercial, enterprise
+Get a command template Authorized clients: viewer Authorized plans: standard, premium, enterprise
 
 ### Required Parameters
 
@@ -86,7 +86,7 @@ Name | Type | Description  | Notes
 
 List
 
-List command templates Authorized clients: viewer Authorized plans: commercial, enterprise
+List command templates Authorized clients: viewer Authorized plans: standard, premium, enterprise
 
 ### Required Parameters
 
@@ -116,7 +116,7 @@ This endpoint does not need any parameter.
 
 Patch
 
-Update a command template Authorized clients: administrator Authorized plans: commercial, enterprise
+Update a command template Authorized clients: administrator Authorized plans: standard, premium, enterprise
 
 ### Required Parameters
 
@@ -151,7 +151,7 @@ Name | Type | Description  | Notes
 
 Post
 
-Create a command template Authorized clients: administrator Authorized plans: commercial, enterprise
+Create a command template Authorized clients: administrator Authorized plans: standard, premium, enterprise
 
 ### Required Parameters
 

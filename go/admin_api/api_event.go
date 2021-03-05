@@ -33,7 +33,7 @@ type EventControllerAnnotationTemplatesOpts struct {
 
 /*
 EventControllerAnnotationTemplates Annotation templates
-Distinct values of event annotation templates Authorized clients: viewer Authorized plans: commercial, enterprise
+Distinct values of event annotation templates Authorized clients: viewer Authorized plans: standard, premium, enterprise
  * @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  * @param optional nil or *EventControllerAnnotationTemplatesOpts - Optional Parameters:
  * @param "EventFilter" (optional.Interface of EventFilter) -  EventFilter
@@ -133,7 +133,7 @@ type EventControllerCountOpts struct {
 
 /*
 EventControllerCount Count
-Count events Authorized clients: viewer Authorized plans: commercial, enterprise
+Count events Authorized clients: viewer Authorized plans: standard, premium, enterprise
  * @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  * @param optional nil or *EventControllerCountOpts - Optional Parameters:
  * @param "EventFilter" (optional.Interface of EventFilter) -  EventFilter
@@ -213,7 +213,7 @@ type EventControllerCountsOpts struct {
 
 /*
 EventControllerCounts Counts
-Count events Authorized clients: viewer Authorized plans: commercial, enterprise
+Count events Authorized clients: viewer Authorized plans: standard, premium, enterprise
  * @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  * @param optional nil or *EventControllerCountsOpts - Optional Parameters:
  * @param "EventFilter" (optional.Interface of EventFilter) -  EventFilter
@@ -313,7 +313,7 @@ type EventControllerDevicesOpts struct {
 
 /*
 EventControllerDevices Devices
-Distinct values of event devices Authorized clients: viewer Authorized plans: commercial, enterprise
+Distinct values of event devices Authorized clients: viewer Authorized plans: standard, premium, enterprise
  * @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  * @param optional nil or *EventControllerDevicesOpts - Optional Parameters:
  * @param "EventFilter" (optional.Interface of EventFilter) -  EventFilter
@@ -413,7 +413,7 @@ type EventControllerEventTypesOpts struct {
 
 /*
 EventControllerEventTypes Event types
-Distinct values of event types Authorized clients: viewer Authorized plans: commercial, enterprise
+Distinct values of event types Authorized clients: viewer Authorized plans: standard, premium, enterprise
  * @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  * @param optional nil or *EventControllerEventTypesOpts - Optional Parameters:
  * @param "EventFilter" (optional.Interface of EventFilter) -  EventFilter
@@ -508,7 +508,7 @@ func (a *EventApiService) EventControllerEventTypes(ctx _context.Context, localV
 
 /*
 EventControllerExportSheet Export sheet
-Export events as Google Sheet Authorized clients: viewer Authorized plans: commercial, enterprise
+Export events as Google Sheet Authorized clients: viewer Authorized plans: standard, premium, enterprise
  * @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  * @param eventExportSheetRequest EventExportSheetRequest
 @return EventExportSheetResult
@@ -595,7 +595,7 @@ func (a *EventApiService) EventControllerExportSheet(ctx _context.Context, event
 
 /*
 EventControllerGetOne Get one
-Get an event Authorized clients: viewer Authorized plans: commercial, enterprise
+Get an event Authorized clients: viewer Authorized plans: standard, premium, enterprise
  * @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  * @param id
 @return BaseEvent
@@ -682,7 +682,7 @@ func (a *EventApiService) EventControllerGetOne(ctx _context.Context, id string)
 
 /*
 EventControllerHistogram Histogram
-Event histogram Authorized clients: viewer Authorized plans: commercial, enterprise
+Event histogram Authorized clients: viewer Authorized plans: standard, premium, enterprise
  * @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  * @param intervalEventFilter IntervalEventFilter
 @return EventHistogram
@@ -774,7 +774,7 @@ type EventControllerQueryOpts struct {
 
 /*
 EventControllerQuery Query
-Query events Authorized clients: viewer Authorized plans: commercial, enterprise
+Query events Authorized clients: viewer Authorized plans: standard, premium, enterprise
  * @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  * @param optional nil or *EventControllerQueryOpts - Optional Parameters:
  * @param "EventQuery" (optional.Interface of EventQuery) -  EventQuery
@@ -869,7 +869,7 @@ func (a *EventApiService) EventControllerQuery(ctx _context.Context, localVarOpt
 
 /*
 EventControllerSeek Seek
-Seek event Authorized clients: viewer Authorized plans: commercial, enterprise
+Seek event Authorized clients: viewer Authorized plans: standard, premium, enterprise
  * @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  * @param eventSeekQuery EventSeekQuery
 */
@@ -941,7 +941,7 @@ type EventControllerSeveritiesOpts struct {
 
 /*
 EventControllerSeverities Severities
-Distinct values of event severities Authorized clients: viewer Authorized plans: commercial, enterprise
+Distinct values of event severities Authorized clients: viewer Authorized plans: standard, premium, enterprise
  * @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  * @param optional nil or *EventControllerSeveritiesOpts - Optional Parameters:
  * @param "EventFilter" (optional.Interface of EventFilter) -  EventFilter
@@ -1041,7 +1041,7 @@ type EventControllerStreamNamesOpts struct {
 
 /*
 EventControllerStreamNames Stream names
-Distinct values of event stream names Authorized clients: viewer Authorized plans: commercial, enterprise
+Distinct values of event stream names Authorized clients: viewer Authorized plans: standard, premium, enterprise
  * @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  * @param optional nil or *EventControllerStreamNamesOpts - Optional Parameters:
  * @param "EventFilter" (optional.Interface of EventFilter) -  EventFilter
@@ -1141,7 +1141,7 @@ type EventControllerStreamTypesOpts struct {
 
 /*
 EventControllerStreamTypes Stream types
-Distinct values of event stream types Authorized clients: viewer Authorized plans: commercial, enterprise
+Distinct values of event stream types Authorized clients: viewer Authorized plans: standard, premium, enterprise
  * @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  * @param optional nil or *EventControllerStreamTypesOpts - Optional Parameters:
  * @param "EventFilter" (optional.Interface of EventFilter) -  EventFilter
@@ -1241,7 +1241,7 @@ type EventControllerTagsOpts struct {
 
 /*
 EventControllerTags Tags
-Distinct values of event tags Authorized clients: viewer Authorized plans: commercial, enterprise
+Distinct values of event tags Authorized clients: viewer Authorized plans: standard, premium, enterprise
  * @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  * @param optional nil or *EventControllerTagsOpts - Optional Parameters:
  * @param "EventFilter" (optional.Interface of EventFilter) -  EventFilter
@@ -1341,7 +1341,7 @@ type EventControllerUsersOpts struct {
 
 /*
 EventControllerUsers Users
-Distinct values of event users Authorized clients: viewer Authorized plans: commercial, enterprise
+Distinct values of event users Authorized clients: viewer Authorized plans: standard, premium, enterprise
  * @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  * @param optional nil or *EventControllerUsersOpts - Optional Parameters:
  * @param "EventFilter" (optional.Interface of EventFilter) -  EventFilter
@@ -1436,7 +1436,7 @@ func (a *EventApiService) EventControllerUsers(ctx _context.Context, localVarOpt
 
 /*
 EventControllerView View
-Mark events as read Authorized clients: viewer Authorized plans: commercial, enterprise
+Mark events as read Authorized clients: viewer Authorized plans: standard, premium, enterprise
  * @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  * @param eventFilter EventFilter
 */

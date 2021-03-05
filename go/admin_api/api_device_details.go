@@ -33,7 +33,7 @@ type DeviceDetailsControllerGetAllOpts struct {
 
 /*
 DeviceDetailsControllerGetAll Get all
-Authorized clients: viewer Authorized plans: freemium, commercial, enterprise
+Authorized clients: viewer Authorized plans: freemium, standard, premium, enterprise
  * @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  * @param optional nil or *DeviceDetailsControllerGetAllOpts - Optional Parameters:
  * @param "DeviceQuery" (optional.Interface of DeviceQuery) -  DeviceQuery
@@ -128,7 +128,7 @@ func (a *DeviceDetailsApiService) DeviceDetailsControllerGetAll(ctx _context.Con
 
 /*
 DeviceDetailsControllerGetOne Get one
-Authorized clients: viewer Authorized plans: freemium, commercial, enterprise
+Authorized clients: viewer Authorized plans: freemium, standard, premium, enterprise
  * @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  * @param id
 @return DeviceDetails

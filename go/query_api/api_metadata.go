@@ -32,7 +32,7 @@ type MetadataControllerListDeviceIdsOpts struct {
 
 /*
 MetadataControllerListDeviceIds List device ids
-Authorized clients: viewer Authorized plans: commercial, enterprise
+Authorized clients: viewer Authorized plans: standard, premium, enterprise
  * @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  * @param optional nil or *MetadataControllerListDeviceIdsOpts - Optional Parameters:
  * @param "ScopeFilter" (optional.Interface of ScopeFilter) -  ScopeFilter
@@ -132,7 +132,7 @@ type MetadataControllerListMetadataOpts struct {
 
 /*
 MetadataControllerListMetadata List metadata
-Authorized clients: viewer Authorized plans: commercial, enterprise
+Authorized clients: viewer Authorized plans: standard, premium, enterprise
  * @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  * @param optional nil or *MetadataControllerListMetadataOpts - Optional Parameters:
  * @param "ScopeFilter" (optional.Interface of ScopeFilter) -  ScopeFilter
@@ -232,7 +232,7 @@ type MetadataControllerListStreamNamesOpts struct {
 
 /*
 MetadataControllerListStreamNames List stream names
-Authorized clients: viewer Authorized plans: freemium, commercial, enterprise
+Authorized clients: viewer Authorized plans: freemium, standard, premium, enterprise
  * @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  * @param optional nil or *MetadataControllerListStreamNamesOpts - Optional Parameters:
  * @param "ScopeFilter" (optional.Interface of ScopeFilter) -  ScopeFilter

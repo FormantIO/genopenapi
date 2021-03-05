@@ -27,7 +27,7 @@ type EventTriggerApiService service
 
 /*
 EventTriggerControllerGetAll Get all
-List all event triggers Authorized clients: viewer, device Authorized plans: commercial, enterprise
+List all event triggers Authorized clients: viewer, device Authorized plans: standard, premium, enterprise
  * @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 @return EventTriggerListResponse
 */
@@ -111,7 +111,7 @@ func (a *EventTriggerApiService) EventTriggerControllerGetAll(ctx _context.Conte
 
 /*
 EventTriggerControllerGetOne Get one
-Get an event trigger Authorized clients: viewer, device Authorized plans: commercial, enterprise
+Get an event trigger Authorized clients: viewer, device Authorized plans: standard, premium, enterprise
  * @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  * @param id
 @return EventTrigger
@@ -198,7 +198,7 @@ func (a *EventTriggerApiService) EventTriggerControllerGetOne(ctx _context.Conte
 
 /*
 EventTriggerControllerPatch Patch
-Update event trigger Authorized clients: administrator Authorized plans: commercial, enterprise
+Update event trigger Authorized clients: administrator Authorized plans: standard, premium, enterprise
  * @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  * @param id
  * @param partialEventTrigger PartialEventTrigger
@@ -288,7 +288,7 @@ func (a *EventTriggerApiService) EventTriggerControllerPatch(ctx _context.Contex
 
 /*
 EventTriggerControllerPost Post
-Create event trigger Authorized clients: administrator Authorized plans: commercial, enterprise
+Create event trigger Authorized clients: administrator Authorized plans: standard, premium, enterprise
  * @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  * @param eventTrigger EventTrigger
 @return EventTrigger
@@ -375,7 +375,7 @@ func (a *EventTriggerApiService) EventTriggerControllerPost(ctx _context.Context
 
 /*
 EventTriggerControllerQuery Query
-Get updated event trigger configuration Authorized clients: device Authorized plans: commercial, enterprise
+Get updated event trigger configuration Authorized clients: device Authorized plans: standard, premium, enterprise
  * @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  * @param updatedEventTriggerRequest UpdatedEventTriggerRequest
 @return UpdatedEventTriggerResponse

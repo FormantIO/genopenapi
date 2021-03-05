@@ -26,7 +26,7 @@ type OnlineDevicesApiService service
 
 /*
 OnlineDevicesControllerOnline Online
-Authorized clients: viewer Authorized plans: freemium, commercial, enterprise
+Authorized clients: viewer Authorized plans: freemium, standard, premium, enterprise
  * @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 @return UuidListResponse
 */

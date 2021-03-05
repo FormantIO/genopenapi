@@ -27,7 +27,7 @@ type DeviceConfigurationTemplateApiService service
 
 /*
 DeviceConfigurationTemplateControllerDelete Delete
-Delete a device configuration template Authorized clients: administrator Authorized plans: commercial, enterprise
+Delete a device configuration template Authorized clients: administrator Authorized plans: standard, premium, enterprise
  * @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  * @param id
 */
@@ -94,7 +94,7 @@ func (a *DeviceConfigurationTemplateApiService) DeviceConfigurationTemplateContr
 
 /*
 DeviceConfigurationTemplateControllerGetOne Get one
-Get a device configuration template Authorized clients: administrator Authorized plans: commercial, enterprise
+Get a device configuration template Authorized clients: administrator Authorized plans: standard, premium, enterprise
  * @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  * @param id
 @return DeviceConfigurationTemplate
@@ -181,7 +181,7 @@ func (a *DeviceConfigurationTemplateApiService) DeviceConfigurationTemplateContr
 
 /*
 DeviceConfigurationTemplateControllerList List
-List device configuration templates Authorized clients: administrator Authorized plans: commercial, enterprise
+List device configuration templates Authorized clients: administrator Authorized plans: standard, premium, enterprise
  * @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 @return DeviceConfigurationTemplateListResponse
 */
@@ -265,7 +265,7 @@ func (a *DeviceConfigurationTemplateApiService) DeviceConfigurationTemplateContr
 
 /*
 DeviceConfigurationTemplateControllerPatch Patch
-Update a device configuration template Authorized clients: administrator Authorized plans: commercial, enterprise
+Update a device configuration template Authorized clients: administrator Authorized plans: standard, premium, enterprise
  * @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  * @param id
  * @param partialDeviceConfigurationTemplate PartialDeviceConfigurationTemplate
@@ -355,7 +355,7 @@ func (a *DeviceConfigurationTemplateApiService) DeviceConfigurationTemplateContr
 
 /*
 DeviceConfigurationTemplateControllerPost Post
-Create a device configuration template Authorized clients: administrator Authorized plans: commercial, enterprise
+Create a device configuration template Authorized clients: administrator Authorized plans: standard, premium, enterprise
  * @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  * @param deviceConfigurationTemplate DeviceConfigurationTemplate
 @return DeviceConfigurationTemplate

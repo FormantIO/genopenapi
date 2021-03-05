@@ -15,7 +15,7 @@ Method | HTTP request | Description
 
 Google
 
-Create a Google integration Authorized clients: administrator Authorized plans: commercial, enterprise
+Create a Google integration Authorized clients: administrator Authorized plans: standard, premium, enterprise
 
 ### Required Parameters
 
@@ -49,7 +49,7 @@ Name | Type | Description  | Notes
 
 Slack
 
-Create a Slack integration Authorized clients: administrator Authorized plans: commercial, enterprise
+Create a Slack integration Authorized clients: administrator Authorized plans: standard, premium, enterprise
 
 ### Required Parameters
 

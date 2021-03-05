@@ -113,7 +113,7 @@ func (a *ShareApiService) ShareControllerAuthenticate(ctx _context.Context, code
 
 /*
 ShareControllerDelete Delete
-Revoke a share Authorized clients: operator Authorized plans: commercial, enterprise
+Revoke a share Authorized clients: operator Authorized plans: standard, premium, enterprise
  * @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  * @param code
 */
@@ -180,7 +180,7 @@ func (a *ShareApiService) ShareControllerDelete(ctx _context.Context, code strin
 
 /*
 ShareControllerGetAll Get all
-List shares Authorized clients: operator Authorized plans: commercial, enterprise
+List shares Authorized clients: operator Authorized plans: standard, premium, enterprise
  * @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 @return ShareListResponse
 */
@@ -351,7 +351,7 @@ func (a *ShareApiService) ShareControllerGetOne(ctx _context.Context, code strin
 
 /*
 ShareControllerPost Post
-Create a share token Authorized clients: operator Authorized plans: commercial, enterprise
+Create a share token Authorized clients: operator Authorized plans: standard, premium, enterprise
  * @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  * @param share Share
 @return Share

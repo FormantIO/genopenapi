@@ -16,7 +16,7 @@ Method | HTTP request | Description
 
 List device ids
 
-Authorized clients: viewer Authorized plans: commercial, enterprise
+Authorized clients: viewer Authorized plans: standard, premium, enterprise
 
 ### Required Parameters
 
@@ -59,7 +59,7 @@ Name | Type | Description  | Notes
 
 List metadata
 
-Authorized clients: viewer Authorized plans: commercial, enterprise
+Authorized clients: viewer Authorized plans: standard, premium, enterprise
 
 ### Required Parameters
 
@@ -102,7 +102,7 @@ Name | Type | Description  | Notes
 
 List stream names
 
-Authorized clients: viewer Authorized plans: freemium, commercial, enterprise
+Authorized clients: viewer Authorized plans: freemium, standard, premium, enterprise
 
 ### Required Parameters
 

@@ -82,7 +82,7 @@ Use admin JWT for authorization
 
 Post
 
-Create a capture session Authorized clients: operator Authorized plans: commercial, enterprise
+Create a capture session Authorized clients: operator Authorized plans: standard, premium, enterprise
 
 ### Required Parameters
 

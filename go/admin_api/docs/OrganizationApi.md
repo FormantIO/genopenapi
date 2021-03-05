@@ -14,7 +14,7 @@ Method | HTTP request | Description
 
 Query usage records
 
-Query for usage records Authorized clients: administrator Authorized plans: freemium, commercial, enterprise
+Query for usage records Authorized clients: administrator Authorized plans: freemium, standard, premium, enterprise
 
 ### Required Parameters
 

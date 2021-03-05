@@ -27,7 +27,7 @@ type AnnotationTemplateApiService service
 
 /*
 AnnotationTemplateControllerDelete Delete
-Delete an annotation template Authorized clients: administrator Authorized plans: commercial, enterprise
+Delete an annotation template Authorized clients: administrator Authorized plans: standard, premium, enterprise
  * @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  * @param id
 */
@@ -94,7 +94,7 @@ func (a *AnnotationTemplateApiService) AnnotationTemplateControllerDelete(ctx _c
 
 /*
 AnnotationTemplateControllerGetOne Get one
-Get an annotation template Authorized clients: viewer Authorized plans: commercial, enterprise
+Get an annotation template Authorized clients: viewer Authorized plans: standard, premium, enterprise
  * @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  * @param id
 @return AnnotationTemplate
@@ -181,7 +181,7 @@ func (a *AnnotationTemplateApiService) AnnotationTemplateControllerGetOne(ctx _c
 
 /*
 AnnotationTemplateControllerInspectSpreadsheet Inspect spreadsheet
-Returns information about the Spreadsheet and its content Authorized clients: viewer Authorized plans: commercial, enterprise
+Returns information about the Spreadsheet and its content Authorized clients: viewer Authorized plans: standard, premium, enterprise
  * @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  * @param inspectSpreadsheetRequest InspectSpreadsheetRequest
 @return InspectSpreadsheetResponse
@@ -268,7 +268,7 @@ func (a *AnnotationTemplateApiService) AnnotationTemplateControllerInspectSpread
 
 /*
 AnnotationTemplateControllerList List
-List annotation templates Authorized clients: viewer Authorized plans: commercial, enterprise
+List annotation templates Authorized clients: viewer Authorized plans: standard, premium, enterprise
  * @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 @return AnnotationTemplateListResponse
 */
@@ -352,7 +352,7 @@ func (a *AnnotationTemplateApiService) AnnotationTemplateControllerList(ctx _con
 
 /*
 AnnotationTemplateControllerPatch Patch
-Update an annotation template Authorized clients: administrator Authorized plans: commercial, enterprise
+Update an annotation template Authorized clients: administrator Authorized plans: standard, premium, enterprise
  * @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  * @param id
  * @param partialAnnotationTemplate PartialAnnotationTemplate
@@ -442,7 +442,7 @@ func (a *AnnotationTemplateApiService) AnnotationTemplateControllerPatch(ctx _co
 
 /*
 AnnotationTemplateControllerPost Post
-Create an annotation template Authorized clients: administrator Authorized plans: commercial, enterprise
+Create an annotation template Authorized clients: administrator Authorized plans: standard, premium, enterprise
  * @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  * @param annotationTemplate AnnotationTemplate
 @return AnnotationTemplate
@@ -529,7 +529,7 @@ func (a *AnnotationTemplateApiService) AnnotationTemplateControllerPost(ctx _con
 
 /*
 AnnotationTemplateControllerQueryAnnotationFieldValues Query annotation field values
-Query annotation template field values Authorized clients: viewer Authorized plans: commercial, enterprise
+Query annotation template field values Authorized clients: viewer Authorized plans: standard, premium, enterprise
  * @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  * @param annotationFieldValuesRequest AnnotationFieldValuesRequest
 @return AnnotationFieldValuesResponse

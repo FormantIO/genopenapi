@@ -26,7 +26,7 @@ type CustomEventApiService service
 
 /*
 CustomEventControllerPost Post
-Create a custom event Authorized clients: device Authorized plans: commercial, enterprise
+Create a custom event Authorized clients: device Authorized plans: standard, premium, enterprise
  * @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  * @param customEvent CustomEvent
 @return CustomEvent

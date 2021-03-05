@@ -27,7 +27,7 @@ type AnnotationApiService service
 
 /*
 AnnotationControllerDelete Delete
-Delete an annotation Authorized clients: operator Authorized plans: commercial, enterprise
+Delete an annotation Authorized clients: operator Authorized plans: standard, premium, enterprise
  * @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  * @param id
 */
@@ -94,7 +94,7 @@ func (a *AnnotationApiService) AnnotationControllerDelete(ctx _context.Context, 
 
 /*
 AnnotationControllerGetOne Get one
-Get an annotation Authorized clients: viewer Authorized plans: commercial, enterprise
+Get an annotation Authorized clients: viewer Authorized plans: standard, premium, enterprise
  * @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  * @param id
 @return Annotation
@@ -181,7 +181,7 @@ func (a *AnnotationApiService) AnnotationControllerGetOne(ctx _context.Context, 
 
 /*
 AnnotationControllerPatch Patch
-Update an annotation Authorized clients: operator Authorized plans: commercial, enterprise
+Update an annotation Authorized clients: operator Authorized plans: standard, premium, enterprise
  * @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  * @param id
  * @param partialAnnotation PartialAnnotation
@@ -271,7 +271,7 @@ func (a *AnnotationApiService) AnnotationControllerPatch(ctx _context.Context, i
 
 /*
 AnnotationControllerPost Post
-Create an annotation Authorized clients: operator Authorized plans: commercial, enterprise
+Create an annotation Authorized clients: operator Authorized plans: standard, premium, enterprise
  * @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  * @param annotation Annotation
 @return Annotation

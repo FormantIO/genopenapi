@@ -1,7 +1,7 @@
 openapi: 3.0.0
 info:
   title: Formant admin-api
-  version: 1.23.43
+  version: 1.24.55
 servers:
 - url: https://api-dev.formant.io/v1/admin
 paths:
@@ -10,7 +10,7 @@ paths:
       description: |-
         Create an annotation
         Authorized clients: operator
-        Authorized plans: commercial, enterprise
+        Authorized plans: standard, premium, enterprise
       operationId: AnnotationController.post
       requestBody:
         content:
@@ -35,7 +35,7 @@ paths:
       description: |-
         Delete an annotation
         Authorized clients: operator
-        Authorized plans: commercial, enterprise
+        Authorized plans: standard, premium, enterprise
       operationId: AnnotationController.delete
       parameters:
       - explode: false
@@ -59,7 +59,7 @@ paths:
       description: |-
         Get an annotation
         Authorized clients: viewer
-        Authorized plans: commercial, enterprise
+        Authorized plans: standard, premium, enterprise
       operationId: AnnotationController.getOne
       parameters:
       - explode: false
@@ -84,7 +84,7 @@ paths:
       description: |-
         Update an annotation
         Authorized clients: operator
-        Authorized plans: commercial, enterprise
+        Authorized plans: standard, premium, enterprise
       operationId: AnnotationController.patch
       parameters:
       - explode: false
@@ -117,7 +117,7 @@ paths:
       description: |-
         Create an annotation template
         Authorized clients: administrator
-        Authorized plans: commercial, enterprise
+        Authorized plans: standard, premium, enterprise
       operationId: AnnotationTemplateController.post
       requestBody:
         content:
@@ -142,7 +142,7 @@ paths:
       description: |-
         Delete an annotation template
         Authorized clients: administrator
-        Authorized plans: commercial, enterprise
+        Authorized plans: standard, premium, enterprise
       operationId: AnnotationTemplateController.delete
       parameters:
       - explode: false
@@ -166,7 +166,7 @@ paths:
       description: |-
         Get an annotation template
         Authorized clients: viewer
-        Authorized plans: commercial, enterprise
+        Authorized plans: standard, premium, enterprise
       operationId: AnnotationTemplateController.getOne
       parameters:
       - explode: false
@@ -191,7 +191,7 @@ paths:
       description: |-
         Update an annotation template
         Authorized clients: administrator
-        Authorized plans: commercial, enterprise
+        Authorized plans: standard, premium, enterprise
       operationId: AnnotationTemplateController.patch
       parameters:
       - explode: false
@@ -224,7 +224,7 @@ paths:
       description: |-
         List annotation templates
         Authorized clients: viewer
-        Authorized plans: commercial, enterprise
+        Authorized plans: standard, premium, enterprise
       operationId: AnnotationTemplateController.list
       responses:
         "200":
@@ -242,7 +242,7 @@ paths:
       description: |-
         Query annotation template field values
         Authorized clients: viewer
-        Authorized plans: commercial, enterprise
+        Authorized plans: standard, premium, enterprise
       operationId: AnnotationTemplateController.queryAnnotationFieldValues
       requestBody:
         content:
@@ -267,7 +267,7 @@ paths:
       description: |-
         Returns information about the Spreadsheet and its content
         Authorized clients: viewer
-        Authorized plans: commercial, enterprise
+        Authorized plans: standard, premium, enterprise
       operationId: AnnotationTemplateController.inspectSpreadsheet
       requestBody:
         content:
@@ -352,7 +352,7 @@ paths:
       description: |-
         Create a service account
         Authorized clients: administrator
-        Authorized plans: commercial, enterprise
+        Authorized plans: standard, premium, enterprise
       operationId: AuthController.createServiceAccount
       requestBody:
         content:
@@ -492,7 +492,7 @@ paths:
       description: |-
         Device Credentials
         Authorized clients: device
-        Authorized plans: freemium, commercial, enterprise
+        Authorized plans: freemium, standard, premium, enterprise
       operationId: AuthController.deviceCredentials
       responses:
         "200":
@@ -510,7 +510,7 @@ paths:
       description: |-
         Get enabled features
         Authorized clients: viewer, device
-        Authorized plans: freemium, commercial, enterprise
+        Authorized plans: freemium, standard, premium, enterprise
       operationId: AuthController.getFeatures
       responses:
         "200":
@@ -528,7 +528,7 @@ paths:
       description: |-
         Create a capture session
         Authorized clients: operator
-        Authorized plans: commercial, enterprise
+        Authorized plans: standard, premium, enterprise
       operationId: CaptureSessionController.post
       requestBody:
         content:
@@ -594,7 +594,7 @@ paths:
       description: |-
         List all channels
         Authorized clients: viewer
-        Authorized plans: commercial, enterprise
+        Authorized plans: standard, premium, enterprise
       operationId: ChannelController.getAll
       responses:
         "200":
@@ -611,7 +611,7 @@ paths:
       description: |-
         Create a channel
         Authorized clients: administrator
-        Authorized plans: commercial, enterprise
+        Authorized plans: standard, premium, enterprise
       operationId: ChannelController.post
       requestBody:
         content:
@@ -636,7 +636,7 @@ paths:
       description: |-
         Delete a channel
         Authorized clients: administrator
-        Authorized plans: commercial, enterprise
+        Authorized plans: standard, premium, enterprise
       operationId: ChannelController.delete
       parameters:
       - explode: false
@@ -660,7 +660,7 @@ paths:
       description: |-
         Get a channel
         Authorized clients: viewer
-        Authorized plans: commercial, enterprise
+        Authorized plans: standard, premium, enterprise
       operationId: ChannelController.getOne
       parameters:
       - explode: false
@@ -685,7 +685,7 @@ paths:
       description: |-
         Update a channel
         Authorized clients: administrator
-        Authorized plans: commercial, enterprise
+        Authorized plans: standard, premium, enterprise
       operationId: ChannelController.patch
       parameters:
       - explode: false
@@ -718,7 +718,7 @@ paths:
       description: |-
         Create a command
         Authorized clients: operator
-        Authorized plans: commercial, enterprise
+        Authorized plans: standard, premium, enterprise
       operationId: CommandController.post
       requestBody:
         content:
@@ -743,7 +743,7 @@ paths:
       description: |-
         Get a command
         Authorized clients: viewer
-        Authorized plans: commercial, enterprise
+        Authorized plans: standard, premium, enterprise
       operationId: CommandController.getOne
       parameters:
       - explode: false
@@ -768,7 +768,7 @@ paths:
       description: |-
         Update command
         Authorized clients: operator
-        Authorized plans: commercial, enterprise
+        Authorized plans: standard, premium, enterprise
       operationId: CommandController.patch
       parameters:
       - explode: false
@@ -801,7 +801,7 @@ paths:
       description: |-
         Query undelivered commands by device ID
         Authorized clients: viewer
-        Authorized plans: commercial, enterprise
+        Authorized plans: standard, premium, enterprise
       operationId: CommandController.query
       requestBody:
         content:
@@ -826,7 +826,7 @@ paths:
       description: |-
         Poll for command requests
         Authorized clients: device
-        Authorized plans: commercial, enterprise
+        Authorized plans: standard, premium, enterprise
       operationId: CommandRequestController.poll
       requestBody:
         content:
@@ -851,7 +851,7 @@ paths:
       description: |-
         Respond to a command
         Authorized clients: device
-        Authorized plans: commercial, enterprise
+        Authorized plans: standard, premium, enterprise
       operationId: CommandResponseController.post
       requestBody:
         content:
@@ -876,7 +876,7 @@ paths:
       description: |-
         Create a command template
         Authorized clients: administrator
-        Authorized plans: commercial, enterprise
+        Authorized plans: standard, premium, enterprise
       operationId: CommandTemplateController.post
       requestBody:
         content:
@@ -901,7 +901,7 @@ paths:
       description: |-
         Delete a command template
         Authorized clients: administrator
-        Authorized plans: commercial, enterprise
+        Authorized plans: standard, premium, enterprise
       operationId: CommandTemplateController.delete
       parameters:
       - explode: false
@@ -925,7 +925,7 @@ paths:
       description: |-
         Get a command template
         Authorized clients: viewer
-        Authorized plans: commercial, enterprise
+        Authorized plans: standard, premium, enterprise
       operationId: CommandTemplateController.getOne
       parameters:
       - explode: false
@@ -950,7 +950,7 @@ paths:
       description: |-
         Update a command template
         Authorized clients: administrator
-        Authorized plans: commercial, enterprise
+        Authorized plans: standard, premium, enterprise
       operationId: CommandTemplateController.patch
       parameters:
       - explode: false
@@ -983,7 +983,7 @@ paths:
       description: |-
         List command templates
         Authorized clients: viewer
-        Authorized plans: commercial, enterprise
+        Authorized plans: standard, premium, enterprise
       operationId: CommandTemplateController.list
       responses:
         "200":
@@ -1001,7 +1001,7 @@ paths:
       description: |-
         Create a comment
         Authorized clients: operator
-        Authorized plans: commercial, enterprise
+        Authorized plans: standard, premium, enterprise
       operationId: CommentController.post
       requestBody:
         content:
@@ -1026,7 +1026,7 @@ paths:
       description: |-
         Delete a comment
         Authorized clients: operator
-        Authorized plans: commercial, enterprise
+        Authorized plans: standard, premium, enterprise
       operationId: CommentController.delete
       parameters:
       - explode: false
@@ -1050,7 +1050,7 @@ paths:
       description: |-
         Get a comment
         Authorized clients: viewer
-        Authorized plans: commercial, enterprise
+        Authorized plans: standard, premium, enterprise
       operationId: CommentController.getOne
       parameters:
       - explode: false
@@ -1075,7 +1075,7 @@ paths:
       description: |-
         Update a comment
         Authorized clients: operator
-        Authorized plans: commercial, enterprise
+        Authorized plans: standard, premium, enterprise
       operationId: CommentController.patch
       parameters:
       - explode: false
@@ -1108,7 +1108,7 @@ paths:
       description: |-
         Create a custom event
         Authorized clients: device
-        Authorized plans: commercial, enterprise
+        Authorized plans: standard, premium, enterprise
       operationId: CustomEventController.post
       requestBody:
         content:
@@ -1133,7 +1133,7 @@ paths:
       description: |-
         Create a device configuration template
         Authorized clients: administrator
-        Authorized plans: commercial, enterprise
+        Authorized plans: standard, premium, enterprise
       operationId: DeviceConfigurationTemplateController.post
       requestBody:
         content:
@@ -1158,7 +1158,7 @@ paths:
       description: |-
         Delete a device configuration template
         Authorized clients: administrator
-        Authorized plans: commercial, enterprise
+        Authorized plans: standard, premium, enterprise
       operationId: DeviceConfigurationTemplateController.delete
       parameters:
       - explode: false
@@ -1182,7 +1182,7 @@ paths:
       description: |-
         Get a device configuration template
         Authorized clients: administrator
-        Authorized plans: commercial, enterprise
+        Authorized plans: standard, premium, enterprise
       operationId: DeviceConfigurationTemplateController.getOne
       parameters:
       - explode: false
@@ -1207,7 +1207,7 @@ paths:
       description: |-
         Update a device configuration template
         Authorized clients: administrator
-        Authorized plans: commercial, enterprise
+        Authorized plans: standard, premium, enterprise
       operationId: DeviceConfigurationTemplateController.patch
       parameters:
       - explode: false
@@ -1240,7 +1240,7 @@ paths:
       description: |-
         List device configuration templates
         Authorized clients: administrator
-        Authorized plans: commercial, enterprise
+        Authorized plans: standard, premium, enterprise
       operationId: DeviceConfigurationTemplateController.list
       responses:
         "200":
@@ -1258,7 +1258,7 @@ paths:
       description: |-
         Create a device
         Authorized clients: administrator
-        Authorized plans: freemium, commercial, enterprise
+        Authorized plans: freemium, standard, premium, enterprise
       operationId: DeviceController.post
       requestBody:
         content:
@@ -1303,7 +1303,7 @@ paths:
       description: |-
         Query devices by name and/or tags
         Authorized clients: viewer
-        Authorized plans: freemium, commercial, enterprise
+        Authorized plans: freemium, standard, premium, enterprise
       operationId: DeviceController.filter
       requestBody:
         content:
@@ -1328,7 +1328,7 @@ paths:
       description: |-
         Query devices by name and/or tags
         Authorized clients: viewer
-        Authorized plans: freemium, commercial, enterprise
+        Authorized plans: freemium, standard, premium, enterprise
       operationId: DeviceController.query
       requestBody:
         content:
@@ -1353,7 +1353,7 @@ paths:
       description: |-
         Count devices
         Authorized clients: viewer
-        Authorized plans: freemium, commercial, enterprise
+        Authorized plans: freemium, standard, premium, enterprise
       operationId: DeviceController.count
       requestBody:
         content:
@@ -1377,7 +1377,7 @@ paths:
       description: |-
         Get tags across all devices
         Authorized clients: viewer
-        Authorized plans: freemium, commercial, enterprise
+        Authorized plans: freemium, standard, premium, enterprise
       operationId: DeviceController.getTags
       requestBody:
         content:
@@ -1402,7 +1402,7 @@ paths:
       description: |-
         Get a device
         Authorized clients: viewer, device
-        Authorized plans: freemium, commercial, enterprise
+        Authorized plans: freemium, standard, premium, enterprise
       operationId: DeviceController.getOne
       parameters:
       - explode: false
@@ -1427,7 +1427,7 @@ paths:
       description: |-
         Update a device
         Authorized clients: administrator, device
-        Authorized plans: freemium, commercial, enterprise
+        Authorized plans: freemium, standard, premium, enterprise
       operationId: DeviceController.patch
       parameters:
       - explode: false
@@ -1460,7 +1460,7 @@ paths:
       description: |-
         Disable a device
         Authorized clients: viewer
-        Authorized plans: freemium, commercial, enterprise
+        Authorized plans: freemium, standard, premium, enterprise
       operationId: DeviceController.disable
       parameters:
       - explode: false
@@ -1485,7 +1485,7 @@ paths:
       description: |-
         Generate a device provisioning token
         Authorized clients: administrator
-        Authorized plans: freemium, commercial, enterprise
+        Authorized plans: freemium, standard, premium, enterprise
       operationId: DeviceController.generateDeviceProvisioningToken
       parameters:
       - explode: false
@@ -1511,7 +1511,7 @@ paths:
       description: |-
         Unprovision a device
         Authorized clients: administrator
-        Authorized plans: freemium, commercial, enterprise
+        Authorized plans: freemium, standard, premium, enterprise
       operationId: DeviceController.unprovisionDevice
       parameters:
       - explode: false
@@ -1536,7 +1536,7 @@ paths:
       description: |-
         Create a device configuration
         Authorized clients: administrator
-        Authorized plans: freemium, commercial, enterprise
+        Authorized plans: freemium, standard, premium, enterprise
       operationId: DeviceController.postConfiguration
       parameters:
       - explode: false
@@ -1569,7 +1569,7 @@ paths:
       description: |-
         Validate a device stream configuration
         Authorized clients: administrator
-        Authorized plans: freemium, commercial, enterprise
+        Authorized plans: freemium, standard, premium, enterprise
       operationId: DeviceController.validateStreamConfiguration
       requestBody:
         content:
@@ -1593,7 +1593,7 @@ paths:
       description: |-
         Get a device configuration
         Authorized clients: viewer
-        Authorized plans: freemium, commercial, enterprise
+        Authorized plans: freemium, standard, premium, enterprise
       operationId: DeviceController.getConfiguration
       parameters:
       - explode: false
@@ -1626,7 +1626,7 @@ paths:
       description: |-
         Check for updated device configuration
         Authorized clients: device
-        Authorized plans: freemium, commercial, enterprise
+        Authorized plans: freemium, standard, premium, enterprise
       operationId: DeviceController.getUpdatedConfiguration
       parameters:
       - explode: false
@@ -1669,7 +1669,7 @@ paths:
       description: |-
         Get GeoIP for device
         Authorized clients: device
-        Authorized plans: freemium, commercial, enterprise
+        Authorized plans: freemium, standard, premium, enterprise
       operationId: DeviceController.getGeoIp
       parameters:
       - explode: false
@@ -1702,7 +1702,7 @@ paths:
       description: |-
         Check for agent version updates
         Authorized clients: device
-        Authorized plans: freemium, commercial, enterprise
+        Authorized plans: freemium, standard, premium, enterprise
       operationId: DeviceController.getUpdatedAgentVersion
       parameters:
       - explode: false
@@ -1734,7 +1734,7 @@ paths:
     post:
       description: |-
         Authorized clients: viewer
-        Authorized plans: freemium, commercial, enterprise
+        Authorized plans: freemium, standard, premium, enterprise
       operationId: DeviceDetailsController.getAll
       requestBody:
         content:
@@ -1758,7 +1758,7 @@ paths:
     get:
       description: |-
         Authorized clients: viewer
-        Authorized plans: freemium, commercial, enterprise
+        Authorized plans: freemium, standard, premium, enterprise
       operationId: DeviceDetailsController.getOne
       parameters:
       - explode: false
@@ -1784,7 +1784,7 @@ paths:
       description: |-
         Get an event
         Authorized clients: viewer
-        Authorized plans: commercial, enterprise
+        Authorized plans: standard, premium, enterprise
       operationId: EventController.getOne
       parameters:
       - explode: false
@@ -1810,7 +1810,7 @@ paths:
       description: |-
         Query events
         Authorized clients: viewer
-        Authorized plans: commercial, enterprise
+        Authorized plans: standard, premium, enterprise
       operationId: EventController.query
       requestBody:
         content:
@@ -1835,7 +1835,7 @@ paths:
       description: |-
         Count events
         Authorized clients: viewer
-        Authorized plans: commercial, enterprise
+        Authorized plans: standard, premium, enterprise
       operationId: EventController.count
       requestBody:
         content:
@@ -1859,7 +1859,7 @@ paths:
       description: |-
         Count events
         Authorized clients: viewer
-        Authorized plans: commercial, enterprise
+        Authorized plans: standard, premium, enterprise
       operationId: EventController.counts
       requestBody:
         content:
@@ -1884,7 +1884,7 @@ paths:
       description: |-
         Distinct values of event types
         Authorized clients: viewer
-        Authorized plans: commercial, enterprise
+        Authorized plans: standard, premium, enterprise
       operationId: EventController.eventTypes
       requestBody:
         content:
@@ -1909,7 +1909,7 @@ paths:
       description: |-
         Distinct values of event users
         Authorized clients: viewer
-        Authorized plans: commercial, enterprise
+        Authorized plans: standard, premium, enterprise
       operationId: EventController.users
       requestBody:
         content:
@@ -1934,7 +1934,7 @@ paths:
       description: |-
         Distinct values of event annotation templates
         Authorized clients: viewer
-        Authorized plans: commercial, enterprise
+        Authorized plans: standard, premium, enterprise
       operationId: EventController.annotationTemplates
       requestBody:
         content:
@@ -1959,7 +1959,7 @@ paths:
       description: |-
         Distinct values of event devices
         Authorized clients: viewer
-        Authorized plans: commercial, enterprise
+        Authorized plans: standard, premium, enterprise
       operationId: EventController.devices
       requestBody:
         content:
@@ -1984,7 +1984,7 @@ paths:
       description: |-
         Distinct values of event stream types
         Authorized clients: viewer
-        Authorized plans: commercial, enterprise
+        Authorized plans: standard, premium, enterprise
       operationId: EventController.streamTypes
       requestBody:
         content:
@@ -2009,7 +2009,7 @@ paths:
       description: |-
         Distinct values of event stream names
         Authorized clients: viewer
-        Authorized plans: commercial, enterprise
+        Authorized plans: standard, premium, enterprise
       operationId: EventController.streamNames
       requestBody:
         content:
@@ -2034,7 +2034,7 @@ paths:
       description: |-
         Distinct values of event tags
         Authorized clients: viewer
-        Authorized plans: commercial, enterprise
+        Authorized plans: standard, premium, enterprise
       operationId: EventController.tags
       requestBody:
         content:
@@ -2059,7 +2059,7 @@ paths:
       description: |-
         Distinct values of event severities
         Authorized clients: viewer
-        Authorized plans: commercial, enterprise
+        Authorized plans: standard, premium, enterprise
       operationId: EventController.severities
       requestBody:
         content:
@@ -2084,7 +2084,7 @@ paths:
       description: |-
         Event histogram
         Authorized clients: viewer
-        Authorized plans: commercial, enterprise
+        Authorized plans: standard, premium, enterprise
       operationId: EventController.histogram
       requestBody:
         content:
@@ -2109,7 +2109,7 @@ paths:
       description: |-
         Mark events as read
         Authorized clients: viewer
-        Authorized plans: commercial, enterprise
+        Authorized plans: standard, premium, enterprise
       operationId: EventController.view
       requestBody:
         content:
@@ -2133,7 +2133,7 @@ paths:
       description: |-
         Export events as Google Sheet
         Authorized clients: viewer
-        Authorized plans: commercial, enterprise
+        Authorized plans: standard, premium, enterprise
       operationId: EventController.exportSheet
       requestBody:
         content:
@@ -2158,7 +2158,7 @@ paths:
       description: |-
         Seek event
         Authorized clients: viewer
-        Authorized plans: commercial, enterprise
+        Authorized plans: standard, premium, enterprise
       operationId: EventController.seek
       requestBody:
         content:
@@ -2182,7 +2182,7 @@ paths:
       description: |-
         List all event triggers
         Authorized clients: viewer, device
-        Authorized plans: commercial, enterprise
+        Authorized plans: standard, premium, enterprise
       operationId: EventTriggerController.getAll
       responses:
         "200":
@@ -2199,7 +2199,7 @@ paths:
       description: |-
         Create event trigger
         Authorized clients: administrator
-        Authorized plans: commercial, enterprise
+        Authorized plans: standard, premium, enterprise
       operationId: EventTriggerController.post
       requestBody:
         content:
@@ -2224,7 +2224,7 @@ paths:
       description: |-
         Get an event trigger
         Authorized clients: viewer, device
-        Authorized plans: commercial, enterprise
+        Authorized plans: standard, premium, enterprise
       operationId: EventTriggerController.getOne
       parameters:
       - explode: false
@@ -2249,7 +2249,7 @@ paths:
       description: |-
         Update event trigger
         Authorized clients: administrator
-        Authorized plans: commercial, enterprise
+        Authorized plans: standard, premium, enterprise
       operationId: EventTriggerController.patch
       parameters:
       - explode: false
@@ -2282,7 +2282,7 @@ paths:
       description: |-
         Get updated event trigger configuration
         Authorized clients: device
-        Authorized plans: commercial, enterprise
+        Authorized plans: standard, premium, enterprise
       operationId: EventTriggerController.query
       requestBody:
         content:
@@ -2307,7 +2307,7 @@ paths:
       description: |-
         Create a Slack integration
         Authorized clients: administrator
-        Authorized plans: commercial, enterprise
+        Authorized plans: standard, premium, enterprise
       operationId: IntegrationController.slack
       requestBody:
         content:
@@ -2332,7 +2332,7 @@ paths:
       description: |-
         Create a Google integration
         Authorized clients: administrator
-        Authorized plans: commercial, enterprise
+        Authorized plans: standard, premium, enterprise
       operationId: IntegrationController.google
       requestBody:
         content:
@@ -2357,7 +2357,7 @@ paths:
       description: |-
         Get an intervention request
         Authorized clients: viewer, device
-        Authorized plans: commercial, enterprise
+        Authorized plans: standard, premium, enterprise
       operationId: InterventionRequestController.getOne
       parameters:
       - explode: false
@@ -2383,7 +2383,7 @@ paths:
       description: |-
         Create an intervention request
         Authorized clients: device
-        Authorized plans: commercial, enterprise
+        Authorized plans: standard, premium, enterprise
       operationId: InterventionRequestController.post
       requestBody:
         content:
@@ -2408,7 +2408,7 @@ paths:
       description: |-
         Create an intervention response
         Authorized clients: viewer
-        Authorized plans: commercial, enterprise
+        Authorized plans: standard, premium, enterprise
       operationId: InterventionResponseController.post
       requestBody:
         content:
@@ -2433,7 +2433,7 @@ paths:
       description: |-
         Query for usage records
         Authorized clients: administrator
-        Authorized plans: freemium, commercial, enterprise
+        Authorized plans: freemium, standard, premium, enterprise
       operationId: OrganizationController.queryUsageRecords
       parameters:
       - explode: false
@@ -2466,7 +2466,7 @@ paths:
       description: |-
         List shares
         Authorized clients: operator
-        Authorized plans: commercial, enterprise
+        Authorized plans: standard, premium, enterprise
       operationId: ShareController.getAll
       responses:
         "200":
@@ -2483,7 +2483,7 @@ paths:
       description: |-
         Create a share token
         Authorized clients: operator
-        Authorized plans: commercial, enterprise
+        Authorized plans: standard, premium, enterprise
       operationId: ShareController.post
       requestBody:
         content:
@@ -2508,7 +2508,7 @@ paths:
       description: |-
         Revoke a share
         Authorized clients: operator
-        Authorized plans: commercial, enterprise
+        Authorized plans: standard, premium, enterprise
       operationId: ShareController.delete
       parameters:
       - explode: false
@@ -2573,7 +2573,7 @@ paths:
       description: |-
         Get an triggered event
         Authorized clients: viewer
-        Authorized plans: commercial, enterprise
+        Authorized plans: standard, premium, enterprise
       operationId: TriggeredEventController.getOne
       parameters:
       - explode: false
@@ -2599,7 +2599,7 @@ paths:
       description: |-
         List all users
         Authorized clients: viewer
-        Authorized plans: freemium, commercial, enterprise
+        Authorized plans: freemium, standard, premium, enterprise
       operationId: UserController.getAll
       responses:
         "200":
@@ -2616,7 +2616,7 @@ paths:
       description: |-
         Create a user
         Authorized clients: administrator
-        Authorized plans: freemium, commercial, enterprise
+        Authorized plans: freemium, standard, premium, enterprise
       operationId: UserController.post
       requestBody:
         content:
@@ -2641,7 +2641,7 @@ paths:
       description: |-
         Get a user
         Authorized clients: viewer
-        Authorized plans: freemium, commercial, enterprise
+        Authorized plans: freemium, standard, premium, enterprise
       operationId: UserController.getOne
       parameters:
       - explode: false
@@ -2666,7 +2666,7 @@ paths:
       description: |-
         Update a user
         Authorized clients: viewer
-        Authorized plans: freemium, commercial, enterprise
+        Authorized plans: freemium, standard, premium, enterprise
       operationId: UserController.patch
       parameters:
       - explode: false
@@ -2699,7 +2699,7 @@ paths:
       description: |-
         List all device layouts
         Authorized clients: viewer
-        Authorized plans: commercial, enterprise
+        Authorized plans: standard, premium, enterprise
       operationId: ViewController.getAll
       responses:
         "200":
@@ -2716,7 +2716,7 @@ paths:
       description: |-
         Create a device layout
         Authorized clients: administrator
-        Authorized plans: commercial, enterprise
+        Authorized plans: standard, premium, enterprise
       operationId: ViewController.post
       requestBody:
         content:
@@ -2741,7 +2741,7 @@ paths:
       description: |-
         Delete a device layout
         Authorized clients: administrator
-        Authorized plans: commercial, enterprise
+        Authorized plans: standard, premium, enterprise
       operationId: ViewController.delete
       parameters:
       - explode: false
@@ -2765,7 +2765,7 @@ paths:
       description: |-
         Get a device layout
         Authorized clients: viewer
-        Authorized plans: commercial, enterprise
+        Authorized plans: standard, premium, enterprise
       operationId: ViewController.getOne
       parameters:
       - explode: false
@@ -2790,7 +2790,7 @@ paths:
       description: |-
         Update a device layout
         Authorized clients: administrator
-        Authorized plans: commercial, enterprise
+        Authorized plans: standard, premium, enterprise
       operationId: ViewController.patch
       parameters:
       - explode: false
@@ -8326,7 +8326,8 @@ components:
         plan:
           enum:
           - freemium
-          - commercial
+          - standard
+          - premium
           - enterprise-default
           - enterprise
           type: string
@@ -8370,6 +8371,12 @@ components:
         teleopEnabled:
           type: boolean
         analyticsEnabled:
+          type: boolean
+        dataExportEnabled:
+          type: boolean
+        advancedConfigurationEnabled:
+          type: boolean
+        customerPortalEnabled:
           type: boolean
         stripeBillingEnabled:
           type: boolean

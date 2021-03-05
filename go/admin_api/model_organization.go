@@ -33,6 +33,9 @@ type Organization struct {
 	TeleopConfiguration UserTeleopConfiguration `json:"teleopConfiguration,omitempty"`
 	TeleopEnabled bool `json:"teleopEnabled,omitempty"`
 	AnalyticsEnabled bool `json:"analyticsEnabled,omitempty"`
+	DataExportEnabled bool `json:"dataExportEnabled,omitempty"`
+	AdvancedConfigurationEnabled bool `json:"advancedConfigurationEnabled,omitempty"`
+	CustomerPortalEnabled bool `json:"customerPortalEnabled,omitempty"`
 	StripeBillingEnabled bool `json:"stripeBillingEnabled,omitempty"`
 	StripeSubscriptionEnabled bool `json:"stripeSubscriptionEnabled,omitempty"`
 	S3ExportEnabled bool `json:"s3ExportEnabled,omitempty"`

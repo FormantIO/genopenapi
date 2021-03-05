@@ -17,7 +17,7 @@ Method | HTTP request | Description
 
 Get all
 
-List all users Authorized clients: viewer Authorized plans: freemium, commercial, enterprise
+List all users Authorized clients: viewer Authorized plans: freemium, standard, premium, enterprise
 
 ### Required Parameters
 
@@ -47,7 +47,7 @@ This endpoint does not need any parameter.
 
 Get one
 
-Get a user Authorized clients: viewer Authorized plans: freemium, commercial, enterprise
+Get a user Authorized clients: viewer Authorized plans: freemium, standard, premium, enterprise
 
 ### Required Parameters
 
@@ -81,7 +81,7 @@ Name | Type | Description  | Notes
 
 Patch
 
-Update a user Authorized clients: viewer Authorized plans: freemium, commercial, enterprise
+Update a user Authorized clients: viewer Authorized plans: freemium, standard, premium, enterprise
 
 ### Required Parameters
 
@@ -116,7 +116,7 @@ Name | Type | Description  | Notes
 
 Post
 
-Create a user Authorized clients: administrator Authorized plans: freemium, commercial, enterprise
+Create a user Authorized clients: administrator Authorized plans: freemium, standard, premium, enterprise
 
 ### Required Parameters
 

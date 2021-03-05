@@ -26,7 +26,7 @@ type CommandResponseApiService service
 
 /*
 CommandResponseControllerPost Post
-Respond to a command Authorized clients: device Authorized plans: commercial, enterprise
+Respond to a command Authorized clients: device Authorized plans: standard, premium, enterprise
  * @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  * @param commandResponse CommandResponse
 @return CommandResponse

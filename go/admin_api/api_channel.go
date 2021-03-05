@@ -27,7 +27,7 @@ type ChannelApiService service
 
 /*
 ChannelControllerDelete Delete
-Delete a channel Authorized clients: administrator Authorized plans: commercial, enterprise
+Delete a channel Authorized clients: administrator Authorized plans: standard, premium, enterprise
  * @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  * @param id
 */
@@ -94,7 +94,7 @@ func (a *ChannelApiService) ChannelControllerDelete(ctx _context.Context, id str
 
 /*
 ChannelControllerGetAll Get all
-List all channels Authorized clients: viewer Authorized plans: commercial, enterprise
+List all channels Authorized clients: viewer Authorized plans: standard, premium, enterprise
  * @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 @return ChannelListResponse
 */
@@ -178,7 +178,7 @@ func (a *ChannelApiService) ChannelControllerGetAll(ctx _context.Context) (Chann
 
 /*
 ChannelControllerGetOne Get one
-Get a channel Authorized clients: viewer Authorized plans: commercial, enterprise
+Get a channel Authorized clients: viewer Authorized plans: standard, premium, enterprise
  * @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  * @param id
 @return Channel
@@ -265,7 +265,7 @@ func (a *ChannelApiService) ChannelControllerGetOne(ctx _context.Context, id str
 
 /*
 ChannelControllerPatch Patch
-Update a channel Authorized clients: administrator Authorized plans: commercial, enterprise
+Update a channel Authorized clients: administrator Authorized plans: standard, premium, enterprise
  * @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  * @param id
  * @param partialChannel PartialChannel
@@ -355,7 +355,7 @@ func (a *ChannelApiService) ChannelControllerPatch(ctx _context.Context, id stri
 
 /*
 ChannelControllerPost Post
-Create a channel Authorized clients: administrator Authorized plans: commercial, enterprise
+Create a channel Authorized clients: administrator Authorized plans: standard, premium, enterprise
  * @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  * @param channel Channel
 @return Channel

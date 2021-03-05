@@ -27,7 +27,7 @@ type CommentApiService service
 
 /*
 CommentControllerDelete Delete
-Delete a comment Authorized clients: operator Authorized plans: commercial, enterprise
+Delete a comment Authorized clients: operator Authorized plans: standard, premium, enterprise
  * @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  * @param id
 */
@@ -94,7 +94,7 @@ func (a *CommentApiService) CommentControllerDelete(ctx _context.Context, id str
 
 /*
 CommentControllerGetOne Get one
-Get a comment Authorized clients: viewer Authorized plans: commercial, enterprise
+Get a comment Authorized clients: viewer Authorized plans: standard, premium, enterprise
  * @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  * @param id
 @return Comment
@@ -181,7 +181,7 @@ func (a *CommentApiService) CommentControllerGetOne(ctx _context.Context, id str
 
 /*
 CommentControllerPatch Patch
-Update a comment Authorized clients: operator Authorized plans: commercial, enterprise
+Update a comment Authorized clients: operator Authorized plans: standard, premium, enterprise
  * @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  * @param id
  * @param partialComment PartialComment
@@ -271,7 +271,7 @@ func (a *CommentApiService) CommentControllerPatch(ctx _context.Context, id stri
 
 /*
 CommentControllerPost Post
-Create a comment Authorized clients: operator Authorized plans: commercial, enterprise
+Create a comment Authorized clients: operator Authorized plans: standard, premium, enterprise
  * @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  * @param comment Comment
 @return Comment
