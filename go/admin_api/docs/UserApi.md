@@ -112,7 +112,7 @@ Name | Type | Description  | Notes
 
 ## UserControllerPost
 
-> User UserControllerPost(ctx, user)
+> CreateUserRequest UserControllerPost(ctx, createUserRequest)
 
 Post
 
@@ -124,11 +124,11 @@ Create a user Authorized clients: administrator Authorized plans: freemium, stan
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**user** | [**User**](User.md)| User | 
+**createUserRequest** | [**CreateUserRequest**](CreateUserRequest.md)| CreateUserRequest | 
 
 ### Return type
 
-[**User**](User.md)
+[**CreateUserRequest**](CreateUserRequest.md)
 
 ### Authorization
 

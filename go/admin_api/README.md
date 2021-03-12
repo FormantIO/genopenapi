@@ -185,6 +185,7 @@ Class | Method | HTTP request | Description
  - [ConfirmForgotPasswordRequest](docs/ConfirmForgotPasswordRequest.md)
  - [CreateServiceAccountRequest](docs/CreateServiceAccountRequest.md)
  - [CreateServiceAccountResponse](docs/CreateServiceAccountResponse.md)
+ - [CreateUserRequest](docs/CreateUserRequest.md)
  - [CustomEvent](docs/CustomEvent.md)
  - [Device](docs/Device.md)
  - [DeviceApplicationConfiguration](docs/DeviceApplicationConfiguration.md)

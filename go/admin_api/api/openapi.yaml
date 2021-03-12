@@ -1,7 +1,7 @@
 openapi: 3.0.0
 info:
   title: Formant admin-api
-  version: 1.24.63
+  version: 1.25.45
 servers:
 - url: https://api-dev.formant.io/v1/admin
 paths:
@@ -2622,15 +2622,15 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/User'
-        description: User
+              $ref: '#/components/schemas/CreateUserRequest'
+        description: CreateUserRequest
         required: true
       responses:
         "201":
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/User'
+                $ref: '#/components/schemas/CreateUserRequest'
       security:
       - bearerAuth: []
       summary: Post
@@ -16843,6 +16843,81 @@ components:
           type: array
       required:
       - items
+      type: object
+    CreateUserRequest:
+      example:
+        lastName: lastName
+        role: viewer
+        enabled: true
+        passwordHash: passwordHash
+        tags:
+          key: tags
+        organizationId: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        createdAt: 2000-01-23T04:56:07.000+00:00
+        firstName: firstName
+        password: password
+        termsAccepted: termsAccepted
+        isOrganizationOwner: true
+        lastLoggedIn: 2000-01-23T04:56:07.000+00:00
+        id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        email: email
+        updatedAt: 2000-01-23T04:56:07.000+00:00
+        isServiceAccount: true
+      properties:
+        password:
+          minLength: 8
+          type: string
+        id:
+          format: uuid
+          type: string
+        createdAt:
+          format: date-time
+          type: string
+        updatedAt:
+          format: date-time
+          type: string
+        organizationId:
+          format: uuid
+          type: string
+        email:
+          format: email
+          type: string
+        firstName:
+          maxLength: 255
+          type: string
+        lastName:
+          maxLength: 255
+          type: string
+        role:
+          enum:
+          - viewer
+          - operator
+          - administrator
+          type: string
+        tags:
+          additionalProperties:
+            type: string
+          type: object
+        enabled:
+          type: boolean
+        isOrganizationOwner:
+          type: boolean
+        termsAccepted:
+          type: string
+        lastLoggedIn:
+          format: date-time
+          type: string
+        passwordHash:
+          nullable: true
+          pattern: ^\$2[abxy]\$.{56}$
+          type: string
+        isServiceAccount:
+          type: boolean
+      required:
+      - email
+      - firstName
+      - role
+      - tags
       type: object
     PartialAnnotation:
       example:

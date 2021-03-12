@@ -290,17 +290,17 @@ func (a *UserApiService) UserControllerPatch(ctx _context.Context, id string, pa
 UserControllerPost Post
 Create a user Authorized clients: administrator Authorized plans: freemium, standard, premium, enterprise
  * @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- * @param user User
-@return User
+ * @param createUserRequest CreateUserRequest
+@return CreateUserRequest
 */
-func (a *UserApiService) UserControllerPost(ctx _context.Context, user User) (User, *_nethttp.Response, error) {
+func (a *UserApiService) UserControllerPost(ctx _context.Context, createUserRequest CreateUserRequest) (CreateUserRequest, *_nethttp.Response, error) {
 	var (
 		localVarHTTPMethod   = _nethttp.MethodPost
 		localVarPostBody     interface{}
 		localVarFormFileName string
 		localVarFileName     string
 		localVarFileBytes    []byte
-		localVarReturnValue  User
+		localVarReturnValue  CreateUserRequest
 	)
 
 	// create path and map variables
@@ -327,7 +327,7 @@ func (a *UserApiService) UserControllerPost(ctx _context.Context, user User) (Us
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
 	// body params
-	localVarPostBody = &user
+	localVarPostBody = &createUserRequest
 	r, err := a.client.prepareRequest(ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFormFileName, localVarFileName, localVarFileBytes)
 	if err != nil {
 		return localVarReturnValue, nil, err
@@ -350,7 +350,7 @@ func (a *UserApiService) UserControllerPost(ctx _context.Context, user User) (Us
 			error: localVarHTTPResponse.Status,
 		}
 		if localVarHTTPResponse.StatusCode == 201 {
-			var v User
+			var v CreateUserRequest
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
