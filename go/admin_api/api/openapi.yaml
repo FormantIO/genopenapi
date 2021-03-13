@@ -1,7 +1,7 @@
 openapi: 3.0.0
 info:
   title: Formant admin-api
-  version: 1.25.45
+  version: 1.25.48
 servers:
 - url: https://api-dev.formant.io/v1/admin
 paths:
@@ -11973,6 +11973,7 @@ components:
     LoginRequest:
       example:
         password: password
+        tokenExpirationSeconds: 343
         email: email
       properties:
         email:
@@ -11980,6 +11981,11 @@ components:
           type: string
         password:
           type: string
+        tokenExpirationSeconds:
+          format: int64
+          maximum: 3600
+          minimum: 60
+          type: integer
       required:
       - email
       - password
@@ -11987,6 +11993,7 @@ components:
     GenerateAccessTokenRequest:
       example:
         password: password
+        tokenExpirationSeconds: 2193
         expirationSeconds: 721321908029600
         email: email
       properties:
@@ -12001,6 +12008,11 @@ components:
           type: string
         password:
           type: string
+        tokenExpirationSeconds:
+          format: int64
+          maximum: 3600
+          minimum: 60
+          type: integer
       required:
       - email
       - expirationSeconds

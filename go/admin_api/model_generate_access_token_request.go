@@ -13,4 +13,5 @@ type GenerateAccessTokenRequest struct {
 	ExpirationSeconds *int64 `json:"expirationSeconds"`
 	Email string `json:"email"`
 	Password string `json:"password"`
+	TokenExpirationSeconds int64 `json:"tokenExpirationSeconds,omitempty"`
 }

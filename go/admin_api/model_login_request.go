@@ -12,4 +12,5 @@ package admin_api
 type LoginRequest struct {
 	Email string `json:"email"`
 	Password string `json:"password"`
+	TokenExpirationSeconds int64 `json:"tokenExpirationSeconds,omitempty"`
 }
