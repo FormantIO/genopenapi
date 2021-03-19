@@ -51,6 +51,7 @@ Class | Method | HTTP request | Description
 *AuthApi* | [**AuthControllerGenerateAccessToken**](docs/AuthApi.md#authcontrollergenerateaccesstoken) | **Post** /auth/access-token | Generate access token
 *AuthApi* | [**AuthControllerGetFeatures**](docs/AuthApi.md#authcontrollergetfeatures) | **Get** /auth/features | Get features
 *AuthApi* | [**AuthControllerLogin**](docs/AuthApi.md#authcontrollerlogin) | **Post** /auth/login | Login
+*AuthApi* | [**AuthControllerLoginGoogle**](docs/AuthApi.md#authcontrollerlogingoogle) | **Post** /auth/login-google | Login google
 *AuthApi* | [**AuthControllerRefresh**](docs/AuthApi.md#authcontrollerrefresh) | **Post** /auth/refresh | Refresh
 *AuthApi* | [**AuthControllerResendConfirmationCode**](docs/AuthApi.md#authcontrollerresendconfirmationcode) | **Post** /auth/resend-confirmation-code | Resend confirmation code
 *AuthApi* | [**AuthControllerResendInvitation**](docs/AuthApi.md#authcontrollerresendinvitation) | **Post** /auth/resend-invitation | Resend invitation
@@ -244,6 +245,7 @@ Class | Method | HTTP request | Description
  - [GetFeaturesResponse](docs/GetFeaturesResponse.md)
  - [GoogleAuthRequest](docs/GoogleAuthRequest.md)
  - [GoogleInfo](docs/GoogleInfo.md)
+ - [GoogleLoginRequest](docs/GoogleLoginRequest.md)
  - [GoogleSheetParseResult](docs/GoogleSheetParseResult.md)
  - [GoogleSpreadsheetInspection](docs/GoogleSpreadsheetInspection.md)
  - [Group](docs/Group.md)

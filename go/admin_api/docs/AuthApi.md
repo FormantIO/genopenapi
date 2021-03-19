@@ -12,6 +12,7 @@ Method | HTTP request | Description
 [**AuthControllerGenerateAccessToken**](AuthApi.md#AuthControllerGenerateAccessToken) | **Post** /auth/access-token | Generate access token
 [**AuthControllerGetFeatures**](AuthApi.md#AuthControllerGetFeatures) | **Get** /auth/features | Get features
 [**AuthControllerLogin**](AuthApi.md#AuthControllerLogin) | **Post** /auth/login | Login
+[**AuthControllerLoginGoogle**](AuthApi.md#AuthControllerLoginGoogle) | **Post** /auth/login-google | Login google
 [**AuthControllerRefresh**](AuthApi.md#AuthControllerRefresh) | **Post** /auth/refresh | Refresh
 [**AuthControllerResendConfirmationCode**](AuthApi.md#AuthControllerResendConfirmationCode) | **Post** /auth/resend-confirmation-code | Resend confirmation code
 [**AuthControllerResendInvitation**](AuthApi.md#AuthControllerResendInvitation) | **Post** /auth/resend-invitation | Resend invitation
@@ -264,6 +265,40 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
 **loginRequest** | [**LoginRequest**](LoginRequest.md)| LoginRequest | 
+
+### Return type
+
+[**LoginResult**](LoginResult.md)
+
+### Authorization
+
+Use admin JWT for authorization
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## AuthControllerLoginGoogle
+
+> LoginResult AuthControllerLoginGoogle(ctx, googleLoginRequest)
+
+Login google
+
+Login with Google Token
+
+### Required Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**googleLoginRequest** | [**GoogleLoginRequest**](GoogleLoginRequest.md)| GoogleLoginRequest | 
 
 ### Return type
 

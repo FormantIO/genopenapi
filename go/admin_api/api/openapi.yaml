@@ -1,7 +1,7 @@
 openapi: 3.0.0
 info:
   title: Formant admin-api
-  version: 1.25.48
+  version: 1.26.36
 servers:
 - url: https://api-dev.formant.io/v1/admin
 paths:
@@ -305,6 +305,26 @@ paths:
               schema:
                 $ref: '#/components/schemas/LoginResult'
       summary: Login
+      tags:
+      - Auth
+  /auth/login-google:
+    post:
+      description: Login with Google Token
+      operationId: AuthController.loginGoogle
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/GoogleLoginRequest'
+        description: GoogleLoginRequest
+        required: true
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/LoginResult'
+      summary: Login google
       tags:
       - Auth
   /auth/refresh:
@@ -6527,6 +6547,8 @@ components:
           type: string
         hwDescriptor:
           type: string
+        audioHwDescriptor:
+          type: string
         quality:
           enum:
           - 1080p
@@ -12053,6 +12075,21 @@ components:
           uniqueItems: true
       required:
       - features
+      type: object
+    GoogleLoginRequest:
+      example:
+        tokenExpirationSeconds: 343
+        token: token
+      properties:
+        token:
+          type: string
+        tokenExpirationSeconds:
+          format: int64
+          maximum: 3600
+          minimum: 60
+          type: integer
+      required:
+      - token
       type: object
     ResendConfirmationCodeRequest:
       example:

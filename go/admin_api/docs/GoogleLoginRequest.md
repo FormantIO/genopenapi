@@ -1,13 +1,11 @@
-# DeviceStreamHardwareConfiguration
+# GoogleLoginRequest
 
 ## Properties
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Type** | **string** |  | 
-**HwDescriptor** | **string** |  | 
-**AudioHwDescriptor** | **string** |  | [optional] 
-**Quality** | **string** |  | 
+**Token** | **string** |  | 
+**TokenExpirationSeconds** | **int64** |  | [optional] 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 
