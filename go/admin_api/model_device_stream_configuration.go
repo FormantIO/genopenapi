@@ -17,4 +17,5 @@ type DeviceStreamConfiguration struct {
 	Disabled *bool `json:"disabled,omitempty"`
 	OnDemand *bool `json:"onDemand,omitempty"`
 	Transform *DeviceStreamTransformConfiguration `json:"transform,omitempty"`
+	Quality string `json:"quality,omitempty"`
 }

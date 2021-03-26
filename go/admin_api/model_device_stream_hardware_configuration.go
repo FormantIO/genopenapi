@@ -13,5 +13,5 @@ type DeviceStreamHardwareConfiguration struct {
 	Type string `json:"type"`
 	HwDescriptor string `json:"hwDescriptor"`
 	AudioHwDescriptor string `json:"audioHwDescriptor,omitempty"`
-	Quality string `json:"quality"`
+	Quality string `json:"quality,omitempty"`
 }

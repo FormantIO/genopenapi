@@ -14,6 +14,7 @@ Name | Type | Description | Notes
 **DefaultValue** | **float32** |  | [optional] 
 **Step** | **float32** |  | [optional] 
 **NumericControlVisualization** | **string** |  | [optional] 
+**Quality** | **string** |  | [optional] 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

@@ -13,6 +13,7 @@ Method | HTTP request | Description
 [**AuthControllerGetFeatures**](AuthApi.md#AuthControllerGetFeatures) | **Get** /auth/features | Get features
 [**AuthControllerLogin**](AuthApi.md#AuthControllerLogin) | **Post** /auth/login | Login
 [**AuthControllerLoginGoogle**](AuthApi.md#AuthControllerLoginGoogle) | **Post** /auth/login-google | Login google
+[**AuthControllerPlanUpgrade**](AuthApi.md#AuthControllerPlanUpgrade) | **Post** /auth/upgrade-plan | Plan upgrade
 [**AuthControllerRefresh**](AuthApi.md#AuthControllerRefresh) | **Post** /auth/refresh | Refresh
 [**AuthControllerResendConfirmationCode**](AuthApi.md#AuthControllerResendConfirmationCode) | **Post** /auth/resend-confirmation-code | Resend confirmation code
 [**AuthControllerResendInvitation**](AuthApi.md#AuthControllerResendInvitation) | **Post** /auth/resend-invitation | Resend invitation
@@ -311,6 +312,36 @@ Use admin JWT for authorization
 ### HTTP request headers
 
 - **Content-Type**: application/json
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## AuthControllerPlanUpgrade
+
+> AuthControllerPlanUpgrade(ctx, )
+
+Plan upgrade
+
+Signal intent to upgrade Authorized clients: viewer Authorized plans: freemium, standard, premium, enterprise
+
+### Required Parameters
+
+This endpoint does not need any parameter.
+
+### Return type
+
+ (empty response body)
+
+### Authorization
+
+[bearerAuth](../README.md#bearerAuth)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
 - **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)

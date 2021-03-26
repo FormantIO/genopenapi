@@ -21,4 +21,5 @@ type DeviceTeleopRosStreamConfiguration struct {
 	DefaultValue float32 `json:"defaultValue,omitempty"`
 	Step float32 `json:"step,omitempty"`
 	NumericControlVisualization string `json:"numericControlVisualization,omitempty"`
+	Quality string `json:"quality,omitempty"`
 }

@@ -11,5 +11,5 @@ package admin_api
 // GoogleLoginRequest struct for GoogleLoginRequest
 type GoogleLoginRequest struct {
 	Token string `json:"token"`
-	TokenExpirationSeconds int64 `json:"tokenExpirationSeconds,omitempty"`
+	AutoCreateOrg bool `json:"autoCreateOrg,omitempty"`
 }

@@ -52,6 +52,7 @@ Class | Method | HTTP request | Description
 *AuthApi* | [**AuthControllerGetFeatures**](docs/AuthApi.md#authcontrollergetfeatures) | **Get** /auth/features | Get features
 *AuthApi* | [**AuthControllerLogin**](docs/AuthApi.md#authcontrollerlogin) | **Post** /auth/login | Login
 *AuthApi* | [**AuthControllerLoginGoogle**](docs/AuthApi.md#authcontrollerlogingoogle) | **Post** /auth/login-google | Login google
+*AuthApi* | [**AuthControllerPlanUpgrade**](docs/AuthApi.md#authcontrollerplanupgrade) | **Post** /auth/upgrade-plan | Plan upgrade
 *AuthApi* | [**AuthControllerRefresh**](docs/AuthApi.md#authcontrollerrefresh) | **Post** /auth/refresh | Refresh
 *AuthApi* | [**AuthControllerResendConfirmationCode**](docs/AuthApi.md#authcontrollerresendconfirmationcode) | **Post** /auth/resend-confirmation-code | Resend confirmation code
 *AuthApi* | [**AuthControllerResendInvitation**](docs/AuthApi.md#authcontrollerresendinvitation) | **Post** /auth/resend-invitation | Resend invitation
