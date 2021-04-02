@@ -1,7 +1,7 @@
 openapi: 3.0.0
 info:
   title: Formant admin-api
-  version: 1.27.50
+  version: 1.28.31
 servers:
 - url: https://api-dev.formant.io/v1/admin
 paths:
@@ -3246,7 +3246,7 @@ components:
         audioCaptureDevices:
           items:
             $ref: '#/components/schemas/AudioDevice'
-          maxItems: 20
+          maxItems: 50
           minItems: 0
           type: array
       required:
