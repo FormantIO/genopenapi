@@ -15,6 +15,7 @@ import (
 type View struct {
 	OrganizationId string `json:"organizationId,omitempty"`
 	Name string `json:"name"`
+	Url string `json:"url,omitempty"`
 	Tags map[string]string `json:"tags"`
 	Filter Filter `json:"filter"`
 	Layout interface{} `json:"layout"`

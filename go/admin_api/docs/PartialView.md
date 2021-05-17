@@ -6,6 +6,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **OrganizationId** | **string** |  | [optional] 
 **Name** | **string** |  | [optional] 
+**Url** | **string** |  | [optional] 
 **Tags** | **map[string]string** |  | [optional] 
 **Filter** | [**Filter**](Filter.md) |  | [optional] 
 **Layout** | **interface{}** |  | [optional] 
