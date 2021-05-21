@@ -10,5 +10,6 @@
 package admin_api
 // GenerateAccessTokenResponse struct for GenerateAccessTokenResponse
 type GenerateAccessTokenResponse struct {
+	Authentication Authentication `json:"authentication"`
 	Token string `json:"token"`
 }

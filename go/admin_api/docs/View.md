@@ -7,6 +7,7 @@ Name | Type | Description | Notes
 **OrganizationId** | **string** |  | [optional] 
 **Name** | **string** |  | 
 **Url** | **string** |  | [optional] 
+**IsUrlAuthorized** | **bool** |  | [optional] 
 **Tags** | **map[string]string** |  | 
 **Filter** | [**Filter**](Filter.md) |  | 
 **Layout** | **interface{}** |  | 
