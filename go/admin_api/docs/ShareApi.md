@@ -50,7 +50,7 @@ Use admin JWT for authorization
 
 Delete
 
-Revoke a share Authorized clients: operator Authorized plans: standard, premium, enterprise
+Revoke a share Authorized clients: operator Authorized plans: starter, premium
 
 ### Required Parameters
 
@@ -84,7 +84,7 @@ Name | Type | Description  | Notes
 
 Get all
 
-List shares Authorized clients: operator Authorized plans: standard, premium, enterprise
+List shares Authorized clients: operator Authorized plans: starter, premium
 
 ### Required Parameters
 
@@ -148,7 +148,7 @@ Use admin JWT for authorization
 
 Post
 
-Create a share token Authorized clients: operator Authorized plans: standard, premium, enterprise
+Create a share token Authorized clients: operator Authorized plans: starter, premium
 
 ### Required Parameters
 

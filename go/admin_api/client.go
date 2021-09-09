@@ -79,6 +79,8 @@ type APIClient struct {
 
 	EventTriggerApi *EventTriggerApiService
 
+	FileApi *FileApiService
+
 	IntegrationApi *IntegrationApiService
 
 	InterventionRequestApi *InterventionRequestApiService
@@ -128,6 +130,7 @@ func NewAPIClient(cfg *Configuration) *APIClient {
 	c.DeviceDetailsApi = (*DeviceDetailsApiService)(&c.common)
 	c.EventApi = (*EventApiService)(&c.common)
 	c.EventTriggerApi = (*EventTriggerApiService)(&c.common)
+	c.FileApi = (*FileApiService)(&c.common)
 	c.IntegrationApi = (*IntegrationApiService)(&c.common)
 	c.InterventionRequestApi = (*InterventionRequestApiService)(&c.common)
 	c.InterventionResponseApi = (*InterventionResponseApiService)(&c.common)

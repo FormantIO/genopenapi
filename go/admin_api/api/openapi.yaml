@@ -1,7 +1,7 @@
 openapi: 3.0.0
 info:
   title: Formant admin-api
-  version: 1.35.9
+  version: 1.50.11
 servers:
 - url: https://api-dev.formant.io/v1/admin
 paths:
@@ -10,7 +10,7 @@ paths:
       description: |-
         Create an annotation
         Authorized clients: operator
-        Authorized plans: standard, premium, enterprise
+        Authorized plans: starter, premium
       operationId: AnnotationController.post
       requestBody:
         content:
@@ -35,7 +35,7 @@ paths:
       description: |-
         Delete an annotation
         Authorized clients: operator
-        Authorized plans: standard, premium, enterprise
+        Authorized plans: starter, premium
       operationId: AnnotationController.delete
       parameters:
       - explode: false
@@ -59,7 +59,7 @@ paths:
       description: |-
         Get an annotation
         Authorized clients: viewer
-        Authorized plans: standard, premium, enterprise
+        Authorized plans: starter, premium
       operationId: AnnotationController.getOne
       parameters:
       - explode: false
@@ -84,7 +84,7 @@ paths:
       description: |-
         Update an annotation
         Authorized clients: operator
-        Authorized plans: standard, premium, enterprise
+        Authorized plans: starter, premium
       operationId: AnnotationController.patch
       parameters:
       - explode: false
@@ -117,7 +117,7 @@ paths:
       description: |-
         Create an annotation template
         Authorized clients: administrator
-        Authorized plans: standard, premium, enterprise
+        Authorized plans: starter, premium
       operationId: AnnotationTemplateController.post
       requestBody:
         content:
@@ -142,7 +142,7 @@ paths:
       description: |-
         Delete an annotation template
         Authorized clients: administrator
-        Authorized plans: standard, premium, enterprise
+        Authorized plans: starter, premium
       operationId: AnnotationTemplateController.delete
       parameters:
       - explode: false
@@ -166,7 +166,7 @@ paths:
       description: |-
         Get an annotation template
         Authorized clients: viewer
-        Authorized plans: standard, premium, enterprise
+        Authorized plans: starter, premium
       operationId: AnnotationTemplateController.getOne
       parameters:
       - explode: false
@@ -191,7 +191,7 @@ paths:
       description: |-
         Update an annotation template
         Authorized clients: administrator
-        Authorized plans: standard, premium, enterprise
+        Authorized plans: starter, premium
       operationId: AnnotationTemplateController.patch
       parameters:
       - explode: false
@@ -224,7 +224,7 @@ paths:
       description: |-
         List annotation templates
         Authorized clients: viewer
-        Authorized plans: standard, premium, enterprise
+        Authorized plans: starter, premium
       operationId: AnnotationTemplateController.list
       responses:
         "200":
@@ -242,7 +242,7 @@ paths:
       description: |-
         Query annotation template field values
         Authorized clients: viewer
-        Authorized plans: standard, premium, enterprise
+        Authorized plans: starter, premium
       operationId: AnnotationTemplateController.queryAnnotationFieldValues
       requestBody:
         content:
@@ -267,7 +267,7 @@ paths:
       description: |-
         Returns information about the Spreadsheet and its content
         Authorized clients: viewer
-        Authorized plans: standard, premium, enterprise
+        Authorized plans: starter, premium
       operationId: AnnotationTemplateController.inspectSpreadsheet
       requestBody:
         content:
@@ -347,32 +347,12 @@ paths:
       summary: Refresh
       tags:
       - Auth
-  /auth/access-token:
-    post:
-      description: Generate a service account access token
-      operationId: AuthController.generateAccessToken
-      requestBody:
-        content:
-          application/json:
-            schema:
-              $ref: '#/components/schemas/GenerateAccessTokenRequest'
-        description: GenerateAccessTokenRequest
-        required: true
-      responses:
-        "200":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/GenerateAccessTokenResponse'
-      summary: Generate access token
-      tags:
-      - Auth
   /auth/service-account:
     post:
       description: |-
         Create a service account
         Authorized clients: administrator
-        Authorized plans: standard, premium, enterprise
+        Authorized plans: starter, premium
       operationId: AuthController.createServiceAccount
       requestBody:
         content:
@@ -512,7 +492,7 @@ paths:
       description: |-
         Device Credentials
         Authorized clients: device
-        Authorized plans: freemium, standard, premium, enterprise
+        Authorized plans: freemium, starter, premium
       operationId: AuthController.deviceCredentials
       responses:
         "200":
@@ -530,7 +510,7 @@ paths:
       description: |-
         Get enabled features
         Authorized clients: viewer, device
-        Authorized plans: freemium, standard, premium, enterprise
+        Authorized plans: freemium, starter, premium
       operationId: AuthController.getFeatures
       responses:
         "200":
@@ -548,7 +528,7 @@ paths:
       description: |-
         Signal intent to upgrade
         Authorized clients: viewer
-        Authorized plans: freemium, standard, premium, enterprise
+        Authorized plans: freemium, starter, premium
       operationId: AuthController.planUpgrade
       responses:
         "200":
@@ -565,7 +545,7 @@ paths:
       description: |-
         Create a capture session
         Authorized clients: operator
-        Authorized plans: standard, premium, enterprise
+        Authorized plans: starter, premium
       operationId: CaptureSessionController.post
       requestBody:
         content:
@@ -631,7 +611,7 @@ paths:
       description: |-
         List all channels
         Authorized clients: viewer
-        Authorized plans: standard, premium, enterprise
+        Authorized plans: starter, premium
       operationId: ChannelController.getAll
       responses:
         "200":
@@ -648,7 +628,7 @@ paths:
       description: |-
         Create a channel
         Authorized clients: administrator
-        Authorized plans: standard, premium, enterprise
+        Authorized plans: starter, premium
       operationId: ChannelController.post
       requestBody:
         content:
@@ -673,7 +653,7 @@ paths:
       description: |-
         Delete a channel
         Authorized clients: administrator
-        Authorized plans: standard, premium, enterprise
+        Authorized plans: starter, premium
       operationId: ChannelController.delete
       parameters:
       - explode: false
@@ -697,7 +677,7 @@ paths:
       description: |-
         Get a channel
         Authorized clients: viewer
-        Authorized plans: standard, premium, enterprise
+        Authorized plans: starter, premium
       operationId: ChannelController.getOne
       parameters:
       - explode: false
@@ -722,7 +702,7 @@ paths:
       description: |-
         Update a channel
         Authorized clients: administrator
-        Authorized plans: standard, premium, enterprise
+        Authorized plans: starter, premium
       operationId: ChannelController.patch
       parameters:
       - explode: false
@@ -755,7 +735,7 @@ paths:
       description: |-
         Create a command
         Authorized clients: operator
-        Authorized plans: standard, premium, enterprise
+        Authorized plans: starter, premium
       operationId: CommandController.post
       requestBody:
         content:
@@ -780,7 +760,7 @@ paths:
       description: |-
         Get a command
         Authorized clients: viewer
-        Authorized plans: standard, premium, enterprise
+        Authorized plans: starter, premium
       operationId: CommandController.getOne
       parameters:
       - explode: false
@@ -805,7 +785,7 @@ paths:
       description: |-
         Update command
         Authorized clients: operator
-        Authorized plans: standard, premium, enterprise
+        Authorized plans: starter, premium
       operationId: CommandController.patch
       parameters:
       - explode: false
@@ -838,7 +818,7 @@ paths:
       description: |-
         Query undelivered commands by device ID
         Authorized clients: viewer
-        Authorized plans: standard, premium, enterprise
+        Authorized plans: starter, premium
       operationId: CommandController.query
       requestBody:
         content:
@@ -863,7 +843,7 @@ paths:
       description: |-
         Poll for command requests
         Authorized clients: device
-        Authorized plans: standard, premium, enterprise
+        Authorized plans: starter, premium
       operationId: CommandRequestController.poll
       requestBody:
         content:
@@ -888,7 +868,7 @@ paths:
       description: |-
         Respond to a command
         Authorized clients: device
-        Authorized plans: standard, premium, enterprise
+        Authorized plans: starter, premium
       operationId: CommandResponseController.post
       requestBody:
         content:
@@ -913,7 +893,7 @@ paths:
       description: |-
         Create a command template
         Authorized clients: administrator
-        Authorized plans: standard, premium, enterprise
+        Authorized plans: starter, premium
       operationId: CommandTemplateController.post
       requestBody:
         content:
@@ -938,7 +918,7 @@ paths:
       description: |-
         Delete a command template
         Authorized clients: administrator
-        Authorized plans: standard, premium, enterprise
+        Authorized plans: starter, premium
       operationId: CommandTemplateController.delete
       parameters:
       - explode: false
@@ -962,7 +942,7 @@ paths:
       description: |-
         Get a command template
         Authorized clients: viewer
-        Authorized plans: standard, premium, enterprise
+        Authorized plans: starter, premium
       operationId: CommandTemplateController.getOne
       parameters:
       - explode: false
@@ -987,7 +967,7 @@ paths:
       description: |-
         Update a command template
         Authorized clients: administrator
-        Authorized plans: standard, premium, enterprise
+        Authorized plans: starter, premium
       operationId: CommandTemplateController.patch
       parameters:
       - explode: false
@@ -1020,7 +1000,7 @@ paths:
       description: |-
         List command templates
         Authorized clients: viewer
-        Authorized plans: standard, premium, enterprise
+        Authorized plans: starter, premium
       operationId: CommandTemplateController.list
       responses:
         "200":
@@ -1038,7 +1018,7 @@ paths:
       description: |-
         Create a comment
         Authorized clients: operator
-        Authorized plans: standard, premium, enterprise
+        Authorized plans: starter, premium
       operationId: CommentController.post
       requestBody:
         content:
@@ -1063,7 +1043,7 @@ paths:
       description: |-
         Delete a comment
         Authorized clients: operator
-        Authorized plans: standard, premium, enterprise
+        Authorized plans: starter, premium
       operationId: CommentController.delete
       parameters:
       - explode: false
@@ -1087,7 +1067,7 @@ paths:
       description: |-
         Get a comment
         Authorized clients: viewer
-        Authorized plans: standard, premium, enterprise
+        Authorized plans: starter, premium
       operationId: CommentController.getOne
       parameters:
       - explode: false
@@ -1112,7 +1092,7 @@ paths:
       description: |-
         Update a comment
         Authorized clients: operator
-        Authorized plans: standard, premium, enterprise
+        Authorized plans: starter, premium
       operationId: CommentController.patch
       parameters:
       - explode: false
@@ -1145,7 +1125,7 @@ paths:
       description: |-
         Create a custom event
         Authorized clients: device
-        Authorized plans: standard, premium, enterprise
+        Authorized plans: starter, premium
       operationId: CustomEventController.post
       requestBody:
         content:
@@ -1170,7 +1150,7 @@ paths:
       description: |-
         Create a device configuration template
         Authorized clients: administrator
-        Authorized plans: standard, premium, enterprise
+        Authorized plans: starter, premium
       operationId: DeviceConfigurationTemplateController.post
       requestBody:
         content:
@@ -1195,7 +1175,7 @@ paths:
       description: |-
         Delete a device configuration template
         Authorized clients: administrator
-        Authorized plans: standard, premium, enterprise
+        Authorized plans: starter, premium
       operationId: DeviceConfigurationTemplateController.delete
       parameters:
       - explode: false
@@ -1219,7 +1199,7 @@ paths:
       description: |-
         Get a device configuration template
         Authorized clients: administrator
-        Authorized plans: standard, premium, enterprise
+        Authorized plans: starter, premium
       operationId: DeviceConfigurationTemplateController.getOne
       parameters:
       - explode: false
@@ -1244,7 +1224,7 @@ paths:
       description: |-
         Update a device configuration template
         Authorized clients: administrator
-        Authorized plans: standard, premium, enterprise
+        Authorized plans: starter, premium
       operationId: DeviceConfigurationTemplateController.patch
       parameters:
       - explode: false
@@ -1277,7 +1257,7 @@ paths:
       description: |-
         List device configuration templates
         Authorized clients: administrator
-        Authorized plans: standard, premium, enterprise
+        Authorized plans: starter, premium
       operationId: DeviceConfigurationTemplateController.list
       responses:
         "200":
@@ -1295,7 +1275,7 @@ paths:
       description: |-
         Create a device
         Authorized clients: administrator
-        Authorized plans: freemium, standard, premium, enterprise
+        Authorized plans: freemium, starter, premium
       operationId: DeviceController.post
       requestBody:
         content:
@@ -1340,7 +1320,7 @@ paths:
       description: |-
         Query devices by name and/or tags
         Authorized clients: viewer
-        Authorized plans: freemium, standard, premium, enterprise
+        Authorized plans: freemium, starter, premium
       operationId: DeviceController.filter
       requestBody:
         content:
@@ -1365,7 +1345,7 @@ paths:
       description: |-
         Query devices by name and/or tags
         Authorized clients: viewer
-        Authorized plans: freemium, standard, premium, enterprise
+        Authorized plans: freemium, starter, premium
       operationId: DeviceController.query
       requestBody:
         content:
@@ -1390,7 +1370,7 @@ paths:
       description: |-
         Count devices
         Authorized clients: viewer
-        Authorized plans: freemium, standard, premium, enterprise
+        Authorized plans: freemium, starter, premium
       operationId: DeviceController.count
       requestBody:
         content:
@@ -1414,7 +1394,7 @@ paths:
       description: |-
         Get tags across all devices
         Authorized clients: viewer
-        Authorized plans: freemium, standard, premium, enterprise
+        Authorized plans: freemium, starter, premium
       operationId: DeviceController.getTags
       requestBody:
         content:
@@ -1439,7 +1419,7 @@ paths:
       description: |-
         Get a device
         Authorized clients: viewer, device
-        Authorized plans: freemium, standard, premium, enterprise
+        Authorized plans: freemium, starter, premium
       operationId: DeviceController.getOne
       parameters:
       - explode: false
@@ -1464,7 +1444,7 @@ paths:
       description: |-
         Update a device
         Authorized clients: administrator, device
-        Authorized plans: freemium, standard, premium, enterprise
+        Authorized plans: freemium, starter, premium
       operationId: DeviceController.patch
       parameters:
       - explode: false
@@ -1497,7 +1477,7 @@ paths:
       description: |-
         Disable a device
         Authorized clients: viewer
-        Authorized plans: freemium, standard, premium, enterprise
+        Authorized plans: freemium, starter, premium
       operationId: DeviceController.disable
       parameters:
       - explode: false
@@ -1522,7 +1502,7 @@ paths:
       description: |-
         Generate a device provisioning token
         Authorized clients: administrator
-        Authorized plans: freemium, standard, premium, enterprise
+        Authorized plans: freemium, starter, premium
       operationId: DeviceController.generateDeviceProvisioningToken
       parameters:
       - explode: false
@@ -1548,7 +1528,7 @@ paths:
       description: |-
         Unprovision a device
         Authorized clients: administrator
-        Authorized plans: freemium, standard, premium, enterprise
+        Authorized plans: freemium, starter, premium
       operationId: DeviceController.unprovisionDevice
       parameters:
       - explode: false
@@ -1573,7 +1553,7 @@ paths:
       description: |-
         Create a device configuration
         Authorized clients: administrator
-        Authorized plans: freemium, standard, premium, enterprise
+        Authorized plans: freemium, starter, premium
       operationId: DeviceController.postConfiguration
       parameters:
       - explode: false
@@ -1606,7 +1586,7 @@ paths:
       description: |-
         Validate a device stream configuration
         Authorized clients: administrator
-        Authorized plans: freemium, standard, premium, enterprise
+        Authorized plans: freemium, starter, premium
       operationId: DeviceController.validateStreamConfiguration
       requestBody:
         content:
@@ -1630,7 +1610,7 @@ paths:
       description: |-
         Get a device configuration
         Authorized clients: viewer
-        Authorized plans: freemium, standard, premium, enterprise
+        Authorized plans: freemium, starter, premium
       operationId: DeviceController.getConfiguration
       parameters:
       - explode: false
@@ -1663,7 +1643,7 @@ paths:
       description: |-
         Check for updated device configuration
         Authorized clients: device
-        Authorized plans: freemium, standard, premium, enterprise
+        Authorized plans: freemium, starter, premium
       operationId: DeviceController.getUpdatedConfiguration
       parameters:
       - explode: false
@@ -1706,7 +1686,7 @@ paths:
       description: |-
         Get GeoIP for device
         Authorized clients: device
-        Authorized plans: freemium, standard, premium, enterprise
+        Authorized plans: freemium, starter, premium
       operationId: DeviceController.getGeoIp
       parameters:
       - explode: false
@@ -1739,7 +1719,7 @@ paths:
       description: |-
         Check for agent version updates
         Authorized clients: device
-        Authorized plans: freemium, standard, premium, enterprise
+        Authorized plans: freemium, starter, premium
       operationId: DeviceController.getUpdatedAgentVersion
       parameters:
       - explode: false
@@ -1771,7 +1751,7 @@ paths:
     post:
       description: |-
         Authorized clients: viewer
-        Authorized plans: freemium, standard, premium, enterprise
+        Authorized plans: freemium, starter, premium
       operationId: DeviceDetailsController.getAll
       requestBody:
         content:
@@ -1795,7 +1775,7 @@ paths:
     get:
       description: |-
         Authorized clients: viewer
-        Authorized plans: freemium, standard, premium, enterprise
+        Authorized plans: freemium, starter, premium
       operationId: DeviceDetailsController.getOne
       parameters:
       - explode: false
@@ -1821,7 +1801,7 @@ paths:
       description: |-
         Get an event
         Authorized clients: viewer
-        Authorized plans: standard, premium, enterprise
+        Authorized plans: starter, premium
       operationId: EventController.getOne
       parameters:
       - explode: false
@@ -1847,7 +1827,7 @@ paths:
       description: |-
         Query events
         Authorized clients: viewer
-        Authorized plans: standard, premium, enterprise
+        Authorized plans: starter, premium
       operationId: EventController.query
       requestBody:
         content:
@@ -1872,7 +1852,7 @@ paths:
       description: |-
         Count events
         Authorized clients: viewer
-        Authorized plans: standard, premium, enterprise
+        Authorized plans: starter, premium
       operationId: EventController.count
       requestBody:
         content:
@@ -1896,7 +1876,7 @@ paths:
       description: |-
         Count events
         Authorized clients: viewer
-        Authorized plans: standard, premium, enterprise
+        Authorized plans: starter, premium
       operationId: EventController.counts
       requestBody:
         content:
@@ -1921,7 +1901,7 @@ paths:
       description: |-
         Distinct values of event types
         Authorized clients: viewer
-        Authorized plans: standard, premium, enterprise
+        Authorized plans: starter, premium
       operationId: EventController.eventTypes
       requestBody:
         content:
@@ -1946,7 +1926,7 @@ paths:
       description: |-
         Distinct values of event users
         Authorized clients: viewer
-        Authorized plans: standard, premium, enterprise
+        Authorized plans: starter, premium
       operationId: EventController.users
       requestBody:
         content:
@@ -1971,7 +1951,7 @@ paths:
       description: |-
         Distinct values of event annotation templates
         Authorized clients: viewer
-        Authorized plans: standard, premium, enterprise
+        Authorized plans: starter, premium
       operationId: EventController.annotationTemplates
       requestBody:
         content:
@@ -1996,7 +1976,7 @@ paths:
       description: |-
         Distinct values of event devices
         Authorized clients: viewer
-        Authorized plans: standard, premium, enterprise
+        Authorized plans: starter, premium
       operationId: EventController.devices
       requestBody:
         content:
@@ -2021,7 +2001,7 @@ paths:
       description: |-
         Distinct values of event stream types
         Authorized clients: viewer
-        Authorized plans: standard, premium, enterprise
+        Authorized plans: starter, premium
       operationId: EventController.streamTypes
       requestBody:
         content:
@@ -2046,7 +2026,7 @@ paths:
       description: |-
         Distinct values of event stream names
         Authorized clients: viewer
-        Authorized plans: standard, premium, enterprise
+        Authorized plans: starter, premium
       operationId: EventController.streamNames
       requestBody:
         content:
@@ -2071,7 +2051,7 @@ paths:
       description: |-
         Distinct values of event tags
         Authorized clients: viewer
-        Authorized plans: standard, premium, enterprise
+        Authorized plans: starter, premium
       operationId: EventController.tags
       requestBody:
         content:
@@ -2096,7 +2076,7 @@ paths:
       description: |-
         Distinct values of event severities
         Authorized clients: viewer
-        Authorized plans: standard, premium, enterprise
+        Authorized plans: starter, premium
       operationId: EventController.severities
       requestBody:
         content:
@@ -2121,7 +2101,7 @@ paths:
       description: |-
         Event histogram
         Authorized clients: viewer
-        Authorized plans: standard, premium, enterprise
+        Authorized plans: starter, premium
       operationId: EventController.histogram
       requestBody:
         content:
@@ -2146,7 +2126,7 @@ paths:
       description: |-
         Mark events as read
         Authorized clients: viewer
-        Authorized plans: standard, premium, enterprise
+        Authorized plans: starter, premium
       operationId: EventController.view
       requestBody:
         content:
@@ -2170,7 +2150,7 @@ paths:
       description: |-
         Export events as Google Sheet
         Authorized clients: viewer
-        Authorized plans: standard, premium, enterprise
+        Authorized plans: starter, premium
       operationId: EventController.exportSheet
       requestBody:
         content:
@@ -2195,7 +2175,7 @@ paths:
       description: |-
         Seek event
         Authorized clients: viewer
-        Authorized plans: standard, premium, enterprise
+        Authorized plans: starter, premium
       operationId: EventController.seek
       requestBody:
         content:
@@ -2219,7 +2199,7 @@ paths:
       description: |-
         List all event triggers
         Authorized clients: viewer, device
-        Authorized plans: standard, premium, enterprise
+        Authorized plans: starter, premium
       operationId: EventTriggerController.getAll
       responses:
         "200":
@@ -2236,7 +2216,7 @@ paths:
       description: |-
         Create event trigger
         Authorized clients: administrator
-        Authorized plans: standard, premium, enterprise
+        Authorized plans: starter, premium
       operationId: EventTriggerController.post
       requestBody:
         content:
@@ -2261,7 +2241,7 @@ paths:
       description: |-
         Get an event trigger
         Authorized clients: viewer, device
-        Authorized plans: standard, premium, enterprise
+        Authorized plans: starter, premium
       operationId: EventTriggerController.getOne
       parameters:
       - explode: false
@@ -2286,7 +2266,7 @@ paths:
       description: |-
         Update event trigger
         Authorized clients: administrator
-        Authorized plans: standard, premium, enterprise
+        Authorized plans: starter, premium
       operationId: EventTriggerController.patch
       parameters:
       - explode: false
@@ -2319,7 +2299,7 @@ paths:
       description: |-
         Get updated event trigger configuration
         Authorized clients: device
-        Authorized plans: standard, premium, enterprise
+        Authorized plans: starter, premium
       operationId: EventTriggerController.query
       requestBody:
         content:
@@ -2339,12 +2319,86 @@ paths:
       summary: Query
       tags:
       - Event Trigger
+  /files/begin-upload:
+    post:
+      description: |-
+        Initiate a file upload
+        Authorized clients: administrator
+        Authorized plans: starter, premium
+      operationId: FileController.beginUpload
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/BeginUploadRequest'
+        description: BeginUploadRequest
+        required: true
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BeginUploadResponse'
+      security:
+      - bearerAuth: []
+      summary: Begin upload
+      tags:
+      - File
+  /files/complete-upload:
+    post:
+      description: |-
+        Complete a file upload
+        Authorized clients: administrator
+        Authorized plans: starter, premium
+      operationId: FileController.completeUpload
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CompleteUploadRequest'
+        description: CompleteUploadRequest
+        required: true
+      responses:
+        "200":
+          content:
+            application/json: {}
+          description: Successful response
+      security:
+      - bearerAuth: []
+      summary: Complete upload
+      tags:
+      - File
+  /files/query:
+    post:
+      description: |-
+        Query files
+        Authorized clients: operator, device
+        Authorized plans: starter, premium
+      operationId: FileController.query
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/QueryFilesRequest'
+        description: QueryFilesRequest
+        required: true
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/QueryFilesResponse'
+      security:
+      - bearerAuth: []
+      summary: Query
+      tags:
+      - File
   /integrations/slack/auth:
     post:
       description: |-
         Create a Slack integration
         Authorized clients: administrator
-        Authorized plans: standard, premium, enterprise
+        Authorized plans: starter, premium
       operationId: IntegrationController.slack
       requestBody:
         content:
@@ -2369,7 +2423,7 @@ paths:
       description: |-
         Create a Google integration
         Authorized clients: administrator
-        Authorized plans: standard, premium, enterprise
+        Authorized plans: starter, premium
       operationId: IntegrationController.google
       requestBody:
         content:
@@ -2394,7 +2448,7 @@ paths:
       description: |-
         Get an intervention request
         Authorized clients: viewer, device
-        Authorized plans: standard, premium, enterprise
+        Authorized plans: starter, premium
       operationId: InterventionRequestController.getOne
       parameters:
       - explode: false
@@ -2420,7 +2474,7 @@ paths:
       description: |-
         Create an intervention request
         Authorized clients: device
-        Authorized plans: standard, premium, enterprise
+        Authorized plans: starter, premium
       operationId: InterventionRequestController.post
       requestBody:
         content:
@@ -2445,7 +2499,7 @@ paths:
       description: |-
         Create an intervention response
         Authorized clients: viewer
-        Authorized plans: standard, premium, enterprise
+        Authorized plans: starter, premium
       operationId: InterventionResponseController.post
       requestBody:
         content:
@@ -2470,7 +2524,7 @@ paths:
       description: |-
         Query for usage records
         Authorized clients: administrator
-        Authorized plans: freemium, standard, premium, enterprise
+        Authorized plans: freemium, starter, premium
       operationId: OrganizationController.queryUsageRecords
       parameters:
       - explode: false
@@ -2503,7 +2557,7 @@ paths:
       description: |-
         List shares
         Authorized clients: operator
-        Authorized plans: standard, premium, enterprise
+        Authorized plans: starter, premium
       operationId: ShareController.getAll
       responses:
         "200":
@@ -2520,7 +2574,7 @@ paths:
       description: |-
         Create a share token
         Authorized clients: operator
-        Authorized plans: standard, premium, enterprise
+        Authorized plans: starter, premium
       operationId: ShareController.post
       requestBody:
         content:
@@ -2545,7 +2599,7 @@ paths:
       description: |-
         Revoke a share
         Authorized clients: operator
-        Authorized plans: standard, premium, enterprise
+        Authorized plans: starter, premium
       operationId: ShareController.delete
       parameters:
       - explode: false
@@ -2610,7 +2664,7 @@ paths:
       description: |-
         Get an triggered event
         Authorized clients: viewer
-        Authorized plans: standard, premium, enterprise
+        Authorized plans: starter, premium
       operationId: TriggeredEventController.getOne
       parameters:
       - explode: false
@@ -2636,7 +2690,7 @@ paths:
       description: |-
         List all users
         Authorized clients: viewer
-        Authorized plans: freemium, standard, premium, enterprise
+        Authorized plans: freemium, starter, premium
       operationId: UserController.getAll
       responses:
         "200":
@@ -2653,7 +2707,7 @@ paths:
       description: |-
         Create a user
         Authorized clients: administrator
-        Authorized plans: freemium, standard, premium, enterprise
+        Authorized plans: freemium, starter, premium
       operationId: UserController.post
       requestBody:
         content:
@@ -2678,7 +2732,7 @@ paths:
       description: |-
         Get a user
         Authorized clients: viewer
-        Authorized plans: freemium, standard, premium, enterprise
+        Authorized plans: freemium, starter, premium
       operationId: UserController.getOne
       parameters:
       - explode: false
@@ -2703,7 +2757,7 @@ paths:
       description: |-
         Update a user
         Authorized clients: viewer
-        Authorized plans: freemium, standard, premium, enterprise
+        Authorized plans: freemium, starter, premium
       operationId: UserController.patch
       parameters:
       - explode: false
@@ -2736,7 +2790,7 @@ paths:
       description: |-
         List all device layouts
         Authorized clients: viewer
-        Authorized plans: standard, premium, enterprise
+        Authorized plans: starter, premium
       operationId: ViewController.getAll
       responses:
         "200":
@@ -2753,7 +2807,7 @@ paths:
       description: |-
         Create a device layout
         Authorized clients: administrator
-        Authorized plans: standard, premium, enterprise
+        Authorized plans: starter, premium
       operationId: ViewController.post
       requestBody:
         content:
@@ -2778,7 +2832,7 @@ paths:
       description: |-
         Delete a device layout
         Authorized clients: administrator
-        Authorized plans: standard, premium, enterprise
+        Authorized plans: starter, premium
       operationId: ViewController.delete
       parameters:
       - explode: false
@@ -2802,7 +2856,7 @@ paths:
       description: |-
         Get a device layout
         Authorized clients: viewer
-        Authorized plans: standard, premium, enterprise
+        Authorized plans: starter, premium
       operationId: ViewController.getOne
       parameters:
       - explode: false
@@ -2827,7 +2881,7 @@ paths:
       description: |-
         Update a device layout
         Authorized clients: administrator
-        Authorized plans: standard, premium, enterprise
+        Authorized plans: starter, premium
       operationId: ViewController.patch
       parameters:
       - explode: false
@@ -2955,6 +3009,25 @@ components:
             - onDemand
             - appConfig
             - blobStorage
+            - advanced-config
+            - analytics
+            - annotation
+            - capture
+            - custom-tos
+            - customer-portal
+            - data-export
+            - data-retention
+            - diagnostics
+            - observability
+            - mission
+            - s3-export
+            - share
+            - ssh
+            - spot
+            - support
+            - white-label
+            - file-storage
+            - adapters
             type: string
           type: array
           uniqueItems: true
@@ -3002,6 +3075,16 @@ components:
           items:
             type: string
           type: array
+      type: object
+    DeviceFollower:
+      example:
+        userId: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+      properties:
+        userId:
+          format: uuid
+          type: string
+      required:
+      - userId
       type: object
     CommandProgress:
       example:
@@ -3146,6 +3229,23 @@ components:
         timezone:
           type: string
       type: object
+    OnvifDevice:
+      example:
+        address: address
+        name: name
+        id: id
+      properties:
+        id:
+          type: string
+        name:
+          type: string
+        address:
+          type: string
+      required:
+      - address
+      - id
+      - name
+      type: object
     OsInfo:
       example:
         vendor: vendor
@@ -3221,6 +3321,22 @@ components:
           release: release
           version: version
           architecture: architecture
+        onvifDevices:
+        - address: address
+          name: name
+          id: id
+        - address: address
+          name: name
+          id: id
+        - address: address
+          name: name
+          id: id
+        - address: address
+          name: name
+          id: id
+        - address: address
+          name: name
+          id: id
         nodeInfo:
           hostname: hostname
           machineid: machineid
@@ -3247,6 +3363,12 @@ components:
           items:
             $ref: '#/components/schemas/AudioDevice'
           maxItems: 50
+          minItems: 0
+          type: array
+        onvifDevices:
+          items:
+            $ref: '#/components/schemas/OnvifDevice'
+          maxItems: 10
           minItems: 0
           type: array
       required:
@@ -6373,6 +6495,22 @@ components:
             release: release
             version: version
             architecture: architecture
+          onvifDevices:
+          - address: address
+            name: name
+            id: id
+          - address: address
+            name: name
+            id: id
+          - address: address
+            name: name
+            id: id
+          - address: address
+            name: name
+            id: id
+          - address: address
+            name: name
+            id: id
           nodeInfo:
             hostname: hostname
             machineid: machineid
@@ -6416,6 +6554,29 @@ components:
           deprecated: true
           nullable: true
           type: string
+      type: object
+    AdapterConfiguration:
+      example:
+        execCommand: execCommand
+        name: name
+        id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        fileId: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+      properties:
+        id:
+          format: uuid
+          type: string
+        name:
+          type: string
+        fileId:
+          format: uuid
+          type: string
+        execCommand:
+          type: string
+      required:
+      - execCommand
+      - fileId
+      - id
+      - name
       type: object
     DeviceApplicationConfiguration:
       example:
@@ -6566,6 +6727,19 @@ components:
           type: string
         audioHwDescriptor:
           type: string
+        hardwareType:
+          enum:
+          - ip
+          - usb
+          type: string
+        rtspEncodingNeeded:
+          type: boolean
+        isOnvif:
+          type: boolean
+        ipCamUsername:
+          type: string
+        ipCamPassword:
+          type: string
         quality:
           enum:
           - 1080p
@@ -6574,6 +6748,7 @@ components:
           - 360p
           type: string
       required:
+      - hardwareType
       - hwDescriptor
       - type
       type: object
@@ -6797,6 +6972,8 @@ components:
           - audio-chunk
           - pose
           - goal-id
+          - joint-state
+          - pose-with-covariance
           type: string
         mode:
           enum:
@@ -6838,9 +7015,14 @@ components:
     DeviceTeleopHardwareStreamConfiguration:
       example:
         mode: command
+        isOnvif: true
+        rtspEncodingNeeded: true
+        ipCamUsername: ipCamUsername
         name: name
+        hardwareType: ip
         hwDescriptor: hwDescriptor
         rtcStreamType: ping
+        ipCamPassword: ipCamPassword
         quality: 1080p
       properties:
         name:
@@ -6860,6 +7042,8 @@ components:
           - audio-chunk
           - pose
           - goal-id
+          - joint-state
+          - pose-with-covariance
           type: string
         mode:
           enum:
@@ -6867,6 +7051,19 @@ components:
           - observe
           type: string
         hwDescriptor:
+          type: string
+        hardwareType:
+          enum:
+          - ip
+          - usb
+          type: string
+        rtspEncodingNeeded:
+          type: boolean
+        isOnvif:
+          type: boolean
+        ipCamUsername:
+          type: string
+        ipCamPassword:
           type: string
         quality:
           enum:
@@ -6876,6 +7073,7 @@ components:
           - 360p
           type: string
       required:
+      - hardwareType
       - hwDescriptor
       - mode
       - name
@@ -6884,18 +7082,22 @@ components:
       type: object
     DeviceTeleopRosStreamConfiguration:
       example:
-        mode: command
-        min: 5.637376656633329
         max: 2.3021358869347655
         defaultValue: 7.061401241503109
+        numericControlVisualization: slider
+        audioCodec: raw
+        endEffectorLinkName: endEffectorLinkName
+        topicType: std_msgs/Float64
+        quality: 1080p
+        mode: command
+        min: 5.637376656633329
+        plannedTopic: plannedTopic
+        endEffectorTopic: endEffectorTopic
         topicName: topicName
         statusTopic: statusTopic
         step: 9.301444243932576
-        numericControlVisualization: slider
-        audioCodec: raw
         encodeVideo: true
-        topicType: std_msgs/Float64
-        quality: 1080p
+        planValidTopic: planValidTopic
       properties:
         topicName:
           pattern: ^([a-zA-Z~/])([0-9a-zA-Z_/]){0,254}$
@@ -6910,6 +7112,8 @@ components:
           - actionlib_msgs/GoalID
           - formant/H264VideoFrame
           - audio_common_msgs/AudioData
+          - sensor_msgs/JointState
+          - geometry_msgs/PoseWithCovarianceStamped
           type: string
         mode:
           enum:
@@ -6919,6 +7123,18 @@ components:
         encodeVideo:
           type: boolean
         statusTopic:
+          pattern: ^([a-zA-Z~/])([0-9a-zA-Z_/]){0,254}$
+          type: string
+        plannedTopic:
+          pattern: ^([a-zA-Z~/])([0-9a-zA-Z_/]){0,254}$
+          type: string
+        endEffectorTopic:
+          pattern: ^([a-zA-Z~/])([0-9a-zA-Z_/]){0,254}$
+          type: string
+        endEffectorLinkName:
+          maxLength: 1024
+          type: string
+        planValidTopic:
           pattern: ^([a-zA-Z~/])([0-9a-zA-Z_/]){0,254}$
           type: string
         audioCodec:
@@ -6991,91 +7207,136 @@ components:
       example:
         hardwareStreams:
         - mode: command
+          isOnvif: true
+          rtspEncodingNeeded: true
+          ipCamUsername: ipCamUsername
           name: name
+          hardwareType: ip
           hwDescriptor: hwDescriptor
           rtcStreamType: ping
+          ipCamPassword: ipCamPassword
           quality: 1080p
         - mode: command
+          isOnvif: true
+          rtspEncodingNeeded: true
+          ipCamUsername: ipCamUsername
           name: name
+          hardwareType: ip
           hwDescriptor: hwDescriptor
           rtcStreamType: ping
+          ipCamPassword: ipCamPassword
           quality: 1080p
         - mode: command
+          isOnvif: true
+          rtspEncodingNeeded: true
+          ipCamUsername: ipCamUsername
           name: name
+          hardwareType: ip
           hwDescriptor: hwDescriptor
           rtcStreamType: ping
+          ipCamPassword: ipCamPassword
           quality: 1080p
         - mode: command
+          isOnvif: true
+          rtspEncodingNeeded: true
+          ipCamUsername: ipCamUsername
           name: name
+          hardwareType: ip
           hwDescriptor: hwDescriptor
           rtcStreamType: ping
+          ipCamPassword: ipCamPassword
           quality: 1080p
         - mode: command
+          isOnvif: true
+          rtspEncodingNeeded: true
+          ipCamUsername: ipCamUsername
           name: name
+          hardwareType: ip
           hwDescriptor: hwDescriptor
           rtcStreamType: ping
+          ipCamPassword: ipCamPassword
           quality: 1080p
         rosStreams:
-        - mode: command
-          min: 5.637376656633329
-          max: 2.3021358869347655
+        - max: 2.3021358869347655
           defaultValue: 7.061401241503109
+          numericControlVisualization: slider
+          audioCodec: raw
+          endEffectorLinkName: endEffectorLinkName
+          topicType: std_msgs/Float64
+          quality: 1080p
+          mode: command
+          min: 5.637376656633329
+          plannedTopic: plannedTopic
+          endEffectorTopic: endEffectorTopic
           topicName: topicName
           statusTopic: statusTopic
           step: 9.301444243932576
+          encodeVideo: true
+          planValidTopic: planValidTopic
+        - max: 2.3021358869347655
+          defaultValue: 7.061401241503109
           numericControlVisualization: slider
           audioCodec: raw
-          encodeVideo: true
+          endEffectorLinkName: endEffectorLinkName
           topicType: std_msgs/Float64
           quality: 1080p
-        - mode: command
+          mode: command
           min: 5.637376656633329
-          max: 2.3021358869347655
-          defaultValue: 7.061401241503109
+          plannedTopic: plannedTopic
+          endEffectorTopic: endEffectorTopic
           topicName: topicName
           statusTopic: statusTopic
           step: 9.301444243932576
+          encodeVideo: true
+          planValidTopic: planValidTopic
+        - max: 2.3021358869347655
+          defaultValue: 7.061401241503109
           numericControlVisualization: slider
           audioCodec: raw
-          encodeVideo: true
+          endEffectorLinkName: endEffectorLinkName
           topicType: std_msgs/Float64
           quality: 1080p
-        - mode: command
+          mode: command
           min: 5.637376656633329
-          max: 2.3021358869347655
-          defaultValue: 7.061401241503109
+          plannedTopic: plannedTopic
+          endEffectorTopic: endEffectorTopic
           topicName: topicName
           statusTopic: statusTopic
           step: 9.301444243932576
+          encodeVideo: true
+          planValidTopic: planValidTopic
+        - max: 2.3021358869347655
+          defaultValue: 7.061401241503109
           numericControlVisualization: slider
           audioCodec: raw
-          encodeVideo: true
+          endEffectorLinkName: endEffectorLinkName
           topicType: std_msgs/Float64
           quality: 1080p
-        - mode: command
+          mode: command
           min: 5.637376656633329
-          max: 2.3021358869347655
-          defaultValue: 7.061401241503109
+          plannedTopic: plannedTopic
+          endEffectorTopic: endEffectorTopic
           topicName: topicName
           statusTopic: statusTopic
           step: 9.301444243932576
+          encodeVideo: true
+          planValidTopic: planValidTopic
+        - max: 2.3021358869347655
+          defaultValue: 7.061401241503109
           numericControlVisualization: slider
           audioCodec: raw
-          encodeVideo: true
+          endEffectorLinkName: endEffectorLinkName
           topicType: std_msgs/Float64
           quality: 1080p
-        - mode: command
+          mode: command
           min: 5.637376656633329
-          max: 2.3021358869347655
-          defaultValue: 7.061401241503109
+          plannedTopic: plannedTopic
+          endEffectorTopic: endEffectorTopic
           topicName: topicName
           statusTopic: statusTopic
           step: 9.301444243932576
-          numericControlVisualization: slider
-          audioCodec: raw
           encodeVideo: true
-          topicType: std_msgs/Float64
-          quality: 1080p
+          planValidTopic: planValidTopic
         customStreams:
         - mode: command
           min: 3.616076749251911
@@ -7180,6 +7441,27 @@ components:
           reportMetrics: true
           reportLogs: true
         terminalAccess: true
+        adapters:
+        - execCommand: execCommand
+          name: name
+          id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          fileId: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        - execCommand: execCommand
+          name: name
+          id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          fileId: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        - execCommand: execCommand
+          name: name
+          id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          fileId: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        - execCommand: execCommand
+          name: name
+          id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          fileId: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        - execCommand: execCommand
+          name: name
+          id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          fileId: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         application:
           configurationMap:
             key: configurationMap
@@ -7244,96 +7526,144 @@ components:
             quality: 1080p
           ros:
             worldReferenceFrameId: worldReferenceFrameId
+        urdfFiles:
+        - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         tags:
           key: tags
         teleop:
           hardwareStreams:
           - mode: command
+            isOnvif: true
+            rtspEncodingNeeded: true
+            ipCamUsername: ipCamUsername
             name: name
+            hardwareType: ip
             hwDescriptor: hwDescriptor
             rtcStreamType: ping
+            ipCamPassword: ipCamPassword
             quality: 1080p
           - mode: command
+            isOnvif: true
+            rtspEncodingNeeded: true
+            ipCamUsername: ipCamUsername
             name: name
+            hardwareType: ip
             hwDescriptor: hwDescriptor
             rtcStreamType: ping
+            ipCamPassword: ipCamPassword
             quality: 1080p
           - mode: command
+            isOnvif: true
+            rtspEncodingNeeded: true
+            ipCamUsername: ipCamUsername
             name: name
+            hardwareType: ip
             hwDescriptor: hwDescriptor
             rtcStreamType: ping
+            ipCamPassword: ipCamPassword
             quality: 1080p
           - mode: command
+            isOnvif: true
+            rtspEncodingNeeded: true
+            ipCamUsername: ipCamUsername
             name: name
+            hardwareType: ip
             hwDescriptor: hwDescriptor
             rtcStreamType: ping
+            ipCamPassword: ipCamPassword
             quality: 1080p
           - mode: command
+            isOnvif: true
+            rtspEncodingNeeded: true
+            ipCamUsername: ipCamUsername
             name: name
+            hardwareType: ip
             hwDescriptor: hwDescriptor
             rtcStreamType: ping
+            ipCamPassword: ipCamPassword
             quality: 1080p
           rosStreams:
-          - mode: command
-            min: 5.637376656633329
-            max: 2.3021358869347655
+          - max: 2.3021358869347655
             defaultValue: 7.061401241503109
+            numericControlVisualization: slider
+            audioCodec: raw
+            endEffectorLinkName: endEffectorLinkName
+            topicType: std_msgs/Float64
+            quality: 1080p
+            mode: command
+            min: 5.637376656633329
+            plannedTopic: plannedTopic
+            endEffectorTopic: endEffectorTopic
             topicName: topicName
             statusTopic: statusTopic
             step: 9.301444243932576
+            encodeVideo: true
+            planValidTopic: planValidTopic
+          - max: 2.3021358869347655
+            defaultValue: 7.061401241503109
             numericControlVisualization: slider
             audioCodec: raw
-            encodeVideo: true
+            endEffectorLinkName: endEffectorLinkName
             topicType: std_msgs/Float64
             quality: 1080p
-          - mode: command
+            mode: command
             min: 5.637376656633329
-            max: 2.3021358869347655
-            defaultValue: 7.061401241503109
+            plannedTopic: plannedTopic
+            endEffectorTopic: endEffectorTopic
             topicName: topicName
             statusTopic: statusTopic
             step: 9.301444243932576
+            encodeVideo: true
+            planValidTopic: planValidTopic
+          - max: 2.3021358869347655
+            defaultValue: 7.061401241503109
             numericControlVisualization: slider
             audioCodec: raw
-            encodeVideo: true
+            endEffectorLinkName: endEffectorLinkName
             topicType: std_msgs/Float64
             quality: 1080p
-          - mode: command
+            mode: command
             min: 5.637376656633329
-            max: 2.3021358869347655
-            defaultValue: 7.061401241503109
+            plannedTopic: plannedTopic
+            endEffectorTopic: endEffectorTopic
             topicName: topicName
             statusTopic: statusTopic
             step: 9.301444243932576
+            encodeVideo: true
+            planValidTopic: planValidTopic
+          - max: 2.3021358869347655
+            defaultValue: 7.061401241503109
             numericControlVisualization: slider
             audioCodec: raw
-            encodeVideo: true
+            endEffectorLinkName: endEffectorLinkName
             topicType: std_msgs/Float64
             quality: 1080p
-          - mode: command
+            mode: command
             min: 5.637376656633329
-            max: 2.3021358869347655
-            defaultValue: 7.061401241503109
+            plannedTopic: plannedTopic
+            endEffectorTopic: endEffectorTopic
             topicName: topicName
             statusTopic: statusTopic
             step: 9.301444243932576
+            encodeVideo: true
+            planValidTopic: planValidTopic
+          - max: 2.3021358869347655
+            defaultValue: 7.061401241503109
             numericControlVisualization: slider
             audioCodec: raw
-            encodeVideo: true
+            endEffectorLinkName: endEffectorLinkName
             topicType: std_msgs/Float64
             quality: 1080p
-          - mode: command
+            mode: command
             min: 5.637376656633329
-            max: 2.3021358869347655
-            defaultValue: 7.061401241503109
+            plannedTopic: plannedTopic
+            endEffectorTopic: endEffectorTopic
             topicName: topicName
             statusTopic: statusTopic
             step: 9.301444243932576
-            numericControlVisualization: slider
-            audioCodec: raw
             encodeVideo: true
-            topicType: std_msgs/Float64
-            quality: 1080p
+            planValidTopic: planValidTopic
           customStreams:
           - mode: command
             min: 3.616076749251911
@@ -7429,6 +7759,16 @@ components:
           $ref: '#/components/schemas/DevicePortForwardingConfiguration'
         diagnostics:
           $ref: '#/components/schemas/DeviceDiagnosticsConfiguration'
+        urdfFiles:
+          items:
+            format: uuid
+            type: string
+          type: array
+        adapters:
+          items:
+            $ref: '#/components/schemas/AdapterConfiguration'
+          maxItems: 10
+          type: array
       type: object
     DeviceConfiguration:
       example:
@@ -7440,6 +7780,27 @@ components:
             reportMetrics: true
             reportLogs: true
           terminalAccess: true
+          adapters:
+          - execCommand: execCommand
+            name: name
+            id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+            fileId: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          - execCommand: execCommand
+            name: name
+            id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+            fileId: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          - execCommand: execCommand
+            name: name
+            id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+            fileId: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          - execCommand: execCommand
+            name: name
+            id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+            fileId: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          - execCommand: execCommand
+            name: name
+            id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+            fileId: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           application:
             configurationMap:
               key: configurationMap
@@ -7504,96 +7865,144 @@ components:
               quality: 1080p
             ros:
               worldReferenceFrameId: worldReferenceFrameId
+          urdfFiles:
+          - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           tags:
             key: tags
           teleop:
             hardwareStreams:
             - mode: command
+              isOnvif: true
+              rtspEncodingNeeded: true
+              ipCamUsername: ipCamUsername
               name: name
+              hardwareType: ip
               hwDescriptor: hwDescriptor
               rtcStreamType: ping
+              ipCamPassword: ipCamPassword
               quality: 1080p
             - mode: command
+              isOnvif: true
+              rtspEncodingNeeded: true
+              ipCamUsername: ipCamUsername
               name: name
+              hardwareType: ip
               hwDescriptor: hwDescriptor
               rtcStreamType: ping
+              ipCamPassword: ipCamPassword
               quality: 1080p
             - mode: command
+              isOnvif: true
+              rtspEncodingNeeded: true
+              ipCamUsername: ipCamUsername
               name: name
+              hardwareType: ip
               hwDescriptor: hwDescriptor
               rtcStreamType: ping
+              ipCamPassword: ipCamPassword
               quality: 1080p
             - mode: command
+              isOnvif: true
+              rtspEncodingNeeded: true
+              ipCamUsername: ipCamUsername
               name: name
+              hardwareType: ip
               hwDescriptor: hwDescriptor
               rtcStreamType: ping
+              ipCamPassword: ipCamPassword
               quality: 1080p
             - mode: command
+              isOnvif: true
+              rtspEncodingNeeded: true
+              ipCamUsername: ipCamUsername
               name: name
+              hardwareType: ip
               hwDescriptor: hwDescriptor
               rtcStreamType: ping
+              ipCamPassword: ipCamPassword
               quality: 1080p
             rosStreams:
-            - mode: command
-              min: 5.637376656633329
-              max: 2.3021358869347655
+            - max: 2.3021358869347655
               defaultValue: 7.061401241503109
+              numericControlVisualization: slider
+              audioCodec: raw
+              endEffectorLinkName: endEffectorLinkName
+              topicType: std_msgs/Float64
+              quality: 1080p
+              mode: command
+              min: 5.637376656633329
+              plannedTopic: plannedTopic
+              endEffectorTopic: endEffectorTopic
               topicName: topicName
               statusTopic: statusTopic
               step: 9.301444243932576
+              encodeVideo: true
+              planValidTopic: planValidTopic
+            - max: 2.3021358869347655
+              defaultValue: 7.061401241503109
               numericControlVisualization: slider
               audioCodec: raw
-              encodeVideo: true
+              endEffectorLinkName: endEffectorLinkName
               topicType: std_msgs/Float64
               quality: 1080p
-            - mode: command
+              mode: command
               min: 5.637376656633329
-              max: 2.3021358869347655
-              defaultValue: 7.061401241503109
+              plannedTopic: plannedTopic
+              endEffectorTopic: endEffectorTopic
               topicName: topicName
               statusTopic: statusTopic
               step: 9.301444243932576
+              encodeVideo: true
+              planValidTopic: planValidTopic
+            - max: 2.3021358869347655
+              defaultValue: 7.061401241503109
               numericControlVisualization: slider
               audioCodec: raw
-              encodeVideo: true
+              endEffectorLinkName: endEffectorLinkName
               topicType: std_msgs/Float64
               quality: 1080p
-            - mode: command
+              mode: command
               min: 5.637376656633329
-              max: 2.3021358869347655
-              defaultValue: 7.061401241503109
+              plannedTopic: plannedTopic
+              endEffectorTopic: endEffectorTopic
               topicName: topicName
               statusTopic: statusTopic
               step: 9.301444243932576
+              encodeVideo: true
+              planValidTopic: planValidTopic
+            - max: 2.3021358869347655
+              defaultValue: 7.061401241503109
               numericControlVisualization: slider
               audioCodec: raw
-              encodeVideo: true
+              endEffectorLinkName: endEffectorLinkName
               topicType: std_msgs/Float64
               quality: 1080p
-            - mode: command
+              mode: command
               min: 5.637376656633329
-              max: 2.3021358869347655
-              defaultValue: 7.061401241503109
+              plannedTopic: plannedTopic
+              endEffectorTopic: endEffectorTopic
               topicName: topicName
               statusTopic: statusTopic
               step: 9.301444243932576
+              encodeVideo: true
+              planValidTopic: planValidTopic
+            - max: 2.3021358869347655
+              defaultValue: 7.061401241503109
               numericControlVisualization: slider
               audioCodec: raw
-              encodeVideo: true
+              endEffectorLinkName: endEffectorLinkName
               topicType: std_msgs/Float64
               quality: 1080p
-            - mode: command
+              mode: command
               min: 5.637376656633329
-              max: 2.3021358869347655
-              defaultValue: 7.061401241503109
+              plannedTopic: plannedTopic
+              endEffectorTopic: endEffectorTopic
               topicName: topicName
               statusTopic: statusTopic
               step: 9.301444243932576
-              numericControlVisualization: slider
-              audioCodec: raw
               encodeVideo: true
-              topicType: std_msgs/Float64
-              quality: 1080p
+              planValidTopic: planValidTopic
             customStreams:
             - mode: command
               min: 3.616076749251911
@@ -7707,9 +8116,97 @@ components:
         roleName: {}
         s3Export:
           $ref: '#/components/schemas/S3Export'
+        outputFormat:
+          enum:
+          - jsonl
+          - parquet
+          type: string
       required:
       - accountId
       - roleName
+      type: object
+    UsagePrices:
+      properties:
+        dataPoints:
+          minimum: 0
+          type: number
+        assets:
+          minimum: 0
+          type: number
+        bytes:
+          minimum: 0
+          type: number
+        devices:
+          minimum: 0
+          type: number
+        rtcTurn:
+          minimum: 0
+          type: number
+        advancedConfiguration:
+          minimum: 0
+          type: number
+        analytics:
+          minimum: 0
+          type: number
+        customerPortal:
+          minimum: 0
+          type: number
+        dataExport:
+          minimum: 0
+          type: number
+        dataRetention:
+          minimum: 0
+          type: number
+        support:
+          minimum: 0
+          type: number
+        teleop:
+          minimum: 0
+          type: number
+        observability:
+          minimum: 0
+          type: number
+        share:
+          minimum: 0
+          type: number
+        mission:
+          minimum: 0
+          type: number
+        diagnostics:
+          minimum: 0
+          type: number
+        ssh:
+          minimum: 0
+          type: number
+        spot:
+          minimum: 0
+          type: number
+      required:
+      - advancedConfiguration
+      - analytics
+      - assets
+      - bytes
+      - customerPortal
+      - dataExport
+      - dataPoints
+      - dataRetention
+      - devices
+      - diagnostics
+      - mission
+      - observability
+      - rtcTurn
+      - share
+      - spot
+      - ssh
+      - support
+      - teleop
+      type: object
+    BillingInfo:
+      properties:
+        usagePrices:
+          $ref: '#/components/schemas/UsagePrices'
+      required:
+      - usagePrices
       type: object
     GoogleInfo:
       example:
@@ -7732,6 +8229,32 @@ components:
       - expirationDate
       - refreshToken
       - scope
+      type: object
+    GoogleStorageExport:
+      properties:
+        bucket:
+          maxLength: 63
+          minLength: 3
+          type: string
+        path:
+          maxLength: 63
+          type: string
+      required:
+      - bucket
+      type: object
+    GoogleStorageInfo:
+      properties:
+        credentialsJsonKey:
+          type: string
+        googleStorageExport:
+          $ref: '#/components/schemas/GoogleStorageExport'
+        outputFormat:
+          enum:
+          - jsonl
+          - parquet
+          type: string
+      required:
+      - credentialsJsonKey
       type: object
     LookerInfo:
       properties:
@@ -7767,6 +8290,19 @@ components:
       - account
       - serviceKey
       - serviceName
+      type: object
+    RtcInfo:
+      properties:
+        rtcIceTransportPolicy:
+          enum:
+          - all
+          - relay
+          type: string
+        rtcIceServerProtocol:
+          enum:
+          - udp
+          - tcp
+          type: string
       type: object
     SlackInfo:
       example:
@@ -7810,11 +8346,6 @@ components:
         card:
           $ref: '#/components/schemas/StripeCard'
         billingAnchor: {}
-        billingPeriod:
-          enum:
-          - day
-          - month
-          type: string
       required:
       - customerId
       type: object
@@ -8247,6 +8778,38 @@ components:
       required:
       - commandTemplateId
       type: object
+    ForwardingConfiguration:
+      example:
+        webhooks:
+        - webhooks
+        - webhooks
+        slack: true
+        smsFollowers:
+        - customer
+        - customer
+        pagerduty: true
+      nullable: true
+      properties:
+        pagerduty:
+          type: boolean
+        slack:
+          type: boolean
+        webhooks:
+          items:
+            type: string
+          type: array
+          uniqueItems: true
+        smsFollowers:
+          items:
+            enum:
+            - customer
+            - viewer
+            - operator
+            - administrator
+            type: string
+          type: array
+          uniqueItems: true
+      type: object
     TriggeredConfiguration:
       example:
         configurationTemplateId: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
@@ -8280,6 +8843,15 @@ components:
         createdAt: 2000-01-23T04:56:07.000+00:00
         condition: ""
         stream: stream
+        forwardingConfiguration:
+          webhooks:
+          - webhooks
+          - webhooks
+          slack: true
+          smsFollowers:
+          - customer
+          - customer
+          pagerduty: true
         interval: 721321908038799
         id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         commands:
@@ -8332,13 +8904,15 @@ components:
           additionalProperties:
             type: string
           type: object
-        notificationEnabled:
-          type: boolean
         commands:
           items:
             $ref: '#/components/schemas/EventTriggerCommand'
           maxItems: 10
           type: array
+        notificationEnabled:
+          type: boolean
+        forwardingConfiguration:
+          $ref: '#/components/schemas/ForwardingConfiguration'
         id:
           format: uuid
           type: string
@@ -8351,6 +8925,7 @@ components:
       required:
       - commands
       - condition
+      - forwardingConfiguration
       - interval
       - message
       - notificationEnabled
@@ -8362,7 +8937,7 @@ components:
     User:
       example:
         lastName: lastName
-        role: viewer
+        role: customer
         enabled: true
         passwordHash: passwordHash
         tags:
@@ -8370,6 +8945,7 @@ components:
         organizationId: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         firstName: firstName
         createdAt: 2000-01-23T04:56:07.000+00:00
+        phoneNumber: phoneNumber
         termsAccepted: termsAccepted
         isOrganizationOwner: true
         lastLoggedIn: 2000-01-23T04:56:07.000+00:00
@@ -8392,6 +8968,7 @@ components:
           type: string
         role:
           enum:
+          - customer
           - viewer
           - operator
           - administrator
@@ -8400,6 +8977,10 @@ components:
           additionalProperties:
             type: string
           type: object
+        phoneNumber:
+          nullable: true
+          pattern: ^\+[1-9]\d{1,14}$
+          type: string
         enabled:
           type: boolean
         isOrganizationOwner:
@@ -8435,10 +9016,8 @@ components:
         plan:
           enum:
           - freemium
-          - standard
+          - starter
           - premium
-          - enterprise-default
-          - enterprise
           type: string
         name:
           type: string
@@ -8471,31 +9050,57 @@ components:
           $ref: '#/components/schemas/WebhooksInfo'
         awsInfo:
           $ref: '#/components/schemas/AwsInfo'
+        googleStorageInfo:
+          $ref: '#/components/schemas/GoogleStorageInfo'
         lookerInfo:
           $ref: '#/components/schemas/LookerInfo'
         stripeInfo:
           $ref: '#/components/schemas/StripeInfo'
+        rtcInfo:
+          $ref: '#/components/schemas/RtcInfo'
         teleopConfiguration:
           $ref: '#/components/schemas/UserTeleopConfiguration'
-        teleopEnabled:
-          type: boolean
         analyticsEnabled:
-          type: boolean
+          format: date-time
+          nullable: true
+          type: string
         dataExportEnabled:
-          type: boolean
+          format: date-time
+          nullable: true
+          type: string
         advancedConfigurationEnabled:
-          type: boolean
+          format: date-time
+          nullable: true
+          type: string
         customerPortalEnabled:
-          type: boolean
+          format: date-time
+          nullable: true
+          type: string
         stripeBillingEnabled:
           type: boolean
         stripeSubscriptionEnabled:
           type: boolean
+        billingInfo:
+          $ref: '#/components/schemas/BillingInfo'
+        addonBillingPeriod:
+          enum:
+          - day
+          - month
+          - year
+          type: string
+        invoiceBillingPeriod:
+          enum:
+          - day
+          - month
+          - year
+          type: string
         s3ExportEnabled:
           type: boolean
         blobDataEnabled:
           type: boolean
         whiteLabelEnabled:
+          type: boolean
+        adaptersEnabled:
           type: boolean
         whiteLabelCSS:
           nullable: true
@@ -8504,11 +9109,24 @@ components:
           type: boolean
         billEstimateEnabled:
           type: boolean
+        dataRetentionEnabled:
+          format: date-time
+          nullable: true
+          type: string
         daysDataRetained:
           format: int64
           maximum: 36500
           minimum: 0
           type: integer
+        supportEnabled:
+          format: date-time
+          nullable: true
+          type: string
+        supportTier:
+          enum:
+          - standard
+          - enterprise
+          type: string
         trialPeriodEnd:
           format: date-time
           nullable: true
@@ -8516,6 +9134,38 @@ components:
         externalId:
           format: uuid
           type: string
+        customTos:
+          type: boolean
+        teleopEnabled:
+          format: date-time
+          nullable: true
+          type: string
+        observabilityEnabled:
+          format: date-time
+          nullable: true
+          type: string
+        shareEnabled:
+          format: date-time
+          nullable: true
+          type: string
+        missionEnabled:
+          format: date-time
+          nullable: true
+          type: string
+        diagnosticsEnabled:
+          format: date-time
+          nullable: true
+          type: string
+        sshEnabled:
+          format: date-time
+          nullable: true
+          type: string
+        spotEnabled:
+          format: date-time
+          nullable: true
+          type: string
+        fileStorageEnabled:
+          type: boolean
         id:
           format: uuid
           type: string
@@ -8526,11 +9176,13 @@ components:
           format: date-time
           type: string
       required:
+      - addonBillingPeriod
       - addressLine1
       - addressLine2
       - city
       - country
       - industry
+      - invoiceBillingPeriod
       - name
       - plan
       - postalCode
@@ -8549,6 +9201,27 @@ components:
             reportMetrics: true
             reportLogs: true
           terminalAccess: true
+          adapters:
+          - execCommand: execCommand
+            name: name
+            id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+            fileId: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          - execCommand: execCommand
+            name: name
+            id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+            fileId: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          - execCommand: execCommand
+            name: name
+            id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+            fileId: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          - execCommand: execCommand
+            name: name
+            id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+            fileId: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          - execCommand: execCommand
+            name: name
+            id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+            fileId: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           application:
             configurationMap:
               key: configurationMap
@@ -8613,96 +9286,144 @@ components:
               quality: 1080p
             ros:
               worldReferenceFrameId: worldReferenceFrameId
+          urdfFiles:
+          - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           tags:
             key: tags
           teleop:
             hardwareStreams:
             - mode: command
+              isOnvif: true
+              rtspEncodingNeeded: true
+              ipCamUsername: ipCamUsername
               name: name
+              hardwareType: ip
               hwDescriptor: hwDescriptor
               rtcStreamType: ping
+              ipCamPassword: ipCamPassword
               quality: 1080p
             - mode: command
+              isOnvif: true
+              rtspEncodingNeeded: true
+              ipCamUsername: ipCamUsername
               name: name
+              hardwareType: ip
               hwDescriptor: hwDescriptor
               rtcStreamType: ping
+              ipCamPassword: ipCamPassword
               quality: 1080p
             - mode: command
+              isOnvif: true
+              rtspEncodingNeeded: true
+              ipCamUsername: ipCamUsername
               name: name
+              hardwareType: ip
               hwDescriptor: hwDescriptor
               rtcStreamType: ping
+              ipCamPassword: ipCamPassword
               quality: 1080p
             - mode: command
+              isOnvif: true
+              rtspEncodingNeeded: true
+              ipCamUsername: ipCamUsername
               name: name
+              hardwareType: ip
               hwDescriptor: hwDescriptor
               rtcStreamType: ping
+              ipCamPassword: ipCamPassword
               quality: 1080p
             - mode: command
+              isOnvif: true
+              rtspEncodingNeeded: true
+              ipCamUsername: ipCamUsername
               name: name
+              hardwareType: ip
               hwDescriptor: hwDescriptor
               rtcStreamType: ping
+              ipCamPassword: ipCamPassword
               quality: 1080p
             rosStreams:
-            - mode: command
-              min: 5.637376656633329
-              max: 2.3021358869347655
+            - max: 2.3021358869347655
               defaultValue: 7.061401241503109
+              numericControlVisualization: slider
+              audioCodec: raw
+              endEffectorLinkName: endEffectorLinkName
+              topicType: std_msgs/Float64
+              quality: 1080p
+              mode: command
+              min: 5.637376656633329
+              plannedTopic: plannedTopic
+              endEffectorTopic: endEffectorTopic
               topicName: topicName
               statusTopic: statusTopic
               step: 9.301444243932576
+              encodeVideo: true
+              planValidTopic: planValidTopic
+            - max: 2.3021358869347655
+              defaultValue: 7.061401241503109
               numericControlVisualization: slider
               audioCodec: raw
-              encodeVideo: true
+              endEffectorLinkName: endEffectorLinkName
               topicType: std_msgs/Float64
               quality: 1080p
-            - mode: command
+              mode: command
               min: 5.637376656633329
-              max: 2.3021358869347655
-              defaultValue: 7.061401241503109
+              plannedTopic: plannedTopic
+              endEffectorTopic: endEffectorTopic
               topicName: topicName
               statusTopic: statusTopic
               step: 9.301444243932576
+              encodeVideo: true
+              planValidTopic: planValidTopic
+            - max: 2.3021358869347655
+              defaultValue: 7.061401241503109
               numericControlVisualization: slider
               audioCodec: raw
-              encodeVideo: true
+              endEffectorLinkName: endEffectorLinkName
               topicType: std_msgs/Float64
               quality: 1080p
-            - mode: command
+              mode: command
               min: 5.637376656633329
-              max: 2.3021358869347655
-              defaultValue: 7.061401241503109
+              plannedTopic: plannedTopic
+              endEffectorTopic: endEffectorTopic
               topicName: topicName
               statusTopic: statusTopic
               step: 9.301444243932576
+              encodeVideo: true
+              planValidTopic: planValidTopic
+            - max: 2.3021358869347655
+              defaultValue: 7.061401241503109
               numericControlVisualization: slider
               audioCodec: raw
-              encodeVideo: true
+              endEffectorLinkName: endEffectorLinkName
               topicType: std_msgs/Float64
               quality: 1080p
-            - mode: command
+              mode: command
               min: 5.637376656633329
-              max: 2.3021358869347655
-              defaultValue: 7.061401241503109
+              plannedTopic: plannedTopic
+              endEffectorTopic: endEffectorTopic
               topicName: topicName
               statusTopic: statusTopic
               step: 9.301444243932576
+              encodeVideo: true
+              planValidTopic: planValidTopic
+            - max: 2.3021358869347655
+              defaultValue: 7.061401241503109
               numericControlVisualization: slider
               audioCodec: raw
-              encodeVideo: true
+              endEffectorLinkName: endEffectorLinkName
               topicType: std_msgs/Float64
               quality: 1080p
-            - mode: command
+              mode: command
               min: 5.637376656633329
-              max: 2.3021358869347655
-              defaultValue: 7.061401241503109
+              plannedTopic: plannedTopic
+              endEffectorTopic: endEffectorTopic
               topicName: topicName
               statusTopic: statusTopic
               step: 9.301444243932576
-              numericControlVisualization: slider
-              audioCodec: raw
               encodeVideo: true
-              topicType: std_msgs/Float64
-              quality: 1080p
+              planValidTopic: planValidTopic
             customStreams:
             - mode: command
               min: 3.616076749251911
@@ -8822,6 +9543,13 @@ components:
         desiredConfigurationVersion: 721321908029600
         createdAt: 2000-01-23T04:56:07.000+00:00
         temporaryConfigurationVersion: 5429049884013572
+        followers:
+        - userId: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        - userId: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        - userId: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        - userId: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        - userId: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        phoneNumber: phoneNumber
         desiredAgentVersion: desiredAgentVersion
         temporaryConfigurationTemplateId: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         scope:
@@ -10035,6 +10763,22 @@ components:
               release: release
               version: version
               architecture: architecture
+            onvifDevices:
+            - address: address
+              name: name
+              id: id
+            - address: address
+              name: name
+              id: id
+            - address: address
+              name: name
+              id: id
+            - address: address
+              name: name
+              id: id
+            - address: address
+              name: name
+              id: id
             nodeInfo:
               hostname: hostname
               machineid: machineid
@@ -10094,6 +10838,15 @@ components:
         temporaryConfigurationTemplateId:
           format: uuid
           nullable: true
+          type: string
+        followers:
+          items:
+            $ref: '#/components/schemas/DeviceFollower'
+          maxItems: 10
+          type: array
+        phoneNumber:
+          nullable: true
+          pattern: ^\+[1-9]\d{1,14}$
           type: string
         state:
           $ref: '#/components/schemas/DeviceState'
@@ -10429,6 +11182,32 @@ components:
       - interventionId
       - interventionType
       type: object
+    Adapter:
+      properties:
+        organizationId:
+          format: uuid
+          type: string
+        name:
+          type: string
+        fileId:
+          format: uuid
+          type: string
+        execCommand:
+          type: string
+        id:
+          format: uuid
+          type: string
+        createdAt:
+          format: date-time
+          type: string
+        updatedAt:
+          format: date-time
+          type: string
+      required:
+      - execCommand
+      - fileId
+      - name
+      type: object
     SheetParameters:
       properties:
         url:
@@ -10457,6 +11236,7 @@ components:
         roles:
           items:
             enum:
+            - customer
             - viewer
             - operator
             - administrator
@@ -10769,10 +11549,45 @@ components:
       - streamName
       - tags
       type: object
+    FileInfo:
+      example:
+        name: name
+        id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        url: http://example.com/aeiou
+      properties:
+        id:
+          format: uuid
+          type: string
+        name:
+          maxLength: 256
+          minLength: 1
+          type: string
+        url:
+          format: url
+          type: string
+      required:
+      - id
+      type: object
     CommandParameter:
       example:
         meta:
           key: meta
+        files:
+        - name: name
+          id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          url: http://example.com/aeiou
+        - name: name
+          id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          url: http://example.com/aeiou
+        - name: name
+          id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          url: http://example.com/aeiou
+        - name: name
+          id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          url: http://example.com/aeiou
+        - name: name
+          id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          url: http://example.com/aeiou
         scrubberTime: 2000-01-23T04:56:07.000+00:00
         value: value
       properties:
@@ -10786,6 +11601,12 @@ components:
         scrubberTime:
           format: date-time
           type: string
+        files:
+          items:
+            $ref: '#/components/schemas/FileInfo'
+          maxItems: 5
+          minItems: 1
+          type: array
       required:
       - scrubberTime
       type: object
@@ -10867,6 +11688,22 @@ components:
         parameter:
           meta:
             key: meta
+          files:
+          - name: name
+            id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+            url: http://example.com/aeiou
+          - name: name
+            id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+            url: http://example.com/aeiou
+          - name: name
+            id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+            url: http://example.com/aeiou
+          - name: name
+            id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+            url: http://example.com/aeiou
+          - name: name
+            id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+            url: http://example.com/aeiou
           scrubberTime: 2000-01-23T04:56:07.000+00:00
           value: value
         id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
@@ -11475,6 +12312,12 @@ components:
           - asset-count
           - data-storage
           - turn-network
+          - advanced-configuration
+          - analytics
+          - customer-portal
+          - data-export
+          - data-retention
+          - support
           type: string
         time:
           format: date-time
@@ -11498,6 +12341,18 @@ components:
       type: object
     View:
       example:
+        showOnMultiDevice: true
+        configuration:
+        - configuration: ""
+          type: bitset
+          streamName: streamName
+        - configuration: ""
+          type: bitset
+          streamName: streamName
+        index: 721321908029599
+        url: url
+        tags:
+          key: tags
         organizationId: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         filter:
           agentIds:
@@ -11518,20 +12373,10 @@ components:
           tags: ""
         layout: ""
         createdAt: 2000-01-23T04:56:07.000+00:00
-        configuration:
-        - configuration: ""
-          type: bitset
-          streamName: streamName
-        - configuration: ""
-          type: bitset
-          streamName: streamName
         isUrlAuthorized: true
         name: name
-        index: 721321908029599
         id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-        url: url
-        tags:
-          key: tags
+        showOnSingleDevice: true
         updatedAt: 2000-01-23T04:56:07.000+00:00
       properties:
         organizationId:
@@ -11542,8 +12387,13 @@ components:
           type: string
         url:
           maxLength: 2000
+          nullable: true
           type: string
         isUrlAuthorized:
+          type: boolean
+        showOnSingleDevice:
+          type: boolean
+        showOnMultiDevice:
           type: boolean
         tags:
           additionalProperties:
@@ -11951,10 +12801,16 @@ components:
       type: object
     RefreshRequest:
       example:
+        tokenExpirationSeconds: 48489
         refreshToken: refreshToken
       properties:
         refreshToken:
           type: string
+        tokenExpirationSeconds:
+          format: int64
+          maximum: 604800
+          minimum: 60
+          type: integer
       required:
       - refreshToken
       type: object
@@ -12015,7 +12871,7 @@ components:
       type: object
     CreateServiceAccountRequest:
       example:
-        role: viewer
+        role: customer
         name: name
       properties:
         name:
@@ -12024,6 +12880,7 @@ components:
           type: string
         role:
           enum:
+          - customer
           - viewer
           - operator
           - administrator
@@ -12037,7 +12894,7 @@ components:
         password: password
         user:
           lastName: lastName
-          role: viewer
+          role: customer
           enabled: true
           passwordHash: passwordHash
           tags:
@@ -12045,6 +12902,7 @@ components:
           organizationId: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           firstName: firstName
           createdAt: 2000-01-23T04:56:07.000+00:00
+          phoneNumber: phoneNumber
           termsAccepted: termsAccepted
           isOrganizationOwner: true
           lastLoggedIn: 2000-01-23T04:56:07.000+00:00
@@ -12104,7 +12962,7 @@ components:
     LoginRequest:
       example:
         password: password
-        tokenExpirationSeconds: 343
+        tokenExpirationSeconds: 48489
         email: email
       properties:
         email:
@@ -12114,58 +12972,12 @@ components:
           type: string
         tokenExpirationSeconds:
           format: int64
-          maximum: 3600
+          maximum: 604800
           minimum: 60
           type: integer
       required:
       - email
       - password
-      type: object
-    GenerateAccessTokenRequest:
-      example:
-        password: password
-        tokenExpirationSeconds: 2193
-        expirationSeconds: 721321908029600
-        email: email
-      properties:
-        expirationSeconds:
-          format: int64
-          maximum: 9007199254740991
-          minimum: 1
-          nullable: true
-          type: integer
-        email:
-          format: email
-          type: string
-        password:
-          type: string
-        tokenExpirationSeconds:
-          format: int64
-          maximum: 3600
-          minimum: 60
-          type: integer
-      required:
-      - email
-      - expirationSeconds
-      - password
-      type: object
-    GenerateAccessTokenResponse:
-      example:
-        authentication:
-          organizationId: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-          isSuperuser: true
-          accessToken: accessToken
-          userId: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-          refreshToken: refreshToken
-        token: token
-      properties:
-        authentication:
-          $ref: '#/components/schemas/Authentication'
-        token:
-          type: string
-      required:
-      - authentication
-      - token
       type: object
     GetFeaturesResponse:
       example:
@@ -12188,6 +13000,25 @@ components:
             - onDemand
             - appConfig
             - blobStorage
+            - advanced-config
+            - analytics
+            - annotation
+            - capture
+            - custom-tos
+            - customer-portal
+            - data-export
+            - data-retention
+            - diagnostics
+            - observability
+            - mission
+            - s3-export
+            - share
+            - ssh
+            - spot
+            - support
+            - white-label
+            - file-storage
+            - adapters
             type: string
           type: array
           uniqueItems: true
@@ -12328,6 +13159,22 @@ components:
           parameter:
             meta:
               key: meta
+            files:
+            - name: name
+              id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+              url: http://example.com/aeiou
+            - name: name
+              id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+              url: http://example.com/aeiou
+            - name: name
+              id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+              url: http://example.com/aeiou
+            - name: name
+              id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+              url: http://example.com/aeiou
+            - name: name
+              id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+              url: http://example.com/aeiou
             scrubberTime: 2000-01-23T04:56:07.000+00:00
             value: value
           id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
@@ -12350,6 +13197,22 @@ components:
           parameter:
             meta:
               key: meta
+            files:
+            - name: name
+              id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+              url: http://example.com/aeiou
+            - name: name
+              id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+              url: http://example.com/aeiou
+            - name: name
+              id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+              url: http://example.com/aeiou
+            - name: name
+              id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+              url: http://example.com/aeiou
+            - name: name
+              id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+              url: http://example.com/aeiou
             scrubberTime: 2000-01-23T04:56:07.000+00:00
             value: value
           id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
@@ -12378,6 +13241,22 @@ components:
         parameter:
           meta:
             key: meta
+          files:
+          - name: name
+            id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+            url: http://example.com/aeiou
+          - name: name
+            id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+            url: http://example.com/aeiou
+          - name: name
+            id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+            url: http://example.com/aeiou
+          - name: name
+            id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+            url: http://example.com/aeiou
+          - name: name
+            id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+            url: http://example.com/aeiou
           scrubberTime: 2000-01-23T04:56:07.000+00:00
           value: value
         id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
@@ -12406,6 +13285,22 @@ components:
           parameter:
             meta:
               key: meta
+            files:
+            - name: name
+              id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+              url: http://example.com/aeiou
+            - name: name
+              id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+              url: http://example.com/aeiou
+            - name: name
+              id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+              url: http://example.com/aeiou
+            - name: name
+              id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+              url: http://example.com/aeiou
+            - name: name
+              id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+              url: http://example.com/aeiou
             scrubberTime: 2000-01-23T04:56:07.000+00:00
             value: value
           id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
@@ -12414,6 +13309,22 @@ components:
           parameter:
             meta:
               key: meta
+            files:
+            - name: name
+              id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+              url: http://example.com/aeiou
+            - name: name
+              id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+              url: http://example.com/aeiou
+            - name: name
+              id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+              url: http://example.com/aeiou
+            - name: name
+              id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+              url: http://example.com/aeiou
+            - name: name
+              id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+              url: http://example.com/aeiou
             scrubberTime: 2000-01-23T04:56:07.000+00:00
             value: value
           id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
@@ -12550,6 +13461,27 @@ components:
               reportMetrics: true
               reportLogs: true
             terminalAccess: true
+            adapters:
+            - execCommand: execCommand
+              name: name
+              id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+              fileId: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+            - execCommand: execCommand
+              name: name
+              id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+              fileId: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+            - execCommand: execCommand
+              name: name
+              id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+              fileId: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+            - execCommand: execCommand
+              name: name
+              id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+              fileId: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+            - execCommand: execCommand
+              name: name
+              id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+              fileId: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
             application:
               configurationMap:
                 key: configurationMap
@@ -12614,96 +13546,144 @@ components:
                 quality: 1080p
               ros:
                 worldReferenceFrameId: worldReferenceFrameId
+            urdfFiles:
+            - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+            - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
             tags:
               key: tags
             teleop:
               hardwareStreams:
               - mode: command
+                isOnvif: true
+                rtspEncodingNeeded: true
+                ipCamUsername: ipCamUsername
                 name: name
+                hardwareType: ip
                 hwDescriptor: hwDescriptor
                 rtcStreamType: ping
+                ipCamPassword: ipCamPassword
                 quality: 1080p
               - mode: command
+                isOnvif: true
+                rtspEncodingNeeded: true
+                ipCamUsername: ipCamUsername
                 name: name
+                hardwareType: ip
                 hwDescriptor: hwDescriptor
                 rtcStreamType: ping
+                ipCamPassword: ipCamPassword
                 quality: 1080p
               - mode: command
+                isOnvif: true
+                rtspEncodingNeeded: true
+                ipCamUsername: ipCamUsername
                 name: name
+                hardwareType: ip
                 hwDescriptor: hwDescriptor
                 rtcStreamType: ping
+                ipCamPassword: ipCamPassword
                 quality: 1080p
               - mode: command
+                isOnvif: true
+                rtspEncodingNeeded: true
+                ipCamUsername: ipCamUsername
                 name: name
+                hardwareType: ip
                 hwDescriptor: hwDescriptor
                 rtcStreamType: ping
+                ipCamPassword: ipCamPassword
                 quality: 1080p
               - mode: command
+                isOnvif: true
+                rtspEncodingNeeded: true
+                ipCamUsername: ipCamUsername
                 name: name
+                hardwareType: ip
                 hwDescriptor: hwDescriptor
                 rtcStreamType: ping
+                ipCamPassword: ipCamPassword
                 quality: 1080p
               rosStreams:
-              - mode: command
-                min: 5.637376656633329
-                max: 2.3021358869347655
+              - max: 2.3021358869347655
                 defaultValue: 7.061401241503109
+                numericControlVisualization: slider
+                audioCodec: raw
+                endEffectorLinkName: endEffectorLinkName
+                topicType: std_msgs/Float64
+                quality: 1080p
+                mode: command
+                min: 5.637376656633329
+                plannedTopic: plannedTopic
+                endEffectorTopic: endEffectorTopic
                 topicName: topicName
                 statusTopic: statusTopic
                 step: 9.301444243932576
+                encodeVideo: true
+                planValidTopic: planValidTopic
+              - max: 2.3021358869347655
+                defaultValue: 7.061401241503109
                 numericControlVisualization: slider
                 audioCodec: raw
-                encodeVideo: true
+                endEffectorLinkName: endEffectorLinkName
                 topicType: std_msgs/Float64
                 quality: 1080p
-              - mode: command
+                mode: command
                 min: 5.637376656633329
-                max: 2.3021358869347655
-                defaultValue: 7.061401241503109
+                plannedTopic: plannedTopic
+                endEffectorTopic: endEffectorTopic
                 topicName: topicName
                 statusTopic: statusTopic
                 step: 9.301444243932576
+                encodeVideo: true
+                planValidTopic: planValidTopic
+              - max: 2.3021358869347655
+                defaultValue: 7.061401241503109
                 numericControlVisualization: slider
                 audioCodec: raw
-                encodeVideo: true
+                endEffectorLinkName: endEffectorLinkName
                 topicType: std_msgs/Float64
                 quality: 1080p
-              - mode: command
+                mode: command
                 min: 5.637376656633329
-                max: 2.3021358869347655
-                defaultValue: 7.061401241503109
+                plannedTopic: plannedTopic
+                endEffectorTopic: endEffectorTopic
                 topicName: topicName
                 statusTopic: statusTopic
                 step: 9.301444243932576
+                encodeVideo: true
+                planValidTopic: planValidTopic
+              - max: 2.3021358869347655
+                defaultValue: 7.061401241503109
                 numericControlVisualization: slider
                 audioCodec: raw
-                encodeVideo: true
+                endEffectorLinkName: endEffectorLinkName
                 topicType: std_msgs/Float64
                 quality: 1080p
-              - mode: command
+                mode: command
                 min: 5.637376656633329
-                max: 2.3021358869347655
-                defaultValue: 7.061401241503109
+                plannedTopic: plannedTopic
+                endEffectorTopic: endEffectorTopic
                 topicName: topicName
                 statusTopic: statusTopic
                 step: 9.301444243932576
+                encodeVideo: true
+                planValidTopic: planValidTopic
+              - max: 2.3021358869347655
+                defaultValue: 7.061401241503109
                 numericControlVisualization: slider
                 audioCodec: raw
-                encodeVideo: true
+                endEffectorLinkName: endEffectorLinkName
                 topicType: std_msgs/Float64
                 quality: 1080p
-              - mode: command
+                mode: command
                 min: 5.637376656633329
-                max: 2.3021358869347655
-                defaultValue: 7.061401241503109
+                plannedTopic: plannedTopic
+                endEffectorTopic: endEffectorTopic
                 topicName: topicName
                 statusTopic: statusTopic
                 step: 9.301444243932576
-                numericControlVisualization: slider
-                audioCodec: raw
                 encodeVideo: true
-                topicType: std_msgs/Float64
-                quality: 1080p
+                planValidTopic: planValidTopic
               customStreams:
               - mode: command
                 min: 3.616076749251911
@@ -12792,6 +13772,27 @@ components:
               reportMetrics: true
               reportLogs: true
             terminalAccess: true
+            adapters:
+            - execCommand: execCommand
+              name: name
+              id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+              fileId: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+            - execCommand: execCommand
+              name: name
+              id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+              fileId: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+            - execCommand: execCommand
+              name: name
+              id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+              fileId: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+            - execCommand: execCommand
+              name: name
+              id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+              fileId: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+            - execCommand: execCommand
+              name: name
+              id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+              fileId: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
             application:
               configurationMap:
                 key: configurationMap
@@ -12856,96 +13857,144 @@ components:
                 quality: 1080p
               ros:
                 worldReferenceFrameId: worldReferenceFrameId
+            urdfFiles:
+            - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+            - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
             tags:
               key: tags
             teleop:
               hardwareStreams:
               - mode: command
+                isOnvif: true
+                rtspEncodingNeeded: true
+                ipCamUsername: ipCamUsername
                 name: name
+                hardwareType: ip
                 hwDescriptor: hwDescriptor
                 rtcStreamType: ping
+                ipCamPassword: ipCamPassword
                 quality: 1080p
               - mode: command
+                isOnvif: true
+                rtspEncodingNeeded: true
+                ipCamUsername: ipCamUsername
                 name: name
+                hardwareType: ip
                 hwDescriptor: hwDescriptor
                 rtcStreamType: ping
+                ipCamPassword: ipCamPassword
                 quality: 1080p
               - mode: command
+                isOnvif: true
+                rtspEncodingNeeded: true
+                ipCamUsername: ipCamUsername
                 name: name
+                hardwareType: ip
                 hwDescriptor: hwDescriptor
                 rtcStreamType: ping
+                ipCamPassword: ipCamPassword
                 quality: 1080p
               - mode: command
+                isOnvif: true
+                rtspEncodingNeeded: true
+                ipCamUsername: ipCamUsername
                 name: name
+                hardwareType: ip
                 hwDescriptor: hwDescriptor
                 rtcStreamType: ping
+                ipCamPassword: ipCamPassword
                 quality: 1080p
               - mode: command
+                isOnvif: true
+                rtspEncodingNeeded: true
+                ipCamUsername: ipCamUsername
                 name: name
+                hardwareType: ip
                 hwDescriptor: hwDescriptor
                 rtcStreamType: ping
+                ipCamPassword: ipCamPassword
                 quality: 1080p
               rosStreams:
-              - mode: command
-                min: 5.637376656633329
-                max: 2.3021358869347655
+              - max: 2.3021358869347655
                 defaultValue: 7.061401241503109
+                numericControlVisualization: slider
+                audioCodec: raw
+                endEffectorLinkName: endEffectorLinkName
+                topicType: std_msgs/Float64
+                quality: 1080p
+                mode: command
+                min: 5.637376656633329
+                plannedTopic: plannedTopic
+                endEffectorTopic: endEffectorTopic
                 topicName: topicName
                 statusTopic: statusTopic
                 step: 9.301444243932576
+                encodeVideo: true
+                planValidTopic: planValidTopic
+              - max: 2.3021358869347655
+                defaultValue: 7.061401241503109
                 numericControlVisualization: slider
                 audioCodec: raw
-                encodeVideo: true
+                endEffectorLinkName: endEffectorLinkName
                 topicType: std_msgs/Float64
                 quality: 1080p
-              - mode: command
+                mode: command
                 min: 5.637376656633329
-                max: 2.3021358869347655
-                defaultValue: 7.061401241503109
+                plannedTopic: plannedTopic
+                endEffectorTopic: endEffectorTopic
                 topicName: topicName
                 statusTopic: statusTopic
                 step: 9.301444243932576
+                encodeVideo: true
+                planValidTopic: planValidTopic
+              - max: 2.3021358869347655
+                defaultValue: 7.061401241503109
                 numericControlVisualization: slider
                 audioCodec: raw
-                encodeVideo: true
+                endEffectorLinkName: endEffectorLinkName
                 topicType: std_msgs/Float64
                 quality: 1080p
-              - mode: command
+                mode: command
                 min: 5.637376656633329
-                max: 2.3021358869347655
-                defaultValue: 7.061401241503109
+                plannedTopic: plannedTopic
+                endEffectorTopic: endEffectorTopic
                 topicName: topicName
                 statusTopic: statusTopic
                 step: 9.301444243932576
+                encodeVideo: true
+                planValidTopic: planValidTopic
+              - max: 2.3021358869347655
+                defaultValue: 7.061401241503109
                 numericControlVisualization: slider
                 audioCodec: raw
-                encodeVideo: true
+                endEffectorLinkName: endEffectorLinkName
                 topicType: std_msgs/Float64
                 quality: 1080p
-              - mode: command
+                mode: command
                 min: 5.637376656633329
-                max: 2.3021358869347655
-                defaultValue: 7.061401241503109
+                plannedTopic: plannedTopic
+                endEffectorTopic: endEffectorTopic
                 topicName: topicName
                 statusTopic: statusTopic
                 step: 9.301444243932576
+                encodeVideo: true
+                planValidTopic: planValidTopic
+              - max: 2.3021358869347655
+                defaultValue: 7.061401241503109
                 numericControlVisualization: slider
                 audioCodec: raw
-                encodeVideo: true
+                endEffectorLinkName: endEffectorLinkName
                 topicType: std_msgs/Float64
                 quality: 1080p
-              - mode: command
+                mode: command
                 min: 5.637376656633329
-                max: 2.3021358869347655
-                defaultValue: 7.061401241503109
+                plannedTopic: plannedTopic
+                endEffectorTopic: endEffectorTopic
                 topicName: topicName
                 statusTopic: statusTopic
                 step: 9.301444243932576
-                numericControlVisualization: slider
-                audioCodec: raw
                 encodeVideo: true
-                topicType: std_msgs/Float64
-                quality: 1080p
+                planValidTopic: planValidTopic
               customStreams:
               - mode: command
                 min: 3.616076749251911
@@ -13046,6 +14095,13 @@ components:
           desiredConfigurationVersion: 721321908029600
           createdAt: 2000-01-23T04:56:07.000+00:00
           temporaryConfigurationVersion: 5429049884013572
+          followers:
+          - userId: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          - userId: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          - userId: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          - userId: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          - userId: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          phoneNumber: phoneNumber
           desiredAgentVersion: desiredAgentVersion
           temporaryConfigurationTemplateId: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           scope:
@@ -14259,6 +15315,22 @@ components:
                 release: release
                 version: version
                 architecture: architecture
+              onvifDevices:
+              - address: address
+                name: name
+                id: id
+              - address: address
+                name: name
+                id: id
+              - address: address
+                name: name
+                id: id
+              - address: address
+                name: name
+                id: id
+              - address: address
+                name: name
+                id: id
               nodeInfo:
                 hostname: hostname
                 machineid: machineid
@@ -14286,6 +15358,13 @@ components:
           desiredConfigurationVersion: 721321908029600
           createdAt: 2000-01-23T04:56:07.000+00:00
           temporaryConfigurationVersion: 5429049884013572
+          followers:
+          - userId: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          - userId: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          - userId: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          - userId: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          - userId: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          phoneNumber: phoneNumber
           desiredAgentVersion: desiredAgentVersion
           temporaryConfigurationTemplateId: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           scope:
@@ -15499,6 +16578,22 @@ components:
                 release: release
                 version: version
                 architecture: architecture
+              onvifDevices:
+              - address: address
+                name: name
+                id: id
+              - address: address
+                name: name
+                id: id
+              - address: address
+                name: name
+                id: id
+              - address: address
+                name: name
+                id: id
+              - address: address
+                name: name
+                id: id
               nodeInfo:
                 hostname: hostname
                 machineid: machineid
@@ -15611,6 +16706,27 @@ components:
               reportMetrics: true
               reportLogs: true
             terminalAccess: true
+            adapters:
+            - execCommand: execCommand
+              name: name
+              id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+              fileId: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+            - execCommand: execCommand
+              name: name
+              id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+              fileId: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+            - execCommand: execCommand
+              name: name
+              id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+              fileId: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+            - execCommand: execCommand
+              name: name
+              id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+              fileId: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+            - execCommand: execCommand
+              name: name
+              id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+              fileId: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
             application:
               configurationMap:
                 key: configurationMap
@@ -15675,96 +16791,144 @@ components:
                 quality: 1080p
               ros:
                 worldReferenceFrameId: worldReferenceFrameId
+            urdfFiles:
+            - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+            - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
             tags:
               key: tags
             teleop:
               hardwareStreams:
               - mode: command
+                isOnvif: true
+                rtspEncodingNeeded: true
+                ipCamUsername: ipCamUsername
                 name: name
+                hardwareType: ip
                 hwDescriptor: hwDescriptor
                 rtcStreamType: ping
+                ipCamPassword: ipCamPassword
                 quality: 1080p
               - mode: command
+                isOnvif: true
+                rtspEncodingNeeded: true
+                ipCamUsername: ipCamUsername
                 name: name
+                hardwareType: ip
                 hwDescriptor: hwDescriptor
                 rtcStreamType: ping
+                ipCamPassword: ipCamPassword
                 quality: 1080p
               - mode: command
+                isOnvif: true
+                rtspEncodingNeeded: true
+                ipCamUsername: ipCamUsername
                 name: name
+                hardwareType: ip
                 hwDescriptor: hwDescriptor
                 rtcStreamType: ping
+                ipCamPassword: ipCamPassword
                 quality: 1080p
               - mode: command
+                isOnvif: true
+                rtspEncodingNeeded: true
+                ipCamUsername: ipCamUsername
                 name: name
+                hardwareType: ip
                 hwDescriptor: hwDescriptor
                 rtcStreamType: ping
+                ipCamPassword: ipCamPassword
                 quality: 1080p
               - mode: command
+                isOnvif: true
+                rtspEncodingNeeded: true
+                ipCamUsername: ipCamUsername
                 name: name
+                hardwareType: ip
                 hwDescriptor: hwDescriptor
                 rtcStreamType: ping
+                ipCamPassword: ipCamPassword
                 quality: 1080p
               rosStreams:
-              - mode: command
-                min: 5.637376656633329
-                max: 2.3021358869347655
+              - max: 2.3021358869347655
                 defaultValue: 7.061401241503109
+                numericControlVisualization: slider
+                audioCodec: raw
+                endEffectorLinkName: endEffectorLinkName
+                topicType: std_msgs/Float64
+                quality: 1080p
+                mode: command
+                min: 5.637376656633329
+                plannedTopic: plannedTopic
+                endEffectorTopic: endEffectorTopic
                 topicName: topicName
                 statusTopic: statusTopic
                 step: 9.301444243932576
+                encodeVideo: true
+                planValidTopic: planValidTopic
+              - max: 2.3021358869347655
+                defaultValue: 7.061401241503109
                 numericControlVisualization: slider
                 audioCodec: raw
-                encodeVideo: true
+                endEffectorLinkName: endEffectorLinkName
                 topicType: std_msgs/Float64
                 quality: 1080p
-              - mode: command
+                mode: command
                 min: 5.637376656633329
-                max: 2.3021358869347655
-                defaultValue: 7.061401241503109
+                plannedTopic: plannedTopic
+                endEffectorTopic: endEffectorTopic
                 topicName: topicName
                 statusTopic: statusTopic
                 step: 9.301444243932576
+                encodeVideo: true
+                planValidTopic: planValidTopic
+              - max: 2.3021358869347655
+                defaultValue: 7.061401241503109
                 numericControlVisualization: slider
                 audioCodec: raw
-                encodeVideo: true
+                endEffectorLinkName: endEffectorLinkName
                 topicType: std_msgs/Float64
                 quality: 1080p
-              - mode: command
+                mode: command
                 min: 5.637376656633329
-                max: 2.3021358869347655
-                defaultValue: 7.061401241503109
+                plannedTopic: plannedTopic
+                endEffectorTopic: endEffectorTopic
                 topicName: topicName
                 statusTopic: statusTopic
                 step: 9.301444243932576
+                encodeVideo: true
+                planValidTopic: planValidTopic
+              - max: 2.3021358869347655
+                defaultValue: 7.061401241503109
                 numericControlVisualization: slider
                 audioCodec: raw
-                encodeVideo: true
+                endEffectorLinkName: endEffectorLinkName
                 topicType: std_msgs/Float64
                 quality: 1080p
-              - mode: command
+                mode: command
                 min: 5.637376656633329
-                max: 2.3021358869347655
-                defaultValue: 7.061401241503109
+                plannedTopic: plannedTopic
+                endEffectorTopic: endEffectorTopic
                 topicName: topicName
                 statusTopic: statusTopic
                 step: 9.301444243932576
+                encodeVideo: true
+                planValidTopic: planValidTopic
+              - max: 2.3021358869347655
+                defaultValue: 7.061401241503109
                 numericControlVisualization: slider
                 audioCodec: raw
-                encodeVideo: true
+                endEffectorLinkName: endEffectorLinkName
                 topicType: std_msgs/Float64
                 quality: 1080p
-              - mode: command
+                mode: command
                 min: 5.637376656633329
-                max: 2.3021358869347655
-                defaultValue: 7.061401241503109
+                plannedTopic: plannedTopic
+                endEffectorTopic: endEffectorTopic
                 topicName: topicName
                 statusTopic: statusTopic
                 step: 9.301444243932576
-                numericControlVisualization: slider
-                audioCodec: raw
                 encodeVideo: true
-                topicType: std_msgs/Float64
-                quality: 1080p
+                planValidTopic: planValidTopic
               customStreams:
               - mode: command
                 min: 3.616076749251911
@@ -16719,6 +17883,15 @@ components:
           createdAt: 2000-01-23T04:56:07.000+00:00
           condition: ""
           stream: stream
+          forwardingConfiguration:
+            webhooks:
+            - webhooks
+            - webhooks
+            slack: true
+            smsFollowers:
+            - customer
+            - customer
+            pagerduty: true
           interval: 721321908038799
           id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           commands:
@@ -16746,6 +17919,15 @@ components:
           createdAt: 2000-01-23T04:56:07.000+00:00
           condition: ""
           stream: stream
+          forwardingConfiguration:
+            webhooks:
+            - webhooks
+            - webhooks
+            slack: true
+            smsFollowers:
+            - customer
+            - customer
+            pagerduty: true
           interval: 721321908038799
           id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           commands:
@@ -16797,6 +17979,15 @@ components:
           createdAt: 2000-01-23T04:56:07.000+00:00
           condition: ""
           stream: stream
+          forwardingConfiguration:
+            webhooks:
+            - webhooks
+            - webhooks
+            slack: true
+            smsFollowers:
+            - customer
+            - customer
+            pagerduty: true
           interval: 721321908038799
           id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           commands:
@@ -16824,6 +18015,15 @@ components:
           createdAt: 2000-01-23T04:56:07.000+00:00
           condition: ""
           stream: stream
+          forwardingConfiguration:
+            webhooks:
+            - webhooks
+            - webhooks
+            slack: true
+            smsFollowers:
+            - customer
+            - customer
+            pagerduty: true
           interval: 721321908038799
           id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           commands:
@@ -16849,6 +18049,112 @@ components:
           maximum: 9007199254740991
           minimum: 0
           type: integer
+      type: object
+    BeginUploadRequest:
+      example:
+        fileName: fileName
+        fileSize: 859882722
+      properties:
+        fileName:
+          maxLength: 256
+          minLength: 1
+          type: string
+        fileSize:
+          format: int64
+          maximum: 10737418240
+          minimum: 1
+          type: integer
+      required:
+      - fileName
+      - fileSize
+      type: object
+    BeginUploadResponse:
+      example:
+        uploadId: uploadId
+        partUrls:
+        - partUrls
+        - partUrls
+        partSize: 434764376
+        fileId: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+      properties:
+        fileId:
+          format: uuid
+          type: string
+        uploadId:
+          type: string
+        partUrls:
+          items:
+            type: string
+          type: array
+        partSize:
+          format: int64
+          maximum: 5368709120
+          minimum: 5242880
+          type: integer
+      required:
+      - fileId
+      - partSize
+      - partUrls
+      - uploadId
+      type: object
+    CompleteUploadRequest:
+      example:
+        uploadId: uploadId
+        eTags:
+        - eTags
+        - eTags
+        fileId: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+      properties:
+        fileId:
+          format: uuid
+          type: string
+        uploadId:
+          type: string
+        eTags:
+          items:
+            type: string
+          type: array
+      required:
+      - eTags
+      - fileId
+      - uploadId
+      type: object
+    QueryFilesRequest:
+      example:
+        fileIds:
+        - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+      properties:
+        fileIds:
+          items:
+            format: uuid
+            type: string
+          maxItems: 20
+          minItems: 1
+          type: array
+      required:
+      - fileIds
+      type: object
+    QueryFilesResponse:
+      example:
+        fileUrls:
+        - fileUrls
+        - fileUrls
+        - fileUrls
+        - fileUrls
+        - fileUrls
+      properties:
+        fileUrls:
+          items:
+            type: string
+          maxItems: 20
+          minItems: 1
+          type: array
+      required:
+      - fileUrls
       type: object
     SlackAuthRequest:
       example:
@@ -16937,7 +18243,7 @@ components:
       example:
         items:
         - lastName: lastName
-          role: viewer
+          role: customer
           enabled: true
           passwordHash: passwordHash
           tags:
@@ -16945,6 +18251,7 @@ components:
           organizationId: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           firstName: firstName
           createdAt: 2000-01-23T04:56:07.000+00:00
+          phoneNumber: phoneNumber
           termsAccepted: termsAccepted
           isOrganizationOwner: true
           lastLoggedIn: 2000-01-23T04:56:07.000+00:00
@@ -16953,7 +18260,7 @@ components:
           isServiceAccount: true
           updatedAt: 2000-01-23T04:56:07.000+00:00
         - lastName: lastName
-          role: viewer
+          role: customer
           enabled: true
           passwordHash: passwordHash
           tags:
@@ -16961,6 +18268,7 @@ components:
           organizationId: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           firstName: firstName
           createdAt: 2000-01-23T04:56:07.000+00:00
+          phoneNumber: phoneNumber
           termsAccepted: termsAccepted
           isOrganizationOwner: true
           lastLoggedIn: 2000-01-23T04:56:07.000+00:00
@@ -17056,7 +18364,7 @@ components:
     CreateUserRequest:
       example:
         lastName: lastName
-        role: viewer
+        role: customer
         enabled: true
         passwordHash: passwordHash
         tags:
@@ -17065,6 +18373,7 @@ components:
         createdAt: 2000-01-23T04:56:07.000+00:00
         firstName: firstName
         password: password
+        phoneNumber: phoneNumber
         termsAccepted: termsAccepted
         isOrganizationOwner: true
         lastLoggedIn: 2000-01-23T04:56:07.000+00:00
@@ -17099,6 +18408,7 @@ components:
           type: string
         role:
           enum:
+          - customer
           - viewer
           - operator
           - administrator
@@ -17107,6 +18417,10 @@ components:
           additionalProperties:
             type: string
           type: object
+        phoneNumber:
+          nullable: true
+          pattern: ^\+[1-9]\d{1,14}$
+          type: string
         enabled:
           type: boolean
         isOrganizationOwner:
@@ -17394,6 +18708,22 @@ components:
         parameter:
           meta:
             key: meta
+          files:
+          - name: name
+            id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+            url: http://example.com/aeiou
+          - name: name
+            id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+            url: http://example.com/aeiou
+          - name: name
+            id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+            url: http://example.com/aeiou
+          - name: name
+            id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+            url: http://example.com/aeiou
+          - name: name
+            id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+            url: http://example.com/aeiou
           scrubberTime: 2000-01-23T04:56:07.000+00:00
           value: value
         id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
@@ -17619,6 +18949,27 @@ components:
             reportMetrics: true
             reportLogs: true
           terminalAccess: true
+          adapters:
+          - execCommand: execCommand
+            name: name
+            id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+            fileId: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          - execCommand: execCommand
+            name: name
+            id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+            fileId: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          - execCommand: execCommand
+            name: name
+            id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+            fileId: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          - execCommand: execCommand
+            name: name
+            id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+            fileId: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          - execCommand: execCommand
+            name: name
+            id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+            fileId: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           application:
             configurationMap:
               key: configurationMap
@@ -17683,96 +19034,144 @@ components:
               quality: 1080p
             ros:
               worldReferenceFrameId: worldReferenceFrameId
+          urdfFiles:
+          - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           tags:
             key: tags
           teleop:
             hardwareStreams:
             - mode: command
+              isOnvif: true
+              rtspEncodingNeeded: true
+              ipCamUsername: ipCamUsername
               name: name
+              hardwareType: ip
               hwDescriptor: hwDescriptor
               rtcStreamType: ping
+              ipCamPassword: ipCamPassword
               quality: 1080p
             - mode: command
+              isOnvif: true
+              rtspEncodingNeeded: true
+              ipCamUsername: ipCamUsername
               name: name
+              hardwareType: ip
               hwDescriptor: hwDescriptor
               rtcStreamType: ping
+              ipCamPassword: ipCamPassword
               quality: 1080p
             - mode: command
+              isOnvif: true
+              rtspEncodingNeeded: true
+              ipCamUsername: ipCamUsername
               name: name
+              hardwareType: ip
               hwDescriptor: hwDescriptor
               rtcStreamType: ping
+              ipCamPassword: ipCamPassword
               quality: 1080p
             - mode: command
+              isOnvif: true
+              rtspEncodingNeeded: true
+              ipCamUsername: ipCamUsername
               name: name
+              hardwareType: ip
               hwDescriptor: hwDescriptor
               rtcStreamType: ping
+              ipCamPassword: ipCamPassword
               quality: 1080p
             - mode: command
+              isOnvif: true
+              rtspEncodingNeeded: true
+              ipCamUsername: ipCamUsername
               name: name
+              hardwareType: ip
               hwDescriptor: hwDescriptor
               rtcStreamType: ping
+              ipCamPassword: ipCamPassword
               quality: 1080p
             rosStreams:
-            - mode: command
-              min: 5.637376656633329
-              max: 2.3021358869347655
+            - max: 2.3021358869347655
               defaultValue: 7.061401241503109
+              numericControlVisualization: slider
+              audioCodec: raw
+              endEffectorLinkName: endEffectorLinkName
+              topicType: std_msgs/Float64
+              quality: 1080p
+              mode: command
+              min: 5.637376656633329
+              plannedTopic: plannedTopic
+              endEffectorTopic: endEffectorTopic
               topicName: topicName
               statusTopic: statusTopic
               step: 9.301444243932576
+              encodeVideo: true
+              planValidTopic: planValidTopic
+            - max: 2.3021358869347655
+              defaultValue: 7.061401241503109
               numericControlVisualization: slider
               audioCodec: raw
-              encodeVideo: true
+              endEffectorLinkName: endEffectorLinkName
               topicType: std_msgs/Float64
               quality: 1080p
-            - mode: command
+              mode: command
               min: 5.637376656633329
-              max: 2.3021358869347655
-              defaultValue: 7.061401241503109
+              plannedTopic: plannedTopic
+              endEffectorTopic: endEffectorTopic
               topicName: topicName
               statusTopic: statusTopic
               step: 9.301444243932576
+              encodeVideo: true
+              planValidTopic: planValidTopic
+            - max: 2.3021358869347655
+              defaultValue: 7.061401241503109
               numericControlVisualization: slider
               audioCodec: raw
-              encodeVideo: true
+              endEffectorLinkName: endEffectorLinkName
               topicType: std_msgs/Float64
               quality: 1080p
-            - mode: command
+              mode: command
               min: 5.637376656633329
-              max: 2.3021358869347655
-              defaultValue: 7.061401241503109
+              plannedTopic: plannedTopic
+              endEffectorTopic: endEffectorTopic
               topicName: topicName
               statusTopic: statusTopic
               step: 9.301444243932576
+              encodeVideo: true
+              planValidTopic: planValidTopic
+            - max: 2.3021358869347655
+              defaultValue: 7.061401241503109
               numericControlVisualization: slider
               audioCodec: raw
-              encodeVideo: true
+              endEffectorLinkName: endEffectorLinkName
               topicType: std_msgs/Float64
               quality: 1080p
-            - mode: command
+              mode: command
               min: 5.637376656633329
-              max: 2.3021358869347655
-              defaultValue: 7.061401241503109
+              plannedTopic: plannedTopic
+              endEffectorTopic: endEffectorTopic
               topicName: topicName
               statusTopic: statusTopic
               step: 9.301444243932576
+              encodeVideo: true
+              planValidTopic: planValidTopic
+            - max: 2.3021358869347655
+              defaultValue: 7.061401241503109
               numericControlVisualization: slider
               audioCodec: raw
-              encodeVideo: true
+              endEffectorLinkName: endEffectorLinkName
               topicType: std_msgs/Float64
               quality: 1080p
-            - mode: command
+              mode: command
               min: 5.637376656633329
-              max: 2.3021358869347655
-              defaultValue: 7.061401241503109
+              plannedTopic: plannedTopic
+              endEffectorTopic: endEffectorTopic
               topicName: topicName
               statusTopic: statusTopic
               step: 9.301444243932576
-              numericControlVisualization: slider
-              audioCodec: raw
               encodeVideo: true
-              topicType: std_msgs/Float64
-              quality: 1080p
+              planValidTopic: planValidTopic
             customStreams:
             - mode: command
               min: 3.616076749251911
@@ -17888,6 +19287,13 @@ components:
         desiredConfigurationVersion: 721321908029600
         createdAt: 2000-01-23T04:56:07.000+00:00
         temporaryConfigurationVersion: 5429049884013572
+        followers:
+        - userId: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        - userId: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        - userId: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        - userId: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        - userId: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        phoneNumber: phoneNumber
         desiredAgentVersion: desiredAgentVersion
         temporaryConfigurationTemplateId: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         scope:
@@ -19101,6 +20507,22 @@ components:
               release: release
               version: version
               architecture: architecture
+            onvifDevices:
+            - address: address
+              name: name
+              id: id
+            - address: address
+              name: name
+              id: id
+            - address: address
+              name: name
+              id: id
+            - address: address
+              name: name
+              id: id
+            - address: address
+              name: name
+              id: id
             nodeInfo:
               hostname: hostname
               machineid: machineid
@@ -19161,6 +20583,15 @@ components:
           format: uuid
           nullable: true
           type: string
+        followers:
+          items:
+            $ref: '#/components/schemas/DeviceFollower'
+          maxItems: 10
+          type: array
+        phoneNumber:
+          nullable: true
+          pattern: ^\+[1-9]\d{1,14}$
+          type: string
         state:
           $ref: '#/components/schemas/DeviceState'
         enabled:
@@ -19193,6 +20624,15 @@ components:
         createdAt: 2000-01-23T04:56:07.000+00:00
         condition: ""
         stream: stream
+        forwardingConfiguration:
+          webhooks:
+          - webhooks
+          - webhooks
+          slack: true
+          smsFollowers:
+          - customer
+          - customer
+          pagerduty: true
         interval: 721321908038799
         id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         commands:
@@ -19245,13 +20685,15 @@ components:
           additionalProperties:
             type: string
           type: object
-        notificationEnabled:
-          type: boolean
         commands:
           items:
             $ref: '#/components/schemas/EventTriggerCommand'
           maxItems: 10
           type: array
+        notificationEnabled:
+          type: boolean
+        forwardingConfiguration:
+          $ref: '#/components/schemas/ForwardingConfiguration'
         id:
           format: uuid
           type: string
@@ -19265,7 +20707,7 @@ components:
     PartialUser:
       example:
         lastName: lastName
-        role: viewer
+        role: customer
         enabled: true
         passwordHash: passwordHash
         tags:
@@ -19273,6 +20715,7 @@ components:
         organizationId: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         firstName: firstName
         createdAt: 2000-01-23T04:56:07.000+00:00
+        phoneNumber: phoneNumber
         termsAccepted: termsAccepted
         isOrganizationOwner: true
         lastLoggedIn: 2000-01-23T04:56:07.000+00:00
@@ -19295,6 +20738,7 @@ components:
           type: string
         role:
           enum:
+          - customer
           - viewer
           - operator
           - administrator
@@ -19303,6 +20747,10 @@ components:
           additionalProperties:
             type: string
           type: object
+        phoneNumber:
+          nullable: true
+          pattern: ^\+[1-9]\d{1,14}$
+          type: string
         enabled:
           type: boolean
         isOrganizationOwner:
@@ -19330,6 +20778,18 @@ components:
       type: object
     PartialView:
       example:
+        showOnMultiDevice: true
+        configuration:
+        - configuration: ""
+          type: bitset
+          streamName: streamName
+        - configuration: ""
+          type: bitset
+          streamName: streamName
+        index: 721321908029599
+        url: url
+        tags:
+          key: tags
         organizationId: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         filter:
           agentIds:
@@ -19350,20 +20810,10 @@ components:
           tags: ""
         layout: ""
         createdAt: 2000-01-23T04:56:07.000+00:00
-        configuration:
-        - configuration: ""
-          type: bitset
-          streamName: streamName
-        - configuration: ""
-          type: bitset
-          streamName: streamName
         isUrlAuthorized: true
         name: name
-        index: 721321908029599
         id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-        url: url
-        tags:
-          key: tags
+        showOnSingleDevice: true
         updatedAt: 2000-01-23T04:56:07.000+00:00
       properties:
         organizationId:
@@ -19374,8 +20824,13 @@ components:
           type: string
         url:
           maxLength: 2000
+          nullable: true
           type: string
         isUrlAuthorized:
+          type: boolean
+        showOnSingleDevice:
+          type: boolean
+        showOnMultiDevice:
           type: boolean
         tags:
           additionalProperties:

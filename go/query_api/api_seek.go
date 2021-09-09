@@ -26,7 +26,7 @@ type SeekApiService service
 
 /*
 SeekControllerSeek Seek
-Authorized clients: viewer Authorized plans: standard, premium, enterprise
+Authorized clients: viewer Authorized plans: starter, premium
  * @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  * @param seekQuery SeekQuery
 @return SeekResult

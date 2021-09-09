@@ -15,8 +15,10 @@ import (
 type PartialView struct {
 	OrganizationId string `json:"organizationId,omitempty"`
 	Name string `json:"name,omitempty"`
-	Url string `json:"url,omitempty"`
+	Url *string `json:"url,omitempty"`
 	IsUrlAuthorized bool `json:"isUrlAuthorized,omitempty"`
+	ShowOnSingleDevice bool `json:"showOnSingleDevice,omitempty"`
+	ShowOnMultiDevice bool `json:"showOnMultiDevice,omitempty"`
 	Tags map[string]string `json:"tags,omitempty"`
 	Filter Filter `json:"filter,omitempty"`
 	Layout interface{} `json:"layout,omitempty"`

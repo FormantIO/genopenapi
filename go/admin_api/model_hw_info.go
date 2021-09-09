@@ -17,4 +17,5 @@ type HwInfo struct {
 	HwEncodingAvailable bool `json:"hwEncodingAvailable"`
 	VideoDevices []VideoDevice `json:"videoDevices,omitempty"`
 	AudioCaptureDevices []AudioDevice `json:"audioCaptureDevices,omitempty"`
+	OnvifDevices []OnvifDevice `json:"onvifDevices,omitempty"`
 }

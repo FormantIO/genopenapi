@@ -13,8 +13,9 @@ Name | Type | Description | Notes
 **Enabled** | **bool** |  | [optional] 
 **TriggeredConfiguration** | Pointer to [**TriggeredConfiguration**](TriggeredConfiguration.md) |  | 
 **Tags** | **map[string]string** |  | 
-**NotificationEnabled** | **bool** |  | 
 **Commands** | [**[]EventTriggerCommand**](EventTriggerCommand.md) |  | 
+**NotificationEnabled** | **bool** |  | 
+**ForwardingConfiguration** | Pointer to [**ForwardingConfiguration**](ForwardingConfiguration.md) |  | 
 **Id** | **string** |  | [optional] 
 **CreatedAt** | [**time.Time**](time.Time.md) |  | [optional] 
 **UpdatedAt** | [**time.Time**](time.Time.md) |  | [optional] 

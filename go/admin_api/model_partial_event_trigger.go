@@ -22,8 +22,9 @@ type PartialEventTrigger struct {
 	Enabled bool `json:"enabled,omitempty"`
 	TriggeredConfiguration *TriggeredConfiguration `json:"triggeredConfiguration,omitempty"`
 	Tags map[string]string `json:"tags,omitempty"`
-	NotificationEnabled bool `json:"notificationEnabled,omitempty"`
 	Commands []EventTriggerCommand `json:"commands,omitempty"`
+	NotificationEnabled bool `json:"notificationEnabled,omitempty"`
+	ForwardingConfiguration *ForwardingConfiguration `json:"forwardingConfiguration,omitempty"`
 	Id string `json:"id,omitempty"`
 	CreatedAt time.Time `json:"createdAt,omitempty"`
 	UpdatedAt time.Time `json:"updatedAt,omitempty"`

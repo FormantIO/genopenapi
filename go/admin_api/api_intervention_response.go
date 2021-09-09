@@ -26,7 +26,7 @@ type InterventionResponseApiService service
 
 /*
 InterventionResponseControllerPost Post
-Create an intervention response Authorized clients: viewer Authorized plans: standard, premium, enterprise
+Create an intervention response Authorized clients: viewer Authorized plans: starter, premium
  * @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  * @param interventionResponse InterventionResponse
 @return InterventionResponse

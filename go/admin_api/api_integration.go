@@ -26,7 +26,7 @@ type IntegrationApiService service
 
 /*
 IntegrationControllerGoogle Google
-Create a Google integration Authorized clients: administrator Authorized plans: standard, premium, enterprise
+Create a Google integration Authorized clients: administrator Authorized plans: starter, premium
  * @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  * @param googleAuthRequest GoogleAuthRequest
 @return GoogleInfo
@@ -113,7 +113,7 @@ func (a *IntegrationApiService) IntegrationControllerGoogle(ctx _context.Context
 
 /*
 IntegrationControllerSlack Slack
-Create a Slack integration Authorized clients: administrator Authorized plans: standard, premium, enterprise
+Create a Slack integration Authorized clients: administrator Authorized plans: starter, premium
  * @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  * @param slackAuthRequest SlackAuthRequest
 @return SlackInfo

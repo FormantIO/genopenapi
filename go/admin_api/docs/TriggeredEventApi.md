@@ -14,7 +14,7 @@ Method | HTTP request | Description
 
 Get one
 
-Get an triggered event Authorized clients: viewer Authorized plans: standard, premium, enterprise
+Get an triggered event Authorized clients: viewer Authorized plans: starter, premium
 
 ### Required Parameters
 

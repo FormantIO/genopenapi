@@ -6,8 +6,10 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **OrganizationId** | **string** |  | [optional] 
 **Name** | **string** |  | [optional] 
-**Url** | **string** |  | [optional] 
+**Url** | Pointer to **string** |  | [optional] 
 **IsUrlAuthorized** | **bool** |  | [optional] 
+**ShowOnSingleDevice** | **bool** |  | [optional] 
+**ShowOnMultiDevice** | **bool** |  | [optional] 
 **Tags** | **map[string]string** |  | [optional] 
 **Filter** | [**Filter**](Filter.md) |  | [optional] 
 **Layout** | **interface{}** |  | [optional] 

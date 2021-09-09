@@ -14,7 +14,7 @@ Method | HTTP request | Description
 
 Count
 
-Authorized clients: viewer Authorized plans: standard, premium, enterprise
+Authorized clients: viewer Authorized plans: starter, premium
 
 ### Required Parameters
 

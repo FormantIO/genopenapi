@@ -27,7 +27,7 @@ type OrganizationApiService service
 
 /*
 OrganizationControllerQueryUsageRecords Query usage records
-Query for usage records Authorized clients: administrator Authorized plans: freemium, standard, premium, enterprise
+Query for usage records Authorized clients: administrator Authorized plans: freemium, starter, premium
  * @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  * @param id
  * @param usageRecordQuery UsageRecordQuery

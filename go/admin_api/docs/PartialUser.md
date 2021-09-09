@@ -10,6 +10,7 @@ Name | Type | Description | Notes
 **LastName** | **string** |  | [optional] 
 **Role** | **string** |  | [optional] 
 **Tags** | **map[string]string** |  | [optional] 
+**PhoneNumber** | Pointer to **string** |  | [optional] 
 **Enabled** | **bool** |  | [optional] 
 **IsOrganizationOwner** | **bool** |  | [optional] 
 **TermsAccepted** | **string** |  | [optional] 

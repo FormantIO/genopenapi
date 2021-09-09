@@ -27,7 +27,7 @@ type CommandApiService service
 
 /*
 CommandControllerGetOne Get one
-Get a command Authorized clients: viewer Authorized plans: standard, premium, enterprise
+Get a command Authorized clients: viewer Authorized plans: starter, premium
  * @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  * @param id
 @return Command
@@ -114,7 +114,7 @@ func (a *CommandApiService) CommandControllerGetOne(ctx _context.Context, id str
 
 /*
 CommandControllerPatch Patch
-Update command Authorized clients: operator Authorized plans: standard, premium, enterprise
+Update command Authorized clients: operator Authorized plans: starter, premium
  * @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  * @param id
  * @param partialCommand PartialCommand
@@ -204,7 +204,7 @@ func (a *CommandApiService) CommandControllerPatch(ctx _context.Context, id stri
 
 /*
 CommandControllerPost Post
-Create a command Authorized clients: operator Authorized plans: standard, premium, enterprise
+Create a command Authorized clients: operator Authorized plans: starter, premium
  * @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  * @param command Command
 @return Command
@@ -291,7 +291,7 @@ func (a *CommandApiService) CommandControllerPost(ctx _context.Context, command 
 
 /*
 CommandControllerQuery Query
-Query undelivered commands by device ID Authorized clients: viewer Authorized plans: standard, premium, enterprise
+Query undelivered commands by device ID Authorized clients: viewer Authorized plans: starter, premium
  * @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  * @param commandQuery CommandQuery
 @return CommandListResponse

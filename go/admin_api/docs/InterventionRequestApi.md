@@ -15,7 +15,7 @@ Method | HTTP request | Description
 
 Get one
 
-Get an intervention request Authorized clients: viewer, device Authorized plans: standard, premium, enterprise
+Get an intervention request Authorized clients: viewer, device Authorized plans: starter, premium
 
 ### Required Parameters
 
@@ -49,7 +49,7 @@ Name | Type | Description  | Notes
 
 Post
 
-Create an intervention request Authorized clients: device Authorized plans: standard, premium, enterprise
+Create an intervention request Authorized clients: device Authorized plans: starter, premium
 
 ### Required Parameters
 

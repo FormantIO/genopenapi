@@ -14,5 +14,10 @@ type DeviceTeleopHardwareStreamConfiguration struct {
 	RtcStreamType string `json:"rtcStreamType"`
 	Mode string `json:"mode"`
 	HwDescriptor string `json:"hwDescriptor"`
+	HardwareType string `json:"hardwareType"`
+	RtspEncodingNeeded bool `json:"rtspEncodingNeeded,omitempty"`
+	IsOnvif bool `json:"isOnvif,omitempty"`
+	IpCamUsername string `json:"ipCamUsername,omitempty"`
+	IpCamPassword string `json:"ipCamPassword,omitempty"`
 	Quality string `json:"quality"`
 }

@@ -13,5 +13,10 @@ type DeviceStreamHardwareConfiguration struct {
 	Type string `json:"type"`
 	HwDescriptor string `json:"hwDescriptor"`
 	AudioHwDescriptor string `json:"audioHwDescriptor,omitempty"`
+	HardwareType string `json:"hardwareType"`
+	RtspEncodingNeeded bool `json:"rtspEncodingNeeded,omitempty"`
+	IsOnvif bool `json:"isOnvif,omitempty"`
+	IpCamUsername string `json:"ipCamUsername,omitempty"`
+	IpCamPassword string `json:"ipCamPassword,omitempty"`
 	Quality string `json:"quality,omitempty"`
 }

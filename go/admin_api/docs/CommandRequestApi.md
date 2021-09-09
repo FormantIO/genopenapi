@@ -14,7 +14,7 @@ Method | HTTP request | Description
 
 Poll
 
-Poll for command requests Authorized clients: device Authorized plans: standard, premium, enterprise
+Poll for command requests Authorized clients: device Authorized plans: starter, premium
 
 ### Required Parameters
 

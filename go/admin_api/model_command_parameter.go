@@ -16,4 +16,5 @@ type CommandParameter struct {
 	Value string `json:"value,omitempty"`
 	Meta map[string]string `json:"meta,omitempty"`
 	ScrubberTime time.Time `json:"scrubberTime"`
+	Files []FileInfo `json:"files,omitempty"`
 }

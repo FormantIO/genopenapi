@@ -15,6 +15,8 @@ Name | Type | Description | Notes
 **TemporaryConfigurationVersion** | Pointer to **int64** |  | [optional] 
 **TemporaryConfigurationExpiration** | Pointer to [**time.Time**](time.Time.md) |  | [optional] 
 **TemporaryConfigurationTemplateId** | Pointer to **string** |  | [optional] 
+**Followers** | [**[]DeviceFollower**](DeviceFollower.md) |  | [optional] 
+**PhoneNumber** | Pointer to **string** |  | [optional] 
 **State** | [**DeviceState**](DeviceState.md) |  | [optional] 
 **Enabled** | **bool** |  | [optional] 
 **DisabledAt** | [**time.Time**](time.Time.md) |  | [optional] 

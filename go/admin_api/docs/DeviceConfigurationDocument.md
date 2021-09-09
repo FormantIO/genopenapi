@@ -13,6 +13,8 @@ Name | Type | Description | Notes
 **Teleop** | [**DeviceTeleopConfiguration**](DeviceTeleopConfiguration.md) |  | [optional] 
 **PortForwarding** | [**DevicePortForwardingConfiguration**](DevicePortForwardingConfiguration.md) |  | [optional] 
 **Diagnostics** | [**DeviceDiagnosticsConfiguration**](DeviceDiagnosticsConfiguration.md) |  | [optional] 
+**UrdfFiles** | **[]string** |  | [optional] 
+**Adapters** | [**[]AdapterConfiguration**](AdapterConfiguration.md) |  | [optional] 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

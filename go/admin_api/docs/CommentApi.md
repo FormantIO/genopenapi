@@ -17,7 +17,7 @@ Method | HTTP request | Description
 
 Delete
 
-Delete a comment Authorized clients: operator Authorized plans: standard, premium, enterprise
+Delete a comment Authorized clients: operator Authorized plans: starter, premium
 
 ### Required Parameters
 
@@ -51,7 +51,7 @@ Name | Type | Description  | Notes
 
 Get one
 
-Get a comment Authorized clients: viewer Authorized plans: standard, premium, enterprise
+Get a comment Authorized clients: viewer Authorized plans: starter, premium
 
 ### Required Parameters
 
@@ -85,7 +85,7 @@ Name | Type | Description  | Notes
 
 Patch
 
-Update a comment Authorized clients: operator Authorized plans: standard, premium, enterprise
+Update a comment Authorized clients: operator Authorized plans: starter, premium
 
 ### Required Parameters
 
@@ -120,7 +120,7 @@ Name | Type | Description  | Notes
 
 Post
 
-Create a comment Authorized clients: operator Authorized plans: standard, premium, enterprise
+Create a comment Authorized clients: operator Authorized plans: starter, premium
 
 ### Required Parameters
 

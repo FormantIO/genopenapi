@@ -13,4 +13,5 @@ type AwsInfo struct {
 	AccountId string `json:"accountId"`
 	RoleName interface{} `json:"roleName"`
 	S3Export S3Export `json:"s3Export,omitempty"`
+	OutputFormat string `json:"outputFormat,omitempty"`
 }

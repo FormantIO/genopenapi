@@ -11,4 +11,5 @@ package admin_api
 // RefreshRequest struct for RefreshRequest
 type RefreshRequest struct {
 	RefreshToken string `json:"refreshToken"`
+	TokenExpirationSeconds int64 `json:"tokenExpirationSeconds,omitempty"`
 }

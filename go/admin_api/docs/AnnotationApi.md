@@ -17,7 +17,7 @@ Method | HTTP request | Description
 
 Delete
 
-Delete an annotation Authorized clients: operator Authorized plans: standard, premium, enterprise
+Delete an annotation Authorized clients: operator Authorized plans: starter, premium
 
 ### Required Parameters
 
@@ -51,7 +51,7 @@ Name | Type | Description  | Notes
 
 Get one
 
-Get an annotation Authorized clients: viewer Authorized plans: standard, premium, enterprise
+Get an annotation Authorized clients: viewer Authorized plans: starter, premium
 
 ### Required Parameters
 
@@ -85,7 +85,7 @@ Name | Type | Description  | Notes
 
 Patch
 
-Update an annotation Authorized clients: operator Authorized plans: standard, premium, enterprise
+Update an annotation Authorized clients: operator Authorized plans: starter, premium
 
 ### Required Parameters
 
@@ -120,7 +120,7 @@ Name | Type | Description  | Notes
 
 Post
 
-Create an annotation Authorized clients: operator Authorized plans: standard, premium, enterprise
+Create an annotation Authorized clients: operator Authorized plans: starter, premium
 
 ### Required Parameters
 

@@ -24,6 +24,8 @@ type PartialDevice struct {
 	TemporaryConfigurationVersion *int64 `json:"temporaryConfigurationVersion,omitempty"`
 	TemporaryConfigurationExpiration *time.Time `json:"temporaryConfigurationExpiration,omitempty"`
 	TemporaryConfigurationTemplateId *string `json:"temporaryConfigurationTemplateId,omitempty"`
+	Followers []DeviceFollower `json:"followers,omitempty"`
+	PhoneNumber *string `json:"phoneNumber,omitempty"`
 	State DeviceState `json:"state,omitempty"`
 	Enabled bool `json:"enabled,omitempty"`
 	DisabledAt time.Time `json:"disabledAt,omitempty"`

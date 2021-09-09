@@ -30,7 +30,7 @@ Method | HTTP request | Description
 
 Count
 
-Count devices Authorized clients: viewer Authorized plans: freemium, standard, premium, enterprise
+Count devices Authorized clients: viewer Authorized plans: freemium, starter, premium
 
 ### Required Parameters
 
@@ -73,7 +73,7 @@ Name | Type | Description  | Notes
 
 Disable
 
-Disable a device Authorized clients: viewer Authorized plans: freemium, standard, premium, enterprise
+Disable a device Authorized clients: viewer Authorized plans: freemium, starter, premium
 
 ### Required Parameters
 
@@ -107,7 +107,7 @@ Name | Type | Description  | Notes
 
 Filter
 
-Query devices by name and/or tags Authorized clients: viewer Authorized plans: freemium, standard, premium, enterprise
+Query devices by name and/or tags Authorized clients: viewer Authorized plans: freemium, starter, premium
 
 ### Required Parameters
 
@@ -150,7 +150,7 @@ Name | Type | Description  | Notes
 
 Generate device provisioning token
 
-Generate a device provisioning token Authorized clients: administrator Authorized plans: freemium, standard, premium, enterprise
+Generate a device provisioning token Authorized clients: administrator Authorized plans: freemium, starter, premium
 
 ### Required Parameters
 
@@ -184,7 +184,7 @@ Name | Type | Description  | Notes
 
 Get configuration
 
-Get a device configuration Authorized clients: viewer Authorized plans: freemium, standard, premium, enterprise
+Get a device configuration Authorized clients: viewer Authorized plans: freemium, starter, premium
 
 ### Required Parameters
 
@@ -219,7 +219,7 @@ Name | Type | Description  | Notes
 
 Get geo ip
 
-Get GeoIP for device Authorized clients: device Authorized plans: freemium, standard, premium, enterprise
+Get GeoIP for device Authorized clients: device Authorized plans: freemium, starter, premium
 
 ### Required Parameters
 
@@ -264,7 +264,7 @@ Name | Type | Description  | Notes
 
 Get one
 
-Get a device Authorized clients: viewer, device Authorized plans: freemium, standard, premium, enterprise
+Get a device Authorized clients: viewer, device Authorized plans: freemium, starter, premium
 
 ### Required Parameters
 
@@ -298,7 +298,7 @@ Name | Type | Description  | Notes
 
 Get tags
 
-Get tags across all devices Authorized clients: viewer Authorized plans: freemium, standard, premium, enterprise
+Get tags across all devices Authorized clients: viewer Authorized plans: freemium, starter, premium
 
 ### Required Parameters
 
@@ -341,7 +341,7 @@ Name | Type | Description  | Notes
 
 Get updated agent version
 
-Check for agent version updates Authorized clients: device Authorized plans: freemium, standard, premium, enterprise
+Check for agent version updates Authorized clients: device Authorized plans: freemium, starter, premium
 
 ### Required Parameters
 
@@ -386,7 +386,7 @@ Name | Type | Description  | Notes
 
 Get updated configuration
 
-Check for updated device configuration Authorized clients: device Authorized plans: freemium, standard, premium, enterprise
+Check for updated device configuration Authorized clients: device Authorized plans: freemium, starter, premium
 
 ### Required Parameters
 
@@ -432,7 +432,7 @@ Name | Type | Description  | Notes
 
 Patch
 
-Update a device Authorized clients: administrator, device Authorized plans: freemium, standard, premium, enterprise
+Update a device Authorized clients: administrator, device Authorized plans: freemium, starter, premium
 
 ### Required Parameters
 
@@ -467,7 +467,7 @@ Name | Type | Description  | Notes
 
 Post
 
-Create a device Authorized clients: administrator Authorized plans: freemium, standard, premium, enterprise
+Create a device Authorized clients: administrator Authorized plans: freemium, starter, premium
 
 ### Required Parameters
 
@@ -501,7 +501,7 @@ Name | Type | Description  | Notes
 
 Post configuration
 
-Create a device configuration Authorized clients: administrator Authorized plans: freemium, standard, premium, enterprise
+Create a device configuration Authorized clients: administrator Authorized plans: freemium, starter, premium
 
 ### Required Parameters
 
@@ -570,7 +570,7 @@ Use admin JWT for authorization
 
 Query
 
-Query devices by name and/or tags Authorized clients: viewer Authorized plans: freemium, standard, premium, enterprise
+Query devices by name and/or tags Authorized clients: viewer Authorized plans: freemium, starter, premium
 
 ### Required Parameters
 
@@ -613,7 +613,7 @@ Name | Type | Description  | Notes
 
 Unprovision device
 
-Unprovision a device Authorized clients: administrator Authorized plans: freemium, standard, premium, enterprise
+Unprovision a device Authorized clients: administrator Authorized plans: freemium, starter, premium
 
 ### Required Parameters
 
@@ -647,7 +647,7 @@ Name | Type | Description  | Notes
 
 Validate stream configuration
 
-Validate a device stream configuration Authorized clients: administrator Authorized plans: freemium, standard, premium, enterprise
+Validate a device stream configuration Authorized clients: administrator Authorized plans: freemium, starter, premium
 
 ### Required Parameters
 

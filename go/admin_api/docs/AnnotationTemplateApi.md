@@ -20,7 +20,7 @@ Method | HTTP request | Description
 
 Delete
 
-Delete an annotation template Authorized clients: administrator Authorized plans: standard, premium, enterprise
+Delete an annotation template Authorized clients: administrator Authorized plans: starter, premium
 
 ### Required Parameters
 
@@ -54,7 +54,7 @@ Name | Type | Description  | Notes
 
 Get one
 
-Get an annotation template Authorized clients: viewer Authorized plans: standard, premium, enterprise
+Get an annotation template Authorized clients: viewer Authorized plans: starter, premium
 
 ### Required Parameters
 
@@ -88,7 +88,7 @@ Name | Type | Description  | Notes
 
 Inspect spreadsheet
 
-Returns information about the Spreadsheet and its content Authorized clients: viewer Authorized plans: standard, premium, enterprise
+Returns information about the Spreadsheet and its content Authorized clients: viewer Authorized plans: starter, premium
 
 ### Required Parameters
 
@@ -122,7 +122,7 @@ Name | Type | Description  | Notes
 
 List
 
-List annotation templates Authorized clients: viewer Authorized plans: standard, premium, enterprise
+List annotation templates Authorized clients: viewer Authorized plans: starter, premium
 
 ### Required Parameters
 
@@ -152,7 +152,7 @@ This endpoint does not need any parameter.
 
 Patch
 
-Update an annotation template Authorized clients: administrator Authorized plans: standard, premium, enterprise
+Update an annotation template Authorized clients: administrator Authorized plans: starter, premium
 
 ### Required Parameters
 
@@ -187,7 +187,7 @@ Name | Type | Description  | Notes
 
 Post
 
-Create an annotation template Authorized clients: administrator Authorized plans: standard, premium, enterprise
+Create an annotation template Authorized clients: administrator Authorized plans: starter, premium
 
 ### Required Parameters
 
@@ -221,7 +221,7 @@ Name | Type | Description  | Notes
 
 Query annotation field values
 
-Query annotation template field values Authorized clients: viewer Authorized plans: standard, premium, enterprise
+Query annotation template field values Authorized clients: viewer Authorized plans: starter, premium
 
 ### Required Parameters
 

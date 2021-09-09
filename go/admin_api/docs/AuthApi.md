@@ -9,7 +9,6 @@ Method | HTTP request | Description
 [**AuthControllerCreateServiceAccount**](AuthApi.md#AuthControllerCreateServiceAccount) | **Post** /auth/service-account | Create service account
 [**AuthControllerDeviceCredentials**](AuthApi.md#AuthControllerDeviceCredentials) | **Post** /auth/device-credentials | Device credentials
 [**AuthControllerForgotPassword**](AuthApi.md#AuthControllerForgotPassword) | **Post** /auth/forgot-password | Forgot password
-[**AuthControllerGenerateAccessToken**](AuthApi.md#AuthControllerGenerateAccessToken) | **Post** /auth/access-token | Generate access token
 [**AuthControllerGetFeatures**](AuthApi.md#AuthControllerGetFeatures) | **Get** /auth/features | Get features
 [**AuthControllerLogin**](AuthApi.md#AuthControllerLogin) | **Post** /auth/login | Login
 [**AuthControllerLoginGoogle**](AuthApi.md#AuthControllerLoginGoogle) | **Post** /auth/login-google | Login google
@@ -95,7 +94,7 @@ Use admin JWT for authorization
 
 Create service account
 
-Create a service account Authorized clients: administrator Authorized plans: standard, premium, enterprise
+Create a service account Authorized clients: administrator Authorized plans: starter, premium
 
 ### Required Parameters
 
@@ -129,7 +128,7 @@ Name | Type | Description  | Notes
 
 Device credentials
 
-Device Credentials Authorized clients: device Authorized plans: freemium, standard, premium, enterprise
+Device Credentials Authorized clients: device Authorized plans: freemium, starter, premium
 
 ### Required Parameters
 
@@ -187,47 +186,13 @@ Use admin JWT for authorization
 [[Back to README]](../README.md)
 
 
-## AuthControllerGenerateAccessToken
-
-> GenerateAccessTokenResponse AuthControllerGenerateAccessToken(ctx, generateAccessTokenRequest)
-
-Generate access token
-
-Generate a service account access token
-
-### Required Parameters
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
-**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**generateAccessTokenRequest** | [**GenerateAccessTokenRequest**](GenerateAccessTokenRequest.md)| GenerateAccessTokenRequest | 
-
-### Return type
-
-[**GenerateAccessTokenResponse**](GenerateAccessTokenResponse.md)
-
-### Authorization
-
-Use admin JWT for authorization
-
-### HTTP request headers
-
-- **Content-Type**: application/json
-- **Accept**: application/json
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
-[[Back to Model list]](../README.md#documentation-for-models)
-[[Back to README]](../README.md)
-
-
 ## AuthControllerGetFeatures
 
 > GetFeaturesResponse AuthControllerGetFeatures(ctx, )
 
 Get features
 
-Get enabled features Authorized clients: viewer, device Authorized plans: freemium, standard, premium, enterprise
+Get enabled features Authorized clients: viewer, device Authorized plans: freemium, starter, premium
 
 ### Required Parameters
 
@@ -325,7 +290,7 @@ Use admin JWT for authorization
 
 Plan upgrade
 
-Signal intent to upgrade Authorized clients: viewer Authorized plans: freemium, standard, premium, enterprise
+Signal intent to upgrade Authorized clients: viewer Authorized plans: freemium, starter, premium
 
 ### Required Parameters
 

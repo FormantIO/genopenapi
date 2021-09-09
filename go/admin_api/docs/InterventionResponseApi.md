@@ -14,7 +14,7 @@ Method | HTTP request | Description
 
 Post
 
-Create an intervention response Authorized clients: viewer Authorized plans: standard, premium, enterprise
+Create an intervention response Authorized clients: viewer Authorized plans: starter, premium
 
 ### Required Parameters
 

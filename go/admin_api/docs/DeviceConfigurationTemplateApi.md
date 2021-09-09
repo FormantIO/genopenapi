@@ -18,7 +18,7 @@ Method | HTTP request | Description
 
 Delete
 
-Delete a device configuration template Authorized clients: administrator Authorized plans: standard, premium, enterprise
+Delete a device configuration template Authorized clients: administrator Authorized plans: starter, premium
 
 ### Required Parameters
 
@@ -52,7 +52,7 @@ Name | Type | Description  | Notes
 
 Get one
 
-Get a device configuration template Authorized clients: administrator Authorized plans: standard, premium, enterprise
+Get a device configuration template Authorized clients: administrator Authorized plans: starter, premium
 
 ### Required Parameters
 
@@ -86,7 +86,7 @@ Name | Type | Description  | Notes
 
 List
 
-List device configuration templates Authorized clients: administrator Authorized plans: standard, premium, enterprise
+List device configuration templates Authorized clients: administrator Authorized plans: starter, premium
 
 ### Required Parameters
 
@@ -116,7 +116,7 @@ This endpoint does not need any parameter.
 
 Patch
 
-Update a device configuration template Authorized clients: administrator Authorized plans: standard, premium, enterprise
+Update a device configuration template Authorized clients: administrator Authorized plans: starter, premium
 
 ### Required Parameters
 
@@ -151,7 +151,7 @@ Name | Type | Description  | Notes
 
 Post
 
-Create a device configuration template Authorized clients: administrator Authorized plans: standard, premium, enterprise
+Create a device configuration template Authorized clients: administrator Authorized plans: starter, premium
 
 ### Required Parameters
 

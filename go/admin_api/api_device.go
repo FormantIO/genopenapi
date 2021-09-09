@@ -33,7 +33,7 @@ type DeviceControllerCountOpts struct {
 
 /*
 DeviceControllerCount Count
-Count devices Authorized clients: viewer Authorized plans: freemium, standard, premium, enterprise
+Count devices Authorized clients: viewer Authorized plans: freemium, starter, premium
  * @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  * @param optional nil or *DeviceControllerCountOpts - Optional Parameters:
  * @param "DeviceQuery" (optional.Interface of DeviceQuery) -  DeviceQuery
@@ -108,7 +108,7 @@ func (a *DeviceApiService) DeviceControllerCount(ctx _context.Context, localVarO
 
 /*
 DeviceControllerDisable Disable
-Disable a device Authorized clients: viewer Authorized plans: freemium, standard, premium, enterprise
+Disable a device Authorized clients: viewer Authorized plans: freemium, starter, premium
  * @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  * @param id
 */
@@ -180,7 +180,7 @@ type DeviceControllerFilterOpts struct {
 
 /*
 DeviceControllerFilter Filter
-Query devices by name and/or tags Authorized clients: viewer Authorized plans: freemium, standard, premium, enterprise
+Query devices by name and/or tags Authorized clients: viewer Authorized plans: freemium, starter, premium
  * @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  * @param optional nil or *DeviceControllerFilterOpts - Optional Parameters:
  * @param "DeviceQuery" (optional.Interface of DeviceQuery) -  DeviceQuery
@@ -275,7 +275,7 @@ func (a *DeviceApiService) DeviceControllerFilter(ctx _context.Context, localVar
 
 /*
 DeviceControllerGenerateDeviceProvisioningToken Generate device provisioning token
-Generate a device provisioning token Authorized clients: administrator Authorized plans: freemium, standard, premium, enterprise
+Generate a device provisioning token Authorized clients: administrator Authorized plans: freemium, starter, premium
  * @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  * @param id
 @return DeviceProvisioning
@@ -362,7 +362,7 @@ func (a *DeviceApiService) DeviceControllerGenerateDeviceProvisioningToken(ctx _
 
 /*
 DeviceControllerGetConfiguration Get configuration
-Get a device configuration Authorized clients: viewer Authorized plans: freemium, standard, premium, enterprise
+Get a device configuration Authorized clients: viewer Authorized plans: freemium, starter, premium
  * @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  * @param id
  * @param version
@@ -457,7 +457,7 @@ type DeviceControllerGetGeoIpOpts struct {
 
 /*
 DeviceControllerGetGeoIp Get geo ip
-Get GeoIP for device Authorized clients: device Authorized plans: freemium, standard, premium, enterprise
+Get GeoIP for device Authorized clients: device Authorized plans: freemium, starter, premium
  * @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  * @param id
  * @param optional nil or *DeviceControllerGetGeoIpOpts - Optional Parameters:
@@ -549,7 +549,7 @@ func (a *DeviceApiService) DeviceControllerGetGeoIp(ctx _context.Context, id str
 
 /*
 DeviceControllerGetOne Get one
-Get a device Authorized clients: viewer, device Authorized plans: freemium, standard, premium, enterprise
+Get a device Authorized clients: viewer, device Authorized plans: freemium, starter, premium
  * @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  * @param id
 @return Device
@@ -641,7 +641,7 @@ type DeviceControllerGetTagsOpts struct {
 
 /*
 DeviceControllerGetTags Get tags
-Get tags across all devices Authorized clients: viewer Authorized plans: freemium, standard, premium, enterprise
+Get tags across all devices Authorized clients: viewer Authorized plans: freemium, starter, premium
  * @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  * @param optional nil or *DeviceControllerGetTagsOpts - Optional Parameters:
  * @param "DeviceQuery" (optional.Interface of DeviceQuery) -  DeviceQuery
@@ -741,7 +741,7 @@ type DeviceControllerGetUpdatedAgentVersionOpts struct {
 
 /*
 DeviceControllerGetUpdatedAgentVersion Get updated agent version
-Check for agent version updates Authorized clients: device Authorized plans: freemium, standard, premium, enterprise
+Check for agent version updates Authorized clients: device Authorized plans: freemium, starter, premium
  * @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  * @param id
  * @param optional nil or *DeviceControllerGetUpdatedAgentVersionOpts - Optional Parameters:
@@ -839,7 +839,7 @@ type DeviceControllerGetUpdatedConfigurationOpts struct {
 
 /*
 DeviceControllerGetUpdatedConfiguration Get updated configuration
-Check for updated device configuration Authorized clients: device Authorized plans: freemium, standard, premium, enterprise
+Check for updated device configuration Authorized clients: device Authorized plans: freemium, starter, premium
  * @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  * @param id
  * @param optional nil or *DeviceControllerGetUpdatedConfigurationOpts - Optional Parameters:
@@ -935,7 +935,7 @@ func (a *DeviceApiService) DeviceControllerGetUpdatedConfiguration(ctx _context.
 
 /*
 DeviceControllerPatch Patch
-Update a device Authorized clients: administrator, device Authorized plans: freemium, standard, premium, enterprise
+Update a device Authorized clients: administrator, device Authorized plans: freemium, starter, premium
  * @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  * @param id
  * @param partialDevice PartialDevice
@@ -1025,7 +1025,7 @@ func (a *DeviceApiService) DeviceControllerPatch(ctx _context.Context, id string
 
 /*
 DeviceControllerPost Post
-Create a device Authorized clients: administrator Authorized plans: freemium, standard, premium, enterprise
+Create a device Authorized clients: administrator Authorized plans: freemium, starter, premium
  * @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  * @param device Device
 @return Device
@@ -1112,7 +1112,7 @@ func (a *DeviceApiService) DeviceControllerPost(ctx _context.Context, device Dev
 
 /*
 DeviceControllerPostConfiguration Post configuration
-Create a device configuration Authorized clients: administrator Authorized plans: freemium, standard, premium, enterprise
+Create a device configuration Authorized clients: administrator Authorized plans: freemium, starter, premium
  * @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  * @param id
  * @param deviceConfiguration DeviceConfiguration
@@ -1294,7 +1294,7 @@ type DeviceControllerQueryOpts struct {
 
 /*
 DeviceControllerQuery Query
-Query devices by name and/or tags Authorized clients: viewer Authorized plans: freemium, standard, premium, enterprise
+Query devices by name and/or tags Authorized clients: viewer Authorized plans: freemium, starter, premium
  * @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  * @param optional nil or *DeviceControllerQueryOpts - Optional Parameters:
  * @param "DeviceQuery" (optional.Interface of DeviceQuery) -  DeviceQuery
@@ -1389,7 +1389,7 @@ func (a *DeviceApiService) DeviceControllerQuery(ctx _context.Context, localVarO
 
 /*
 DeviceControllerUnprovisionDevice Unprovision device
-Unprovision a device Authorized clients: administrator Authorized plans: freemium, standard, premium, enterprise
+Unprovision a device Authorized clients: administrator Authorized plans: freemium, starter, premium
  * @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  * @param id
 */
@@ -1456,7 +1456,7 @@ func (a *DeviceApiService) DeviceControllerUnprovisionDevice(ctx _context.Contex
 
 /*
 DeviceControllerValidateStreamConfiguration Validate stream configuration
-Validate a device stream configuration Authorized clients: administrator Authorized plans: freemium, standard, premium, enterprise
+Validate a device stream configuration Authorized clients: administrator Authorized plans: freemium, starter, premium
  * @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  * @param deviceStreamConfiguration DeviceStreamConfiguration
 */

@@ -19,6 +19,7 @@ type PartialUser struct {
 	LastName string `json:"lastName,omitempty"`
 	Role string `json:"role,omitempty"`
 	Tags map[string]string `json:"tags,omitempty"`
+	PhoneNumber *string `json:"phoneNumber,omitempty"`
 	Enabled bool `json:"enabled,omitempty"`
 	IsOrganizationOwner bool `json:"isOrganizationOwner,omitempty"`
 	TermsAccepted string `json:"termsAccepted,omitempty"`

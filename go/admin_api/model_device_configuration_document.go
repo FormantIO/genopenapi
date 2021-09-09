@@ -19,4 +19,6 @@ type DeviceConfigurationDocument struct {
 	Teleop DeviceTeleopConfiguration `json:"teleop,omitempty"`
 	PortForwarding DevicePortForwardingConfiguration `json:"portForwarding,omitempty"`
 	Diagnostics DeviceDiagnosticsConfiguration `json:"diagnostics,omitempty"`
+	UrdfFiles []string `json:"urdfFiles,omitempty"`
+	Adapters []AdapterConfiguration `json:"adapters,omitempty"`
 }

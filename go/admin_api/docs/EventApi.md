@@ -29,7 +29,7 @@ Method | HTTP request | Description
 
 Annotation templates
 
-Distinct values of event annotation templates Authorized clients: viewer Authorized plans: standard, premium, enterprise
+Distinct values of event annotation templates Authorized clients: viewer Authorized plans: starter, premium
 
 ### Required Parameters
 
@@ -72,7 +72,7 @@ Name | Type | Description  | Notes
 
 Count
 
-Count events Authorized clients: viewer Authorized plans: standard, premium, enterprise
+Count events Authorized clients: viewer Authorized plans: starter, premium
 
 ### Required Parameters
 
@@ -115,7 +115,7 @@ Name | Type | Description  | Notes
 
 Counts
 
-Count events Authorized clients: viewer Authorized plans: standard, premium, enterprise
+Count events Authorized clients: viewer Authorized plans: starter, premium
 
 ### Required Parameters
 
@@ -158,7 +158,7 @@ Name | Type | Description  | Notes
 
 Devices
 
-Distinct values of event devices Authorized clients: viewer Authorized plans: standard, premium, enterprise
+Distinct values of event devices Authorized clients: viewer Authorized plans: starter, premium
 
 ### Required Parameters
 
@@ -201,7 +201,7 @@ Name | Type | Description  | Notes
 
 Event types
 
-Distinct values of event types Authorized clients: viewer Authorized plans: standard, premium, enterprise
+Distinct values of event types Authorized clients: viewer Authorized plans: starter, premium
 
 ### Required Parameters
 
@@ -244,7 +244,7 @@ Name | Type | Description  | Notes
 
 Export sheet
 
-Export events as Google Sheet Authorized clients: viewer Authorized plans: standard, premium, enterprise
+Export events as Google Sheet Authorized clients: viewer Authorized plans: starter, premium
 
 ### Required Parameters
 
@@ -278,7 +278,7 @@ Name | Type | Description  | Notes
 
 Get one
 
-Get an event Authorized clients: viewer Authorized plans: standard, premium, enterprise
+Get an event Authorized clients: viewer Authorized plans: starter, premium
 
 ### Required Parameters
 
@@ -312,7 +312,7 @@ Name | Type | Description  | Notes
 
 Histogram
 
-Event histogram Authorized clients: viewer Authorized plans: standard, premium, enterprise
+Event histogram Authorized clients: viewer Authorized plans: starter, premium
 
 ### Required Parameters
 
@@ -346,7 +346,7 @@ Name | Type | Description  | Notes
 
 Query
 
-Query events Authorized clients: viewer Authorized plans: standard, premium, enterprise
+Query events Authorized clients: viewer Authorized plans: starter, premium
 
 ### Required Parameters
 
@@ -389,7 +389,7 @@ Name | Type | Description  | Notes
 
 Seek
 
-Seek event Authorized clients: viewer Authorized plans: standard, premium, enterprise
+Seek event Authorized clients: viewer Authorized plans: starter, premium
 
 ### Required Parameters
 
@@ -423,7 +423,7 @@ Name | Type | Description  | Notes
 
 Severities
 
-Distinct values of event severities Authorized clients: viewer Authorized plans: standard, premium, enterprise
+Distinct values of event severities Authorized clients: viewer Authorized plans: starter, premium
 
 ### Required Parameters
 
@@ -466,7 +466,7 @@ Name | Type | Description  | Notes
 
 Stream names
 
-Distinct values of event stream names Authorized clients: viewer Authorized plans: standard, premium, enterprise
+Distinct values of event stream names Authorized clients: viewer Authorized plans: starter, premium
 
 ### Required Parameters
 
@@ -509,7 +509,7 @@ Name | Type | Description  | Notes
 
 Stream types
 
-Distinct values of event stream types Authorized clients: viewer Authorized plans: standard, premium, enterprise
+Distinct values of event stream types Authorized clients: viewer Authorized plans: starter, premium
 
 ### Required Parameters
 
@@ -552,7 +552,7 @@ Name | Type | Description  | Notes
 
 Tags
 
-Distinct values of event tags Authorized clients: viewer Authorized plans: standard, premium, enterprise
+Distinct values of event tags Authorized clients: viewer Authorized plans: starter, premium
 
 ### Required Parameters
 
@@ -595,7 +595,7 @@ Name | Type | Description  | Notes
 
 Users
 
-Distinct values of event users Authorized clients: viewer Authorized plans: standard, premium, enterprise
+Distinct values of event users Authorized clients: viewer Authorized plans: starter, premium
 
 ### Required Parameters
 
@@ -638,7 +638,7 @@ Name | Type | Description  | Notes
 
 View
 
-Mark events as read Authorized clients: viewer Authorized plans: standard, premium, enterprise
+Mark events as read Authorized clients: viewer Authorized plans: starter, premium
 
 ### Required Parameters
 

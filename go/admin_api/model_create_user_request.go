@@ -23,6 +23,7 @@ type CreateUserRequest struct {
 	LastName string `json:"lastName,omitempty"`
 	Role string `json:"role"`
 	Tags map[string]string `json:"tags"`
+	PhoneNumber *string `json:"phoneNumber,omitempty"`
 	Enabled bool `json:"enabled,omitempty"`
 	IsOrganizationOwner bool `json:"isOrganizationOwner,omitempty"`
 	TermsAccepted string `json:"termsAccepted,omitempty"`

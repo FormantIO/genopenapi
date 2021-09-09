@@ -28,25 +28,42 @@ type Organization struct {
 	GoogleInfo GoogleInfo `json:"googleInfo,omitempty"`
 	WebhooksInfo WebhooksInfo `json:"webhooksInfo,omitempty"`
 	AwsInfo AwsInfo `json:"awsInfo,omitempty"`
+	GoogleStorageInfo GoogleStorageInfo `json:"googleStorageInfo,omitempty"`
 	LookerInfo LookerInfo `json:"lookerInfo,omitempty"`
 	StripeInfo StripeInfo `json:"stripeInfo,omitempty"`
+	RtcInfo RtcInfo `json:"rtcInfo,omitempty"`
 	TeleopConfiguration UserTeleopConfiguration `json:"teleopConfiguration,omitempty"`
-	TeleopEnabled bool `json:"teleopEnabled,omitempty"`
-	AnalyticsEnabled bool `json:"analyticsEnabled,omitempty"`
-	DataExportEnabled bool `json:"dataExportEnabled,omitempty"`
-	AdvancedConfigurationEnabled bool `json:"advancedConfigurationEnabled,omitempty"`
-	CustomerPortalEnabled bool `json:"customerPortalEnabled,omitempty"`
+	AnalyticsEnabled *time.Time `json:"analyticsEnabled,omitempty"`
+	DataExportEnabled *time.Time `json:"dataExportEnabled,omitempty"`
+	AdvancedConfigurationEnabled *time.Time `json:"advancedConfigurationEnabled,omitempty"`
+	CustomerPortalEnabled *time.Time `json:"customerPortalEnabled,omitempty"`
 	StripeBillingEnabled bool `json:"stripeBillingEnabled,omitempty"`
 	StripeSubscriptionEnabled bool `json:"stripeSubscriptionEnabled,omitempty"`
+	BillingInfo BillingInfo `json:"billingInfo,omitempty"`
+	AddonBillingPeriod string `json:"addonBillingPeriod"`
+	InvoiceBillingPeriod string `json:"invoiceBillingPeriod"`
 	S3ExportEnabled bool `json:"s3ExportEnabled,omitempty"`
 	BlobDataEnabled bool `json:"blobDataEnabled,omitempty"`
 	WhiteLabelEnabled bool `json:"whiteLabelEnabled,omitempty"`
+	AdaptersEnabled bool `json:"adaptersEnabled,omitempty"`
 	WhiteLabelCSS *string `json:"whiteLabelCSS,omitempty"`
 	DemoModeEnabled bool `json:"demoModeEnabled,omitempty"`
 	BillEstimateEnabled bool `json:"billEstimateEnabled,omitempty"`
+	DataRetentionEnabled *time.Time `json:"dataRetentionEnabled,omitempty"`
 	DaysDataRetained int64 `json:"daysDataRetained,omitempty"`
+	SupportEnabled *time.Time `json:"supportEnabled,omitempty"`
+	SupportTier string `json:"supportTier,omitempty"`
 	TrialPeriodEnd *time.Time `json:"trialPeriodEnd"`
 	ExternalId string `json:"externalId,omitempty"`
+	CustomTos bool `json:"customTos,omitempty"`
+	TeleopEnabled *time.Time `json:"teleopEnabled,omitempty"`
+	ObservabilityEnabled *time.Time `json:"observabilityEnabled,omitempty"`
+	ShareEnabled *time.Time `json:"shareEnabled,omitempty"`
+	MissionEnabled *time.Time `json:"missionEnabled,omitempty"`
+	DiagnosticsEnabled *time.Time `json:"diagnosticsEnabled,omitempty"`
+	SshEnabled *time.Time `json:"sshEnabled,omitempty"`
+	SpotEnabled *time.Time `json:"spotEnabled,omitempty"`
+	FileStorageEnabled bool `json:"fileStorageEnabled,omitempty"`
 	Id string `json:"id,omitempty"`
 	CreatedAt time.Time `json:"createdAt,omitempty"`
 	UpdatedAt time.Time `json:"updatedAt,omitempty"`

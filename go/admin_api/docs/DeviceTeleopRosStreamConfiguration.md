@@ -9,6 +9,10 @@ Name | Type | Description | Notes
 **Mode** | **string** |  | 
 **EncodeVideo** | **bool** |  | [optional] 
 **StatusTopic** | **string** |  | [optional] 
+**PlannedTopic** | **string** |  | [optional] 
+**EndEffectorTopic** | **string** |  | [optional] 
+**EndEffectorLinkName** | **string** |  | [optional] 
+**PlanValidTopic** | **string** |  | [optional] 
 **AudioCodec** | **string** |  | [optional] 
 **Min** | **float32** |  | [optional] 
 **Max** | **float32** |  | [optional] 

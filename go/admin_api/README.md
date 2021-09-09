@@ -48,7 +48,6 @@ Class | Method | HTTP request | Description
 *AuthApi* | [**AuthControllerCreateServiceAccount**](docs/AuthApi.md#authcontrollercreateserviceaccount) | **Post** /auth/service-account | Create service account
 *AuthApi* | [**AuthControllerDeviceCredentials**](docs/AuthApi.md#authcontrollerdevicecredentials) | **Post** /auth/device-credentials | Device credentials
 *AuthApi* | [**AuthControllerForgotPassword**](docs/AuthApi.md#authcontrollerforgotpassword) | **Post** /auth/forgot-password | Forgot password
-*AuthApi* | [**AuthControllerGenerateAccessToken**](docs/AuthApi.md#authcontrollergenerateaccesstoken) | **Post** /auth/access-token | Generate access token
 *AuthApi* | [**AuthControllerGetFeatures**](docs/AuthApi.md#authcontrollergetfeatures) | **Get** /auth/features | Get features
 *AuthApi* | [**AuthControllerLogin**](docs/AuthApi.md#authcontrollerlogin) | **Post** /auth/login | Login
 *AuthApi* | [**AuthControllerLoginGoogle**](docs/AuthApi.md#authcontrollerlogingoogle) | **Post** /auth/login-google | Login google
@@ -126,6 +125,9 @@ Class | Method | HTTP request | Description
 *EventTriggerApi* | [**EventTriggerControllerPatch**](docs/EventTriggerApi.md#eventtriggercontrollerpatch) | **Patch** /event-triggers/{id} | Patch
 *EventTriggerApi* | [**EventTriggerControllerPost**](docs/EventTriggerApi.md#eventtriggercontrollerpost) | **Post** /event-triggers | Post
 *EventTriggerApi* | [**EventTriggerControllerQuery**](docs/EventTriggerApi.md#eventtriggercontrollerquery) | **Post** /event-triggers/updated | Query
+*FileApi* | [**FileControllerBeginUpload**](docs/FileApi.md#filecontrollerbeginupload) | **Post** /files/begin-upload | Begin upload
+*FileApi* | [**FileControllerCompleteUpload**](docs/FileApi.md#filecontrollercompleteupload) | **Post** /files/complete-upload | Complete upload
+*FileApi* | [**FileControllerQuery**](docs/FileApi.md#filecontrollerquery) | **Post** /files/query | Query
 *IntegrationApi* | [**IntegrationControllerGoogle**](docs/IntegrationApi.md#integrationcontrollergoogle) | **Post** /integrations/google/auth | Google
 *IntegrationApi* | [**IntegrationControllerSlack**](docs/IntegrationApi.md#integrationcontrollerslack) | **Post** /integrations/slack/auth | Slack
 *InterventionRequestApi* | [**InterventionRequestControllerGetOne**](docs/InterventionRequestApi.md#interventionrequestcontrollergetone) | **Get** /intervention-requests/{id} | Get one
@@ -151,6 +153,8 @@ Class | Method | HTTP request | Description
 
 ## Documentation For Models
 
+ - [Adapter](docs/Adapter.md)
+ - [AdapterConfiguration](docs/AdapterConfiguration.md)
  - [Annotation](docs/Annotation.md)
  - [AnnotationField](docs/AnnotationField.md)
  - [AnnotationFieldValue](docs/AnnotationFieldValue.md)
@@ -163,6 +167,9 @@ Class | Method | HTTP request | Description
  - [AwsInfo](docs/AwsInfo.md)
  - [BaseEvent](docs/BaseEvent.md)
  - [BatteryEventTriggerCondition](docs/BatteryEventTriggerCondition.md)
+ - [BeginUploadRequest](docs/BeginUploadRequest.md)
+ - [BeginUploadResponse](docs/BeginUploadResponse.md)
+ - [BillingInfo](docs/BillingInfo.md)
  - [BitCondition](docs/BitCondition.md)
  - [BitsetEventTriggerCondition](docs/BitsetEventTriggerCondition.md)
  - [BitsetViewConfiguration](docs/BitsetViewConfiguration.md)
@@ -184,6 +191,7 @@ Class | Method | HTTP request | Description
  - [CommandTemplate](docs/CommandTemplate.md)
  - [CommandTemplateListResponse](docs/CommandTemplateListResponse.md)
  - [Comment](docs/Comment.md)
+ - [CompleteUploadRequest](docs/CompleteUploadRequest.md)
  - [ConfirmForgotPasswordRequest](docs/ConfirmForgotPasswordRequest.md)
  - [CreateServiceAccountRequest](docs/CreateServiceAccountRequest.md)
  - [CreateServiceAccountResponse](docs/CreateServiceAccountResponse.md)
@@ -201,6 +209,7 @@ Class | Method | HTTP request | Description
  - [DeviceDetailsListResponse](docs/DeviceDetailsListResponse.md)
  - [DeviceDiagnosticsConfiguration](docs/DeviceDiagnosticsConfiguration.md)
  - [DeviceDiskConfiguration](docs/DeviceDiskConfiguration.md)
+ - [DeviceFollower](docs/DeviceFollower.md)
  - [DeviceListResponse](docs/DeviceListResponse.md)
  - [DevicePortForwardingConfiguration](docs/DevicePortForwardingConfiguration.md)
  - [DeviceProvisioning](docs/DeviceProvisioning.md)
@@ -238,10 +247,10 @@ Class | Method | HTTP request | Description
  - [EventTrigger](docs/EventTrigger.md)
  - [EventTriggerCommand](docs/EventTriggerCommand.md)
  - [EventTriggerListResponse](docs/EventTriggerListResponse.md)
+ - [FileInfo](docs/FileInfo.md)
  - [Filter](docs/Filter.md)
  - [ForgotPasswordRequest](docs/ForgotPasswordRequest.md)
- - [GenerateAccessTokenRequest](docs/GenerateAccessTokenRequest.md)
- - [GenerateAccessTokenResponse](docs/GenerateAccessTokenResponse.md)
+ - [ForwardingConfiguration](docs/ForwardingConfiguration.md)
  - [GeoIp](docs/GeoIp.md)
  - [GetFeaturesResponse](docs/GetFeaturesResponse.md)
  - [GoogleAuthRequest](docs/GoogleAuthRequest.md)
@@ -249,6 +258,8 @@ Class | Method | HTTP request | Description
  - [GoogleLoginRequest](docs/GoogleLoginRequest.md)
  - [GoogleSheetParseResult](docs/GoogleSheetParseResult.md)
  - [GoogleSpreadsheetInspection](docs/GoogleSpreadsheetInspection.md)
+ - [GoogleStorageExport](docs/GoogleStorageExport.md)
+ - [GoogleStorageInfo](docs/GoogleStorageInfo.md)
  - [Group](docs/Group.md)
  - [HwInfo](docs/HwInfo.md)
  - [ImageViewConfiguration](docs/ImageViewConfiguration.md)
@@ -281,6 +292,7 @@ Class | Method | HTTP request | Description
  - [OnDemandPresenceTimeRange](docs/OnDemandPresenceTimeRange.md)
  - [OnDemandState](docs/OnDemandState.md)
  - [OnDemandStreamPresence](docs/OnDemandStreamPresence.md)
+ - [OnvifDevice](docs/OnvifDevice.md)
  - [Organization](docs/Organization.md)
  - [OsInfo](docs/OsInfo.md)
  - [PagerdutyInfo](docs/PagerdutyInfo.md)
@@ -298,12 +310,15 @@ Class | Method | HTTP request | Description
  - [PointCloudViewConfiguration](docs/PointCloudViewConfiguration.md)
  - [PollCommandRequest](docs/PollCommandRequest.md)
  - [PresenceEventTriggerCondition](docs/PresenceEventTriggerCondition.md)
+ - [QueryFilesRequest](docs/QueryFilesRequest.md)
+ - [QueryFilesResponse](docs/QueryFilesResponse.md)
  - [RefreshRequest](docs/RefreshRequest.md)
  - [RegexEventTriggerCondition](docs/RegexEventTriggerCondition.md)
  - [ResendConfirmationCodeRequest](docs/ResendConfirmationCodeRequest.md)
  - [ResendInvitationRequest](docs/ResendInvitationRequest.md)
  - [RespondToNewPasswordRequiredChallengeRequest](docs/RespondToNewPasswordRequiredChallengeRequest.md)
  - [RosTopic](docs/RosTopic.md)
+ - [RtcInfo](docs/RtcInfo.md)
  - [S3Export](docs/S3Export.md)
  - [ScopeFilter](docs/ScopeFilter.md)
  - [SelectionRequestData](docs/SelectionRequestData.md)
@@ -331,6 +346,7 @@ Class | Method | HTTP request | Description
  - [UpdatedConfigurationResponse](docs/UpdatedConfigurationResponse.md)
  - [UpdatedEventTriggerRequest](docs/UpdatedEventTriggerRequest.md)
  - [UpdatedEventTriggerResponse](docs/UpdatedEventTriggerResponse.md)
+ - [UsagePrices](docs/UsagePrices.md)
  - [UsageRecord](docs/UsageRecord.md)
  - [UsageRecordQuery](docs/UsageRecordQuery.md)
  - [UsageRecordQueryResponse](docs/UsageRecordQueryResponse.md)

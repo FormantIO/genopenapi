@@ -32,7 +32,7 @@ type StreamCurrentValueControllerQueryOpts struct {
 
 /*
 StreamCurrentValueControllerQuery Query
-Authorized clients: viewer Authorized plans: freemium, standard, premium, enterprise
+Authorized clients: viewer Authorized plans: freemium, starter, premium
  * @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  * @param optional nil or *StreamCurrentValueControllerQueryOpts - Optional Parameters:
  * @param "ScopeFilter" (optional.Interface of ScopeFilter) -  ScopeFilter

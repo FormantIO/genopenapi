@@ -27,7 +27,7 @@ type UserApiService service
 
 /*
 UserControllerGetAll Get all
-List all users Authorized clients: viewer Authorized plans: freemium, standard, premium, enterprise
+List all users Authorized clients: viewer Authorized plans: freemium, starter, premium
  * @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 @return UserListResponse
 */
@@ -111,7 +111,7 @@ func (a *UserApiService) UserControllerGetAll(ctx _context.Context) (UserListRes
 
 /*
 UserControllerGetOne Get one
-Get a user Authorized clients: viewer Authorized plans: freemium, standard, premium, enterprise
+Get a user Authorized clients: viewer Authorized plans: freemium, starter, premium
  * @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  * @param id
 @return User
@@ -198,7 +198,7 @@ func (a *UserApiService) UserControllerGetOne(ctx _context.Context, id string) (
 
 /*
 UserControllerPatch Patch
-Update a user Authorized clients: viewer Authorized plans: freemium, standard, premium, enterprise
+Update a user Authorized clients: viewer Authorized plans: freemium, starter, premium
  * @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  * @param id
  * @param partialUser PartialUser
@@ -288,7 +288,7 @@ func (a *UserApiService) UserControllerPatch(ctx _context.Context, id string, pa
 
 /*
 UserControllerPost Post
-Create a user Authorized clients: administrator Authorized plans: freemium, standard, premium, enterprise
+Create a user Authorized clients: administrator Authorized plans: freemium, starter, premium
  * @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  * @param createUserRequest CreateUserRequest
 @return CreateUserRequest

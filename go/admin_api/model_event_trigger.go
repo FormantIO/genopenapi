@@ -22,8 +22,9 @@ type EventTrigger struct {
 	Enabled bool `json:"enabled,omitempty"`
 	TriggeredConfiguration *TriggeredConfiguration `json:"triggeredConfiguration"`
 	Tags map[string]string `json:"tags"`
-	NotificationEnabled bool `json:"notificationEnabled"`
 	Commands []EventTriggerCommand `json:"commands"`
+	NotificationEnabled bool `json:"notificationEnabled"`
+	ForwardingConfiguration *ForwardingConfiguration `json:"forwardingConfiguration"`
 	Id string `json:"id,omitempty"`
 	CreatedAt time.Time `json:"createdAt,omitempty"`
 	UpdatedAt time.Time `json:"updatedAt,omitempty"`

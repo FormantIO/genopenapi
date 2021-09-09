@@ -14,6 +14,7 @@ Name | Type | Description | Notes
 **LastName** | **string** |  | [optional] 
 **Role** | **string** |  | 
 **Tags** | **map[string]string** |  | 
+**PhoneNumber** | Pointer to **string** |  | [optional] 
 **Enabled** | **bool** |  | [optional] 
 **IsOrganizationOwner** | **bool** |  | [optional] 
 **TermsAccepted** | **string** |  | [optional] 

@@ -14,5 +14,4 @@ type StripeInfo struct {
 	SubscriptionId string `json:"subscriptionId,omitempty"`
 	Card StripeCard `json:"card,omitempty"`
 	BillingAnchor interface{} `json:"billingAnchor,omitempty"`
-	BillingPeriod string `json:"billingPeriod,omitempty"`
 }

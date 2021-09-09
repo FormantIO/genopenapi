@@ -16,4 +16,5 @@ type ActiveDevicesQuery struct {
 	Start time.Time `json:"start"`
 	End time.Time `json:"end"`
 	OrganizationId string `json:"organizationId,omitempty"`
+	Type string `json:"type,omitempty"`
 }
